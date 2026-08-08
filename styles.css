@@ -25,9 +25,12 @@
   --pharm-procedure: #9b6a1f;
   --pharm-procedure-dark: #744b12;
   --pharm-procedure-soft: #fff7e8;
-  --pharm-microbiology: #166534;
-  --pharm-microbiology-dark: #14532d;
-  --pharm-microbiology-soft: #ecfdf5;
+  --pharm-surgery: #315a9a;
+  --pharm-surgery-dark: #203f70;
+  --pharm-surgery-soft: #eef4ff;
+  --pharm-microbiology: #087f5b;
+  --pharm-microbiology-dark: #064e3b;
+  --pharm-microbiology-soft: #e8fff7;
   --pharm-holistic: #5d7f2f;
   --pharm-holistic-dark: #3f5f1f;
   --pharm-holistic-soft: #f5faed;
@@ -769,7 +772,29 @@ h1 {
 }
 
 .stage-copy h1 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.13em;
   font-size: clamp(3.1rem, 7vw, 5.8rem);
+}
+
+.ani-connection-dot {
+  display: inline-block;
+  width: 0.14em;
+  height: 0.14em;
+  min-width: 8px;
+  min-height: 8px;
+  margin-top: 0.08em;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  background: #9aa7a7;
+  box-shadow: 0 0 0 2px rgba(43, 62, 64, 0.12);
+  transition: background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.ani-connection-dot.is-online {
+  background: #2cb36b;
+  box-shadow: 0 0 0 2px rgba(44, 179, 107, 0.18), 0 0 10px rgba(44, 179, 107, 0.35);
 }
 
 .brand-motto {
@@ -1725,6 +1750,12 @@ body.lecture-mode-active .voice-status {
   --pharm-current-soft: var(--pharm-procedure-soft);
 }
 
+.pharm-database-screen[data-index-mode="surgeries"] {
+  --pharm-current: var(--pharm-surgery);
+  --pharm-current-dark: var(--pharm-surgery-dark);
+  --pharm-current-soft: var(--pharm-surgery-soft);
+}
+
 .pharm-database-screen[data-index-mode="foundations"] {
   --pharm-current: var(--pharm-foundation);
   --pharm-current-dark: var(--pharm-foundation-dark);
@@ -1959,6 +1990,36 @@ body.lecture-mode-active .voice-status {
   color: var(--pharm-microbiology-dark);
 }
 
+#foundationBrowseControls {
+  border-color: color-mix(in srgb, var(--pharm-foundation) 30%, white);
+  background: var(--pharm-foundation-soft);
+}
+
+#foundationBrowseControls label,
+#foundationBrowseControls span {
+  color: var(--pharm-foundation-dark);
+}
+
+#foundationBrowseControls select {
+  border-color: color-mix(in srgb, var(--pharm-foundation) 36%, white);
+  color: var(--pharm-foundation-dark);
+}
+
+#procedureBrowseControls {
+  border-color: color-mix(in srgb, var(--pharm-surgery) 30%, white);
+  background: var(--pharm-surgery-soft);
+}
+
+#procedureBrowseControls label,
+#procedureBrowseControls span {
+  color: var(--pharm-surgery-dark);
+}
+
+#procedureBrowseControls select {
+  border-color: color-mix(in srgb, var(--pharm-surgery) 36%, white);
+  color: var(--pharm-surgery-dark);
+}
+
 .pharm-filter-row {
   display: flex;
   flex-wrap: wrap;
@@ -2184,6 +2245,11 @@ body.lecture-mode-active .voice-status {
 .pharm-index-toggle button[data-pharm-index-mode="procedures"] {
   --button-category-color: var(--pharm-procedure);
   --button-category-soft: var(--pharm-procedure-soft);
+}
+
+.pharm-index-toggle button[data-pharm-index-mode="surgeries"] {
+  --button-category-color: var(--pharm-surgery);
+  --button-category-soft: var(--pharm-surgery-soft);
 }
 
 .pharm-index-toggle button[data-pharm-index-mode="foundations"] {
@@ -2679,6 +2745,22 @@ body.lecture-mode-active .voice-status {
   color: var(--pharm-procedure-dark);
 }
 
+.pharm-surgery-result-button {
+  border-color: color-mix(in srgb, var(--pharm-surgery) 28%, white);
+  background: var(--pharm-surgery-soft);
+}
+
+.pharm-surgery-result-button strong::before {
+  content: "Surgery/Procedure: ";
+  color: var(--pharm-surgery-dark);
+}
+
+.pharm-surgery-result-button span,
+.pharm-surgery-result-button small:first-of-type,
+.pharm-surgery-title span {
+  color: var(--pharm-surgery-dark);
+}
+
 .pharm-foundation-result-button {
   border-color: color-mix(in srgb, var(--pharm-foundation) 27%, white);
   background: var(--pharm-foundation-soft);
@@ -2780,6 +2862,12 @@ body.lecture-mode-active .voice-status {
   --pharm-detail-color: var(--pharm-procedure);
   --pharm-detail-dark: var(--pharm-procedure-dark);
   --pharm-detail-soft: var(--pharm-procedure-soft);
+}
+
+.pharm-detail-card[data-detail-type="surgeries"] {
+  --pharm-detail-color: var(--pharm-surgery);
+  --pharm-detail-dark: var(--pharm-surgery-dark);
+  --pharm-detail-soft: var(--pharm-surgery-soft);
 }
 
 .pharm-detail-card[data-detail-type="foundations"] {

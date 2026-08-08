@@ -3180,10 +3180,114 @@
         "Defer administration and obtain expert guidance when a possible contraindication, severe prior reaction, complex immune state, uncertain product history, or invalid interval cannot be resolved safely at the visit."
       ],
       "why": "This ANI-original sequence turns a large changing schedule into a repeatable clinical navigation method: age finds the table, history prevents unnecessary repetition, risk individualizes recommendations, intervals establish validity, and product verification prevents administration errors."
+    },
+    {
+      "aliases": [
+        "CBIGK",
+        "CBIGK hyperkalemia",
+        "hyperkalemia treatment mnemonic",
+        "calcium beta agonist insulin glucose potassium removal"
+      ],
+      "benchmarkSourceKeys": [],
+      "clinicalSourceKeys": [
+        "kdigo-acute-hyperkalemia-2020"
+      ],
+      "cue": "C-B-I-G-K",
+      "expansion": [
+        {
+          "cue": "C",
+          "meaning": "Calcium salts stabilize the cardiac membrane when severe hyperkalemia is causing ECG toxicity or when the current emergency protocol otherwise indicates them. Calcium protects the heart temporarily; it does not lower the serum potassium."
+        },
+        {
+          "cue": "B",
+          "meaning": "Beta-2 agonist can shift potassium into cells. Bicarbonate is considered selectively when clinically important metabolic acidosis is present; it is not a universal substitute for definitive potassium removal."
+        },
+        {
+          "cue": "I",
+          "meaning": "Insulin activates cellular potassium uptake and lowers the measured serum concentration temporarily. The dose and route are protocol- and patient-specific."
+        },
+        {
+          "cue": "G",
+          "meaning": "Glucose is paired with insulin when indicated to reduce hypoglycemia risk, and bedside glucose must be followed for delayed hypoglycemia—especially with kidney failure."
+        },
+        {
+          "cue": "K",
+          "meaning": "Keep getting potassium out: appropriate diuresis, a selected potassium binder, or dialysis removes potassium from the body. Choice and urgency depend on kidney function, volume status, cause, severity, and response."
+        }
+      ],
+      "id": "mnemonic:hyperkalemia-cbigk",
+      "limitations": [
+        "CBIGK is a recall bridge, not a dosing algorithm or a fixed sequence for every patient.",
+        "The K does not mean that sodium polystyrene sulfonate is a rapid or universally appropriate rescue treatment; current binders differ in onset, evidence, adverse effects, and setting.",
+        "A normal ECG does not guarantee that severe hyperkalemia is safe, and a potassium result can be falsely high from specimen hemolysis; clinical urgency and repeat testing must be reconciled without delaying treatment when danger is clear."
+      ],
+      "memorySection": {
+        "cue": "C-B-I-G-K",
+        "expansion": [
+          {
+            "cue": "C",
+            "meaning": "Calcium salts stabilize the cardiac membrane when severe hyperkalemia is causing ECG toxicity or when the current emergency protocol otherwise indicates them. Calcium protects the heart temporarily; it does not lower the serum potassium."
+          },
+          {
+            "cue": "B",
+            "meaning": "Beta-2 agonist can shift potassium into cells. Bicarbonate is considered selectively when clinically important metabolic acidosis is present; it is not a universal substitute for definitive potassium removal."
+          },
+          {
+            "cue": "I",
+            "meaning": "Insulin activates cellular potassium uptake and lowers the measured serum concentration temporarily. The dose and route are protocol- and patient-specific."
+          },
+          {
+            "cue": "G",
+            "meaning": "Glucose is paired with insulin when indicated to reduce hypoglycemia risk, and bedside glucose must be followed for delayed hypoglycemia—especially with kidney failure."
+          },
+          {
+            "cue": "K",
+            "meaning": "Keep getting potassium out: appropriate diuresis, a selected potassium binder, or dialysis removes potassium from the body. Choice and urgency depend on kidney function, volume status, cause, severity, and response."
+          }
+        ],
+        "id": "memory-bridge-hyperkalemia-cbigk",
+        "label": "Memory bridge",
+        "limitations": [
+          "CBIGK is a recall bridge, not a dosing algorithm or a fixed sequence for every patient.",
+          "The K does not mean that sodium polystyrene sulfonate is a rapid or universally appropriate rescue treatment; current binders differ in onset, evidence, adverse effects, and setting.",
+          "A normal ECG does not guarantee that severe hyperkalemia is safe, and a potassium result can be falsely high from specimen hemolysis; clinical urgency and repeat testing must be reconciled without delaying treatment when danger is clear."
+        ],
+        "nursingApplication": "Place the unstable or severe patient on cardiac monitoring, obtain and trend ECG and potassium, verify IV access and protocol-specific orders, administer time-critical therapies safely, check glucose repeatedly after insulin, watch for rebound potassium, assess urine output and kidney function, and prepare for dialysis when hyperkalemia is refractory or accompanies severe kidney failure.",
+        "recallTarget": "A safety-bounded sequence for remembering the major goals of urgent hyperkalemia management: protect the heart, shift potassium temporarily, prevent treatment-related hypoglycemia, remove potassium, and reassess.",
+        "status": "limited",
+        "urgentExceptions": [
+          "Severe weakness, bradycardia, conduction delay, wide QRS, ventricular dysrhythmia, sine-wave pattern, shock, cardiac arrest, or a markedly elevated potassium requires immediate emergency escalation and protocol-based treatment.",
+          "Recheck glucose and potassium after shifting therapy because hypoglycemia and rebound hyperkalemia can occur after the apparent initial improvement."
+        ],
+        "why": "The letters separate three different treatment jobs that learners often confuse. Calcium stabilizes electrical danger, insulin and beta-2 stimulation shift potassium without removing it, and elimination prevents rebound. Glucose monitoring is a safety requirement rather than an optional extra."
+      },
+      "nursingApplication": "Place the unstable or severe patient on cardiac monitoring, obtain and trend ECG and potassium, verify IV access and protocol-specific orders, administer time-critical therapies safely, check glucose repeatedly after insulin, watch for rebound potassium, assess urine output and kidney function, and prepare for dialysis when hyperkalemia is refractory or accompanies severe kidney failure.",
+      "recallTarget": "A safety-bounded sequence for remembering the major goals of urgent hyperkalemia management: protect the heart, shift potassium temporarily, prevent treatment-related hypoglycemia, remove potassium, and reassess.",
+      "reviewDueAt": "2027-08-08",
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-08",
+      "rights": {
+        "copiedThirdPartyMedia": false,
+        "copiedThirdPartyText": false,
+        "note": "ANI independently authored this mechanism-based, safety-bounded explanation around the learner-requested conventional cue.",
+        "origin": "conventional-framework",
+        "wording": "ANI-original"
+      },
+      "status": "limited",
+      "target": {
+        "canonicalTitle": "Hyperkalemia",
+        "collection": "pathologyDiseases"
+      },
+      "targetKey": "identity:pathologyDiseases:hyperkalemia",
+      "urgentExceptions": [
+        "Severe weakness, bradycardia, conduction delay, wide QRS, ventricular dysrhythmia, sine-wave pattern, shock, cardiac arrest, or a markedly elevated potassium requires immediate emergency escalation and protocol-based treatment.",
+        "Recheck glucose and potassium after shifting therapy because hypoglycemia and rebound hyperkalemia can occur after the apparent initial improvement."
+      ],
+      "why": "The letters separate three different treatment jobs that learners often confuse. Calcium stabilizes electrical danger, insulin and beta-2 stimulation shift potassium without removing it, and elimination prevents rebound. Glucose monitoring is a safety requirement rather than an optional extra."
     }
   ],
   "builderVersion": "ani-mnemonic-builder-2026-08-02.1",
-  "catalogVersion": "2026-08-02.1",
+  "catalogVersion": "2026-08-08.1",
   "foundationCards": [
     {
       "abbreviations": [],
@@ -3986,6 +4090,510 @@
         "nursing"
       ],
       "type": "foundation"
+    },
+    {
+      "abbreviations": [
+        "SBAR",
+        "ISBAR"
+      ],
+      "aliases": [
+        "communication foundations",
+        "therapeutic communication",
+        "nursing handoff",
+        "provider report",
+        "closed loop communication"
+      ],
+      "category": "Foundations / Communication",
+      "directTargetId": "foundation.communication-essentials",
+      "foundationDomain": "Communication",
+      "name": "Clinical Communication Essentials",
+      "nclexEssential": true,
+      "quickAnswer": "Listen before directing, use plain and respectful language, verify understanding, report objective change with a structured handoff, state the action you need, and close the loop by reading back critical information and documenting the response.",
+      "searchTerms": [
+        "how should a nurse communicate",
+        "safe handoff report",
+        "what to say to a patient",
+        "calling the provider"
+      ],
+      "sections": [
+        {
+          "label": "Therapeutic communication",
+          "text": "Use open questions, reflection, clarification, silence, empathy, and specific observations. Avoid false reassurance, arguing, changing the subject, judgment, or asking repeated 'why' questions that can sound accusatory. The goal is to understand the patient's meaning and support safe decisions, not to make the conversation feel scripted."
+        },
+        {
+          "label": "Handoff and escalation",
+          "text": "Identify the patient and immediate concern, give only decision-relevant background, state your assessment and trend, then make a clear recommendation or request. During deterioration, lead with the danger rather than burying it in history. Use the chain of command when the response does not match the patient's risk."
+        },
+        {
+          "label": "Teach-back and accessibility",
+          "text": "Ask the patient to explain the plan in their own words because a polite yes does not prove understanding. Use a qualified medical interpreter when needed, protect hearing and vision access, and adapt communication for cognition, literacy, culture, developmental stage, and distress."
+        },
+        {
+          "label": "Documentation and safety",
+          "text": "Record the clinically important message, who was notified, the time, orders or decisions received, read-back when required, and the patient's response. Escalate immediately for airway, breathing, circulation, acute neurologic, suicide, violence, abuse, or other time-critical threats while communication continues."
+        }
+      ],
+      "sourceKeys": [
+        "ahrq-teamstepps-sbar",
+        "openrn-fundamentals-2e"
+      ],
+      "sourceNote": "Original ANI synthesis grounded in AHRQ TeamSTEPPS and Open RN communication principles.",
+      "summary": "Clinical communication is the deliberate exchange of accurate, timely, patient-centered information so the patient understands care and every team member can act safely.",
+      "tags": [
+        "communication",
+        "therapeutic communication",
+        "handoff",
+        "SBAR",
+        "ISBAR",
+        "teach-back",
+        "escalation"
+      ],
+      "type": "foundation"
+    },
+    {
+      "abbreviations": [
+        "HIPAA",
+        "PHI"
+      ],
+      "aliases": [
+        "nursing law and ethics",
+        "HIPAA consent directives reporting",
+        "legal ethical nursing",
+        "patient rights"
+      ],
+      "category": "Foundations / Legal and Ethics",
+      "directTargetId": "foundation.legal-and-ethical-practice",
+      "foundationDomain": "Legal & Ethics",
+      "name": "Legal and Ethical Nursing Practice",
+      "nclexEssential": true,
+      "quickAnswer": "Protect private health information, verify informed decision-making, respect refusal and advance directives, report suspected abuse or other legally reportable danger, document objectively, and seek the chain of command when law, ethics, safety, and an order appear to conflict.",
+      "searchTerms": [
+        "what are nursing legal duties",
+        "privacy informed consent advance directives",
+        "mandatory reporting nursing"
+      ],
+      "sections": [
+        {
+          "label": "Privacy and HIPAA",
+          "text": "HIPAA protects qualifying health information held by covered entities and business associates, but it does not forbid necessary treatment communication or legally permitted public-health and abuse reporting. Use the minimum necessary information when that standard applies, secure records and screens, verify recipients, and never discuss a patient for curiosity or convenience."
+        },
+        {
+          "label": "Consent and refusal",
+          "text": "The clinician performing a procedure is responsible for the substantive informed-consent discussion; the nurse commonly verifies identity, voluntariness, signature or documentation, understanding cues, and absence of obvious coercion or unresolved questions. A capable patient may refuse care. Pause and escalate when capacity, emergency authority, surrogate status, language access, or the proposed procedure is unclear."
+        },
+        {
+          "label": "Advance directives and ethics",
+          "text": "Advance directives communicate a patient's choices or decision-maker when the patient cannot speak for themselves, subject to state law and the clinical situation. Autonomy supports informed choice; beneficence promotes benefit; nonmaleficence avoids harm; justice concerns fairness; fidelity and veracity support trust. Ethical principles guide reasoning but do not replace law or policy."
+        },
+        {
+          "label": "Mandatory reporting and documentation",
+          "text": "Reporting duties vary by jurisdiction, role, setting, and population. Suspected child abuse and many forms of vulnerable-adult abuse require prompt action under applicable law; the nurse reports suspicion through the required pathway rather than proving a crime. Protect immediate safety, preserve evidence as directed, quote important statements, describe findings objectively, and do not promise secrecy you cannot legally keep."
+        }
+      ],
+      "sourceKeys": [
+        "hhs-hipaa-privacy-rule-summary",
+        "cms-advance-directive-requirements",
+        "openrn-fundamentals-2e"
+      ],
+      "sourceNote": "Original ANI synthesis for education only. Current federal and state law, professional scope, and facility policy govern real cases.",
+      "summary": "Legal and ethical nursing practice protects the patient's rights, privacy, safety, informed choices, and dignity while keeping the nurse within law, scope, standards, and facility policy.",
+      "tags": [
+        "legal",
+        "ethics",
+        "HIPAA",
+        "informed consent",
+        "advance directives",
+        "mandatory reporting",
+        "patient rights"
+      ],
+      "type": "foundation"
+    },
+    {
+      "abbreviations": [],
+      "aliases": [
+        "Florida Baker Act",
+        "Florida involuntary mental health examination",
+        "394.463",
+        "72 hour psychiatric hold Florida"
+      ],
+      "category": "Foundations / Legal and Ethics / Florida",
+      "directTargetId": "foundation.baker-act",
+      "foundationDomain": "Legal & Ethics",
+      "name": "Baker Act",
+      "nclexEssential": true,
+      "quickAnswer": "It is not simply a request for psychiatric admission. Florida requires reason to believe mental illness is present, inability or refusal to choose voluntary examination after appropriate explanation, and a qualifying near-term risk of substantial self-neglect or serious bodily harm to self or others. The examination period is up to 72 hours after arrival, with specific statutory processes and patient rights.",
+      "searchTerms": [
+        "when can someone be Baker Acted",
+        "involuntary psych exam Florida",
+        "danger to self Florida mental illness"
+      ],
+      "sections": [
+        {
+          "label": "Why it matters",
+          "text": "The law creates a time-limited path to evaluate a person whose mental illness may make immediate voluntary decision-making unsafe. It also limits state power by requiring defined criteria, documentation, examination, rights, and disposition rather than allowing indefinite detention for unusual behavior alone."
+        },
+        {
+          "label": "Current Florida criteria",
+          "text": "Under the 2025 statute, the person must appear to have a mental illness and have refused voluntary examination after conscientious explanation or be unable to determine whether examination is necessary. Without care, the person must face a real and present threat of substantial harm from neglect that cannot apparently be avoided through willing help or other services, or a substantial likelihood of serious bodily harm to self or others in the near future shown by recent behavior."
+        },
+        {
+          "label": "Nursing priorities",
+          "text": "Treat medical instability first, use the least restrictive safe approach, assess suicide, violence, intoxication, withdrawal, delirium, trauma, medication effects, and capacity cues, maintain observation and environmental safety according to policy, protect dignity and rights, document exact statements and recent behavior, and communicate the statutory basis and changing risk without labeling the patient as a criminal."
+        },
+        {
+          "label": "Limits and urgent action",
+          "text": "A Baker Act examination is not a criminal sentence, a diagnosis, or permission for unlimited treatment. Florida law and facility procedures can change. Immediate airway, overdose, severe withdrawal, excited delirium, head injury, psychosis with dangerous behavior, suicide attempt, or violent threat requires emergency stabilization and the appropriate legal and clinical pathway."
+        }
+      ],
+      "sourceKeys": [
+        "florida-baker-act-2025"
+      ],
+      "sourceNote": "Original ANI synthesis based on the 2025 Florida Statutes reviewed 2026-08-08; this is education, not legal advice. Verify current Florida law and facility policy.",
+      "summary": "The Baker Act is Florida's mental-health law; section 394.463 defines when a person may be taken to a receiving facility for an involuntary mental-health examination.",
+      "tags": [
+        "Baker Act",
+        "Florida",
+        "involuntary examination",
+        "mental health law",
+        "suicide safety",
+        "patient rights"
+      ],
+      "type": "foundation"
+    },
+    {
+      "abbreviations": [],
+      "aliases": [
+        "Florida Marchman Act",
+        "involuntary substance use assessment Florida",
+        "397.675",
+        "substance abuse hold Florida"
+      ],
+      "category": "Foundations / Legal and Ethics / Florida",
+      "directTargetId": "foundation.marchman-act",
+      "foundationDomain": "Legal & Ethics",
+      "name": "Marchman Act",
+      "nclexEssential": true,
+      "quickAnswer": "Florida requires good-faith reason to believe substance-use impairment, loss of self-control regarding use, and either impaired judgment that prevents rational appreciation of the need for services or a qualifying real and present neglect or physical-harm risk. Refusing treatment by itself does not prove impaired judgment.",
+      "searchTerms": [
+        "when can someone be Marchman Acted",
+        "Florida involuntary addiction treatment",
+        "substance use involuntary admission Florida"
+      ],
+      "sections": [
+        {
+          "label": "Why it matters",
+          "text": "The Act creates a legal route for urgent substance-use assessment when impairment removes safe self-control or decision-making and serious harm is likely. Its criteria protect both safety and liberty; substance use, family conflict, homelessness, or refusal alone is not an automatic involuntary admission."
+        },
+        {
+          "label": "Current Florida criteria",
+          "text": "The 2025 statute requires good-faith reason to believe the person is substance-abuse impaired, or has a substance-use disorder with a co-occurring mental-health disorder, and has lost the power of self-control regarding substance use. In addition, impaired judgment must prevent a rational decision about needed services, or without care the person faces a real and present substantial-harm threat from neglect not apparently avoidable through willing help or other services, or likely physical harm to self or another."
+        },
+        {
+          "label": "Nursing priorities",
+          "text": "First assess overdose, airway and breathing, glucose, trauma, co-ingestion, pregnancy, withdrawal risk, suicide risk, violence, delirium, and medical causes. Use nonstigmatizing language, preserve patient rights, obtain objective substance and medication history, document behavior and statements rather than conclusions, and follow the authorized facility, court, professional, or law-enforcement pathway."
+        },
+        {
+          "label": "Limits and urgent action",
+          "text": "The Marchman Act is not the Baker Act, routine detox consent, or a guarantee of long-term placement. Emergency overdose or life-threatening withdrawal needs immediate medical treatment. Florida procedures and authorized initiators vary by pathway and can change, so use the current statute, local policy, and legal or risk-management guidance."
+        }
+      ],
+      "sourceKeys": [
+        "florida-marchman-act-2025"
+      ],
+      "sourceNote": "Original ANI synthesis based on the 2025 Florida Statutes reviewed 2026-08-08; this is education, not legal advice. Verify current Florida law and facility policy.",
+      "summary": "The Marchman Act is Florida's substance-use-services law; section 397.675 defines criteria for selected involuntary assessment, stabilization, or treatment pathways related to substance-use impairment.",
+      "tags": [
+        "Marchman Act",
+        "Florida",
+        "substance use disorder",
+        "involuntary assessment",
+        "withdrawal",
+        "patient rights"
+      ],
+      "type": "foundation"
+    },
+    {
+      "abbreviations": [
+        "PPE",
+        "AIIR"
+      ],
+      "aliases": [
+        "standard precautions",
+        "transmission based precautions",
+        "PPE basics",
+        "contact droplet airborne precautions",
+        "infection control foundations"
+      ],
+      "category": "Foundations / Infection Prevention",
+      "directTargetId": "foundation.infection-prevention-essentials",
+      "foundationDomain": "Infection Prevention",
+      "name": "Infection Prevention Essentials",
+      "nclexEssential": true,
+      "quickAnswer": "Use Standard Precautions for every patient based on anticipated exposure. Add Contact, Droplet, or Airborne Precautions when the suspected or confirmed route requires more protection; do not wait for a final culture when the clinical syndrome already creates a transmission risk.",
+      "searchTerms": [
+        "what precautions for every patient",
+        "contact droplet airborne",
+        "which ppe should a nurse wear"
+      ],
+      "sections": [
+        {
+          "label": "Standard Precautions",
+          "text": "Perform hand hygiene; select gloves, gown, mask, eye protection, or face shield from the expected blood, body-fluid, secretion, excretion, nonintact-skin, mucous-membrane, splash, or spray exposure; use respiratory hygiene, sharps and injection safety, clean equipment, and safe linen, waste, and specimen handling. Gloves never replace hand hygiene."
+        },
+        {
+          "label": "Transmission-Based Precautions",
+          "text": "Contact Precautions emphasize gown and gloves for contact with the patient or environment when indicated. Droplet Precautions use source control, appropriate placement, and a mask on room entry. Airborne Precautions require an airborne-infection isolation room when available and a fit-tested NIOSH-approved N95 or higher respirator for healthcare personnel. These are added to Standard Precautions."
+        },
+        {
+          "label": "Why timing matters",
+          "text": "Transmission can occur before the organism is named. Apply syndrome-based precautions early for a compatible rash, meningitis syndrome, uncontrolled diarrhea, or respiratory infection, then adjust when diagnostic and public-health information clarifies the route. Notify receiving teams before transport so protection does not break at handoff."
+        },
+        {
+          "label": "Nursing pitfalls",
+          "text": "Do not use one memorized isolation label for every form or stage of a disease. Check the current CDC organism table and facility policy, especially for immunocompromised patients, novel pathogens, resistant organisms, aerosol-generating procedures, and draining wounds. Isolation must not reduce necessary assessment, mobility, communication, or emotional support."
+        }
+      ],
+      "sourceKeys": [
+        "cdc-standard-precautions",
+        "cdc-transmission-precautions"
+      ],
+      "sourceNote": "Original ANI synthesis of current CDC foundations; organism-specific duration and PPE must be checked against current guidance and facility policy.",
+      "summary": "Infection prevention interrupts transmission before a pathogen moves between patients, healthcare personnel, equipment, surfaces, specimens, or the environment.",
+      "tags": [
+        "infection prevention",
+        "standard precautions",
+        "contact",
+        "droplet",
+        "airborne",
+        "PPE",
+        "hand hygiene"
+      ],
+      "type": "foundation"
+    },
+    {
+      "abbreviations": [
+        "CDC"
+      ],
+      "aliases": [
+        "vaccine basics",
+        "immunization foundations",
+        "vaccine schedule basics",
+        "how vaccines work"
+      ],
+      "category": "Foundations / Vaccines",
+      "directTargetId": "foundation.vaccination-essentials",
+      "foundationDomain": "Vaccines",
+      "name": "Vaccination Foundations",
+      "nclexEssential": true,
+      "quickAnswer": "Start with age, reconstruct valid history, assess risk and contraindications, verify minimum intervals, and confirm the exact product, formulation, route, dose, storage, and documentation from the current CDC schedule.",
+      "searchTerms": [
+        "how do nurses check vaccines",
+        "vaccination safety basics",
+        "age risk interval product"
+      ],
+      "sections": [
+        {
+          "label": "How protection develops",
+          "text": "Vaccine antigen or genetic instructions trigger innate signaling and adaptive B- and T-cell responses without requiring the full natural disease. Antibodies can block infection or spread, while memory cells make later responses faster and stronger. Protection, duration, and effect on transmission differ by vaccine and host."
+        },
+        {
+          "label": "Schedule reasoning",
+          "text": "Dose timing balances the age when risk begins, immune-system response, maternal antibody effects, exposure probability, and evidence for durable protection. A delayed series usually continues rather than automatically restarting, but minimum ages and intervals determine whether a dose counts."
+        },
+        {
+          "label": "Nursing safety",
+          "text": "Screen pregnancy, immune status, severe allergy history, acute illness, prior products and reactions, and special risks. Maintain cold-chain and product identity, use the correct route and site, prepare for syncope and anaphylaxis, document lot and administration details, provide required information, and schedule the next dose."
+        },
+        {
+          "label": "Current schedule",
+          "text": "Open the linked U.S. Lifespan Vaccination Schedule for the chronological overview, then use the current CDC tables, notes, catch-up schedule, contraindication appendix, and product labeling for a real patient. Recommendations change; a memory aid is a navigation tool, not a frozen schedule."
+        }
+      ],
+      "sourceKeys": [
+        "cdc-immunization-schedules"
+      ],
+      "sourceNote": "Original ANI synthesis; use the current CDC schedule and product labeling for patient-specific decisions.",
+      "summary": "Vaccination trains immune memory before exposure so later contact with the pathogen is less likely to cause infection, severe disease, complications, or transmission.",
+      "tags": [
+        "vaccines",
+        "immunization",
+        "immune memory",
+        "CDC schedule",
+        "catch-up",
+        "vaccine safety"
+      ],
+      "type": "foundation"
+    },
+    {
+      "abbreviations": [
+        "RCA",
+        "QAPI"
+      ],
+      "aliases": [
+        "patient safety basics",
+        "nursing safety checks",
+        "preventable harm",
+        "safety culture"
+      ],
+      "category": "Foundations / Patient Safety",
+      "directTargetId": "foundation.patient-safety-essentials",
+      "foundationDomain": "Patient Safety",
+      "name": "Patient Safety Essentials",
+      "nclexEssential": true,
+      "quickAnswer": "Use two identifiers, reconcile the patient-order-product-route-time context, assess fall and deterioration risk, protect lines and skin, communicate changes early, involve the patient, report hazards and near misses, and reassess after every intervention.",
+      "searchTerms": [
+        "how nurses prevent errors",
+        "patient identification safety",
+        "falls medication alarms escalation"
+      ],
+      "sections": [
+        {
+          "label": "System plus bedside practice",
+          "text": "Safety depends on reliable systems, staffing, equipment, teamwork, and culture as well as individual attention. Standardized checks reduce predictable slips, while clinical judgment identifies when the standard process no longer fits the patient."
+        },
+        {
+          "label": "High-risk moments",
+          "text": "Transitions, handoffs, medication changes, procedures, sedation, restraint, blood products, anticoagulation, insulin, opioids, unfamiliar equipment, abnormal results, and new deterioration concentrate risk. Slow down enough to verify identity, allergies, indication, monitoring, and rescue plan."
+        },
+        {
+          "label": "Escalation and learning",
+          "text": "Use rapid response or emergency pathways for instability and the chain of command for unresolved danger. Report near misses and adverse events through policy because learning from weak processes prevents recurrence. Preserve facts and care for the patient before assigning blame."
+        },
+        {
+          "label": "Common misconception",
+          "text": "A completed checklist is not proof of safety. Watch the patient, compare trends, question mismatches, and reassess results. A normal single value does not cancel a dangerous clinical pattern, and an alarm should never replace bedside assessment."
+        }
+      ],
+      "sourceKeys": [
+        "ahrq-patient-safety-network",
+        "openrn-fundamentals-2e"
+      ],
+      "sourceNote": "Original ANI synthesis using AHRQ patient-safety principles and nursing fundamentals.",
+      "summary": "Patient safety is the organized prevention, detection, communication, and learning needed to reduce avoidable harm during healthcare.",
+      "tags": [
+        "patient safety",
+        "error prevention",
+        "two identifiers",
+        "falls",
+        "deterioration",
+        "near miss",
+        "safety culture"
+      ],
+      "type": "foundation"
+    },
+    {
+      "abbreviations": [
+        "ABCs"
+      ],
+      "aliases": [
+        "basic nursing assessment",
+        "head to toe assessment",
+        "assessment scales",
+        "pupil pain GCS Braden suicide scale"
+      ],
+      "category": "Foundations / Assessment Basics",
+      "directTargetId": "foundation.assessment-basics",
+      "foundationDomain": "Assessment Basics",
+      "name": "Nursing Assessment Basics",
+      "nclexEssential": true,
+      "quickAnswer": "Begin with airway, breathing, circulation, neurologic status, and immediate safety; then use a focused or head-to-toe examination, compare both sides and prior values, apply validated scales in their intended population, and act on the finding rather than merely recording a score.",
+      "searchTerms": [
+        "what should a nurse assess first",
+        "basic scales and checks",
+        "head to toe versus focused assessment"
+      ],
+      "sections": [
+        {
+          "label": "Primary versus complete assessment",
+          "text": "The primary survey identifies immediate threats. A focused assessment examines the active problem, while a complete assessment establishes broader baseline data. Unstable patients need simultaneous assessment and intervention; finishing a form never comes before lifesaving action."
+        },
+        {
+          "label": "Core observations",
+          "text": "Trend vital signs, pain and function, mental status, pupils, speech, strength, sensation, breathing effort and sounds, circulation and perfusion, skin, abdomen, intake and output, mobility, devices, wounds, and patient concerns. Compare technique, position, cuff or device size, timing, and baseline before interpreting change."
+        },
+        {
+          "label": "Scales",
+          "text": "Use the Glasgow Coma Scale for eye, verbal, and motor response; validated pain tools matched to communication ability; the Braden Scale for pressure-injury risk; and an approved suicide-risk tool such as the Columbia protocol when indicated. A score supports—not replaces—direct assessment, precautions, escalation, and reassessment."
+        },
+        {
+          "label": "Urgent findings",
+          "text": "Escalate airway compromise, severe work of breathing, new focal neurologic deficit, rapid mental-status decline, shock or poor perfusion, active major bleeding, anaphylaxis, acute compartment or neurovascular compromise, suicidal intent with plan or means, or any rapidly worsening pattern."
+        }
+      ],
+      "sourceKeys": [
+        "openrn-nursing-skills-2e",
+        "who-basic-emergency-care"
+      ],
+      "sourceNote": "Original ANI synthesis; use the validated tool version and facility response policy appropriate to the patient and setting.",
+      "summary": "Nursing assessment gathers subjective and objective cues, validates them, identifies immediate threats, and creates a baseline that makes change visible.",
+      "tags": [
+        "assessment",
+        "ABCs",
+        "head to toe",
+        "focused assessment",
+        "GCS",
+        "Braden",
+        "pain scale",
+        "suicide screening"
+      ],
+      "type": "foundation"
+    },
+    {
+      "abbreviations": [
+        "EHR"
+      ],
+      "aliases": [
+        "nursing charting",
+        "documentation basics",
+        "objective charting",
+        "late entry correction",
+        "clinical documentation"
+      ],
+      "category": "Foundations / Documentation",
+      "directTargetId": "foundation.documentation-essentials",
+      "foundationDomain": "Documentation",
+      "name": "Nursing Documentation Essentials",
+      "nclexEssential": true,
+      "quickAnswer": "Chart what you assessed, what you did, why it was needed when relevant, who you notified, what was decided, and how the patient responded. Use objective measurements and the patient's own words when important; never alter, pre-chart, copy-forward blindly, or document care that was not done.",
+      "searchTerms": [
+        "how should a nurse document",
+        "what goes in nursing notes",
+        "charting patient response"
+      ],
+      "sections": [
+        {
+          "label": "What makes a useful record",
+          "text": "A useful entry identifies date and time, relevant findings and trends, intervention or withheld action, education and understanding, notification and orders, safety measures, reassessment, and unresolved concerns. It lets the next clinician understand what changed and what still needs attention."
+        },
+        {
+          "label": "Objective language",
+          "text": "Describe behavior, appearance, location, size, amount, device settings, vital signs, and direct quotations instead of labels such as difficult, drug-seeking, noncompliant, or fine. Separate what the patient reported from what you observed and what was clinically concluded."
+        },
+        {
+          "label": "Corrections and privacy",
+          "text": "Follow the record system's correction and late-entry process so the original remains traceable. Never share credentials, leave records visible, photograph information on a personal device, or open a chart without a care-related reason. Copy-forward can preserve outdated errors and must be actively verified."
+        },
+        {
+          "label": "Safety close-the-loop",
+          "text": "Document deterioration and escalation while care continues, not instead of acting. Record critical results, who received them, read-back when required, response, and repeat assessment. If an expected intervention was not performed, document the clinical reason and follow-up rather than making the chart look complete."
+        }
+      ],
+      "sourceKeys": [
+        "openrn-fundamentals-2e",
+        "hhs-hipaa-privacy-rule-summary"
+      ],
+      "sourceNote": "Original ANI synthesis of nursing documentation principles; use the current record system, law, professional standard, and facility policy.",
+      "summary": "Nursing documentation is the timely, accurate clinical record of assessment, decisions, care, communication, teaching, and patient response.",
+      "tags": [
+        "documentation",
+        "charting",
+        "EHR",
+        "objective findings",
+        "late entry",
+        "privacy",
+        "reassessment"
+      ],
+      "type": "foundation"
     }
   ],
   "rightsPolicy": {
@@ -4183,10 +4791,66 @@
       "kind": "clinical-authority",
       "title": "CDC: Immunization Schedules",
       "url": "https://www.cdc.gov/vaccines/hcp/imz-schedules/index.html"
+    },
+    {
+      "accessedAt": "2026-08-08",
+      "key": "hhs-hipaa-privacy-rule-summary",
+      "kind": "clinical-authority",
+      "title": "HHS Office for Civil Rights: Summary of the HIPAA Privacy Rule",
+      "url": "https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html"
+    },
+    {
+      "accessedAt": "2026-08-08",
+      "key": "cms-advance-directive-requirements",
+      "kind": "clinical-authority",
+      "title": "CMS: Advance directive requirements for participating providers",
+      "url": "https://www.cms.gov/regulations-and-guidance/guidance/transmittals/downloads/r75soma.pdf"
+    },
+    {
+      "accessedAt": "2026-08-08",
+      "key": "florida-baker-act-2025",
+      "kind": "clinical-authority",
+      "title": "2025 Florida Statutes 394.463: Involuntary examination",
+      "url": "https://www.flsenate.gov/Laws/Statutes/2025/394.463"
+    },
+    {
+      "accessedAt": "2026-08-08",
+      "key": "florida-marchman-act-2025",
+      "kind": "clinical-authority",
+      "title": "2025 Florida Statutes 397.675: Criteria for involuntary admissions",
+      "url": "https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399%2F0397%2FSections%2F0397.675.html"
+    },
+    {
+      "accessedAt": "2026-08-08",
+      "key": "cdc-standard-precautions",
+      "kind": "clinical-authority",
+      "title": "CDC: Standard Precautions for All Patient Care",
+      "url": "https://www.cdc.gov/infection-control/hcp/basics/standard-precautions.html"
+    },
+    {
+      "accessedAt": "2026-08-08",
+      "key": "cdc-transmission-precautions",
+      "kind": "clinical-authority",
+      "title": "CDC: Transmission-Based Precautions",
+      "url": "https://www.cdc.gov/infection-control/hcp/basics/transmission-based-precautions.html"
+    },
+    {
+      "accessedAt": "2026-08-08",
+      "key": "ahrq-patient-safety-network",
+      "kind": "clinical-authority",
+      "title": "AHRQ Patient Safety Network",
+      "url": "https://psnet.ahrq.gov/"
+    },
+    {
+      "accessedAt": "2026-08-08",
+      "key": "kdigo-acute-hyperkalemia-2020",
+      "kind": "clinical-authority",
+      "title": "KDIGO conference summary: Acute hyperkalemia in the emergency department",
+      "url": "https://kdigo.org/wp-content/uploads/2018/04/KDIGO-Acute-Hyperkalemia-conf-report-FINAL.pdf"
     }
   ],
   "sourceSchemaVersion": "ani-nursing-memory-bridges-source-v1",
-  "sourceSha256": "502824d8c62d3b7ca5b3338fa77a20d7b4c833a1f4f3fee58a084b6e83f1d055"
+  "sourceSha256": "7c42b10d3b9a41520bd8771fc7ecf0574cec9ca173ef1760198efab899d0075f"
 };
   const database = window.ANI_FOUNDATIONS_DATABASE || { entries: [], sourceReferences: [] };
   database.entries = Array.isArray(database.entries) ? database.entries : [];

@@ -5,7 +5,7 @@
   "schemaVersion": "ani-pharmacy-reviewed-runtime-v1",
   "builderVersion": "ani-pharmacy-builder-2026-08-01.1",
   "domainVersion": "2026-08-01.1",
-  "sourceSha256": "c35fe5937d0b7be2f9c9ffafcd0ab4ba348d269df497ae1b861c8dcdbb09bb45",
+  "sourceSha256": "b44f924fcc67101b5b5c28c3525d3696469f60068adc18cb609dabaa9cd6d8f7",
   "cards": [
     {
       "id": "medication.abiraterone",
@@ -1072,6 +1072,280 @@
         }
       ],
       "displayName": "Capivasertib",
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-01.1"
+    },
+    {
+      "id": "medication.guanfacine",
+      "name": "Guanfacine",
+      "displayName": "Guanfacine",
+      "generic": "guanfacine",
+      "aliases": [
+        "guanfacine hydrochloride",
+        "Intuniv",
+        "Tenex",
+        "guanfacine ER",
+        "guanfacine XR",
+        "guanfacine immediate release"
+      ],
+      "brandExamples": [
+        "Intuniv",
+        "Tenex"
+      ],
+      "class": "Central alpha-2A adrenergic receptor agonist; formulation-specific ADHD or antihypertensive therapy",
+      "plainLanguage": "Guanfacine reduces excessive sympathetic nerve signaling. The extended-release product is used for ADHD, while the immediate-release product is labeled for high blood pressure; the two forms are not interchangeable dose for dose.",
+      "whyItMatters": "Guanfacine can improve attention or lower blood pressure, but the same sympathetic slowing can cause sleepiness, low blood pressure, a slow pulse, fainting, or conduction problems. Abrupt discontinuation can instead cause dangerous rebound hypertension.",
+      "plainLanguageGlosses": [
+        {
+          "term": "sympathetic",
+          "plainLanguage": "the fight-or-flight part of the nervous system",
+          "sourceKeys": []
+        },
+        {
+          "term": "bradycardia",
+          "plainLanguage": "a slower-than-expected heart rate",
+          "sourceKeys": []
+        },
+        {
+          "term": "rebound hypertension",
+          "plainLanguage": "blood pressure rising after the medicine is stopped too quickly",
+          "sourceKeys": []
+        }
+      ],
+      "description": "Guanfacine is a centrally acting alpha-2A adrenergic agonist. Extended-release guanfacine is labeled for attention-deficit/hyperactivity disorder as monotherapy or with a stimulant; immediate-release Tenex is labeled for hypertension. This formulation distinction is clinically important because release pattern, exposure, indication, administration, and titration differ. Both can lower blood pressure and heart rate and cause sedation, while abrupt withdrawal can produce clinically important rebound hypertension.",
+      "mechanism": "Guanfacine stimulates central alpha-2A adrenergic receptors and reduces sympathetic outflow from the brain. Less norepinephrine signaling lowers peripheral vascular resistance and heart rate, which explains the antihypertensive effect as well as hypotension and bradycardia. In ADHD, postsynaptic alpha-2A signaling in prefrontal cortical networks is believed to strengthen regulation of attention, working memory, and impulse control. Because the nervous system adapts to reduced sympathetic signaling, abrupt cessation can release a surge in blood pressure and heart rate.",
+      "usedToTreat": "Extended-release Intuniv is used for ADHD as monotherapy or adjunctive therapy to stimulant medication. Immediate-release Tenex is used for hypertension alone or with another antihypertensive. Do not transfer one formulation's indication or dosing instructions to the other.",
+      "boxedWarning": "No boxed warning. Major label hazards are hypotension, bradycardia, syncope, sedation, worsening cardiac conduction abnormalities, and clinically significant rebound hypertension after abrupt discontinuation.",
+      "contraindications": [
+        "History of hypersensitivity to guanfacine, the product's inactive ingredients, or another guanfacine-containing product.",
+        "Immediate-release and extended-release guanfacine must not be substituted milligram for milligram because their pharmacokinetic profiles differ."
+      ],
+      "adverseEffects": [
+        "Somnolence or sedation, fatigue, dizziness, headache, dry mouth, nausea, abdominal pain, constipation, irritability, and sleep disturbance.",
+        "Dose-related hypotension, orthostatic symptoms, bradycardia, syncope, and reduced alertness."
+      ],
+      "seriousAdverseReactions": [
+        "Severe hypotension, syncope, clinically important bradycardia, or worsening sinus-node or atrioventricular conduction abnormality.",
+        "Persistent rebound hypertension, tachycardia, or hypertensive encephalopathy after abrupt discontinuation."
+      ],
+      "interactions": [
+        "Strong or moderate CYP3A4 inhibitors increase extended-release guanfacine exposure, while CYP3A4 inducers lower it; use the current Intuniv label for dose adjustment rather than improvising.",
+        "Alcohol, sedatives, opioids, benzodiazepines, and other central nervous system depressants can increase drowsiness and impaired coordination.",
+        "Other drugs that lower blood pressure, slow heart rate, or reduce sympathetic activity can add to hypotension, bradycardia, syncope, or conduction risk."
+      ],
+      "nursingEssentials": [
+        "Verify immediate-release versus extended-release product, indication, dose, schedule, and tablet instructions before administration; the formulations are not interchangeable milligram for milligram.",
+        "Measure blood pressure and heart rate before initiation, after dose increases, and periodically. Assess orthostatic symptoms, fainting, hydration, overheating, sedation, falls, and cardiac-conduction history.",
+        "Do not stop guanfacine abruptly. Confirm a prescriber-directed taper and monitor blood pressure and pulse during dose reduction, especially when a stimulant is also used or vomiting prevents regular doses."
+      ],
+      "keyLabs": [
+        "No routine therapeutic serum drug level",
+        "Blood pressure and pulse before treatment, after titration, and periodically",
+        "Renal and hepatic function when impairment may alter dose selection",
+        "ECG or conduction evaluation when cardiac history or symptoms warrant it"
+      ],
+      "patientEducation": [
+        "Rise slowly, maintain hydration, avoid overheating, and do not drive or operate dangerous equipment until the medicine's effect on alertness is known.",
+        "Never stop guanfacine suddenly. Call the prescriber when repeated vomiting or missed doses prevent administration because a supervised restart or taper may be needed.",
+        "Seek urgent care for fainting, chest pain, severe weakness, confusion, a very slow pulse, or severe headache and neurologic symptoms after missed or stopped doses."
+      ],
+      "administration": [
+        "Extended-release tablets are swallowed whole once daily at about the same time and should not be crushed, chewed, or broken or taken with a high-fat meal; titration follows the current label.",
+        "Immediate-release Tenex is administered according to its hypertension label, commonly at bedtime initially to reduce the impact of somnolence. Do not reuse this instruction for the extended-release ADHD product.",
+        "When discontinuing extended-release guanfacine, the label directs tapering by no more than 1 mg every 3 to 7 days with blood-pressure and pulse monitoring."
+      ],
+      "toxicityManagement": [
+        "Overdose can produce prolonged sleepiness, bradycardia, hypotension, and sometimes early or delayed hypertension. Contact Poison Control and obtain monitored supportive care; children may require extended observation even if initially well.",
+        "There is no specific antidote and guanfacine is not removed to a clinically important degree by dialysis. Support airway, circulation, heart rate, blood pressure, glucose, temperature, and mental status according to toxicology guidance."
+      ],
+      "specialPopulations": [
+        "Extended-release ADHD labeling covers pediatric patients ages 6 to 17; the immediate-release hypertension label has different pediatric evidence and must not be inherited.",
+        "Pregnancy and lactation decisions require product-specific benefit-risk review because human data are limited. Older adults may be more vulnerable to sedation, orthostasis, falls, and bradycardia.",
+        "Renal or hepatic impairment may require use of the lower dose range or adjustment. Cardiac conduction disease, cerebrovascular disease, dehydration, and concurrent sympatholytic therapy require slower titration and closer monitoring."
+      ],
+      "nclexTraps": [
+        "Do not substitute immediate-release and extended-release guanfacine milligram for milligram; verify both formulation and indication.",
+        "A sleepy patient still needs blood-pressure and pulse assessment because sedation may accompany clinically important hypotension or bradycardia.",
+        "Abrupt discontinuation is unsafe even though guanfacine is not a controlled substance; rebound hypertension and hypertensive encephalopathy have been reported."
+      ],
+      "routes": [
+        "Oral immediate-release tablet for hypertension and oral extended-release tablet for ADHD; formulation-specific administration applies."
+      ],
+      "notApplicable": [
+        "antidote"
+      ],
+      "relatedTopics": [
+        "Attention-deficit/hyperactivity disorder",
+        "Hypertension",
+        "Bradycardia",
+        "Orthostatic hypotension"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-08",
+      "sourceNote": "Original ANI synthesis from current DailyMed Intuniv labeling (revised June 2025) https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?lang=en&setid=b972af81-3a37-40be-9fe1-3ddf59852528 and DailyMed Tenex labeling https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=886e050c-dd22-4f35-ac3b-243f091125c3; formulation instructions are deliberately separated.",
+      "provenance": [
+        {
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?lang=en&setid=b972af81-3a37-40be-9fe1-3ddf59852528",
+          "documentVersion": "Revised 06/2025; checked 2026-08-08",
+          "fieldsSupported": [
+            "extended-release indication",
+            "mechanism",
+            "warnings",
+            "interactions",
+            "administration",
+            "tapering",
+            "pediatric use"
+          ]
+        },
+        {
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=886e050c-dd22-4f35-ac3b-243f091125c3",
+          "documentVersion": "Tenex labeling revised 05/2013; checked 2026-08-08",
+          "fieldsSupported": [
+            "immediate-release indication",
+            "mechanism",
+            "warnings",
+            "overdose",
+            "administration",
+            "formulation distinction"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-01.1"
+    },
+    {
+      "id": "medication.povidone-iodine",
+      "name": "Povidone-iodine",
+      "displayName": "Povidone-iodine",
+      "generic": "povidone-iodine",
+      "aliases": [
+        "povidone iodine",
+        "Betadine",
+        "iodopovidone",
+        "PVP-I"
+      ],
+      "brandExamples": [
+        "Betadine"
+      ],
+      "class": "Topical iodophor antiseptic",
+      "plainLanguage": "Povidone-iodine is an iodine-containing skin antiseptic used to reduce bacteria on the skin before a procedure. It is for external use and is not an antibiotic treatment for infection inside the body.",
+      "whyItMatters": "Correct application lowers contamination risk before surgery, while pooling wet solution under a patient can irritate or seriously injure skin. Eye exposure, swallowing, or a persistent allergic reaction requires prompt action.",
+      "plainLanguageGlosses": [
+        {
+          "term": "antiseptic",
+          "plainLanguage": "a product used on skin to reduce microorganisms",
+          "sourceKeys": []
+        },
+        {
+          "term": "iodophor",
+          "plainLanguage": "a carrier that releases iodine gradually",
+          "sourceKeys": []
+        }
+      ],
+      "description": "Povidone-iodine is a topical antiseptic complex that supplies available iodine to the skin. The reviewed 10% Betadine solution contains 1% available iodine and is labeled for pre-operative skin preparation to reduce bacteria that could cause skin infection. It is not a systemic antimicrobial, does not replace sterile technique, and must not be interpreted as treatment for an established deep or bloodstream infection.",
+      "mechanism": "The povidone carrier releases free iodine, which rapidly reacts with microbial proteins, nucleic acids, and membrane components. Those chemical changes disrupt multiple cell structures and reduce viable organisms on the treated surface. The broad chemical action explains antiseptic activity, while the topical route explains its limitation: reducing surface contamination does not deliver a reliable therapeutic concentration to deep tissue or blood.",
+      "usedToTreat": "The reviewed Betadine 10% topical solution is used for patient pre-operative skin preparation and helps reduce bacteria that can cause skin infection. Other povidone-iodine formulations may have different concentrations, sites, or instructions and require their own label review.",
+      "boxedWarning": "No boxed warning. The reviewed OTC label warns that the product is for external use only, must not be used in the eyes or in a person allergic to its ingredients, and must not pool beneath the patient during pre-operative preparation.",
+      "contraindications": [
+        "Allergy or hypersensitivity to povidone-iodine or another ingredient in the selected product.",
+        "Do not use the reviewed skin solution in the eyes, swallow it, or transfer its directions to an ophthalmic, oral, vaginal, irrigation, scrub, or other differently labeled formulation."
+      ],
+      "adverseEffects": [
+        "Local irritation, burning, redness, dryness, staining, or sensitization.",
+        "Rare severe skin reaction, particularly when wet solution remains in prolonged contact with skin or pools beneath the patient."
+      ],
+      "seriousAdverseReactions": [
+        "Severe or persistent hypersensitivity or skin injury after exposure.",
+        "Toxic exposure after swallowing or substantial unintended eye exposure requiring urgent evaluation."
+      ],
+      "interactions": [
+        "The reviewed OTC label does not list a systemic drug-interaction table. Do not mix povidone-iodine with another antiseptic or chemical unless the exact procedure and product compatibility are approved.",
+        "Surface residue can interfere with the procedure or another topical product, so follow the ordered preparation, drying, removal, and dressing sequence rather than layering products."
+      ],
+      "nursingEssentials": [
+        "Verify the exact formulation, concentration, body site, indication, allergy history, skin integrity, and procedure instructions before application.",
+        "Clean the operative site as directed, apply the product evenly, prevent pooling under the patient or equipment, and allow the preparation to dry before draping or covering when the label or protocol directs.",
+        "Inspect the skin after exposure and stop the product for persistent irritation, sensitization, blistering, or allergic findings. Escalate ingestion, eye exposure, respiratory symptoms, facial swelling, or extensive skin injury."
+      ],
+      "keyLabs": [
+        "No routine therapeutic serum drug level for a single labeled skin preparation",
+        "Skin assessment before and after application",
+        "Additional thyroid, renal, iodine, or metabolic assessment only when a clinician identifies substantial, repeated, or unusual exposure risk"
+      ],
+      "patientEducation": [
+        "This product reduces germs on skin; it does not treat pneumonia, sepsis, or a deep wound infection and should not be swallowed.",
+        "Keep it out of the eyes and out of children's reach. If swallowed, contact Poison Control or obtain medical help immediately.",
+        "Stop use and contact a clinician for a reaction that persists, spreads, blisters, or involves swelling or breathing difficulty."
+      ],
+      "administration": [
+        "For the reviewed 10% Betadine skin solution, clean the operative site, apply the solution, allow it to dry, and cover with a bandage only when appropriate.",
+        "Prevent prolonged wet contact and pooling beneath the patient during pre-operative preparation. Store in the original container according to the label."
+      ],
+      "toxicityManagement": [
+        "If swallowed, obtain medical help or contact Poison Control immediately; do not induce vomiting unless directed by a poison specialist.",
+        "For eye exposure, begin prompt irrigation and obtain product-specific medical guidance. For severe skin or allergic reactions, remove further exposure and support airway, breathing, circulation, and skin care according to severity."
+      ],
+      "specialPopulations": [
+        "Neonates, pregnancy, lactation, large-area application, prolonged or repeated use, burns, and substantial skin disruption require product-specific clinician review rather than assuming that one-time intact-skin instructions apply.",
+        "Older adults or patients unable to reposition are at higher risk when wet solution pools under pressure points; inspect dependent skin and linens before draping.",
+        "Use only a formulation labeled for the intended body site. Pediatric use requires supervision and secure storage to prevent ingestion."
+      ],
+      "nclexTraps": [
+        "Povidone-iodine is a topical antiseptic, not a systemic antibiotic and not a substitute for sterile technique.",
+        "More contact is not always safer: pooled wet solution can injure skin, so apply as directed and allow it to dry.",
+        "Betadine is a brand alias; the route and formulation still control whether an individual product may be used on skin, mucosa, eye, or another site."
+      ],
+      "routes": [
+        "Topical skin solution; other route-specific povidone-iodine products require their own labeling."
+      ],
+      "notApplicable": [
+        "systemic therapeutic drug monitoring",
+        "specific antidote"
+      ],
+      "relatedTopics": [
+        "Surgical skin preparation",
+        "Aseptic technique",
+        "Contact dermatitis",
+        "Poison Control"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-08",
+      "sourceNote": "Original ANI synthesis from the current DailyMed Betadine 10% topical solution Drug Facts label, updated January 2025: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=41891599-420e-48d2-8e31-d28a2209e383&version=11. Instructions are limited to the reviewed skin solution and are not inherited by other formulations.",
+      "provenance": [
+        {
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=41891599-420e-48d2-8e31-d28a2209e383&version=11",
+          "documentVersion": "Updated 01/2025; checked 2026-08-08",
+          "fieldsSupported": [
+            "identity",
+            "concentration",
+            "purpose",
+            "use",
+            "warnings",
+            "directions",
+            "storage",
+            "route"
+          ]
+        }
+      ],
       "entryType": "drug",
       "classCard": false,
       "isDrugClassCard": false,

@@ -13,7 +13,7 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" type="image/png" href="./assets/ani-avatar.png">
   <link rel="apple-touch-icon" href="./assets/ani-avatar.png">
-  <link rel="stylesheet" href="./styles.css?v=ani317">
+  <link rel="stylesheet" href="./styles.css?v=ani318">
 </head>
 <body class="app-booting">
   <div id="appSplash" class="app-splash" aria-label="ANI is opening">
@@ -29,7 +29,10 @@
 
       <div class="stage-copy">
         <p class="eyebrow">NCLEX-ready nursing instructor</p>
-        <h1>ANI</h1>
+        <h1 class="ani-brand-status">
+          <span>ANI</span>
+          <span id="aniConnectionDot" class="ani-connection-dot" role="status" aria-label="Internet connection unavailable" title="Internet connection unavailable"></span>
+        </h1>
         <p class="brand-motto">Learn with confidence. Care with competence.</p>
         <p class="subtitle">Advanced Nursing Instructor for voice-led practice questions, med dialogue, pathophysiology drills, and detailed NCLEX-focused teaching.</p>
       </div>
@@ -454,7 +457,7 @@
               <label class="toggle-row lane2-wide"><input id="lane2ReuseCached" type="checkbox"> Reuse an approved matching cached question when available</label>
               <button id="lane2GenerateButton" type="submit">Generate validated question</button>
             </form>
-            <p class="lane2-safety-note">Paid generation is server-authorized and locally validated before rendering. Offline encyclopedia search, cards, favorites, and navigation remain available without AI.</p>
+            <p class="lane2-safety-note">Paid generation is server-authorized and locally validated before rendering. Encyclopedia search, cards, favorites, and navigation remain available without AI.</p>
             <div id="lane2GeneratedActions" class="lane2-generated-actions" hidden>
               <span id="lane2GeneratedSummary"></span>
               <button id="lane2SaveQuestionButton" type="button">Save question</button>
@@ -465,7 +468,7 @@
         <div id="lane2LibraryTab" class="lane2-tab-panel" role="tabpanel" aria-labelledby="lane2LibraryTabButton" data-lane2-panel="library" hidden>
           <section class="lane2-service-card">
             <div class="lane2-section-heading">
-              <div><span>Offline first</span><strong>Saved questions and study synchronization</strong></div>
+              <div><span>Device-first study library</span><strong>Saved questions and study synchronization</strong></div>
               <button id="lane2SyncNowButton" type="button">Sync now</button>
             </div>
             <div id="lane2SyncSummary" class="lane2-metric-grid"></div>
@@ -619,8 +622,8 @@
       </div>
       <header class="pharm-database-header">
         <div>
-          <span>Offline mode</span>
-          <strong>OFFLINE MEDICAL ENCYCLOPEDIA</strong>
+          <span>Medical reference</span>
+          <strong>ANI MEDICAL ENCYCLOPEDIA</strong>
           <p>Search medications, labs, diseases, microbiology, anatomy, physiology, diagnostics, and holistic safety using exact terms, abbreviations, everyday language, or typo-close spellings.</p>
         </div>
         <button id="closePharmDatabaseButton" type="button">Close</button>
@@ -637,6 +640,7 @@
           <button type="button" data-pharm-index-mode="diseases" aria-pressed="false">Diseases / Pathologies</button>
           <button type="button" data-pharm-index-mode="microbiology" aria-pressed="false">Microbiology</button>
           <button type="button" data-pharm-index-mode="foundations" aria-pressed="false">Foundations</button>
+          <button type="button" data-pharm-index-mode="surgeries" aria-pressed="false">Surgeries &amp; Procedures</button>
           <button type="button" data-pharm-index-mode="procedures" aria-pressed="false">Diagnostics / Tests</button>
           <button type="button" data-pharm-index-mode="clinical-signs" aria-pressed="false">Clinical Signs</button>
           <button type="button" data-pharm-index-mode="holistic" aria-pressed="false">Holistic</button>
@@ -656,7 +660,21 @@
           </select>
           <span id="microbiologyBrowseCount" aria-live="polite"></span>
         </div>
-        <p id="pharmSearchSummary">Offline starter database ready.</p>
+        <div id="foundationBrowseControls" class="clinical-sign-browse-controls" hidden>
+          <label for="foundationDomainSelect">Browse Foundations by learning domain</label>
+          <select id="foundationDomainSelect" aria-describedby="foundationBrowseCount">
+            <option value="all">All Foundation domains</option>
+          </select>
+          <span id="foundationBrowseCount" aria-live="polite"></span>
+        </div>
+        <div id="procedureBrowseControls" class="clinical-sign-browse-controls" hidden>
+          <label for="procedureSpecialtySelect">Browse Surgeries &amp; Procedures by specialty</label>
+          <select id="procedureSpecialtySelect" aria-describedby="procedureBrowseCount">
+            <option value="all">All procedure specialties</option>
+          </select>
+          <span id="procedureBrowseCount" aria-live="polite"></span>
+        </div>
+        <p id="pharmSearchSummary">Medical encyclopedia ready.</p>
       </section>
 
       <section class="pharm-layout">
@@ -682,11 +700,11 @@
     </div>
   </section>
 
-  <script src="./app-config.js?v=ani317"></script>
+  <script src="./app-config.js?v=ani318"></script>
   <script src="./data/pharm-database.js?v=ani69"></script>
   <script src="./data/pharm-expansion.js?v=ani261"></script>
   <script src="./data/pharm-drug-bible-supplement.js?v=ani04"></script>
-  <script src="./data/pharm-reviewed-expansion.js?v=ani308"></script>
+  <script src="./data/pharm-reviewed-expansion.js?v=ani318"></script>
   <script src="./data/pharm-auto-standalone-cards.js?v=ani01"></script>
   <script src="./data/pharm-integrity-patch.js?v=ani261"></script>
   <script src="./data/pharm-frontier-patch.js?v=ani01"></script>
@@ -784,15 +802,17 @@
   <script src="./data/clinical-frontier-wave44-component-parity-p1.js?v=ani263"></script>
   <script src="./data/clinical-frontier-wave44-component-parity-p2.js?v=ani263"></script>
   <script src="./data/clinical-frontier-wave44-pharmacy-component-parity.js?v=ani263"></script>
-  <script src="./data/pathology-reviewed-expansion.js?v=ani311"></script>
+  <script src="./data/pathology-reviewed-expansion.js?v=ani318"></script>
   <script src="./data/high-yield-image-library.js?v=ani01"></script>
   <script src="./data/pharm-runtime-parity.js?v=ani261"></script>
   <script src="./src/lane4/runtime-efficiency.js?v=ani287"></script>
   <script src="./src/microbiology/domain-core.js?v=ani290"></script>
-  <script src="./data/microbiology-database.js?v=ani307"></script>
-  <script src="./data/mnemonic-library.js?v=ani313"></script>
-  <script src="./data/learner-language-standard.js?v=ani316"></script>
-  <script src="./main.js?v=ani317"></script>
+  <script src="./data/microbiology-database.js?v=ani318"></script>
+  <script src="./src/surgery-procedures/domain-core.js?v=ani318"></script>
+  <script src="./data/surgery-procedure-database.js?v=ani318"></script>
+  <script src="./data/mnemonic-library.js?v=ani318"></script>
+  <script src="./data/learner-language-standard.js?v=ani318"></script>
+  <script src="./main.js?v=ani318"></script>
   <script src="./data/pharm-frontier-wave21-antiseizure-routing.js?v=ani02"></script>
   <script src="./data/pharm-frontier-wave22-parkinson-routing.js?v=ani01"></script>
   <script src="./data/pharm-frontier-wave24-opioid-routing.js?v=ani01"></script>

@@ -34,6 +34,13 @@ const clinicalSignBrowseCount = document.querySelector("#clinicalSignBrowseCount
 const microbiologyBrowseControls = document.querySelector("#microbiologyBrowseControls");
 const microbiologyBranchSelect = document.querySelector("#microbiologyBranchSelect");
 const microbiologyBrowseCount = document.querySelector("#microbiologyBrowseCount");
+const foundationBrowseControls = document.querySelector("#foundationBrowseControls");
+const foundationDomainSelect = document.querySelector("#foundationDomainSelect");
+const foundationBrowseCount = document.querySelector("#foundationBrowseCount");
+const procedureBrowseControls = document.querySelector("#procedureBrowseControls");
+const procedureSpecialtySelect = document.querySelector("#procedureSpecialtySelect");
+const procedureBrowseCount = document.querySelector("#procedureBrowseCount");
+const aniConnectionDot = document.querySelector("#aniConnectionDot");
 const clinicalModeScreen = document.querySelector("#clinicalModeScreen");
 const exitClinicalModeButton = document.querySelector("#exitClinicalModeButton");
 const clinicalListenButton = document.querySelector("#clinicalListenButton");
@@ -324,10 +331,23 @@ function applyAniLaunchFeatureGates() {
 }
 
 applyAniLaunchFeatureGates();
+
+function updateAniConnectionIndicator() {
+  if (!aniConnectionDot) return;
+  const onlineServicesConnected = navigator.onLine && ANI_BACKEND_SERVICES_ENABLED && ANI_ONLINE_AI_ENABLED;
+  aniConnectionDot.classList.toggle("is-online", onlineServicesConnected);
+  const label = onlineServicesConnected ? "Online services connected" : "Online services unavailable";
+  aniConnectionDot.setAttribute("aria-label", label);
+  aniConnectionDot.title = label;
+}
+
+updateAniConnectionIndicator();
+window.addEventListener("online", updateAniConnectionIndicator);
+window.addEventListener("offline", updateAniConnectionIndicator);
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = !ANI_AUTOMATED_TEST && !isNativeShell && SpeechRecognition ? new SpeechRecognition() : null;
 const PHONE_DEVICE_QUERY = "(max-width: 760px), (pointer: coarse) and (max-width: 920px)";
-const DEFAULT_GREETING = "Hi, I am ANI, your Advanced Nursing Instructor. I can quiz you NCLEX-style, drill meds and pathophysiology, or talk through protocols in depth. I will flag what is NCLEX-applicable and what is beyond-board detail. Pick a topic or just ask me something clinical.";
+const DEFAULT_GREETING = "Hi, I am ANI, your medical encyclopedia librarian. Ask for a topic or one specific part of a card, such as nursing interventions for Crohn disease or the boxed warning for phenytoin. I will answer directly from the encyclopedia and link the full card when you want to explore more.";
 const DEFAULT_DEPTH_LEVEL = 3;
 const OPENAI_REQUIRED_MESSAGE = "ANI's AI brain is not active yet. Start the ANI server with an OpenAI API key configured, then try again.";
 const ANI_BACKEND_UNREACHABLE_MESSAGE = "ANI cannot reach the app server right now. Make sure the ANI server is running on your computer, keep your phone and computer on the same Wi-Fi, then try again.";
@@ -343,9 +363,11 @@ const PHARM_NCLEX_ONLY_KEY = "ani-pharm-nclex-only-v1";
 const PHARM_INDEX_MODE_KEY = "ani-pharm-index-mode-v1";
 const CLINICAL_SIGN_BROWSE_FACET_KEY = "ani-clinical-sign-browse-facet-v1";
 const MICROBIOLOGY_BROWSE_BRANCH_KEY = "ani-microbiology-browse-branch-v1";
+const FOUNDATION_BROWSE_DOMAIN_KEY = "ani-foundation-browse-domain-v1";
+const SURGERY_PROCEDURE_BROWSE_SPECIALTY_KEY = "ani-surgery-procedure-browse-specialty-v1";
 const PHARM_AUTO_READ_MUTED_KEY = "ani-pharm-auto-read-muted-v1";
 const PHARM_FAVORITES_KEY = "ani-pharm-favorites-v1";
-const PHARM_INDEX_MODES = ["all", "favorites", "labs", "drugs", "diseases", "microbiology", "foundations", "procedures", "clinical-signs", "holistic"];
+const PHARM_INDEX_MODES = ["all", "favorites", "labs", "drugs", "diseases", "microbiology", "foundations", "surgeries", "procedures", "clinical-signs", "holistic"];
 const NURSING_FACT_STATE_KEY = "ani-nursing-fact-state-v1";
 const NURSING_FACT_INTERVAL_MS = 3 * 60 * 60 * 1000;
 const MAX_CHAT_SESSIONS = 36;
@@ -4700,6 +4722,14 @@ const microbiologyDatabase = window.ANI_MICROBIOLOGY_DATABASE || {
 const microbiologyReferenceEntries = Array.isArray(microbiologyDatabase.entries)
   ? microbiologyDatabase.entries
   : [];
+const surgeryProcedureDatabase = window.ANI_SURGERY_PROCEDURE_DATABASE || {
+  architecture: { browseBranches: [] },
+  clinicalReferenceEntries: [],
+  sourceReferences: []
+};
+const surgeryProcedureReferenceEntries = Array.isArray(surgeryProcedureDatabase.clinicalReferenceEntries)
+  ? surgeryProcedureDatabase.clinicalReferenceEntries
+  : (Array.isArray(surgeryProcedureDatabase.entries) ? surgeryProcedureDatabase.entries : []);
 const baseClinicalReferenceEntries = [
   {
     name: "Low-grade fever",
@@ -5355,7 +5385,7 @@ function normalizeClinicalResultMeaningRows(rows = []) {
 }
 
 function ensureClinicalReferenceResultMeanings(entry = {}) {
-  if (entry.type === "foundation" || entry.educationalArticle === true || isMicrobiologyReferenceEntry(entry)) return entry;
+  if (entry.type === "foundation" || entry.educationalArticle === true || isMicrobiologyReferenceEntry(entry) || isSurgeryProcedureReferenceEntry(entry)) return entry;
   const existing = normalizeClinicalResultMeaningRows(entry.resultMeanings);
   if (existing.length) return { ...entry, resultMeanings: existing };
   const fallback = BASE_CLINICAL_RESULT_MEANINGS[entry.name] || [
@@ -5373,7 +5403,7 @@ const clinicalReferenceEntries = (() => {
   // only by the canonical entry name; the search scorer can safely rank shared
   // aliases while exact component ownership resolves the requested child card.
   const seenCanonicalNames = new Set();
-  const establishedReferences = [...baseClinicalReferenceEntries, ...diagnosticReferenceEntries, ...microbiologyReferenceEntries]
+  const establishedReferences = [...baseClinicalReferenceEntries, ...diagnosticReferenceEntries, ...microbiologyReferenceEntries, ...surgeryProcedureReferenceEntries]
     .filter((entry) => {
       const canonicalName = normalizePharmText(entry?.name);
       if (!canonicalName || seenCanonicalNames.has(canonicalName)) return false;
@@ -5516,6 +5546,7 @@ const pathologyTreatmentMedicationCache = new WeakMap();
 let pathologyTreatmentMedicationDrugPoolCache = null;
 let pathologyCuratedTreatmentMedicationDrugPoolCache = null;
 const holisticMechanismCache = new WeakMap();
+const activePharmDetailLinkTargets = new Set();
 let pharmFastIndexes = null;
 const pharmFastIndexTypesReady = new Set();
 let pharmContentIndexQueue = null;
@@ -5529,8 +5560,12 @@ let activePharmIndexMode = PHARM_INDEX_MODES.includes(localStorage.getItem(PHARM
   : "all";
 let activeClinicalSignBrowseFacet = localStorage.getItem(CLINICAL_SIGN_BROWSE_FACET_KEY) || "all";
 let activeMicrobiologyBrowseBranch = localStorage.getItem(MICROBIOLOGY_BROWSE_BRANCH_KEY) || "all";
+let activeFoundationBrowseDomain = localStorage.getItem(FOUNDATION_BROWSE_DOMAIN_KEY) || "all";
+let activeSurgeryProcedureBrowseSpecialty = localStorage.getItem(SURGERY_PROCEDURE_BROWSE_SPECIALTY_KEY) || "all";
 let clinicalSignBrowseCatalogCache = null;
 let clinicalSignBrowseOptionsReady = false;
+let foundationBrowseOptionsReady = false;
+let surgeryProcedureBrowseOptionsReady = false;
 let pharmFavoriteKeys = readPharmFavoriteKeys();
 const lectureState = {
   originalTopic: "",
@@ -5911,6 +5946,10 @@ function pharmIndexShowsProcedures() {
   return activePharmIndexMode === "all" || activePharmIndexMode === "procedures" || pharmIndexShowsFavorites();
 }
 
+function pharmIndexShowsSurgeries() {
+  return activePharmIndexMode === "all" || activePharmIndexMode === "surgeries" || pharmIndexShowsFavorites();
+}
+
 function pharmIndexShowsFoundations() {
   return activePharmIndexMode === "all" || activePharmIndexMode === "foundations" || pharmIndexShowsFavorites();
 }
@@ -5930,6 +5969,7 @@ function pharmIndexModeLabel() {
   if (activePharmIndexMode === "diseases") return "Disease index";
   if (activePharmIndexMode === "microbiology") return "Microbiology index";
   if (activePharmIndexMode === "foundations") return "Clinical foundations index";
+  if (activePharmIndexMode === "surgeries") return "Surgeries and procedures index";
   if (activePharmIndexMode === "procedures") return "Procedures and tests index";
   if (activePharmIndexMode === "clinical-signs") return "Clinical signs and examination findings index";
   if (activePharmIndexMode === "holistic") return "Holistic safety index";
@@ -5961,10 +6001,12 @@ function updatePharmIndexModeUi() {
   pharmAlphabetStrip?.setAttribute("aria-label", `${pharmIndexModeLabel()} alphabetical filter`);
   updateClinicalSignBrowseUi();
   updateMicrobiologyBrowseUi();
+  updateFoundationBrowseUi();
+  updateSurgeryProcedureBrowseUi();
 }
 
 function setPharmDetailTheme(type = "drugs") {
-  const normalizedType = ["labs", "drugs", "diseases", "foundations", "procedures", "microbiology", "holistic"].includes(type) ? type : "drugs";
+  const normalizedType = ["labs", "drugs", "diseases", "foundations", "surgeries", "procedures", "microbiology", "holistic"].includes(type) ? type : "drugs";
   if (pharmDrugDetail) {
     pharmDrugDetail.dataset.detailType = normalizedType;
     pharmDrugDetail.dataset.narrationType = normalizedType;
@@ -6122,7 +6164,7 @@ function pharmReadableLeadScore(section = {}, detailType = "") {
     labs: [/what this lab tells you/i, /why every nurse should know it/i, /how to read it clinically/i, /reference range/i],
     foundations: [/quick answer/i, /why every nurse should know it/i, /summary/i],
     procedures: [/quick answer/i, /why every nurse should know it/i, /summary/i],
-    holistic: [/mechanism \/ how it works/i, /quick answer/i, /used for \/ marketed for/i]
+    holistic: [/used for \/ marketed for/i, /quick answer/i, /mechanism \/ how it works/i]
   };
   const patterns = preferredPatterns[detailType] || [
     /crash-course definition/i,
@@ -6395,6 +6437,7 @@ function openPharmDetailPage(renderDetail, options = {}) {
 function resetPharmDetailCard() {
   if (!pharmDrugDetail) return;
   currentPharmHighlightText = "";
+  activePharmDetailLinkTargets.clear();
   pharmDrugDetail.textContent = "";
   const toolbar = document.createElement("div");
   toolbar.className = "pharm-detail-toolbar";
@@ -6728,7 +6771,7 @@ function recordingServerUnavailableMessage() {
     return "Recorded-audio transcription is not included in this encyclopedia launch. You can still type, or use your device's built-in speech input when available.";
   }
   if (location.protocol === "file:") {
-    return "Recording worked, but transcription is offline right now.";
+    return "Recording worked, but transcription service is unavailable right now.";
   }
   if (isNativeShell) {
     return `Recording worked, but ANI could not reach the server at ${activeBackendLabel()}. Check Wi-Fi and keep the PC server running.`;
@@ -10182,7 +10225,38 @@ function linkOpeningReferencePreface(bubble, sourceText = "") {
     strong.replaceWith(link);
   });
 }
-function setBubbleText(bubble, role, text = "", editable = false) {
+
+function linkBoundEncyclopediaTargetInBubble(bubble, target = null) {
+  const candidate = target?.candidate || target;
+  if (!bubble || !candidate?.item || !candidate?.type) return false;
+  const label = safeText(target?.label || offlineLookupEntityLabel(candidate));
+  const normalizedLabel = normalizePharmText(label);
+  if (!normalizedLabel) return false;
+  const strong = Array.from(bubble.querySelectorAll("strong")).find((node) => {
+    const text = normalizePharmText(node.textContent);
+    return text === normalizedLabel || text.startsWith(`${normalizedLabel} `);
+  });
+  if (!strong) return false;
+  const targetKey = safeText(target?.key || offlineLookupEntityKey(candidate));
+  const link = document.createElement("button");
+  link.type = "button";
+  link.className = "pharm-inline-link chat-encyclopedia-link chat-reference-reopen";
+  link.dataset.encyclopediaTarget = targetKey;
+  link.dataset.aniTargetType = candidate.type;
+  link.dataset.aniTargetName = label;
+  link.dataset.aniTargetKey = targetKey;
+  link.setAttribute("aria-label", `Open ${label} in ANI encyclopedia`);
+  link.textContent = strong.textContent;
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    openPharmDetailCandidate({ type: candidate.type, item: candidate.item });
+  });
+  strong.replaceWith(link);
+  return true;
+}
+
+function setBubbleText(bubble, role, text = "", editable = false, options = {}) {
   if (role !== "assistant" || editable) {
     bubble.textContent = text;
     return;
@@ -10191,10 +10265,11 @@ function setBubbleText(bubble, role, text = "", editable = false) {
   bubble.textContent = "";
   appendFormattedText(bubble, applyNclexEssentialMarkup(text));
   linkOpeningReferencePreface(bubble, text);
+  linkBoundEncyclopediaTargetInBubble(bubble, options.boundEncyclopediaTarget || null);
   linkEncyclopediaTermsInBubble(bubble, text);
 }
 
-function addMessage(role, text, editable = false, shouldSpeak = true, shouldRemember = true) {
+function addMessage(role, text, editable = false, shouldSpeak = true, shouldRemember = true, options = {}) {
   const article = document.createElement("article");
   article.className = `message ${role}`;
 
@@ -10204,7 +10279,7 @@ function addMessage(role, text, editable = false, shouldSpeak = true, shouldReme
 
   const bubble = document.createElement("div");
   bubble.className = "bubble";
-  setBubbleText(bubble, role, text, editable);
+  setBubbleText(bubble, role, text, editable, options);
   if (editable) {
     bubble.contentEditable = "true";
     bubble.spellcheck = true;
@@ -10547,7 +10622,7 @@ async function downloadBlob(blob, filename) {
     try {
       if (await saveBlobWithNativeBridge(blob, filename)) {
         if (voiceStatus) {
-          voiceStatus.textContent = `${filename} is ready to open from ANI.`;
+          voiceStatus.textContent = `${filename} was saved in your device's Downloads/ANI folder.`;
         }
         return;
       }
@@ -10677,8 +10752,21 @@ async function downloadLectureAudioMp3(text = "", button = null) {
       const data = await response.json().catch(() => ({}));
       throw new Error(data.error || data.text || "ANI could not export lecture audio yet.");
     }
-    const blob = await response.blob();
-    await downloadBlob(blob, `${sanitizeDownloadFileName("ani lecture")}.mp3`);
+    const responseBlob = await response.blob();
+    const contentType = String(response.headers.get("content-type") || responseBlob.type || "").toLowerCase();
+    const header = new Uint8Array(await responseBlob.slice(0, 4).arrayBuffer());
+    const hasId3Header = header.length >= 3 && header[0] === 0x49 && header[1] === 0x44 && header[2] === 0x33;
+    const hasMpegFrameHeader = header.length >= 2 && header[0] === 0xff && (header[1] & 0xe0) === 0xe0;
+    if (!contentType.includes("audio/mpeg") && !contentType.includes("audio/mp3") && !hasId3Header && !hasMpegFrameHeader) {
+      throw new Error("ANI received a response that was not a playable MP3, so no invalid audio file was saved.");
+    }
+    if (!hasId3Header && !hasMpegFrameHeader) {
+      throw new Error("ANI could not verify a valid MP3 audio stream, so no file was saved.");
+    }
+    const blob = responseBlob.type === "audio/mpeg"
+      ? responseBlob
+      : new Blob([responseBlob], { type: "audio/mpeg" });
+    await downloadBlob(blob, `${sanitizeDownloadFileName(firstMeaningfulLine(text) || "ani lecture")}.mp3`);
   } catch (error) {
     if (voiceStatus) {
       voiceStatus.textContent = error.message || "ANI could not export MP3 yet.";
@@ -18228,6 +18316,75 @@ function responsiveExactDrugIdentityMatch(input = "") {
   return match;
 }
 
+const RESPONSIVE_ENCYCLOPEDIA_PREFIX_PRIORITIES = Object.freeze({
+  // "succ" is the common bedside shorthand used when searching for the
+  // paralytic succinylcholine. Succimer remains available immediately below;
+  // this exact, reviewed prefix rule avoids guessing on broader fragments.
+  succ: { type: "drug", identity: "succinylcholine" }
+});
+
+// Reviewed exact-query routes for common clinical wording that does not match
+// the canonical card title literally. These rules bind to an existing card by
+// its canonical title; they do not promote an alias to identity ownership and
+// they never run for a partial or fuzzy query.
+const RESPONSIVE_ENCYCLOPEDIA_EXACT_PRIORITIES = Object.freeze({
+  "kayser fleischer rings": { type: "reference", identity: "kayser fleischer ring" },
+  "cotton wool spots": { type: "reference", identity: "cotton wool spot" },
+  "cheyne stokes respirations": { type: "reference", identity: "cheyne stokes breathing" },
+  "biot respirations": { type: "reference", identity: "biot breathing" },
+  "homans sign historical not reliable for dvt": { type: "reference", identity: "homan sign" },
+  "raccoon eyes": { type: "reference", identity: "raccoon eye sign" },
+  "patrick faber test": { type: "reference", identity: "faber test" },
+  "group a strep": { type: "reference", identity: "streptococcus pyogenes" },
+  "heart block": { type: "pathology", identity: "heart blocks" },
+  "mobitz i": { type: "pathology", identity: "second degree av block type i" },
+  "heart block 1": { type: "pathology", identity: "first degree av block" },
+  hb1: { type: "pathology", identity: "first degree av block" },
+  "heart block 3": { type: "pathology", identity: "third degree av block" },
+  "bipolar 2": { type: "pathology", identity: "bipolar ii disorder" },
+  cte: { type: "pathology", identity: "chronic traumatic encephalopathy" }
+});
+
+function responsiveEncyclopediaExactPriority(input = "") {
+  const priority = RESPONSIVE_ENCYCLOPEDIA_EXACT_PRIORITIES[normalizePharmText(input)];
+  if (!priority) return null;
+  const pools = {
+    drug: pharmDrugs,
+    lab: pharmSearchableLabRanges,
+    pathology: pathologyDiseases,
+    reference: clinicalReferenceEntries,
+    holistic: holisticRemedies
+  };
+  const item = (pools[priority.type] || []).find((entry) => [
+    entry?.name,
+    entry?.generic,
+    entry?.displayName,
+    entry?.fullForm,
+    priority.type === "drug" ? pharmDrugDisplayName(entry, "") : ""
+  ].some((value) => normalizePharmText(value) === priority.identity));
+  return item ? {
+    type: priority.type,
+    item,
+    fastBoost: 1000,
+    fastEvidenceScore: 1000,
+    fastMatchCount: 1
+  } : null;
+}
+
+function responsiveEncyclopediaPrefixPriority(input = "", scored = []) {
+  const priority = RESPONSIVE_ENCYCLOPEDIA_PREFIX_PRIORITIES[normalizePharmText(input)];
+  if (!priority) return null;
+  return scored.find((candidate) => (
+    candidate.type === priority.type
+    && [
+      candidate.item?.name,
+      candidate.item?.generic,
+      candidate.item?.displayName,
+      pharmDrugDisplayName(candidate.item, "")
+    ].some((value) => normalizePharmText(value) === priority.identity)
+  )) || null;
+}
+
 function responsiveEncyclopediaSearchMatches(input = "") {
   const types = ["lab", "pathology", "reference", "holistic", "drug"];
   const candidateMap = new Map();
@@ -18251,6 +18408,14 @@ function responsiveEncyclopediaSearchMatches(input = "") {
     candidate.fastEvidenceScore,
     candidate.fastMatchCount
   ));
+  const exactPrioritySource = responsiveEncyclopediaExactPriority(input);
+  if (exactPrioritySource) add(
+    exactPrioritySource.type,
+    exactPrioritySource.item,
+    exactPrioritySource.fastBoost,
+    exactPrioritySource.fastEvidenceScore,
+    exactPrioritySource.fastMatchCount
+  );
   // Seed every category from the compact true-identity layer. This supports
   // title, alias, abbreviation, misspelling, brand, and partial-prefix search
   // immediately after launch without constructing the multi-second deep maps
@@ -18284,7 +18449,24 @@ function responsiveEncyclopediaSearchMatches(input = "") {
   scored.forEach((candidate) => {
     if (groups[candidate.type]?.length < 36) groups[candidate.type].push(candidate.item);
   });
-  const preferred = scored
+  const exactPriority = exactPrioritySource
+    ? scored.find((candidate) => candidate.type === exactPrioritySource.type
+      && candidate.item === exactPrioritySource.item) || exactPrioritySource
+    : null;
+  if (exactPriority) {
+    groups[exactPriority.type] = [
+      exactPriority.item,
+      ...groups[exactPriority.type].filter((item) => item !== exactPriority.item)
+    ];
+  }
+  const prefixPriority = responsiveEncyclopediaPrefixPriority(input, scored);
+  if (prefixPriority) {
+    groups[prefixPriority.type] = [
+      prefixPriority.item,
+      ...groups[prefixPriority.type].filter((item) => item !== prefixPriority.item)
+    ];
+  }
+  const directPreferred = scored
     .filter((candidate) => inputDirectlyNamesOfflineCandidate(input, candidate)
       && offlineLookupIsDirectEnough(input, candidate))
     .map((candidate) => ({ candidate, mentionIndex: namedEncyclopediaCandidateMentionIndex(input, candidate) }))
@@ -18292,6 +18474,7 @@ function responsiveEncyclopediaSearchMatches(input = "") {
     .sort((a, b) => a.mentionIndex - b.mentionIndex
       || b.candidate.score - a.candidate.score
       || offlineLookupEntityLabel(a.candidate).localeCompare(offlineLookupEntityLabel(b.candidate)))[0]?.candidate || null;
+  const preferred = exactPriority || prefixPriority || directPreferred;
   return { ...groups, preferred, candidateCount: scored.length };
 }
 
@@ -20924,8 +21107,8 @@ function makeOfflineBedsideValueInterpretationAnswer(input = "") {
     updateFocus();
     return [
       "**Cardioversion vs defibrillation - the fast difference**",
-      "**Synchronized cardioversion:** timed with the QRS complex for unstable tachyarrhythmias with a pulse, such as unstable SVT, atrial fibrillation/flutter, or VT with a pulse. Synchronization avoids shocking on the T wave.",
-      "**Defibrillation:** unsynchronized shock for pulseless VT or ventricular fibrillation, where there is no organized perfusing rhythm to synchronize with.",
+      "**Synchronized cardioversion:** delivers synchronized electrical energy timed with the QRS complex for unstable tachyarrhythmias with a pulse, such as unstable SVT, atrial fibrillation/flutter, or VT with a pulse. Synchronization avoids shocking on the T wave.",
+      "**Defibrillation:** delivers unsynchronized electrical energy for pulseless ventricular tachycardia (VT) or ventricular fibrillation, where there is no organized perfusing rhythm to synchronize with.",
       "**Nursing focus:** first ask pulse and stability: mental status, BP/perfusion, chest pain, shock, acute heart failure, dyspnea. Prepare sedation when possible for cardioversion, but do not delay emergency shock in pulseless arrest.",
       "**NCLEX trap:** unstable with a pulse = synchronized cardioversion. Pulseless VF/VT = CPR plus defibrillation."
     ].join("\n\n");
@@ -24165,6 +24348,15 @@ function isMicrobiologyReferenceEntry(entry = {}) {
     && stableId.startsWith("microbiology:");
 }
 
+function isSurgeryProcedureReferenceEntry(entry = {}) {
+  const metadata = entry.surgeryProcedure && typeof entry.surgeryProcedure === "object" ? entry.surgeryProcedure : {};
+  const stableId = safeText(entry.directTargetId || entry.id || metadata.stableId);
+  return explicitEncyclopediaDomainIdentifiers(entry).includes("surgeries procedures")
+    && safeText(metadata.canonicalOwner) === "Surgeries & Procedures"
+    && safeText(metadata.runtimeCollection) === "clinicalReferenceEntries"
+    && stableId.startsWith("surgery-procedure:");
+}
+
 function clinicalReferenceDisplayName(entry = {}) {
   const name = safeText(entry.displayName || entry.name);
   const fullForm = safeText(entry.fullForm);
@@ -25428,11 +25620,132 @@ function updateClinicalSignBrowseUi() {
   }
 }
 
+function foundationBrowseDomain(entry = {}) {
+  if (entry.type !== "foundation" && entry.educationalArticle !== true) return "";
+  return safeText(entry.foundationDomain || entry.learningDomain || entry.category || "General foundations").trim();
+}
+
+function foundationMatchesBrowseDomain(entry = {}, domain = activeFoundationBrowseDomain) {
+  if (!domain || domain === "all") return true;
+  return normalizePharmText(foundationBrowseDomain(entry)) === domain;
+}
+
+function updateFoundationBrowseUi() {
+  if (!foundationBrowseControls || !foundationDomainSelect) return;
+  const active = activePharmIndexMode === "foundations";
+  foundationBrowseControls.hidden = !active;
+  if (!active) return;
+  const entries = clinicalReferenceEntries.filter((entry) => (entry.type === "foundation" || entry.educationalArticle === true) && !isMicrobiologyReferenceEntry(entry));
+  const domainCounts = new Map();
+  entries.forEach((entry) => {
+    const label = foundationBrowseDomain(entry);
+    const value = normalizePharmText(label);
+    if (!value) return;
+    const current = domainCounts.get(value) || { label, count: 0 };
+    current.count += 1;
+    domainCounts.set(value, current);
+  });
+  const validValues = new Set(["all", ...domainCounts.keys()]);
+  if (!validValues.has(activeFoundationBrowseDomain)) {
+    activeFoundationBrowseDomain = "all";
+    localStorage.setItem(FOUNDATION_BROWSE_DOMAIN_KEY, activeFoundationBrowseDomain);
+  }
+  if (!foundationBrowseOptionsReady) {
+    foundationDomainSelect.textContent = "";
+    const allOption = document.createElement("option");
+    allOption.value = "all";
+    allOption.textContent = `All Foundation domains (${entries.length})`;
+    foundationDomainSelect.append(allOption);
+    Array.from(domainCounts.entries())
+      .sort((a, b) => a[1].label.localeCompare(b[1].label))
+      .forEach(([value, record]) => {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = `${record.label} (${record.count})`;
+        foundationDomainSelect.append(option);
+      });
+    foundationBrowseOptionsReady = true;
+  }
+  foundationDomainSelect.value = activeFoundationBrowseDomain;
+  if (foundationBrowseCount) {
+    const visible = entries.filter((entry) => foundationMatchesBrowseDomain(entry)).length;
+    foundationBrowseCount.textContent = activeFoundationBrowseDomain === "all"
+      ? `${entries.length} foundations in the alphabetical index`
+      : `${visible} of ${entries.length} foundations; searching still checks every domain`;
+  }
+}
+
+function surgeryProcedureBrowseLabel(entry = {}) {
+  const categoryLabel = safeText(entry.category).replace(/^Surgeries\s*&\s*Procedures\s*\/\s*/i, "");
+  return safeText(entry.browse?.label || entry.procedure?.primaryBranchLabel || categoryLabel || "General procedures").trim();
+}
+
+function surgeryProcedureBrowseValue(entry = {}) {
+  return safeText(entry.procedure?.primaryBranchId || entry.browse?.branchId || normalizePharmText(surgeryProcedureBrowseLabel(entry))).trim();
+}
+
+function surgeryProcedureMatchesBrowseSpecialty(entry = {}, specialty = activeSurgeryProcedureBrowseSpecialty) {
+  if (!specialty || specialty === "all") return true;
+  const branchIds = [
+    surgeryProcedureBrowseValue(entry),
+    ...(Array.isArray(entry.browse?.branchIds) ? entry.browse.branchIds : []),
+    ...(Array.isArray(entry.procedure?.browseBranchIds) ? entry.procedure.browseBranchIds : [])
+  ].map((value) => safeText(value)).filter(Boolean);
+  return branchIds.includes(specialty);
+}
+
+function updateSurgeryProcedureBrowseUi() {
+  if (!procedureBrowseControls || !procedureSpecialtySelect) return;
+  const active = activePharmIndexMode === "surgeries";
+  procedureBrowseControls.hidden = !active;
+  if (!active) return;
+  const entries = clinicalReferenceEntries.filter(isSurgeryProcedureReferenceEntry);
+  const specialtyCounts = new Map();
+  entries.forEach((entry) => {
+    const value = surgeryProcedureBrowseValue(entry);
+    const label = surgeryProcedureBrowseLabel(entry);
+    if (!value) return;
+    const current = specialtyCounts.get(value) || { label, count: 0 };
+    current.count += 1;
+    specialtyCounts.set(value, current);
+  });
+  const validValues = new Set(["all", ...specialtyCounts.keys()]);
+  if (!validValues.has(activeSurgeryProcedureBrowseSpecialty)) {
+    activeSurgeryProcedureBrowseSpecialty = "all";
+    localStorage.setItem(SURGERY_PROCEDURE_BROWSE_SPECIALTY_KEY, activeSurgeryProcedureBrowseSpecialty);
+  }
+  if (!surgeryProcedureBrowseOptionsReady) {
+    procedureSpecialtySelect.textContent = "";
+    const allOption = document.createElement("option");
+    allOption.value = "all";
+    allOption.textContent = `All procedure specialties (${entries.length})`;
+    procedureSpecialtySelect.append(allOption);
+    Array.from(specialtyCounts.entries())
+      .sort((a, b) => a[1].label.localeCompare(b[1].label))
+      .forEach(([value, record]) => {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = `${record.label} (${record.count})`;
+        procedureSpecialtySelect.append(option);
+      });
+    surgeryProcedureBrowseOptionsReady = true;
+  }
+  procedureSpecialtySelect.value = activeSurgeryProcedureBrowseSpecialty;
+  if (procedureBrowseCount) {
+    const visible = entries.filter((entry) => surgeryProcedureMatchesBrowseSpecialty(entry)).length;
+    procedureBrowseCount.textContent = activeSurgeryProcedureBrowseSpecialty === "all"
+      ? `${entries.length} surgeries and procedures in the alphabetical index`
+      : `${visible} of ${entries.length} procedures; searching still checks every specialty`;
+  }
+}
+
 function clinicalReferenceMatchesActiveMode(entry = {}) {
   const isClinicalSign = isClinicalSignReferenceEntry(entry);
   const isMicrobiology = isMicrobiologyReferenceEntry(entry);
-  if (activePharmIndexMode === "procedures") return entry.type !== "foundation" && !isClinicalSign && !isMicrobiology;
-  if (activePharmIndexMode === "foundations") return entry.type === "foundation" && !isMicrobiology;
+  const isSurgeryProcedure = isSurgeryProcedureReferenceEntry(entry);
+  if (activePharmIndexMode === "procedures") return entry.type !== "foundation" && !isClinicalSign && !isMicrobiology && !isSurgeryProcedure;
+  if (activePharmIndexMode === "surgeries") return isSurgeryProcedure && surgeryProcedureMatchesBrowseSpecialty(entry);
+  if (activePharmIndexMode === "foundations") return entry.type === "foundation" && !isMicrobiology && foundationMatchesBrowseDomain(entry);
   if (activePharmIndexMode === "clinical-signs") return isClinicalSign && clinicalSignMatchesBrowseFacet(entry);
   if (activePharmIndexMode === "microbiology") {
     return microbiologyBrowseCandidates()
@@ -25991,7 +26304,7 @@ function renderPharmAlphabet() {
     ...(pharmIndexShowsLabs() ? labPool.map((lab) => safeText(lab.name)[0]?.toUpperCase()) : []),
     ...(pharmIndexShowsDrugs() ? drugPool.map((drug) => pharmDrugDisplayName(drug)[0]?.toUpperCase()) : []),
     ...(pharmIndexShowsDiseases() ? diseasePool.map((disease) => safeText(disease.name)[0]?.toUpperCase()) : []),
-    ...((pharmIndexShowsProcedures() || pharmIndexShowsFoundations() || pharmIndexShowsClinicalSigns()) ? referencePool
+    ...((pharmIndexShowsProcedures() || pharmIndexShowsSurgeries() || pharmIndexShowsFoundations() || pharmIndexShowsClinicalSigns()) ? referencePool
       .filter((entry) => clinicalReferenceMatchesActiveMode(entry))
       .map((entry) => safeText(entry.name)[0]?.toUpperCase()) : []),
     ...(pharmIndexShowsMicrobiology() ? microbiologyPool
@@ -28643,9 +28956,11 @@ function holisticMechanismText(remedy = {}) {
     [/\bcranberry\b/, "Cranberry is marketed to reduce bacterial adherence in the urinary tract. Mechanism-to-nursing link: it does not treat an active UTI, and warfarin interaction/bleeding concerns may matter."]
   ];
   const hit = patterns.find(([pattern]) => pattern.test(blob));
-  const value = hit
-    ? hit[1]
-    : "This remedy is not a standardized single-molecule drug, so the active constituents, dose, purity, and biologic effect can vary by product. The safest mechanism frame is exposure to pharmacologically active plant, nutrient, microbial, or chemical compounds that may affect clotting, sedation, liver/kidney handling, pregnancy physiology, blood pressure, heart rhythm, glucose, immunity, or medication metabolism depending on the listed remedy and client context.";
+  // A generic class-wide disclaimer is not a mechanism for an individual
+  // remedy. Omit the section until an authored or deterministic
+  // remedy-specific mechanism exists; the card's distinct marketed use and
+  // reviewed safety content remain available without repeating filler.
+  const value = hit ? hit[1] : "";
   holisticMechanismCache.set(remedy, value);
   return value;
 }
@@ -29737,13 +30052,12 @@ function pharmShortLinkTermCaseMatches(source = "", index = 0, end = 0, candidat
     || source.slice(index, end) === candidate.term;
 }
 
-function findPharmDetailLinkRanges(text = "", currentLabel = "") {
+function findPharmDetailLinkRanges(text = "", currentLabel = "", usedTargets = new Set()) {
   const source = safeText(text);
   if (!source) return [];
   const lower = source.toLowerCase();
   const currentNorm = normalizePharmText(currentLabel);
   const linkLimit = currentNorm === normalizePharmText("U.S. Lifespan Vaccination Schedule") ? 48 : 14;
-  const usedTargets = new Set();
   const ranges = [];
   const presentFirstChars = Array.from(new Set((lower.match(/[a-z0-9]/g) || [])));
   const candidateIndex = getPharmDetailLinkCandidateIndex();
@@ -29779,7 +30093,11 @@ function findPharmDetailLinkRanges(text = "", currentLabel = "") {
 function appendPharmDetailText(parent, value = "", options = {}) {
   const text = stripMarkdownEmphasis(value);
   if (!text) return;
-  const ranges = findPharmDetailLinkRanges(text, options.currentLabel || "");
+  const ranges = findPharmDetailLinkRanges(
+    text,
+    options.currentLabel || "",
+    options.usedTargets || activePharmDetailLinkTargets
+  );
   if (!ranges.length) {
     appendPharmEmphasizedText(parent, text);
     return;
@@ -29892,7 +30210,8 @@ function appendMicrobiologyRelationshipSection(container, entry = {}) {
   if (!container || !isMicrobiologyReferenceEntry(entry)) return false;
   const resolved = microbiologyAuthoredRelationships(entry)
     .map((relationship) => ({ relationship, candidate: resolveMicrobiologyRuntimeTarget(relationship) }))
-    .filter((record) => record.candidate?.item);
+    .filter((record) => record.candidate?.item)
+    .filter((record) => !activePharmDetailLinkTargets.has(offlineLookupEntityKey(record.candidate)));
   if (!resolved.length) return false;
 
   const section = document.createElement("section");
@@ -29903,6 +30222,7 @@ function appendMicrobiologyRelationshipSection(container, entry = {}) {
   const grid = document.createElement("div");
   grid.className = "pharm-related-concept-grid";
   resolved.slice(0, 16).forEach(({ relationship, candidate }) => {
+    activePharmDetailLinkTargets.add(offlineLookupEntityKey(candidate));
     const button = document.createElement("button");
     button.type = "button";
     button.className = `pharm-related-concept-link pharm-related-${candidate.type}`;
@@ -29932,7 +30252,7 @@ function appendExploreRelatedConcepts(container, values = [], currentLabel = "")
   if (!container) return false;
   const source = relatedConceptSourceText(values);
   if (!source || source.length < 24) return false;
-  const ranges = findPharmDetailLinkRanges(source, currentLabel);
+  const ranges = findPharmDetailLinkRanges(source, currentLabel, activePharmDetailLinkTargets);
   const seen = new Set();
   const candidates = [];
   ranges.forEach((range) => {
@@ -30035,8 +30355,11 @@ function linkEncyclopediaTermsInBubble(root, sourceText = "", options = {}) {
   }
   const sourceLength = String(sourceText).length;
   const maxLinks = options.maxLinks || (sourceLength > 3200 ? 64 : sourceLength > 1800 ? 40 : 14);
-  const allowRepeatedSectionLinks = options.allowRepeatedSectionLinks ?? sourceLength > 1800;
   const usedTargets = new Set();
+  Array.from(root.querySelectorAll?.("[data-ani-target-key]") || []).forEach((node) => {
+    const key = safeText(node.dataset?.aniTargetKey);
+    if (key) usedTargets.add(key);
+  });
   let totalLinks = 0;
   const textNodeFilter = window.NodeFilter || { SHOW_TEXT: 4, FILTER_ACCEPT: 1, FILTER_REJECT: 2 };
   const walker = document.createTreeWalker(root, textNodeFilter.SHOW_TEXT, {
@@ -30055,10 +30378,9 @@ function linkEncyclopediaTermsInBubble(root, sourceText = "", options = {}) {
   }
 
   for (const node of nodes) {
-    if (totalLinks >= maxLinks || (!allowRepeatedSectionLinks && usedTargets.size >= maxLinks)) break;
+    if (totalLinks >= maxLinks || usedTargets.size >= maxLinks) break;
     const text = node.nodeValue || "";
-    const tracker = allowRepeatedSectionLinks ? new Set() : usedTargets;
-    const ranges = findEncyclopediaLinkRangesForText(text, tracker, allowRepeatedSectionLinks ? maxLinks - totalLinks : maxLinks);
+    const ranges = findEncyclopediaLinkRangesForText(text, usedTargets, maxLinks);
     if (!ranges.length) continue;
     totalLinks += ranges.length;
     const fragment = document.createDocumentFragment();
@@ -31657,7 +31979,8 @@ function renderClinicalReferenceDetail(entry = activeClinicalReferenceResults[0]
   resetPharmDetailCard();
   const isFoundation = entry?.type === "foundation" || entry?.educationalArticle === true;
   const isMicrobiology = isMicrobiologyReferenceEntry(entry);
-  setPharmDetailTheme(isMicrobiology ? "microbiology" : (isFoundation ? "foundations" : "procedures"));
+  const isSurgeryProcedure = isSurgeryProcedureReferenceEntry(entry);
+  setPharmDetailTheme(isMicrobiology ? "microbiology" : (isSurgeryProcedure ? "surgeries" : (isFoundation ? "foundations" : "procedures")));
   if (!entry) {
     renderPharmDrugDetail(null);
     return;
@@ -31665,15 +31988,15 @@ function renderClinicalReferenceDetail(entry = activeClinicalReferenceResults[0]
   if (pharmDrugDetail) {
     pharmDrugDetail.dataset.narrationType = isClinicalSignReferenceEntry(entry)
       ? "clinical-signs"
-      : (isMicrobiology ? "microbiology" : (isFoundation ? "foundations" : "procedures"));
+      : (isMicrobiology ? "microbiology" : (isSurgeryProcedure ? "surgeries" : (isFoundation ? "foundations" : "procedures")));
   }
 
   const title = document.createElement("div");
-  title.className = `pharm-detail-title ${isMicrobiology ? "pharm-microbiology-title" : (isFoundation ? "pharm-foundation-title" : "pharm-procedure-title")}`;
+  title.className = `pharm-detail-title ${isMicrobiology ? "pharm-microbiology-title" : (isSurgeryProcedure ? "pharm-surgery-title" : (isFoundation ? "pharm-foundation-title" : "pharm-procedure-title"))}`;
   const name = document.createElement("h2");
   name.textContent = clinicalReferenceDisplayName(entry);
   const category = document.createElement("span");
-  category.textContent = safeText(`${entry.icon ? `${entry.icon} | ` : ""}${entry.nclexEssential ? "NCLEX ESSENTIAL | " : ""}${isMicrobiology ? "Microbiology | " : ""}${entry.category || "Clinical reference"}`);
+  category.textContent = safeText(`${entry.icon ? `${entry.icon} | ` : ""}${entry.nclexEssential ? "NCLEX ESSENTIAL | " : ""}${isMicrobiology ? "Microbiology | " : ""}${isSurgeryProcedure ? "Surgeries & Procedures | " : ""}${entry.category || "Clinical reference"}`);
   title.append(name, category);
   appendPharmFavoriteButton(title, "procedures", entry);
   pharmDrugDetail.append(title);
@@ -31681,6 +32004,8 @@ function renderClinicalReferenceDetail(entry = activeClinicalReferenceResults[0]
   const detailIntent = safeText(options.intent || pharmSearchInput?.value || "");
   const studySafetyNote = isMicrobiology
     ? (entry.sourceNote || "Use this Microbiology reference for study and follow current laboratory, infection-prevention, and facility guidance for real clinical decisions.")
+    : isSurgeryProcedure
+      ? (entry.sourceNote || "Use this procedure card for study and follow current procedural protocols, provider orders, facility policy, and the client's individualized plan in clinical care.")
     : isFoundation
       ? (entry.studySafetyNote || "Use this foundation to understand normal structure and physiology, then connect it with ANI's disease, medication, laboratory, and diagnostic cards. For real clinical decisions, follow current professional guidance and local policy.")
       : (entry.sourceNote || "Use these values as NCLEX study anchors. For real care, verify current facility references, provider orders, and official source materials.");
@@ -31790,6 +32115,8 @@ function renderClinicalReferenceDetail(entry = activeClinicalReferenceResults[0]
   ], clinicalReferenceDisplayName(entry));
   if (isMicrobiology) {
     appendEvidenceSourceSection(pharmDrugDetail, microbiologyDatabase, entry);
+  } else if (isSurgeryProcedure) {
+    appendEvidenceSourceSection(pharmDrugDetail, surgeryProcedureDatabase, entry);
   } else if (isFoundation) {
     appendEvidenceSourceSection(pharmDrugDetail, foundationDatabase, { ...entry, sourceNote: entry.evidenceNote || "" });
   } else if (Array.isArray(entry.sourceKeys) && entry.sourceKeys.length) {
@@ -33729,7 +34056,7 @@ function renderPharmResults(options = {}) {
   const showLabs = !exactReferenceFastCandidate && !medicationClassSearch && !isTinyPhoneSearch && (isSearchMode || microbiologyBrowseMode || pharmIndexShowsLabs());
   const showDrugs = !exactReferenceFastCandidate && !isTinyPhoneSearch && (isSearchMode || microbiologyBrowseMode || pharmIndexShowsDrugs());
   const showDiseases = !exactReferenceFastCandidate && !medicationClassSearch && !isTinyPhoneSearch && (isSearchMode || microbiologyBrowseMode || pharmIndexShowsDiseases());
-  const showReferences = !medicationClassSearch && !isTinyPhoneSearch && (isSearchMode || microbiologyBrowseMode || pharmIndexShowsProcedures() || pharmIndexShowsFoundations() || pharmIndexShowsClinicalSigns());
+  const showReferences = !medicationClassSearch && !isTinyPhoneSearch && (isSearchMode || microbiologyBrowseMode || pharmIndexShowsProcedures() || pharmIndexShowsSurgeries() || pharmIndexShowsFoundations() || pharmIndexShowsClinicalSigns());
   const showHolistic = !exactReferenceFastCandidate && !medicationClassSearch && !isTinyPhoneSearch && (isSearchMode || microbiologyBrowseMode || pharmIndexShowsHolistic());
   const preferredNamedCandidate = isSearchMode
     ? (exactReferenceFastCandidate
@@ -33825,10 +34152,12 @@ function renderPharmResults(options = {}) {
   const diseaseCountText = `${activePathologyResults.length} ${activePathologyResults.length === 1 ? "disease/pathology" : "diseases/pathologies"}`;
   const foundationCount = activeClinicalReferenceResults.filter((entry) => entry.type === "foundation" && !isMicrobiologyReferenceEntry(entry)).length;
   const microbiologyReferenceCount = activeClinicalReferenceResults.filter(isMicrobiologyReferenceEntry).length;
-  const diagnosticReferenceCount = activeClinicalReferenceResults.length - foundationCount - microbiologyReferenceCount;
+  const surgeryProcedureCount = activeClinicalReferenceResults.filter(isSurgeryProcedureReferenceEntry).length;
+  const diagnosticReferenceCount = activeClinicalReferenceResults.length - foundationCount - microbiologyReferenceCount - surgeryProcedureCount;
   const foundationCountText = `${foundationCount} ${foundationCount === 1 ? "clinical foundation" : "clinical foundations"}`;
   const referenceCountText = `${diagnosticReferenceCount} ${diagnosticReferenceCount === 1 ? "diagnostic/specialty reference" : "diagnostic/specialty references"}`;
   const microbiologyReferenceCountText = `${microbiologyReferenceCount} ${microbiologyReferenceCount === 1 ? "Microbiology reference" : "Microbiology references"}`;
+  const surgeryProcedureCountText = `${surgeryProcedureCount} ${surgeryProcedureCount === 1 ? "surgery/procedure" : "surgeries/procedures"}`;
   const holisticCountText = `${activeHolisticResults.length} ${activeHolisticResults.length === 1 ? "herbal/holistic card" : "herbal/holistic cards"}`;
   const countParts = [
     ...(showLabs ? [labCountText] : []),
@@ -33836,6 +34165,7 @@ function renderPharmResults(options = {}) {
     ...(showDiseases ? [diseaseCountText] : []),
     ...(showReferences && foundationCount ? [foundationCountText] : []),
     ...(showReferences && microbiologyReferenceCount ? [microbiologyReferenceCountText] : []),
+    ...(showReferences && surgeryProcedureCount ? [surgeryProcedureCountText] : []),
     ...(showReferences && diagnosticReferenceCount ? [referenceCountText] : []),
     ...(showDrugs ? [drugCountText] : [])
   ];
@@ -33986,12 +34316,13 @@ function renderPharmResults(options = {}) {
       const button = document.createElement("button");
       button.type = "button";
       const isMicrobiology = isMicrobiologyReferenceEntry(entry);
-      const isFoundation = !isMicrobiology && (entry.type === "foundation" || entry.educationalArticle === true);
-      button.className = `pharm-result-button ${isMicrobiology ? "pharm-microbiology-result-button" : (isFoundation ? "pharm-foundation-result-button" : "pharm-procedure-result-button")}`;
+      const isSurgeryProcedure = isSurgeryProcedureReferenceEntry(entry);
+      const isFoundation = !isMicrobiology && !isSurgeryProcedure && (entry.type === "foundation" || entry.educationalArticle === true);
+      button.className = `pharm-result-button ${isMicrobiology ? "pharm-microbiology-result-button" : (isSurgeryProcedure ? "pharm-surgery-result-button" : (isFoundation ? "pharm-foundation-result-button" : "pharm-procedure-result-button"))}`;
       const name = document.createElement("strong");
       name.textContent = clinicalReferenceDisplayName(entry);
       const meta = document.createElement("span");
-      meta.textContent = safeText(`${entry.nclexEssential ? "NCLEX ESSENTIAL | " : ""}${isMicrobiology ? "Microbiology | " : ""}${entry.category || (isFoundation ? "Anatomy / physiology foundation" : "Clinical reference")}`);
+      meta.textContent = safeText(`${entry.nclexEssential ? "NCLEX ESSENTIAL | " : ""}${isMicrobiology ? "Microbiology | " : ""}${isSurgeryProcedure ? "Surgeries & Procedures | " : ""}${entry.category || (isFoundation ? "Clinical foundation" : "Clinical reference")}`);
       const summary = document.createElement("small");
       appendPharmEmphasizedText(summary, entry.summary || entry.quickAnswer);
       const quick = document.createElement("small");
@@ -34125,6 +34456,11 @@ function renderPharmResults(options = {}) {
         : `Microbiology architecture ready; ${microbiologyArchitectureStatus()}. There are 0 production entries in this browse domain. Typing a query still searches the complete encyclopedia.`;
     } else if (activePharmIndexMode === "procedures") {
       pharmSearchSummary.textContent = `Browsing ${activeClinicalReferenceResults.length} diagnostic/test reference cards${letterText}. Use this for steps, prep, expected findings, and NCLEX safety traps.`;
+    } else if (activePharmIndexMode === "surgeries") {
+      const selectedSpecialty = activeSurgeryProcedureBrowseSpecialty === "all"
+        ? ""
+        : procedureSpecialtySelect?.selectedOptions?.[0]?.textContent?.replace(/\s*\(\d+\)\s*$/, "");
+      pharmSearchSummary.textContent = `Browsing ${surgeryProcedureCount} reviewed surgery/procedure cards${selectedSpecialty ? ` in ${selectedSpecialty}` : ""}${letterText}. Each card starts with what the procedure is, why it matters, and the highest-priority nursing safety points.`;
     } else if (activePharmIndexMode === "foundations") {
       pharmSearchSummary.textContent = `Browsing ${foundationCount} clinical foundation cards${letterText}. Use these to connect nursing frameworks, normal structure and function, disease, medications, labs, diagnostics, and patient care.`;
     } else if (activePharmIndexMode === "clinical-signs") {
@@ -34133,8 +34469,8 @@ function renderPharmResults(options = {}) {
       pharmSearchSummary.textContent = `Browsing ${activeHolisticResults.length} herbal/holistic safety cards${letterText}. These focus on NCLEX-style interactions, contraindications, perioperative teaching, and risk flags.`;
     } else {
       pharmSearchSummary.textContent = activePharmNclexOnly
-        ? `Browsing ${activePharmLabResults.length} lab references, ${activePathologyResults.length} pathology cards, ${microbiologyReferenceCount} Microbiology references, ${foundationCount} clinical foundations, ${diagnosticReferenceCount} diagnostic/test references, ${activeHolisticResults.length} herbal safety cards, and ${drugPool.length} NCLEX ESSENTIAL medication entries${letterText}. Turn the filter off for the full drug index.`
-        : `Browsing ${activePharmLabResults.length} lab references, ${activePathologyResults.length} pathology cards, ${microbiologyReferenceCount} Microbiology references, ${foundationCount} clinical foundations, ${diagnosticReferenceCount} diagnostic/test references, ${activeHolisticResults.length} herbal safety cards, and ${drugPool.length} installed pharmacy entries${letterText}. Use the category buttons to focus the list.`;
+        ? `Browsing ${activePharmLabResults.length} lab references, ${activePathologyResults.length} pathology cards, ${microbiologyReferenceCount} Microbiology references, ${foundationCount} clinical foundations, ${surgeryProcedureCount} surgery/procedure cards, ${diagnosticReferenceCount} diagnostic/test references, ${activeHolisticResults.length} herbal safety cards, and ${drugPool.length} NCLEX ESSENTIAL medication entries${letterText}. Turn the filter off for the full drug index.`
+        : `Browsing ${activePharmLabResults.length} lab references, ${activePathologyResults.length} pathology cards, ${microbiologyReferenceCount} Microbiology references, ${foundationCount} clinical foundations, ${surgeryProcedureCount} surgery/procedure cards, ${diagnosticReferenceCount} diagnostic/test references, ${activeHolisticResults.length} herbal safety cards, and ${drugPool.length} installed pharmacy entries${letterText}. Use the category buttons to focus the list.`;
     }
   }
   finishPharmSearchRender(rawQuery, requestGeneration);
@@ -34278,6 +34614,24 @@ function detailQueryMatchesTerms(query = "", terms = []) {
 
 function exactPharmDetailCandidate(query = "", preferredType = "") {
   const normalizedPreferredType = preferredType === "procedures" ? "reference" : preferredType;
+  if (preferredType === "procedures") {
+    const fixedProcedureQuery = applyClinicalSpeechFixups(query) || query;
+    const normalizedProcedureQuery = normalizePharmText(fixedProcedureQuery);
+    const exactProcedureMatches = clinicalReferenceEntries.filter((item) => {
+      if (!isSurgeryProcedureReferenceEntry(item)) return false;
+      return [
+        item?.name,
+        item?.displayName,
+        item?.fullForm,
+        ...(item?.aliases || []),
+        ...(item?.abbreviations || []),
+        ...(item?.commonMisspellings || [])
+      ].some((value) => normalizePharmText(value) === normalizedProcedureQuery);
+    });
+    if (exactProcedureMatches.length === 1) {
+      return { type: "reference", item: exactProcedureMatches[0] };
+    }
+  }
   const reviewedResolution = fastReviewedSearchResolution(query);
   if (reviewedResolution?.ambiguousIdentity === true) {
     const matching = (reviewedResolution.ambiguityCandidates || [])
@@ -34344,6 +34698,21 @@ function exactPharmDetailCandidate(query = "", preferredType = "") {
       if (disease) return { type: "pathology", item: disease };
     } else if (type === "reference") {
       const fixedQuery = applyClinicalSpeechFixups(query) || query;
+      const normalizedProcedureQuery = normalizePharmText(fixedQuery);
+      const exactProcedureMatches = clinicalReferenceEntries.filter((item) => {
+        if (!isSurgeryProcedureReferenceEntry(item)) return false;
+        return [
+          item?.name,
+          item?.displayName,
+          item?.fullForm,
+          ...(item?.aliases || []),
+          ...(item?.abbreviations || []),
+          ...(item?.commonMisspellings || [])
+        ].some((value) => normalizePharmText(value) === normalizedProcedureQuery);
+      });
+      if (exactProcedureMatches.length === 1) {
+        return { type: "reference", item: exactProcedureMatches[0] };
+      }
       const canonicalIndex = encyclopediaExactIdentityIndex(
         clinicalReferenceEntries,
         (item) => [item.name, item.displayName, item.fullForm, clinicalReferenceDisplayName(item)],
@@ -40782,8 +41151,97 @@ function makeOfflinePopulationRiskAnswer(input = "") {
   ].filter(Boolean).join("\n\n");
 }
 
+const OFFLINE_SEGMENT_INTENT_TERMS = Object.freeze([
+  "nursing", "nurse", "priority", "priorities", "intervention", "interventions",
+  "action", "actions", "monitoring", "warning", "warnings", "boxed", "contraindication",
+  "contraindications", "interaction", "interactions", "adverse", "effect", "effects",
+  "symptom", "symptoms", "finding", "findings", "diagnostic", "diagnostics", "diagnosis",
+  "cause", "causes", "trigger", "triggers", "etiology", "pathophysiology", "treatment",
+  "treatments", "teaching", "education", "mechanism", "class", "range", "ranges", "value",
+  "values", "laboratory", "labs"
+]);
+
+const OFFLINE_SEGMENT_IDENTITY_DROP_WORDS = new Set([
+  ...OFFLINE_SEGMENT_INTENT_TERMS,
+  "black", "box", "for", "of", "about", "please", "tell", "show", "give", "explain",
+  "what", "which", "who", "why", "how", "when", "where", "is", "are", "was", "were",
+  "do", "does", "did", "can", "could", "would", "should", "will", "me", "my", "the", "a", "an"
+]);
+
+function normalizeOfflineSegmentIntentText(input = "") {
+  const normalized = normalizeIntentText(applyClinicalSpeechFixups(input) || input);
+  return normalized.split(" ").map((token) => {
+    if (token === "bx") return "box";
+    if (!token || token.length < 4 || OFFLINE_SEGMENT_INTENT_TERMS.includes(token)) return token;
+    const maximumDistance = token.length <= 5 ? 1 : 2;
+    let best = token;
+    let bestDistance = maximumDistance + 1;
+    OFFLINE_SEGMENT_INTENT_TERMS.forEach((term) => {
+      if (term[0] !== token[0] || Math.abs(term.length - token.length) > maximumDistance) return;
+      const distance = nearIdentityEditDistance(token, term);
+      if (distance < bestDistance) {
+        best = term;
+        bestDistance = distance;
+      }
+    });
+    return bestDistance <= maximumDistance ? best : token;
+  }).join(" ").replace(/\s+/g, " ").trim();
+}
+
+function offlineSegmentIdentityQuery(input = "") {
+  return normalizeOfflineSegmentIntentText(input)
+    .split(" ")
+    .filter((token) => token && !OFFLINE_SEGMENT_IDENTITY_DROP_WORDS.has(token))
+    .join(" ")
+    .trim();
+}
+
+function offlineSegmentIdentityCandidate(input = "") {
+  const core = offlineSegmentIdentityQuery(input);
+  if (!core || core.length < 3) return null;
+  const normalizedInput = normalizeOfflineSegmentIntentText(input);
+  const explicitTypes = offlineNearIdentityExplicitTypes(normalizedInput);
+  if (/\b(trigger|triggers|precipitant|precipitants)\b/i.test(normalizedInput)) explicitTypes.add("pathology");
+
+  const exact = fastVoiceIdentityCandidates(core);
+  const exactPreferred = explicitTypes.size
+    ? exact.filter((candidate) => explicitTypes.has(candidate.type))
+    : exact;
+  const exactUnique = Array.from(new Map(exactPreferred.map((candidate) => [offlineLookupEntityKey(candidate), candidate])).values());
+  if (exactUnique.length === 1) {
+    return { ...exactUnique[0], score: 3400 };
+  }
+
+  const specs = [
+    { type: "pathology", items: pathologyDiseases, names: (item) => [item.name, item.displayName, ...(item.aliases || []), ...(item.abbreviations || []), ...(item.commonMisspellings || [])] },
+    { type: "reference", items: clinicalReferenceEntries, names: (item) => [item.name, item.displayName, item.fullForm, ...(item.aliases || []), ...(item.abbreviations || []), ...(item.commonMisspellings || [])] },
+    { type: "lab", items: pharmSearchableLabRanges, names: (item) => [item.name, item.displayName, ...(item.aliases || [])] },
+    { type: "holistic", items: holisticRemedies, names: (item) => [item.name, item.displayName, ...(item.aliases || []), ...(item.commonMisspellings || [])] },
+    { type: "drug", items: pharmDrugs, names: (item) => [item.name, item.generic, item.displayName, ...(item.aliases || []), ...(item.brandExamples || []), ...(item.commonMisspellings || [])] }
+  ];
+  const orderedSpecs = [
+    ...specs.filter((spec) => explicitTypes.has(spec.type)),
+    ...specs.filter((spec) => !explicitTypes.has(spec.type))
+  ];
+  const matches = orderedSpecs.map((spec) => {
+    const assessment = encyclopediaNearIdentityAssessment(spec.items, spec.names, [core]);
+    return assessment.match && !assessment.ambiguous
+      ? { type: spec.type, item: assessment.match.item, score: 3000 + Math.round(assessment.match.score * 300), similarity: assessment.match.score }
+      : null;
+  }).filter(Boolean);
+  const preferredMatches = explicitTypes.size
+    ? matches.filter((candidate) => explicitTypes.has(candidate.type))
+    : matches;
+  const ranked = (preferredMatches.length ? preferredMatches : matches)
+    .sort((left, right) => right.similarity - left.similarity
+      || offlineLookupEntityLabel(left).localeCompare(offlineLookupEntityLabel(right)));
+  if (!ranked.length) return null;
+  if (ranked[1] && ranked[0].similarity - ranked[1].similarity < 0.035) return null;
+  return ranked[0];
+}
+
 function offlineSegmentIntentRemainder(input = "", candidate = null) {
-  const normalizedInput = normalizeOfflineLookupText(applyClinicalSpeechFixups(input) || input, { dropLookupWords: false });
+  const normalizedInput = normalizeOfflineLookupText(normalizeOfflineSegmentIntentText(input), { dropLookupWords: false });
   if (!normalizedInput || !candidate?.item) return normalizedInput;
   const identityTerms = offlineCandidatePrimaryTerms(candidate)
     .map((term) => normalizeOfflineLookupText(term, { dropLookupWords: false }))
@@ -40802,7 +41260,7 @@ function offlineSegmentIntentRemainder(input = "", candidate = null) {
 }
 
 function offlineSegmentIntents(input = "", candidate = null) {
-  const lower = normalizeIntentText(offlineSegmentIntentRemainder(input, candidate));
+  const lower = normalizeOfflineSegmentIntentText(offlineSegmentIntentRemainder(input, candidate));
   const intents = [];
   const add = (intent) => {
     if (!intents.includes(intent)) intents.push(intent);
@@ -40831,7 +41289,7 @@ function offlineSegmentIntents(input = "", candidate = null) {
   if (/\b(sign|signs|symptom|symptoms|finding|findings|manifestation|manifestations|presentation|presents?)\b/i.test(lower)) add("signs");
   if (/\b(diagnose|diagnosis|diagnostic|diagnostics|workup|screen|screening|test|tests|tool|tools|measure|measures|measured|evaluate|evaluates|show|shows|indicate|indicates|mean|meaning|means|interpret|interpretation|result|results|positive|negative|abnormal)\b/i.test(lower)
     || /\bwhat\b[\s\S]{0,60}\btells?\b/i.test(lower)) add("diagnostics");
-  if (/\b(cause|causes|caused by|etiology|risk factor|risk factors|why does|why do|why is)\b/i.test(lower)) add("etiology");
+  if (/\b(cause|causes|caused by|etiology|risk factor|risk factors|trigger|triggers|precipitant|precipitants|why does|why do|why is)\b/i.test(lower)) add("etiology");
   if (/\b(patho|pathophysiology|pathology|what is happening|what happens|disease process|process)\b/i.test(lower)) add("pathophysiology");
   if (/\b(treat|treatment|treatments|therapy|therapies|manage|management|first line|priority treatment|how to treat)\b/i.test(lower)) add("treatment");
   if (/\b(patient education|client education|teaching|teach|teachings|educate|education)\b/i.test(lower)) add("teaching");
@@ -40895,6 +41353,10 @@ function directlyNamedClinicalReferenceCandidate(input = "") {
 }
 
 function offlineSegmentCandidate(input = "") {
+  const identityCandidate = offlineSegmentIdentityCandidate(input);
+  if (identityCandidate) {
+    return identityCandidate;
+  }
   const namedReference = directlyNamedClinicalReferenceCandidate(input);
   if (namedReference) {
     return namedReference;
@@ -41098,20 +41560,8 @@ function offlineSegmentValue(candidate = {}, intent = "", input = "") {
   return "";
 }
 
-function makeOfflineSegmentAnswer(input = "") {
-  const emergencyHyperkalemiaAnswer = makeOfflineEmergencyHyperkalemiaAnswer(input);
-  if (emergencyHyperkalemiaAnswer) return emergencyHyperkalemiaAnswer;
-  const smartDatabaseAnswer = makeOfflineSmartDatabaseAnswer(input);
-  if (smartDatabaseAnswer) return smartDatabaseAnswer;
-  const populationRiskAnswer = makeOfflinePopulationRiskAnswer(input);
-  if (populationRiskAnswer) return populationRiskAnswer;
-  if (wantsOfflineListExpansionFollowup(input) || wantsOfflineBroadCauseList(input)) return "";
-  const candidate = offlineSegmentCandidate(input);
-  if (!candidate) return "";
-  if (wantsBinaryRelationshipAnswer(input)) {
-    return "";
-  }
-  const intents = offlineSegmentIntents(input, candidate);
+function buildOfflineSegmentAnswer(input = "", candidate = null, intents = []) {
+  if (!candidate?.item || !intents.length) return "";
   if (!intents.length
     || wantsAiGeneratedStudyWork(input)
     || wantsLecture(input)
@@ -41141,6 +41591,83 @@ function makeOfflineSegmentAnswer(input = "") {
     `**${label} - ${sections.length === 1 ? offlineSegmentTitle(sections[0].intent, candidate) : "targeted encyclopedia answer"}**`,
     ...sections.map(({ intent, value }) => `**${offlineSegmentTitle(intent, candidate)}:** ${value}`)
   ].filter(Boolean).join("\n\n");
+}
+
+function offlineSegmentTargetDescriptor(candidate = {}) {
+  if (!candidate?.type || !candidate?.item) return null;
+  return {
+    type: candidate.type,
+    item: candidate.item,
+    label: offlineLookupEntityLabel(candidate),
+    query: offlineLookupQuery(candidate),
+    key: offlineLookupEntityKey(candidate),
+    candidate: { type: candidate.type, item: candidate.item }
+  };
+}
+
+function makeOfflineSegmentResponse(input = "") {
+  if (wantsOfflineListExpansionFollowup(input)
+    || wantsOfflineBroadCauseList(input)
+    || wantsBinaryRelationshipAnswer(input)
+    || wantsAiGeneratedStudyWork(input)
+    || wantsLecture(input)
+    || wantsOfflineLabComparison(input)) return null;
+  const candidate = offlineSegmentCandidate(input);
+  if (!candidate) return null;
+  const intents = offlineSegmentIntents(input, candidate);
+  if (!intents.length) return null;
+  const text = buildOfflineSegmentAnswer(input, candidate, intents);
+  if (!text) return null;
+  return {
+    type: "encyclopedia-segment",
+    text,
+    target: offlineSegmentTargetDescriptor(candidate)
+  };
+}
+
+function installEncyclopediaSegmentResponsePriority() {
+  const baseMakeModelEnhancedResponse = makeModelEnhancedResponse;
+  if (typeof baseMakeModelEnhancedResponse !== "function"
+    || baseMakeModelEnhancedResponse.aniSegmentPriority === true) return;
+  const prioritizedMakeModelEnhancedResponse = function (input = "", ...args) {
+    const hasAttachments = (Array.isArray(args[0]) && args[0].length > 0)
+      || (Array.isArray(args[1]) && args[1].length > 0);
+    if (!hasAttachments) {
+      const emergencyHyperkalemiaAnswer = makeOfflineEmergencyHyperkalemiaAnswer(input);
+      if (emergencyHyperkalemiaAnswer) return emergencyHyperkalemiaAnswer;
+      const smartDatabaseAnswer = makeOfflineSmartDatabaseAnswer(input);
+      if (smartDatabaseAnswer) return smartDatabaseAnswer;
+      const segmentResponse = makeOfflineSegmentResponse(input);
+      if (segmentResponse) return segmentResponse;
+    }
+    return baseMakeModelEnhancedResponse.apply(this, [input, ...args]);
+  };
+  Object.defineProperty(prioritizedMakeModelEnhancedResponse, "aniSegmentPriority", {
+    value: true,
+    enumerable: false
+  });
+  makeModelEnhancedResponse = prioritizedMakeModelEnhancedResponse;
+  window.makeModelEnhancedResponse = prioritizedMakeModelEnhancedResponse;
+}
+
+// Several reviewed specialty routers load after main.js. Install this final,
+// narrow precedence layer only after those scripts have registered so a
+// card-plus-section request cannot be converted back into a broad card open.
+if (document.readyState === "loading") {
+  window.addEventListener("DOMContentLoaded", installEncyclopediaSegmentResponsePriority, { once: true });
+} else {
+  window.setTimeout(installEncyclopediaSegmentResponsePriority, 0);
+}
+
+function makeOfflineSegmentAnswer(input = "") {
+  const emergencyHyperkalemiaAnswer = makeOfflineEmergencyHyperkalemiaAnswer(input);
+  if (emergencyHyperkalemiaAnswer) return emergencyHyperkalemiaAnswer;
+  const smartDatabaseAnswer = makeOfflineSmartDatabaseAnswer(input);
+  if (smartDatabaseAnswer) return smartDatabaseAnswer;
+  const populationRiskAnswer = makeOfflinePopulationRiskAnswer(input);
+  if (populationRiskAnswer) return populationRiskAnswer;
+  const response = makeOfflineSegmentResponse(input);
+  return response?.text || "";
 }
 
 function makeOfflineReferenceAnswerInChat(input = "") {
@@ -43725,11 +44252,25 @@ async function makeModelEnhancedResponse(input = "", images = [], resources = []
   if (!images.length && !resources.length && !wantsExplicitGeneratedStudyArtifact) {
     const pregnancySafetyAnswer = makeOfflineTeratogenicDrugListResponse(input);
     if (pregnancySafetyAnswer) return pregnancySafetyAnswer;
+    const emergencyHyperkalemiaAnswer = makeOfflineEmergencyHyperkalemiaAnswer(input);
+    if (emergencyHyperkalemiaAnswer) return emergencyHyperkalemiaAnswer;
+    // Reviewed local answer builders own clinically specific interpretation
+    // requests before the generic card/section extractor. Otherwise a query
+    // such as "sodium 118 with confusion" can be flattened into the broad
+    // Sodium card even though ANI has a safer, more specific bedside answer.
+    const smartDatabaseAnswer = makeOfflineSmartDatabaseAnswer(input);
+    if (smartDatabaseAnswer) return smartDatabaseAnswer;
     const focusedSafetyAnswer = makeOfflineSeizureFirstActionAnswer(input)
       || makeOfflineAnaphylaxisFirstActionAnswer(input);
     if (focusedSafetyAnswer) return focusedSafetyAnswer;
     const focusedLocalAnswer = makeOfflinePreRuntimeFocusedAnswer(input);
     if (focusedLocalAnswer) return focusedLocalAnswer;
+    // A user who names one encyclopedia card and one requested section has
+    // already supplied enough intent to answer locally. Resolve that stable
+    // card/section pair before broader answer-engine routing can substitute an
+    // associated medication, complication, or similarly worded topic.
+    const focusedSegmentResponse = makeOfflineSegmentResponse(input);
+    if (focusedSegmentResponse) return focusedSegmentResponse;
     const lane4LocalAnswer = tryLane4RuntimeAnswer(input);
     if (lane4LocalAnswer) return lane4LocalAnswer;
   }
@@ -44168,6 +44709,10 @@ function sendUserMessage(text, options = {}) {
       addTestFormatPickerMessage(response.wantsPractice);
     } else if (response?.type === "offline-comparison") {
       addOfflineComparisonMessage(response);
+    } else if (response?.type === "encyclopedia-segment") {
+      addMessage("assistant", response.text, false, true, true, {
+        boundEncyclopediaTarget: response.target
+      });
     } else if (response?.type === "pharm-database") {
       openPharmDatabase(response.query || "", { openDetail: response.openDetail, detailType: response.detailType, fastDetail: true, highlightQuery: response.highlightQuery });
       if (!response.preface) {
@@ -44866,7 +45411,7 @@ async function requestClinicalQuickAnswer(question = "") {
       return offlineFallback;
     }
     return lane4RuntimeFallbackForQuestion(question)
-      || `${backendUnavailableMessage()}\n\nOffline mode can still recognize installed medication, lab, and pathology keywords. Try a specific entry like fluoxetine, MAP, magnesium, DKA, or first-degree AV block.`;
+      || `${backendUnavailableMessage()}\n\nThe medical encyclopedia can still recognize installed medication, lab, and pathology keywords. Try a specific entry like fluoxetine, MAP, magnesium, DKA, or first-degree AV block.`;
   }
 }
 
@@ -45953,6 +46498,22 @@ microbiologyBranchSelect?.addEventListener("change", () => {
   closePharmDetailPage();
   activeMicrobiologyBrowseBranch = microbiologyBranchSelect.value || "all";
   localStorage.setItem(MICROBIOLOGY_BROWSE_BRANCH_KEY, activeMicrobiologyBrowseBranch);
+  activePharmLetter = "All";
+  renderPharmAlphabet();
+  renderPharmResults();
+});
+foundationDomainSelect?.addEventListener("change", () => {
+  closePharmDetailPage();
+  activeFoundationBrowseDomain = foundationDomainSelect.value || "all";
+  localStorage.setItem(FOUNDATION_BROWSE_DOMAIN_KEY, activeFoundationBrowseDomain);
+  activePharmLetter = "All";
+  renderPharmAlphabet();
+  renderPharmResults();
+});
+procedureSpecialtySelect?.addEventListener("change", () => {
+  closePharmDetailPage();
+  activeSurgeryProcedureBrowseSpecialty = procedureSpecialtySelect.value || "all";
+  localStorage.setItem(SURGERY_PROCEDURE_BROWSE_SPECIALTY_KEY, activeSurgeryProcedureBrowseSpecialty);
   activePharmLetter = "All";
   renderPharmAlphabet();
   renderPharmResults();

@@ -480,7 +480,7 @@
     ["Hydrogen breath test", "procedure", "GI", "Breath test used to evaluate lactose intolerance, small intestinal bacterial overgrowth, or carbohydrate malabsorption patterns.", ["H2 breath test", "SIBO breath test"]],
     ["Secretin stimulation test", "endocrine", "GI", "Dynamic test of pancreatic exocrine function or gastrinoma evaluation depending protocol.", ["secretin test"]],
     ["Small bowel follow-through", "imaging", "GI", "Contrast fluoroscopy series tracking small-intestine anatomy, transit, strictures, obstruction, or inflammation.", ["SBFT"]],
-    ["CT enterography", "imaging", "GI", "Contrast CT optimized for small bowel inflammation, Crohn disease, bleeding, mass, or obstruction evaluation.", ["CTE", "computed tomography enterography"]],
+    ["CT enterography", "imaging", "GI", "Contrast CT optimized for small bowel inflammation, Crohn disease, bleeding, mass, or obstruction evaluation.", ["computed tomography enterography"]],
     ["MR enterography", "imaging", "GI", "MRI optimized for small bowel inflammation, Crohn disease, fistula, abscess, or stricture evaluation without ionizing radiation.", ["MRE", "magnetic resonance enterography"]],
     ["Anoscopy", "procedure", "GI", "Short scope exam of anal canal and distal rectum for hemorrhoids, fissures, lesions, or bleeding source.", ["anal scope"]],
     ["Proctoscopy", "procedure", "GI", "Scope exam of rectum/distal colon for rectal bleeding, inflammation, lesions, or follow-up evaluation.", ["rectoscopy"]],

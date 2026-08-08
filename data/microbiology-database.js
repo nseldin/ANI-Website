@@ -12,14 +12,14 @@
     taxonomyVersion: core.TAXONOMY_VERSION,
     relationshipSchemaVersion: core.RELATIONSHIP_SCHEMA_VERSION,
     generatorVersion: core.GENERATOR_VERSION,
-    catalogVersion: "ani-microbiology-catalog-content-v4.3.0",
+    catalogVersion: "ani-microbiology-catalog-content-v4.4.0",
     architectureSha256,
     architectureStatus: "APPROVED",
     massExpansionEnabled: true,
     status: {
       architectureStatus: "APPROVED",
       massExpansionEnabled: true,
-      sourceEntryCount: 215,
+      sourceEntryCount: 216,
       membershipCount: 0
     },
     architecture,
@@ -14410,6 +14410,407 @@
             "identity": true,
             "kind": "abbreviation",
             "value": "C. trachomatis"
+          }
+        ]
+      },
+      {
+        "abbreviations": [
+          "C. purpurea"
+        ],
+        "aliases": [
+          "C. purpurea",
+          "ergot fungus",
+          "Sphacelia segetum",
+          "Sphaeria purpurea"
+        ],
+        "browse": {
+          "branchId": "infectious-agents/fungi",
+          "label": "Fungi",
+          "path": [
+            "infectious-agents",
+            "fungi"
+          ],
+          "pillarId": "infectious-agents"
+        },
+        "canonicalName": "Claviceps purpurea",
+        "category": "Microbiology / Fungi",
+        "commonMisspellings": [],
+        "crossLinkRecords": [
+          {
+            "id": "microbiology:organism:claviceps-purpurea::causes-disease::785419574ed35343de4727308e90f06fa6423738a6181650968080c722057e12",
+            "inverseIndex": "caused-by-organism",
+            "relationshipGroup": "disease-associations",
+            "relationshipIdentitySha256": "785419574ed35343de4727308e90f06fa6423738a6181650968080c722057e12",
+            "relationshipType": "causes-disease",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:organism:claviceps-purpurea",
+            "sourceKind": "organism",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:ergotism",
+            "targetKind": "disease",
+            "targetName": "Ergotism"
+          },
+          {
+            "id": "microbiology:organism:claviceps-purpurea::detected-by::90656ce4934d8d0bb42a2078a8350e5fef367bf4061859c5d5d683eb87fd9114",
+            "inverseIndex": "detects-organism",
+            "relationshipGroup": "diagnostics-laboratory",
+            "relationshipIdentitySha256": "90656ce4934d8d0bb42a2078a8350e5fef367bf4061859c5d5d683eb87fd9114",
+            "relationshipType": "detected-by",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:organism:claviceps-purpurea",
+            "sourceKind": "organism",
+            "targetCollection": "",
+            "targetId": "microbiology:method:clinical-culture-and-identification",
+            "targetKey": "id:microbiology:method:clinical-culture-and-identification",
+            "targetKind": "diagnostic-method",
+            "targetName": "Clinical culture and organism identification"
+          },
+          {
+            "id": "microbiology:organism:claviceps-purpurea::nclex-associated-topic::1aee2a69e7dc3b82cdef25af2027fcdda99bd6aba4a37cc421c87915fe247b16",
+            "inverseIndex": "nclex-association-for-organism",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "1aee2a69e7dc3b82cdef25af2027fcdda99bd6aba4a37cc421c87915fe247b16",
+            "relationshipType": "nclex-associated-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:organism:claviceps-purpurea",
+            "sourceKind": "organism",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:ergotism",
+            "targetKind": "canonical-topic",
+            "targetName": "Ergotism"
+          },
+          {
+            "id": "microbiology:organism:claviceps-purpurea::requires-precaution::52d2567f4d973f38da6d850fcbad5f131387354ef2f379a1b2fb83e034669b0e",
+            "inverseIndex": "required-for-organism",
+            "relationshipGroup": "prevention-isolation",
+            "relationshipIdentitySha256": "52d2567f4d973f38da6d850fcbad5f131387354ef2f379a1b2fb83e034669b0e",
+            "relationshipType": "requires-precaution",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:organism:claviceps-purpurea",
+            "sourceKind": "organism",
+            "targetCollection": "",
+            "targetId": "microbiology:infection-prevention:standard-precautions",
+            "targetKey": "id:microbiology:infection-prevention:standard-precautions",
+            "targetKind": "precaution",
+            "targetName": "Standard precautions"
+          },
+          {
+            "id": "microbiology:organism:claviceps-purpurea::transmitted-by::822d16656a38334639455c6996aaf81df6762da44fb3bb2832963a690712f32e",
+            "inverseIndex": "transmits-organism",
+            "relationshipGroup": "ecology-transmission",
+            "relationshipIdentitySha256": "822d16656a38334639455c6996aaf81df6762da44fb3bb2832963a690712f32e",
+            "relationshipType": "transmitted-by",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:organism:claviceps-purpurea",
+            "sourceKind": "organism",
+            "targetCollection": "",
+            "targetId": "microbiology:concept:foodborne-transmission",
+            "targetKey": "id:microbiology:concept:foodborne-transmission",
+            "targetKind": "transmission-mode",
+            "targetName": "Foodborne transmission"
+          }
+        ],
+        "definition": "Claviceps purpurea is the ergot fungus, an ascomycete mold that infects the flowering parts of rye and other grasses. It replaces grain with dark, hardened fungal structures called sclerotia. Those structures can contain ergot alkaloids; eating contaminated grain can cause ergotism, so the organism matters mainly as a toxin-producing food-safety hazard rather than a person-to-person infection.",
+        "directTargetId": "microbiology:organism:claviceps-purpurea",
+        "encyclopediaDomains": [
+          "microbiology"
+        ],
+        "encyclopediaSection": "microbiology",
+        "epidemiology": {
+          "incubation": {
+            "reason": "Clinical onset depends on the alkaloid mixture, dose, duration, medicinal versus food exposure, and host vascular susceptibility; organism identity alone does not support one universal incubation interval.",
+            "sourceKeys": [
+              "cdc-foodborne-ergotism",
+              "ncbi-ergotism-review"
+            ],
+            "status": "variable"
+          }
+        },
+        "hidden": false,
+        "id": "microbiology:organism:claviceps-purpurea",
+        "microbiology": {
+          "architectureVersion": "ani-microbiology-domain-v4",
+          "browsePath": "infectious-agents/fungi",
+          "canonicalOwner": "Microbiology",
+          "classification": {
+            "agentClass": "fungus"
+          },
+          "entryKind": "organism",
+          "generatorVersion": "ani-microbiology-generator-v4",
+          "relationshipSchemaVersion": "ani-microbiology-relationships-v3",
+          "reviewStatus": "REVIEWED",
+          "reviewedAt": "2026-08-08",
+          "runtimeCollection": "clinicalReferenceEntries",
+          "schemaVersion": "ani-microbiology-catalog-v4",
+          "sourceEntrySha256": "5466d110fc5ff362ba1216b8a477aaba5c504302ee621731482331dcfef89169",
+          "sourceKeys": [
+            "cdc-foodborne-ergotism",
+            "ncbi-ergotism-review",
+            "ncbi-mesh-claviceps",
+            "ncbi-taxonomy-claviceps-purpurea"
+          ],
+          "taxonomyVersion": "ani-microbiology-taxonomy-v4"
+        },
+        "microbiologyKind": "organism",
+        "microbiologyRelationships": [
+          {
+            "context": {
+              "scope": "Ingestion of ergot alkaloids produced in contaminated grain can cause ergotism. Ergot-derived medicines can produce the same toxic syndrome without direct fungal ingestion."
+            },
+            "sourceKeys": [
+              "cdc-foodborne-ergotism",
+              "ncbi-ergotism-review",
+              "ncbi-mesh-claviceps"
+            ],
+            "target": {
+              "canonicalTitle": "Ergotism",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Ergotism"
+            },
+            "type": "causes-disease"
+          },
+          {
+            "context": {
+              "scope": "Culture or molecular identification may support food, feed, or agricultural investigation, but patient diagnosis centers on exposure and alkaloid toxicity rather than a human fungal culture."
+            },
+            "sourceKeys": [
+              "cdc-foodborne-ergotism",
+              "ncbi-taxonomy-claviceps-purpurea"
+            ],
+            "target": {
+              "canonicalTitle": "Clinical culture and organism identification",
+              "targetId": "microbiology:method:clinical-culture-and-identification",
+              "targetKind": "diagnostic-method",
+              "targetName": "Clinical culture and organism identification"
+            },
+            "type": "detected-by"
+          },
+          {
+            "context": {
+              "focus": "Connect contaminated grain or ergot medicine exposure with severe vasoconstriction, limb ischemia, neurologic toxicity, immediate exposure cessation, and emergency escalation."
+            },
+            "sourceKeys": [
+              "cdc-foodborne-ergotism",
+              "ncbi-ergotism-review"
+            ],
+            "target": {
+              "canonicalTitle": "Ergotism",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "canonical-topic",
+              "targetName": "Ergotism"
+            },
+            "type": "nclex-associated-topic"
+          },
+          {
+            "context": {
+              "scope": "Standard Precautions are sufficient for clinical care because ergotism is a toxic exposure and is not contagious; food-safety controls address the exposure source."
+            },
+            "sourceKeys": [
+              "cdc-foodborne-ergotism"
+            ],
+            "target": {
+              "canonicalTitle": "Standard precautions",
+              "targetId": "microbiology:infection-prevention:standard-precautions",
+              "targetKind": "precaution",
+              "targetName": "Standard precautions"
+            },
+            "type": "requires-precaution"
+          },
+          {
+            "context": {
+              "scope": "This edge describes ingestion of preformed alkaloids in contaminated grain; it does not imply person-to-person transmission or invasive fungal infection."
+            },
+            "sourceKeys": [
+              "cdc-foodborne-ergotism"
+            ],
+            "target": {
+              "canonicalTitle": "Foodborne transmission",
+              "targetId": "microbiology:concept:foodborne-transmission",
+              "targetKind": "transmission-mode",
+              "targetName": "Foodborne transmission"
+            },
+            "type": "transmitted-by"
+          }
+        ],
+        "name": "Claviceps purpurea",
+        "primaryDomain": "Microbiology",
+        "relationshipNotApplicable": [
+          {
+            "groupId": "pathogenesis",
+            "reason": "The reviewed sources establish that Claviceps purpurea sclerotia contain clinically important ergot alkaloids, but ANI does not yet have one approved canonical toxin destination that safely represents the full alkaloid mixture. The mechanism remains explicit in the card without a broken toxin edge.",
+            "sourceKeys": [
+              "cdc-foodborne-ergotism",
+              "ncbi-mesh-claviceps"
+            ]
+          },
+          {
+            "groupId": "related-organisms",
+            "reason": "No second organism in the reviewed packet is sufficiently similar to create a useful exact clinical differential edge without implying interchangeable alkaloid profiles or disease risk.",
+            "sourceKeys": [
+              "ncbi-taxonomy-claviceps-purpurea"
+            ]
+          },
+          {
+            "groupId": "therapy-resistance",
+            "reason": "This is a preformed-toxin exposure rather than an invasive human fungal infection, so organism susceptibility and antifungal-treatment relationships are not clinically applicable to ergotism.",
+            "sourceKeys": [
+              "cdc-foodborne-ergotism",
+              "ncbi-ergotism-review"
+            ]
+          }
+        ],
+        "searchTerms": [
+          "C. purpurea",
+          "Claviceps purpurea",
+          "Claviceps purpurea ergotism",
+          "ergot alkaloids",
+          "ergot fungus",
+          "ergot on rye",
+          "Saint Anthony's fire",
+          "Sphacelia segetum",
+          "Sphaeria purpurea"
+        ],
+        "sections": [
+          {
+            "content": "Claviceps purpurea is the ergot fungus, an ascomycete mold that infects the flowering parts of rye and other grasses. It replaces grain with dark, hardened fungal structures called sclerotia. Those structures can contain ergot alkaloids; eating contaminated grain can cause ergotism, so the organism matters mainly as a toxin-producing food-safety hazard rather than a person-to-person infection.",
+            "id": "definition",
+            "title": "Definition"
+          },
+          {
+            "content": "Claviceps purpurea is a species of fungus in the order Hypocreales and family Clavicipitaceae. ANI keeps the organism separate from ergotism, which is the human toxic syndrome, and from ergot-derived medicines, which can also cause toxicity when exposure is excessive or interacting drugs raise concentrations.",
+            "id": "identity-classification",
+            "title": "Identity and classification"
+          },
+          {
+            "content": "The fungus grows as hyphae in grass flowers and forms purple-black sclerotia, which are compact survival structures that replace normal kernels. It is a nonmotile mold; this card records its oxygen requirement as unknown rather than turning a general fungal expectation into an organism-specific laboratory claim. A sclerotium is not a bacterial spore but a hardened fungal mass that can survive between growing seasons and concentrate toxic alkaloids.",
+            "id": "structure-traits",
+            "title": "Structure and traits"
+          },
+          {
+            "content": "The reservoir is infected cereal and forage grasses, especially rye. Human disease follows ingestion of contaminated grain or medicinal exposure to ergot alkaloids; it is not spread between people. Modern grain inspection and processing make foodborne outbreaks uncommon in many settings, but contaminated crops and supplements remain possible exposure routes.",
+            "id": "ecology-transmission",
+            "title": "Ecology and transmission"
+          },
+          {
+            "content": "Ergot alkaloids bind adrenergic, serotonin, and dopamine receptors. Their strongest clinical danger is sustained blood-vessel constriction, which can sharply reduce blood flow to fingers, toes, or other tissues and cause ischemia (too little oxygenated blood) and gangrene. Central nervous system effects can also produce agitation, hallucinations, spasms, or seizures.",
+            "id": "pathogenesis",
+            "title": "Pathogenesis"
+          },
+          {
+            "content": "Claviceps purpurea is linked to Ergotism. This matters because cold, painful, pale or blue extremities after ergot exposure can signal limb-threatening ischemia, while confusion, seizures, chest pain, or severe abdominal symptoms can indicate systemic toxicity. The organism card identifies the fungal source; the Ergotism card covers diagnosis and emergency care.",
+            "id": "clinical-significance",
+            "title": "Clinical significance"
+          },
+          {
+            "content": "Food or agricultural investigations can identify the characteristic sclerotia and use microscopy, culture, chemistry, or molecular methods to confirm the fungus or its alkaloids. In a patient, diagnosis is primarily toxicologic and exposure-based; a human culture is not the usual test because ergotism results from preformed alkaloids rather than invasive fungal infection.",
+            "id": "diagnostic-identification",
+            "title": "Diagnostic identification"
+          },
+          {
+            "content": "Prevent exposure by inspecting and regulating grain, rejecting visibly contaminated lots, and using ergot-derived medicines only as prescribed with a complete interaction review. Standard Precautions are sufficient for patient care because ergotism is not contagious. Suspected contaminated food or feed should be preserved for public-health or toxicology evaluation rather than consumed.",
+            "id": "prevention-safety",
+            "title": "Prevention and safety"
+          },
+          {
+            "content": "Reviewed from NCBI Taxonomy for canonical species identity, NLM MeSH for the organism-ergotism association, and CDC foodborne-disease material for the toxin, food source, and clinical syndrome. No organism-wide treatment claim is inferred from the fungal identity.",
+            "id": "sources",
+            "title": "Sources"
+          }
+        ],
+        "studentFacing": true,
+        "summary": "Claviceps purpurea is the ergot fungus, an ascomycete mold that infects the flowering parts of rye and other grasses. It replaces grain with dark, hardened fungal structures called sclerotia. Those structures can contain ergot alkaloids; eating contaminated grain can cause ergotism, so the organism matters mainly as a toxin-producing food-safety hazard rather than a person-to-person infection.",
+        "taxonomy": {
+          "authority": "ncbi-taxonomy",
+          "authorityId": "5111",
+          "canonicalTaxonName": "Claviceps purpurea",
+          "lineage": [
+            {
+              "name": "Fungi",
+              "rank": "kingdom"
+            },
+            {
+              "name": "Ascomycota",
+              "rank": "phylum"
+            },
+            {
+              "name": "Hypocreales",
+              "rank": "order"
+            },
+            {
+              "name": "Clavicipitaceae",
+              "rank": "family"
+            },
+            {
+              "name": "Claviceps",
+              "rank": "genus"
+            },
+            {
+              "authorityId": "5111",
+              "name": "Claviceps purpurea",
+              "rank": "species"
+            }
+          ],
+          "nomenclatureStatus": "accepted",
+          "rank": "species",
+          "reviewDueAt": "2027-08-08",
+          "reviewNote": "NCBI Taxonomy identifies TaxID 5111 as the current species Claviceps purpurea and records ergot fungus as its common name.",
+          "reviewStatus": "REVIEWED_CURRENT",
+          "reviewedAt": "2026-08-08"
+        },
+        "traits": {
+          "cellMorphology": "mold",
+          "cellularity": "cellular",
+          "intracellularBehavior": "extracellular",
+          "motility": "nonmotile",
+          "oxygenRequirement": {
+            "reason": "The reviewed NCBI identity and ergotism evidence does not establish an organism-specific clinical oxygen classification, so ANI does not infer one from general fungal biology.",
+            "value": "unknown"
+          }
+        },
+        "type": "microbiology",
+        "typedAliases": [
+          {
+            "identity": true,
+            "kind": "abbreviation",
+            "value": "C. purpurea"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "ergot fungus"
+          },
+          {
+            "identity": true,
+            "kind": "taxonomic-synonym",
+            "value": "Sphacelia segetum"
+          },
+          {
+            "identity": true,
+            "kind": "former-scientific-name",
+            "value": "Sphaeria purpurea"
           }
         ]
       },
@@ -56050,6 +56451,7 @@
         ],
         "aliases": [
           "GAS",
+          "group A strep",
           "group A Streptococcus",
           "S. pyogenes"
         ],
@@ -56084,6 +56486,25 @@
             "targetKey": "collection:pathologyDiseases::title:scarlet fever",
             "targetKind": "disease",
             "targetName": "Scarlet fever"
+          },
+          {
+            "id": "microbiology:organism:streptococcus-pyogenes::associated-with-disease::70532daa8ae559e6aa01eb1ff4ca6ef95bed5627e4ddc04f6ebf4f2e8e164d83",
+            "inverseIndex": "has-microbiology-association",
+            "relationshipGroup": "disease-associations",
+            "relationshipIdentitySha256": "70532daa8ae559e6aa01eb1ff4ca6ef95bed5627e4ddc04f6ebf4f2e8e164d83",
+            "relationshipType": "associated-with-disease",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:organism:streptococcus-pyogenes",
+            "sourceKind": "organism",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:rheumatic fever",
+            "targetKind": "disease",
+            "targetName": "Rheumatic fever"
           },
           {
             "id": "microbiology:organism:streptococcus-pyogenes::detected-by::fe31fd0f6113ff0549c604bd125a873f7e82ff79517670ad0ab5adf4dbf3cfbc",
@@ -56217,7 +56638,7 @@
           "reviewedAt": "2026-08-01",
           "runtimeCollection": "clinicalReferenceEntries",
           "schemaVersion": "ani-microbiology-catalog-v4",
-          "sourceEntrySha256": "cf4a7e3514a9bb6ffba0f67cd77b602151e917169b26ff3c51e25a4a5940113b",
+          "sourceEntrySha256": "ee0622b0d2a4b1dad1d91868cba2418e0a20540b43af675773c5482970faafa1",
           "sourceKeys": [
             "cdc-group-a-strep",
             "ncbi-bacteriology",
@@ -56227,6 +56648,23 @@
         },
         "microbiologyKind": "organism",
         "microbiologyRelationships": [
+          {
+            "context": {
+              "scope": "Acute rheumatic fever is an immune-mediated complication that can follow group A streptococcal pharyngitis. The organism link explains the trigger; the disease card remains the authority for diagnostic criteria, manifestations, treatment, and nursing priorities."
+            },
+            "sourceKeys": [
+              "cdc-group-a-strep",
+              "ncbi-bacteriology",
+              "ncbi-taxonomy-browser"
+            ],
+            "target": {
+              "canonicalTitle": "Rheumatic fever",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Rheumatic fever"
+            },
+            "type": "associated-with-disease"
+          },
           {
             "context": {
               "scope": "Streptococcus pyogenes is a reviewed microbial association for this condition; the card's full differential and diagnostic criteria still govern interpretation."
@@ -56355,6 +56793,7 @@
         "searchTerms": [
           "GAS",
           "GAS pharyngitis",
+          "group A strep",
           "group A Streptococcus",
           "M protein",
           "rheumatic fever organism",
@@ -56447,6 +56886,11 @@
             "identity": true,
             "kind": "abbreviation",
             "value": "GAS"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "group A strep"
           },
           {
             "identity": true,
@@ -65384,6 +65828,11 @@
         "url": "https://www.cdc.gov/food-safety/about/index.html"
       },
       {
+        "key": "cdc-foodborne-ergotism",
+        "title": "CDC: Diseases Transmitted by Foods — Ergotism",
+        "url": "https://stacks.cdc.gov/view/cdc/21855/cdc_21855_DS1.pdf"
+      },
+      {
         "key": "cdc-foodborne-outbreaks",
         "title": "CDC About Foodborne Outbreaks",
         "url": "https://www.cdc.gov/foodborne-outbreaks/about/index.html"
@@ -65889,9 +66338,19 @@
         "url": "https://www.ncbi.nlm.nih.gov/books/NBK8091/"
       },
       {
+        "key": "ncbi-ergotism-review",
+        "title": "NCBI PMC: Ergotism case report and review",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5186301/"
+      },
+      {
         "key": "ncbi-lemierre-syndrome",
         "title": "NCBI Bookshelf: Lemierre Syndrome",
         "url": "https://www.ncbi.nlm.nih.gov/books/NBK499846/"
+      },
+      {
+        "key": "ncbi-mesh-claviceps",
+        "title": "NLM MeSH: Claviceps",
+        "url": "https://www.ncbi.nlm.nih.gov/mesh/68002967"
       },
       {
         "key": "ncbi-moraxella-chapter",
@@ -65952,6 +66411,11 @@
         "key": "ncbi-taxonomy-cauris",
         "title": "NCBI Taxonomy Browser: Candida auris (TaxID 498019)",
         "url": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=498019&mode=Info"
+      },
+      {
+        "key": "ncbi-taxonomy-claviceps-purpurea",
+        "title": "NCBI Taxonomy: Claviceps purpurea (TaxID 5111)",
+        "url": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=5111&mode=Info"
       },
       {
         "key": "ncbi-taxonomy-e-coli",

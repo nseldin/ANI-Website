@@ -5,7 +5,7 @@
   "schemaVersion": "ani-pathology-reviewed-runtime-v1",
   "builderVersion": "ani-pathology-builder-2026-08-02.2",
   "domainVersion": "2026-08-02.3",
-  "sourceSha256": "1823b778cb3d0a6012254350641016c41f0f8c6375adff25e2e3576a3c459bcc",
+  "sourceSha256": "a596cb3decb5b0caf1815d1f351fa34a26d33c877baaf53c949d47c277022779",
   "sourceReferences": [
     {
       "key": "ninds-migraine",
@@ -585,6 +585,88 @@
         "contraindications",
         "safetyConsiderations",
         "prognosis"
+      ]
+    },
+    {
+      "key": "cdc-foodborne-ergotism",
+      "label": "Diseases Transmitted by Foods: Ergotism",
+      "authority": "Centers for Disease Control and Prevention",
+      "url": "https://stacks.cdc.gov/view/cdc/21855/cdc_21855_DS1.pdf",
+      "fieldsSupported": [
+        "definition",
+        "etiology",
+        "pathophysiology",
+        "signsSymptoms",
+        "exposure",
+        "prevention"
+      ]
+    },
+    {
+      "key": "ncbi-ergotism-review",
+      "label": "Ergotism: Case Report and Review of the Literature",
+      "authority": "NCBI PubMed Central review authors",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5186301/",
+      "fieldsSupported": [
+        "pathophysiology",
+        "medication exposure",
+        "diagnostics",
+        "treatments",
+        "complications",
+        "prognosis"
+      ]
+    },
+    {
+      "key": "cdc-vte-about",
+      "label": "About Venous Thromboembolism",
+      "authority": "Centers for Disease Control and Prevention",
+      "url": "https://www.cdc.gov/blood-clots/about/",
+      "fieldsSupported": [
+        "definition",
+        "classification",
+        "signsSymptoms",
+        "riskFactors",
+        "complications",
+        "prevention"
+      ]
+    },
+    {
+      "key": "cdc-vte-testing",
+      "label": "Testing and Diagnosis for Venous Thromboembolism",
+      "authority": "Centers for Disease Control and Prevention",
+      "url": "https://www.cdc.gov/blood-clots/testing-diagnosis/index.html",
+      "fieldsSupported": [
+        "diagnostics",
+        "differential",
+        "treatments",
+        "medications",
+        "procedures",
+        "safetyConsiderations"
+      ]
+    },
+    {
+      "key": "ninds-tbi-cte",
+      "label": "Traumatic Brain Injury and Chronic Traumatic Encephalopathy",
+      "authority": "National Institute of Neurological Disorders and Stroke",
+      "url": "https://www.ninds.nih.gov/health-information/disorders/traumatic-brain-injury-tbi",
+      "fieldsSupported": [
+        "definition",
+        "riskFactors",
+        "signsSymptoms",
+        "prevention",
+        "prognosis"
+      ]
+    },
+    {
+      "key": "ninds-diagnose-cte",
+      "label": "The DIAGNOSE-CTE Research Project",
+      "authority": "National Institute of Neurological Disorders and Stroke",
+      "url": "https://www.ninds.nih.gov/health-information/clinical-trials/diagnose-cte-research-project",
+      "fieldsSupported": [
+        "pathology",
+        "pathophysiology",
+        "diagnostic limitations",
+        "biomarker limitations",
+        "research status"
       ]
     }
   ],
@@ -3675,6 +3757,543 @@
       ],
       "entryType": "disease",
       "directTargetId": "disease.primary-sclerosing-cholangitis",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-02.3"
+    },
+    {
+      "id": "disease.ergotism",
+      "name": "Ergotism",
+      "displayName": "Ergotism",
+      "category": "Toxicology",
+      "aliases": [
+        "ergot poisoning",
+        "ergot alkaloid toxicity",
+        "Saint Anthony's fire",
+        "St. Anthony's fire",
+        "ergot intoxication"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-08",
+      "plainLanguage": "Ergotism is poisoning from ergot alkaloids in contaminated grain or from too much exposure to an ergot medicine. These chemicals can clamp blood vessels shut and can also disturb the brain and nervous system.",
+      "whyItMatters": "Cold, painful, pale, blue, or numb fingers or toes after ergot exposure can mean limb-threatening loss of blood flow. Chest pain, severe abdominal pain, confusion, or seizures can signal dangerous systemic toxicity and require emergency care.",
+      "plainLanguageGlosses": [
+        {
+          "term": "ischemia",
+          "plainLanguage": "too little blood and oxygen reaching tissue",
+          "sourceKeys": [
+            "cdc-foodborne-ergotism",
+            "ncbi-ergotism-review"
+          ]
+        },
+        {
+          "term": "vasoconstriction",
+          "plainLanguage": "tightening and narrowing of blood vessels",
+          "sourceKeys": [
+            "ncbi-ergotism-review"
+          ]
+        },
+        {
+          "term": "gangrene",
+          "plainLanguage": "tissue death caused by critically reduced blood flow",
+          "sourceKeys": [
+            "cdc-foodborne-ergotism"
+          ]
+        }
+      ],
+      "definition": "Ergotism is a toxic syndrome caused by ergot alkaloids, either after eating grain contaminated by Claviceps fungi—classically Claviceps purpurea on rye—or after excessive or interacting exposure to an ergot-derived medicine. It has vascular and neurologic patterns that can overlap, and it is poisoning rather than invasive fungal infection.",
+      "pathology": "Ergot alkaloids strongly stimulate or block adrenergic, serotonin, and dopamine receptors depending on the compound and dose. Prolonged arterial spasm sharply reduces tissue perfusion, producing ischemia, nerve pain, cyanosis, ulcers, and possible gangrene. Central receptor effects can produce agitation, hallucinations, muscle spasms, convulsions, and autonomic instability.",
+      "pathophysiology": [
+        "Sustained vasoconstriction narrows medium and small arteries. Distal tissues have little reserve, so fingers and toes become cold, painful, pale or blue before irreversible necrosis develops; the same process can threaten bowel, heart, kidney, or brain circulation.",
+        "Ergot alkaloids also act in the central nervous system, explaining nausea, vomiting, confusion, hallucinations, tremor, spasms, and seizures. Medicinal toxicity can be intensified when a strong metabolic inhibitor raises ergot concentrations."
+      ],
+      "etiology": "Foodborne ergotism follows ingestion of cereal grain contaminated with ergot sclerotia, the dark hardened fungal structures that contain alkaloids. Medicinal ergotism follows excessive dosing, prolonged exposure, accidental overdose, or a drug interaction that increases an ergot medicine's concentration. The toxic alkaloid—not fungal invasion of the patient—is the direct cause.",
+      "riskFactors": [
+        "Use of ergotamine, dihydroergotamine, ergonovine, methylergonovine, or another ergot-derived medicine without complete dose and interaction review",
+        "Concurrent strong metabolic inhibitors that can markedly increase exposure to an ergot medicine",
+        "Peripheral arterial disease, smoking, severe hypertension, or another condition that reduces vascular reserve",
+        "Consumption of poorly inspected rye or other grain contaminated with Claviceps sclerotia",
+        "Delayed recognition of new distal pain, coldness, numbness, color change, or weak pulses after exposure"
+      ],
+      "signsSymptoms": [
+        "Burning or severe limb pain, cold hands or feet, pallor, cyanosis, numbness, tingling, weak or absent distal pulses, delayed capillary refill, skin breakdown, or gangrene",
+        "Abdominal cramping, nausea, vomiting, or diarrhea",
+        "Headache, dizziness, agitation, confusion, hallucinations, tremor, painful muscle spasm, or seizures",
+        "Chest pain, dyspnea, severe hypertension or hypotension, or evidence of ischemia in another organ"
+      ],
+      "diagnostics": [
+        "Establish the exact exposure: product, formulation, dose, timing, co-medications, supplements, and contaminated-food possibility. Call Poison Control or a medical toxicologist early.",
+        "Perform serial neurovascular examination of every threatened limb, including color, temperature, sensation, motor function, capillary refill, pulses, and Doppler signals.",
+        "Use vascular ultrasound, CT angiography, or catheter angiography when the examination suggests significant arterial narrowing or tissue threat; imaging choice follows urgency and local vascular expertise.",
+        "Preserve suspected grain, medicine packaging, and tablets for toxicology or public-health investigation. Routine fungal culture of the patient does not diagnose this preformed-toxin syndrome."
+      ],
+      "labs": [
+        "There is no widely available single blood test that reliably confirms or excludes ergotism; diagnosis is clinical and exposure based.",
+        "CBC, electrolytes, glucose, creatinine, liver tests, creatine kinase, lactate, urinalysis, coagulation studies, and blood gas are selected to detect dehydration, rhabdomyolysis, acidosis, organ ischemia, or treatment risk.",
+        "ECG and cardiac biomarkers are indicated when chest pain, dysrhythmia, severe blood-pressure change, or cardiac ischemia is possible."
+      ],
+      "assessment": "Treat ergot exposure plus distal pain, coldness, color change, numbness, or pulse loss as a time-sensitive vascular emergency. Document the medication and interaction timeline, all limb findings, pain, neurologic status, temperature, blood pressure, ECG, urine output, abdominal findings, pregnancy context, and progression after the suspected source is stopped.",
+      "differential": "Differentiate ergotism from acute arterial embolism or thrombosis, vasopressor extravasation, severe Raynaud phenomenon, thromboangiitis obliterans, vasculitis, antiphospholipid syndrome, sepsis with disseminated intravascular coagulation, frostbite, cocaine or amphetamine toxicity, serotonin toxicity, and other seizure or hallucinogen exposures. A positive food history does not replace objective vascular assessment.",
+      "treatments": [
+        "Stop the suspected ergot source immediately and do not administer another ergot dose. Contact Poison Control or medical toxicology and involve vascular surgery early when perfusion is impaired.",
+        "Support airway, breathing, circulation, temperature, glucose, fluids, electrolytes, pain control, and seizure care. Benzodiazepines may be used for toxin-associated seizures or severe agitation under an emergency protocol.",
+        "Specialists may use monitored vasodilator therapy for severe vasospasm, but there is no single universally accepted antidote or one regimen appropriate for every ergot alkaloid and organ pattern.",
+        "Treat compartment syndrome, rhabdomyolysis, kidney injury, myocardial or mesenteric ischemia, necrotic tissue, and infection as separate emergencies; irreversible ischemia may require revascularization or amputation."
+      ],
+      "contraindications": [
+        "Do not give additional ergot alkaloid or another vasoconstricting medicine while ergot toxicity is suspected unless a toxicology or vascular specialist explicitly determines that it is necessary.",
+        "Do not delay vascular consultation while waiting for a specialized toxin assay or for skin necrosis to become obvious.",
+        "Do not treat ergotism as invasive fungal disease; empiric antifungal therapy does not reverse preformed alkaloid toxicity.",
+        "Do not apply heat directly to an insensate ischemic limb because burns can occur; protect and gently maintain warmth according to vascular guidance."
+      ],
+      "safetyConsiderations": [
+        "Perfusion can worsen after the exposure has stopped because receptor effects and tissue injury may persist.",
+        "Medication reconciliation must include macrolide antibiotics, azole antifungals, HIV antivirals, and other interaction risks whenever an ergot medicine is used.",
+        "Pain that suddenly improves is not reassuring if sensation and pulses also disappear; nerve and tissue death can reduce pain.",
+        "Pregnancy changes both ergot-medication indication and fetal or uterine risk and requires immediate obstetric-toxicology coordination."
+      ],
+      "nursingPriorities": [
+        "Stop exposure, preserve the product or food evidence, notify the provider and Poison Control, and obtain the exact dose and interaction history.",
+        "Repeat bilateral neurovascular checks and mark or photograph color-change boundaries according to policy; escalate any worsening pulse, temperature, sensation, movement, capillary refill, or pain.",
+        "Maintain continuous cardiac and blood-pressure monitoring in significant toxicity and trend urine output, lactate, creatine kinase, renal function, temperature, and mental status.",
+        "Protect ischemic limbs from pressure, trauma, extreme heat, and cold; keep the patient NPO when urgent vascular intervention may be needed."
+      ],
+      "redFlags": [
+        "Cold, pale, blue, numb, weak, or pulseless extremity after ergot exposure",
+        "Rapidly increasing pain, pain with passive stretch, swelling, or tense compartments",
+        "Chest pain, severe abdominal pain, focal neurologic deficit, seizure, severe confusion, or loss of consciousness",
+        "Severe hypertension, hypotension, dysrhythmia, oliguria, rising lactate, or rhabdomyolysis"
+      ],
+      "complications": [
+        "Irreversible limb ischemia, gangrene, secondary infection, and amputation",
+        "Myocardial, cerebral, renal, or mesenteric ischemia and infarction",
+        "Seizures, aspiration, trauma, rhabdomyolysis, hyperthermia, and acute kidney injury",
+        "Pregnancy loss or uterine complications depending on the alkaloid and exposure context"
+      ],
+      "prognosis": "Early recognition, exposure cessation, and restoration of perfusion can prevent permanent injury. Prognosis worsens when distal pulse loss, tissue necrosis, major-organ ischemia, prolonged seizures, or delayed presentation is present. Neurologic symptoms may resolve, while established gangrene is irreversible.",
+      "prevention": "Use only the prescribed ergot formulation and dose, screen every new medicine for interaction, and teach patients to stop and seek help for new coldness, numbness, color change, or severe pain. Food prevention depends on agricultural monitoring, grain cleaning, and removal of contaminated lots rather than home treatment of visibly affected grain.",
+      "patientEducation": [
+        "Ergotism is poisoning, not a contagious fungal infection. The danger comes from alkaloids made by the fungus or contained in an ergot medicine.",
+        "Do not take another dose while severe limb, chest, abdominal, or neurologic symptoms are being evaluated.",
+        "Bring every prescription, nonprescription product, supplement, and the suspected food or package to the evaluation.",
+        "Call emergency services for a cold or blue limb, loss of pulse or feeling, chest pain, severe abdominal pain, confusion, fainting, or seizure."
+      ],
+      "specialPopulations": [
+        "Pregnant or postpartum patients need immediate obstetric consultation because ergot derivatives affect uterine and vascular tone.",
+        "Children may deteriorate after a smaller absolute exposure and require poison-center-directed observation.",
+        "Older adults and people with peripheral vascular, coronary, cerebrovascular, renal, or hepatic disease have less reserve and may experience more severe complications."
+      ],
+      "nclexTraps": [
+        "Ergotism is caused by ergot alkaloid toxicity; antifungal therapy does not reverse the toxin.",
+        "The priority finding is threatened perfusion: coldness, pallor or cyanosis, numbness, delayed refill, and weak or absent pulses.",
+        "A medication can cause ergotism even without contaminated grain, especially when an interaction sharply raises drug exposure.",
+        "Do not wait for gangrene before escalating; the reversible window comes before tissue death."
+      ],
+      "relatedTopics": [
+        "Claviceps purpurea",
+        "Ergotamine",
+        "Methylergonovine",
+        "Acute limb ischemia",
+        "Rhabdomyolysis",
+        "Poison Control"
+      ],
+      "sourceKeys": [
+        "cdc-foodborne-ergotism",
+        "ncbi-ergotism-review"
+      ],
+      "sourceNote": "Original ANI synthesis based on CDC foodborne-ergotism material and an NCBI-indexed clinical review; no source prose was copied.",
+      "provenance": [
+        {
+          "authority": "Centers for Disease Control and Prevention",
+          "url": "https://stacks.cdc.gov/view/cdc/21855/cdc_21855_DS1.pdf",
+          "documentVersion": "CDC foodborne-disease reference accessed 2026-08-08",
+          "fieldsSupported": [
+            "definition",
+            "etiology",
+            "pathophysiology",
+            "signsSymptoms",
+            "exposure",
+            "prevention"
+          ]
+        },
+        {
+          "authority": "NCBI PubMed Central review authors",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5186301/",
+          "documentVersion": "Clinical review accessed 2026-08-08",
+          "fieldsSupported": [
+            "pathophysiology",
+            "medication exposure",
+            "diagnostics",
+            "treatments",
+            "complications",
+            "prognosis"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.ergotism",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-02.3"
+    },
+    {
+      "id": "disease.venous-thromboembolism",
+      "name": "Venous thromboembolism",
+      "displayName": "Venous thromboembolism (VTE)",
+      "category": "Cardiovascular and Vascular Medicine",
+      "aliases": [
+        "VTE",
+        "venous thromboembolic disease",
+        "venous blood clot",
+        "deep vein thrombosis and pulmonary embolism",
+        "DVT and PE"
+      ],
+      "preferredBareAliases": [
+        "VTE"
+      ],
+      "preferredBareAliasRationale": "VTE is the standard clinical abbreviation for the umbrella condition that includes both deep vein thrombosis and pulmonary embolism; routing it only to DVT hides the potentially fatal pulmonary component.",
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-08",
+      "plainLanguage": "Venous thromboembolism means a blood clot in a deep vein or a clot that has traveled to the lungs. It includes deep vein thrombosis (DVT) and pulmonary embolism (PE).",
+      "whyItMatters": "DVT needs prompt treatment because part of the clot can break loose and become a pulmonary embolism. Sudden shortness of breath, chest pain, coughing blood, fainting, or shock may be PE and requires emergency care.",
+      "plainLanguageGlosses": [
+        {
+          "term": "thrombus",
+          "plainLanguage": "a blood clot that forms inside a vessel",
+          "sourceKeys": [
+            "cdc-vte-about"
+          ]
+        },
+        {
+          "term": "embolus",
+          "plainLanguage": "material, often part of a clot, that travels and blocks another vessel",
+          "sourceKeys": [
+            "cdc-vte-about"
+          ]
+        },
+        {
+          "term": "anticoagulant",
+          "plainLanguage": "a medicine that reduces the blood's ability to form or extend clots",
+          "sourceKeys": [
+            "cdc-vte-testing"
+          ]
+        }
+      ],
+      "definition": "Venous thromboembolism is the umbrella disorder that includes deep vein thrombosis, in which a thrombus forms in a deep vein, and pulmonary embolism, in which clot material travels to and blocks pulmonary arteries. DVT most often begins in a leg but may occur in the pelvis or arm; PE can abruptly impair oxygenation and right-heart circulation and can be fatal.",
+      "pathology": "Venous stasis, endothelial injury, and hypercoagulability—the three parts of Virchow's triad—favor fibrin-rich clot formation in low-pressure veins. A growing DVT obstructs venous return and causes swelling or pain. If a fragment embolizes to the lungs, it raises pulmonary vascular resistance, worsens ventilation-perfusion matching, and may cause right-ventricular failure and shock.",
+      "pathophysiology": [
+        "Immobility slows venous flow, surgery or trauma injures vascular surfaces, and cancer, estrogen exposure, pregnancy, inflammation, or inherited thrombophilia can shift coagulation toward clotting. Multiple risks often combine.",
+        "A pulmonary embolus blocks perfusion to ventilated lung, causing dead-space ventilation and hypoxemia. A large clot burden can abruptly overload the right ventricle, reduce left-heart filling, lower cardiac output, and cause obstructive shock."
+      ],
+      "etiology": "VTE may be provoked by a temporary factor such as surgery, trauma, hospitalization, immobility, pregnancy, postpartum state, or estrogen therapy; associated with persistent risks such as active cancer or chronic inflammatory disease; or unprovoked when no major trigger is found. Classification matters because recurrence risk and anticoagulation duration differ.",
+      "riskFactors": [
+        "Prior VTE, known thrombophilia, active cancer, major surgery, trauma, fracture, hospitalization, paralysis, or prolonged immobility",
+        "Pregnancy and postpartum state, estrogen-containing contraception or hormone therapy, and selected fertility treatments",
+        "Increasing age, obesity, smoking, central venous catheter, heart failure, inflammatory disease, nephrotic syndrome, and severe infection",
+        "Long travel or restricted mobility, especially when combined with another risk",
+        "Family history of VTE or an apparently unprovoked event at a young age"
+      ],
+      "signsSymptoms": [
+        "DVT: unilateral limb swelling, pain or tenderness, warmth, erythema or discoloration, increased circumference, or prominent superficial veins; some DVTs are asymptomatic",
+        "PE: sudden dyspnea, pleuritic chest pain, tachypnea, tachycardia, cough, hemoptysis, anxiety, lightheadedness, syncope, hypoxemia, or unexplained decline",
+        "Massive or high-risk PE: hypotension, altered mental status, cyanosis, elevated neck veins, right-heart strain, pulseless electrical activity, or shock",
+        "Upper-extremity DVT: arm or neck swelling, discomfort, venous distention, or catheter dysfunction"
+      ],
+      "diagnostics": [
+        "Estimate pretest probability from symptoms, examination, risk factors, and a validated clinical pathway before interpreting D-dimer or imaging.",
+        "Compression duplex ultrasonography is the standard first-line imaging test for suspected lower-extremity DVT; serial imaging may be needed when initial findings and clinical probability disagree.",
+        "CT pulmonary angiography is commonly used for PE. Ventilation-perfusion imaging, ultrasound evidence, echocardiography, or other tests are selected when contrast, radiation, pregnancy, instability, or another limitation changes the pathway.",
+        "An unstable patient with possible PE needs immediate bedside cardiopulmonary assessment and emergency imaging or treatment planning; do not route the evaluation as routine leg pain."
+      ],
+      "labs": [
+        "A negative high-sensitivity D-dimer can help exclude VTE in an appropriate low- or intermediate-probability pathway; a positive result is nonspecific and does not diagnose a clot.",
+        "CBC, creatinine, liver tests, PT/INR, aPTT, pregnancy testing, and type and screen support anticoagulant choice, bleeding-risk assessment, and procedures.",
+        "Troponin, natriuretic peptide, lactate, blood gas, and oxygenation help risk-stratify PE but do not replace imaging or establish the diagnosis alone."
+      ],
+      "assessment": "Assess airway, breathing, circulation, oxygenation, chest symptoms, syncope, hemodynamics, and bleeding first. Compare both limbs, measure swelling consistently, and document color, temperature, tenderness, pulses, mobility, catheter status, recent surgery or immobility, cancer, pregnancy, hormones, prior VTE, medications, and contraindications to anticoagulation or thrombolysis.",
+      "differential": "For DVT, consider cellulitis, muscle or tendon injury, superficial thrombophlebitis, ruptured Baker cyst, lymphedema, chronic venous insufficiency, hematoma, and compartment syndrome. For PE, consider acute coronary syndrome, aortic dissection, pneumonia, pneumothorax, heart failure, asthma or COPD exacerbation, pericarditis, arrhythmia, and anxiety only after dangerous cardiopulmonary causes are assessed.",
+      "treatments": [
+        "Anticoagulation is the main treatment for most confirmed DVT and PE. Depending on context, options include unfractionated heparin, low-molecular-weight heparin such as enoxaparin, fondaparinux, warfarin, apixaban, rivaroxaban, dabigatran, or edoxaban; selection depends on stability, kidney and liver function, cancer, pregnancy, interactions, bleeding risk, and procedure plans.",
+        "Anticoagulants prevent clot extension and new clots while the body gradually remodels the existing clot; they do not instantly dissolve it.",
+        "Systemic thrombolysis, catheter-directed therapy, thrombectomy, or surgical embolectomy is reserved for selected severe or limb- or life-threatening presentations because reperfusion can cause major bleeding.",
+        "An inferior vena cava filter may be used when anticoagulation is contraindicated or inadequate in selected patients; it does not treat the existing clot and can create later complications."
+      ],
+      "contraindications": [
+        "Active major bleeding or another absolute contraindication requires immediate specialist selection of an alternative plan rather than routine anticoagulation.",
+        "Thrombolysis has stricter intracranial, bleeding, surgery, trauma, and blood-pressure exclusions than standard anticoagulation and is not routine treatment for stable VTE.",
+        "Direct oral anticoagulants are not interchangeable across pregnancy, severe renal or hepatic disease, mechanical heart valves, antiphospholipid syndrome, cancer, and interacting-drug contexts.",
+        "Do not massage a limb with suspected acute DVT, and do not use Homan sign to confirm or exclude DVT because it is unreliable."
+      ],
+      "safetyConsiderations": [
+        "Every antithrombotic plan balances recurrence and embolization risk against bleeding risk; new neurologic symptoms, hypotension, hematemesis, melena, hematuria, or rapidly falling hemoglobin require urgent review.",
+        "Dose and timing must account for renal function, body size, neuraxial procedures, surgery, missed doses, and interacting antiplatelet or anti-inflammatory drugs.",
+        "Oxygen saturation may be normal in PE, and leg examination may be normal; do not use one reassuring finding to exclude disease.",
+        "A new DVT or PE can signal occult cancer or another persistent risk, but testing should follow an evidence-based individualized plan rather than indiscriminate screening."
+      ],
+      "nursingPriorities": [
+        "Escalate sudden dyspnea, chest pain, hemoptysis, syncope, new hypoxemia, hypotension, or unexplained tachycardia as possible PE and support oxygenation and circulation.",
+        "Before anticoagulation, obtain the ordered baseline CBC, renal and hepatic data, coagulation studies, weight, pregnancy status, bleeding history, medication list, and timing of procedures or neuraxial catheters.",
+        "Administer anticoagulants at exact times, verify dose transitions and overlaps, avoid duplicate therapy, and teach what to do after a missed dose without inventing a universal instruction.",
+        "Trend limb findings, respiratory status, hemoglobin, platelets, renal function, bleeding, pain, mobility, and adherence; use fall and bleeding precautions matched to risk."
+      ],
+      "redFlags": [
+        "Sudden dyspnea, pleuritic chest pain, hemoptysis, syncope, cyanosis, hypotension, or shock",
+        "Rapidly worsening limb swelling or pain, threatened circulation, phlegmasia, or compartment findings",
+        "New severe headache, focal neurologic deficit, confusion, GI bleeding, uncontrolled wound bleeding, or hemodynamic decline during anticoagulation",
+        "Platelet fall with new thrombosis during heparin exposure, suggesting heparin-induced thrombocytopenia"
+      ],
+      "complications": [
+        "Pulmonary embolism, recurrent VTE, obstructive shock, cardiac arrest, and death",
+        "Post-thrombotic syndrome with chronic pain, edema, skin change, and ulceration",
+        "Chronic thromboembolic pulmonary hypertension and persistent exercise limitation",
+        "Major bleeding, heparin-induced thrombocytopenia, drug interaction, and procedure-related harm"
+      ],
+      "prognosis": "Prompt diagnosis and effective anticoagulation greatly reduce clot extension and recurrence. Prognosis depends on PE hemodynamics, clot burden, cardiopulmonary reserve, cancer or persistent risks, bleeding, and adherence. Some patients recover fully, while others develop post-thrombotic syndrome or chronic thromboembolic pulmonary hypertension.",
+      "prevention": "Use risk-based hospital prophylaxis, early mobilization, appropriate mechanical devices, hydration and movement during prolonged travel, perioperative plans, and individualized management of estrogen, pregnancy, cancer, and prior VTE. Preventive anticoagulation must be prescribed rather than self-started because bleeding risk and dose vary.",
+      "patientEducation": [
+        "VTE includes both DVT and PE. A leg clot can travel to the lungs even if leg symptoms seem mild.",
+        "Take anticoagulants exactly as directed and ask before using aspirin, NSAIDs, supplements, or a new prescription that can increase bleeding or change drug levels.",
+        "Keep moving as advised, know the plan for travel and procedures, and do not stop anticoagulation because bruising occurs without contacting the treating team.",
+        "Call emergency services for sudden breathlessness, chest pain, coughing blood, fainting, or new severe neurologic symptoms."
+      ],
+      "specialPopulations": [
+        "Pregnancy and postpartum VTE require obstetric and hematology coordination; medication and imaging choices differ from nonpregnant care.",
+        "Cancer-associated thrombosis requires attention to tumor site, bleeding, thrombocytopenia, procedures, drug interactions, and goals of care.",
+        "Children and adolescents need pediatric hematology assessment for provoking factors, catheters, congenital disease, and weight-based therapy.",
+        "Older adults and patients with renal or hepatic impairment have increased bleeding and accumulation risk and require close dose and fall assessment."
+      ],
+      "nclexTraps": [
+        "VTE is the umbrella; DVT and PE are components, not synonyms for only one another.",
+        "A positive D-dimer is not diagnostic, and a negative result is useful only inside an appropriate pretest-probability pathway.",
+        "Anticoagulants prevent extension and recurrence; thrombolytics actively dissolve clot but carry greater bleeding risk and are reserved for selected severe cases.",
+        "Homan sign is unreliable and should not guide the diagnosis or exclusion of DVT."
+      ],
+      "relatedTopics": [
+        "Deep vein thrombosis",
+        "Pulmonary embolism",
+        "Virchow triad",
+        "Anticoagulants",
+        "D-dimer",
+        "Heparin-induced thrombocytopenia"
+      ],
+      "sourceKeys": [
+        "cdc-vte-about",
+        "cdc-vte-testing"
+      ],
+      "sourceNote": "Original ANI synthesis based on current CDC VTE overview and diagnostic-treatment material; no source prose was copied.",
+      "provenance": [
+        {
+          "authority": "Centers for Disease Control and Prevention",
+          "url": "https://www.cdc.gov/blood-clots/about/",
+          "documentVersion": "Updated 03/2025; accessed 2026-08-08",
+          "fieldsSupported": [
+            "definition",
+            "classification",
+            "signsSymptoms",
+            "riskFactors",
+            "complications",
+            "prevention"
+          ]
+        },
+        {
+          "authority": "Centers for Disease Control and Prevention",
+          "url": "https://www.cdc.gov/blood-clots/testing-diagnosis/index.html",
+          "documentVersion": "Updated 05/2024; accessed 2026-08-08",
+          "fieldsSupported": [
+            "diagnostics",
+            "differential",
+            "treatments",
+            "medications",
+            "procedures",
+            "safetyConsiderations"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.venous-thromboembolism",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-02.3"
+    },
+    {
+      "id": "disease.chronic-traumatic-encephalopathy",
+      "name": "Chronic traumatic encephalopathy",
+      "displayName": "Chronic traumatic encephalopathy (CTE)",
+      "category": "Neurology",
+      "aliases": [
+        "CTE",
+        "chronic traumatic encephalopathy syndrome",
+        "traumatic encephalopathy"
+      ],
+      "preferredBareAliases": [
+        "CTE"
+      ],
+      "preferredBareAliasRationale": "CTE is the standard clinical abbreviation for chronic traumatic encephalopathy and should resolve to this neurologic disease rather than the unrelated diagnostic abbreviation CT enterography.",
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-08",
+      "plainLanguage": "Chronic traumatic encephalopathy is a progressive brain disease linked to substantial exposure to repeated head impacts. It is defined by a specific pattern of abnormal tau protein in brain tissue.",
+      "whyItMatters": "Changes in memory, judgment, mood, impulse control, speech, or movement after years of repeated head impacts need careful evaluation, but those symptoms do not prove CTE. Treatable causes, suicide risk, substance effects, sleep disorders, and other dementias must not be missed.",
+      "plainLanguageGlosses": [
+        {
+          "term": "neurodegenerative",
+          "plainLanguage": "causing brain cells and networks to progressively lose function",
+          "sourceKeys": [
+            "ninds-diagnose-cte"
+          ]
+        },
+        {
+          "term": "tauopathy",
+          "plainLanguage": "a disease with abnormal deposits of tau protein in the nervous system",
+          "sourceKeys": [
+            "ninds-diagnose-cte"
+          ]
+        },
+        {
+          "term": "postmortem",
+          "plainLanguage": "examined after death",
+          "sourceKeys": [
+            "ninds-diagnose-cte"
+          ]
+        }
+      ],
+      "definition": "Chronic traumatic encephalopathy is a progressive neurodegenerative tauopathy associated with substantial exposure to repetitive head impacts. Its defining diagnosis is neuropathologic: abnormal phosphorylated tau is found in a characteristic pattern in brain tissue. No symptom, scan, blood test, concussion count, or exposure history currently proves CTE during life.",
+      "pathology": "The recognized lesion is perivascular accumulation of abnormal phosphorylated tau in neurons, with or without astrocytes, at the depths of cortical sulci. Disease can extend through connected brain regions and may be accompanied by brain atrophy and other protein abnormalities. This pattern differs from Alzheimer disease and other tauopathies, which is why generic cognitive decline cannot establish CTE.",
+      "pathophysiology": [
+        "Repeated mechanical strain may injure axons, small vessels, and cellular repair systems. In a susceptible person, abnormal tau can accumulate and disrupt synapses, transport, and network function over years; exposure is a risk condition but is not sufficient to predict who will develop the pathology.",
+        "Different brain networks support judgment, emotion, memory, speech, and movement. Progressive injury can therefore produce mixed cognitive, behavioral, mood, and motor findings, but the same findings occur in many treatable or better-defined disorders."
+      ],
+      "etiology": "The major recognized exposure is repetitive head impact, which may include symptomatic concussions and impacts that caused no immediate symptoms. Risk appears related to cumulative exposure, but an exact safe or disease-producing threshold is not established, and most exposed people cannot be assumed to have CTE. Genetics, age, vascular health, substance use, sleep, and other injuries may modify outcome.",
+      "riskFactors": [
+        "Years of repetitive head impacts in contact or collision sports, combat, occupational exposure, interpersonal violence, or repeated accidents",
+        "Longer cumulative exposure and continued play or duty before complete recovery from injury",
+        "Coexisting vascular disease, sleep disorder, substance use, depression, PTSD, or additional neurologic injury that can worsen symptoms even when CTE is unconfirmed",
+        "Lack of recognition, reporting, removal from exposure, or appropriate recovery after a suspected concussion"
+      ],
+      "signsSymptoms": [
+        "Progressive problems with memory, attention, planning, judgment, organization, or communication",
+        "Depression, irritability, impulsivity, aggression, apathy, anxiety, emotional instability, or suicidal thinking",
+        "Gait imbalance, poor coordination, tremor, slowed movement, dysarthria, or other motor change",
+        "Functional decline in work, finances, relationships, driving, medication management, or self-care",
+        "Symptoms may begin years after exposure, but none is specific enough to diagnose CTE"
+      ],
+      "diagnostics": [
+        "Obtain a detailed lifetime head-impact and concussion history, symptom timeline, collateral history, neurologic and mental-status examination, functional assessment, medication and substance review, sleep history, and suicide-risk assessment.",
+        "Use neuropsychological testing to characterize cognitive strengths and weaknesses and track change; it does not by itself identify the tissue pathology.",
+        "MRI, laboratory testing, sleep studies, EEG, genetic testing, or other studies are chosen to identify treatable alternatives and comorbidities. No currently available routine scan or fluid biomarker definitively diagnoses CTE during life.",
+        "Traumatic encephalopathy syndrome is a proposed clinical research construct for symptoms in an exposed person; it is not identical to postmortem-confirmed CTE."
+      ],
+      "labs": [
+        "There is no validated clinical blood or cerebrospinal-fluid test that confirms CTE.",
+        "CBC, metabolic studies, thyroid testing, vitamin B12, infectious testing, toxicology, and other studies are selected to evaluate reversible cognitive, mood, or motor causes.",
+        "Research tau imaging and fluid biomarkers remain investigational and should not be presented as routine confirmation."
+      ],
+      "assessment": "Assess current safety before assigning a cause: suicidal or violent thoughts, impulsivity, access to lethal means, psychosis, intoxication, driving, falls, medication errors, financial exploitation, caregiver stress, and ability to perform daily activities. Document exposure separately from symptoms so an athletic or military history does not automatically become the diagnosis.",
+      "differential": "Differentiate possible CTE-related illness from Alzheimer disease, frontotemporal dementia, Lewy body disease, vascular cognitive impairment, Parkinsonian disorders, depression, bipolar disorder, PTSD, substance- or medication-induced symptoms, sleep apnea, endocrine or nutritional disease, seizure disorder, normal-pressure hydrocephalus, brain tumor, and persistent symptoms after a recent TBI. Several can coexist.",
+      "treatments": [
+        "No medication or procedure has been proved to remove CTE pathology or stop its progression. Treatment targets the person's actual symptoms, comorbidities, function, and safety rather than an unconfirmed label.",
+        "Use evidence-based treatment for depression, anxiety, PTSD, sleep disorder, pain, substance use, headache, or movement symptoms, with careful monitoring for cognition, falls, impulsivity, and drug interactions.",
+        "Cognitive rehabilitation, occupational and physical therapy, speech-language therapy, exercise matched to safety, routines, memory aids, caregiver education, and home or driving assessment can preserve function.",
+        "Immediate suicide or violence risk requires crisis intervention and emergency evaluation; do not delay because the cause remains uncertain."
+      ],
+      "contraindications": [
+        "Do not diagnose CTE from symptoms or exposure alone and do not use an unvalidated commercial biomarker as proof.",
+        "Do not encourage return to repetitive head-impact exposure while an acute concussion or unresolved neurologic symptoms are present.",
+        "Avoid sedative, anticholinergic, or hypotensive medication burden when it worsens cognition, gait, falls, or alertness; review rather than abruptly stopping prescribed therapy.",
+        "Do not dismiss depression, substance use, sleep apnea, or another treatable disorder as inevitable brain degeneration."
+      ],
+      "safetyConsiderations": [
+        "Discussion of CTE can create fear or fatalism. Explain diagnostic limits directly while validating symptoms and treating identified risks.",
+        "Impulsivity, depression, cognitive decline, substance use, access to firearms, and recent losses can combine to increase suicide risk.",
+        "Driving, finances, medication administration, firearms, falls, and dependent care require functional assessment rather than assumptions based on age or occupation.",
+        "A sudden change is not typical slow neurodegeneration and requires evaluation for stroke, subdural hemorrhage, infection, seizure, intoxication, or metabolic illness."
+      ],
+      "nursingPriorities": [
+        "Use calm, nonstigmatizing language: record the specific symptom, its onset and trajectory, and the exposure history without documenting unconfirmed CTE as established fact.",
+        "Screen directly for suicide, self-harm, aggression, substance use, sleep disruption, falls, driving risk, medication errors, and caregiver strain and escalate urgent findings.",
+        "Support consistent sleep, hydration, activity, hearing and vision correction, medication organization, memory aids, and appointment follow-through.",
+        "Teach family or trusted supports to report rapid decline, new neurologic deficits, wandering, unsafe driving, psychosis, or inability to manage basic needs."
+      ],
+      "redFlags": [
+        "Suicidal intent, plan, recent attempt, escalating impulsivity, violent threats, or inability to maintain safety",
+        "Sudden focal deficit, severe headache, seizure, repeated vomiting, acute confusion, or reduced consciousness after head injury",
+        "Rapid cognitive or gait deterioration, new incontinence, fever, intoxication, or delirium",
+        "Unsafe driving, wandering, repeated falls, medication overdose, firearm access during crisis, or caregiver inability to maintain safety"
+      ],
+      "complications": [
+        "Progressive cognitive and functional impairment, falls, injury, driving crashes, financial harm, and loss of independence",
+        "Depression, suicide, substance-related harm, relationship disruption, and caregiver burden",
+        "Speech, gait, coordination, or parkinsonian impairment",
+        "Diagnostic overshadowing that delays treatment of a reversible neurologic, psychiatric, sleep, metabolic, or medication cause"
+      ],
+      "prognosis": "Confirmed neuropathologic CTE is considered progressive, but the course, timing, and symptom pattern vary and cannot be predicted from exposure alone. In living patients, treating depression, sleep apnea, substance use, vascular disease, pain, and functional problems can meaningfully improve safety and quality of life even when a neurodegenerative process remains possible.",
+      "prevention": "Reduce cumulative head-impact exposure with evidence-based sport, workplace, military, and violence-prevention practices; recognize possible concussion; remove the person from immediate risk; and use a graded, clinician-guided return. Helmets and rules reduce some injuries but cannot make repeated head impacts harmless or prove zero CTE risk.",
+      "patientEducation": [
+        "Repeated head impacts raise concern, but they do not mean that you definitely have or will develop CTE.",
+        "There is no routine living-person test that confirms CTE. The evaluation is still valuable because many symptoms have treatable causes and practical supports.",
+        "Protect sleep, avoid further head injury, use medications and alcohol safely, and bring a trusted observer to visits when memory or behavior has changed.",
+        "Use emergency services or 988 in the United States for suicidal thoughts, immediate danger, or inability to stay safe."
+      ],
+      "specialPopulations": [
+        "Children and adolescents should not be labeled with CTE from symptoms; pediatric concussion management focuses on recovery, school support, mental health, and prevention of repeat injury.",
+        "Veterans, athletes, survivors of interpersonal violence, and workers may have overlapping PTSD, pain, sleep, hearing, vestibular, and substance-related conditions that deserve independent care.",
+        "Older adults require careful assessment for common dementias, vascular disease, sensory loss, medication effects, and fall risk rather than attributing every change to remote trauma."
+      ],
+      "nclexTraps": [
+        "CTE is defined neuropathologically and currently cannot be confirmed during life by one symptom, scan, or blood test.",
+        "Repetitive head-impact exposure is an important risk history, but it is not by itself the diagnosis.",
+        "Traumatic encephalopathy syndrome is a proposed clinical construct, not a synonym for pathologically proven CTE.",
+        "Suicide risk, acute neurologic change, and treatable mimics take priority over debating the final label."
+      ],
+      "relatedTopics": [
+        "Traumatic brain injury",
+        "Concussion",
+        "Frontotemporal dementia",
+        "Tau protein",
+        "Suicide risk assessment",
+        "Neuropsychological testing"
+      ],
+      "sourceKeys": [
+        "ninds-tbi-cte",
+        "ninds-diagnose-cte"
+      ],
+      "sourceNote": "Original ANI synthesis based on NINDS TBI/CTE material and the NINDS DIAGNOSE-CTE research summary; research limitations are preserved and no source prose was copied.",
+      "provenance": [
+        {
+          "authority": "National Institute of Neurological Disorders and Stroke",
+          "url": "https://www.ninds.nih.gov/health-information/disorders/traumatic-brain-injury-tbi",
+          "documentVersion": "Accessed 2026-08-08",
+          "fieldsSupported": [
+            "definition",
+            "riskFactors",
+            "signsSymptoms",
+            "prevention",
+            "prognosis"
+          ]
+        },
+        {
+          "authority": "National Institute of Neurological Disorders and Stroke",
+          "url": "https://www.ninds.nih.gov/health-information/clinical-trials/diagnose-cte-research-project",
+          "documentVersion": "Accessed 2026-08-08",
+          "fieldsSupported": [
+            "pathology",
+            "pathophysiology",
+            "diagnostic limitations",
+            "biomarker limitations",
+            "research status"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.chronic-traumatic-encephalopathy",
       "studentFacing": true,
       "hidden": false,
       "expandedIndex": false,

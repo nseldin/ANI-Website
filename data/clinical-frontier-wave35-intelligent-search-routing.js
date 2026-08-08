@@ -1082,6 +1082,14 @@
       if (tenCollisionResponse(input)) return null;
       if (typeof isDegenerateOfflineLookupInput === "function"
         && isDegenerateOfflineLookupInput(input)) return null;
+      if (preferredType === "procedures") {
+        const procedureOwner = baseExactPharmDetailCandidate.apply(this, [input, preferredType, ...args]);
+        if (procedureOwner?.type === "reference"
+          && typeof isSurgeryProcedureReferenceEntry === "function"
+          && isSurgeryProcedureReferenceEntry(procedureOwner.item)) {
+          return procedureOwner;
+        }
+      }
       const reviewedSearchSafetyOwner = reviewedSearchResolutionFor(input);
       const reviewedPreferredType = preferredType === "procedures" ? "reference" : String(preferredType || "");
       if (reviewedSearchSafetyOwner?.ambiguousIdentity === true) {
