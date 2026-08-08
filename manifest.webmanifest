@@ -1,0 +1,57 @@
+{
+  "name": "ANI - Advanced Nursing Instructor",
+  "short_name": "ANI",
+  "description": "Medical encyclopedia and nursing study companion with local search, clinical references, and NCLEX-focused teaching.",
+  "id": "/",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "background_color": "#f7fbfb",
+  "theme_color": "#127d7a",
+  "categories": ["education", "medical", "productivity"],
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/assets/ani-avatar.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/ani-avatar.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ask ANI",
+      "short_name": "Ask",
+      "description": "Open ANI and ask a nursing question.",
+      "url": "/?action=ask",
+      "icons": [
+        {
+          "src": "/assets/ani-avatar.png",
+          "sizes": "1254x1254",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Practice Question",
+      "short_name": "Practice",
+      "description": "Start an NCLEX-style practice item.",
+      "url": "/?action=practice",
+      "icons": [
+        {
+          "src": "/assets/ani-avatar.png",
+          "sizes": "1254x1254",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}

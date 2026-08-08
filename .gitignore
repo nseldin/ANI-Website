@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+node_modules/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.apk
+reports/
+releases/
+android/
+ios/
+

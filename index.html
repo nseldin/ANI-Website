@@ -1,1 +1,811 @@
-<h1>ANI Website</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#127d7a">
+  <meta name="application-name" content="ANI">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="ANI">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>ANI Medical Encyclopedia</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/png" href="./assets/ani-avatar.png">
+  <link rel="apple-touch-icon" href="./assets/ani-avatar.png">
+  <link rel="stylesheet" href="./styles.css?v=ani317">
+</head>
+<body class="app-booting">
+  <div id="appSplash" class="app-splash" aria-label="ANI is opening">
+    <img src="./assets/ani-avatar.png" alt="ANI">
+    <strong>ANI</strong>
+    <span>Advanced Nursing Instructor</span>
+  </div>
+  <main class="app-shell">
+    <section class="instructor-stage" aria-label="AI nursing instructor">
+      <button id="settingsButton" class="settings-button" type="button" aria-label="Open ANI settings" title="ANI settings">
+        <span></span>
+      </button>
+
+      <div class="stage-copy">
+        <p class="eyebrow">NCLEX-ready nursing instructor</p>
+        <h1>ANI</h1>
+        <p class="brand-motto">Learn with confidence. Care with competence.</p>
+        <p class="subtitle">Advanced Nursing Instructor for voice-led practice questions, med dialogue, pathophysiology drills, and detailed NCLEX-focused teaching.</p>
+      </div>
+
+      <div class="avatar-scene" aria-hidden="true">
+        <div class="avatar">
+          <div class="hair hair-back"></div>
+          <div class="hair side-lock left-lock"></div>
+          <div class="hair side-lock right-lock"></div>
+          <div class="arm left-arm"><span class="hand"></span></div>
+          <div class="arm right-arm"><span class="hand"></span></div>
+          <div class="head">
+            <div class="ear left-ear"></div>
+            <div class="ear right-ear"></div>
+            <div class="hair bangs"></div>
+            <div class="brow left-brow"></div>
+            <div class="brow right-brow"></div>
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="nose"></div>
+            <div class="cheek left"></div>
+            <div class="cheek right"></div>
+            <div class="smile"></div>
+            <div class="talk-mouth"></div>
+          </div>
+          <div class="neck"></div>
+          <div class="torso">
+            <div class="coat left-panel"></div>
+            <div class="coat right-panel"></div>
+            <div class="scrubs"></div>
+            <div class="id-badge">RN</div>
+            <div class="coat-pocket"></div>
+            <div class="coat-buttons"></div>
+            <div class="stethoscope tube-left"></div>
+            <div class="stethoscope tube-right"></div>
+            <div class="chest-piece"></div>
+          </div>
+          <div class="leg left-leg"></div>
+          <div class="leg right-leg"></div>
+        </div>
+      </div>
+
+      <div class="focus-panel" aria-label="Learning focus">
+        <span>Current focus</span>
+        <strong id="focusLabel">Adaptive NCLEX challenge</strong>
+      </div>
+
+      <div id="settingsPanel" class="settings-panel" hidden>
+        <div class="settings-header">
+          <strong>ANI settings</strong>
+          <button id="closeSettingsButton" type="button" aria-label="Close settings">Close</button>
+        </div>
+        <label class="field-label" for="voiceStyleSelect">Voice type</label>
+        <select id="voiceStyleSelect">
+          <option value="standard">ANI standard voice</option>
+          <option value="pitched-up">ANI pitched-up voice</option>
+          <option value="pitched-down">ANI pitched-down voice</option>
+        </select>
+        <label class="toggle-row">
+          <input id="dynamicVoiceToggle" type="checkbox" checked>
+          Dynamic pitch and emphasis
+        </label>
+        <label class="toggle-row">
+          <input id="keepMicReadyToggle" type="checkbox" checked>
+          Keep microphone ready after permission is granted
+        </label>
+        <label class="field-label" for="speechRateRange">Speaking speed <span id="speechRateValue">1.0x</span></label>
+        <input id="speechRateRange" type="range" min="0.1" max="4" step="0.1" value="1">
+        <button id="voicePreviewButton" type="button">Preview Voice</button>
+        <section class="install-panel" hidden data-ani-feature="installPrompt" aria-label="Install ANI">
+          <div>
+            <strong>Install ANI</strong>
+            <p id="installStatus">Install this app on supported phones, tablets, and desktops.</p>
+          </div>
+          <button id="installAppButton" type="button" hidden>Install app</button>
+        </section>
+
+        <section id="lane4MetricsPanel" class="install-panel" hidden data-ani-feature="localAnswerMetrics" aria-label="Lane 4 local Answer Engine metrics">
+          <div>
+            <strong>Local Answer Engine metrics</strong>
+            <p id="lane4MetricsSummary">Open this localhost page with <code>?lane4Metrics=1</code> to inspect aggregate-only Lane 4 metrics.</p>
+            <small id="lane4MetricsLatency">No prompt text or account data is included.</small>
+          </div>
+          <button id="lane4MetricsRefreshButton" type="button">Refresh</button>
+        </section>
+
+        <section id="authPanel" class="auth-panel settings-auth-panel" hidden data-ani-feature="accountMembership">
+        <div class="auth-section-heading">
+          <strong>ANI account</strong>
+        </div>
+        <p id="authSummary" class="auth-summary">Sign in to keep your ANI profile connected to this device.</p>
+
+        <div id="authSignedOut" class="auth-forms">
+          <div class="auth-tabs" role="tablist" aria-label="Account actions">
+            <button id="showLoginButton" class="active" type="button" role="tab" aria-controls="loginForm" aria-selected="true" tabindex="0">Log in</button>
+            <button id="showSignupButton" type="button" role="tab" aria-controls="signupForm" aria-selected="false" tabindex="-1">Sign up</button>
+            <button id="showVerifyButton" type="button" role="tab" aria-controls="emailVerificationPanel" aria-selected="false" tabindex="-1">Verify</button>
+            <button id="showResetButton" type="button" role="tab" aria-controls="resetRequestForm resetConfirmForm" aria-selected="false" tabindex="-1">Reset</button>
+          </div>
+
+          <form id="loginForm" class="auth-form" role="tabpanel" aria-labelledby="showLoginButton">
+            <strong class="auth-form-heading">Log in</strong>
+            <label class="field-label" for="loginEmail">Email</label>
+            <input id="loginEmail" name="email" type="email" autocomplete="email" required>
+            <label class="field-label" for="loginPassword">Password</label>
+            <input id="loginPassword" name="password" type="password" autocomplete="current-password" maxlength="128" required>
+            <button type="submit">Log in</button>
+          </form>
+
+          <form id="signupForm" class="auth-form" role="tabpanel" aria-labelledby="showSignupButton" hidden>
+            <strong class="auth-form-heading">Create account</strong>
+            <label class="field-label" for="signupUsername">Display name</label>
+            <input id="signupUsername" name="username" type="text" autocomplete="nickname" required>
+            <label class="field-label" for="signupEmail">Email</label>
+            <input id="signupEmail" name="email" type="email" autocomplete="email" required>
+            <label class="field-label" for="signupPassword">Password</label>
+            <input id="signupPassword" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required>
+            <button type="submit">Create account</button>
+          </form>
+
+          <form id="resetRequestForm" class="auth-form" role="tabpanel" aria-labelledby="showResetButton" hidden>
+            <strong class="auth-form-heading">Request password reset</strong>
+            <label class="field-label" for="resetEmail">Account email</label>
+            <input id="resetEmail" name="email" type="email" autocomplete="email" required>
+            <button type="submit">Get reset token</button>
+          </form>
+
+          <form id="resetConfirmForm" class="auth-form" role="tabpanel" aria-labelledby="showResetButton" hidden>
+            <strong class="auth-form-heading">Set a new password</strong>
+            <label class="field-label" for="resetToken">Reset token</label>
+            <input id="resetToken" name="token" type="text" autocomplete="one-time-code" required>
+            <label class="field-label" for="resetPassword">New password</label>
+            <input id="resetPassword" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required>
+            <button type="submit">Reset password</button>
+          </form>
+        </div>
+
+        <section id="emailVerificationPanel" class="email-verification-panel" role="tabpanel" aria-labelledby="showVerifyButton" hidden>
+          <div>
+            <strong id="emailVerificationStatus">Verify your email</strong>
+            <p id="emailVerificationHelp">Enter the verification token ANI sent to your email.</p>
+          </div>
+          <button id="requestEmailVerificationButton" type="button" hidden>Get verification token</button>
+          <form id="verifyEmailForm" class="auth-form">
+            <label class="field-label" for="emailVerificationToken">Verification token</label>
+            <input id="emailVerificationToken" name="token" type="text" autocomplete="one-time-code" required>
+            <button type="submit">Verify email</button>
+          </form>
+        </section>
+
+        <div id="authSignedIn" class="auth-profile" hidden>
+          <span>Signed in as</span>
+          <strong id="authProfileName">Student</strong>
+          <small id="authProfileEmail"></small>
+          <div id="accountUsagePanel" class="account-usage-panel" hidden>
+            <div class="account-usage-title">
+              <strong>Plan &amp; AI Usage</strong>
+              <button id="aiUsageRefreshButton" type="button">Refresh</button>
+            </div>
+            <div class="usage-stat-grid">
+              <div class="usage-stat">
+                <span>Current plan</span>
+                <strong id="aiUsagePlanText">Free</strong>
+              </div>
+              <div class="usage-stat">
+                <span>Ads</span>
+                <strong id="aiUsageAdsText">Ads On</strong>
+              </div>
+            </div>
+            <div class="usage-panel-heading">
+              <strong>Monthly AI Usage</strong>
+              <span id="aiUsagePercentText">0% used</span>
+            </div>
+            <div class="ai-usage-meter" aria-label="Monthly AI usage percentage">
+              <span id="aiUsageBarFill"></span>
+            </div>
+            <div class="usage-stat-grid">
+              <div class="usage-stat">
+                <span>Reset date</span>
+                <strong id="aiUsageResetText">Unavailable</strong>
+              </div>
+              <div class="usage-stat">
+                <span>AI requests this month</span>
+                <strong id="aiUsageRequestCountText">0</strong>
+              </div>
+              <div id="extraAiCreditsDisplay" class="usage-stat extra-ai-credits">
+                <span>Extra AI Credits</span>
+                <strong id="extraAiCreditsText">0 Credits</strong>
+              </div>
+              <div class="usage-stat">
+                <span>Credit health</span>
+                <strong id="aiCreditHealthText">Checking</strong>
+              </div>
+              <div class="usage-stat">
+                <span>Estimated AI requests left</span>
+                <strong id="aiRequestsRemainingText">0</strong>
+              </div>
+            </div>
+            <small id="aiUsageUpdatedText">Usage refreshes when ANI answers.</small>
+          </div>
+
+          <section id="creditCheckoutPanel" class="credit-checkout-panel" aria-label="AI credit checkout">
+            <div class="account-usage-title">
+              <strong>Buy AI Credits</strong>
+              <button id="creditPackagesRefreshButton" type="button">Packages</button>
+            </div>
+            <div class="credit-checkout-row">
+              <select id="creditPackageSelect" aria-label="AI credit package"></select>
+              <button id="buyCreditsButton" type="button">Checkout</button>
+            </div>
+            <p id="creditCheckoutStatus" class="auth-summary">Payment checkout creates a pending purchase until a trusted payment confirmation grants credits.</p>
+            <div id="creditPurchaseHistory" class="credit-purchase-history">No recent credit purchases.</div>
+          </section>
+
+          <section id="adminDashboardPanel" class="admin-dashboard-panel" hidden aria-label="Admin founder dashboard">
+            <div class="account-usage-title">
+              <strong>Admin / Founder Dashboard</strong>
+              <button id="adminDashboardRefreshButton" type="button">Refresh</button>
+            </div>
+            <p id="adminDashboardStatus" class="auth-summary">Admin metrics load here for founder accounts.</p>
+            <div class="admin-dashboard-grid">
+              <div class="admin-metric">
+                <span>AI cost today</span>
+                <strong id="adminTotalAiCostToday">$0.00</strong>
+              </div>
+              <div class="admin-metric">
+                <span>AI cost this month</span>
+                <strong id="adminTotalAiCostMonth">$0.00</strong>
+              </div>
+              <div class="admin-metric">
+                <span>Requests today</span>
+                <strong id="adminRequestsToday">0</strong>
+              </div>
+              <div class="admin-metric">
+                <span>Requests this month</span>
+                <strong id="adminRequestsMonth">0</strong>
+              </div>
+              <div class="admin-metric">
+                <span>Active AI reservations</span>
+                <strong id="adminActiveAiReservations">0</strong>
+              </div>
+              <div class="admin-metric">
+                <span>Reserved AI cost</span>
+                <strong id="adminReservedAiCost">$0.00</strong>
+              </div>
+              <div class="admin-metric">
+                <span>Blocked requests</span>
+                <strong id="adminBlockedRequests">0</strong>
+              </div>
+              <div class="admin-metric">
+                <span>Failed requests</span>
+                <strong id="adminFailedRequests">0</strong>
+              </div>
+              <div class="admin-metric">
+                <span>Total users</span>
+                <strong id="founderTotalUsers">0</strong>
+              </div>
+              <div class="admin-metric">
+                <span>Estimated MRR</span>
+                <strong id="founderMrr">$0.00</strong>
+              </div>
+              <div class="admin-metric">
+                <span>Credit revenue</span>
+                <strong id="adminCreditRevenue">$0.00</strong>
+              </div>
+              <div class="admin-metric">
+                <span>Credit platform profit</span>
+                <strong id="adminPlatformProfit">$0.00</strong>
+              </div>
+              <div class="admin-metric">
+                <span>Average AI cost/user</span>
+                <strong id="founderAvgAiCost">$0.00</strong>
+              </div>
+              <div class="admin-metric">
+                <span>Gross margin after AI</span>
+                <strong id="founderGrossMargin">$0.00</strong>
+              </div>
+            </div>
+            <div class="admin-dashboard-lists">
+              <div>
+                <strong>Top users by internal AI cost</strong>
+                <div id="adminTopUsersList" class="admin-list">No usage yet.</div>
+              </div>
+              <div>
+                <strong>Most-used AI features</strong>
+                <div id="adminFeatureList" class="admin-list">No feature usage yet.</div>
+              </div>
+            </div>
+          </section>
+
+          <div class="auth-actions">
+            <button id="logoutButton" type="button">Log out</button>
+          </div>
+        </div>
+        <p id="authStatus" class="auth-status" aria-live="polite"></p>
+        </section>
+      </div>
+
+      <section id="lane2ExperiencePanel" class="lane2-experience-panel" hidden data-ani-feature="accountMembership" aria-label="ANI account and online services">
+        <header class="lane2-experience-header">
+          <div>
+            <span class="lane2-eyebrow">Secure online services</span>
+            <strong>Account, membership, AI practice &amp; sync</strong>
+          </div>
+          <div class="lane2-header-actions">
+            <span id="lane2ConnectionBadge" class="lane2-connection-badge">Checking connection</span>
+            <button id="lane2CloseButton" type="button" aria-label="Close online services">Close</button>
+          </div>
+        </header>
+        <nav class="lane2-tabs" role="tablist" aria-label="Online-service sections">
+          <button id="lane2AccountTabButton" type="button" role="tab" class="active" data-lane2-tab="account" aria-controls="lane2AccountTab" aria-selected="true" tabindex="0">Account</button>
+          <button id="lane2MembershipTabButton" type="button" role="tab" data-lane2-tab="membership" aria-controls="lane2MembershipTab" aria-selected="false" tabindex="-1">Membership</button>
+          <button id="lane2GenerateTabButton" type="button" role="tab" data-lane2-tab="generate" aria-controls="lane2GenerateTab" aria-selected="false" tabindex="-1">AI Practice</button>
+          <button id="lane2LibraryTabButton" type="button" role="tab" data-lane2-tab="library" aria-controls="lane2LibraryTab" aria-selected="false" tabindex="-1">Saved &amp; Sync</button>
+          <button id="lane2AdminTabButton" type="button" role="tab" data-lane2-tab="admin" aria-controls="lane2AdminTab" aria-selected="false" tabindex="-1" hidden>Administration</button>
+        </nav>
+        <p id="lane2ExperienceStatus" class="lane2-experience-status" role="status" aria-live="polite"></p>
+        <dialog id="lane2RecentAuthDialog" class="lane2-recent-auth-dialog" aria-labelledby="lane2RecentAuthTitle">
+          <form id="lane2RecentAuthForm" class="lane2-form-grid" method="dialog">
+            <div class="lane2-wide">
+              <span class="lane2-eyebrow">Sensitive account action</span>
+              <strong id="lane2RecentAuthTitle">Confirm it is you</strong>
+              <p>Enter your current ANI password. This approval stays bound to this signed-in session for a short server-controlled period.</p>
+            </div>
+            <label class="lane2-wide">Current password<input id="lane2RecentAuthPassword" name="password" type="password" autocomplete="current-password" maxlength="128" required></label>
+            <p id="lane2RecentAuthStatus" class="lane2-recent-auth-status lane2-wide" role="status" aria-live="polite"></p>
+            <div class="lane2-recent-auth-actions lane2-wide">
+              <button id="lane2RecentAuthCancelButton" type="button">Cancel</button>
+              <button id="lane2RecentAuthSubmitButton" type="submit">Confirm password</button>
+            </div>
+          </form>
+        </dialog>
+
+        <div id="lane2AccountTab" class="lane2-tab-panel" role="tabpanel" aria-labelledby="lane2AccountTabButton" data-lane2-panel="account">
+          <div id="lane2AccountMount"></div>
+          <section id="lane2ProfilePanel" class="lane2-service-card" hidden>
+            <div class="lane2-section-heading">
+              <div><span>Profile</span><strong>Personal account settings</strong></div>
+              <span id="lane2ProfileVersion">Version 1</span>
+            </div>
+            <form id="lane2ProfileForm" class="lane2-form-grid">
+              <label>Display name<input id="lane2ProfileName" name="display_name" maxlength="80" required></label>
+              <label>Time zone<input id="lane2ProfileTimezone" name="timezone" maxlength="80" value="UTC" required></label>
+              <label>Locale<input id="lane2ProfileLocale" name="locale" maxlength="24" value="en-US" required></label>
+              <button type="submit">Save profile</button>
+            </form>
+            <section class="lane2-account-security" aria-label="Password and session security">
+              <div class="lane2-section-heading">
+                <div><span>Security</span><strong>Password &amp; signed-in devices</strong></div>
+                <button id="lane2SessionsRefreshButton" type="button">Refresh sessions</button>
+              </div>
+              <form id="lane2PasswordForm" class="lane2-form-grid">
+                <label>Current password<input name="current_password" type="password" autocomplete="current-password" maxlength="128" required></label>
+                <label>New password<input name="new_password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required></label>
+                <label>Confirm new password<input name="confirm_password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required></label>
+                <button type="submit">Change password</button>
+              </form>
+              <div class="lane2-session-actions">
+                <p id="lane2SessionPolicy">Sessions expire automatically after inactivity.</p>
+                <button id="lane2RevokeOtherSessionsButton" type="button">Sign out other devices</button>
+              </div>
+              <div id="lane2SessionsList" class="lane2-record-list" aria-live="polite">No active sessions loaded.</div>
+            </section>
+            <details class="lane2-danger-zone">
+              <summary>Delete ANI account</summary>
+              <p>This signs out every session, anonymizes the account, and removes user-owned saved/sync data from active use.</p>
+              <form id="lane2DeleteAccountForm" class="lane2-form-grid">
+                <label>Current password<input name="password" type="password" autocomplete="current-password" maxlength="128" required></label>
+                <label>Type DELETE_MY_ANI_ACCOUNT<input name="confirm" autocomplete="off" required></label>
+                <button class="danger" type="submit">Permanently delete account</button>
+              </form>
+            </details>
+          </section>
+        </div>
+
+        <div id="lane2MembershipTab" class="lane2-tab-panel" role="tabpanel" aria-labelledby="lane2MembershipTabButton" data-lane2-panel="membership" hidden>
+          <section class="lane2-service-card">
+            <div class="lane2-section-heading">
+              <div><span>Membership</span><strong id="lane2MembershipHeading">Sign in to view entitlement</strong></div>
+              <button id="lane2MembershipRefreshButton" type="button">Refresh</button>
+            </div>
+            <div id="lane2EntitlementGrid" class="lane2-metric-grid"></div>
+            <div id="lane2PlansList" class="lane2-plan-grid"></div>
+            <div id="lane2PendingCheckout" class="lane2-checkout-notice" hidden></div>
+            <button id="lane2CancelSubscriptionButton" type="button" hidden>Cancel at period end</button>
+            <div>
+              <strong>Payment history</strong>
+              <div id="lane2PaymentHistory" class="lane2-record-list">No payment records.</div>
+            </div>
+          </section>
+        </div>
+
+        <div id="lane2GenerateTab" class="lane2-tab-panel" role="tabpanel" aria-labelledby="lane2GenerateTabButton" data-lane2-panel="generate" hidden>
+          <section class="lane2-service-card lane2-generator-card">
+            <div class="lane2-section-heading">
+              <div><span>Validated AI practice</span><strong>Generate from one exact local ANI topic</strong></div>
+              <span id="lane2GeneratorMode">Mock mode</span>
+            </div>
+            <form id="lane2QuestionForm" class="lane2-form-grid">
+              <label class="lane2-wide">Exact encyclopedia topic<input id="lane2QuestionTopic" name="topic" maxlength="160" placeholder="Hemophilia" required></label>
+              <label>Question layout
+                <select id="lane2QuestionLayout" name="layout">
+                  <option value="standard">Standard multiple choice</option>
+                  <option value="single">Advanced single answer</option>
+                  <option value="sata">Select all that apply</option>
+                  <option value="bowtie">Bow-tie / butterfly</option>
+                  <option value="matrix">Matrix / grid</option>
+                  <option value="ordering">Ordered response</option>
+                  <option value="concern">Most-concerning finding</option>
+                  <option value="highlight">Highlight / time chart</option>
+                  <option value="cloze">Cloze / drop-down</option>
+                  <option value="unfolding">Six-step case study</option>
+                </select>
+              </label>
+              <label>Difficulty
+                <select id="lane2QuestionDifficulty" name="difficulty">
+                  <option value="easy">Easy</option>
+                  <option value="normal" selected>Normal</option>
+                  <option value="hard">Hard</option>
+                </select>
+              </label>
+              <label class="toggle-row lane2-wide"><input id="lane2ReuseCached" type="checkbox"> Reuse an approved matching cached question when available</label>
+              <button id="lane2GenerateButton" type="submit">Generate validated question</button>
+            </form>
+            <p class="lane2-safety-note">Paid generation is server-authorized and locally validated before rendering. Offline encyclopedia search, cards, favorites, and navigation remain available without AI.</p>
+            <div id="lane2GeneratedActions" class="lane2-generated-actions" hidden>
+              <span id="lane2GeneratedSummary"></span>
+              <button id="lane2SaveQuestionButton" type="button">Save question</button>
+            </div>
+          </section>
+        </div>
+
+        <div id="lane2LibraryTab" class="lane2-tab-panel" role="tabpanel" aria-labelledby="lane2LibraryTabButton" data-lane2-panel="library" hidden>
+          <section class="lane2-service-card">
+            <div class="lane2-section-heading">
+              <div><span>Offline first</span><strong>Saved questions and study synchronization</strong></div>
+              <button id="lane2SyncNowButton" type="button">Sync now</button>
+            </div>
+            <div id="lane2SyncSummary" class="lane2-metric-grid"></div>
+            <div class="lane2-library-grid">
+              <div><strong>Saved questions</strong><div id="lane2SavedQuestions" class="lane2-record-list">Sign in to load saved questions.</div></div>
+              <div><strong>Study history</strong><div id="lane2StudyHistory" class="lane2-record-list">Local study results stay on this device until you sign in.</div></div>
+            </div>
+            <div id="lane2SyncConflicts" class="lane2-conflict-list"></div>
+          </section>
+        </div>
+
+        <div id="lane2AdminTab" class="lane2-tab-panel" role="tabpanel" aria-labelledby="lane2AdminTabButton" data-lane2-panel="admin" hidden>
+          <section class="lane2-service-card">
+            <div class="lane2-section-heading">
+              <div><span>Authorized administration</span><strong>Usage, cost, payment, user, and quality controls</strong></div>
+              <button id="lane2AdminRefreshButton" type="button">Refresh</button>
+            </div>
+            <div id="lane2AdminMetrics" class="lane2-metric-grid"></div>
+            <div id="lane2AdminControls" class="lane2-admin-controls"></div>
+            <form id="lane2AdminUserSearchForm" class="lane2-inline-form">
+              <label>User lookup<input id="lane2AdminUserQuery" maxlength="120" placeholder="Email, name, or user ID"></label>
+              <button type="submit">Search</button>
+            </form>
+            <div id="lane2AdminUsers" class="lane2-record-list"></div>
+            <div class="lane2-admin-evidence-grid">
+              <div><strong>Generation and quality failures</strong><div id="lane2AdminFailures" class="lane2-record-list"></div></div>
+              <div><strong>Payment events</strong><div id="lane2AdminPayments" class="lane2-record-list"></div></div>
+              <div><strong>Safe error log</strong><div id="lane2AdminErrors" class="lane2-record-list"></div></div>
+              <div><strong>Review queue</strong><div id="lane2AdminReviewQueue" class="lane2-record-list"></div></div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </section>
+
+    <section class="learning-workspace" aria-label="Tutor workspace">
+      <aside class="tool-pane">
+        <div class="chat-manager" aria-label="Chat history controls">
+          <button id="newChatButton" class="new-chat-button" type="button">New chat</button>
+          <button id="toggleChatHistoryButton" class="history-toggle-button" type="button" aria-expanded="false" aria-controls="chatHistoryPanel">Previous chats</button>
+          <button id="clinicalModeButton" class="clinical-mode-button" type="button">Clinical mode</button>
+          <button id="onlineServicesButton" class="online-services-button" type="button" hidden data-ani-feature="accountMembership" aria-label="Account, membership, AI practice, and sync">Account, Membership, AI Practice &amp; Sync</button>
+          <button id="pharmDatabaseButton" class="pharm-database-button" type="button" aria-label="Open the medical encyclopedia">Medical Encyclopedia</button>
+          <button id="lectureModeButton" class="lecture-mode-button" type="button">Lecture mode</button>
+          <button id="reportProblemButton" class="report-problem-button" type="button" hidden data-ani-feature="problemReports">Report problem</button>
+          <div id="chatHistoryPanel" class="chat-history-panel" hidden>
+            <div class="chat-history-heading">
+              <strong>Previous chats</strong>
+              <span id="chatHistoryCount">0 saved</span>
+            </div>
+            <label class="chat-history-search" for="chatHistorySearch">
+              <span>Search chats</span>
+              <input id="chatHistorySearch" type="search" autocomplete="off" placeholder="Keyword, topic, med, question...">
+            </label>
+            <div id="chatHistoryList" class="chat-history-list" role="list"></div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="chat-pane" aria-label="Voice chat with nursing instructor">
+        <div id="chatLog" class="chat-log" aria-live="polite"></div>
+        <button id="scrollToBottomButton" class="scroll-bottom-button" type="button" aria-label="Jump to bottom of chat" title="Bottom of chat" hidden>
+          <span aria-hidden="true"></span>
+        </button>
+
+        <form id="chatForm" class="composer">
+          <input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp,.zip,.pdf,.ppt,.pptx,.doc,.docx,.txt" multiple hidden>
+          <button id="imageUploadButton" class="icon-button upload-button" type="button" hidden data-ani-feature="serverImageAnalysis" aria-label="Upload picture or class resource for ANI to analyze" title="Upload picture or class resource for ANI to analyze">
+            <span class="plus-icon" aria-hidden="true"></span>
+          </button>
+          <button id="micButton" class="icon-button" type="button" aria-label="Start microphone input" title="Start microphone input">
+            <img class="mic-icon" src="assets/microphone-icon.png" alt="" aria-hidden="true">
+          </button>
+          <textarea id="messageInput" rows="2" spellcheck="true" placeholder="Ask ANI anything clinical..."></textarea>
+          <button class="send-button" type="submit">Send</button>
+          <div id="imagePreviewTray" class="image-preview-tray" aria-live="polite"></div>
+        </form>
+
+        <p id="nursingFactTicker" class="nursing-fact-ticker" aria-live="polite"></p>
+        <aside id="adSlot" class="ad-slot" hidden aria-label="Advertisement">
+          <span>Advertisement</span>
+          <strong>Ad-supported free account</strong>
+        </aside>
+
+        <div class="status-row">
+          <span id="voiceStatus">Voice ready</span>
+          <label>
+            <input id="speakToggle" type="checkbox" checked>
+            ANI speaks back
+          </label>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <section id="reportProblemPanel" class="report-problem-panel" hidden aria-label="Report an ANI problem" aria-modal="true" role="dialog">
+    <div class="report-problem-card">
+      <header>
+        <div>
+          <span>Maintenance report</span>
+          <strong>Report a problem</strong>
+        </div>
+        <button id="closeReportProblemButton" type="button" aria-label="Close report form">Close</button>
+      </header>
+      <p>Tell us what went wrong. ANI will attach safe app context so the issue is easier to fix.</p>
+      <label class="field-label" for="reportProblemText">What happened?</label>
+      <textarea id="reportProblemText" rows="6" maxlength="4000" spellcheck="true" placeholder="Example: ANI opened the wrong encyclopedia entry when I asked about trazodone."></textarea>
+      <div class="report-problem-actions">
+        <button id="sendReportProblemButton" type="button">Send report</button>
+        <button id="cancelReportProblemButton" type="button">Cancel</button>
+      </div>
+      <p id="reportProblemStatus" class="report-problem-status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section id="clinicalModeScreen" class="clinical-mode-screen" hidden aria-label="ANI clinical mode">
+    <header class="clinical-mode-header">
+      <div>
+        <span>Clinical mode</span>
+        <strong>Rapid bedside-style answers</strong>
+      </div>
+      <button id="exitClinicalModeButton" type="button">Exit</button>
+    </header>
+
+    <div class="clinical-mode-stage">
+      <button id="clinicalListenButton" class="clinical-listen-button" type="button" aria-label="Start clinical voice recording" aria-pressed="false" aria-describedby="clinicalModeStatus clinicalCaptureNotice">
+        <span class="clinical-avatar-ring" aria-hidden="true">
+          <img src="./assets/ani-avatar.png" alt="">
+          <span class="sound-wave wave-one"></span>
+          <span class="sound-wave wave-two"></span>
+          <span class="sound-wave wave-three"></span>
+        </span>
+      </button>
+      <p id="clinicalModeStatus" class="clinical-mode-status" role="status" aria-live="polite" aria-atomic="true">Tap ANI and ask a quick clinical question.</p>
+      <div id="clinicalCaptureNotice" class="clinical-capture-notice" hidden role="status" aria-live="polite" aria-atomic="true">
+        <span class="clinical-capture-check" aria-hidden="true">&#10003;</span>
+        <span id="clinicalCaptureNoticeText">Got it - directing you now.</span>
+      </div>
+      <p id="clinicalTranscript" class="clinical-transcript" hidden></p>
+      <article id="clinicalAnswer" class="clinical-answer" hidden></article>
+    </div>
+  </section>
+
+  <section id="pharmDatabaseScreen" class="pharm-database-screen" hidden aria-label="ANI pharmacy, laboratory, and pathology encyclopedia">
+    <div class="pharm-database-shell">
+      <div id="pharmVoiceControls" class="pharm-voice-controls" aria-label="ANI encyclopedia voice controls">
+        <button id="pharmMuteToggle" class="pharm-voice-button" type="button" aria-pressed="false">Mute</button>
+        <button id="pharmReadAllButton" class="pharm-voice-button pharm-read-button" type="button">Read all</button>
+        <button id="pharmCopyHighlightButton" class="pharm-voice-button pharm-highlight-button" type="button" disabled>Copy highlight</button>
+        <button id="pharmReadHighlightButton" class="pharm-voice-button pharm-highlight-button" type="button" disabled>Read highlight</button>
+      </div>
+      <header class="pharm-database-header">
+        <div>
+          <span>Offline mode</span>
+          <strong>OFFLINE MEDICAL ENCYCLOPEDIA</strong>
+          <p>Search medications, labs, diseases, microbiology, anatomy, physiology, diagnostics, and holistic safety using exact terms, abbreviations, everyday language, or typo-close spellings.</p>
+        </div>
+        <button id="closePharmDatabaseButton" type="button">Close</button>
+      </header>
+
+      <section class="pharm-search-panel" aria-label="Search ANI clinical encyclopedia">
+        <label for="pharmSearchInput">Search medication, lab, disease, microbiology, anatomy, physiology, diagnostic, symptom, or question</label>
+        <input id="pharmSearchInput" type="search" autocomplete="off" enterkeyhint="search" placeholder="Try heart blood flow, DKA, fluoxetine">
+        <div class="pharm-index-toggle" role="group" aria-label="Clinical encyclopedia category">
+          <button type="button" data-pharm-index-mode="all" aria-pressed="true">All</button>
+          <button type="button" data-pharm-index-mode="favorites" aria-pressed="false">&#9733; Favorites</button>
+          <button type="button" data-pharm-index-mode="labs" aria-pressed="false">Labs</button>
+          <button type="button" data-pharm-index-mode="drugs" aria-pressed="false">Pharmacy</button>
+          <button type="button" data-pharm-index-mode="diseases" aria-pressed="false">Diseases / Pathologies</button>
+          <button type="button" data-pharm-index-mode="microbiology" aria-pressed="false">Microbiology</button>
+          <button type="button" data-pharm-index-mode="foundations" aria-pressed="false">Foundations</button>
+          <button type="button" data-pharm-index-mode="procedures" aria-pressed="false">Diagnostics / Tests</button>
+          <button type="button" data-pharm-index-mode="clinical-signs" aria-pressed="false">Clinical Signs</button>
+          <button type="button" data-pharm-index-mode="holistic" aria-pressed="false">Holistic</button>
+          <button id="pharmNclexToggle" class="pharm-filter-button" type="button" aria-pressed="false">NCLEX ESSENTIALS</button>
+        </div>
+        <div id="clinicalSignBrowseControls" class="clinical-sign-browse-controls" hidden>
+          <label for="clinicalSignSpecialtySelect">Browse Clinical Signs by specialty or body system</label>
+          <select id="clinicalSignSpecialtySelect" aria-describedby="clinicalSignBrowseCount">
+            <option value="all">All specialties and body systems</option>
+          </select>
+          <span id="clinicalSignBrowseCount" aria-live="polite"></span>
+        </div>
+        <div id="microbiologyBrowseControls" class="clinical-sign-browse-controls" hidden>
+          <label for="microbiologyBranchSelect">Browse Microbiology by canonical branch</label>
+          <select id="microbiologyBranchSelect" aria-describedby="microbiologyBrowseCount">
+            <option value="all">All Microbiology branches</option>
+          </select>
+          <span id="microbiologyBrowseCount" aria-live="polite"></span>
+        </div>
+        <p id="pharmSearchSummary">Offline starter database ready.</p>
+      </section>
+
+      <section class="pharm-layout">
+        <section class="pharm-results-card" aria-label="Clinical index search results">
+          <div class="pharm-card-title">
+            <span>Clinical index</span>
+            <strong id="pharmResultCount">0 entries</strong>
+          </div>
+          <div id="pharmAlphabetStrip" class="pharm-alphabet-strip" aria-label="Alphabetical drug filter"></div>
+          <div id="pharmResultsList" class="pharm-results-list" role="list"></div>
+        </section>
+
+        <aside class="pharm-labs-card" aria-label="Encyclopedia reference legend">
+          <div class="pharm-card-title">
+            <span>Reference page</span>
+            <strong>Icon &amp; color key</strong>
+          </div>
+          <div id="pharmLabList" class="pharm-lab-list"></div>
+        </aside>
+
+        <article id="pharmDrugDetail" class="pharm-detail-card" aria-label="Clinical encyclopedia details"></article>
+      </section>
+    </div>
+  </section>
+
+  <script src="./app-config.js?v=ani317"></script>
+  <script src="./data/pharm-database.js?v=ani69"></script>
+  <script src="./data/pharm-expansion.js?v=ani261"></script>
+  <script src="./data/pharm-drug-bible-supplement.js?v=ani04"></script>
+  <script src="./data/pharm-reviewed-expansion.js?v=ani308"></script>
+  <script src="./data/pharm-auto-standalone-cards.js?v=ani01"></script>
+  <script src="./data/pharm-integrity-patch.js?v=ani261"></script>
+  <script src="./data/pharm-frontier-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave3-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave3-targeted-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave3-immune-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave3-neuro-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave3-acute-specialty-patch.js?v=ani01"></script>
+  <script src="./data/pathology-database.js?v=ani307"></script>
+  <script src="./data/pathology-bible-supplement.js?v=ani302"></script>
+  <script src="./data/pathology-medication-treatment-supplement.js?v=ani01"></script>
+  <script src="./data/holistic-database.js?v=ani272"></script>
+  <script src="./data/diagnostic-database.js?v=ani307"></script>
+  <script src="./data/encyclopedia-quality-patch.js?v=ani270"></script>
+  <script src="./data/first-sentence-crash-course-patch.js?v=ani305"></script>
+  <script src="./data/pharm-frontier-wave4-anesthesia-eye-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave4-gi-hepatology-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave4-dermatology-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave4-urology-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave4-bone-renal-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave5-psychiatry-patch.js?v=ani270"></script>
+  <script src="./data/pharm-frontier-wave6-endocrine-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave7-hematology-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave8-pulmonary-allergy-patch.js?v=ani270"></script>
+  <script src="./data/pharm-frontier-wave9-rheumatology-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave10-infectious-antiparasitic-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave11-maternal-reproductive-patch.js?v=ani282"></script>
+  <script src="./data/pharm-why-closure-systemic-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave12-common-core-causal-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave13-cardiovascular-ccb-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave14-cardiovascular-raas-patch.js?v=ani270"></script>
+  <script src="./data/pharm-frontier-wave15-renal-diuretic-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave16-lipid-lowering-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave17-antifungal-causal-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave18-beta-lactam-causal-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave19-weight-management-why-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave20-sglt2-causal-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave21-antiseizure-causal-patch.js?v=ani02"></script>
+  <script src="./data/pharm-frontier-wave22-parkinson-causal-patch.js?v=ani01"></script>
+  <script src="./data/clinical-frontier-wave23-stroke-causal-patch.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave24-opioid-causal-patch.js?v=ani01"></script>
+  <script src="./data/clinical-frontier-wave25-renal-causal-patch.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave25-acidbase-causal-patch.js?v=ani221"></script>
+  <script src="./data/pharm-frontier-wave26-antidote-causal-patch.js?v=ani221"></script>
+  <script src="./data/pharm-frontier-wave28-antidote-expansion.js?v=ani221"></script>
+  <script src="./data/pharm-frontier-wave29-antidote-expansion.js?v=ani221"></script>
+  <script src="./data/pharm-frontier-wave30-antidote-expansion.js?v=ani221"></script>
+  <script src="./data/pharm-frontier-wave31-antidote-expansion.js?v=ani221"></script>
+  <script src="./data/pharm-frontier-wave32-antidote-expansion.js?v=ani221"></script>
+  <script src="./data/pharm-frontier-wave33-antidote-expansion.js?v=ani282"></script>
+  <script src="./data/pharm-frontier-wave34-antidote-expansion.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave26-pathology-nursing-patch.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave27-pathology-canonical-cleanup.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave27-pathology-nursing-cohort-a.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave27-pathology-nursing-cohort-b.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave28-pathology-nursing-cohort-a.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave28-pathology-nursing-cohort-b.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave29-pathology-nursing-cohort-a.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave29-pathology-nursing-cohort-b.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave30-pathology-nursing-cohort-a.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave30-pathology-nursing-cohort-b.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave31-pathology-nursing-cohort-a.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave31-pathology-nursing-cohort-b.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave32-pathology-nursing-cohort-a.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave32-pathology-nursing-cohort-b.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave33-pathology-nursing-cohort-a.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave33-pathology-nursing-cohort-b.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave33-pathology-nursing-cohort-c.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave33-pathology-nursing-cohort-d.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave34-pathology-distinctiveness-cohort-a.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave34-pathology-distinctiveness-cohort-b.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave34-pathology-distinctiveness-cohort-c.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave35-foundations-a.js?v=ani222"></script>
+  <script src="./data/clinical-frontier-wave35-foundations-b.js?v=ani282"></script>
+  <script src="./data/clinical-frontier-wave35-ten.js?v=ani224"></script>
+  <script src="./data/clinical-frontier-wave36-pathology-a.js?v=ani242"></script>
+  <script src="./data/clinical-frontier-wave36-diagnostics-b.js?v=ani242"></script>
+  <script src="./data/clinical-frontier-wave36-pharm-c.js?v=ani242"></script>
+  <script src="./data/clinical-frontier-wave37-neuro-a.js?v=ani261"></script>
+  <script src="./data/clinical-frontier-wave37-diagnostics-b.js?v=ani243"></script>
+  <script src="./data/clinical-frontier-wave37-clinical-c.js?v=ani243"></script>
+  <script src="./data/clinical-frontier-wave38-critical-links.js?v=ani261"></script>
+  <script src="./data/clinical-frontier-wave38-clinical-signs.js?v=ani315"></script>
+  <script src="./data/clinical-frontier-wave38-vaccination.js?v=ani316"></script>
+  <script src="./data/clinical-frontier-wave41-diabetes-core.js?v=ani261"></script>
+  <script src="./data/clinical-frontier-wave41-diabetes-secondary.js?v=ani261"></script>
+  <script src="./data/clinical-frontier-wave41-diabetes-monogenic.js?v=ani261"></script>
+  <script src="./data/clinical-frontier-wave42-diseases.js?v=ani261"></script>
+  <script src="./data/clinical-frontier-wave42-foundations-diagnostics.js?v=ani261"></script>
+  <script src="./data/clinical-frontier-wave42-critical-care.js?v=ani261"></script>
+  <script src="./data/pharm-frontier-wave42-procaine.js?v=ani261"></script>
+  <script src="./data/clinical-frontier-wave44-heme-integrity.js?v=ani263"></script>
+  <script src="./data/clinical-frontier-wave44-treatment-integrity.js?v=ani263"></script>
+  <script src="./data/clinical-frontier-wave44-component-parity-p0.js?v=ani263"></script>
+  <script src="./data/clinical-frontier-wave44-component-parity-p1.js?v=ani263"></script>
+  <script src="./data/clinical-frontier-wave44-component-parity-p2.js?v=ani263"></script>
+  <script src="./data/clinical-frontier-wave44-pharmacy-component-parity.js?v=ani263"></script>
+  <script src="./data/pathology-reviewed-expansion.js?v=ani311"></script>
+  <script src="./data/high-yield-image-library.js?v=ani01"></script>
+  <script src="./data/pharm-runtime-parity.js?v=ani261"></script>
+  <script src="./src/lane4/runtime-efficiency.js?v=ani287"></script>
+  <script src="./src/microbiology/domain-core.js?v=ani290"></script>
+  <script src="./data/microbiology-database.js?v=ani307"></script>
+  <script src="./data/mnemonic-library.js?v=ani313"></script>
+  <script src="./data/learner-language-standard.js?v=ani316"></script>
+  <script src="./main.js?v=ani317"></script>
+  <script src="./data/pharm-frontier-wave21-antiseizure-routing.js?v=ani02"></script>
+  <script src="./data/pharm-frontier-wave22-parkinson-routing.js?v=ani01"></script>
+  <script src="./data/pharm-frontier-wave24-opioid-routing.js?v=ani01"></script>
+  <script src="./data/clinical-frontier-wave25-renal-acidbase-routing.js?v=ani221"></script>
+  <script src="./data/pharm-frontier-wave26-antidote-routing.js?v=ani221"></script>
+  <script src="./data/pharm-frontier-wave28-antidote-routing.js?v=ani221"></script>
+  <script src="./data/pharm-frontier-wave29-antidote-routing.js?v=ani221"></script>
+  <script src="./data/pharm-frontier-wave30-antidote-routing.js?v=ani221"></script>
+  <script src="./data/pharm-frontier-wave31-antidote-routing.js?v=ani263"></script>
+  <script src="./data/pharm-frontier-wave32-antidote-routing.js?v=ani221"></script>
+  <script src="./data/pharm-frontier-wave33-antidote-routing.js?v=ani221"></script>
+  <script src="./data/pharm-frontier-wave34-antidote-routing.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave23-stroke-routing.js?v=ani01"></script>
+  <script src="./data/clinical-frontier-wave35-intelligent-search-routing.js?v=ani282"></script>
+</body>
+</html>
