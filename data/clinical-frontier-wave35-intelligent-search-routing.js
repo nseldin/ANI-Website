@@ -913,11 +913,11 @@
         return safeArray(reviewedSearchSafetyOwner.ambiguityCandidates)
           .map((candidate) => ({ ...candidate, ambiguousIdentity: true }));
       }
-      if (reviewedSearchSafetyOwner) return [{ ...reviewedSearchSafetyOwner }];
       const strictCanonicalOwner = typeof strictCanonicalEncyclopediaCandidate === "function"
         ? strictCanonicalEncyclopediaCandidate(input)
         : null;
       if (strictCanonicalOwner) return [{ ...strictCanonicalOwner }];
+      if (reviewedSearchSafetyOwner) return [{ ...reviewedSearchSafetyOwner }];
       const componentOwner = typeof fastStandaloneComponentCandidate === "function"
         ? fastStandaloneComponentCandidate(input)
         : null;
@@ -977,15 +977,6 @@
         pendingOfflineLookupSuggestions = [];
         return reviewedAmbiguityPrompt(reviewedSearchSafetyOwner);
       }
-      if (reviewedSearchSafetyOwner) {
-        pendingOfflineLookupSuggestions = [];
-        if (options && options.preferDatabaseRedirect && typeof offlineLookupDatabaseRedirect === "function") {
-          return offlineLookupDatabaseRedirect(reviewedSearchSafetyOwner, input);
-        }
-        if (typeof offlineLookupDirectResponse === "function") {
-          return offlineLookupDirectResponse(reviewedSearchSafetyOwner, input);
-        }
-      }
       const strictCanonicalOwner = typeof strictCanonicalEncyclopediaCandidate === "function"
         ? strictCanonicalEncyclopediaCandidate(input)
         : null;
@@ -996,6 +987,15 @@
         }
         if (typeof offlineLookupDirectResponse === "function") {
           return offlineLookupDirectResponse(strictCanonicalOwner, input);
+        }
+      }
+      if (reviewedSearchSafetyOwner) {
+        pendingOfflineLookupSuggestions = [];
+        if (options && options.preferDatabaseRedirect && typeof offlineLookupDatabaseRedirect === "function") {
+          return offlineLookupDatabaseRedirect(reviewedSearchSafetyOwner, input);
+        }
+        if (typeof offlineLookupDirectResponse === "function") {
+          return offlineLookupDirectResponse(reviewedSearchSafetyOwner, input);
         }
       }
       if (priorActiveEmergency(input)) return baseHandleOfflineLookupFlow(input, options);
@@ -1040,6 +1040,12 @@
       const reviewedSearchSafetyOwner = reviewedSearchResolutionFor(input);
       if (reviewedSearchSafetyOwner?.ambiguousIdentity === true) {
         return reviewedAmbiguityPrompt(reviewedSearchSafetyOwner);
+      }
+      const strictCanonicalOwner = typeof strictCanonicalEncyclopediaCandidate === "function"
+        ? strictCanonicalEncyclopediaCandidate(input)
+        : null;
+      if (strictCanonicalOwner && typeof offlineLookupDatabaseRedirect === "function") {
+        return offlineLookupDatabaseRedirect(strictCanonicalOwner, input);
       }
       if (reviewedSearchSafetyOwner && typeof offlineLookupDatabaseRedirect === "function") {
         return offlineLookupDatabaseRedirect(reviewedSearchSafetyOwner, input);
@@ -1099,14 +1105,16 @@
           ? { type: matching[0].type, item: matching[0].item }
           : null;
       }
-      if (reviewedSearchSafetyOwner
-        && (!reviewedPreferredType || reviewedPreferredType === reviewedSearchSafetyOwner.type)) {
-        return { type: reviewedSearchSafetyOwner.type, item: reviewedSearchSafetyOwner.item };
-      }
+      // Preserve exact installed-card ownership before nonambiguous alias and
+      // intent overlays. Reviewed cross-domain ambiguity remains fail-closed.
       const strictCanonicalOwner = typeof strictCanonicalEncyclopediaCandidate === "function"
         ? strictCanonicalEncyclopediaCandidate(input, preferredType)
         : null;
       if (strictCanonicalOwner) return { type: strictCanonicalOwner.type, item: strictCanonicalOwner.item };
+      if (reviewedSearchSafetyOwner
+        && (!reviewedPreferredType || reviewedPreferredType === reviewedSearchSafetyOwner.type)) {
+        return { type: reviewedSearchSafetyOwner.type, item: reviewedSearchSafetyOwner.item };
+      }
       if (priorActiveEmergency(input)) return baseExactPharmDetailCandidate.apply(this, [input, preferredType, ...args]);
       const componentOwner = typeof fastStandaloneComponentCandidate === "function"
         ? fastStandaloneComponentCandidate(input)

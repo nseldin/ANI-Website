@@ -2179,6 +2179,13 @@ body.lecture-mode-active .voice-status {
   background: #ffffff;
 }
 
+.pharm-detail-previous-back {
+  display: none !important;
+  border-color: rgba(72, 84, 88, 0.22);
+  background: #f8fbfb;
+  color: #334d52;
+}
+
 .pharm-detail-home-icon {
   width: 19px;
   height: 19px;
@@ -3497,21 +3504,22 @@ body.lecture-mode-active .voice-status {
 
 .learner-language-support {
   display: grid;
-  gap: 8px;
+  gap: 7px;
   min-width: 0;
-  padding: 12px;
-  border: 2px solid #d8b54a;
-  border-radius: 10px;
-  background: #fff9df;
+  padding: 10px 0 0;
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--pharm-detail-color, var(--teal)) 18%, white);
+  border-radius: 0;
+  background: transparent;
   color: #26343a;
-  box-shadow: 0 8px 20px rgba(95, 73, 9, 0.08);
-  overflow: hidden;
-  contain-intrinsic-size: 160px;
+  box-shadow: none;
+  overflow: visible;
+  contain-intrinsic-size: 112px;
 }
 
 .learner-language-support > strong {
-  color: #5a4100;
-  font-size: 0.98rem;
+  color: var(--pharm-detail-dark, var(--teal-dark));
+  font-size: 0.9rem;
   font-weight: 950;
 }
 
@@ -3534,19 +3542,20 @@ body.lecture-mode-active .voice-status {
   gap: 9px;
   align-items: start;
   min-width: 0;
-  padding: 8px 9px;
-  border: 1px solid #eadca9;
-  border-radius: 8px;
-  background: #ffffff;
+  padding: 5px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .learner-language-row.is-clinical-importance {
-  border-left: 5px solid #a77600;
-  background: #fff5bd;
+  border-left: 3px solid color-mix(in srgb, var(--pharm-detail-color, var(--teal)) 62%, white);
+  padding-left: 9px;
+  background: transparent;
 }
 
 .learner-language-label {
-  color: #5a4100;
+  color: var(--pharm-detail-dark, var(--teal-dark));
   font-size: 0.75rem;
   font-weight: 900;
   letter-spacing: 0.01em;
@@ -5412,6 +5421,67 @@ input[type="range"] {
 
 .scroll-bottom-button[hidden] {
   display: none;
+}
+
+.medical-search-assist {
+  position: fixed;
+  z-index: 4200;
+  display: grid;
+  max-width: calc(100vw - 20px);
+  max-height: min(320px, 46vh);
+  gap: 4px;
+  padding: 6px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 1px solid rgba(44, 111, 110, 0.28);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.99);
+  box-shadow: 0 18px 42px rgba(24, 52, 54, 0.2);
+  overscroll-behavior: contain;
+}
+
+.medical-search-assist[hidden] {
+  display: none;
+}
+
+.medical-search-assist-option {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2px;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #183e40;
+  text-align: left;
+}
+
+.medical-search-assist-option strong,
+.medical-search-assist-option small {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.medical-search-assist-option strong {
+  font-size: 0.92rem;
+  line-height: 1.2;
+}
+
+.medical-search-assist-option small {
+  color: #5c6f71;
+  font-size: 0.76rem;
+  line-height: 1.25;
+}
+
+.medical-search-assist-option:hover,
+.medical-search-assist-option:focus-visible,
+.medical-search-assist-option.is-active {
+  border-color: rgba(25, 133, 129, 0.46);
+  background: #eaf7f6;
+  outline: none;
 }
 
 .message {

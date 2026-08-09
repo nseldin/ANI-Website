@@ -84,6 +84,24 @@ html[data-ani-surface="website"] .pharm-detail-card :where(
 }
 
 /*
+ * Keep the jump-to-latest control inside the chat-log grid cell. A fixed
+ * bottom offset can intersect the composer when a phone requests the desktop
+ * website or text scaling changes the composer height. Sharing row one with
+ * the log makes the composer a hard layout boundary at every viewport.
+ */
+html[data-ani-surface="website"] .chat-log,
+html[data-ani-surface="website"] .scroll-bottom-button {
+  grid-area: 1 / 1;
+}
+
+html[data-ani-surface="website"] .scroll-bottom-button {
+  position: relative;
+  inset: auto;
+  place-self: end;
+  margin: 0 10px 10px 0;
+}
+
+/*
  * The encyclopedia launch hides the upload control but preserves its code.
  * Explicitly collapse that hidden grid track so the text field, rather than
  * the Send button, remains the primary composer control.
@@ -130,8 +148,16 @@ html[data-ani-surface="website"] .pharm-index-toggle button[data-pharm-index-mod
   --button-category-soft: var(--pharm-clinical-sign-soft);
 }
 
+html[data-ani-surface="website"] .pharm-search-panel .pharm-index-toggle #pharmNclexToggle {
+  grid-column: auto;
+}
+
 html[data-ani-surface="website"] .pharm-detail-card {
   scroll-padding-top: 58px;
+}
+
+html[data-ani-surface="website"] .pharm-detail-previous-back {
+  display: inline-flex !important;
 }
 
 html[data-ani-surface="website"] .pharm-detail-card > section {
@@ -201,16 +227,18 @@ html[data-ani-surface="website"] .learner-language-support > strong {
   }
 
   html[data-ani-surface="website"] .pharm-database-screen {
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
     padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
   }
 
   html[data-ani-surface="website"] .pharm-database-shell {
     width: 100%;
-    height: calc(100dvh - 24px);
+    height: auto;
     min-height: 0;
-    grid-template-rows: auto auto minmax(0, 1fr);
-    overflow: hidden;
+    grid-template-rows: auto auto auto;
+    overflow: visible;
   }
 
   html[data-ani-surface="website"] .pharm-database-header {
@@ -254,6 +282,10 @@ html[data-ani-surface="website"] .learner-language-support > strong {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+  html[data-ani-surface="website"] .pharm-index-toggle button[data-pharm-index-mode="clinical-signs"] {
+    grid-column: 1 / -1;
+  }
+
   html[data-ani-surface="website"] .clinical-sign-browse-controls {
     grid-template-columns: minmax(180px, 0.8fr) minmax(0, 1.2fr);
   }
@@ -263,8 +295,8 @@ html[data-ani-surface="website"] .learner-language-support > strong {
   }
 
   html[data-ani-surface="website"] .pharm-layout {
-    min-height: 0;
-    height: 100%;
+    min-height: calc(100dvh - 24px);
+    height: calc(100dvh - 24px);
     grid-template-columns: minmax(230px, 0.58fr) minmax(0, 1.62fr);
     grid-template-rows: minmax(0, 1fr);
     grid-template-areas:
@@ -303,22 +335,38 @@ html[data-ani-surface="website"] .learner-language-support > strong {
     flex: 1 1 420px;
     width: min(100%, 430px);
   }
+
+  html[data-ani-surface="website"] .pharm-database-screen.pharm-detail-open {
+    overflow: hidden;
+  }
+
+  html[data-ani-surface="website"] .pharm-database-screen.pharm-detail-open .pharm-database-shell {
+    height: calc(100dvh - 24px);
+    overflow: hidden;
+  }
+
+  html[data-ani-surface="website"] .pharm-database-screen.pharm-detail-open .pharm-layout {
+    min-height: 0;
+    height: 100%;
+  }
 }
 
 /* Wide desktop website: keep a thin modal gutter and devote most space to the card. */
 @media (min-width: 1121px) {
   html[data-ani-surface="website"] .pharm-database-screen {
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
     padding: max(14px, env(safe-area-inset-top, 0px)) max(14px, env(safe-area-inset-right, 0px)) max(14px, env(safe-area-inset-bottom, 0px)) max(14px, env(safe-area-inset-left, 0px));
   }
 
   html[data-ani-surface="website"] .pharm-database-shell {
     width: 100%;
     max-width: none;
-    height: calc(100dvh - 28px);
+    height: auto;
     min-height: 0;
-    grid-template-rows: auto auto minmax(0, 1fr);
-    overflow: hidden;
+    grid-template-rows: auto auto auto;
+    overflow: visible;
   }
 
   html[data-ani-surface="website"] .pharm-database-header {
@@ -378,8 +426,8 @@ html[data-ani-surface="website"] .learner-language-support > strong {
   }
 
   html[data-ani-surface="website"] .pharm-layout {
-    min-height: 0;
-    height: 100%;
+    min-height: calc(100dvh - 28px);
+    height: calc(100dvh - 28px);
     grid-template-columns: minmax(150px, 0.38fr) minmax(250px, 0.68fr) minmax(0, 2.25fr);
     grid-template-rows: minmax(0, 1fr);
     gap: 12px;
@@ -392,6 +440,24 @@ html[data-ani-surface="website"] .learner-language-support > strong {
     height: 100%;
     min-height: 0;
     max-height: none;
+  }
+
+  html[data-ani-surface="website"] .pharm-index-toggle button[data-pharm-index-mode="clinical-signs"] {
+    grid-column: span 3;
+  }
+
+  html[data-ani-surface="website"] .pharm-database-screen.pharm-detail-open {
+    overflow: hidden;
+  }
+
+  html[data-ani-surface="website"] .pharm-database-screen.pharm-detail-open .pharm-database-shell {
+    height: calc(100dvh - 28px);
+    overflow: hidden;
+  }
+
+  html[data-ani-surface="website"] .pharm-database-screen.pharm-detail-open .pharm-layout {
+    min-height: 0;
+    height: 100%;
   }
 }
 
@@ -462,6 +528,8 @@ html[data-ani-surface="website"] .learner-language-support > strong {
   html[data-ani-surface="website"] .pharm-database-screen {
     width: 100%;
     overflow-x: clip;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
   }
 
   html[data-ani-surface="website"] .pharm-database-shell {
@@ -511,6 +579,10 @@ html[data-ani-surface="website"] .learner-language-support > strong {
     padding: 8px 6px;
   }
 
+  html[data-ani-surface="website"] .pharm-index-toggle button[data-pharm-index-mode="clinical-signs"] {
+    grid-column: 1 / -1;
+  }
+
   html[data-ani-surface="website"] .clinical-sign-browse-controls {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -518,7 +590,23 @@ html[data-ani-surface="website"] .learner-language-support > strong {
   html[data-ani-surface="website"] .pharm-layout,
   html[data-ani-surface="website"][data-device-mode="phone"] .pharm-layout {
     grid-template-columns: minmax(0, 1fr);
+    min-height: calc(100dvh - 16px);
     padding-inline: 14px;
+  }
+
+  html[data-ani-surface="website"] .pharm-results-card,
+  html[data-ani-surface="website"][data-device-mode="phone"] .pharm-results-card {
+    min-height: calc(100dvh - 16px);
+    max-height: none;
+  }
+
+  html[data-ani-surface="website"] .pharm-database-screen.pharm-detail-open {
+    overflow: hidden;
+  }
+
+  html[data-ani-surface="website"] .pharm-database-screen.pharm-detail-open .pharm-layout,
+  html[data-ani-surface="website"][data-device-mode="phone"] .pharm-database-screen.pharm-detail-open .pharm-layout {
+    min-height: 100dvh;
   }
 
   html[data-ani-surface="website"] .pharm-result-button {

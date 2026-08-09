@@ -474,8 +474,10 @@ let activeActionMenu = null;
 let currentPharmReadableText = "";
 let currentPharmHighlightText = "";
 const PHARM_DETAIL_HISTORY_LIMIT = 36;
+const PHARM_BROWSER_HISTORY_KEY = "aniEncyclopediaRoute";
 let currentPharmDetailCandidate = null;
 let pharmDetailHistoryStack = [];
+let pharmBrowserHistoryApplying = false;
 let pharmAutoReadMuted = ANI_AUTOMATED_TEST || localStorage.getItem(PHARM_AUTO_READ_MUTED_KEY) === "true";
 let pharmReadingActive = false;
 let pharmReadingMode = "";
@@ -6891,6 +6893,156 @@ function pharmDetailCandidateKey(candidate = {}) {
   return `${candidate.type}:${normalizePharmText(label)}`;
 }
 
+function pharmUsesBrowserHistory() {
+  return document.documentElement?.dataset?.aniSurface === "website"
+    && typeof window.history?.pushState === "function"
+    && typeof window.history?.back === "function";
+}
+
+function currentPharmBrowserRoute(state = window.history?.state) {
+  const route = state && typeof state === "object" ? state[PHARM_BROWSER_HISTORY_KEY] : null;
+  if (!route || route.version !== 1 || !["index", "detail"].includes(route.view)) return null;
+  return route;
+}
+
+function pharmBrowserState(route = {}) {
+  const current = window.history?.state;
+  const state = current && typeof current === "object" ? { ...current } : {};
+  state[PHARM_BROWSER_HISTORY_KEY] = { version: 1, ...route };
+  return state;
+}
+
+function pushPharmBrowserIndexState() {
+  if (!pharmUsesBrowserHistory() || pharmBrowserHistoryApplying) return false;
+  const current = currentPharmBrowserRoute();
+  if (current?.view === "index") return true;
+  window.history.pushState(pharmBrowserState({ view: "index", depth: 0 }), "");
+  return true;
+}
+
+function pushPharmBrowserDetailState(candidate = {}) {
+  if (!pharmUsesBrowserHistory() || pharmBrowserHistoryApplying || !candidate?.item) return false;
+  let current = currentPharmBrowserRoute();
+  if (!current) {
+    pushPharmBrowserIndexState();
+    current = currentPharmBrowserRoute();
+  }
+  const key = offlineLookupEntityKey(candidate) || pharmDetailCandidateKey(candidate);
+  const label = offlineLookupEntityLabel(candidate) || candidate.item?.name || candidate.item?.generic || "";
+  if (!key || !label) return false;
+  if (current?.view === "detail" && current.key === key) {
+    window.history.replaceState(pharmBrowserState({
+      view: "detail",
+      depth: Math.max(1, Number(current.depth || 1)),
+      type: candidate.type,
+      key,
+      label
+    }), "");
+    return true;
+  }
+  const depth = current?.view === "detail" ? Math.max(1, Number(current.depth || 1)) + 1 : 1;
+  window.history.pushState(pharmBrowserState({ view: "detail", depth, type: candidate.type, key, label }), "");
+  return true;
+}
+
+function resolvePharmBrowserCandidate(route = {}) {
+  if (!route?.type || !route?.key) return null;
+  const pools = {
+    update: Array.from(new Map(
+      [...medicalUpdatesRuntime.items, ...medicalUpdatesRuntime.archive]
+        .filter((item) => item?.id)
+        .map((item) => [item.id, item])
+    ).values()),
+    lab: pharmSearchableLabRanges,
+    pathology: pathologyDiseases,
+    reference: clinicalReferenceEntries,
+    holistic: holisticRemedies,
+    drug: pharmVisibleDrugPoolCache || pharmDrugs
+  };
+  const items = Array.isArray(pools[route.type]) ? pools[route.type] : [];
+  const exact = items
+    .map((item) => ({ type: route.type, item }))
+    .filter((candidate) => (
+      offlineLookupEntityKey(candidate) === route.key
+      || pharmDetailCandidateKey(candidate) === route.key
+    ));
+  return exact.length === 1 ? exact[0] : null;
+}
+
+function applyPharmBrowserRoute(state = window.history?.state) {
+  if (!pharmUsesBrowserHistory()) return false;
+  const route = currentPharmBrowserRoute(state);
+  pharmBrowserHistoryApplying = true;
+  try {
+    if (!route) {
+      if (pharmDatabaseScreen && !pharmDatabaseScreen.hidden) {
+        closePharmDatabase({ fromBrowserHistory: true });
+      }
+      return true;
+    }
+    if (route.view === "index") {
+      openPharmDatabase("", { autoFocus: false, skipBrowserHistory: true });
+      return true;
+    }
+    const candidate = resolvePharmBrowserCandidate(route);
+    if (!candidate) {
+      window.history.replaceState(pharmBrowserState({ view: "index", depth: 0 }), "");
+      openPharmDatabase("", { autoFocus: false, skipBrowserHistory: true });
+      return false;
+    }
+    openPharmDatabase(route.label, {
+      openDetail: true,
+      targetCandidate: candidate,
+      autoFocus: false,
+      autoRead: false,
+      fastDetail: true,
+      skipHistory: true,
+      skipBrowserHistory: true
+    });
+    return true;
+  } finally {
+    pharmBrowserHistoryApplying = false;
+  }
+}
+
+function requestPreviousPharmNavigation() {
+  if (pharmUsesBrowserHistory() && currentPharmBrowserRoute()?.view === "detail") {
+    window.history.back();
+    return true;
+  }
+  return navigateBackPharmDetail();
+}
+
+function requestPharmIndexNavigation() {
+  const route = pharmUsesBrowserHistory() ? currentPharmBrowserRoute() : null;
+  if (route?.view === "detail") {
+    const depth = Math.max(1, Number(route.depth || 1));
+    if (typeof window.history.go === "function") {
+      window.history.go(-depth);
+    } else {
+      window.history.back();
+    }
+    return true;
+  }
+  returnToPharmIndex();
+  return true;
+}
+
+function requestClosePharmDatabase() {
+  const route = pharmUsesBrowserHistory() ? currentPharmBrowserRoute() : null;
+  if (route) {
+    const steps = route.view === "detail" ? Math.max(1, Number(route.depth || 1)) + 1 : 1;
+    if (typeof window.history.go === "function") {
+      window.history.go(-steps);
+    } else {
+      window.history.back();
+    }
+    return true;
+  }
+  closePharmDatabase();
+  return true;
+}
+
 function pharmDetailHistoryEntry(candidate = {}) {
   if (!candidate?.type || !candidate.item) return null;
   return {
@@ -6928,7 +7080,7 @@ function returnToPharmIndex(options = {}) {
 }
 
 function returnHomeFromPharmDetail() {
-  closePharmDatabase();
+  requestClosePharmDatabase();
   messageInput?.focus?.();
   scrollChatToBottom({ behavior: "smooth" });
 }
@@ -7003,7 +7155,16 @@ function resetPharmDetailCard() {
   searchButton.setAttribute("aria-label", "Return to encyclopedia search");
   searchButton.textContent = "Search";
   searchButton.addEventListener("click", () => {
-    returnToPharmIndex();
+    requestPharmIndexNavigation();
+  });
+  const previousButton = document.createElement("button");
+  previousButton.type = "button";
+  previousButton.className = "pharm-detail-index-back pharm-detail-previous-back";
+  previousButton.setAttribute("aria-label", "Return to the previous encyclopedia card or index");
+  previousButton.title = "Previous";
+  previousButton.textContent = "Previous";
+  previousButton.addEventListener("click", () => {
+    requestPreviousPharmNavigation();
   });
   const homeButton = document.createElement("button");
   homeButton.type = "button";
@@ -7019,7 +7180,7 @@ function resetPharmDetailCard() {
   homeButton.addEventListener("click", () => {
     returnHomeFromPharmDetail();
   });
-  nav.append(searchButton, homeButton);
+  nav.append(searchButton, previousButton, homeButton);
   toolbar.append(nav);
   if (pharmVoiceControls) {
     toolbar.append(pharmVoiceControls);
@@ -7142,7 +7303,8 @@ function scrollChatToBottom(options = {}) {
     chatLog.scrollTop = chatLog.scrollHeight;
   }
 
-  if (document.documentElement.dataset.deviceMode === "phone") {
+  if (document.documentElement.dataset.deviceMode === "phone"
+    || document.documentElement.dataset.aniSurface === "website") {
     if (typeof window.scrollTo === "function") {
       window.scrollTo({
         top: document.documentElement.scrollHeight,
@@ -15543,11 +15705,24 @@ function hasMedicationLectureCue(input = "") {
 
 function lectureDirectCandidate(input = "", type = "") {
   const lookup = normalizeLectureLookupText(input) || input;
+  const sharedIdentity = resolveEncyclopediaIdentity(lookup, { mode: "navigate", limit: 8 });
+  if (sharedIdentity.mayAutoOpen && sharedIdentity.preferred?.type === type) {
+    return {
+      type,
+      item: sharedIdentity.preferred.item,
+      score: sharedIdentity.matchKind === "reviewed-prefix" ? 3900 : 3720,
+      exactIdentity: sharedIdentity.matchKind === "exact-identity",
+      reviewedPrefixIdentity: sharedIdentity.matchKind === "reviewed-prefix",
+      sharedIdentityResolution: true
+    };
+  }
   const suggestions = offlineLookupSuggestions(lookup);
   return suggestions.find((candidate) => (
     candidate.type === type
-    && inputDirectlyNamesOfflineCandidate(lookup, candidate)
-    && offlineLookupIsDirectEnough(lookup, candidate)
+    && candidate.ambiguousIdentity !== true
+    && (candidate.nearIdentity === true
+      || (inputDirectlyNamesOfflineCandidate(lookup, candidate)
+        && offlineLookupIsDirectEnough(lookup, candidate)))
   )) || null;
 }
 
@@ -15607,6 +15782,7 @@ function normalizeLectureTopic(input = "") {
     return "Antiarrhythmic medication classes";
   }
   const lookup = normalizeLectureLookupText(input) || cleaned;
+  const sharedIdentity = resolveEncyclopediaIdentity(lookup, { mode: "suggest", limit: 8 });
   const directPathology = lectureDirectCandidate(lookup, "pathology");
   const directDrug = lectureDirectCandidate(lookup, "drug");
   if (directDrug?.item?.name && (!directPathology || (hasMedicationLectureCue(lookup) && !hasPathologyLectureCue(lookup)))) {
@@ -15614,6 +15790,11 @@ function normalizeLectureTopic(input = "") {
   }
   if (directPathology?.item?.name && (!directDrug || hasPathologyLectureCue(lookup) || !hasMedicationLectureCue(lookup))) {
     return directPathology.item.name;
+  }
+  if (!lookup.includes(" ") && !sharedIdentity.mayAutoOpen) {
+    // Short fragments and ordinary words may display suggestions, but lecture
+    // mode must not convert a body-text coincidence into the lecture topic.
+    return cleaned || currentTopic;
   }
   const medicationMatch = bestPharmMatch(lookup, { requireIdentityMatch: true })
     || bestPharmMatch(input, { requireIdentityMatch: true })
@@ -15634,9 +15815,11 @@ function normalizeLectureTopic(input = "") {
 function lectureDetails(topic) {
   const lookupTopic = normalizeLectureLookupText(topic) || topic;
   const lower = lookupTopic.toLowerCase();
-  const pathologyMatch = bestPathologyMatch(lookupTopic) || bestPathologyMatch(topic);
-  const matchedDrug = bestPharmMatch(lookupTopic, { requireIdentityMatch: true })
-    || bestPharmMatch(topic, { requireIdentityMatch: true });
+  const sharedIdentity = resolveEncyclopediaIdentity(lookupTopic, { mode: "suggest", limit: 8 });
+  const suppressBareContentMatch = !lookupTopic.includes(" ") && !sharedIdentity.mayAutoOpen;
+  const pathologyMatch = suppressBareContentMatch ? null : (bestPathologyMatch(lookupTopic) || bestPathologyMatch(topic));
+  const matchedDrug = suppressBareContentMatch ? null : (bestPharmMatch(lookupTopic, { requireIdentityMatch: true })
+    || bestPharmMatch(topic, { requireIdentityMatch: true }));
   const pathologyCandidate = pathologyMatch ? { type: "pathology", item: pathologyMatch, score: 999 } : null;
   const drugCandidate = matchedDrug ? { type: "drug", item: matchedDrug, score: 999 } : null;
   const pathologyDirect = pathologyCandidate && inputDirectlyNamesOfflineCandidate(lookupTopic, pathologyCandidate);
@@ -17854,17 +18037,21 @@ function appendLearnerLanguageSupport(container, item = {}, options = {}) {
     ? ""
     : safeText(options.whyItMatters || support.whyItMatters);
   const glosses = Array.isArray(support.glosses) ? support.glosses.filter((entry) => entry && entry.term && entry.plainLanguage) : [];
-  if (!plainLanguage && !whyItMatters && !glosses.length) return false;
+  const hasReviewedGlosses = Boolean(standard.explicitGlosses?.(item)?.length);
+  if (!support.analysis?.supportRecommended && !hasReviewedGlosses) return false;
+
+  const existingText = normalizePharmText(container.textContent || "");
+  const uniquePlainLanguage = plainLanguage && !existingText.includes(normalizePharmText(plainLanguage)) ? plainLanguage : "";
+  const uniqueWhyItMatters = whyItMatters && !existingText.includes(normalizePharmText(whyItMatters)) ? whyItMatters : "";
+  const uniqueGlosses = glosses.filter((entry) => !existingText.includes(normalizePharmText(entry.plainLanguage)));
+  if (!uniquePlainLanguage && !uniqueWhyItMatters && !uniqueGlosses.length) return false;
 
   const section = document.createElement("section");
   section.className = "learner-language-support";
   section.dataset.learnerLanguageVersion = safeText(support.version || standard.version);
-  section.setAttribute("aria-label", "Plain-language learning support");
+  section.setAttribute("aria-label", "Medical terms explained");
   const heading = document.createElement("strong");
-  heading.textContent = "Plain-language support";
-  const intro = document.createElement("p");
-  intro.className = "learner-language-intro";
-  intro.textContent = "ANI keeps the medical term and explains it in easier words so you can learn both.";
+  heading.textContent = "Medical terms explained";
   const grid = document.createElement("div");
   grid.className = "learner-language-grid";
   const currentLabel = safeText(options.currentLabel || item.name || item.displayName || item.generic || item.title);
@@ -17884,10 +18071,10 @@ function appendLearnerLanguageSupport(container, item = {}, options = {}) {
     grid.append(row);
   };
 
-  addRow("In everyday words", plainLanguage, "is-plain-language");
-  addRow("Why this matters", whyItMatters, "is-clinical-importance");
-  glosses.forEach((entry) => addRow(entry.term, entry.plainLanguage, "is-glossary-term"));
-  section.append(heading, intro, grid);
+  addRow("In everyday words", uniquePlainLanguage, "is-plain-language");
+  addRow("Why this matters", uniqueWhyItMatters, "is-clinical-importance");
+  uniqueGlosses.forEach((entry) => addRow(entry.term, entry.plainLanguage, "is-glossary-term"));
+  section.append(heading, grid);
   container.append(section);
   return true;
 }
@@ -18870,12 +19057,94 @@ function responsiveExactDrugIdentityMatch(input = "") {
   return match;
 }
 
-const RESPONSIVE_ENCYCLOPEDIA_PREFIX_PRIORITIES = Object.freeze({
+const REVIEWED_ENCYCLOPEDIA_PREFIX_PRIORITIES = Object.freeze({
   // "succ" is the common bedside shorthand used when searching for the
   // paralytic succinylcholine. Succimer remains available immediately below;
   // this exact, reviewed prefix rule avoids guessing on broader fragments.
   succ: { type: "drug", identity: "succinylcholine" }
 });
+
+function encyclopediaIdentityPrimaryTerms(candidate = {}) {
+  const item = candidate.item || {};
+  if (candidate.type === "drug") {
+    return [item.name, item.generic, item.displayName, pharmDrugDisplayName(item, "")];
+  }
+  if (candidate.type === "reference") {
+    return [item.name, item.displayName, item.fullForm];
+  }
+  return [item.name, item.displayName];
+}
+
+/*
+ * One identity resolver serves encyclopedia typing, chat, lecture, and voice
+ * navigation. Body-text relevance is intentionally excluded: a short fragment
+ * may suggest canonical identities, but it may auto-open only an exact owner or
+ * an explicitly reviewed route such as "succ" -> Succinylcholine.
+ */
+function resolveEncyclopediaIdentity(input = "", options = {}) {
+  const fixed = applyClinicalSpeechFixups(input) || input;
+  const core = fastCanonicalLookupCore(fixed) || normalizePharmText(fixed);
+  const limit = Math.max(1, Math.min(12, Number(options.limit || 8)));
+  if (!core || core.length < 2) {
+    return { core, candidates: [], preferred: null, matchKind: "none", unique: false, mayAutoOpen: false };
+  }
+
+  const reviewed = REVIEWED_ENCYCLOPEDIA_PREFIX_PRIORITIES[core] || null;
+  const exactOwners = fastVoiceIdentityCandidates(core);
+  const prefixOwners = fastVoiceIdentitySearchCandidates(core, Math.max(limit * 3, 18));
+  const deduped = Array.from(new Map([...exactOwners, ...prefixOwners]
+    .filter((candidate) => candidate?.type && candidate?.item)
+    .map((candidate) => [offlineLookupEntityKey(candidate), candidate])).values());
+  const primaryExactOwners = deduped.filter((candidate) => encyclopediaIdentityPrimaryTerms(candidate)
+    .some((term) => normalizePharmText(term) === core));
+  const reviewedOwner = reviewed
+    ? deduped.find((candidate) => candidate.type === reviewed.type
+      && encyclopediaIdentityPrimaryTerms(candidate)
+        .some((term) => normalizePharmText(term) === reviewed.identity)) || null
+    : null;
+  const exactOwner = primaryExactOwners.length === 1
+    ? primaryExactOwners[0]
+    : (exactOwners.length === 1 ? exactOwners[0] : null);
+  // Reuse the existing bounded, cross-domain near-identity evaluator when a
+  // long typo has no canonical or prefix owner. It already fails closed on
+  // close collisions; phonetic-only guesses remain suggestion-only below.
+  const restrictedPhoneticInput = isRestrictedMedicalPhoneticInput(fixed);
+  const nearIdentityOwner = !deduped.length && core.length >= 5 && !restrictedPhoneticInput
+    ? conversationalNearIdentitySuggestion(fixed)
+    : null;
+  const safeNearIdentityOwner = nearIdentityOwner?.nearIdentity === true
+    && nearIdentityOwner?.ambiguousIdentity !== true
+    && nearIdentityOwner?.type
+    && nearIdentityOwner?.item
+    ? nearIdentityOwner
+    : null;
+  const preferred = reviewedOwner || exactOwner || safeNearIdentityOwner;
+  const matchKind = reviewedOwner
+    ? "reviewed-prefix"
+    : exactOwner
+      ? "exact-identity"
+      : safeNearIdentityOwner
+        ? "near-identity"
+      : deduped.length
+        ? "prefix-suggestions"
+        : "none";
+  const candidates = preferred
+    ? [preferred, ...deduped.filter((candidate) => offlineLookupEntityKey(candidate) !== offlineLookupEntityKey(preferred))]
+    : deduped;
+  return {
+    core,
+    candidates: candidates.slice(0, limit),
+    preferred,
+    matchKind,
+    unique: Boolean(preferred) && (reviewedOwner
+      ? true
+      : safeNearIdentityOwner
+        ? true
+        : primaryExactOwners.length === 1 || exactOwners.length === 1),
+    mayAutoOpen: Boolean(preferred),
+    reviewed: Boolean(reviewedOwner)
+  };
+}
 
 // Reviewed exact-query routes for common clinical wording that does not match
 // the canonical card title literally. These rules bind to an existing card by
@@ -18926,7 +19195,7 @@ function responsiveEncyclopediaExactPriority(input = "") {
 }
 
 function responsiveEncyclopediaPrefixPriority(input = "", scored = []) {
-  const priority = RESPONSIVE_ENCYCLOPEDIA_PREFIX_PRIORITIES[normalizePharmText(input)];
+  const priority = REVIEWED_ENCYCLOPEDIA_PREFIX_PRIORITIES[fastCanonicalLookupCore(input) || normalizePharmText(input)];
   if (!priority) return null;
   return scored.find((candidate) => (
     candidate.type === priority.type
@@ -18941,6 +19210,7 @@ function responsiveEncyclopediaPrefixPriority(input = "", scored = []) {
 
 function responsiveEncyclopediaSearchMatches(input = "") {
   const types = ["lab", "pathology", "reference", "holistic", "drug"];
+  const sharedIdentityResolution = resolveEncyclopediaIdentity(input, { mode: "suggest", limit: 8 });
   const candidateMap = new Map();
   const add = (type, item, fastBoost = 0, fastEvidenceScore = 0, fastMatchCount = 0) => {
     if (!item) return;
@@ -18982,6 +19252,13 @@ function responsiveEncyclopediaSearchMatches(input = "") {
     candidate.fastEvidenceScore,
     candidate.fastMatchCount
   ));
+  sharedIdentityResolution.candidates.forEach((candidate) => add(
+    candidate.type,
+    candidate.item,
+    candidate === sharedIdentityResolution.preferred ? 1700 : 340,
+    candidate === sharedIdentityResolution.preferred ? 1700 : 340,
+    1
+  ));
 
   // The inverted index has already reduced the corpus to records that share
   // query evidence. Deep scorers perform fuzzy description work, including
@@ -19020,6 +19297,22 @@ function responsiveEncyclopediaSearchMatches(input = "") {
       ...groups[prefixPriority.type].filter((item) => item !== prefixPriority.item)
     ];
   }
+  const sharedPreferred = sharedIdentityResolution.mayAutoOpen && sharedIdentityResolution.preferred
+    ? scored.find((candidate) => candidate.type === sharedIdentityResolution.preferred.type
+      && candidate.item === sharedIdentityResolution.preferred.item)
+      || {
+        type: sharedIdentityResolution.preferred.type,
+        item: sharedIdentityResolution.preferred.item,
+        score: 3900,
+        sharedIdentityResolution: true
+      }
+    : null;
+  if (!exactPriority && !prefixPriority && sharedPreferred && groups[sharedPreferred.type]) {
+    groups[sharedPreferred.type] = [
+      sharedPreferred.item,
+      ...groups[sharedPreferred.type].filter((item) => item !== sharedPreferred.item)
+    ];
+  }
   const directPreferred = scored
     .filter((candidate) => inputDirectlyNamesOfflineCandidate(input, candidate)
       && offlineLookupIsDirectEnough(input, candidate))
@@ -19028,8 +19321,179 @@ function responsiveEncyclopediaSearchMatches(input = "") {
     .sort((a, b) => a.mentionIndex - b.mentionIndex
       || b.candidate.score - a.candidate.score
       || offlineLookupEntityLabel(a.candidate).localeCompare(offlineLookupEntityLabel(b.candidate)))[0]?.candidate || null;
-  const preferred = exactPriority || prefixPriority || directPreferred;
+  const preferred = exactPriority || prefixPriority || sharedPreferred || directPreferred;
   return { ...groups, preferred, candidateCount: scored.length };
+}
+
+let medicalPhoneticIdentityIndex = null;
+let medicalPhoneticIndexScheduled = false;
+
+function medicalPhoneticForms(value = "") {
+  const normalized = normalizePharmText(value);
+  if (!normalized) return [];
+  // Restricted, reviewed sound-to-spelling bridges. These generate
+  // suggestions only; they never authorize automatic navigation.
+  const hardCholine = normalized.replace(/ch(?=olin)/g, "k");
+  const heardLol = normalized.replace(/lawl\b/g, "lol");
+  const combined = hardCholine.replace(/lawl\b/g, "lol");
+  return Array.from(new Map([
+    { text: normalized, rule: "standard" },
+    { text: hardCholine, rule: "hard-choline" },
+    { text: heardLol, rule: "heard-lol" },
+    { text: combined, rule: "combined" }
+  ].map((record) => [record.text, record])).values());
+}
+
+function isRestrictedMedicalPhoneticInput(input = "") {
+  const fixed = applyClinicalSpeechFixups(input) || input;
+  const core = fastCanonicalLookupCore(fixed) || normalizePharmText(fixed);
+  if (!core) return false;
+  return medicalPhoneticForms(core).some((form) => (
+    form.text !== core && fastVoiceIdentityCandidates(form.text).length > 0
+  ));
+}
+
+function medicalPhoneticKey(value = "") {
+  const words = normalizePharmText(value)
+    .split(" ")
+    .filter((word) => word.length >= 2 && !FAST_LOOKUP_STOP_WORDS.has(word));
+  if (!words.length) return "";
+  return words.map((word) => {
+    let token = word
+      .replace(/^kn/, "n")
+      .replace(/^wr/, "r")
+      .replace(/sch/g, "sk")
+      .replace(/tch|ch|sh/g, "j")
+      .replace(/ph/g, "f")
+      .replace(/ght/g, "t")
+      .replace(/qu/g, "k")
+      .replace(/ck/g, "k")
+      .replace(/c(?=[eiy])/g, "s")
+      .replace(/c/g, "k")
+      .replace(/g(?=[eiy])/g, "j")
+      .replace(/x/g, "ks")
+      .replace(/z/g, "s")
+      .replace(/v/g, "f")
+      .replace(/y/g, "i")
+      .replace(/[^a-z]/g, "");
+    const first = token.charAt(0);
+    token = `${first}${token.slice(1).replace(/[aeiou]/g, "")}`
+      .replace(/(.)\1+/g, "$1");
+    return token;
+  }).join("");
+}
+
+function buildMedicalPhoneticIdentityIndex() {
+  if (medicalPhoneticIdentityIndex) return medicalPhoneticIdentityIndex;
+  const index = new Map();
+  getFastVoiceIdentityIndex().forEach((owners, identity) => {
+    medicalPhoneticForms(identity).forEach((form) => {
+      const key = medicalPhoneticKey(form.text);
+      if (!key || key.length < 4) return;
+      const records = index.get(key) || [];
+      owners.forEach((owner) => {
+        if (!records.some((candidate) => candidate.type === owner.type && candidate.item === owner.item)) {
+          records.push({
+            type: owner.type,
+            item: owner.item,
+            phoneticIdentity: identity,
+            phoneticRule: form.rule
+          });
+        }
+      });
+      index.set(key, records);
+    });
+  });
+  medicalPhoneticIdentityIndex = index;
+  medicalPhoneticIndexScheduled = false;
+  if (typeof CustomEvent === "function") {
+    window.dispatchEvent?.(new CustomEvent("ani-medical-phonetic-index-ready"));
+  }
+  return medicalPhoneticIdentityIndex;
+}
+
+function scheduleMedicalPhoneticIdentityIndex() {
+  if (medicalPhoneticIdentityIndex || medicalPhoneticIndexScheduled) return;
+  medicalPhoneticIndexScheduled = true;
+  const build = () => {
+    try {
+      buildMedicalPhoneticIdentityIndex();
+    } catch {
+      medicalPhoneticIndexScheduled = false;
+    }
+  };
+  if (window.requestIdleCallback) {
+    window.requestIdleCallback(build, { timeout: 850 });
+  } else {
+    window.setTimeout(build, 80);
+  }
+}
+
+function completeMedicalPhoneticIndexForAudit() {
+  return buildMedicalPhoneticIdentityIndex();
+}
+
+function medicalPhoneticIdentityCandidates(input = "", limit = 4) {
+  const fixed = applyClinicalSpeechFixups(input) || input;
+  const core = fastCanonicalLookupCore(fixed) || normalizePharmText(fixed);
+  if (!core || core.length < 4 || core.split(" ").length > 4) return [];
+  if (!medicalPhoneticIdentityIndex) {
+    scheduleMedicalPhoneticIdentityIndex();
+    return [];
+  }
+  const matches = [];
+  medicalPhoneticForms(core).forEach((form) => {
+    const key = medicalPhoneticKey(form.text);
+    if (!key || key.length < 4) return;
+    (medicalPhoneticIdentityIndex.get(key) || []).forEach((candidate) => matches.push({
+      ...candidate,
+      queryPhoneticRule: form.rule
+    }));
+  });
+  return Array.from(new Map(matches
+    .filter((candidate) => normalizePharmText(offlineLookupEntityLabel(candidate)) !== core)
+    .map((candidate) => [offlineLookupEntityKey(candidate), {
+      ...candidate,
+      score: 720,
+      phoneticMatch: true,
+      identitySuggestionOnly: true,
+      mayAutoOpen: false
+    }])).values())
+    .sort((a, b) => offlineLookupEntityLabel(a).localeCompare(offlineLookupEntityLabel(b)))
+    .slice(0, Math.max(1, limit));
+}
+
+function medicalSearchAssistCandidates(input = "", limit = 6) {
+  const identity = resolveEncyclopediaIdentity(input, { mode: "suggest", limit });
+  const candidates = identity.candidates.map((candidate) => ({
+    type: candidate.type,
+    item: candidate.item,
+    label: offlineLookupEntityLabel(candidate),
+    kind: offlineLookupEntityKind(candidate),
+    matchKind: candidate === identity.preferred ? identity.matchKind : "prefix-suggestion",
+    mayAutoOpen: candidate === identity.preferred && identity.mayAutoOpen
+  }));
+  if (!candidates.length) {
+    medicalPhoneticIdentityCandidates(input, limit).forEach((candidate) => candidates.push({
+      type: candidate.type,
+      item: candidate.item,
+      label: offlineLookupEntityLabel(candidate),
+      kind: offlineLookupEntityKind(candidate),
+      matchKind: "phonetic-suggestion",
+      mayAutoOpen: false
+    }));
+  }
+  return {
+    query: safeText(input),
+    core: identity.core,
+    candidates: Array.from(new Map(candidates
+      .filter((candidate) => candidate.label)
+      .map((candidate) => [`${candidate.type}:${normalizePharmText(candidate.label)}`, candidate])).values())
+      .slice(0, Math.max(1, limit)),
+    preferred: identity.preferred,
+    matchKind: identity.matchKind,
+    mayAutoOpen: identity.mayAutoOpen
+  };
 }
 
 function encyclopediaSynonymCandidates(input = "", types = ["lab", "pathology", "reference", "holistic", "drug"]) {
@@ -35329,6 +35793,7 @@ function warmOfflinePerformanceCaches() {
     // delayed warmup built the full deep reference maps in one synchronous
     // block and could freeze ANI several seconds after the screen appeared.
     getFastVoiceIdentityIndex();
+    scheduleMedicalPhoneticIdentityIndex();
     schedulePharmContentIndexBuild();
   } catch {
     // Offline warmup is opportunistic; direct lookups still build indexes lazily.
@@ -35416,12 +35881,16 @@ function exactPharmDetailCandidate(query = "", preferredType = "") {
       ? { type: matching[0].type, item: matching[0].item }
       : null;
   }
+  // A reviewed cross-domain ambiguity (for example hCG as a test versus a
+  // medication identity) must fail closed. For every nonambiguous route, exact
+  // installed-card ownership precedes alias/intent routing so command-like
+  // titles such as "Open fracture" cannot collapse to a broader parent card.
+  const strictCanonical = strictCanonicalEncyclopediaCandidate(query, normalizedPreferredType);
+  if (strictCanonical) return { type: strictCanonical.type, item: strictCanonical.item };
   if (reviewedResolution
     && (!normalizedPreferredType || normalizedPreferredType === reviewedResolution.type)) {
     return { type: reviewedResolution.type, item: reviewedResolution.item };
   }
-  const strictCanonical = strictCanonicalEncyclopediaCandidate(query, normalizedPreferredType);
-  if (strictCanonical) return { type: strictCanonical.type, item: strictCanonical.item };
   const typeOrder = normalizedPreferredType
     ? [normalizedPreferredType]
     : ["pathology", "reference", "lab", "holistic", "drug"];
@@ -35921,6 +36390,9 @@ function openPharmDetailCandidate(candidate = {}, options = {}) {
     return false;
   }
   currentPharmDetailCandidate = nextCandidate;
+  if (!options.skipBrowserHistory) {
+    pushPharmBrowserDetailState(nextCandidate);
+  }
   showPharmDetailPage();
   if (Number.isFinite(Number(options.restoreScrollTop))) {
     const restoreTop = Math.max(0, Number(options.restoreScrollTop || 0));
@@ -35946,7 +36418,13 @@ function openBestPharmDetailForQuery(query = "", options = {}) {
   const normalizedPreferredType = inferredPreferredType === "procedures" ? "reference" : inferredPreferredType;
   const exactCandidate = exactPharmDetailCandidate(query, normalizedPreferredType);
   if (exactCandidate) {
-    return openPharmDetailCandidate(exactCandidate, { intent: query, autoRead: options.autoRead, highlightQuery: options.highlightQuery });
+    return openPharmDetailCandidate(exactCandidate, {
+      intent: query,
+      autoRead: options.autoRead,
+      highlightQuery: options.highlightQuery,
+      skipHistory: options.skipHistory,
+      skipBrowserHistory: options.skipBrowserHistory
+    });
   }
   const directLab = inferredPreferredType === "lab" ? bestLabMatch(query) : null;
   const suggestions = directLab ? [] : offlineLookupSuggestions(query);
@@ -35955,11 +36433,22 @@ function openBestPharmDetailForQuery(query = "", options = {}) {
     : normalizedPreferredType
     ? suggestions.find((item) => item.type === normalizedPreferredType) || suggestions[0]
     : suggestions[0];
-  return openPharmDetailCandidate(candidate, { intent: query, autoRead: options.autoRead, highlightQuery: options.highlightQuery });
+  return openPharmDetailCandidate(candidate, {
+    intent: query,
+    autoRead: options.autoRead,
+    highlightQuery: options.highlightQuery,
+    skipHistory: options.skipHistory,
+    skipBrowserHistory: options.skipBrowserHistory
+  });
 }
 
 function openPharmDatabase(query = "", options = {}) {
   if (!pharmDatabaseScreen) return;
+  const existingBrowserRoute = pharmUsesBrowserHistory() ? currentPharmBrowserRoute() : null;
+  if (!options.skipBrowserHistory && pharmUsesBrowserHistory()
+      && (pharmDatabaseScreen.hidden || !existingBrowserRoute)) {
+    pushPharmBrowserIndexState();
+  }
   const boundTargetCandidate = options.targetCandidate?.item
     ? { type: options.targetCandidate.type, item: options.targetCandidate.item }
     : null;
@@ -35983,7 +36472,9 @@ function openPharmDatabase(query = "", options = {}) {
     if (openPharmDetailCandidate(boundTargetCandidate, {
       intent: query || offlineLookupEntityLabel(boundTargetCandidate),
       autoRead: options.autoRead,
-      highlightQuery: options.highlightQuery
+      highlightQuery: options.highlightQuery,
+      skipHistory: options.skipHistory,
+      skipBrowserHistory: options.skipBrowserHistory
     })) {
       if (options.autoFocus === true) pharmSearchInput?.blur?.();
       return;
@@ -35995,7 +36486,13 @@ function openPharmDatabase(query = "", options = {}) {
     clearPharmResultChunkTimers();
     updatePharmFilterUi();
     updatePharmIndexModeUi();
-    if (openBestPharmDetailForQuery(query, { preferredType: options.detailType, autoRead: options.autoRead, highlightQuery: options.highlightQuery })) {
+    if (openBestPharmDetailForQuery(query, {
+      preferredType: options.detailType,
+      autoRead: options.autoRead,
+      highlightQuery: options.highlightQuery,
+      skipHistory: options.skipHistory,
+      skipBrowserHistory: options.skipBrowserHistory
+    })) {
       if (options.autoFocus === true) {
         pharmSearchInput?.blur?.();
       }
@@ -36026,16 +36523,23 @@ function openPharmDatabase(query = "", options = {}) {
   }
 }
 
-function closePharmDatabase() {
+function closePharmDatabase(options = {}) {
   pharmDatabaseScreen && (pharmDatabaseScreen.hidden = true);
   closePharmDetailPage();
   document.body.classList.remove("pharm-database-active");
+  if (options.fromBrowserHistory) {
+    pharmDetailHistoryStack = [];
+  }
 }
 
 function handleAniBackNavigation() {
   hideActionMenu();
 
   if (pharmDatabaseScreen && !pharmDatabaseScreen.hidden) {
+    if (pharmUsesBrowserHistory() && currentPharmBrowserRoute()) {
+      window.history.back();
+      return true;
+    }
     if (pharmDatabaseScreen.classList.contains("pharm-detail-open")) {
       navigateBackPharmDetail();
       return true;
@@ -40160,8 +40664,20 @@ function fastReviewedSearchSafetySuggestion(input = "") {
 }
 
 function fastReviewedSearchResolution(input = "") {
-  return fastReviewedContextualIdentityResolution(input)
+  const contextual = fastReviewedContextualIdentityResolution(input)
     || fastReviewedSearchSafetySuggestion(input);
+  if (contextual) return contextual;
+  const sharedIdentity = resolveEncyclopediaIdentity(input, { mode: "navigate", limit: 8 });
+  if (!sharedIdentity.mayAutoOpen || !sharedIdentity.preferred) return null;
+  return {
+    type: sharedIdentity.preferred.type,
+    item: sharedIdentity.preferred.item,
+    score: sharedIdentity.matchKind === "reviewed-prefix" ? 3900 : 3720,
+    exactIdentity: sharedIdentity.matchKind === "exact-identity",
+    reviewedPrefixIdentity: sharedIdentity.matchKind === "reviewed-prefix",
+    nearIdentity: false,
+    sharedIdentityResolution: true
+  };
 }
 
 function offlineLookupSuggestionsUncached(input = "") {
@@ -40251,12 +40767,34 @@ function offlineLookupSuggestionsUncached(input = "") {
   if (insulinActionProfileReference) {
     return [insulinActionProfileReference];
   }
-  const preflightNearIdentityMatch = conversationalNearIdentitySuggestion(input);
+  const preflightNearIdentityMatch = isRestrictedMedicalPhoneticInput(input)
+    ? null
+    : conversationalNearIdentitySuggestion(input);
   if (preflightNearIdentityMatch?.ambiguousIdentity === true) {
     return preflightNearIdentityMatch.ambiguityCandidates || [];
   }
   if (preflightNearIdentityMatch?.nearIdentity === true) {
     return [preflightNearIdentityMatch];
+  }
+  const sharedIdentity = resolveEncyclopediaIdentity(input, { mode: "suggest", limit: 4 });
+  if (sharedIdentity.candidates.length) {
+    const ambiguous = sharedIdentity.candidates.length > 1;
+    return sharedIdentity.candidates.map((candidate) => ({
+      type: candidate.type,
+      item: candidate.item,
+      score: 900,
+      exactIdentity: false,
+      nearIdentity: false,
+      identitySuggestionOnly: true,
+      ambiguousIdentity: ambiguous,
+      mayAutoOpen: false
+    }));
+  }
+  const bareCore = fastCanonicalLookupCore(input) || normalizePharmText(applyClinicalSpeechFixups(input) || input);
+  if (bareCore && !bareCore.includes(" ") && isConciseOfflineLookupQuery(input)) {
+    // A bare ordinary word with no canonical identity must not inherit a card
+    // merely because that word appears repeatedly inside its body text.
+    return [];
   }
   return offlineLookupSuggestionsFull(input, preflightNearIdentityMatch);
 }
@@ -42788,6 +43326,9 @@ function offlineLookupIntent(input = "") {
 }
 
 function offlineLookupIsDirectEnough(input = "", candidate = {}) {
+  if (candidate?.identitySuggestionOnly === true || candidate?.phoneticMatch === true) {
+    return false;
+  }
   const cleanInput = normalizePharmText(input);
   const cleanLabel = normalizePharmText(offlineLookupEntityLabel(candidate));
   const lookupInput = normalizeOfflineLookupText(input);
@@ -42818,7 +43359,11 @@ function offlineLookupIsDirectEnough(input = "", candidate = {}) {
 }
 
 function shouldAutoRouteToOfflineLookup(input = "", candidate = {}) {
-  if (!candidate || candidate.ambiguousIdentity === true || shouldUseAiForUserRequest(input)) {
+  if (!candidate
+    || candidate.ambiguousIdentity === true
+    || candidate.identitySuggestionOnly === true
+    || candidate.phoneticMatch === true
+    || shouldUseAiForUserRequest(input)) {
     return false;
   }
   const descriptionScore = scoreOfflineDescriptionForCandidate(candidate, input);
@@ -45454,6 +45999,7 @@ function sendUserMessage(text, options = {}) {
     : images.length || resources.length
     ? `${baseDisplayText}\n\n${attachmentSummary(images, resources)}`
     : baseDisplayText;
+  const encyclopediaWasOpenWhenSent = Boolean(pharmDatabaseScreen && !pharmDatabaseScreen.hidden);
 
   retireOpenTestPickers();
   addMessage("user", displayText, true);
@@ -45466,9 +46012,9 @@ function sendUserMessage(text, options = {}) {
       ? "Building interactive NCLEX item with OpenAI..."
       : "Checking ANI's local reference...";
   }
-  setTimeout(async () => {
+  const finishUserMessage = async () => {
     const response = await makeModelEnhancedResponse(outgoingText, images, resources);
-    if (response?.preface) {
+    if (response?.preface && response?.type !== "pharm-database") {
       addMessage("assistant", response.preface, false, response?.type !== "pharm-database");
     }
     if (response?.type === "cje-case") {
@@ -45495,9 +46041,29 @@ function sendUserMessage(text, options = {}) {
         boundEncyclopediaTarget: response.target
       });
     } else if (response?.type === "pharm-database") {
-      openPharmDatabase(response.query || "", { openDetail: response.openDetail, detailType: response.detailType, fastDetail: true, highlightQuery: response.highlightQuery });
-      if (!response.preface) {
-        addMessage("assistant", "I opened the clinical reference. You can search by medication, class, interaction, warning, lab, disease, pathology, herbal, supplement, or typo-close spelling.", false, false);
+      const userOpenedEncyclopediaWhileWaiting = !encyclopediaWasOpenWhenSent
+        && Boolean(pharmDatabaseScreen && !pharmDatabaseScreen.hidden);
+      const responseTarget = response.query
+        ? exactPharmDetailCandidate(response.query, response.detailType)
+        : null;
+      if (userOpenedEncyclopediaWhileWaiting) {
+        addMessage(
+          "assistant",
+          response.preface || `I found **${response.query || "the requested topic"}** in the medical encyclopedia. Your current encyclopedia view was left in place; use this link when you are ready to open it.`,
+          false,
+          true,
+          true,
+          responseTarget ? { boundEncyclopediaTarget: responseTarget } : {}
+        );
+      } else {
+        if (response.preface) {
+          addMessage("assistant", response.preface, false, false, true,
+            responseTarget ? { boundEncyclopediaTarget: responseTarget } : {});
+        }
+        openPharmDatabase(response.query || "", { openDetail: response.openDetail, detailType: response.detailType, fastDetail: true, highlightQuery: response.highlightQuery });
+        if (!response.preface) {
+          addMessage("assistant", "I opened the clinical reference. You can search by medication, class, interaction, warning, lab, disease, pathology, herbal, supplement, or typo-close spelling.", false, false);
+        }
       }
     } else {
       addMessage("assistant", response);
@@ -45505,7 +46071,18 @@ function sendUserMessage(text, options = {}) {
     if (voiceStatus) {
       voiceStatus.textContent = "Voice ready";
     }
-  }, 80);
+  };
+  const queueResponseWork = () => window.setTimeout(finishUserMessage, 0);
+  // Paint the submitted message first, then begin local routing during the
+  // browser's next idle opportunity. This removes the old fixed 80 ms wait and
+  // leaves navigation responsive before heavier fallback work begins.
+  window.requestAnimationFrame(() => {
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(queueResponseWork, { timeout: 48 });
+    } else {
+      queueResponseWork();
+    }
+  });
 }
 
 function cleanSpeechTranscript(text = "") {
@@ -47191,7 +47768,7 @@ lectureModeButton?.addEventListener("click", () => {
     messageInput.focus();
   }
 });
-closePharmDatabaseButton?.addEventListener("click", closePharmDatabase);
+closePharmDatabaseButton?.addEventListener("click", requestClosePharmDatabase);
 pharmMuteToggle?.addEventListener("click", () => {
   setPharmAutoReadMuted(!pharmAutoReadMuted);
 });
@@ -47213,6 +47790,221 @@ document.addEventListener("selectionchange", () => {
     updatePharmHighlightFromSelection();
   }
 });
+
+let medicalSearchAssistBox = null;
+let medicalSearchAssistInput = null;
+let medicalSearchAssistRecords = [];
+let medicalSearchAssistActiveIndex = -1;
+let medicalSearchAssistTimer = null;
+
+function hideMedicalSearchAssist() {
+  if (medicalSearchAssistTimer) {
+    window.clearTimeout(medicalSearchAssistTimer);
+    medicalSearchAssistTimer = null;
+  }
+  if (medicalSearchAssistBox) {
+    medicalSearchAssistBox.hidden = true;
+    medicalSearchAssistBox.textContent = "";
+  }
+  medicalSearchAssistInput?.setAttribute?.("aria-expanded", "false");
+  medicalSearchAssistInput = null;
+  medicalSearchAssistRecords = [];
+  medicalSearchAssistActiveIndex = -1;
+}
+
+function positionMedicalSearchAssist(input) {
+  if (!medicalSearchAssistBox || medicalSearchAssistBox.hidden || !input?.getBoundingClientRect) return;
+  const rect = input.getBoundingClientRect();
+  if (!rect.width || !rect.height) return;
+  const viewportMargin = 10;
+  const inputGap = 6;
+  const width = Math.min(Math.max(rect.width, 260), Math.min(560, window.innerWidth - 20));
+  const left = Math.min(
+    Math.max(viewportMargin, rect.left),
+    Math.max(viewportMargin, window.innerWidth - width - viewportMargin)
+  );
+  const roomBelow = Math.max(0, window.innerHeight - rect.bottom - inputGap - viewportMargin);
+  const roomAbove = Math.max(0, rect.top - inputGap - viewportMargin);
+  const desiredHeight = Math.min(
+    320,
+    Math.max(120, medicalSearchAssistBox.scrollHeight || 190),
+    Math.max(80, window.innerHeight * 0.46)
+  );
+  const placeBelow = roomBelow >= Math.min(190, desiredHeight) || roomBelow >= roomAbove;
+  const availableHeight = Math.max(48, Math.floor(placeBelow ? roomBelow : roomAbove));
+  medicalSearchAssistBox.style.width = `${Math.round(width)}px`;
+  medicalSearchAssistBox.style.left = `${Math.round(left)}px`;
+  medicalSearchAssistBox.style.maxHeight = `${availableHeight}px`;
+  if (placeBelow) {
+    medicalSearchAssistBox.dataset.placement = "below";
+    medicalSearchAssistBox.style.top = `${Math.round(rect.bottom + inputGap)}px`;
+    medicalSearchAssistBox.style.bottom = "auto";
+  } else {
+    medicalSearchAssistBox.dataset.placement = "above";
+    medicalSearchAssistBox.style.top = "auto";
+    medicalSearchAssistBox.style.bottom = `${Math.round(window.innerHeight - rect.top + inputGap)}px`;
+  }
+}
+
+function updateMedicalSearchAssistSelection() {
+  if (!medicalSearchAssistBox) return;
+  medicalSearchAssistBox.querySelectorAll(".medical-search-assist-option").forEach((option, index) => {
+    const active = index === medicalSearchAssistActiveIndex;
+    option.classList.toggle("is-active", active);
+    option.setAttribute("aria-selected", String(active));
+  });
+}
+
+function acceptMedicalSearchAssist(index, options = {}) {
+  const record = medicalSearchAssistRecords[index];
+  const input = medicalSearchAssistInput;
+  if (!record || !input) return false;
+  input.value = record.label;
+  lastAniInteractiveInputAt = Date.now();
+  hideMedicalSearchAssist();
+  if (input === pharmSearchInput) {
+    activePharmLetter = "All";
+    clearPharmSearchRenderTimer();
+    const requestGeneration = ++pharmSearchRequestGeneration;
+    renderPharmResults({ expectedQuery: record.label, requestGeneration });
+    if (options.openDetail === true) {
+      openPharmDetailCandidate({ type: record.type, item: record.item }, {
+        highlightQuery: record.label,
+        autoRead: true
+      });
+    }
+  } else {
+    input.focus?.();
+  }
+  return true;
+}
+
+function renderMedicalSearchAssist(input) {
+  if (!input || document.activeElement !== input) {
+    hideMedicalSearchAssist();
+    return;
+  }
+  const query = safeText(input.value);
+  const normalized = normalizePharmText(query);
+  if (normalized.length < 2) {
+    hideMedicalSearchAssist();
+    return;
+  }
+  const result = medicalSearchAssistCandidates(query, 6);
+  if (!result.candidates.length) {
+    hideMedicalSearchAssist();
+    return;
+  }
+  if (!medicalSearchAssistBox) {
+    medicalSearchAssistBox = document.createElement("div");
+    medicalSearchAssistBox.id = "aniMedicalSearchAssist";
+    medicalSearchAssistBox.className = "medical-search-assist";
+    medicalSearchAssistBox.setAttribute("role", "listbox");
+    medicalSearchAssistBox.setAttribute("aria-label", "Medical encyclopedia suggestions");
+    medicalSearchAssistBox.addEventListener("mousedown", (event) => event.preventDefault());
+    document.body.append(medicalSearchAssistBox);
+  }
+  medicalSearchAssistInput = input;
+  medicalSearchAssistRecords = result.candidates;
+  medicalSearchAssistActiveIndex = -1;
+  medicalSearchAssistBox.textContent = "";
+  medicalSearchAssistRecords.forEach((record, index) => {
+    const option = document.createElement("button");
+    option.type = "button";
+    option.className = "medical-search-assist-option";
+    option.setAttribute("role", "option");
+    option.setAttribute("aria-selected", "false");
+    option.setAttribute("aria-label", `Use ${record.label}, ${record.kind}`);
+    const title = document.createElement("strong");
+    title.textContent = record.label;
+    const detail = document.createElement("small");
+    detail.textContent = record.matchKind === "phonetic-suggestion"
+      ? `Sounds like this · ${record.kind}`
+      : `${record.kind}${record.mayAutoOpen ? " · reviewed direct match" : ""}`;
+    option.append(title, detail);
+    option.addEventListener("mouseenter", () => {
+      medicalSearchAssistActiveIndex = index;
+      updateMedicalSearchAssistSelection();
+    });
+    option.addEventListener("click", () => {
+      acceptMedicalSearchAssist(index, { openDetail: input === pharmSearchInput });
+    });
+    medicalSearchAssistBox.append(option);
+  });
+  medicalSearchAssistBox.hidden = false;
+  input.setAttribute("aria-controls", medicalSearchAssistBox.id);
+  input.setAttribute("aria-expanded", "true");
+  input.setAttribute("aria-autocomplete", "list");
+  positionMedicalSearchAssist(input);
+}
+
+function queueMedicalSearchAssist(input, delay = 55) {
+  if (medicalSearchAssistTimer) window.clearTimeout(medicalSearchAssistTimer);
+  medicalSearchAssistTimer = window.setTimeout(() => {
+    medicalSearchAssistTimer = null;
+    renderMedicalSearchAssist(input);
+  }, delay);
+}
+
+function bindMedicalSearchAssist(input) {
+  if (!input || input.dataset.medicalSearchAssistBound === "true") return;
+  input.dataset.medicalSearchAssistBound = "true";
+  input.addEventListener("focus", () => {
+    scheduleMedicalPhoneticIdentityIndex();
+    queueMedicalSearchAssist(input, 0);
+  });
+  input.addEventListener("input", (event) => {
+    if (!event.isComposing) queueMedicalSearchAssist(input);
+  });
+  input.addEventListener("blur", () => window.setTimeout(() => {
+    if (medicalSearchAssistInput === input) hideMedicalSearchAssist();
+  }, 120));
+  input.addEventListener("keydown", (event) => {
+    if (!medicalSearchAssistBox || medicalSearchAssistBox.hidden || medicalSearchAssistInput !== input) return;
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      event.preventDefault();
+      const direction = event.key === "ArrowDown" ? 1 : -1;
+      const length = medicalSearchAssistRecords.length;
+      medicalSearchAssistActiveIndex = (medicalSearchAssistActiveIndex + direction + length) % length;
+      updateMedicalSearchAssistSelection();
+      return;
+    }
+    if (event.key === "Escape") {
+      event.preventDefault();
+      event.stopPropagation();
+      hideMedicalSearchAssist();
+      return;
+    }
+    if (event.key === "Tab" && medicalSearchAssistRecords.length) {
+      event.preventDefault();
+      acceptMedicalSearchAssist(medicalSearchAssistActiveIndex >= 0 ? medicalSearchAssistActiveIndex : 0);
+      return;
+    }
+    if (event.key === "Enter") {
+      const automaticIndex = input === pharmSearchInput
+        && medicalSearchAssistRecords[0]?.mayAutoOpen === true
+        ? 0
+        : -1;
+      const selectedIndex = medicalSearchAssistActiveIndex >= 0
+        ? medicalSearchAssistActiveIndex
+        : automaticIndex;
+      if (selectedIndex >= 0) {
+        event.preventDefault();
+        event.stopImmediatePropagation?.();
+        acceptMedicalSearchAssist(selectedIndex, { openDetail: input === pharmSearchInput });
+      }
+    }
+  });
+}
+
+bindMedicalSearchAssist(messageInput);
+bindMedicalSearchAssist(pharmSearchInput);
+window.addEventListener("resize", () => positionMedicalSearchAssist(medicalSearchAssistInput));
+window.addEventListener("scroll", () => positionMedicalSearchAssist(medicalSearchAssistInput), { passive: true });
+window.addEventListener("ani-medical-phonetic-index-ready", () => {
+  if (medicalSearchAssistInput) queueMedicalSearchAssist(medicalSearchAssistInput, 0);
+});
+
 messageInput?.addEventListener("input", () => {
   lastAniInteractiveInputAt = Date.now();
 });
@@ -47235,7 +48027,7 @@ pharmSearchInput?.addEventListener("input", (event) => {
   queuePharmSearchRender();
 });
 pharmSearchInput?.addEventListener("keydown", (event) => {
-  if (event.key !== "Enter") return;
+  if (event.key !== "Enter" || event.defaultPrevented) return;
   event.preventDefault();
   clearPharmSearchRenderTimer();
   const querySnapshot = pharmSearchInput.value || "";
@@ -47325,9 +48117,15 @@ procedureSpecialtySelect?.addEventListener("change", () => {
 });
 pharmDatabaseScreen?.addEventListener("click", (event) => {
   if (event.target === pharmDatabaseScreen) {
-    closePharmDatabase();
+    requestClosePharmDatabase();
   }
 });
+window.addEventListener("popstate", (event) => {
+  applyPharmBrowserRoute(event.state);
+});
+if (pharmUsesBrowserHistory() && currentPharmBrowserRoute()) {
+  window.setTimeout(() => applyPharmBrowserRoute(window.history.state), 0);
+}
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && handleAniBackNavigation()) {
     event.preventDefault();
