@@ -1,9 +1,10 @@
-const CACHE_VERSION = "ani-pwa-v318";
+const CACHE_VERSION = "ani-pwa-v318-web-92f20d0f8c78";
 const APP_SHELL = [
   "/",
   "/index.html",
   "/app-config.js",
   "/styles.css",
+  "/web/ani-website-responsive.css",
   "/src/microbiology/domain-core.js",
   "/data/microbiology-database.js",
   "/src/surgery-procedures/domain-core.js",
