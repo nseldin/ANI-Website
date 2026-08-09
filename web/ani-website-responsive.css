@@ -435,7 +435,7 @@ html[data-ani-surface="website"] .learner-language-support > strong {
 
   html[data-ani-surface="website"] .composer {
     width: 100%;
-    grid-template-columns: 48px minmax(0, 1fr);
+    grid-template-columns: 48px minmax(0, 1fr) minmax(64px, 72px);
     gap: 7px;
   }
 
@@ -451,9 +451,12 @@ html[data-ani-surface="website"] .learner-language-support > strong {
   }
 
   html[data-ani-surface="website"] .composer .send-button {
-    grid-column: 1 / -1;
+    grid-column: auto;
     width: 100%;
+    min-width: 64px;
+    max-width: 72px;
     min-height: 46px;
+    padding-inline: 8px;
   }
 
   html[data-ani-surface="website"] .pharm-database-screen {

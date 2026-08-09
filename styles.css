@@ -2045,7 +2045,7 @@ body.lecture-mode-active .voice-status {
 }
 
 .medical-updates-browse-controls {
-  grid-template-columns: repeat(2, minmax(220px, 1fr)) auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   border-color: color-mix(in srgb, var(--pharm-updates) 30%, white);
   background: var(--pharm-updates-soft);
 }
@@ -2062,6 +2062,7 @@ body.lecture-mode-active .voice-status {
 }
 
 .medical-updates-browse-controls span {
+  grid-column: 1 / -1;
   color: var(--pharm-updates-dark);
 }
 
