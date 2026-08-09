@@ -625,17 +625,18 @@
         <div>
           <span>Medical reference</span>
           <strong>ANI MEDICAL ENCYCLOPEDIA</strong>
-          <p>Search medications, labs, diseases, microbiology, anatomy, physiology, diagnostics, and holistic safety using exact terms, abbreviations, everyday language, or typo-close spellings.</p>
+          <p>Search medications, medical updates, labs, diseases, microbiology, anatomy, physiology, diagnostics, and holistic safety using exact terms, abbreviations, everyday language, or typo-close spellings.</p>
         </div>
         <button id="closePharmDatabaseButton" type="button">Close</button>
       </header>
 
       <section class="pharm-search-panel" aria-label="Search ANI clinical encyclopedia">
-        <label for="pharmSearchInput">Search medication, lab, disease, microbiology, anatomy, physiology, diagnostic, symptom, or question</label>
+        <label for="pharmSearchInput">Search medication, medical update, lab, disease, microbiology, anatomy, physiology, diagnostic, symptom, or question</label>
         <input id="pharmSearchInput" type="search" autocomplete="off" enterkeyhint="search" placeholder="Try heart blood flow, DKA, fluoxetine">
         <div class="pharm-index-toggle" role="group" aria-label="Clinical encyclopedia category">
           <button type="button" data-pharm-index-mode="all" aria-pressed="true">All</button>
           <button type="button" data-pharm-index-mode="favorites" aria-pressed="false">&#9733; Favorites</button>
+          <button type="button" data-pharm-index-mode="updates" aria-pressed="false">Medical Updates</button>
           <button type="button" data-pharm-index-mode="labs" aria-pressed="false">Labs</button>
           <button type="button" data-pharm-index-mode="drugs" aria-pressed="false">Pharmacy</button>
           <button type="button" data-pharm-index-mode="diseases" aria-pressed="false">Diseases / Pathologies</button>
@@ -660,6 +661,37 @@
             <option value="all">All Microbiology branches</option>
           </select>
           <span id="microbiologyBrowseCount" aria-live="polite"></span>
+        </div>
+        <div id="pharmacyBrowseControls" class="clinical-sign-browse-controls pharm-subsection-browse-controls" hidden>
+          <label for="pharmacySubsectionSelect">Browse Pharmacy by subsection</label>
+          <select id="pharmacySubsectionSelect" aria-describedby="pharmacyBrowseCount">
+            <option value="all">All Pharmacy entries</option>
+          </select>
+          <span id="pharmacyBrowseCount" aria-live="polite"></span>
+        </div>
+        <div id="medicalUpdatesBrowseControls" class="clinical-sign-browse-controls medical-updates-browse-controls" hidden>
+          <label for="medicalUpdateCategorySelect">
+            Update category
+            <select id="medicalUpdateCategorySelect" aria-describedby="medicalUpdatesBrowseCount">
+              <option value="all">All clinically relevant updates</option>
+              <option value="drug-approval">Drug approvals</option>
+              <option value="safety-alert">Safety alerts</option>
+              <option value="recall">Recalls</option>
+              <option value="guideline-public-health">Guidelines &amp; public health</option>
+              <option value="medical-development">Medical developments</option>
+              <option value="vaccine-biologic">Vaccines &amp; biologics</option>
+              <option value="peptide-therapy">Peptides &amp; peptide therapies</option>
+            </select>
+          </label>
+          <label for="medicalUpdateArchiveSelect">
+            Time range
+            <select id="medicalUpdateArchiveSelect" aria-describedby="medicalUpdatesBrowseCount">
+              <option value="current">Current updates</option>
+              <option value="archive">Archived updates</option>
+              <option value="all">Current &amp; archived</option>
+            </select>
+          </label>
+          <span id="medicalUpdatesBrowseCount" aria-live="polite"></span>
         </div>
         <div id="foundationBrowseControls" class="clinical-sign-browse-controls" hidden>
           <label for="foundationDomainSelect">Browse Foundations by learning domain</label>
@@ -813,7 +845,8 @@
   <script src="./data/surgery-procedure-database.js?v=ani318"></script>
   <script src="./data/mnemonic-library.js?v=ani318"></script>
   <script src="./data/learner-language-standard.js?v=ani318"></script>
-  <script src="./main.js?v=ani318"></script>
+  <script src="./data/medical-updates.js?v=ani319"></script>
+  <script src="./main.js?v=ani319"></script>
   <script src="./data/pharm-frontier-wave21-antiseizure-routing.js?v=ani02"></script>
   <script src="./data/pharm-frontier-wave22-parkinson-routing.js?v=ani01"></script>
   <script src="./data/pharm-frontier-wave24-opioid-routing.js?v=ani01"></script>

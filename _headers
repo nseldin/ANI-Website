@@ -1,0 +1,4 @@
+/data/medical-updates.json
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+  X-Content-Type-Options: nosniff

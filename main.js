@@ -34,6 +34,13 @@ const clinicalSignBrowseCount = document.querySelector("#clinicalSignBrowseCount
 const microbiologyBrowseControls = document.querySelector("#microbiologyBrowseControls");
 const microbiologyBranchSelect = document.querySelector("#microbiologyBranchSelect");
 const microbiologyBrowseCount = document.querySelector("#microbiologyBrowseCount");
+const pharmacyBrowseControls = document.querySelector("#pharmacyBrowseControls");
+const pharmacySubsectionSelect = document.querySelector("#pharmacySubsectionSelect");
+const pharmacyBrowseCount = document.querySelector("#pharmacyBrowseCount");
+const medicalUpdatesBrowseControls = document.querySelector("#medicalUpdatesBrowseControls");
+const medicalUpdateCategorySelect = document.querySelector("#medicalUpdateCategorySelect");
+const medicalUpdateArchiveSelect = document.querySelector("#medicalUpdateArchiveSelect");
+const medicalUpdatesBrowseCount = document.querySelector("#medicalUpdatesBrowseCount");
 const foundationBrowseControls = document.querySelector("#foundationBrowseControls");
 const foundationDomainSelect = document.querySelector("#foundationDomainSelect");
 const foundationBrowseCount = document.querySelector("#foundationBrowseCount");
@@ -363,11 +370,21 @@ const PHARM_NCLEX_ONLY_KEY = "ani-pharm-nclex-only-v1";
 const PHARM_INDEX_MODE_KEY = "ani-pharm-index-mode-v1";
 const CLINICAL_SIGN_BROWSE_FACET_KEY = "ani-clinical-sign-browse-facet-v1";
 const MICROBIOLOGY_BROWSE_BRANCH_KEY = "ani-microbiology-browse-branch-v1";
+const PHARMACY_SUBSECTION_KEY = "ani-pharmacy-subsection-v1";
+const MEDICAL_UPDATE_CATEGORY_KEY = "ani-medical-update-category-v1";
+const MEDICAL_UPDATE_ARCHIVE_KEY = "ani-medical-update-archive-v1";
+const MEDICAL_UPDATES_LAST_GOOD_KEY = "ani-medical-updates-last-good-v1";
+const MEDICAL_UPDATES_SCHEMA_VERSION = "ani-medical-updates-runtime-v1";
+const MEDICAL_UPDATES_DATASET_SCHEMA_VERSION = "ani-medical-updates-dataset-v1";
+const MEDICAL_UPDATES_CACHE_MAX_BYTES = 1200000;
+const MEDICAL_UPDATES_REMOTE_MAX_BYTES = 1200000;
+const MEDICAL_UPDATES_MAX_CURRENT = 240;
+const MEDICAL_UPDATES_MAX_ARCHIVE = 520;
 const FOUNDATION_BROWSE_DOMAIN_KEY = "ani-foundation-browse-domain-v1";
 const SURGERY_PROCEDURE_BROWSE_SPECIALTY_KEY = "ani-surgery-procedure-browse-specialty-v1";
 const PHARM_AUTO_READ_MUTED_KEY = "ani-pharm-auto-read-muted-v1";
 const PHARM_FAVORITES_KEY = "ani-pharm-favorites-v1";
-const PHARM_INDEX_MODES = ["all", "favorites", "labs", "drugs", "diseases", "microbiology", "foundations", "surgeries", "procedures", "clinical-signs", "holistic"];
+const PHARM_INDEX_MODES = ["all", "favorites", "updates", "labs", "drugs", "diseases", "microbiology", "foundations", "surgeries", "procedures", "clinical-signs", "holistic"];
 const NURSING_FACT_STATE_KEY = "ani-nursing-fact-state-v1";
 const NURSING_FACT_INTERVAL_MS = 3 * 60 * 60 * 1000;
 const MAX_CHAT_SESSIONS = 36;
@@ -5560,10 +5577,16 @@ let activePharmIndexMode = PHARM_INDEX_MODES.includes(localStorage.getItem(PHARM
   : "all";
 let activeClinicalSignBrowseFacet = localStorage.getItem(CLINICAL_SIGN_BROWSE_FACET_KEY) || "all";
 let activeMicrobiologyBrowseBranch = localStorage.getItem(MICROBIOLOGY_BROWSE_BRANCH_KEY) || "all";
+let activePharmacySubsection = localStorage.getItem(PHARMACY_SUBSECTION_KEY) || "all";
+let activeMedicalUpdateCategory = localStorage.getItem(MEDICAL_UPDATE_CATEGORY_KEY) || "all";
+let activeMedicalUpdateArchive = ["current", "archive", "all"].includes(localStorage.getItem(MEDICAL_UPDATE_ARCHIVE_KEY))
+  ? localStorage.getItem(MEDICAL_UPDATE_ARCHIVE_KEY)
+  : "current";
 let activeFoundationBrowseDomain = localStorage.getItem(FOUNDATION_BROWSE_DOMAIN_KEY) || "all";
 let activeSurgeryProcedureBrowseSpecialty = localStorage.getItem(SURGERY_PROCEDURE_BROWSE_SPECIALTY_KEY) || "all";
 let clinicalSignBrowseCatalogCache = null;
 let clinicalSignBrowseOptionsReady = false;
+let pharmacyBrowseOptionsSignature = "";
 let foundationBrowseOptionsReady = false;
 let surgeryProcedureBrowseOptionsReady = false;
 let pharmFavoriteKeys = readPharmFavoriteKeys();
@@ -5922,6 +5945,532 @@ function filterPharmFavorites(type = "drugs", items = []) {
   return Array.isArray(items) ? items.filter((item) => isPharmFavorite(type, item)) : [];
 }
 
+const MEDICAL_UPDATE_CATEGORIES = new Set([
+  "drug-approval",
+  "safety-alert",
+  "recall",
+  "guideline-public-health",
+  "medical-development",
+  "vaccine-biologic"
+]);
+const MEDICAL_UPDATE_REFRESH_STATUSES = new Set(["CURRENT", "PARTIAL", "STALE", "PENDING_INITIAL_REFRESH"]);
+const MEDICAL_UPDATE_SOURCE_NAMES = new Map([
+  ["fda-medwatch", "U.S. Food and Drug Administration (FDA) MedWatch"],
+  ["fda-recalls", "U.S. Food and Drug Administration (FDA) Recalls"],
+  ["fda-drugs", "U.S. Food and Drug Administration (FDA) Drugs"],
+  ["fda-biologics", "U.S. Food and Drug Administration (FDA) Biologics"],
+  ["fda-press-releases", "U.S. Food and Drug Administration (FDA) Press Releases"],
+  ["cdc-mmwr", "U.S. Centers for Disease Control and Prevention (CDC) MMWR"],
+  ["nih-news-releases", "U.S. National Institutes of Health (NIH)"],
+  ["who-news", "World Health Organization (WHO)"]
+]);
+const MEDICAL_UPDATE_SOURCE_IDS = new Set(MEDICAL_UPDATE_SOURCE_NAMES.keys());
+const MEDICAL_UPDATE_SOURCE_HOSTS = Object.freeze({
+  "fda-medwatch": Object.freeze(["fda.gov", "www.fda.gov"]),
+  "fda-recalls": Object.freeze(["fda.gov", "www.fda.gov"]),
+  "fda-drugs": Object.freeze(["fda.gov", "www.fda.gov"]),
+  "fda-biologics": Object.freeze(["fda.gov", "www.fda.gov"]),
+  "fda-press-releases": Object.freeze(["fda.gov", "www.fda.gov"]),
+  "cdc-mmwr": Object.freeze(["cdc.gov", "www.cdc.gov"]),
+  "nih-news-releases": Object.freeze(["nih.gov", "www.nih.gov"]),
+  "who-news": Object.freeze(["who.int", "www.who.int"])
+});
+
+function medicalUpdatesPlainObject(value) {
+  return Boolean(value && typeof value === "object" && !Array.isArray(value));
+}
+
+function medicalUpdatesValidIso(value) {
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value)) return false;
+  const date = new Date(value);
+  return Number.isFinite(date.getTime()) && date.toISOString() === value;
+}
+
+function medicalUpdatesOfficialUrl(value, sourceId = "") {
+  if (typeof value !== "string" || value.length > 2200) return "";
+  try {
+    const parsed = new URL(value);
+    const hostname = parsed.hostname.toLowerCase();
+    const expectedHosts = MEDICAL_UPDATE_SOURCE_HOSTS[sourceId];
+    if (parsed.protocol !== "https:") return "";
+    if (!Array.isArray(expectedHosts) || !expectedHosts.includes(hostname)) return "";
+    return parsed.href;
+  } catch (error) {
+    return "";
+  }
+}
+
+function sanitizeMedicalUpdateRelatedCards(value) {
+  if (!Array.isArray(value) || value.length > 16) return null;
+  const seen = new Set();
+  const relatedCards = [];
+  for (const reference of value) {
+    if (!medicalUpdatesPlainObject(reference)) return null;
+    const collection = typeof reference.collection === "string" ? reference.collection.trim() : "";
+    const canonicalTitle = typeof reference.canonicalTitle === "string" ? reference.canonicalTitle.trim() : "";
+    if (!collection || collection.length > 100 || !canonicalTitle || canonicalTitle.length > 320) return null;
+    const key = `${normalizePharmText(collection)}:${normalizePharmText(canonicalTitle)}`;
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    relatedCards.push({ collection, canonicalTitle });
+  }
+  return relatedCards;
+}
+
+function sanitizeMedicalUpdateItem(value) {
+  if (!medicalUpdatesPlainObject(value)) return null;
+  const id = typeof value.id === "string" ? value.id.trim() : "";
+  const sourceId = typeof value.sourceId === "string" ? value.sourceId.trim() : "";
+  const sourceName = typeof value.sourceName === "string" ? value.sourceName.trim() : "";
+  const title = typeof value.title === "string" ? value.title : "";
+  const description = value.description === null ? null : (typeof value.description === "string" ? value.description : undefined);
+  const descriptionOrigin = typeof value.descriptionOrigin === "string" ? value.descriptionOrigin : "";
+  const url = medicalUpdatesOfficialUrl(value.url, sourceId);
+  const relatedCards = sanitizeMedicalUpdateRelatedCards(value.relatedCards);
+  const sourceCategories = Array.isArray(value.sourceCategories)
+    ? value.sourceCategories.filter((entry) => typeof entry === "string" && entry.length <= 180).slice(0, 30)
+    : null;
+  if (!id.startsWith("medical-update:") || id.length > 240) return null;
+  if (!MEDICAL_UPDATE_SOURCE_IDS.has(sourceId) || sourceName !== MEDICAL_UPDATE_SOURCE_NAMES.get(sourceId) || sourceName.length > 160) return null;
+  if (!title.trim() || title.length > 700 || !medicalUpdatesValidIso(value.publishedAt)) return null;
+  if (description === undefined || (description !== null && description.length > 12000)) return null;
+  if (!new Set(["source-provided", "unavailable"]).has(descriptionOrigin)) return null;
+  if (descriptionOrigin === "source-provided" && !(description || "").trim()) return null;
+  if (descriptionOrigin === "unavailable" && description !== null) return null;
+  if (!url || !MEDICAL_UPDATE_CATEGORIES.has(value.category)) return null;
+  if (!sourceCategories || relatedCards === null || !medicalUpdatesValidIso(value.retrievedAt)) return null;
+  if (typeof value.contentHash !== "string" || !/^[a-f0-9]{64}$/i.test(value.contentHash)) return null;
+  if (!(value.guid === null || (typeof value.guid === "string" && value.guid.length <= 2000))) return null;
+  return {
+    id,
+    sourceId,
+    sourceName,
+    publishedAt: value.publishedAt,
+    title,
+    description,
+    descriptionOrigin,
+    url,
+    guid: value.guid,
+    category: value.category,
+    sourceCategories,
+    retrievedAt: value.retrievedAt,
+    contentHash: value.contentHash,
+    relatedCards
+  };
+}
+
+function validateMedicalUpdatesEnvelope(value, options = {}) {
+  const allowedSchemas = new Set(Array.isArray(options.allowedSchemas) && options.allowedSchemas.length
+    ? options.allowedSchemas
+    : [MEDICAL_UPDATES_SCHEMA_VERSION, MEDICAL_UPDATES_DATASET_SCHEMA_VERSION]);
+  if (!medicalUpdatesPlainObject(value)
+    || !allowedSchemas.has(value.schemaVersion)
+    || value.aiCalls !== 0) return null;
+  if (!MEDICAL_UPDATE_REFRESH_STATUSES.has(value.refreshStatus)) return null;
+  if (typeof value.sourceConfigSha256 !== "string" || !/^[a-f0-9]{64}$/i.test(value.sourceConfigSha256)) return null;
+  if (!medicalUpdatesValidIso(value.generatedAt)) return null;
+  if (typeof value.datasetVersion !== "string" || !value.datasetVersion.trim() || value.datasetVersion.length > 180) return null;
+  if (typeof value.generatorVersion !== "string" || !value.generatorVersion.trim() || value.generatorVersion.length > 180) return null;
+  if (!Number.isFinite(value.currentWindowDays) || value.currentWindowDays < 1 || value.currentWindowDays > 730) return null;
+  if (!Number.isFinite(value.archiveRetentionDays) || value.archiveRetentionDays < value.currentWindowDays || value.archiveRetentionDays > 3650) return null;
+  if (!Array.isArray(value.items) || value.items.length > MEDICAL_UPDATES_MAX_CURRENT) return null;
+  if (!Array.isArray(value.archive) || value.archive.length > MEDICAL_UPDATES_MAX_ARCHIVE) return null;
+  if (!Array.isArray(value.sourceStatuses) || value.sourceStatuses.length > 30) return null;
+  const sourceStatuses = [];
+  const sourceStatusIds = new Set();
+  for (const status of value.sourceStatuses) {
+    if (!medicalUpdatesPlainObject(status)) return null;
+    const sourceId = typeof status.sourceId === "string" ? status.sourceId.trim() : "";
+    const sourceName = typeof status.sourceName === "string" ? status.sourceName.trim() : "";
+    if (!MEDICAL_UPDATE_SOURCE_IDS.has(sourceId)
+      || sourceName !== MEDICAL_UPDATE_SOURCE_NAMES.get(sourceId)
+      || sourceStatusIds.has(sourceId)
+      || !new Set(["current", "stale", "disabled"]).has(status.status)) return null;
+    if (status.status === "current" && !medicalUpdatesValidIso(status.retrievedAt)) return null;
+    if (!(status.retrievedAt === null || medicalUpdatesValidIso(status.retrievedAt)) || !Number.isInteger(status.itemCount) || status.itemCount < 0) return null;
+    if (!(status.error === null || (typeof status.error === "string" && status.error.length <= 1200))) return null;
+    sourceStatusIds.add(sourceId);
+    sourceStatuses.push({
+      sourceId,
+      sourceName,
+      status: status.status,
+      retrievedAt: status.retrievedAt,
+      itemCount: status.itemCount,
+      error: status.error
+    });
+  }
+  if (sourceStatusIds.size !== MEDICAL_UPDATE_SOURCE_IDS.size
+    || Array.from(MEDICAL_UPDATE_SOURCE_IDS).some((sourceId) => !sourceStatusIds.has(sourceId))) return null;
+  const seenIds = new Set();
+  const seenContent = new Set();
+  const seenUrls = new Set();
+  const seenTitleDates = new Set();
+  const sanitizeGroup = (group) => {
+    const result = [];
+    for (const rawItem of group) {
+      const item = sanitizeMedicalUpdateItem(rawItem);
+      const titleDateKey = item ? `${item.sourceId}:${normalizePharmText(item.title)}:${item.publishedAt.slice(0, 10)}` : "";
+      if (!item
+        || seenIds.has(item.id)
+        || seenContent.has(item.contentHash)
+        || seenUrls.has(item.url)
+        || seenTitleDates.has(titleDateKey)) return null;
+      seenIds.add(item.id);
+      seenContent.add(item.contentHash);
+      seenUrls.add(item.url);
+      seenTitleDates.add(titleDateKey);
+      result.push(item);
+    }
+    return result.sort((left, right) => Date.parse(right.publishedAt) - Date.parse(left.publishedAt));
+  };
+  const items = sanitizeGroup(value.items);
+  if (!items) return null;
+  const archive = sanitizeGroup(value.archive);
+  if (!archive) return null;
+  return {
+    schemaVersion: MEDICAL_UPDATES_SCHEMA_VERSION,
+    datasetVersion: value.datasetVersion,
+    generatorVersion: value.generatorVersion,
+    generatedAt: value.generatedAt,
+    refreshStatus: value.refreshStatus,
+    sourceConfigSha256: value.sourceConfigSha256,
+    currentWindowDays: value.currentWindowDays,
+    archiveRetentionDays: value.archiveRetentionDays,
+    aiCalls: 0,
+    sourceStatuses,
+    items,
+    archive
+  };
+}
+
+function emptyMedicalUpdatesEnvelope() {
+  return {
+    schemaVersion: MEDICAL_UPDATES_SCHEMA_VERSION,
+    datasetVersion: "unavailable",
+    generatorVersion: "unavailable",
+    generatedAt: new Date(0).toISOString(),
+    refreshStatus: "STALE",
+    sourceConfigSha256: "",
+    currentWindowDays: 180,
+    archiveRetentionDays: 730,
+    aiCalls: 0,
+    sourceStatuses: [],
+    items: [],
+    archive: []
+  };
+}
+
+function readCachedMedicalUpdatesEnvelope() {
+  try {
+    return validateMedicalUpdatesEnvelope(JSON.parse(localStorage.getItem(MEDICAL_UPDATES_LAST_GOOD_KEY) || "null"), {
+      allowedSchemas: [MEDICAL_UPDATES_SCHEMA_VERSION]
+    });
+  } catch (error) {
+    return null;
+  }
+}
+
+function medicalUpdatesSerializedBytes(value) {
+  if (typeof TextEncoder === "function") return new TextEncoder().encode(value).byteLength;
+  return String(value || "").length * 3;
+}
+
+function boundedMedicalUpdatesCacheEnvelope(envelope) {
+  const bounded = {
+    ...envelope,
+    sourceStatuses: envelope.sourceStatuses.slice(),
+    items: envelope.items.slice(),
+    archive: envelope.archive.slice()
+  };
+  let serialized = JSON.stringify(bounded);
+  while (medicalUpdatesSerializedBytes(serialized) > MEDICAL_UPDATES_CACHE_MAX_BYTES && bounded.archive.length) {
+    bounded.archive.pop();
+    serialized = JSON.stringify(bounded);
+  }
+  while (medicalUpdatesSerializedBytes(serialized) > MEDICAL_UPDATES_CACHE_MAX_BYTES && bounded.items.length > 1) {
+    bounded.items.pop();
+    serialized = JSON.stringify(bounded);
+  }
+  return medicalUpdatesSerializedBytes(serialized) <= MEDICAL_UPDATES_CACHE_MAX_BYTES ? serialized : "";
+}
+
+function writeCachedMedicalUpdatesEnvelope(envelope) {
+  try {
+    const serialized = boundedMedicalUpdatesCacheEnvelope(envelope);
+    if (serialized) localStorage.setItem(MEDICAL_UPDATES_LAST_GOOD_KEY, serialized);
+  } catch (error) {
+    // Storage may be unavailable or full. The bundled deterministic snapshot remains usable.
+  }
+}
+
+const bundledMedicalUpdatesEnvelope = validateMedicalUpdatesEnvelope(window.ANI_MEDICAL_UPDATES, {
+  allowedSchemas: [MEDICAL_UPDATES_SCHEMA_VERSION]
+});
+const cachedMedicalUpdatesEnvelope = readCachedMedicalUpdatesEnvelope();
+let medicalUpdatesRuntime = cachedMedicalUpdatesEnvelope
+  && (!bundledMedicalUpdatesEnvelope || Date.parse(cachedMedicalUpdatesEnvelope.generatedAt) > Date.parse(bundledMedicalUpdatesEnvelope.generatedAt))
+  ? cachedMedicalUpdatesEnvelope
+  : (bundledMedicalUpdatesEnvelope || emptyMedicalUpdatesEnvelope());
+let medicalUpdatesRuntimeOrigin = medicalUpdatesRuntime === cachedMedicalUpdatesEnvelope ? "last-good cache" : (bundledMedicalUpdatesEnvelope ? "bundled snapshot" : "unavailable");
+
+function publishMedicalUpdatesRuntimeState() {
+  window.ANI_MEDICAL_UPDATES_RUNTIME_STATE = Object.freeze({
+    schemaVersion: "ani-medical-updates-runtime-state-v1",
+    datasetVersion: medicalUpdatesRuntime.datasetVersion,
+    generatedAt: medicalUpdatesRuntime.generatedAt,
+    refreshStatus: medicalUpdatesRuntime.refreshStatus,
+    origin: medicalUpdatesRuntimeOrigin,
+    currentCount: medicalUpdatesRuntime.items.length,
+    archiveCount: medicalUpdatesRuntime.archive.length,
+    aiCalls: 0
+  });
+}
+
+function applyMedicalUpdatesRuntime(envelope, origin = "bundled snapshot") {
+  const validated = validateMedicalUpdatesEnvelope(envelope, { allowedSchemas: [MEDICAL_UPDATES_SCHEMA_VERSION] });
+  if (!validated) return false;
+  medicalUpdatesRuntime = validated;
+  medicalUpdatesRuntimeOrigin = origin;
+  publishMedicalUpdatesRuntimeState();
+  return true;
+}
+
+async function readBoundedMedicalUpdatesResponseText(response, maxBytes = MEDICAL_UPDATES_REMOTE_MAX_BYTES) {
+  const declaredLength = Number(response?.headers?.get?.("content-length"));
+  if (Number.isFinite(declaredLength) && declaredLength > maxBytes) throw new Error("Medical Updates payload exceeds the accepted byte limit.");
+  if (!response?.body || typeof response.body.getReader !== "function") {
+    const text = await response.text();
+    if (medicalUpdatesSerializedBytes(text) > maxBytes) throw new Error("Medical Updates payload exceeds the accepted byte limit.");
+    return text;
+  }
+  const reader = response.body.getReader();
+  const chunks = [];
+  let received = 0;
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    const chunk = value instanceof Uint8Array ? value : new Uint8Array(value);
+    received += chunk.byteLength;
+    if (received > maxBytes) {
+      await reader.cancel("Medical Updates payload exceeds the accepted byte limit.");
+      throw new Error("Medical Updates payload exceeds the accepted byte limit.");
+    }
+    chunks.push(chunk);
+  }
+  const bytes = new Uint8Array(received);
+  let offset = 0;
+  chunks.forEach((chunk) => {
+    bytes.set(chunk, offset);
+    offset += chunk.byteLength;
+  });
+  return new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+}
+
+async function refreshMedicalUpdatesRuntime() {
+  if (ANI_AUTOMATED_TEST || typeof fetch !== "function" || navigator.onLine === false) return false;
+  const protocol = safeText(window.location?.protocol).toLowerCase();
+  const refreshUrl = isNativeShell || protocol === "capacitor:" || protocol === "file:"
+    ? "https://aniapp.ai/data/medical-updates.json"
+    : "./data/medical-updates.json";
+  try {
+    const response = await fetch(refreshUrl, {
+      method: "GET",
+      cache: "no-store",
+      credentials: "same-origin",
+      headers: { Accept: "application/json" }
+    });
+    if (!response.ok) return false;
+    const nextText = await readBoundedMedicalUpdatesResponseText(response, MEDICAL_UPDATES_REMOTE_MAX_BYTES);
+    const next = validateMedicalUpdatesEnvelope(JSON.parse(nextText), { allowedSchemas: [MEDICAL_UPDATES_DATASET_SCHEMA_VERSION] });
+    if (!next || Date.parse(next.generatedAt) < Date.parse(medicalUpdatesRuntime.generatedAt)) return false;
+    applyMedicalUpdatesRuntime(next, "bounded website refresh");
+    writeCachedMedicalUpdatesEnvelope(next);
+    if (pharmIndexShowsUpdates() && !pharmDatabaseScreen?.hidden) {
+      renderPharmAlphabet();
+      renderPharmResults();
+    }
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+publishMedicalUpdatesRuntimeState();
+
+function pharmacyReviewedSubsections() {
+  const subsections = window.ANI_PHARMACY_REVIEWED_EXPANSION?.subsections;
+  if (!Array.isArray(subsections)) return [];
+  return subsections.filter((subsection) => medicalUpdatesPlainObject(subsection)
+    && typeof subsection.id === "string" && subsection.id.trim()
+    && typeof subsection.label === "string" && subsection.label.trim()
+    && Array.isArray(subsection.memberships));
+}
+
+function pharmacySubsectionById(id = activePharmacySubsection) {
+  const key = safeText(id);
+  return pharmacyReviewedSubsections().find((subsection) => subsection.id === key) || null;
+}
+
+function pharmacyMembershipMatchesDrug(membership = {}, drug = {}) {
+  const membershipTerms = [membership.canonicalGeneric, membership.canonicalName]
+    .map(normalizePharmText)
+    .filter(Boolean);
+  const drugTerms = [drug.generic, drug.name, drug.displayName, pharmDrugDisplayName(drug, "")]
+    .map(normalizePharmText)
+    .filter(Boolean);
+  return membershipTerms.some((term) => drugTerms.includes(term));
+}
+
+function pharmacySubsectionMembershipForDrug(drug = {}, subsection = pharmacySubsectionById()) {
+  if (!subsection || !Array.isArray(subsection.memberships)) return null;
+  return subsection.memberships.find((membership) => pharmacyMembershipMatchesDrug(membership, drug)) || null;
+}
+
+function drugMatchesPharmacySubsection(drug = {}, subsectionId = activePharmacySubsection) {
+  if (!subsectionId || subsectionId === "all") return true;
+  const subsection = pharmacySubsectionById(subsectionId);
+  if (!subsection) return false;
+  if ((Array.isArray(drug.pharmacyTags) ? drug.pharmacyTags : []).includes(subsection.pharmacyTag)) return true;
+  return Boolean(pharmacySubsectionMembershipForDrug(drug, subsection));
+}
+
+function peptidePharmacySubsection() {
+  return pharmacySubsectionById("peptides-peptide-based-therapies");
+}
+
+function peptideMembershipForDrug(drug = {}) {
+  return pharmacySubsectionMembershipForDrug(drug, peptidePharmacySubsection());
+}
+
+function peptideBadgeLabelsForDrug(drug = {}) {
+  const membership = peptideMembershipForDrug(drug);
+  const tagged = (Array.isArray(drug.pharmacyTags) ? drug.pharmacyTags : []).includes("peptide-based-therapy");
+  if (!membership && !tagged) return [];
+  const regulatory = membership?.regulatory || drug.regulatory || {};
+  const useContexts = Array.isArray(membership?.useContexts) ? membership.useContexts : (Array.isArray(drug.useContexts) ? drug.useContexts : []);
+  const compounding = membership?.compounding || drug.compounding || {};
+  const productLabels = {
+    FDA_APPROVED: "FDA-approved",
+    INVESTIGATIONAL: "Investigational",
+    NOT_FDA_APPROVED: "Not FDA-approved",
+    WITHDRAWN: "Withdrawn"
+  };
+  const labels = ["Peptide-based therapy", productLabels[regulatory.productStatus]];
+  if (useContexts.some((context) => context?.status === "OFF_LABEL")) labels.push("Off-label use");
+  if (useContexts.some((context) => context?.status === "INVESTIGATIONAL")) labels.push("Investigational use");
+  if (compounding.status === "COMPOUNDED_NOT_FDA_APPROVED") labels.push("Compounded - not FDA-approved");
+  if (compounding.status === "COMPOUNDING_RESTRICTED_OR_PROHIBITED") labels.push("Compounding restricted");
+  return Array.from(new Set(labels.filter(Boolean)));
+}
+
+function appendPeptideStatusBadges(container, drug = {}) {
+  if (!container) return null;
+  const labels = peptideBadgeLabelsForDrug(drug);
+  if (!labels.length) return null;
+  const row = document.createElement("div");
+  row.className = "pharm-peptide-status-row";
+  row.dataset.skipRead = "true";
+  labels.forEach((label, index) => {
+    const badge = document.createElement("span");
+    badge.className = `pharm-peptide-status-badge${index ? "" : " is-primary"}`;
+    badge.textContent = label;
+    row.append(badge);
+  });
+  container.append(row);
+  return row;
+}
+
+function updatePharmacyBrowseUi() {
+  if (!pharmacyBrowseControls || !pharmacySubsectionSelect || !pharmacyBrowseCount) return;
+  const active = activePharmIndexMode === "drugs";
+  pharmacyBrowseControls.hidden = !active;
+  if (!active) return;
+  const subsections = pharmacyReviewedSubsections();
+  const signature = subsections.map((subsection) => `${subsection.id}:${subsection.label}`).join("|");
+  if (signature !== pharmacyBrowseOptionsSignature) {
+    pharmacySubsectionSelect.textContent = "";
+    const allOption = document.createElement("option");
+    allOption.value = "all";
+    allOption.textContent = "All Pharmacy entries";
+    pharmacySubsectionSelect.append(allOption);
+    subsections.forEach((subsection) => {
+      const option = document.createElement("option");
+      option.value = subsection.id;
+      option.textContent = subsection.label;
+      pharmacySubsectionSelect.append(option);
+    });
+    pharmacyBrowseOptionsSignature = signature;
+  }
+  if (activePharmacySubsection !== "all" && !subsections.some((subsection) => subsection.id === activePharmacySubsection)) {
+    activePharmacySubsection = "all";
+    localStorage.setItem(PHARMACY_SUBSECTION_KEY, "all");
+  }
+  pharmacySubsectionSelect.value = activePharmacySubsection;
+  const count = activePharmDrugPool().filter((drug) => drugMatchesPharmacySubsection(drug)).length;
+  pharmacyBrowseCount.textContent = `${count} ${count === 1 ? "medication" : "medications"} in this Pharmacy view`;
+}
+
+function medicalUpdateCategoryLabel(category = "") {
+  const labels = {
+    "drug-approval": "Drug approval",
+    "safety-alert": "Safety alert",
+    recall: "Recall",
+    "guideline-public-health": "Guideline / public health",
+    "medical-development": "Medical development",
+    "vaccine-biologic": "Vaccine / biologic",
+    "peptide-therapy": "Peptide therapy"
+  };
+  return labels[category] || "Medical update";
+}
+
+function resolveMedicalUpdateRelatedPharmacyCard(reference = {}) {
+  const collection = normalizePharmText(reference.collection);
+  if (!new Set(["pharmacy", "pharm", "medication", "medications", "drug", "drugs"]).has(collection)) return null;
+  const title = normalizePharmText(reference.canonicalTitle);
+  if (!title) return null;
+  const matches = pharmDrugs.filter((drug) => [drug.generic, drug.name, drug.displayName, pharmDrugDisplayName(drug, "")]
+    .some((value) => normalizePharmText(value) === title));
+  return matches.length === 1 ? { type: "drug", item: matches[0] } : null;
+}
+
+function medicalUpdateIsPeptide(item = {}) {
+  if ((Array.isArray(item.sourceCategories) ? item.sourceCategories : []).some((category) => /\bpeptides?\b/i.test(category))) return true;
+  return (Array.isArray(item.relatedCards) ? item.relatedCards : [])
+    .map(resolveMedicalUpdateRelatedPharmacyCard)
+    .some((candidate) => candidate && peptideBadgeLabelsForDrug(candidate.item).length);
+}
+
+function medicalUpdatesSelectedTimePool() {
+  if (activeMedicalUpdateArchive === "archive") return medicalUpdatesRuntime.archive;
+  if (activeMedicalUpdateArchive === "all") return [...medicalUpdatesRuntime.items, ...medicalUpdatesRuntime.archive]
+    .sort((left, right) => Date.parse(right.publishedAt) - Date.parse(left.publishedAt));
+  return medicalUpdatesRuntime.items;
+}
+
+function medicalUpdatesVisiblePool() {
+  const pool = medicalUpdatesSelectedTimePool();
+  if (activeMedicalUpdateCategory === "all") return pool;
+  if (activeMedicalUpdateCategory === "peptide-therapy") return pool.filter(medicalUpdateIsPeptide);
+  return pool.filter((item) => item.category === activeMedicalUpdateCategory);
+}
+
+function updateMedicalUpdatesBrowseUi() {
+  if (!medicalUpdatesBrowseControls || !medicalUpdateCategorySelect || !medicalUpdateArchiveSelect || !medicalUpdatesBrowseCount) return;
+  const active = pharmIndexShowsUpdates();
+  medicalUpdatesBrowseControls.hidden = !active;
+  if (!active) return;
+  const categoryValues = new Set(Array.from(medicalUpdateCategorySelect.options).map((option) => option.value));
+  if (!categoryValues.has(activeMedicalUpdateCategory)) activeMedicalUpdateCategory = "all";
+  medicalUpdateCategorySelect.value = activeMedicalUpdateCategory;
+  medicalUpdateArchiveSelect.value = activeMedicalUpdateArchive;
+  const count = medicalUpdatesVisiblePool().length;
+  medicalUpdatesBrowseCount.textContent = `${count} ${count === 1 ? "official update" : "official updates"} in this view`;
+}
+
+function pharmIndexShowsUpdates() {
+  return activePharmIndexMode === "updates";
+}
+
 function pharmIndexShowsFavorites() {
   return activePharmIndexMode === "favorites";
 }
@@ -5964,6 +6513,7 @@ function pharmIndexShowsHolistic() {
 
 function pharmIndexModeLabel() {
   if (activePharmIndexMode === "favorites") return "Favorites index";
+  if (activePharmIndexMode === "updates") return "Medical Updates index";
   if (activePharmIndexMode === "labs") return "Lab index";
   if (activePharmIndexMode === "drugs") return "Drug index";
   if (activePharmIndexMode === "diseases") return "Disease index";
@@ -5984,6 +6534,7 @@ function updatePharmFilterUi() {
   if (!pharmNclexToggle) {
     return;
   }
+  pharmNclexToggle.hidden = pharmIndexShowsUpdates();
   pharmNclexToggle.classList.toggle("active", activePharmNclexOnly);
   pharmNclexToggle.setAttribute("aria-pressed", String(activePharmNclexOnly));
   pharmNclexToggle.textContent = "NCLEX ESSENTIALS";
@@ -6001,12 +6552,14 @@ function updatePharmIndexModeUi() {
   pharmAlphabetStrip?.setAttribute("aria-label", `${pharmIndexModeLabel()} alphabetical filter`);
   updateClinicalSignBrowseUi();
   updateMicrobiologyBrowseUi();
+  updatePharmacyBrowseUi();
+  updateMedicalUpdatesBrowseUi();
   updateFoundationBrowseUi();
   updateSurgeryProcedureBrowseUi();
 }
 
 function setPharmDetailTheme(type = "drugs") {
-  const normalizedType = ["labs", "drugs", "diseases", "foundations", "surgeries", "procedures", "microbiology", "holistic"].includes(type) ? type : "drugs";
+  const normalizedType = ["labs", "drugs", "diseases", "foundations", "surgeries", "procedures", "microbiology", "holistic", "updates"].includes(type) ? type : "drugs";
   if (pharmDrugDetail) {
     pharmDrugDetail.dataset.detailType = normalizedType;
     pharmDrugDetail.dataset.narrationType = normalizedType;
@@ -6240,7 +6793,8 @@ function pharmNarrationSubject(detailType = "", remainder = "", title = "") {
     foundations: ["This concept", "These concepts"],
     procedures: ["This procedure", "These procedures"],
     "clinical-signs": ["This finding", "These findings"],
-    holistic: ["This approach", "These approaches"]
+    holistic: ["This approach", "These approaches"],
+    updates: ["This update", "These updates"]
   };
   const pair = subjects[normalizedType] || ["This topic", "These topics"];
   return pair[plural ? 1 : 0];
@@ -26291,8 +26845,17 @@ function renderPharmAlphabet() {
   if (!pharmAlphabetStrip) return;
   updatePharmIndexModeUi();
   pharmAlphabetStrip.textContent = "";
+  pharmAlphabetStrip.hidden = pharmIndexShowsUpdates();
+  if (pharmIndexShowsUpdates()) {
+    activePharmLetter = "All";
+    return;
+  }
   const favoritesOnly = pharmIndexShowsFavorites();
-  const drugPool = favoritesOnly ? filterPharmFavorites("drugs", activePharmDrugPool()) : activePharmDrugPool();
+  const baseDrugPool = activePharmDrugPool();
+  const subsectionDrugPool = activePharmIndexMode === "drugs"
+    ? baseDrugPool.filter((drug) => drugMatchesPharmacySubsection(drug))
+    : baseDrugPool;
+  const drugPool = favoritesOnly ? filterPharmFavorites("drugs", subsectionDrugPool) : subsectionDrugPool;
   const labPool = favoritesOnly ? filterPharmFavorites("labs", pharmSearchableLabRanges) : pharmSearchableLabRanges;
   const diseasePool = favoritesOnly ? filterPharmFavorites("diseases", pathologyDiseases) : pathologyDiseases;
   const referencePool = favoritesOnly ? filterPharmFavorites("procedures", clinicalReferenceEntries) : clinicalReferenceEntries;
@@ -29567,6 +30130,7 @@ function renderPharmCategoryKey() {
   key.append(heading);
 
   [
+    ["Medical Updates", "var(--pharm-updates)", "var(--pharm-updates-soft)"],
     ["Labs", "var(--pharm-lab)", "var(--pharm-lab-soft)"],
     ["Pharmacy", "var(--pharm-drug)", "var(--pharm-drug-soft)"],
     ["Disease & pathology", "var(--pharm-pathology)", "var(--pharm-pathology-soft)"],
@@ -32831,6 +33395,7 @@ function renderPharmDrugDetail(drug = activePharmResults[0]) {
   drugClass.textContent = pharmDrugMetaText(drug);
   title.append(name, drugClass);
   appendPharmFavoriteButton(title, "drugs", drug);
+  appendPeptideStatusBadges(title, drug);
   const riskIcons = renderPharmRiskIcons(drug);
   if (riskIcons) {
     title.append(riskIcons);
@@ -34010,6 +34575,208 @@ function pharmResultOpenOptions(renderedQuery = "", currentQuery = pharmSearchIn
   return { intent: focusQuery, highlightQuery: focusQuery };
 }
 
+function formatMedicalUpdateDate(value = "") {
+  const date = new Date(value);
+  if (!Number.isFinite(date.getTime())) return "Date unavailable";
+  return new Intl.DateTimeFormat(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  }).format(date);
+}
+
+function medicalUpdateMatchesQuery(item = {}, query = "") {
+  const normalizedQuery = normalizePharmText(query);
+  if (!normalizedQuery) return true;
+  const terms = normalizedQuery.split(/\s+/).filter(Boolean);
+  const searchText = normalizePharmText([
+    item.title,
+    item.sourceName,
+    item.description,
+    medicalUpdateCategoryLabel(item.category),
+    ...(Array.isArray(item.sourceCategories) ? item.sourceCategories : []),
+    ...(Array.isArray(item.relatedCards) ? item.relatedCards.flatMap((reference) => [reference.collection, reference.canonicalTitle]) : [])
+  ].filter(Boolean).join(" "));
+  return terms.every((term) => searchText.includes(term));
+}
+
+function medicalUpdateRelatedPharmacyCandidates(item = {}) {
+  const candidates = (Array.isArray(item.relatedCards) ? item.relatedCards : [])
+    .map(resolveMedicalUpdateRelatedPharmacyCard)
+    .filter(Boolean);
+  const seen = new Set();
+  return candidates.filter((candidate) => {
+    const key = offlineLookupEntityKey(candidate);
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function renderMedicalUpdateStatusChips(container, item = {}, archived = false) {
+  if (!container) return;
+  const row = document.createElement("div");
+  row.className = "medical-update-chip-row";
+  row.dataset.skipRead = "true";
+  const labels = [medicalUpdateCategoryLabel(item.category), archived ? "Archived" : "Current"];
+  if (medicalUpdateIsPeptide(item)) labels.push("Peptide therapy");
+  labels.forEach((label) => {
+    const chip = document.createElement("span");
+    chip.className = "medical-update-chip";
+    chip.textContent = label;
+    row.append(chip);
+  });
+  container.append(row);
+}
+
+function renderMedicalUpdateDetail(item = {}) {
+  if (!pharmDrugDetail || !item) return;
+  resetPharmDetailCard();
+  setPharmDetailTheme("updates");
+
+  const title = document.createElement("div");
+  title.className = "pharm-detail-title medical-update-detail-title";
+  const heading = document.createElement("h2");
+  heading.textContent = item.title;
+  const source = document.createElement("span");
+  source.textContent = `Official source: ${item.sourceName}`;
+  const date = document.createElement("time");
+  date.dateTime = item.publishedAt;
+  date.textContent = `Published ${formatMedicalUpdateDate(item.publishedAt)}`;
+  title.append(heading, source, date);
+  renderMedicalUpdateStatusChips(title, item, medicalUpdatesRuntime.archive.some((entry) => entry.id === item.id));
+  pharmDrugDetail.append(title);
+
+  const descriptionSection = document.createElement("section");
+  const descriptionHeading = document.createElement("strong");
+  descriptionHeading.textContent = "Official source description";
+  const description = document.createElement("div");
+  description.className = "pharm-detail-text medical-update-source-description";
+  description.textContent = item.descriptionOrigin === "source-provided"
+    ? item.description
+    : "The official source did not provide a short description. Open the original publication for the complete update.";
+  descriptionSection.append(descriptionHeading, description);
+  pharmDrugDetail.append(descriptionSection);
+
+  const relatedCandidates = medicalUpdateRelatedPharmacyCandidates(item);
+  if (relatedCandidates.length) {
+    const relatedSection = document.createElement("section");
+    relatedSection.className = "medical-update-related-section";
+    relatedSection.dataset.skipRead = "true";
+    const relatedHeading = document.createElement("strong");
+    relatedHeading.textContent = "Related ANI Pharmacology cards";
+    const relatedHint = document.createElement("p");
+    relatedHint.textContent = "Open a reviewed ANI medication card for clinical context.";
+    const relatedList = document.createElement("div");
+    relatedList.className = "medical-update-related-list";
+    relatedCandidates.forEach((candidate) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "medical-update-related-link";
+      button.textContent = offlineLookupEntityLabel(candidate);
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        openPharmDetailCandidate(candidate, { autoRead: false });
+      });
+      relatedList.append(button);
+    });
+    relatedSection.append(relatedHeading, relatedHint, relatedList);
+    pharmDrugDetail.append(relatedSection);
+  }
+
+  const sourceSection = document.createElement("section");
+  sourceSection.className = "medical-update-source-section";
+  sourceSection.dataset.skipRead = "true";
+  const sourceHeading = document.createElement("strong");
+  sourceHeading.textContent = "Original official publication";
+  const sourceLink = document.createElement("a");
+  sourceLink.className = "medical-update-source-link";
+  sourceLink.href = item.url;
+  sourceLink.target = "_blank";
+  sourceLink.rel = "noopener noreferrer";
+  sourceLink.textContent = `Open on ${item.sourceName}`;
+  const provenance = document.createElement("p");
+  provenance.className = "medical-update-provenance";
+  provenance.textContent = "ANI displays the official source title and source-provided description without AI generation, rewriting, or inference.";
+  sourceSection.append(sourceHeading, sourceLink, provenance);
+  pharmDrugDetail.append(sourceSection);
+  syncPharmDetailReadableText();
+}
+
+function renderMedicalUpdatesResults(options = {}) {
+  if (!pharmResultsList || !pharmResultCount) return;
+  const rawQuery = pharmSearchInput?.value || "";
+  const requestGeneration = Number.isFinite(Number(options.requestGeneration))
+    ? Number(options.requestGeneration)
+    : pharmSearchRequestGeneration;
+  const results = medicalUpdatesVisiblePool().filter((item) => medicalUpdateMatchesQuery(item, rawQuery));
+  const archivedIds = new Set(medicalUpdatesRuntime.archive.map((item) => item.id));
+  updateMedicalUpdatesBrowseUi();
+  pharmResultsList.textContent = "";
+  pharmResultCount.textContent = `${results.length} ${results.length === 1 ? "official update" : "official updates"}`;
+
+  const fragment = document.createDocumentFragment();
+  results.forEach((item, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "pharm-result-button medical-update-result-button";
+    const title = document.createElement("strong");
+    title.textContent = item.title;
+    const meta = document.createElement("div");
+    meta.className = "medical-update-result-meta";
+    const source = document.createElement("span");
+    source.textContent = item.sourceName;
+    const date = document.createElement("time");
+    date.dateTime = item.publishedAt;
+    date.textContent = formatMedicalUpdateDate(item.publishedAt);
+    meta.append(source, date);
+    button.append(title, meta);
+    renderMedicalUpdateStatusChips(button, item, archivedIds.has(item.id));
+    if (item.descriptionOrigin === "source-provided") {
+      const description = document.createElement("small");
+      description.className = "medical-update-result-description";
+      description.textContent = item.description;
+      button.append(description);
+    }
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      openPharmDetailCandidate({ type: "update", item });
+    });
+    fragment.append(button);
+    if (index === 0 && !isPhoneDeviceMode() && !rawQuery) renderMedicalUpdateDetail(item);
+  });
+  pharmResultsList.append(fragment);
+
+  if (!results.length) {
+    const empty = document.createElement("p");
+    empty.className = "pharm-empty medical-updates-empty";
+    empty.textContent = medicalUpdatesRuntime.items.length || medicalUpdatesRuntime.archive.length
+      ? "No official updates match these filters. Try another category, time range, or search term."
+      : (medicalUpdatesRuntime.datasetVersion === "unavailable"
+        ? "No verified Medical Updates snapshot is available yet. ANI will retry the bounded website dataset when a connection is available."
+        : "Medical Updates have not refreshed yet. ANI will keep this validated empty snapshot and load the official-source dataset after the next successful scheduled refresh.");
+    pharmResultsList.append(empty);
+    if (!isPhoneDeviceMode()) renderPharmDrugDetail(null);
+  }
+
+  if (pharmSearchSummary) {
+    const staleSources = medicalUpdatesRuntime.sourceStatuses.filter((status) => status.status !== "current").length;
+    const filterLabel = activeMedicalUpdateCategory === "all" ? "all clinical categories" : medicalUpdateCategoryLabel(activeMedicalUpdateCategory).toLowerCase();
+    const timeLabel = activeMedicalUpdateArchive === "current" ? "current" : (activeMedicalUpdateArchive === "archive" ? "archived" : "current and archived");
+    const hasUpdateEvidence = medicalUpdatesRuntime.items.length > 0 || medicalUpdatesRuntime.archive.length > 0;
+    pharmSearchSummary.textContent = !hasUpdateEvidence
+      ? (medicalUpdatesRuntime.datasetVersion === "unavailable"
+        ? "No verified Medical Updates snapshot is available. ANI will retry the bounded website dataset when a connection is available."
+        : "Medical Updates have not refreshed yet. The scheduled zero-AI source pipeline will populate this view after it completes its first validated official-source refresh.")
+      : rawQuery
+        ? `Searching ${timeLabel} official Medical Updates for "${rawQuery}" in ${filterLabel}. Source titles and descriptions are displayed without AI rewriting.`
+        : `Showing ${results.length} ${timeLabel} official Medical Updates in ${filterLabel}. Snapshot: ${formatMedicalUpdateDate(medicalUpdatesRuntime.generatedAt)} (${medicalUpdatesRuntimeOrigin}).${staleSources ? ` ${staleSources} source ${staleSources === 1 ? "feed is" : "feeds are"} using retained last-good evidence.` : ""}`;
+  }
+  finishPharmSearchRender(rawQuery, requestGeneration);
+}
+
 function renderPharmResults(options = {}) {
   if (!pharmResultsList || !pharmResultCount) return;
   const expectedQuery = Object.prototype.hasOwnProperty.call(options, "expectedQuery")
@@ -34027,6 +34794,10 @@ function renderPharmResults(options = {}) {
   updatePharmIndexModeUi();
   const rawQuery = pharmSearchInput?.value || "";
   if (expectedQuery !== null && rawQuery !== expectedQuery) return;
+  if (pharmIndexShowsUpdates()) {
+    renderMedicalUpdatesResults({ requestGeneration });
+    return;
+  }
   const query = applyClinicalSpeechFixups(rawQuery) || rawQuery;
   const rawExactQueryText = normalizePharmText(applyMedicationSpellingFixups(rawQuery));
   const queryText = normalizePharmText(query);
@@ -34092,6 +34863,9 @@ function renderPharmResults(options = {}) {
     activePathologyResults = activePathologyResults.filter((item) => inMicrobiologyBrowse("pathology", item));
     activeClinicalReferenceResults = activeClinicalReferenceResults.filter((item) => inMicrobiologyBrowse("reference", item));
     activeHolisticResults = activeHolisticResults.filter((item) => inMicrobiologyBrowse("holistic", item));
+  }
+  if (!isSearchMode && activePharmIndexMode === "drugs") {
+    activePharmResults = activePharmResults.filter((drug) => drugMatchesPharmacySubsection(drug));
   }
   const namedHolisticMatch = queryText ? bestHolisticMatch(query) : null;
   const hasExactNonHolisticIdentity = isSearchMode && [
@@ -34358,6 +35132,7 @@ function renderPharmResults(options = {}) {
       warning.textContent = safeText(pharmBoxedWarningDisplay(drug));
       const risks = renderPharmRiskIcons(drug);
       button.append(name, meta);
+      appendPeptideStatusBadges(button, drug);
       if (useSummary.textContent) button.append(useSummary);
       if (risks) button.append(risks);
       button.append(warning);
@@ -34444,9 +35219,10 @@ function renderPharmResults(options = {}) {
     } else if (activePharmIndexMode === "labs") {
       pharmSearchSummary.textContent = `Browsing ${activePharmLabResults.length} lab/reference entries${letterText}. Search short terms like "mag", "lactate", "urine output", "MAP", or "anion gap".`;
     } else if (activePharmIndexMode === "drugs") {
+      const subsection = pharmacySubsectionById();
       pharmSearchSummary.textContent = activePharmNclexOnly
-        ? `Browsing ${drugPool.length} NCLEX ESSENTIAL medication entries${letterText}. Turn the filter off for the full ${pharmDrugs.length}-entry drug index.`
-        : `Browsing ${drugPool.length} installed pharmacy entries${letterText}. Use NCLEX ESSENTIALS for the high-yield medication tier.`;
+        ? `Browsing ${activePharmResults.length} NCLEX ESSENTIAL medication entries${subsection ? ` in ${subsection.label}` : ""}${letterText}. Turn the filter off for the complete Pharmacy index.`
+        : `Browsing ${activePharmResults.length} installed pharmacy entries${subsection ? ` in ${subsection.label}` : ""}${letterText}. Use NCLEX ESSENTIALS for the high-yield medication tier.`;
     } else if (activePharmIndexMode === "diseases") {
       pharmSearchSummary.textContent = `Browsing ${activePathologyResults.length} disease/pathology cards${letterText}. Switch back to Drugs when you want the medication index.`;
     } else if (activePharmIndexMode === "microbiology") {
@@ -35139,6 +35915,8 @@ function openPharmDetailCandidate(candidate = {}, options = {}) {
     renderClinicalReferenceDetail(candidate.item, { intent: options.intent || "" });
   } else if (candidate.type === "drug") {
     renderPharmDrugDetail(candidate.item);
+  } else if (candidate.type === "update") {
+    renderMedicalUpdateDetail(candidate.item);
   } else {
     return false;
   }
@@ -35931,10 +36709,12 @@ function offlineLookupEntityLabel(candidate = {}) {
   if (candidate.type === "pathology") return candidate.item?.name || "";
   if (candidate.type === "holistic") return candidate.item?.name || "";
   if (candidate.type === "reference") return clinicalReferenceDisplayName(candidate.item) || candidate.item?.name || "";
+  if (candidate.type === "update") return candidate.item?.title || "";
   return "";
 }
 
 function offlineLookupEntityKey(candidate = {}) {
+  if (candidate.type === "update" && candidate.item?.id) return `update:${candidate.item.id}`;
   const label = normalizePharmText(offlineLookupEntityLabel(candidate));
   if (!label) return "";
   if (candidate.type === "lab") {
@@ -35948,6 +36728,7 @@ function offlineLookupEntityKind(candidate = {}) {
   if (candidate.type === "lab") return "lab/reference";
   if (candidate.type === "pathology") return "disease/pathology";
   if (candidate.type === "holistic") return "herbal/holistic safety card";
+  if (candidate.type === "update") return "official medical update";
   if (candidate.type === "reference") {
     if (isMicrobiologyReferenceEntry(candidate.item)) return "microbiology reference";
     if (candidate.item?.type === "foundation") return "clinical foundation";
@@ -46502,6 +47283,30 @@ microbiologyBranchSelect?.addEventListener("change", () => {
   renderPharmAlphabet();
   renderPharmResults();
 });
+pharmacySubsectionSelect?.addEventListener("change", () => {
+  closePharmDetailPage();
+  activePharmacySubsection = pharmacySubsectionSelect.value || "all";
+  localStorage.setItem(PHARMACY_SUBSECTION_KEY, activePharmacySubsection);
+  activePharmLetter = "All";
+  renderPharmAlphabet();
+  renderPharmResults();
+});
+medicalUpdateCategorySelect?.addEventListener("change", () => {
+  closePharmDetailPage();
+  activeMedicalUpdateCategory = medicalUpdateCategorySelect.value || "all";
+  localStorage.setItem(MEDICAL_UPDATE_CATEGORY_KEY, activeMedicalUpdateCategory);
+  activePharmLetter = "All";
+  renderPharmResults();
+});
+medicalUpdateArchiveSelect?.addEventListener("change", () => {
+  closePharmDetailPage();
+  activeMedicalUpdateArchive = ["current", "archive", "all"].includes(medicalUpdateArchiveSelect.value)
+    ? medicalUpdateArchiveSelect.value
+    : "current";
+  localStorage.setItem(MEDICAL_UPDATE_ARCHIVE_KEY, activeMedicalUpdateArchive);
+  activePharmLetter = "All";
+  renderPharmResults();
+});
 foundationDomainSelect?.addEventListener("change", () => {
   closePharmDetailPage();
   activeFoundationBrowseDomain = foundationDomainSelect.value || "all";
@@ -46908,6 +47713,7 @@ setChatHistoryOpen(false);
 renderActiveChat();
 startNursingFactTicker();
 refreshAniModelStatus();
+refreshMedicalUpdatesRuntime();
 registerServiceWorker();
 updateInstallUi();
 hideAppSplash();

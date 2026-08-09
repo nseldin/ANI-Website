@@ -556,7 +556,7 @@
     },
     {
       name: "Glucagon", generic: "glucagon",
-      aliases: ["GlucaGen", "Gvoke", "Baqsimi", "Zegalogue", "glucagon emergency kit", "hypoglycemia rescue hormone", "glucogon"],
+      aliases: ["GlucaGen", "Gvoke", "Baqsimi", "glucagon emergency kit", "hypoglycemia rescue hormone", "glucogon"],
       brandExamples: ["GlucaGen", "Gvoke", "Baqsimi"],
       class: "Counterregulatory pancreatic hormone agonist used for severe hypoglycemia rescue and GI relaxation",
       classPathway: ["Endocrine emergency medication", "Antihypoglycemic hormone", "Hepatic glucagon-receptor agonist", "Glycogenolysis rescue"],

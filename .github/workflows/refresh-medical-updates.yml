@@ -1,0 +1,53 @@
+name: Refresh official medical updates
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ani-official-medical-updates
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Check out ANI website
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Use the pinned package manager
+        run: corepack enable && corepack prepare pnpm@9.15.9 --activate
+
+      - name: Install the deterministic feed parser
+        run: pnpm install --frozen-lockfile --ignore-scripts
+
+      - name: Refresh allowlisted official publications
+        run: node scripts/ani-medical-updates.js refresh --root .
+        env:
+          ANI_MEDICAL_UPDATES_AI_ENABLED: "false"
+
+      - name: Validate generated update assets
+        run: node scripts/ani-medical-updates.js check --root .
+
+      - name: Commit only changed update data
+        shell: bash
+        run: |
+          if git diff --quiet -- data/medical-updates.json data/medical-updates.js; then
+            echo "No official-publication change to deploy."
+            exit 0
+          fi
+          git config user.name "ANI Official Updates"
+          git config user.email "actions@users.noreply.github.com"
+          git add -- data/medical-updates.json data/medical-updates.js
+          git commit -m "chore: refresh official medical updates"
+          git push

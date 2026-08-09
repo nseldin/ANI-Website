@@ -34,6 +34,9 @@
   --pharm-holistic: #5d7f2f;
   --pharm-holistic-dark: #3f5f1f;
   --pharm-holistic-soft: #f5faed;
+  --pharm-updates: #9a4d16;
+  --pharm-updates-dark: #6f330c;
+  --pharm-updates-soft: #fff4e8;
   --shadow: 0 20px 54px rgba(23, 42, 44, 0.16);
 }
 
@@ -1774,6 +1777,12 @@ body.lecture-mode-active .voice-status {
   --pharm-current-soft: var(--pharm-holistic-soft);
 }
 
+.pharm-database-screen[data-index-mode="updates"] {
+  --pharm-current: var(--pharm-updates);
+  --pharm-current-dark: var(--pharm-updates-dark);
+  --pharm-current-soft: var(--pharm-updates-soft);
+}
+
 .pharm-database-screen[hidden] {
   display: none;
 }
@@ -2018,6 +2027,42 @@ body.lecture-mode-active .voice-status {
 #procedureBrowseControls select {
   border-color: color-mix(in srgb, var(--pharm-surgery) 36%, white);
   color: var(--pharm-surgery-dark);
+}
+
+#pharmacyBrowseControls {
+  border-color: color-mix(in srgb, var(--pharm-drug) 30%, white);
+  background: var(--pharm-drug-soft);
+}
+
+#pharmacyBrowseControls label,
+#pharmacyBrowseControls span {
+  color: var(--pharm-drug-dark);
+}
+
+#pharmacyBrowseControls select {
+  border-color: color-mix(in srgb, var(--pharm-drug) 36%, white);
+  color: var(--pharm-drug-dark);
+}
+
+.medical-updates-browse-controls {
+  grid-template-columns: repeat(2, minmax(220px, 1fr)) auto;
+  border-color: color-mix(in srgb, var(--pharm-updates) 30%, white);
+  background: var(--pharm-updates-soft);
+}
+
+.medical-updates-browse-controls label {
+  display: grid;
+  gap: 4px;
+  color: var(--pharm-updates-dark);
+}
+
+.medical-updates-browse-controls select {
+  border-color: color-mix(in srgb, var(--pharm-updates) 36%, white);
+  color: var(--pharm-updates-dark);
+}
+
+.medical-updates-browse-controls span {
+  color: var(--pharm-updates-dark);
 }
 
 .pharm-filter-row {
@@ -2270,6 +2315,11 @@ body.lecture-mode-active .voice-status {
 .pharm-index-toggle button[data-pharm-index-mode="favorites"] {
   --button-category-color: #c58d12;
   --button-category-soft: #fff7df;
+}
+
+.pharm-index-toggle button[data-pharm-index-mode="updates"] {
+  --button-category-color: var(--pharm-updates);
+  --button-category-soft: var(--pharm-updates-soft);
 }
 
 .pharm-index-toggle button[data-pharm-index-mode] {
@@ -2793,6 +2843,78 @@ body.lecture-mode-active .voice-status {
   color: var(--pharm-microbiology-dark);
 }
 
+.medical-update-result-button {
+  border-color: color-mix(in srgb, var(--pharm-updates) 30%, white);
+  background: var(--pharm-updates-soft);
+}
+
+.medical-update-result-button strong {
+  color: var(--pharm-updates-dark);
+}
+
+.medical-update-result-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 10px;
+}
+
+.medical-update-result-meta span,
+.medical-update-result-meta time {
+  color: var(--pharm-updates-dark);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.medical-update-chip-row,
+.pharm-peptide-status-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.medical-update-chip-row .medical-update-chip,
+.pharm-peptide-status-row .pharm-peptide-status-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 24px;
+  border: 1px solid color-mix(in srgb, var(--pharm-updates) 34%, white);
+  border-radius: 999px;
+  padding: 3px 8px;
+  background: #fff;
+  color: var(--pharm-updates-dark);
+  font-size: 0.72rem;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.pharm-peptide-status-row {
+  margin: 2px 0;
+}
+
+.pharm-peptide-status-row .pharm-peptide-status-badge {
+  border-color: color-mix(in srgb, var(--pharm-drug) 32%, white);
+  background: color-mix(in srgb, var(--pharm-drug-soft) 68%, white);
+  color: var(--pharm-drug-dark);
+}
+
+.pharm-peptide-status-row .pharm-peptide-status-badge.is-primary {
+  border-color: var(--pharm-drug);
+  background: var(--pharm-drug);
+  color: #fff;
+}
+
+.medical-update-result-description {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  line-height: 1.4;
+}
+
 .pharm-empty {
   color: var(--muted);
   line-height: 1.45;
@@ -2886,6 +3008,62 @@ body.lecture-mode-active .voice-status {
   --pharm-detail-color: var(--pharm-holistic);
   --pharm-detail-dark: var(--pharm-holistic-dark);
   --pharm-detail-soft: var(--pharm-holistic-soft);
+}
+
+.pharm-detail-card[data-detail-type="updates"] {
+  --pharm-detail-color: var(--pharm-updates);
+  --pharm-detail-dark: var(--pharm-updates-dark);
+  --pharm-detail-soft: var(--pharm-updates-soft);
+}
+
+.medical-update-detail-title time {
+  color: var(--pharm-updates-dark);
+  font-size: 0.86rem;
+  font-weight: 850;
+}
+
+.medical-update-source-description {
+  white-space: pre-wrap;
+}
+
+.medical-update-related-section,
+.medical-update-source-section {
+  border-color: color-mix(in srgb, var(--pharm-updates) 24%, white);
+  background: color-mix(in srgb, var(--pharm-updates-soft) 70%, white);
+}
+
+.medical-update-related-section p,
+.medical-update-provenance {
+  margin: 6px 0 0;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.medical-update-related-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.medical-update-related-link,
+.medical-update-source-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  border: 1px solid color-mix(in srgb, var(--pharm-updates) 36%, white);
+  border-radius: 8px;
+  padding: 8px 11px;
+  background: #fff;
+  color: var(--pharm-updates-dark);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.medical-update-related-link:hover,
+.medical-update-source-link:hover {
+  border-color: var(--pharm-updates);
+  background: var(--pharm-updates-soft);
 }
 
 .pharm-detail-title .pharm-risk-icon {
@@ -9741,6 +9919,27 @@ body.lane2-experience-open {
 }
 
 @media (max-width: 720px) {
+  .medical-updates-browse-controls {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .medical-updates-browse-controls > span {
+    width: 100%;
+  }
+
+  .medical-update-result-meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .medical-update-related-link,
+  .medical-update-source-link {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
   .lane2-experience-panel {
     padding: 0;
   }

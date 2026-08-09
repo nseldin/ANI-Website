@@ -3,9 +3,163 @@
   "use strict";
   const payload = {
   "schemaVersion": "ani-pharmacy-reviewed-runtime-v1",
-  "builderVersion": "ani-pharmacy-builder-2026-08-01.1",
-  "domainVersion": "2026-08-01.1",
-  "sourceSha256": "b44f924fcc67101b5b5c28c3525d3696469f60068adc18cb609dabaa9cd6d8f7",
+  "builderVersion": "ani-pharmacy-builder-2026-08-08.2",
+  "domainVersion": "2026-08-08.1",
+  "sourceSha256": "2a06853fb96ede59c8b48f8d86455f68dda2819bf16a49349d2e43e78b600fe3",
+  "subsections": [
+    {
+      "id": "peptides-peptide-based-therapies",
+      "label": "Peptides & Peptide-Based Therapies",
+      "description": "Clinically relevant medications built from peptides or peptide analogs. Regulatory status is shown separately from use context and compounding status so an approved ingredient is never confused with an approved use or an FDA-approved compounded product.",
+      "pharmacyTag": "peptide-based-therapy",
+      "memberships": [
+        {
+          "canonicalGeneric": "bulevirtide-gmod",
+          "canonicalName": "Bulevirtide-gmod",
+          "peptideModality": "SYNTHETIC_PEPTIDE_ANALOG",
+          "regulatory": {
+            "jurisdiction": "US",
+            "agency": "FDA",
+            "productStatus": "FDA_APPROVED",
+            "labelAsOf": "2026-08-08",
+            "sourceUrl": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/761468Orig1s000lbl.pdf"
+          },
+          "useContexts": [
+            {
+              "status": "FDA_LABELED",
+              "use": "Chronic hepatitis delta virus infection in adults with compensated liver disease",
+              "sourceUrl": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/761468Orig1s000lbl.pdf"
+            }
+          ],
+          "compounding": {
+            "status": "NOT_APPLICABLE",
+            "note": "This card covers the FDA-approved Hepcludex product and does not authorize a compounded substitute.",
+            "sourceUrl": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/761468Orig1s000lbl.pdf"
+          }
+        },
+        {
+          "canonicalGeneric": "dasiglucagon",
+          "canonicalName": "Dasiglucagon",
+          "peptideModality": "SYNTHETIC_PEPTIDE_ANALOG",
+          "regulatory": {
+            "jurisdiction": "US",
+            "agency": "FDA",
+            "productStatus": "FDA_APPROVED",
+            "labelAsOf": "2026-08-08",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=14704879-872c-4967-8779-04a3bbdfb4e6"
+          },
+          "useContexts": [
+            {
+              "status": "FDA_LABELED",
+              "use": "Emergency treatment of severe hypoglycemia in patients with diabetes age 6 years and older",
+              "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=14704879-872c-4967-8779-04a3bbdfb4e6"
+            }
+          ],
+          "compounding": {
+            "status": "NOT_APPLICABLE",
+            "note": "This card covers the FDA-approved single-dose Zegalogue devices and does not authorize a compounded substitute.",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=14704879-872c-4967-8779-04a3bbdfb4e6"
+          }
+        },
+        {
+          "canonicalGeneric": "terlipressin",
+          "canonicalName": "Terlipressin",
+          "peptideModality": "SYNTHETIC_PEPTIDE_ANALOG",
+          "regulatory": {
+            "jurisdiction": "US",
+            "agency": "FDA",
+            "productStatus": "FDA_APPROVED",
+            "labelAsOf": "2026-08-08",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3a35b86c-f451-4fac-8499-43019e4da354"
+          },
+          "useContexts": [
+            {
+              "status": "FDA_LABELED",
+              "use": "Improve kidney function in adults with hepatorenal syndrome with rapid reduction in kidney function",
+              "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3a35b86c-f451-4fac-8499-43019e4da354"
+            }
+          ],
+          "compounding": {
+            "status": "NOT_APPLICABLE",
+            "note": "This card covers the FDA-approved Terlivaz product and does not authorize a compounded substitute.",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3a35b86c-f451-4fac-8499-43019e4da354"
+          }
+        },
+        {
+          "canonicalGeneric": "ziconotide",
+          "canonicalName": "Ziconotide",
+          "peptideModality": "SYNTHETIC_PEPTIDE_ANALOG",
+          "regulatory": {
+            "jurisdiction": "US",
+            "agency": "FDA",
+            "productStatus": "FDA_APPROVED",
+            "labelAsOf": "2026-08-08",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=b025d8ed-937d-4597-9ad1-0b2f6e0ee5b1"
+          },
+          "useContexts": [
+            {
+              "status": "FDA_LABELED",
+              "use": "Severe chronic pain when intrathecal therapy is warranted and other therapy is inadequate or not tolerated",
+              "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=b025d8ed-937d-4597-9ad1-0b2f6e0ee5b1"
+            }
+          ],
+          "compounding": {
+            "status": "NOT_APPLICABLE",
+            "note": "This card covers the FDA-approved Prialt product and its labeled intrathecal preparation; it does not authorize a compounded substitute or nonapproved route.",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=b025d8ed-937d-4597-9ad1-0b2f6e0ee5b1"
+          }
+        },
+        {
+          "canonicalGeneric": "retatrutide",
+          "canonicalName": "Retatrutide",
+          "peptideModality": "SYNTHETIC_PEPTIDE_ANALOG",
+          "regulatory": {
+            "jurisdiction": "US",
+            "agency": "FDA",
+            "productStatus": "INVESTIGATIONAL",
+            "labelAsOf": "2026-08-08",
+            "sourceUrl": "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss"
+          },
+          "useContexts": [
+            {
+              "status": "INVESTIGATIONAL",
+              "use": "Clinical research in obesity under protocol NCT05929066; no FDA-approved therapeutic use",
+              "sourceUrl": "https://clinicaltrials.gov/study/NCT05929066"
+            }
+          ],
+          "compounding": {
+            "status": "COMPOUNDING_RESTRICTED_OR_PROHIBITED",
+            "note": "FDA states retatrutide cannot be used in compounding under federal law and is not a component of an FDA-approved drug.",
+            "sourceUrl": "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss"
+          }
+        },
+        {
+          "canonicalGeneric": "cagrilintide",
+          "canonicalName": "Cagrilintide",
+          "peptideModality": "SYNTHETIC_PEPTIDE_ANALOG",
+          "regulatory": {
+            "jurisdiction": "US",
+            "agency": "FDA",
+            "productStatus": "INVESTIGATIONAL",
+            "labelAsOf": "2026-08-08",
+            "sourceUrl": "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss"
+          },
+          "useContexts": [
+            {
+              "status": "INVESTIGATIONAL",
+              "use": "Clinical research in weight management, including with semaglutide under protocol NCT05567796; no FDA-approved therapeutic use",
+              "sourceUrl": "https://clinicaltrials.gov/study/NCT05567796"
+            }
+          ],
+          "compounding": {
+            "status": "COMPOUNDING_RESTRICTED_OR_PROHIBITED",
+            "note": "FDA states cagrilintide cannot be used in compounding under federal law and is not a component of an FDA-approved drug.",
+            "sourceUrl": "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss"
+          }
+        }
+      ]
+    }
+  ],
   "cards": [
     {
       "id": "medication.abiraterone",
@@ -112,7 +266,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-01.1"
+      "pharmacyDomainVersion": "2026-08-08.1"
     },
     {
       "id": "medication.cobicistat",
@@ -218,7 +372,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-01.1"
+      "pharmacyDomainVersion": "2026-08-08.1"
     },
     {
       "id": "medication.collagenase-santyl",
@@ -321,7 +475,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-01.1"
+      "pharmacyDomainVersion": "2026-08-08.1"
     },
     {
       "id": "medication.collagenase-xiaflex",
@@ -428,7 +582,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-01.1"
+      "pharmacyDomainVersion": "2026-08-08.1"
     },
     {
       "id": "medication.cromolyn-sodium",
@@ -566,7 +720,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-01.1"
+      "pharmacyDomainVersion": "2026-08-08.1"
     },
     {
       "id": "medication.efgartigimod-alfa-fcab",
@@ -668,7 +822,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-01.1"
+      "pharmacyDomainVersion": "2026-08-08.1"
     },
     {
       "id": "medication.avacopan",
@@ -769,7 +923,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-01.1"
+      "pharmacyDomainVersion": "2026-08-08.1"
     },
     {
       "id": "medication.belzutifan",
@@ -874,7 +1028,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-01.1"
+      "pharmacyDomainVersion": "2026-08-08.1"
     },
     {
       "id": "medication.elacestrant",
@@ -975,7 +1129,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-01.1"
+      "pharmacyDomainVersion": "2026-08-08.1"
     },
     {
       "id": "medication.capivasertib",
@@ -1081,7 +1235,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-01.1"
+      "pharmacyDomainVersion": "2026-08-08.1"
     },
     {
       "id": "medication.guanfacine",
@@ -1229,7 +1383,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-01.1"
+      "pharmacyDomainVersion": "2026-08-08.1"
     },
     {
       "id": "medication.povidone-iodine",
@@ -1355,7 +1509,1025 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-01.1"
+      "pharmacyDomainVersion": "2026-08-08.1"
+    },
+    {
+      "id": "medication.bulevirtide-gmod",
+      "name": "Bulevirtide-gmod",
+      "displayName": "Bulevirtide-gmod (Hepcludex)",
+      "generic": "bulevirtide-gmod",
+      "aliases": [
+        "bulevirtide",
+        "Hepcludex",
+        "Myrcludex B"
+      ],
+      "brandExamples": [
+        "Hepcludex"
+      ],
+      "class": "Hepatitis D virus entry inhibitor; synthetic lipopeptide analog",
+      "pharmacyTags": [
+        "peptide-based-therapy",
+        "antiviral"
+      ],
+      "updateMatchTerms": [
+        "bulevirtide-gmod",
+        "bulevirtide",
+        "Hepcludex",
+        "Myrcludex B"
+      ],
+      "peptideModality": "SYNTHETIC_PEPTIDE_ANALOG",
+      "plainLanguage": "Bulevirtide-gmod is an antiviral peptide that blocks hepatitis D virus from entering liver cells. It is used for chronic hepatitis D in selected adults and does not remove existing hepatitis B infection.",
+      "whyItMatters": "Chronic hepatitis D can rapidly damage the liver. Treatment interruption can trigger a severe flare of hepatitis D or B, so the nurse must verify hepatitis B management, monitor liver function, and escalate symptoms of worsening hepatitis instead of treating this as an ordinary missed dose.",
+      "plainLanguageGlosses": [
+        {
+          "term": "entry inhibitor",
+          "plainLanguage": "a medicine that blocks a virus from getting into a cell",
+          "sourceKeys": [
+            "fda-hepcludex-2026-label"
+          ]
+        },
+        {
+          "term": "compensated cirrhosis",
+          "plainLanguage": "advanced liver scarring while the liver is still performing its essential functions",
+          "sourceKeys": [
+            "fda-hepcludex-2026-label"
+          ]
+        }
+      ],
+      "description": "Bulevirtide-gmod is a synthetic peptide-based antiviral approved in the United States for chronic hepatitis delta virus infection in adults without cirrhosis or with compensated cirrhosis. Hepatitis D depends on hepatitis B surface antigen to spread, so hepatitis B assessment and treatment remain part of care. The drug is not a cure and does not justify stopping hepatitis B therapy or liver surveillance.",
+      "mechanism": "Bulevirtide-gmod binds the sodium taurocholate cotransporting polypeptide, or NTCP, on hepatocytes. Hepatitis B and D viruses use this liver-cell transporter as an entry receptor. Occupying NTCP prevents new hepatitis D particles from entering uninfected hepatocytes, which limits viral spread. NTCP also transports bile acids, explaining the predictable rise in serum bile acids during therapy.",
+      "usedToTreat": "FDA-labeled treatment of chronic hepatitis delta virus infection in adults with compensated liver disease. Patients with hepatitis B coinfection still need guideline-directed hepatitis B management because bulevirtide-gmod does not directly suppress hepatitis B replication.",
+      "boxedWarning": "Boxed warning: stopping bulevirtide-gmod may cause severe acute worsening of hepatitis D or hepatitis B. Monitor liver function and viral status closely after discontinuation and restart appropriate antiviral management when clinically indicated.",
+      "contraindications": [
+        "The current U.S. label lists no formal contraindications. Clinically significant hypersensitivity is a warning that requires immediate discontinuation and treatment, not a labeled contraindication."
+      ],
+      "adverseEffects": [
+        "Injection-site reactions, headache, abdominal pain, fatigue, and itching (pruritus).",
+        "Increased serum bile acids are expected from NTCP blockade; symptoms and liver tests still require clinical interpretation rather than assuming the elevation is harmless or proves bile-duct obstruction."
+      ],
+      "seriousAdverseReactions": [
+        "Severe acute exacerbation of hepatitis D or hepatitis B after discontinuation.",
+        "Serious hypersensitivity requiring immediate discontinuation, treatment, and urgent evaluation."
+      ],
+      "interactions": [
+        "At clinically relevant bulevirtide-gmod concentrations, the U.S. label expects no clinically relevant interaction with OATP1B or NTCP substrates.",
+        "The label reports no clinically relevant interaction with pegylated interferon alfa, tenofovir alafenamide, or tenofovir disoproxil fumarate. Hepatitis B treatment decisions remain separate because bulevirtide-gmod does not suppress hepatitis B replication."
+      ],
+      "nursingEssentials": [
+        "Before the first dose, verify chronic hepatitis D, compensated liver status, hepatitis B testing and treatment plan, baseline liver tests, and the complete medication list.",
+        "Teach and verify subcutaneous administration technique, site rotation, storage, and the plan for a missed dose. Assess injection sites and adherence because unplanned interruption can be clinically dangerous.",
+        "Trend ALT, AST, bilirubin, INR, albumin, hepatitis D RNA, hepatitis B markers or DNA, and clinical signs of decompensation as ordered. Escalate jaundice, dark urine, abdominal swelling, confusion, bleeding, severe weakness, or worsening liver tests promptly."
+      ],
+      "keyLabs": [
+        "ALT, AST, bilirubin, INR, albumin, and other liver-function measures",
+        "Hepatitis D RNA and hepatitis B surface antigen or HBV DNA according to the treatment plan",
+        "Serum bile acids when clinically indicated; elevations may reflect NTCP blockade rather than bile-duct obstruction but still require clinical interpretation"
+      ],
+      "patientEducation": [
+        "Do not stop treatment on your own. A liver flare can occur after stopping even when you felt well during treatment.",
+        "Keep hepatitis B and liver-monitoring appointments and report yellow skin or eyes, dark urine, increasing abdominal swelling, confusion, unusual bleeding, or severe fatigue immediately.",
+        "Use a new needle and approved sharps container for each injection, rotate sites, and do not share injection equipment."
+      ],
+      "administration": [
+        "Administer by subcutaneous injection using the current U.S. product instructions. Rotate injection sites and inspect the prepared dose before administration.",
+        "If treatment is interrupted or discontinued, arrange the label-directed post-treatment liver and viral monitoring rather than simply removing the medicine from the list."
+      ],
+      "toxicityManagement": [
+        "There is no specific antidote. Hold further exposure for serious hypersensitivity or severe suspected toxicity and provide supportive care with urgent hepatology or infectious-disease consultation.",
+        "For a post-discontinuation hepatitis flare, obtain urgent liver and viral evaluation and follow specialist-directed antiviral management; do not self-restart or self-substitute therapy."
+      ],
+      "specialPopulations": [
+        "Safety and effectiveness are not established for pediatric patients in the reviewed U.S. label.",
+        "Pregnancy and lactation require individualized infectious-disease and maternal-fetal risk review because clinical experience is limited and uncontrolled hepatitis also carries risk.",
+        "Decompensated cirrhosis, transplantation, and major renal or hepatic comorbidity require specialist product-specific review rather than inheriting instructions from compensated disease."
+      ],
+      "nclexTraps": [
+        "Bulevirtide-gmod blocks viral entry; it does not eliminate hepatitis B or replace hepatitis B therapy.",
+        "A rise in bile acids is mechanistically expected from NTCP blockade, but jaundice or decompensation is never dismissed without assessment.",
+        "Stopping an antiviral peptide is not automatically harmless: the boxed warning requires post-discontinuation monitoring for severe hepatitis flare."
+      ],
+      "routes": [
+        "Subcutaneous injection"
+      ],
+      "notApplicable": [
+        "specific antidote"
+      ],
+      "relatedTopics": [
+        "Hepatitis D",
+        "Hepatitis B",
+        "Cirrhosis",
+        "Liver-function tests"
+      ],
+      "regulatoryStatus": "FDA-approved in 2026 under accelerated approval for chronic hepatitis D in selected adults based on a virologic endpoint. Improvement in disease outcomes has not yet been established, and continued approval may depend on confirmatory benefit.",
+      "regulatory": {
+        "jurisdiction": "US",
+        "agency": "FDA",
+        "productStatus": "FDA_APPROVED",
+        "labelAsOf": "2026-08-08",
+        "sourceUrl": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/761468Orig1s000lbl.pdf"
+      },
+      "useContexts": [
+        {
+          "status": "FDA_LABELED",
+          "use": "Chronic hepatitis delta virus infection in adults with compensated liver disease",
+          "sourceUrl": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/761468Orig1s000lbl.pdf"
+        }
+      ],
+      "compounding": {
+        "status": "NOT_APPLICABLE",
+        "note": "This card covers the FDA-approved Hepcludex product and does not authorize a compounded substitute.",
+        "sourceUrl": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/761468Orig1s000lbl.pdf"
+      },
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-08",
+      "sourceNote": "Original ANI synthesis from the FDA Hepcludex prescribing information and approval letter: https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/761468Orig1s000lbl.pdf and https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2026/761468Orig1s000ltr.pdf.",
+      "provenance": [
+        {
+          "key": "fda-hepcludex-2026-label",
+          "authority": "FDA",
+          "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/761468Orig1s000lbl.pdf",
+          "documentVersion": "Initial U.S. approval 2026; checked 2026-08-08",
+          "fieldsSupported": [
+            "identity",
+            "indication",
+            "mechanism",
+            "boxed warning",
+            "contraindications",
+            "warnings",
+            "adverse effects",
+            "interactions",
+            "administration",
+            "monitoring",
+            "accelerated-approval limitation"
+          ]
+        },
+        {
+          "key": "fda-hepcludex-2026-approval-letter",
+          "authority": "FDA",
+          "url": "https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2026/761468Orig1s000ltr.pdf",
+          "documentVersion": "Approval letter 2026; checked 2026-08-08",
+          "fieldsSupported": [
+            "FDA approval",
+            "regulatory status"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-08.1"
+    },
+    {
+      "id": "medication.dasiglucagon",
+      "name": "Dasiglucagon",
+      "displayName": "Dasiglucagon (Zegalogue)",
+      "generic": "dasiglucagon",
+      "aliases": [
+        "Zegalogue",
+        "dasiglucagon injection"
+      ],
+      "brandExamples": [
+        "Zegalogue"
+      ],
+      "class": "Glucagon receptor agonist; synthetic glucagon peptide analog",
+      "pharmacyTags": [
+        "peptide-based-therapy",
+        "hypoglycemia rescue"
+      ],
+      "updateMatchTerms": [
+        "dasiglucagon",
+        "Zegalogue"
+      ],
+      "peptideModality": "SYNTHETIC_PEPTIDE_ANALOG",
+      "plainLanguage": "Dasiglucagon is a ready-to-use rescue injection for severe low blood sugar. It tells the liver to release stored glucose when a person cannot safely swallow sugar.",
+      "whyItMatters": "Severe hypoglycemia can cause seizure, coma, brain injury, or death. Give the rescue medicine promptly, protect the airway, and call emergency services immediately after the first dose. Provide oral carbohydrate only after the person is awake and can swallow safely.",
+      "plainLanguageGlosses": [
+        {
+          "term": "glucagon receptor agonist",
+          "plainLanguage": "a medicine that copies glucagon's signal for the liver to release glucose",
+          "sourceKeys": [
+            "dailymed-zegalogue-label"
+          ]
+        },
+        {
+          "term": "hypoglycemia",
+          "plainLanguage": "dangerously low blood sugar",
+          "sourceKeys": [
+            "dailymed-zegalogue-label"
+          ]
+        }
+      ],
+      "description": "Dasiglucagon is a stable 29-amino-acid glucagon analog supplied as a ready-to-use subcutaneous autoinjector or prefilled syringe. It is FDA approved for severe hypoglycemia in adults and children 6 years and older. Rescue treatment buys time by raising blood glucose; it does not replace emergency evaluation, identification of the cause, or longer-acting carbohydrate after recovery.",
+      "mechanism": "Dasiglucagon activates hepatic glucagon receptors. The receptor signal increases cyclic AMP, stimulating breakdown of liver glycogen and release of glucose into the blood. The response depends on adequate hepatic glycogen, so prolonged fasting, starvation, adrenal insufficiency, or chronic hypoglycemia can weaken the effect and require intravenous glucose instead.",
+      "usedToTreat": "FDA-labeled emergency treatment of severe hypoglycemia in adults and pediatric patients 6 years and older with diabetes when oral carbohydrate cannot be given safely.",
+      "boxedWarning": "No boxed warning. Major label hazards include catecholamine release in pheochromocytoma, paradoxical hypoglycemia in insulinoma, hypersensitivity, and reduced effectiveness when hepatic glycogen stores are depleted.",
+      "contraindications": [
+        "Pheochromocytoma because glucagon-receptor activation may provoke a dangerous blood-pressure rise through tumor catecholamine release.",
+        "Insulinoma because an initial glucose rise may trigger excessive insulin release and recurrent hypoglycemia.",
+        "Known serious hypersensitivity to dasiglucagon or an ingredient in the product."
+      ],
+      "adverseEffects": [
+        "Nausea, vomiting, headache, diarrhea, and injection-site discomfort.",
+        "Transient increases in blood pressure or heart rate."
+      ],
+      "seriousAdverseReactions": [
+        "Severe hypertension in pheochromocytoma, recurrent hypoglycemia in insulinoma, or serious hypersensitivity.",
+        "Aspiration risk when vomiting occurs in a person with impaired consciousness."
+      ],
+      "interactions": [
+        "Beta blockers can intensify a temporary rise in pulse and blood pressure after glucagon-receptor activation.",
+        "Indomethacin may blunt the glucose response or contribute to recurrent hypoglycemia.",
+        "Warfarin anticoagulant effect may increase; clinically appropriate coagulation monitoring is required after use in a warfarin-treated patient."
+      ],
+      "nursingEssentials": [
+        "Treat severe hypoglycemia immediately when the patient cannot swallow safely: position on the side if unconscious, administer the subcutaneous dose, call emergency medical services immediately after the dose, and recheck glucose and neurologic status.",
+        "If there is no response after 15 minutes, give another dose from a new device when available while waiting for emergency assistance and definitive glucose treatment.",
+        "Once awake and able to swallow, provide a fast carbohydrate followed by a longer-acting carbohydrate or meal to replenish glycogen and reduce recurrence. Investigate insulin, sulfonylurea, missed food, exercise, renal function, or other cause."
+      ],
+      "keyLabs": [
+        "Point-of-care or plasma glucose before treatment when this does not delay rescue and approximately 15 minutes after treatment",
+        "Repeated glucose monitoring because recurrence can follow temporary rescue",
+        "Electrolytes, renal or hepatic function, and toxicology-directed testing when the cause or prolonged course warrants it"
+      ],
+      "patientEducation": [
+        "Family, school staff, and caregivers should know where Zegalogue is stored, how to use the device, and when to call emergency services before an emergency occurs.",
+        "After use, turn the person on their side because nausea and vomiting can occur. Give food or drink only when fully awake and able to swallow.",
+        "Replace the used device and review why the severe low occurred with the diabetes team."
+      ],
+      "administration": [
+        "Inject subcutaneously into the lower abdomen, buttocks, thigh, or outer upper arm according to the device instructions; remove clothing only when needed to access the site safely.",
+        "The labeled rescue dose is supplied in a single-dose device. A second new device may be used after 15 minutes when the patient has not responded and emergency help is being obtained."
+      ],
+      "toxicityManagement": [
+        "Excess exposure may produce nausea, vomiting, reduced gastrointestinal motility, tachycardia, hypertension, or hypokalemia. Provide supportive monitoring and contact Poison Control for a clinically important overdose.",
+        "Marked hypertension may require specialist-directed alpha-adrenergic blockade such as phentolamine; monitor potassium and replace it when indicated."
+      ],
+      "specialPopulations": [
+        "FDA-labeled use includes pediatric patients age 6 years and older; safety in younger children is not established in the reviewed label.",
+        "Available pregnancy experience with glucagon therapy has not identified a drug-associated major risk, but severe maternal hypoglycemia itself requires immediate treatment. Lactation decisions follow product labeling and clinical context.",
+        "Patients with prolonged fasting, starvation, adrenal insufficiency, or chronic hypoglycemia may lack adequate liver glycogen and need intravenous glucose."
+      ],
+      "nclexTraps": [
+        "Zegalogue is dasiglucagon, not a brand of native glucagon; keep the two medication identities linked but separate.",
+        "Never force juice or food into an unconscious patient. Rescue first, protect the airway, then feed only after safe swallowing returns.",
+        "A glucose rise does not end the event: recheck, give longer-acting carbohydrate, and evaluate the cause of recurrence."
+      ],
+      "routes": [
+        "Subcutaneous injection using a single-dose autoinjector or prefilled syringe"
+      ],
+      "notApplicable": [
+        "routine therapeutic drug level"
+      ],
+      "relatedTopics": [
+        "Severe hypoglycemia",
+        "Glucagon",
+        "Insulin",
+        "Diabetes mellitus"
+      ],
+      "regulatoryStatus": "FDA-approved prescription rescue medicine for severe hypoglycemia in patients 6 years and older.",
+      "regulatory": {
+        "jurisdiction": "US",
+        "agency": "FDA",
+        "productStatus": "FDA_APPROVED",
+        "labelAsOf": "2026-08-08",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=14704879-872c-4967-8779-04a3bbdfb4e6"
+      },
+      "useContexts": [
+        {
+          "status": "FDA_LABELED",
+          "use": "Emergency treatment of severe hypoglycemia in patients with diabetes age 6 years and older",
+          "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=14704879-872c-4967-8779-04a3bbdfb4e6"
+        }
+      ],
+      "compounding": {
+        "status": "NOT_APPLICABLE",
+        "note": "This card covers the FDA-approved single-dose Zegalogue devices and does not authorize a compounded substitute.",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=14704879-872c-4967-8779-04a3bbdfb4e6"
+      },
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-08",
+      "sourceNote": "Original ANI synthesis from the current DailyMed Zegalogue prescribing information: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=14704879-872c-4967-8779-04a3bbdfb4e6.",
+      "provenance": [
+        {
+          "key": "dailymed-zegalogue-label",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=14704879-872c-4967-8779-04a3bbdfb4e6",
+          "documentVersion": "Checked 2026-08-08",
+          "fieldsSupported": [
+            "identity",
+            "indication",
+            "mechanism",
+            "contraindications",
+            "warnings",
+            "adverse effects",
+            "interactions",
+            "administration",
+            "overdose",
+            "special populations"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-08.1"
+    },
+    {
+      "id": "medication.terlipressin",
+      "name": "Terlipressin",
+      "displayName": "Terlipressin (Terlivaz)",
+      "generic": "terlipressin",
+      "aliases": [
+        "Terlivaz",
+        "terlipressin acetate"
+      ],
+      "brandExamples": [
+        "Terlivaz"
+      ],
+      "class": "Vasopressin receptor agonist; synthetic vasopressin peptide analog",
+      "pharmacyTags": [
+        "peptide-based-therapy",
+        "hepatorenal syndrome"
+      ],
+      "updateMatchTerms": [
+        "terlipressin",
+        "Terlivaz"
+      ],
+      "peptideModality": "SYNTHETIC_PEPTIDE_ANALOG",
+      "plainLanguage": "Terlipressin is an intravenous vasopressin-like peptide used to improve kidney function in adults with hepatorenal syndrome. It narrows blood vessels in the abdomen so more effective blood flow reaches the kidneys.",
+      "whyItMatters": "Terlipressin can improve kidney function, but it can also cause fatal respiratory failure or tissue ischemia. Oxygen saturation, breathing, fluid status, and signs of reduced blood flow must be checked before and throughout treatment.",
+      "plainLanguageGlosses": [
+        {
+          "term": "hepatorenal syndrome",
+          "plainLanguage": "kidney failure caused by severe liver-related circulation changes rather than primary kidney damage",
+          "sourceKeys": [
+            "dailymed-terlivaz-label"
+          ]
+        },
+        {
+          "term": "ischemia",
+          "plainLanguage": "too little blood and oxygen reaching tissue",
+          "sourceKeys": [
+            "dailymed-terlivaz-label"
+          ]
+        }
+      ],
+      "description": "Terlipressin is a synthetic peptide analog of vasopressin approved to improve kidney function in adults with hepatorenal syndrome with a rapid reduction in kidney function. It is administered in a closely monitored setting because the same vasoconstriction that improves effective kidney perfusion can reduce blood flow to the heart, gut, skin, or limbs, and because patients with volume overload are vulnerable to respiratory failure.",
+      "mechanism": "Terlipressin is converted to lysine vasopressin and activates vascular V1 receptors. Splanchnic vasoconstriction reduces pooling of blood in the abdominal circulation, raises effective arterial volume, and improves renal perfusion pressure. This can reverse the functional kidney vasoconstriction of hepatorenal syndrome, while systemic vasoconstriction and fluid shifts explain the risks of ischemia and pulmonary edema or respiratory failure.",
+      "usedToTreat": "FDA-labeled improvement of kidney function in adults with hepatorenal syndrome with rapid reduction in kidney function. Benefit is unlikely when serum creatinine is extremely high, and treatment selection must consider transplant candidacy and advanced acute-on-chronic liver failure.",
+      "boxedWarning": "Boxed warning: serious or fatal respiratory failure can occur. Assess oxygen saturation before treatment, do not start in a patient with hypoxia, continuously monitor pulse oximetry, and discontinue if oxygen saturation falls below the label threshold or respiratory symptoms develop.",
+      "contraindications": [
+        "Hypoxia or worsening respiratory symptoms because terlipressin may precipitate serious or fatal respiratory failure.",
+        "Ongoing coronary, peripheral, or mesenteric ischemia because vasoconstriction can worsen tissue perfusion."
+      ],
+      "adverseEffects": [
+        "Abdominal pain, nausea, diarrhea, dyspnea, and fluid-related symptoms.",
+        "Bradycardia, blood-pressure changes, reduced peripheral perfusion, hyponatremia, or skin ischemia."
+      ],
+      "seriousAdverseReactions": [
+        "Serious or fatal respiratory failure, pulmonary edema, or hypoxia.",
+        "Coronary, mesenteric, peripheral, or skin ischemia; severe bradyarrhythmia; or worsening multiorgan failure."
+      ],
+      "interactions": [
+        "The current U.S. label anticipates no significant pharmacokinetic drug-drug interactions.",
+        "Albumin and other fluids are regimen-management considerations rather than drug interactions. Coordinate volume carefully because excess intravascular volume can increase respiratory-failure risk.",
+        "Review medicines that slow heart rate or reduce tissue perfusion as part of the patient's overall safety assessment, but do not present those concerns as formal labeled interactions when the label does not classify them that way."
+      ],
+      "nursingEssentials": [
+        "Before each course, assess SpO2, respiratory symptoms, lung findings, fluid balance, ischemic symptoms, creatinine, sodium, blood pressure, heart rate, and transplant status. Do not initiate when hypoxic.",
+        "Maintain continuous pulse oximetry, frequent respiratory and perfusion assessments, strict intake and output, daily weight, and ordered creatinine monitoring. Watch for new dyspnea, crackles, chest or abdominal pain, cool mottled limbs, or skin discoloration.",
+        "Stop and urgently notify the treating team for SpO2 below the label threshold, worsening respiratory status, or signs of ischemia. Grade 3 acute-on-chronic liver failure carries particularly high respiratory risk and may make the harm exceed benefit."
+      ],
+      "keyLabs": [
+        "Serum creatinine and urine output to determine renal response",
+        "Continuous oxygen saturation plus respiratory assessment and chest evaluation when indicated",
+        "Sodium, potassium, liver tests, blood pressure, heart rate, weight, and fluid balance"
+      ],
+      "patientEducation": [
+        "Report shortness of breath, chest pain, severe abdominal pain, cold or painful limbs, numbness, or dark skin changes immediately.",
+        "Explain that the medicine is intended to improve kidney circulation but requires continuous oxygen and blood-flow monitoring because it constricts vessels.",
+        "Treatment does not repair the underlying liver disease; transplant and liver-management decisions continue in parallel."
+      ],
+      "administration": [
+        "Administer intravenously in the monitored setting and on the schedule directed by the current label. Dose continuation and adjustment depend on creatinine response and safety findings.",
+        "Review albumin and other fluid orders, maintain accurate intake and output, and avoid unrecognized fluid overload."
+      ],
+      "toxicityManagement": [
+        "There is no specific antidote. Stop terlipressin for clinically important hypoxia, respiratory failure, or ischemia and provide airway, oxygenation, circulatory, and specialty-directed supportive treatment.",
+        "Escalate suspected pulmonary edema, myocardial ischemia, mesenteric ischemia, or limb ischemia immediately; delayed recognition can cause irreversible organ injury."
+      ],
+      "specialPopulations": [
+        "Terlipressin can cause fetal harm through uterine and vascular effects. Advise patients who could become pregnant about the fetal risk and instruct them to notify the treating clinician of a known or suspected pregnancy; the current label does not direct a contraception regimen.",
+        "Grade 3 acute-on-chronic liver failure, major volume overload, high baseline creatinine, or transplant candidacy requires especially careful benefit-risk review.",
+        "Safety and effectiveness are not established in pediatric patients in the reviewed U.S. label."
+      ],
+      "nclexTraps": [
+        "A rising SpO2 concern outranks a favorable creatinine trend; respiratory failure can be fatal.",
+        "Terlipressin improves functional renal perfusion in hepatorenal syndrome but does not cure cirrhosis.",
+        "Abdominal pain is not automatically expected nausea: evaluate for mesenteric ischemia when severe or accompanied by instability."
+      ],
+      "routes": [
+        "Intravenous injection in a monitored care setting"
+      ],
+      "notApplicable": [
+        "routine outpatient self-administration",
+        "specific antidote"
+      ],
+      "relatedTopics": [
+        "Hepatorenal syndrome",
+        "Cirrhosis",
+        "Acute kidney injury",
+        "Respiratory failure",
+        "Ischemia"
+      ],
+      "regulatoryStatus": "FDA-approved prescription medicine for hepatorenal syndrome in adults; initial U.S. approval 2022.",
+      "regulatory": {
+        "jurisdiction": "US",
+        "agency": "FDA",
+        "productStatus": "FDA_APPROVED",
+        "labelAsOf": "2026-08-08",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3a35b86c-f451-4fac-8499-43019e4da354"
+      },
+      "useContexts": [
+        {
+          "status": "FDA_LABELED",
+          "use": "Improve kidney function in adults with hepatorenal syndrome with rapid reduction in kidney function",
+          "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3a35b86c-f451-4fac-8499-43019e4da354"
+        }
+      ],
+      "compounding": {
+        "status": "NOT_APPLICABLE",
+        "note": "This card covers the FDA-approved Terlivaz product and does not authorize a compounded substitute.",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3a35b86c-f451-4fac-8499-43019e4da354"
+      },
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-08",
+      "sourceNote": "Original ANI synthesis from the current DailyMed Terlivaz prescribing information: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3a35b86c-f451-4fac-8499-43019e4da354.",
+      "provenance": [
+        {
+          "key": "dailymed-terlivaz-label",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3a35b86c-f451-4fac-8499-43019e4da354",
+          "documentVersion": "Checked 2026-08-08",
+          "fieldsSupported": [
+            "identity",
+            "indication",
+            "mechanism",
+            "boxed warning",
+            "contraindications",
+            "warnings",
+            "adverse effects",
+            "absence of significant drug interactions",
+            "administration",
+            "monitoring",
+            "special populations"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-08.1"
+    },
+    {
+      "id": "medication.ziconotide",
+      "name": "Ziconotide",
+      "displayName": "Ziconotide (Prialt)",
+      "generic": "ziconotide",
+      "aliases": [
+        "Prialt",
+        "ziconotide acetate",
+        "SNX-111"
+      ],
+      "brandExamples": [
+        "Prialt"
+      ],
+      "class": "Nonopioid N-type calcium-channel blocker; synthetic conopeptide analgesic",
+      "pharmacyTags": [
+        "peptide-based-therapy",
+        "intrathecal analgesic"
+      ],
+      "updateMatchTerms": [
+        "ziconotide",
+        "Prialt",
+        "SNX-111"
+      ],
+      "peptideModality": "SYNTHETIC_PEPTIDE_ANALOG",
+      "plainLanguage": "Ziconotide is a nonopioid peptide pain medicine delivered directly into the fluid around the spinal cord by an implanted pump. It is reserved for severe chronic pain when intrathecal therapy is warranted and other treatments are inadequate or not tolerated.",
+      "whyItMatters": "Ziconotide can cause severe confusion, hallucinations, mood changes, reduced consciousness, or other neurologic effects. A new behavioral or cognitive change is a safety signal requiring prompt assessment, not a routine effect to simply tolerate.",
+      "plainLanguageGlosses": [
+        {
+          "term": "intrathecal",
+          "plainLanguage": "delivered into the fluid-filled space around the spinal cord",
+          "sourceKeys": [
+            "dailymed-prialt-label"
+          ]
+        },
+        {
+          "term": "conopeptide",
+          "plainLanguage": "a laboratory-made version of a small protein originally identified in cone-snail venom",
+          "sourceKeys": [
+            "dailymed-prialt-label"
+          ]
+        }
+      ],
+      "description": "Ziconotide is a synthetic 25-amino-acid peptide analgesic administered only by intrathecal infusion. It is FDA approved for severe chronic pain in patients for whom intrathecal therapy is warranted and who are intolerant of or refractory to other treatment. It is not an opioid, does not reverse opioid withdrawal, and requires slow specialist titration because neuropsychiatric and neurologic toxicity is dose related and can be delayed.",
+      "mechanism": "Ziconotide selectively blocks N-type voltage-sensitive calcium channels on presynaptic nerve terminals in the spinal dorsal horn. Blocking calcium entry reduces release of excitatory neurotransmitters involved in pain transmission. Direct delivery to cerebrospinal fluid produces analgesia without opioid-receptor activation, explaining both the lack of opioid respiratory depression and the distinct risks of cognitive, psychiatric, and neurologic toxicity.",
+      "usedToTreat": "FDA-labeled management of severe chronic pain in patients for whom intrathecal therapy is warranted and who are intolerant of or refractory to other treatments, including systemic analgesics, adjunctive therapies, or intrathecal morphine.",
+      "boxedWarning": "Boxed warning: severe psychiatric symptoms and neurologic impairment may occur. Ziconotide is contraindicated in patients with a preexisting history of psychosis. Monitor frequently for cognitive impairment, hallucinations, mood changes, or altered consciousness and discontinue for serious neurologic or psychiatric toxicity.",
+      "contraindications": [
+        "Preexisting history of psychosis.",
+        "Any condition that would make intrathecal administration unsafe, including infection at the injection site, uncontrolled bleeding risk, spinal-canal obstruction that impairs cerebrospinal-fluid circulation, or another label-defined contraindication to the delivery system.",
+        "Known hypersensitivity to ziconotide or an ingredient in the selected product."
+      ],
+      "adverseEffects": [
+        "Dizziness, nausea, confusion, nystagmus, abnormal gait, memory impairment, blurred vision, headache, somnolence, weakness, and vomiting.",
+        "Urinary retention, elevated creatine kinase, balance problems, and falls."
+      ],
+      "seriousAdverseReactions": [
+        "Hallucinations, paranoia, delirium, severe depression, suicidal thoughts, psychosis, reduced consciousness, or unresponsiveness.",
+        "Meningitis or other pump-related infection, severe neurologic impairment, rhabdomyolysis or marked creatine-kinase elevation."
+      ],
+      "interactions": [
+        "Other central nervous system depressants can worsen sedation, confusion, and impaired consciousness even though ziconotide itself is not an opioid.",
+        "Intrathecal compatibility is product and pump specific. Do not mix ziconotide with another intrathecal drug unless compatibility and the exact protocol are established.",
+        "Abrupt opioid withdrawal can occur if systemic or intrathecal opioids are stopped when ziconotide begins; taper opioids separately because ziconotide does not prevent withdrawal."
+      ],
+      "nursingEssentials": [
+        "Document baseline cognition, mood, psychiatric history, neurologic status, gait, fall risk, pain function, medications, and pump settings before initiation and after each titration.",
+        "Use a dedicated intrathecal system and strict aseptic technique. Verify drug concentration, pump, reservoir, route, and programming with the specialist protocol because administration by another route can be dangerous and ineffective.",
+        "Escalate hallucinations, suicidal thoughts, acute confusion, marked sedation, new neurologic deficit, fever with meningeal symptoms, severe muscle pain, dark urine, or a pump alarm immediately."
+      ],
+      "keyLabs": [
+        "Creatine kinase before therapy and periodically or urgently for muscle pain, weakness, or dark urine",
+        "Renal function and urinalysis when rhabdomyolysis is suspected",
+        "Serial cognitive, psychiatric, neurologic, gait, pain-function, and pump assessments"
+      ],
+      "patientEducation": [
+        "Tell the care team immediately about confusion, hallucinations, unusual thoughts, depressed mood, suicidal thinking, severe sleepiness, new weakness, fever, or pump problems.",
+        "Avoid driving, alcohol, and other sedating substances until the specialist confirms how the treatment affects alertness and balance.",
+        "Do not expect ziconotide to prevent opioid withdrawal. Follow the separate opioid taper exactly."
+      ],
+      "administration": [
+        "Administer only by intrathecal infusion using an approved pump and the current product preparation instructions. Initiation and titration require a clinician experienced with intrathecal therapy.",
+        "Titrate slowly based on pain function and adverse effects. Ziconotide can be stopped without a pharmacologic taper, but the pain and any separate opioid regimen still require a transition plan."
+      ],
+      "toxicityManagement": [
+        "Stop the infusion for serious neuropsychiatric, neurologic, or consciousness changes and provide close supportive monitoring; effects may persist for days after discontinuation.",
+        "There is no specific antidote. Evaluate airway and aspiration risk, infection, pump error, interacting sedatives, creatine kinase, renal function, and other causes according to the presentation."
+      ],
+      "specialPopulations": [
+        "Pregnancy and lactation require individualized pain-specialist review because human data are limited and severe uncontrolled pain also carries risk.",
+        "Older adults and patients with baseline cognitive impairment, fall risk, renal vulnerability, or extensive CNS-active polypharmacy need especially cautious titration and monitoring.",
+        "Safety and effectiveness are not established in pediatric patients in the reviewed U.S. label."
+      ],
+      "nclexTraps": [
+        "Ziconotide is intrathecal only; it is not an IV or oral opioid alternative.",
+        "Preexisting psychosis is a contraindication, and new hallucinations or suicidality requires urgent action.",
+        "Nonopioid does not mean low risk: serious cognitive, psychiatric, neurologic, and pump-related complications can occur."
+      ],
+      "routes": [
+        "Continuous intrathecal infusion through an implanted pump"
+      ],
+      "notApplicable": [
+        "opioid reversal",
+        "specific antidote"
+      ],
+      "relatedTopics": [
+        "Chronic pain",
+        "Intrathecal pump",
+        "Psychosis",
+        "Rhabdomyolysis",
+        "Fall prevention"
+      ],
+      "regulatoryStatus": "FDA-approved prescription intrathecal analgesic for selected patients with severe chronic pain.",
+      "regulatory": {
+        "jurisdiction": "US",
+        "agency": "FDA",
+        "productStatus": "FDA_APPROVED",
+        "labelAsOf": "2026-08-08",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=b025d8ed-937d-4597-9ad1-0b2f6e0ee5b1"
+      },
+      "useContexts": [
+        {
+          "status": "FDA_LABELED",
+          "use": "Severe chronic pain when intrathecal therapy is warranted and other therapy is inadequate or not tolerated",
+          "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=b025d8ed-937d-4597-9ad1-0b2f6e0ee5b1"
+        }
+      ],
+      "compounding": {
+        "status": "NOT_APPLICABLE",
+        "note": "This card covers the FDA-approved Prialt product and its labeled intrathecal preparation; it does not authorize a compounded substitute or nonapproved route.",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=b025d8ed-937d-4597-9ad1-0b2f6e0ee5b1"
+      },
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-08",
+      "sourceNote": "Original ANI synthesis from the current DailyMed Prialt prescribing information: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=b025d8ed-937d-4597-9ad1-0b2f6e0ee5b1.",
+      "provenance": [
+        {
+          "key": "dailymed-prialt-label",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=b025d8ed-937d-4597-9ad1-0b2f6e0ee5b1",
+          "documentVersion": "Updated 05/2025; checked 2026-08-08",
+          "fieldsSupported": [
+            "identity",
+            "indication",
+            "mechanism",
+            "boxed warning",
+            "contraindications",
+            "warnings",
+            "adverse effects",
+            "interactions",
+            "administration",
+            "monitoring",
+            "special populations"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-08.1"
+    },
+    {
+      "id": "medication.retatrutide",
+      "name": "Retatrutide",
+      "displayName": "Retatrutide (investigational)",
+      "generic": "retatrutide",
+      "aliases": [
+        "LY3437943"
+      ],
+      "brandExamples": [],
+      "class": "Investigational GIP, GLP-1, and glucagon receptor agonist peptide",
+      "pharmacyTags": [
+        "peptide-based-therapy",
+        "investigational"
+      ],
+      "updateMatchTerms": [
+        "retatrutide",
+        "LY3437943"
+      ],
+      "peptideModality": "SYNTHETIC_PEPTIDE_ANALOG",
+      "plainLanguage": "Retatrutide is an investigational peptide being studied in clinical trials. It is not FDA approved for weight loss, diabetes, or any other condition and should not be treated like a prescription medication that is already proven and labeled for routine use.",
+      "whyItMatters": "Products sold as retatrutide outside a legitimate clinical trial are not FDA-approved medicines. Their identity, strength, sterility, dosing, and safety may be unknown, and federal law does not permit retatrutide to be used in compounding.",
+      "plainLanguageGlosses": [
+        {
+          "term": "investigational",
+          "plainLanguage": "being studied and not approved by the FDA for routine treatment",
+          "sourceKeys": [
+            "clinicaltrials-nct05929066",
+            "fda-unapproved-glp1-products-2026"
+          ]
+        },
+        {
+          "term": "triple receptor agonist",
+          "plainLanguage": "a peptide designed to activate three hormone-receptor pathways",
+          "sourceKeys": [
+            "pubmed-retatrutide-phase2-37366315"
+          ]
+        }
+      ],
+      "description": "Retatrutide is a synthetic peptide candidate designed to activate glucose-dependent insulinotropic polypeptide, glucagon-like peptide-1, and glucagon receptors. ClinicalTrials.gov lists Phase 3 studies, but a trial listing is not FDA approval and does not establish a routine dose, indication, contraindication list, or treatment recommendation. ANI therefore presents this as research identity and safety-boundary information only.",
+      "mechanism": "Retatrutide is a single peptide agonist at the GIP, GLP-1, and glucagon receptors, as described in its primary Phase 2 publication. These hormone pathways can influence insulin secretion, appetite, gastric emptying, and energy metabolism, which explains the research rationale. Because retatrutide remains investigational, this mechanism must not be converted into an approved-benefit claim or an independent dosing recommendation.",
+      "usedToTreat": "No FDA-approved use. Retatrutide is being studied under controlled research protocols, including Phase 3 obesity trials such as TRIUMPH-1. Trial enrollment and eligibility are not the same as routine prescribing.",
+      "boxedWarning": "There is no FDA-approved prescribing information or boxed warning because retatrutide is not FDA approved. Absence of a boxed warning is not evidence that the product is safe.",
+      "contraindications": [
+        "No FDA-reviewed contraindication list exists. Do not administer retatrutide outside a legitimate, ethics-approved clinical trial with informed consent and protocol-defined eligibility.",
+        "A product marketed for routine personal use, wellness, compounding, or online purchase should not be assumed to contain authentic retatrutide or a safe dose."
+      ],
+      "adverseEffects": [
+        "No FDA-approved adverse-effect profile exists. Trial protocols and investigators, not this card, define participant monitoring and attribution of adverse events.",
+        "Mechanism-based or social-media claims must not be substituted for an FDA-reviewed safety profile."
+      ],
+      "seriousAdverseReactions": [
+        "Serious risks are not fully characterized for routine clinical use because development is ongoing.",
+        "Unapproved products add risks of wrong identity, contamination, nonsterility, dosing error, and delayed evidence-based care."
+      ],
+      "interactions": [
+        "No FDA-reviewed interaction table exists. A clinical-trial team must review all prescriptions, nonprescription medicines, supplements, and investigational products under the protocol.",
+        "Do not combine retatrutide with approved incretin medicines or other weight-loss drugs outside a research protocol based on assumed class similarity."
+      ],
+      "nursingEssentials": [
+        "First verify status: retatrutide is investigational, has no FDA-approved indication, and is not a legal compounded substitute for an approved obesity medicine.",
+        "For a legitimate study participant, follow only the approved protocol for consent, randomization, dosing, storage, adverse-event reporting, emergency unblinding, and concomitant medications.",
+        "For a patient using a nontrial product, do not validate the label as authentic. Assess symptoms, timing, dose claims, glucose, hydration, and other risks; contact Poison Control or urgent care when clinically indicated and report suspected illegal or harmful products through appropriate channels."
+      ],
+      "keyLabs": [
+        "No universal FDA-approved monitoring schedule; legitimate trial monitoring is protocol specific",
+        "Symptom-directed glucose, electrolytes, renal function, hepatic tests, lipase, pregnancy testing, or other evaluation when exposure or toxicity is suspected",
+        "Product name, source, lot, concentration claim, timing, and remaining material for poison-control or regulatory investigation"
+      ],
+      "patientEducation": [
+        "Retatrutide is not FDA approved, even if a seller calls it research grade, compounded, or the next generation of a familiar medication.",
+        "ClinicalTrials.gov describes research; it does not certify an online product, provide a prescription, or prove that a treatment is safe and effective.",
+        "Seek medical help for severe or persistent symptoms after any unapproved injection and bring the container or a photo of the label when safe to do so."
+      ],
+      "administration": [
+        "No routine clinical administration is approved. In a legitimate study, route, dose, schedule, storage, and preparation are controlled by the study protocol and investigational pharmacy.",
+        "Do not translate a trial arm, press release, or online dosing chart into self-administration instructions."
+      ],
+      "toxicityManagement": [
+        "No specific antidote or FDA-approved overdose algorithm exists. Stop further exposure and provide symptom-directed supportive care with Poison Control and toxicology guidance.",
+        "Evaluate for complications based on the actual presentation and do not assume that the vial identity or concentration is accurate."
+      ],
+      "specialPopulations": [
+        "No FDA-approved pregnancy, lactation, pediatric, geriatric, renal, or hepatic dosing recommendations exist.",
+        "Only a legitimate protocol can determine whether a special-population participant is eligible and what safeguards apply.",
+        "Pregnancy or possible pregnancy after exposure requires prompt clinician and research-team evaluation rather than extrapolation from an approved incretin label."
+      ],
+      "nclexTraps": [
+        "Phase 3 does not mean FDA approved.",
+        "A ClinicalTrials.gov record establishes study identity and status, not clinical efficacy, routine dosing, or permission to compound.",
+        "Research-use-only labeling does not make an online injectable safe for human use."
+      ],
+      "routes": [
+        "Investigational subcutaneous administration only within an authorized clinical-trial protocol"
+      ],
+      "notApplicable": [
+        "FDA-approved indication",
+        "FDA-approved dose",
+        "FDA-approved contraindication list",
+        "brand name"
+      ],
+      "relatedTopics": [
+        "Clinical trials",
+        "Obesity",
+        "GLP-1 receptor agonists",
+        "Compounded medications",
+        "Medication safety"
+      ],
+      "regulatoryStatus": "INVESTIGATIONAL — not FDA approved for any condition; ClinicalTrials.gov listings do not establish approval or routine use.",
+      "regulatory": {
+        "jurisdiction": "US",
+        "agency": "FDA",
+        "productStatus": "INVESTIGATIONAL",
+        "labelAsOf": "2026-08-08",
+        "sourceUrl": "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss"
+      },
+      "useContexts": [
+        {
+          "status": "INVESTIGATIONAL",
+          "use": "Clinical research in obesity under protocol NCT05929066; no FDA-approved therapeutic use",
+          "sourceUrl": "https://clinicaltrials.gov/study/NCT05929066"
+        }
+      ],
+      "compounding": {
+        "status": "COMPOUNDING_RESTRICTED_OR_PROHIBITED",
+        "note": "FDA states retatrutide cannot be used in compounding under federal law and is not a component of an FDA-approved drug.",
+        "sourceUrl": "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss"
+      },
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-08",
+      "sourceNote": "Original ANI status summary from ClinicalTrials.gov NCT05929066, FDA's unapproved GLP-1 safety page, and the primary Phase 2 mechanism publication: https://clinicaltrials.gov/study/NCT05929066, https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss, and https://pubmed.ncbi.nlm.nih.gov/37366315/. The registry supports identity and development status only; the publication supports mechanism identity, not an approved use or independent dosing recommendation.",
+      "provenance": [
+        {
+          "key": "clinicaltrials-nct05929066",
+          "authority": "ClinicalTrials.gov",
+          "url": "https://clinicaltrials.gov/study/NCT05929066",
+          "documentVersion": "Registry checked 2026-08-08",
+          "fieldsSupported": [
+            "identity",
+            "development status",
+            "phase",
+            "trial status"
+          ]
+        },
+        {
+          "key": "fda-unapproved-glp1-products-2026",
+          "authority": "FDA",
+          "url": "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss",
+          "documentVersion": "Current as of 05/31/2026; checked 2026-08-08",
+          "fieldsSupported": [
+            "not FDA approved",
+            "compounding restriction",
+            "unapproved-product safety boundary"
+          ]
+        },
+        {
+          "key": "pubmed-retatrutide-phase2-37366315",
+          "authority": "PubMed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37366315/",
+          "documentVersion": "Primary Phase 2 publication indexed 2023; checked 2026-08-08",
+          "fieldsSupported": [
+            "identity",
+            "mechanism",
+            "peptide classification"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-08.1"
+    },
+    {
+      "id": "medication.cagrilintide",
+      "name": "Cagrilintide",
+      "displayName": "Cagrilintide (investigational)",
+      "generic": "cagrilintide",
+      "aliases": [
+        "AM833",
+        "cagrilintide acetate"
+      ],
+      "brandExamples": [],
+      "class": "Investigational long-acting amylin analog peptide",
+      "pharmacyTags": [
+        "peptide-based-therapy",
+        "investigational"
+      ],
+      "updateMatchTerms": [
+        "cagrilintide",
+        "AM833",
+        "CagriSema"
+      ],
+      "peptideModality": "SYNTHETIC_PEPTIDE_ANALOG",
+      "plainLanguage": "Cagrilintide is an investigational long-acting amylin-like peptide being studied for weight management, including in combination with semaglutide. It is not FDA approved for any condition.",
+      "whyItMatters": "Cagrilintide sold outside a legitimate clinical trial is an unapproved product with uncertain identity, strength, sterility, and safety. FDA states that cagrilintide cannot be used in compounding under federal law.",
+      "plainLanguageGlosses": [
+        {
+          "term": "amylin analog",
+          "plainLanguage": "a peptide designed to copy some actions of amylin, a hormone released with insulin",
+          "sourceKeys": [
+            "pubmed-cagrilintide-phase2-34798060"
+          ]
+        },
+        {
+          "term": "investigational",
+          "plainLanguage": "being studied and not approved for routine treatment",
+          "sourceKeys": [
+            "clinicaltrials-nct05567796",
+            "fda-unapproved-glp1-products-2026"
+          ]
+        }
+      ],
+      "description": "Cagrilintide is a long-acting amylin analog under clinical development as an individual investigational peptide and in a fixed research combination with semaglutide often called CagriSema. A ClinicalTrials.gov Phase 3 record supports research identity and development status only. It does not make cagrilintide, CagriSema, or a compounded product FDA approved.",
+      "mechanism": "Cagrilintide is a long-acting amylin analog, as described in its primary Phase 2 publication. Natural amylin is released with insulin and contributes to satiety, so extending amylin-like signaling provides the rationale for weight-management research. Pairing it with a GLP-1 receptor agonist is a controlled research strategy, not proof of an approved benefit, routine dose, or safety profile.",
+      "usedToTreat": "No FDA-approved use. Cagrilintide is being studied under controlled protocols, including Phase 3 study NCT05567796 with semaglutide. The combination's trial name or shorthand does not create an approved combination-product card.",
+      "boxedWarning": "There is no FDA-approved prescribing information or boxed warning because cagrilintide is not FDA approved. Absence of a boxed warning is not evidence of safety.",
+      "contraindications": [
+        "No FDA-reviewed contraindication list exists. Do not administer cagrilintide outside a legitimate, ethics-approved clinical trial with informed consent and protocol-defined eligibility.",
+        "Do not treat a compounded, research-grade, or online product as equivalent to an investigational product manufactured and controlled for a registered trial."
+      ],
+      "adverseEffects": [
+        "No FDA-approved adverse-effect profile exists; protocol-defined collection of adverse events must not be rewritten into routine patient counseling as if approval had occurred.",
+        "Unapproved supply adds independent risks of contamination, incorrect concentration, nonsterility, or product substitution."
+      ],
+      "seriousAdverseReactions": [
+        "Serious risks are not fully characterized for routine clinical use because development is ongoing.",
+        "Severe symptoms after an unapproved injection may reflect the claimed peptide, an impurity, contamination, or another substance and require prompt clinical assessment."
+      ],
+      "interactions": [
+        "No FDA-reviewed interaction table exists. A study team must review all medicines and supplements under the protocol.",
+        "Do not independently combine cagrilintide with semaglutide, another incretin medicine, insulin, or a weight-loss product based on trial shorthand; combination exposure is protocol controlled."
+      ],
+      "nursingEssentials": [
+        "Verify the regulatory distinction: cagrilintide is investigational, while semaglutide is an independently approved medication with its own indications and label. One component's approval does not approve the research combination.",
+        "For a legitimate trial participant, use only the study protocol for storage, preparation, dose, randomization, concomitant medication, adverse-event reporting, and emergency contact.",
+        "For nontrial exposure, document the claimed product, concentration, source, timing, lot, coadministered medicines, and symptoms; obtain symptom-directed testing and Poison Control or urgent evaluation when indicated."
+      ],
+      "keyLabs": [
+        "No universal FDA-approved monitoring schedule; legitimate research monitoring is protocol specific",
+        "Symptom-directed glucose, electrolytes, renal and hepatic tests, lipase, pregnancy testing, and hydration assessment when exposure is suspected",
+        "Product packaging and source details for poison-control or regulatory investigation"
+      ],
+      "patientEducation": [
+        "Cagrilintide and CagriSema are not FDA approved simply because they appear in a Phase 3 study or are discussed online.",
+        "FDA states cagrilintide cannot be used in compounding under federal law. A seller's compounded or research-use label does not change that status.",
+        "Seek prompt medical care for severe or persistent symptoms after any unapproved injection and bring the product container or label information when safe."
+      ],
+      "administration": [
+        "No routine clinical administration is approved. In an authorized trial, route, concentration, dose, schedule, storage, and preparation are governed by the protocol and investigational pharmacy.",
+        "Do not reproduce a study dose or combination schedule for personal treatment."
+      ],
+      "toxicityManagement": [
+        "No specific antidote or FDA-approved overdose algorithm exists. Stop further exposure, contact Poison Control, and provide symptom-directed supportive care.",
+        "Do not assume the stated ingredient or concentration is correct when evaluating a nontrial product."
+      ],
+      "specialPopulations": [
+        "No FDA-approved pregnancy, lactation, pediatric, geriatric, renal, or hepatic dosing recommendations exist.",
+        "Only a registered protocol can determine eligibility and safeguards for a special population.",
+        "Pregnancy or possible pregnancy after exposure requires prompt clinician and study-team review, not extrapolation from semaglutide labeling."
+      ],
+      "nclexTraps": [
+        "Cagrilintide is not FDA approved; semaglutide's approval does not transfer to cagrilintide or CagriSema.",
+        "ClinicalTrials.gov is a research registry, not a prescribing reference or approval certificate.",
+        "Compounded and investigational are not synonyms: FDA specifically states cagrilintide cannot be used in compounding under federal law."
+      ],
+      "routes": [
+        "Investigational subcutaneous administration only within an authorized clinical-trial protocol"
+      ],
+      "notApplicable": [
+        "FDA-approved indication",
+        "FDA-approved dose",
+        "FDA-approved contraindication list",
+        "brand name"
+      ],
+      "relatedTopics": [
+        "Clinical trials",
+        "Obesity",
+        "Amylin",
+        "Semaglutide",
+        "Compounded medications"
+      ],
+      "regulatoryStatus": "INVESTIGATIONAL — not FDA approved for any condition; the CagriSema research combination is also not an approved product.",
+      "regulatory": {
+        "jurisdiction": "US",
+        "agency": "FDA",
+        "productStatus": "INVESTIGATIONAL",
+        "labelAsOf": "2026-08-08",
+        "sourceUrl": "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss"
+      },
+      "useContexts": [
+        {
+          "status": "INVESTIGATIONAL",
+          "use": "Clinical research in weight management, including with semaglutide under protocol NCT05567796; no FDA-approved therapeutic use",
+          "sourceUrl": "https://clinicaltrials.gov/study/NCT05567796"
+        }
+      ],
+      "compounding": {
+        "status": "COMPOUNDING_RESTRICTED_OR_PROHIBITED",
+        "note": "FDA states cagrilintide cannot be used in compounding under federal law and is not a component of an FDA-approved drug.",
+        "sourceUrl": "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss"
+      },
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-08",
+      "sourceNote": "Original ANI status summary from ClinicalTrials.gov NCT05567796, FDA's unapproved GLP-1 safety page, and the primary Phase 2 mechanism publication: https://clinicaltrials.gov/study/NCT05567796, https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss, and https://pubmed.ncbi.nlm.nih.gov/34798060/. The registry supports identity and development status only; the publication supports mechanism identity, not an approved use or independent dosing recommendation.",
+      "provenance": [
+        {
+          "key": "clinicaltrials-nct05567796",
+          "authority": "ClinicalTrials.gov",
+          "url": "https://clinicaltrials.gov/study/NCT05567796",
+          "documentVersion": "Registry checked 2026-08-08",
+          "fieldsSupported": [
+            "identity",
+            "development status",
+            "phase",
+            "trial status"
+          ]
+        },
+        {
+          "key": "fda-unapproved-glp1-products-2026",
+          "authority": "FDA",
+          "url": "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss",
+          "documentVersion": "Current as of 05/31/2026; checked 2026-08-08",
+          "fieldsSupported": [
+            "not FDA approved",
+            "compounding restriction",
+            "unapproved-product safety boundary"
+          ]
+        },
+        {
+          "key": "pubmed-cagrilintide-phase2-34798060",
+          "authority": "PubMed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34798060/",
+          "documentVersion": "Primary Phase 2 publication indexed 2021; checked 2026-08-08",
+          "fieldsSupported": [
+            "identity",
+            "mechanism",
+            "peptide classification"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-08.1"
     }
   ]
 };
@@ -1365,7 +2537,7 @@
   const retained = (Array.isArray(db.drugs) ? db.drugs : []).filter((card) => !replacementByKey.has(normalize(card && (card.generic || card.name || card.displayName))));
   db.drugs = retained.concat(payload.cards);
   db.reviewedExpansion = { schemaVersion: payload.schemaVersion, builderVersion: payload.builderVersion, domainVersion: payload.domainVersion, sourceSha256: payload.sourceSha256, cardCount: payload.cards.length };
-  db.version = [db.version, "reviewed-pharmacy-2026-08-01.1"].filter(Boolean).join("+");
+  db.version = [db.version, "reviewed-pharmacy-2026-08-08.1"].filter(Boolean).join("+");
   window.ANI_PHARM_DATABASE = db;
   window.ANI_PHARMACY_REVIEWED_EXPANSION = payload;
 }());

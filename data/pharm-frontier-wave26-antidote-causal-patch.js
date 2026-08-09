@@ -272,8 +272,8 @@
     makeCard({
       name: "Glucagon",
       generic: "glucagon",
-      aliases: ["GlucaGen", "Gvoke", "Baqsimi", "Zegalogue", "glucagon emergency kit", "hypoglycemia rescue", "beta blocker antidote", "glucogon", "glucagen"],
-      brandExamples: ["GlucaGen", "Gvoke", "Baqsimi", "Zegalogue"],
+      aliases: ["GlucaGen", "Gvoke", "Baqsimi", "glucagon emergency kit", "hypoglycemia rescue", "beta blocker antidote", "glucogon", "glucagen"],
+      brandExamples: ["GlucaGen", "Gvoke", "Baqsimi"],
       class: "Glucagon-receptor agonist for hypoglycemia rescue and selected beta-blocker toxicology use",
       usedToTreat: "Severe hypoglycemia when oral carbohydrate is unsafe and, off-label under toxicology direction, selected beta-blocker poisoning with bradycardia or shock. The products and doses for these roles are not interchangeable.",
       description: "Glucagon is a glucagon-receptor agonist hormone that mobilizes hepatic glucose for severe hypoglycemia and can raise cardiac cyclic AMP despite beta-receptor blockade. Community rescue products use injection or nasal delivery, whereas toxicology use generally requires monitored IV dosing and may require an infusion. Because glucagon releases stored fuel rather than supplying carbohydrate, prolonged fasting, malnutrition, alcohol-related illness, or severe liver disease can blunt the glucose response. High toxicology doses often cause vomiting and can be limited by supply, so HIET and vasopressors remain central in severe beta-blocker shock.",
