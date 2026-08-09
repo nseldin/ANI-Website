@@ -3,7 +3,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "2026-07-29-wave35-intelligent-search-routing-24";
+  const VERSION = "2026-07-29-wave35-intelligent-search-routing-27";
   if (window.ANI_WAVE35_INTELLIGENT_SEARCH_ROUTING
     && window.ANI_WAVE35_INTELLIGENT_SEARCH_ROUTING.version === VERSION) return;
 
@@ -275,11 +275,17 @@
 
   const directExplanationIntent = (input) => {
     const text = normalize(input);
-    return /^\s*what (?:is|are)\b/i.test(text)
-      || /\bwhat does\b.+\bmean(?:s|ing)?\b/i.test(text)
+    return /\bwhat does\b.+\bmean(?:s|ing)?\b/i.test(text)
+      || /\bwhat (?:is|are)\b.+\bmean(?:s|ing)?\b/i.test(text)
       || /\bwhat (?:is|are) the meaning of\b/i.test(text)
       || /\bmeaning of\b/i.test(text)
       || /\b(?:explain|why does|why do|how does|how do)\b/i.test(text);
+  };
+
+  const directDefinitionIntent = (input) => {
+    const text = normalize(input);
+    return /^\s*what (?:is|are)\b/i.test(text)
+      && !/\bmean(?:s|ing)?\b/i.test(text);
   };
 
   const priorDirectEducationalOwner = (input) => {
@@ -978,6 +984,15 @@
         pendingOfflineLookupSuggestions = [];
         return reviewedAmbiguityPrompt(reviewedSearchSafetyOwner);
       }
+      if (directExplanationIntent(input)
+        && !currentPersonalSymptoms(input)
+        && typeof makeOfflineSmartDatabaseAnswer === "function") {
+        const reviewedDirectAnswer = makeOfflineSmartDatabaseAnswer(input);
+        if (typeof reviewedDirectAnswer === "string" && reviewedDirectAnswer.trim()) {
+          pendingOfflineLookupSuggestions = [];
+          return reviewedDirectAnswer;
+        }
+      }
       const strictCanonicalOwner = typeof strictCanonicalEncyclopediaCandidate === "function"
         ? strictCanonicalEncyclopediaCandidate(input)
         : null;
@@ -1048,18 +1063,23 @@
       // the more useful bedside interpretation for "What does a positive
       // D-dimer mean?". Ambiguous identities still fail closed above.
       if (directExplanationIntent(input) && !currentPersonalSymptoms(input)) {
-        if (priorDirectEducationalOwner(input)
-          && typeof makeOfflineSmartDatabaseAnswer === "function") {
+        if (typeof makeOfflineSmartDatabaseAnswer === "function") {
           const reviewedDirectAnswer = makeOfflineSmartDatabaseAnswer(input);
           if (typeof reviewedDirectAnswer === "string" && reviewedDirectAnswer.trim()) {
             return reviewedDirectAnswer;
           }
         }
-        if (typeof makeOfflineClinicalReferenceResponse === "function") {
-          const reviewedReferenceAnswer = makeOfflineClinicalReferenceResponse(input);
-          if (typeof reviewedReferenceAnswer === "string" && reviewedReferenceAnswer.trim()) {
-            return reviewedReferenceAnswer;
-          }
+      }
+      if (directDefinitionIntent(input)
+        && !currentPersonalSymptoms(input)
+        && typeof directlyNamedClinicalReferenceCandidate === "function"
+        && typeof makeOfflineClinicalReferenceResponseFromEntry === "function") {
+        const reviewedReferenceOwner = directlyNamedClinicalReferenceCandidate(input);
+        const reviewedReferenceAnswer = reviewedReferenceOwner
+          ? makeOfflineClinicalReferenceResponseFromEntry(reviewedReferenceOwner.item, input)
+          : "";
+        if (typeof reviewedReferenceAnswer === "string" && reviewedReferenceAnswer.trim()) {
+          return reviewedReferenceAnswer;
         }
       }
       const strictCanonicalOwner = typeof strictCanonicalEncyclopediaCandidate === "function"
