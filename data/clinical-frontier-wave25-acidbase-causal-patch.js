@@ -180,7 +180,7 @@
     conceptCard({
       name: "Anion gap physiology and interpretation",
       category: "Acid-base calculations and metabolic acidosis",
-      aliases: ["serum anion gap", "anion gap formula", "high anion gap", "elevated anion gap", "corrected anion gap", "albumin corrected anion gap", "unmeasured anions", "anion app", "anion cap", "an iron gap"],
+      aliases: ["serum anion gap", "anion gap formula", "high anion gap", "elevated anion gap", "corrected anion gap", "albumin corrected anion gap", "unmeasured anions"],
       abbreviations: ["AG", "HAGMA", "AGMA"],
       definition: "The serum anion gap is a charge-balance calculation that estimates the net concentration of routinely unmeasured anions. Using the common potassium-free convention, AG = Na - (Cl + HCO3). It does not measure a physical empty space or identify one acid; it reveals that measured sodium is being balanced by more anionic charge than chloride and bicarbonate account for. A rising gap during metabolic acidosis usually means an organic or retained acid supplied an unmeasured conjugate anion while its hydrogen consumed bicarbonate.",
       etiology: "High-gap metabolic acidosis develops with lactate, ketoacids, retained kidney-failure anions, salicylate, methanol or ethylene-glycol metabolites, 5-oxoproline, D-lactate, and selected drugs or toxins. A low gap most often reflects low albumin because albumin is a major unmeasured anion; laboratory variation, positively charged monoclonal proteins, lithium, or halide interference are less common explanations. The local analyzer and whether potassium is included change the normal interval.",

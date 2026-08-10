@@ -7286,6 +7286,38 @@ function updateScrollBottomButton() {
   const shouldShow = (canScroll && !isChatNearBottom()) || (pageCanScroll && !isPageNearBottom());
   scrollToBottomButton.hidden = !shouldShow;
   scrollToBottomButton.classList.toggle("is-visible", shouldShow);
+  scheduleScrollBottomGeometryUpdate();
+}
+
+let scrollBottomGeometryFrame = null;
+
+function scheduleScrollBottomGeometryUpdate() {
+  if (!scrollToBottomButton) return;
+  if (scrollBottomGeometryFrame !== null) {
+    window.cancelAnimationFrame?.(scrollBottomGeometryFrame);
+  }
+  scrollBottomGeometryFrame = window.requestAnimationFrame(() => {
+    scrollBottomGeometryFrame = null;
+    scrollToBottomButton.style.removeProperty("--ani-scroll-bottom-avoidance");
+    if (scrollToBottomButton.hidden
+        || !scrollToBottomButton.classList.contains("is-visible")
+        || document.documentElement.dataset.deviceMode !== "phone"
+        || !chatForm) {
+      return;
+    }
+    const buttonRect = scrollToBottomButton.getBoundingClientRect();
+    const composerRect = chatForm.getBoundingClientRect();
+    const horizontalIntersection = buttonRect.left < composerRect.right
+      && buttonRect.right > composerRect.left;
+    const composerVisible = composerRect.bottom > 0
+      && composerRect.top < (window.visualViewport?.height || window.innerHeight);
+    if (!horizontalIntersection || !composerVisible) return;
+    const minimumGap = 12;
+    const raiseBy = Math.max(0, buttonRect.bottom - composerRect.top + minimumGap);
+    if (raiseBy > 0) {
+      scrollToBottomButton.style.setProperty("--ani-scroll-bottom-avoidance", `${Math.ceil(raiseBy)}px`);
+    }
+  });
 }
 
 function scrollChatToBottom(options = {}) {
@@ -7329,6 +7361,8 @@ window.addEventListener("resize", () => {
   window.setTimeout(updateScrollBottomButton, 80);
 });
 window.addEventListener("scroll", updateScrollBottomButton, { passive: true });
+window.visualViewport?.addEventListener?.("resize", scheduleScrollBottomGeometryUpdate, { passive: true });
+window.visualViewport?.addEventListener?.("scroll", scheduleScrollBottomGeometryUpdate, { passive: true });
 
 function apiUrl(pathname = "", baseUrl = activeApiBaseUrl) {
   if (/^https?:\/\//i.test(pathname)) {
@@ -19105,32 +19139,64 @@ function resolveEncyclopediaIdentity(input = "", options = {}) {
   const exactOwner = primaryExactOwners.length === 1
     ? primaryExactOwners[0]
     : (exactOwners.length === 1 ? exactOwners[0] : null);
-  // Reuse the existing bounded, cross-domain near-identity evaluator when a
-  // long typo has no canonical or prefix owner. It already fails closed on
-  // close collisions; phonetic-only guesses remain suggestion-only below.
+  // Sound-alike medication help is suggestion-only. When the reviewed
+  // phonetic index already has a candidate, do not spend time on fuzzy search
+  // and never convert that sound-alike into an automatic navigation route.
   const restrictedPhoneticInput = isRestrictedMedicalPhoneticInput(fixed);
-  const nearIdentityOwner = !deduped.length && core.length >= 5 && !restrictedPhoneticInput
-    ? conversationalNearIdentitySuggestion(fixed)
+  const readyPhoneticSuggestions = !deduped.length && medicalPhoneticIdentityIndex
+    ? medicalPhoneticIdentityCandidates(fixed, limit)
+    : [];
+  const nearIdentityAssessment = !deduped.length
+    && !readyPhoneticSuggestions.length
+    && core.length >= 5
+    && !restrictedPhoneticInput
+    ? fastVoiceNearIdentityAssessment(fixed, {
+        preferredTypes: offlineNearIdentityExplicitTypes(fixed)
+      })
+    : { match: null, ambiguous: false, candidates: [] };
+  const safeNearIdentityOwner = nearIdentityAssessment.match?.type
+    && nearIdentityAssessment.match?.item
+    ? {
+        type: nearIdentityAssessment.match.type,
+        item: nearIdentityAssessment.match.item,
+        score: 2700 + Math.round(nearIdentityAssessment.match.similarity * 100),
+        nearIdentity: true,
+        nearIdentityScore: nearIdentityAssessment.match.similarity,
+        nearIdentityQuery: nearIdentityAssessment.match.identity
+      }
     : null;
-  const safeNearIdentityOwner = nearIdentityOwner?.nearIdentity === true
-    && nearIdentityOwner?.ambiguousIdentity !== true
-    && nearIdentityOwner?.type
-    && nearIdentityOwner?.item
-    ? nearIdentityOwner
-    : null;
+  const safeNearIdentityAmbiguities = nearIdentityAssessment.ambiguous === true
+    ? nearIdentityAssessment.candidates
+      .filter((candidate) => candidate?.type && candidate?.item)
+      .map((candidate) => ({
+        type: candidate.type,
+        item: candidate.item,
+        score: 2700 + Math.round(candidate.similarity * 100),
+        exactIdentity: false,
+        nearIdentity: true,
+        nearIdentityScore: candidate.similarity,
+        nearIdentityQuery: candidate.identity,
+        ambiguousIdentity: true,
+        mayAutoOpen: false
+      }))
+    : [];
   const preferred = reviewedOwner || exactOwner || safeNearIdentityOwner;
   const matchKind = reviewedOwner
     ? "reviewed-prefix"
     : exactOwner
       ? "exact-identity"
       : safeNearIdentityOwner
-        ? "near-identity"
+      ? "near-identity"
+      : safeNearIdentityAmbiguities.length > 1
+        ? "near-identity-ambiguity"
       : deduped.length
         ? "prefix-suggestions"
         : "none";
   const candidates = preferred
     ? [preferred, ...deduped.filter((candidate) => offlineLookupEntityKey(candidate) !== offlineLookupEntityKey(preferred))]
-    : deduped;
+    : safeNearIdentityAmbiguities.length
+      ? safeNearIdentityAmbiguities
+      : deduped;
   return {
     core,
     candidates: candidates.slice(0, limit),
@@ -25618,6 +25684,7 @@ function exactClinicalReferenceIdentityMatch(input = "") {
 let registeredClinicalReferenceIdentityExactIndex = null;
 let fastCanonicalEncyclopediaIndexes = null;
 let fastVoiceIdentityIndex = null;
+let fastVoiceIdentityRoutingIndex = null;
 let fastStandaloneComponentIdentityIndex = null;
 
 function fastCanonicalLookupCore(input = "") {
@@ -25732,6 +25799,50 @@ function getFastVoiceIdentityIndex() {
   return fastVoiceIdentityIndex;
 }
 
+function addFastVoiceRoutingBucket(map, key, value) {
+  if (!key) return;
+  const bucket = map.get(key) || [];
+  if (!bucket.includes(value)) bucket.push(value);
+  map.set(key, bucket);
+}
+
+function getFastVoiceIdentityRoutingIndex() {
+  if (fastVoiceIdentityRoutingIndex) return fastVoiceIdentityRoutingIndex;
+  const identityIndex = getFastVoiceIdentityIndex();
+  const sortedIdentities = Array.from(identityIndex.keys()).sort();
+  const tokenPrefixBuckets = new Map();
+  const byFirstLength = new Map();
+  const byInnerLength = new Map();
+  sortedIdentities.forEach((identity) => {
+    const tokenPrefixes = new Set(identity
+      .split(" ")
+      .filter((token) => token.length >= 3)
+      .map((token) => token.slice(0, 3)));
+    tokenPrefixes.forEach((prefix) => addFastVoiceRoutingBucket(tokenPrefixBuckets, prefix, identity));
+    addFastVoiceRoutingBucket(byFirstLength, `${identity[0]}:${identity.length}`, identity);
+    addFastVoiceRoutingBucket(byInnerLength, `${identity.slice(1, 3)}:${identity.length}`, identity);
+  });
+  fastVoiceIdentityRoutingIndex = {
+    identityIndex,
+    sortedIdentities,
+    tokenPrefixBuckets,
+    byFirstLength,
+    byInnerLength
+  };
+  return fastVoiceIdentityRoutingIndex;
+}
+
+function fastVoiceSortedIdentityStart(sortedIdentities = [], query = "") {
+  let low = 0;
+  let high = sortedIdentities.length;
+  while (low < high) {
+    const middle = (low + high) >> 1;
+    if (sortedIdentities[middle] < query) low = middle + 1;
+    else high = middle;
+  }
+  return low;
+}
+
 function fastVoiceIdentityCandidates(input = "") {
   const fixed = applyClinicalSpeechFixups(input) || input;
   const variants = Array.from(new Set([
@@ -25756,7 +25867,22 @@ function fastVoiceIdentitySearchCandidates(input = "", limit = 80) {
   if (!query || query.length < 2) return [];
   const singleTokenQuery = !query.includes(" ");
   const collected = new Map();
-  getFastVoiceIdentityIndex().forEach((owners, identity) => {
+  const routing = getFastVoiceIdentityRoutingIndex();
+  const candidateIdentities = new Set();
+  if (routing.identityIndex.has(query)) candidateIdentities.add(query);
+  const prefixStart = fastVoiceSortedIdentityStart(routing.sortedIdentities, query);
+  for (let index = prefixStart; index < routing.sortedIdentities.length; index += 1) {
+    const identity = routing.sortedIdentities[index];
+    if (!identity.startsWith(query)) break;
+    candidateIdentities.add(identity);
+  }
+  if (singleTokenQuery && query.length >= 3) {
+    (routing.tokenPrefixBuckets.get(query.slice(0, 3)) || []).forEach((identity) => {
+      if (identity.split(" ").some((token) => token.startsWith(query))) candidateIdentities.add(identity);
+    });
+  }
+  candidateIdentities.forEach((identity) => {
+    const owners = routing.identityIndex.get(identity) || [];
     let evidence = 0;
     if (identity === query) {
       evidence = 1000;
@@ -25800,6 +25926,97 @@ function fastVoiceIdentitySearchCandidates(input = "", limit = 80) {
       || Boolean(b.item?.nclexEssential) - Boolean(a.item?.nclexEssential)
       || offlineLookupEntityLabel(a).localeCompare(offlineLookupEntityLabel(b)))
     .slice(0, Math.max(1, limit));
+}
+
+function fastVoiceNearIdentityAssessment(input = "", options = {}) {
+  const fixed = applyClinicalSpeechFixups(input) || input;
+  const query = fastCanonicalLookupCore(fixed) || normalizePharmText(fixed);
+  const empty = { match: null, ambiguous: false, candidates: [] };
+  if (!query || query.length < 5 || query.split(" ").length > 7) return empty;
+  const routing = getFastVoiceIdentityRoutingIndex();
+  const queryTokenCount = query.split(" ").filter(Boolean).length;
+  const radius = Math.max(3, Math.ceil(query.length * 0.15));
+  const identities = new Set();
+  for (let length = Math.max(5, query.length - radius); length <= query.length + radius; length += 1) {
+    (routing.byFirstLength.get(`${query[0]}:${length}`) || []).forEach((identity) => identities.add(identity));
+    (routing.byInnerLength.get(`${query.slice(1, 3)}:${length}`) || []).forEach((identity) => identities.add(identity));
+  }
+  const preferredTypes = options.preferredTypes instanceof Set
+    ? options.preferredTypes
+    : new Set(Array.isArray(options.preferredTypes) ? options.preferredTypes : []);
+  const ownerScores = new Map();
+  identities.forEach((identity) => {
+    if (identity === query) return;
+    const maxLength = Math.max(query.length, identity.length);
+    const allowedDistance = maxLength <= 7
+      ? 1
+      : maxLength <= 18
+        ? 2
+        : Math.max(3, Math.floor(maxLength * 0.12));
+    if (Math.abs(query.length - identity.length) > allowedDistance) return;
+    if (query[0] !== identity[0] && query.slice(1, 3) !== identity.slice(1, 3)) return;
+    const identityTokenCount = identity.split(" ").filter(Boolean).length;
+    if (queryTokenCount >= 2 && Math.abs(queryTokenCount - identityTokenCount) > 1) return;
+    const distance = nearIdentityEditDistance(query, identity);
+    if (!distance || distance > allowedDistance) return;
+    const similarity = 1 - (distance / maxLength);
+    const identityOwners = routing.identityIndex.get(identity) || [];
+    const compactCanonicalMedicationSingleEdit = queryTokenCount === 1
+      && distance === 1
+      && Math.min(query.length, identity.length) <= 8
+      && identityOwners.some((owner) => owner.type === "drug"
+        && encyclopediaIdentityPrimaryTerms(owner)
+          .some((term) => normalizePharmText(term) === identity));
+    // Short medication names have little room for a single keyboard error:
+    // one changed/transposed/repeated letter in a seven- or eight-character
+    // canonical name produces roughly 0.84-0.88 similarity, and a repeated
+    // letter can make the misspelled query itself nine characters. Preserve
+    // that reviewed canonical-medication boundary while retaining the stricter
+    // 0.90 floor for other longer single-token identities and 0.86 for
+    // multiword identities.
+    const minimumSimilarity = queryTokenCount >= 2
+      ? 0.86
+      : compactCanonicalMedicationSingleEdit
+        ? 0.84
+        : 0.9;
+    if (similarity < minimumSimilarity) return;
+    identityOwners.forEach((owner) => {
+      const primaryIdentity = encyclopediaIdentityPrimaryTerms(owner)
+        .some((term) => normalizePharmText(term) === identity);
+      const preferred = preferredTypes.has(owner.type);
+      const rankScore = similarity + (primaryIdentity ? 0.04 : 0) + (preferred ? 0.055 : 0);
+      const key = offlineLookupEntityKey(owner);
+      const previous = ownerScores.get(key);
+      if (!previous || rankScore > previous.rankScore) {
+        ownerScores.set(key, {
+          type: owner.type,
+          item: owner.item,
+          identity,
+          similarity,
+          rankScore,
+          primaryIdentity,
+          explicit: preferred
+        });
+      }
+    });
+  });
+  const candidates = Array.from(ownerScores.values())
+    .sort((left, right) => right.rankScore - left.rankScore
+      || Number(right.primaryIdentity) - Number(left.primaryIdentity)
+      || offlineLookupEntityLabel(left).localeCompare(offlineLookupEntityLabel(right)));
+  const best = candidates[0] || null;
+  const runnerUp = candidates.find((candidate) => candidate.type !== best?.type || candidate.item !== best?.item) || null;
+  if (!best) return empty;
+  const sameIdentity = runnerUp && normalizePharmText(best.identity) === normalizePharmText(runnerUp.identity);
+  const explicitWinner = runnerUp && best.explicit && !runnerUp.explicit;
+  const uniquePrimaryWinner = sameIdentity && best.primaryIdentity && !runnerUp.primaryIdentity;
+  if (runnerUp
+    && !explicitWinner
+    && !uniquePrimaryWinner
+    && (sameIdentity || best.rankScore - runnerUp.rankScore < 0.035)) {
+    return { match: null, ambiguous: true, candidates: [best, runnerUp] };
+  }
+  return { match: best, ambiguous: false, candidates: [best] };
 }
 
 function isStandaloneComponentParityEntry(item = {}) {
@@ -34378,7 +34595,7 @@ function offlineNearIdentityExplicitTypes(input = "") {
   if (/\b(herbal|herb|holistic|supplement|natural remedy|complementary|alternative medicine)\b/i.test(lower)) {
     types.add("holistic");
   }
-  if (/\b(drug|drugs|med|meds|medicine|medication|medications|pharm(?:acy|acology)?|class|classes|mechanism|dose|dosing|boxed warning|side effects?|contraindications?|therapies|inhibitors?|blockers?)\b/i.test(lower)) {
+  if (/\b(drug|drugs|med|meds|medicine|medication|medications|pharm(?:acy|acology)?|class|classes|mechanism|dose|dosing|black box warnings?|boxed warnings?|box warnings?|side effects?|contraindications?|therapies|inhibitors?|blockers?)\b/i.test(lower)) {
     types.add("drug");
   }
   return types;
@@ -36505,7 +36722,10 @@ function openPharmDatabase(query = "", options = {}) {
     clearPharmResultChunkTimers();
     updatePharmFilterUi();
     updatePharmIndexModeUi();
-  } else if (!query && isPhoneDeviceMode()) {
+  } else if (!query
+      && !(pharmSearchInput?.value || "")
+      && !pharmNeedsResultsRender
+      && document.documentElement.dataset.aniSurface === "website") {
     updatePharmFilterUi();
     updatePharmIndexModeUi();
     if (pharmResultCount) {
@@ -36514,7 +36734,13 @@ function openPharmDatabase(query = "", options = {}) {
     if (pharmResultsList) {
       pharmResultsList.textContent = "";
     }
-    window.requestAnimationFrame(renderPharmDatabase);
+    window.requestAnimationFrame(() => {
+      window.setTimeout(() => {
+        if (!pharmDatabaseScreen.hidden && !(pharmSearchInput?.value || "")) {
+          renderPharmDatabase();
+        }
+      }, 0);
+    });
   } else {
     renderPharmDatabase();
   }
@@ -40668,6 +40894,13 @@ function fastReviewedSearchResolution(input = "") {
     || fastReviewedSearchSafetySuggestion(input);
   if (contextual) return contextual;
   const sharedIdentity = resolveEncyclopediaIdentity(input, { mode: "navigate", limit: 8 });
+  if (sharedIdentity.matchKind === "near-identity-ambiguity"
+    && sharedIdentity.candidates.length > 1) {
+    return {
+      ambiguousIdentity: true,
+      ambiguityCandidates: sharedIdentity.candidates
+    };
+  }
   if (!sharedIdentity.mayAutoOpen || !sharedIdentity.preferred) return null;
   return {
     type: sharedIdentity.preferred.type,
@@ -40767,15 +41000,6 @@ function offlineLookupSuggestionsUncached(input = "") {
   if (insulinActionProfileReference) {
     return [insulinActionProfileReference];
   }
-  const preflightNearIdentityMatch = isRestrictedMedicalPhoneticInput(input)
-    ? null
-    : conversationalNearIdentitySuggestion(input);
-  if (preflightNearIdentityMatch?.ambiguousIdentity === true) {
-    return preflightNearIdentityMatch.ambiguityCandidates || [];
-  }
-  if (preflightNearIdentityMatch?.nearIdentity === true) {
-    return [preflightNearIdentityMatch];
-  }
   const sharedIdentity = resolveEncyclopediaIdentity(input, { mode: "suggest", limit: 4 });
   if (sharedIdentity.candidates.length) {
     const ambiguous = sharedIdentity.candidates.length > 1;
@@ -40796,7 +41020,10 @@ function offlineLookupSuggestionsUncached(input = "") {
     // merely because that word appears repeatedly inside its body text.
     return [];
   }
-  return offlineLookupSuggestionsFull(input, preflightNearIdentityMatch);
+  // The shared identity resolver has already handled bounded spelling and
+  // ambiguity checks. Passing null prevents the full fallback from repeating
+  // a cross-domain fuzzy scan for an unknown query.
+  return offlineLookupSuggestionsFull(input, null);
 }
 
 const OFFLINE_LOOKUP_SUGGESTION_CACHE_LIMIT = 96;
@@ -42531,32 +42758,16 @@ function offlineSegmentIdentityCandidate(input = "") {
     return { ...exactUnique[0], score: 3400 };
   }
 
-  const specs = [
-    { type: "pathology", items: pathologyDiseases, names: (item) => [item.name, item.displayName, ...(item.aliases || []), ...(item.abbreviations || []), ...(item.commonMisspellings || [])] },
-    { type: "reference", items: clinicalReferenceEntries, names: (item) => [item.name, item.displayName, item.fullForm, ...(item.aliases || []), ...(item.abbreviations || []), ...(item.commonMisspellings || [])] },
-    { type: "lab", items: pharmSearchableLabRanges, names: (item) => [item.name, item.displayName, ...(item.aliases || [])] },
-    { type: "holistic", items: holisticRemedies, names: (item) => [item.name, item.displayName, ...(item.aliases || []), ...(item.commonMisspellings || [])] },
-    { type: "drug", items: pharmDrugs, names: (item) => [item.name, item.generic, item.displayName, ...(item.aliases || []), ...(item.brandExamples || []), ...(item.commonMisspellings || [])] }
-  ];
-  const orderedSpecs = [
-    ...specs.filter((spec) => explicitTypes.has(spec.type)),
-    ...specs.filter((spec) => !explicitTypes.has(spec.type))
-  ];
-  const matches = orderedSpecs.map((spec) => {
-    const assessment = encyclopediaNearIdentityAssessment(spec.items, spec.names, [core]);
-    return assessment.match && !assessment.ambiguous
-      ? { type: spec.type, item: assessment.match.item, score: 3000 + Math.round(assessment.match.score * 300), similarity: assessment.match.score }
-      : null;
-  }).filter(Boolean);
-  const preferredMatches = explicitTypes.size
-    ? matches.filter((candidate) => explicitTypes.has(candidate.type))
-    : matches;
-  const ranked = (preferredMatches.length ? preferredMatches : matches)
-    .sort((left, right) => right.similarity - left.similarity
-      || offlineLookupEntityLabel(left).localeCompare(offlineLookupEntityLabel(right)));
-  if (!ranked.length) return null;
-  if (ranked[1] && ranked[0].similarity - ranked[1].similarity < 0.035) return null;
-  return ranked[0];
+  const assessment = fastVoiceNearIdentityAssessment(core, {
+    preferredTypes: explicitTypes
+  });
+  if (!assessment.match || assessment.ambiguous) return null;
+  return {
+    type: assessment.match.type,
+    item: assessment.match.item,
+    score: 3000 + Math.round(assessment.match.similarity * 300),
+    similarity: assessment.match.similarity
+  };
 }
 
 function offlineSegmentIntentRemainder(input = "", candidate = null) {
@@ -42681,6 +42892,12 @@ function offlineSegmentCandidate(input = "") {
     return namedReference;
   }
   // high-yield-clue-before-broad-segment-candidate
+  const highYieldQuestion = /\b(which|what|why|how|compare|difference|distinguish|versus|vs)\b/i.test(normalizeIntentText(input));
+  // Section extraction follows the explicit card + section contract. If no
+  // identity was found and the input is not a clue-style question, fail closed
+  // instead of synchronously running broad content rankers that can return an
+  // unrelated card.
+  if (!highYieldQuestion) return null;
   const highYieldDrug = highYieldDrugClueMatch(input);
   if (highYieldDrug) {
     const highYieldCandidate = {
@@ -42688,8 +42905,7 @@ function offlineSegmentCandidate(input = "") {
       item: highYieldDrug,
       score: 2700 + pharmIdentityPreferenceScore(highYieldDrug)
     };
-    if (inputDirectlyNamesOfflineCandidate(input, highYieldCandidate)
-      || /\b(which|what|why|how|compare|difference|distinguish|versus|vs)\b/i.test(normalizeIntentText(input))) {
+    if (inputDirectlyNamesOfflineCandidate(input, highYieldCandidate) || highYieldQuestion) {
       return highYieldCandidate;
     }
   }
@@ -43401,10 +43617,34 @@ function handleOfflineLookupFlow(input = "", options = {}) {
   const force = Boolean(options.force);
   const allowPrompt = options.allowPrompt !== false;
   const trimmed = input.trim();
+  if (pendingOfflineLookupSuggestions.length && isOfflineLookupConfirmation(trimmed)) {
+    if (pendingOfflineLookupSuggestions.some((candidate) => candidate?.ambiguousIdentity === true)) {
+      return makeOfflineAmbiguityPrompt(pendingOfflineLookupSuggestions);
+    }
+    const candidate = pendingOfflineLookupSuggestions[0];
+    pendingOfflineLookupSuggestions = [];
+    rememberOfflineLookupTarget(candidate, trimmed);
+    return {
+      type: "pharm-database",
+      query: offlineLookupQuery(candidate),
+      detailType: candidate.type,
+      openDetail: true,
+      highlightQuery: offlineLookupEntityLabel(candidate),
+      preface: `Yes. Opening **${offlineLookupEntityLabel(candidate)}** in the clinical reference.`
+    };
+  }
+
+  if (pendingOfflineLookupSuggestions.length && isOfflineLookupRejection(trimmed)) {
+    pendingOfflineLookupSuggestions.shift();
+    if (pendingOfflineLookupSuggestions.length) {
+      return makeOfflineDidYouMean(pendingOfflineLookupSuggestions[0]);
+    }
+    return "Okay, not that one. Try a shorter phrase, a brand/generic name, a lab nickname like mag or MAP, or the main symptom, and I will search the clinical reference again.";
+  }
   const reviewedResolution = fastReviewedSearchResolution(trimmed);
   if (reviewedResolution?.ambiguousIdentity === true) {
-    pendingOfflineLookupSuggestions = [];
-    return makeOfflineAmbiguityPrompt(reviewedResolution.ambiguityCandidates || []);
+    pendingOfflineLookupSuggestions = reviewedResolution.ambiguityCandidates || [];
+    return makeOfflineAmbiguityPrompt(pendingOfflineLookupSuggestions);
   }
   if (reviewedResolution) {
     pendingOfflineLookupSuggestions = [];
@@ -43451,31 +43691,6 @@ function handleOfflineLookupFlow(input = "", options = {}) {
       return offlineLookupDirectResponse(remembered, lastOfflineLookupTarget?.sourceInput || input);
     }
     return "Tell me what you want me to show, like **show hematocrit**, **open amiodarone**, or **show beta-1 blockers**.";
-  }
-
-  if (pendingOfflineLookupSuggestions.length && isOfflineLookupConfirmation(trimmed)) {
-    if (pendingOfflineLookupSuggestions.some((candidate) => candidate?.ambiguousIdentity === true)) {
-      return makeOfflineAmbiguityPrompt(pendingOfflineLookupSuggestions);
-    }
-    const candidate = pendingOfflineLookupSuggestions[0];
-    pendingOfflineLookupSuggestions = [];
-    rememberOfflineLookupTarget(candidate, trimmed);
-    return {
-      type: "pharm-database",
-      query: offlineLookupQuery(candidate),
-      detailType: candidate.type,
-      openDetail: true,
-      highlightQuery: offlineLookupEntityLabel(candidate),
-      preface: `Yes. Opening **${offlineLookupEntityLabel(candidate)}** in the clinical reference.`
-    };
-  }
-
-  if (pendingOfflineLookupSuggestions.length && isOfflineLookupRejection(trimmed)) {
-    pendingOfflineLookupSuggestions.shift();
-    if (pendingOfflineLookupSuggestions.length) {
-      return makeOfflineDidYouMean(pendingOfflineLookupSuggestions[0]);
-    }
-    return "Okay, not that one. Try a shorter phrase, a brand/generic name, a lab nickname like mag or MAP, or the main symptom, and I will search the clinical reference again.";
   }
 
   if (isBareOfflineLookupFollowup(trimmed)) {

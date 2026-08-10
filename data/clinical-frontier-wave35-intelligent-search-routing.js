@@ -975,14 +975,20 @@
 
   if (baseHandleOfflineLookupFlow) {
     handleOfflineLookupFlow = function (input, options) {
+      if (pendingOfflineLookupSuggestions.length
+        && ((typeof isOfflineLookupConfirmation === "function" && isOfflineLookupConfirmation(input))
+          || (typeof isOfflineLookupRejection === "function" && isOfflineLookupRejection(input)))) {
+        return baseHandleOfflineLookupFlow(input, options);
+      }
       const directCollisionResponse = tenCollisionResponse(input);
       if (directCollisionResponse) return directCollisionResponse;
       if (typeof isDegenerateOfflineLookupInput === "function"
         && isDegenerateOfflineLookupInput(input)) return "";
       const reviewedSearchSafetyOwner = reviewedSearchResolutionFor(input);
       if (reviewedSearchSafetyOwner?.ambiguousIdentity === true) {
-        pendingOfflineLookupSuggestions = [];
-        return reviewedAmbiguityPrompt(reviewedSearchSafetyOwner);
+        pendingOfflineLookupSuggestions = safeArray(reviewedSearchSafetyOwner.ambiguityCandidates)
+          .map((candidate) => ({ ...candidate, ambiguousIdentity: true }));
+        return reviewedAmbiguityPrompt({ ambiguityCandidates: pendingOfflineLookupSuggestions });
       }
       if (directExplanationIntent(input)
         && !currentPersonalSymptoms(input)

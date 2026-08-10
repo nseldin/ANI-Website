@@ -3,14 +3,19 @@
   "archive": [
     {
       "category": "guideline-public-health",
-      "contentHash": "5aae4e908158c5f67ea40f209e2abc1350fbcf5a0e38c41448cece3df0bcedd0",
+      "contentHash": "861aa2ad71f69d8b025171e167e6307daae0e50841776e8d7f7880b01f9cc5a4",
       "description": "This report describes the public health response to a measles outbreak in Colorado among people exposed to an infectious traveler who arrived in Colorado in May 2025 on an international flight.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763292&_=4B3D5471B5771F303E723E5EB1B8A52D693F17602C59FB4E417DB4990C199463",
       "id": "medical-update:cdc-mmwr:8be75abb7440b10210147b67",
       "publishedAt": "2026-01-29T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Measles",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -22,14 +27,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "435fc2ac279b53c17af9250d62b48113e9fd7de9da3dd3b030c0b65972446c15",
+      "contentHash": "f243cd06aee398f7c9cf2d78f9636b733d570989c873173b8e861c19ea50ace4",
       "description": "This report describes the prevalence of physical and sexual violence perpetration by young men and associations of these events with their exposure to violence during childhood.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763293&_=76116C2CD317966B383A03B0C6982327702F94DAD5C6298B58EFBD4F021777AB",
       "id": "medical-update:cdc-mmwr:b12e48375c8346c6698da93d",
       "publishedAt": "2026-01-29T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Tuberculosis",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -41,14 +51,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "eb1c63c72593d7b27df1b22b635ba245ca9cda760750a6bee7e335363a509db2",
+      "contentHash": "8f89fa219129018d68ccb96db80ea48261c7e82e2fa36109745bc078ecb78370",
       "description": "This report evaluates CureTB program performance during 2016-2023.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763153&_=70B5B353403BEA6BD2BCD34AB6349758B9AD48C739D5C6900D4B08B77174DEF6",
       "id": "medical-update:cdc-mmwr:7259b1dc9f31b877a176491c",
       "publishedAt": "2026-01-22T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Tuberculosis",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -98,14 +113,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "b408554acfb75be64c22477fc8b881e3db7b9754b705f906183387dc8d73b01e",
+      "contentHash": "8e54d0d1b2105fd16fbb8271b40fd286edf31807cd7bd2bc62285049f04d31a7",
       "description": "This report describes a human rabies case with a delayed diagnosis that led to health care provider exposures in two states: Kentucky and Ohio.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=762976&_=AA7335D4EA1556608A11CB007831DC1EEBF746462559464B59E4FA3020D4CBE5",
       "id": "medical-update:cdc-mmwr:30e317fe6a945425cdedc630",
       "publishedAt": "2026-01-15T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Rabies",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -117,14 +137,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "e88979afca2990510c304e4a542d9f557e04cb2f09518157aba4ad2a59e75d8e",
+      "contentHash": "61a3dc719a83b638014117d04c075517b7a86e99e13b176b16c5453bbdbd43de",
       "description": "This report describes a human rabies case with a delayed diagnosis that led to health care provider exposures in two states: Kentucky and Ohio.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=762975&_=C405CE2C8EDA9135E9700EAA7F819FAE49A305730C9C123734BD1D6665445EC2",
       "id": "medical-update:cdc-mmwr:8df2bd9abb327ce579aacf69",
       "publishedAt": "2026-01-15T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Rabies",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -136,14 +161,23 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "05d4f11f5ad6fddc4ea15eec249795a9d223e0b184f5020bcc65b449066d773e",
+      "contentHash": "113e34c6fdbaaabcbbc5cc2506ef4d7e7f1fba3bf3a376bf7764c656c519ccb6",
       "description": "This report describes a measles outbreak in Oregon in 2024.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=762972&_=0F84B768F2C47CB378DE2D38B75AC734718295E79B9193F49CC00ACC20AD13BF",
       "id": "medical-update:cdc-mmwr:a5a56d98358d985abb88d88d",
       "publishedAt": "2026-01-15T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Measles virus",
+          "collection": "clinicalReferenceEntries"
+        },
+        {
+          "canonicalTitle": "Measles",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -155,14 +189,23 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "089b6b579b2a1e3ce59011509fbd9718ae05a3c21df9972e2a1934fc2aa6f1d7",
+      "contentHash": "6c055d810594b89413fe2a59e336d86284582ef6f0f1244ab592dc60ff0ced80",
       "description": "This report describes a measles outbreak in Colorado in August 2025.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=762974&_=D6C50856BFC2C6C4608A0A4E6140F602D8F366AFEF233DAD4D7D98D17FD4804E",
       "id": "medical-update:cdc-mmwr:9637d258b2fffe2645f2c308",
       "publishedAt": "2026-01-15T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Measles virus",
+          "collection": "clinicalReferenceEntries"
+        },
+        {
+          "canonicalTitle": "Measles",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -174,14 +217,19 @@
     },
     {
       "category": "vaccine-biologic",
-      "contentHash": "e7e84b8d2ae7e3d2ce2b249db331a62cc816dbee32d8b915d7e6933e3f4de2f7",
+      "contentHash": "cf69d98b4caee46c60a9e68e5b10dd808a317909e570ad95ceb148457b8e116a",
       "description": "This report updates recommendations for the use meningococcal vaccine among people 10 years of age and older.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=762789&_=372C393D6873F32467BD98EA6D09F9D3FB8B42CC38E4E0F75A173E2EE0C63940",
       "id": "medical-update:cdc-mmwr:cc891afe474ae7dc1fd46624",
       "publishedAt": "2026-01-08T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Meningococcal vaccine",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -193,14 +241,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "c600b58624073b7c5dfcbed9c489db55eb875b12b7cc696359600a21a242a2f5",
+      "contentHash": "d5a214e33916568efc7c4d52b428756311df51fcf796fab76fa1985e9dc9a7ee",
       "description": "This report describes a Zika outbreak in Dhaka, Bangladesh, during September-December 2024",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=762787&_=B1807687650B3DC1922A0534862B1BBD140A86F2701F15D80C87F532FC63731A",
       "id": "medical-update:cdc-mmwr:8c8e2ef666363c731239007f",
       "publishedAt": "2026-01-08T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Zika virus",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -231,14 +284,23 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "8fb591e3ab576ed8c9a0322b3b42d0eb556645fd9a4c21a0917881cc70cffe0f",
+      "contentHash": "e56b463dfa800c3f48d5818adeeb5cbd152e60d8ce22a67fcf8eb55bc66179bf",
       "description": "This report describes the public health response to a patient who was identified with welder's anthrax following occupational exposure.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=762591&_=12F9F089FF2638173150B2F6F209A211CF39DDBA9A09A02E15E64FB70A83F349",
       "id": "medical-update:cdc-mmwr:689905bae2e6b32456d76dc9",
       "publishedAt": "2025-12-30T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Anthrax",
+          "collection": "pathologyDiseases"
+        },
+        {
+          "canonicalTitle": "Obiltoxaximab",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -250,14 +312,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "b97c13bce626cc477acbd25012183336782a89634cb1f693016bfc2b3661c854",
+      "contentHash": "8436824d51a9035d46a16d1f0e5a515a220c599dee78397b5a8a8a14de0fc4d2",
       "description": "This report describes death rates associated with pneumoconiosis among coal workers between 2020 and 2023.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=762324&_=FEC9CDE9CE2C84456B396E8D3FBD4F4A2D701E66F4F8A68A9FE004C6749DDC05",
       "id": "medical-update:cdc-mmwr:21e9ac9a6a735da3a381ff6e",
       "publishedAt": "2025-12-18T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Pneumoconiosis",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -288,14 +355,23 @@
     },
     {
       "category": "vaccine-biologic",
-      "contentHash": "3563f6e6f1d30255d12fb54a49b9dffe3624f4cc64125c991b502fe195d52abb",
+      "contentHash": "423583fe7c91296b4c2c5c23300f4d621ef2abeff40393d21478a436be3624a4",
       "description": "This report describes COVID-19 vaccine effectiveness among children ages 9 months to 17 years.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=762139&_=44745B209AF1A94C02884368A2D5722A7D078795F1AC34310A2C2C3BE7473FAC",
       "id": "medical-update:cdc-mmwr:846691bebf2c74ae9efb01b0",
       "publishedAt": "2025-12-11T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "COVID-19 vaccine",
+          "collection": "clinicalReferenceEntries"
+        },
+        {
+          "canonicalTitle": "COVID-19",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -326,14 +402,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "0512d66b778d181591fdb9d4dfc938b5646d2d9f2dd47b43f344cca8f1d073a1",
+      "contentHash": "bc16395f132a7eb592884537cd278ed558bb7cdd3139b62a62478707689421a8",
       "description": "This report describes a cluster of rabid steers on a Minnesota dairy farm infected by a single skunk.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=762143&_=D1BFC1097C6F0E39E84FB7EE738734886A89B12A432E9F030BEE620BC537DA17",
       "id": "medical-update:cdc-mmwr:a875beb0c04beb6a73b8dc58",
       "publishedAt": "2025-12-11T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Rabies",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -345,14 +426,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "50dcc5d2dd8bd2e1c59cfaea953d3a525ec5d73c6cc5e98be54d317da726e46a",
+      "contentHash": "42da93941969089e25e8124f66ce506ca95253102c26d401fd4b8edb74101006",
       "description": "This report describes the public health response to a patient who died after transplantation with an organ from a donor with undiagnosed rabies.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=761975&_=16882677DF479734A3F83976C01BF47901DE441F0A320DA5D6380EAF8107156A",
       "id": "medical-update:cdc-mmwr:2f88c57acfdbee4fdbd14296",
       "publishedAt": "2025-12-04T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Rabies",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -364,14 +450,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "f52aaf90b18bb857f16d3f63f09c3575636bf8e9769559ef3bf8973b02de1dd0",
+      "contentHash": "0a5fee1c1b1f9e37aecdc06693a1bf72ecfcae3fc486fc93c90f77793e65fbe3",
       "description": "This report describes CDC's multistate investigation to confirm the genetic relatedness of infections in an E. coli outbreak linked to walnuts and identify additional cases.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=761768&_=F8B8AE4D25BBDB8B37CB4C483201CD84EDCB582EDDAFA148E2F291186A92A82A",
       "id": "medical-update:cdc-mmwr:585ce8f49bdfb3c5544e183e",
       "publishedAt": "2025-11-26T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Escherichia coli",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -421,14 +512,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "850616796a7912c81cad8b8cb47abf23553d513f312a801030a1ad09c584691a",
+      "contentHash": "b7356811a74d1cf9031255b1c9de5c9e5bada3f803ee243a9baa771e14221f6f",
       "description": "This report describes a multicenter case-control investigation that found nirsevimab was 80% effective at preventing RSV-associated ICU admissions among infants.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=761559&_=7A696234758EBAF09D3D1067E188DD3DECF58149D25C2FE5AA10CAA81E1AB5CE",
       "id": "medical-update:cdc-mmwr:a053ba8bd719247092e4d092",
       "publishedAt": "2025-11-20T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Nirsevimab",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -459,14 +555,23 @@
     },
     {
       "category": "vaccine-biologic",
-      "contentHash": "2260238c80960f5006cd89079b5a356ad1035036bd9e7ae68ec31f0e5a48221a",
+      "contentHash": "8d2d2b4c5b878d95cd014f42f187fdf77909ff2260c94d0bf4fd9fac1b12c0d9",
       "description": "This report describes flu vaccine effectiveness in the Southern Hemisphere during the 2025 flu season.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=760285&_=ACFF9D4E5244421EC9A6B27A010BF0CF19001BBFE15F8F1F7FB77CF6E84B1414",
       "id": "medical-update:cdc-mmwr:671dce7ff23e7cc963e2753a",
       "publishedAt": "2025-09-25T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza vaccine",
+          "collection": "clinicalReferenceEntries"
+        },
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -478,14 +583,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "21c85d9253f03bf89f234f458db912edd5b967aae7e28372cc332dd3d8dccbbd",
+      "contentHash": "9e062bb6776cb760bda07c892578cd28efaaf586eee258ea9867cbdad899dc42",
       "description": "This report describes pediatric deaths during the 2024-25 influenza season.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=760284&_=A8A4456E16569BCA7DC785C9E1022F0D67C28668BE07D5A6757DCC0DF492E23E",
       "id": "medical-update:cdc-mmwr:0895213ea202af467624933f",
       "publishedAt": "2025-09-25T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -497,14 +607,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "b2c045e102f981926ca720d0c78019b09caca1a697ffa0b7c1ee78b5be345351",
+      "contentHash": "0b70a0afe5406a1bf49e124086268f980092a748b4be06b33cc15fcfe9709b18",
       "description": "This report describes 109 U.S. cases of pediatric influenza-associated encephalopathy during the 2024-25 flu season - a high-severity season.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=760282&_=B87D57E809D26A2E99CB86E884F6439E3CE5CE32266BA802634D37BFC2E487AA",
       "id": "medical-update:cdc-mmwr:2eaa5e8e283bdd1095047b6d",
       "publishedAt": "2025-09-25T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -516,14 +631,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "a9c5e214c5f0ffa6568e3b8733e73cd1392801222b3541d7b07ba9eff8da9acc",
+      "contentHash": "3aae204c80ec7a0f4360d7c1de07e6e11566c9f6ddf09e0431f85ce9f44815f1",
       "description": "This report describes a clinical recommendation to use injectable lenacapavir as an HIV preexposure prophylaxis.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=760243&_=DD6926357A9B70C03A045BB9412C62354F0F3284FDFB6B29D9E237F2B50F2D50",
       "id": "medical-update:cdc-mmwr:2472bd4f784012d8176ff5e3",
       "publishedAt": "2025-09-18T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Lenacapavir",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -573,14 +693,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "cd4e13afa3be619affa88cdf8ed2e018ee43805b5ab7a2209b9c9f3143d96618",
+      "contentHash": "c8dafd43b61d1f3a7563291b4c008f25a20ddd7ba89d77700fd1099bc06f087e",
       "description": "This report describes the severity of the 2024-25 flu season and flu-associated hospitalizations. The Morbidity and Mortality Weekly Report (MMWR) Series is prepared by the Centers for Disease Control and Prevention (CDC).",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=760218&_=EABAE87F6052EC92750742BFCBBA361B8F306C62D547B33FEE073B14C1925C25",
       "id": "medical-update:cdc-mmwr:32cc8fedad08200960fa5399",
       "publishedAt": "2025-09-11T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -611,14 +736,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "edaeb9c0f0f738c5c2c2a97a59186e07bd3797da1a04cc2faeade205a4a8c95b",
+      "contentHash": "718970cb1a3d9cbd3a07801623916c127fc63909e9a0c2dc13a6616ebbf51674",
       "description": "This report describes a case of highly pathogenic avian influenza A(H5N1) identified in a school-aged child in California with no known source of exposure.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=760158&_=8822F2FF9F3559C35524E18B5A858C914D7C9E183BC8B38EFD5663CB28D72A11",
       "id": "medical-update:cdc-mmwr:3ebcdf124f8114447ab6acc5",
       "publishedAt": "2025-09-04T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -630,14 +760,23 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "a648a8e497e73776fb4e11e0ec45e9555aecdb0dd342759fa081051c67fe6615",
+      "contentHash": "65ac69f568259627550e29d2fd64bef196ade4ebd9d4fc010d974f2b4fbebe18",
       "description": "This report describes 41 cases of Neisseria meningitidis conjunctivitis among military trainees living in a communal setting in Texas.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=760157&_=A4E6001D35A633CDF7BB426FBAA037F5F79FF974AAC69433E79CEE7D47E091EE",
       "id": "medical-update:cdc-mmwr:d5107f8ce3422758535f4180",
       "publishedAt": "2025-09-04T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Neisseria meningitidis",
+          "collection": "clinicalReferenceEntries"
+        },
+        {
+          "canonicalTitle": "Conjunctivitis",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -650,20 +789,25 @@
   ],
   "archiveRetentionDays": 730,
   "currentWindowDays": 180,
-  "datasetVersion": "ani-medical-updates-2026-08-08.1",
-  "generatedAt": "2026-08-09T01:46:23.049Z",
-  "generatorVersion": "ani-medical-updates-generator-2026-08-08.1",
+  "datasetVersion": "ani-medical-updates-2026-08-09.1",
+  "generatedAt": "2026-08-09T16:28:05.753Z",
+  "generatorVersion": "ani-medical-updates-generator-2026-08-09.1",
   "items": [
     {
       "category": "recall",
-      "contentHash": "cda7b721f4d2a351a388cd448ff7247a10d117aae9ddcff38e2ab775dea4115b",
+      "contentHash": "714193891e3ba4ea33692c5d07133642d94030e8848865b4e3764ad3fd1a6b58",
       "description": "July 24, 2026 – DEERFIELD, Ill., Baxter International Inc. (NYSE:BAX) is voluntarily recalling Lot LD175708, Exp 14-Feb 2027 of Cefazolin in Dextrose Injection due to a report of particulate matter found in the solution identified as cardboard.Risk Statement: The use of the defective product has a",
       "descriptionOrigin": "source-provided",
       "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/baxter-issues-voluntary-nationwide-recall-cefazolin-dextrose-injection-usp-2g-100ml20mg-ml-single",
       "id": "medical-update:fda-drugs:01d32e43a7e2fc60865065cf",
       "publishedAt": "2026-08-08T00:55:36.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Cefazolin",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [],
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
@@ -720,14 +864,19 @@
     },
     {
       "category": "drug-approval",
-      "contentHash": "3648892a92a51ad65d7401d42c91154282e090d7926e8be5d7b2b0d65aad9b18",
+      "contentHash": "90f8a18f814b54b87009732d9d618e5869cba2f0403acb0c00f7eda67be3ea24",
       "description": "The U.S. Food and Drug Administration today granted accelerated approval to Tudriqev (vusolimogene oderparepvec-wtpg), a genetically modified oncolytic viral therapy for the treatment of advanced, refractory melanoma.",
       "descriptionOrigin": "source-provided",
       "guid": "http://www.fda.gov/news-events/press-announcements/fda-approves-new-engineered-viral-immunotherapy-patients-treatment-resistant-advanced-melanoma",
       "id": "medical-update:fda-biologics:cdadd31ecf41276d35e81bf7",
       "publishedAt": "2026-08-06T19:56:59.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Melanoma",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [],
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
@@ -752,14 +901,23 @@
     },
     {
       "category": "drug-approval",
-      "contentHash": "895e22cae406d1fb0df5db143dca731ce95d58e2f7bb070c071e21b948030ff3",
+      "contentHash": "fb50662e03f62d9ab84db131ce9be7309666cd6c89de05d8c7d2710e8353ebdd",
       "description": "On August 6, 2026, the Food and Drug Administration granted accelerated approval to vusolimogene oderparepvec-wtpg (Tudriqev, Replimune, Inc.), a genetically modified oncolytic viral therapy, in combination with nivolumab for the treatment of adult patients with unresectable advanced cutaneous melan",
       "descriptionOrigin": "source-provided",
       "guid": "http://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-vusolimogene-oderparepvec-wtpg-combination-nivolumab-melanoma",
       "id": "medical-update:fda-drugs:9b278b967269800d8ce815ec",
       "publishedAt": "2026-08-06T19:54:33.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Melanoma",
+          "collection": "pathologyDiseases"
+        },
+        {
+          "canonicalTitle": "Nivolumab",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [],
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
@@ -918,19 +1076,40 @@
     },
     {
       "category": "recall",
-      "contentHash": "1fa55bf5c2e9dda625ba0bdf6209582c8a7aee2a65c596a6308e5d537bae9765",
+      "contentHash": "e1f2ef604ab2333e1b6f226c5c19b5d968086e79d32586ea2cb0014c0abf1b2d",
       "description": "FOR IMMEDIATE RELEASE – 8/4/2026 – LAKE ZURICH, Ill.— Fresenius Kabi, an operating company of the Fresenius Group, is voluntarily recalling one lot of Morphine Sulfate Injection USP, Simplist® 2 mg/1 mL due to a label mix-up. The MicroVault labeled as Morphine 2 mg/1 mL, may contain a Prefilled Syri",
       "descriptionOrigin": "source-provided",
       "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/fresenius-kabi-issues-voluntary-nationwide-recall-one-lot-morphine-sulfate-injection-usp-simplistr",
       "id": "medical-update:fda-medwatch:e89d4373212bcfdda0d7f99f",
       "publishedAt": "2026-08-05T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Morphine",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [],
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Fresenius Kabi Issues Voluntary Nationwide Recall of One Lot of Morphine Sulfate Injection, USP in a Simplist® Prefilled Syringe Due to Labeling Mix-up",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/fresenius-kabi-issues-voluntary-nationwide-recall-one-lot-morphine-sulfate-injection-usp-simplistr"
+    },
+    {
+      "category": "medical-development",
+      "contentHash": "96a9e71a8cf1974ea8dafc5e3872088f3d23e5d490c05c7d91dd3bc2f9fed85e",
+      "description": "NIH-funded international research collaboration catalogues 25 tumor types from thousands of patient donors.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://www.nih.gov/news-events/news-releases/human-cancer-models-accelerate-research-precision-therapies",
+      "id": "medical-update:nih-news-releases:9237eacf8808ca94392aa1b7",
+      "publishedAt": "2026-08-05T00:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "sourceCategories": [],
+      "sourceId": "nih-news-releases",
+      "sourceName": "U.S. National Institutes of Health (NIH)",
+      "title": "Human cancer models to accelerate research and precision therapies",
+      "url": "https://www.nih.gov/news-events/news-releases/human-cancer-models-accelerate-research-precision-therapies"
     },
     {
       "category": "recall",
@@ -1014,14 +1193,23 @@
     },
     {
       "category": "safety-alert",
-      "contentHash": "5303cf65a4fc9c8a6df1ef75563f580a3822172a393fee64874a3d14752d08a3",
+      "contentHash": "fffed179d134317c9ff85028b6c7068ac64e07de42de7c0e06ce7d6a265487fb",
       "description": "Medline is correcting affected convenience kits by removing recalled Lidocaine Hydrochloride and Bupivacaine Hydrochloride in Dextrose Injection components from affected convenience kits.",
       "descriptionOrigin": "source-provided",
       "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-medline-issues-correction-kits-containing-huons-lidocaine-hydrochloride",
       "id": "medical-update:fda-medwatch:49b0970b16dc3a6eb4e01d14",
       "publishedAt": "2026-08-03T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Bupivacaine",
+          "collection": "pharmDrugs"
+        },
+        {
+          "canonicalTitle": "Lidocaine",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [],
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
@@ -1180,14 +1368,19 @@
     },
     {
       "category": "safety-alert",
-      "contentHash": "e121395f7fae3148f7e7203247298e6db0d6fc3ed4e0780fba9aa96c50faf5c2",
+      "contentHash": "1bbefedb0d23fd4ba112817cbb5e9a5466fc9e74718bd9d668eb29386588405e",
       "description": "Argon Medical is correcting affected convenience kits by removing included Spectra Medical Devices Lidocaine Ampules.",
       "descriptionOrigin": "source-provided",
       "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-argon-medical-issues-correction-convenience-kits-containing-spectra",
       "id": "medical-update:fda-medwatch:3b12c421243e856fb00efce4",
       "publishedAt": "2026-07-30T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Lidocaine",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [],
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
@@ -1212,14 +1405,19 @@
     },
     {
       "category": "recall",
-      "contentHash": "ca57ebb0b73a8b5170c16aea120ce6490072c88cec4d51e2eaaf868c438c57b0",
+      "contentHash": "811944cbc41fe580457a8b4c4d88497b5259947a32bc64b95625504a66ab49e9",
       "description": "July 29, 2026 ¬— Publix is recalling all lots of GreenWise Organic Whole Blueberries and Whole Mixed Berries because they may be contaminated with Escherichia coli O145:H28 (E. coli O145). E. coli O145 is a Shiga toxin-producing E. coli (STEC) that can cause illness characterized by severe stomach c",
       "descriptionOrigin": "source-provided",
       "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/publix-recalls-all-lots-greenwise-organic-frozen-blueberries-and-whole-mixed-berries-due-potential-e",
       "id": "medical-update:fda-recalls:158f5f61c9b6459263af0582",
       "publishedAt": "2026-07-29T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Escherichia coli",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [],
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
@@ -1279,14 +1477,19 @@
     },
     {
       "category": "recall",
-      "contentHash": "0347ea8ee17286cf3e2a06d9da4262feb85128227d293b17e52c95601a7594f4",
+      "contentHash": "4b543219bf951d9a64e55f931c5b7e6efcac5424ea03030b4a77baadd65c8b92",
       "description": "July 24, 2026 - Taoyuan City, Taiwan - Sunny Pharmtech, Inc is voluntarily recalling three lots of Cyclophosphamide for Injection, USP, 1g/vial and 2g/vial, to the User Level due to the presence of particulate matter identified as steel. To date, no adverse events or injuries associated with this pa",
       "descriptionOrigin": "source-provided",
       "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/sunny-pharmtech-inc-issues-voluntary-nationwide-recall-cyclophosphamide-injection-usp-user-level-due",
       "id": "medical-update:fda-medwatch:6d25d4958889a335826b5811",
       "publishedAt": "2026-07-24T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Cyclophosphamide",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [],
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
@@ -1311,14 +1514,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "94ac99105ebad98e8b2b3ea03ffe068afb00383ccb9454226b45684a1a0e55c0",
+      "contentHash": "32c14e1485bf399627937f5b34275d0446411e861e8f9f36c95ed1d1638e9cb7",
       "description": "This report describes a suspected exposure to Neisseria meningitidis during a university laboratory exercise.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766071&_=AD67791AD67DA9C8DD472928E52571E7447BA6B509CC60AA104A99F5B4B94D41",
       "id": "medical-update:cdc-mmwr:37d0a75dfc0beaba29f816e4",
       "publishedAt": "2026-07-23T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Neisseria meningitidis",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -1330,14 +1538,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "874037c74cb88cf595866d0b664a5b144a273f0e3dcdb302dc76c330602630db",
+      "contentHash": "dd0c12553de445ac3ccb6d9ceeed2126da40d277c6444d5975edc3fdf1fc2f28",
       "description": "This report describes progress towards worldwide rubella elimination during 2012-2024.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766070&_=A25B9A72D0B11C676AA0F212B686AD915A64C10BF434CC3B0CC656F33B88CDEB",
       "id": "medical-update:cdc-mmwr:11e9f3dd24ebb41a2fc9b7ca",
       "publishedAt": "2026-07-23T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Rubella",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -1416,14 +1629,23 @@
     },
     {
       "category": "recall",
-      "contentHash": "7804b6abf86c562000184a2240466ca56dffb6593533b7447c3e79c62f114169",
+      "contentHash": "cb1665953c7a0d6894ce6717a0c918b38473621725f3fa1f1f2c44df40b77c18",
       "description": "FOR IMMEDIATE RELEASE – July 18th, 2026 – Panoli, Gujarat, Unique Pharmaceutical Laboratories (A Div. of J. B. Chemicals & Pharmaceuticals Ltd.) is voluntarily recalling four lots of Cetirizine Hydrochloride Tablets USP 5 mg to the consumer level due to cross contamination with Ranitidine.",
       "descriptionOrigin": "source-provided",
       "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/unique-pharmaceutical-laboratories-div-j-b-chemicals-pharmaceuticals-ltd-issues-voluntary-nationwide",
       "id": "medical-update:fda-medwatch:0c6c9013c9a5541de168bd0c",
       "publishedAt": "2026-07-20T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Cetirizine",
+          "collection": "pharmDrugs"
+        },
+        {
+          "canonicalTitle": "Ranitidine",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [],
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
@@ -1483,14 +1705,23 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "a895fcb52566215c18a624ecebced76d2c79c255adeeff68817126db592cd144",
+      "contentHash": "79b259f7dfe96773183e7ff82eb8079696fd3b4eb30570fbc8a320b4cd8fc246",
       "description": "This report describes how wastewater surveillance identified one of two unrelated measles cases reported to the Wisconsin Department of Health Services in February 2026.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766003&_=6E9798205D7E173AD3FBE374E86F8DC5E05C087D029510F01BA550B879221EB5",
       "id": "medical-update:cdc-mmwr:7ca58ac68714f56a0cf8aa26",
       "publishedAt": "2026-07-16T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Measles virus",
+          "collection": "clinicalReferenceEntries"
+        },
+        {
+          "canonicalTitle": "Measles",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -1521,14 +1752,23 @@
     },
     {
       "category": "recall",
-      "contentHash": "d3cb7431a270cdf9193b3fc4653708fe7fb060ee7099774a1fb49328b6a729ba",
+      "contentHash": "0298f96f800432db86db382667506208c587a74130ecf382ad099f31f34589df",
       "description": "Saline, Lidocaine and Bupivacaine from affected convenience kits should not be used.",
       "descriptionOrigin": "source-provided",
       "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-arrow-international-issues-correction-convenience-kits-containing",
       "id": "medical-update:fda-medwatch:5eeba07d408aaa053116a14d",
       "publishedAt": "2026-07-16T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Bupivacaine",
+          "collection": "pharmDrugs"
+        },
+        {
+          "canonicalTitle": "Lidocaine",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [],
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
@@ -1572,14 +1812,27 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "2b3c5b66c8bbba6f5cdec223f6903ad4e2e65e55cd21abc7a60061eb1ee99f8b",
+      "contentHash": "f22e33ef64e664b1c8be197b9b4fd04b5173399da806afcfc37f4502dc69394d",
       "description": "This report describes illnesses and infection prevention and control protocols at a wildfire evacuation shelter during the Eaton wildfire in Pasadena, California.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765980&_=9F031091AF11219929050C7EB4B2587D67BC5DAB050BBE54BF178B61239E562B",
       "id": "medical-update:cdc-mmwr:33517360d0a32ab5fefd0cd5",
       "publishedAt": "2026-07-09T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Norovirus",
+          "collection": "clinicalReferenceEntries"
+        },
+        {
+          "canonicalTitle": "COVID-19",
+          "collection": "pathologyDiseases"
+        },
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -1648,14 +1901,19 @@
     },
     {
       "category": "drug-approval",
-      "contentHash": "e4209472c94477e18531002d1eeb48e342b22e73132caaeb2d36f84d05a210b3",
+      "contentHash": "a47a832f7f0ff0945356f2b0887b60696f7cb272923c8b06fc0486079a2be1c9",
       "description": "The U.S. Food and Drug Administration today issued a supplemental approval for Casgevy (exagamglogene autotemcel) for patients aged 2 years and older with either sickle cell disease (SCD) with recurrent vaso-occlusive crises (VOCs) or transfusion-dependent β thalassemia (TDT).",
       "descriptionOrigin": "source-provided",
       "guid": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapy-young-children-sickle-cell-disease",
       "id": "medical-update:fda-press-releases:4da23a9d2d88449973b38caa",
       "publishedAt": "2026-07-01T21:29:41.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Sickle cell disease",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [],
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
@@ -1680,14 +1938,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "44b4dff5816dd04bb2ab8bf529287e35953985ea3791bb91c97ad6ae2a81c355",
+      "contentHash": "8b0adca3dec4024e383bc741154df323b2a7e9cb4fd06eb2ed02d2dcc1dc9d39",
       "description": "During 2022-2024, a total of 13,507 clinical C. auris cases were reported to CDC, increasing from 2,882 in 2022 to 4,428 in 2023 and 6,197 in 2024, with smaller annual percentage increases over time.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765938&_=3E9502039D0C65E67E95B5574C72E9CDFA212CED42DE5D2C9A6A3D8970EBFF30",
       "id": "medical-update:cdc-mmwr:7f2ccc06e30dedfff92c90d4",
       "publishedAt": "2026-06-30T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Candida auris",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -1737,14 +2000,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "a1ef28abd32fc5daa5c32ab80df5df969b6a0b08bd3c2c535b9e174b3ae4c967",
+      "contentHash": "d9d3826d3066331bcc3d1ae5ca3cbe4b8d1e5e9bbaf0b7a71a9ff4bb84ccb7bc",
       "description": "This report describes a case of Legionnaires disease in an infant who drank formula prepared using a formula mixing device and tap water.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765859&_=F8FEA88B2EC5B38BE7699F7F9EB25D9F20768BE02E6591B8FE20E86D89B555AD",
       "id": "medical-update:cdc-mmwr:19a6f38e09042e67cb420320",
       "publishedAt": "2026-06-18T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Legionnaires disease",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -1756,14 +2024,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "39d139fc09375f655808ae196abdfc5f38477040562234d210688343e693faa7",
+      "contentHash": "162c869aefb4340d10e04e5950582ff77aeb52850e2cc0cf0727c685a2cb8783",
       "description": "This report describes the public health response to a measles outbreak in a Texas community.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765860&_=75173014B2AE23CC6F6F32619597AD6E1BFE65B51A086805CD0306721A6B31CE",
       "id": "medical-update:cdc-mmwr:151306f9562055ae375da62b",
       "publishedAt": "2026-06-18T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Measles",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -1775,14 +2048,23 @@
     },
     {
       "category": "drug-approval",
-      "contentHash": "2117a3304a9315e59010a7964fe053dc818d2d2ef0fcf526f51be66597b04ad5",
+      "contentHash": "731d68d5c7da7f68f3acba0162b11437451faeb1c2dce2c5d61a5d64f56a3a40",
       "description": "The U.S. Food and Drug Administration today approved the first generic of Xofluza (baloxavir marboxil) tablets, the first single-dose treatment for acute uncomplicated influenza and prophylaxis in patients 5 years of age and older.",
       "descriptionOrigin": "source-provided",
       "guid": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-single-dose-generic-treatment-influenza",
       "id": "medical-update:fda-press-releases:66911ca5165a0a907bb96fc5",
       "publishedAt": "2026-06-17T21:32:27.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        },
+        {
+          "canonicalTitle": "Baloxavir",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [],
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
@@ -1829,14 +2111,19 @@
     },
     {
       "category": "drug-approval",
-      "contentHash": "976eca853413453ba4a85fab3012c8569052a90014c48550403751c8835952cc",
+      "contentHash": "003eaf8d1d7c8dbb99e22224d6db8b70ed97a1c14b84fd7ee499043589793844",
       "description": "On June 12, 2026, the U.S. Food and Drug Administration granted accelerated approval to Tzield (teplizumab) for a new indication, to delay the decline of insulin production in pediatric patients ages 8 through 17 years who have been recently diagnosed with Stage 3 type 1 diabetes (T1D).",
       "descriptionOrigin": "source-provided",
       "guid": "http://www.fda.gov/news-events/press-announcements/fda-approves-new-indication-tzield-teplizumab-certain-pediatric-patients-recently-diagnosed-stage-3",
       "id": "medical-update:fda-press-releases:9af173ef45e814b27b020543",
       "publishedAt": "2026-06-15T20:44:15.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Teplizumab",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [],
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
@@ -1883,14 +2170,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "60fd8d24659072c1f134188f8bfc871f491fbfac150daf1108d744c0414996f9",
+      "contentHash": "50e88ecd0d836aadfa35e8af011c9c96ba0e253901d07d3353ed93aa3b57a76c",
       "description": "This report describes using a transmission model to project Ebola outbreak growth over three months.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765813&_=17AB00A3B594BEF26D8292121CE7476636B5D310CC27CAF6CB2F621881CBE7D9",
       "id": "medical-update:cdc-mmwr:bed859d0fd4810664233dfae",
       "publishedAt": "2026-06-11T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Legionnaires disease",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -1940,14 +2232,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "091eee9f498cf9ae6a151a54a439cfa78451c738512ab7fb6cfbd6ed31ff6796",
+      "contentHash": "ec6e761aecfb362ab5dc0127c1e729b960f1b0ed8005ea5af3d09de46046258e",
       "description": "This report describes a large outbreak of Bundibugyo virus disease identified in the Democratic Republic of the Congo and Uganda.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765815&_=75F09AD637FE7E9F66F5485AE7EEA65F2E4C96B5A4AA5050D64656CDF8A89560",
       "id": "medical-update:cdc-mmwr:21a4caab68ecb918b295d136",
       "publishedAt": "2026-06-11T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Colorectal cancer",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -1975,14 +2272,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "05f7d63d91525b85722d0fa43b68e617fdbcfdb2e32a9886358a95272dfb02f3",
+      "contentHash": "29e063f5fbd73749d05b8a9e5c094a0ca1cf342bb26a3120b8e53bb0f03fce51",
       "description": "This report describes characteristics of patients who were hospitalized during a large measles outbreak in west Texas.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765694&_=9672D42EE69051FC6238CD438B797558E2902B3137F150A5F39CEFD6F8A3511D",
       "id": "medical-update:cdc-mmwr:efac01f4f4a0278bf9b472c3",
       "publishedAt": "2026-06-04T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Measles",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -1994,14 +2296,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "0e31ec70561539902d25b56e6dfbb7c4348751e9168202d1679d51cff525c31e",
+      "contentHash": "1e1d47286e1d5687ce8ad6133f58a195ffeae0ebb848d6cd412802b49a206716",
       "description": "This report describes an outbreak of 39 cases of amatoxin mushroom poisoning in Northern California.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765695&_=DB5763E06BD3247A2E346E499AC880F64D2C4D702987AE7AAE168EF2AC278FD7",
       "id": "medical-update:cdc-mmwr:2e8f9c98e11d43e96bc73b2a",
       "publishedAt": "2026-06-04T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Lyme disease",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2032,14 +2339,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "07a48c0bb9aeb6b3da6c67e71c2e8e941aa8396d5b171f4019682e3ba558e837",
+      "contentHash": "e33ddbc086a90d12668ffc38bd787cd55b61106a314cccdaf87c7cd6717ed722",
       "description": "This report describes characteristics of patients who were hospitalized during a large measles outbreak in west Texas.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765641&_=CACB0701DFFAF1D42283BD53DD6EAE36CFC920156E7EC891140634F15B3DE82D",
       "id": "medical-update:cdc-mmwr:08e27c49cfaf5932b493131d",
       "publishedAt": "2026-05-28T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Measles",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2051,14 +2363,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "3dae14096f7d92517ce2a25a3a3d367619290caab3fbaaa38ad58f64e9ffcb8b",
+      "contentHash": "caafad861d416ebad902143c8a4059ae13846c121e3fb7b6e0de7da5f66e87da",
       "description": "This report describes an 8-month outbreak of carbapenemase-producing Enterobacterales in a long-term care facility in Ontario, Canada.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765602&_=51C75710C3D296BFA88B255F77492796A7A88194FCF869DDFE4D2276D858623F",
       "id": "medical-update:cdc-mmwr:5e917ccb7f1d2aade04e8e54",
       "publishedAt": "2026-05-21T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Klebsiella pneumoniae",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2089,14 +2406,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "d7577b5ffb75f983322e3a6f760c1461822a80dd7abf22be792c3d9395f18739",
+      "contentHash": "203c48ac8ba33c9b3446036c3a61c763d77fdc0b45152e761ebb840dc3165497",
       "description": "This report describes operational guidance for public health investigation and response to mosquito-transmitted malaria in the United States.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765596&_=05323F9163F17CB3D295BF512D8DC1B30761153822C59636A727EE3117C70EB4",
       "id": "medical-update:cdc-mmwr:5e2148c7bee8724e71be1ae5",
       "publishedAt": "2026-05-19T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Malaria",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2127,14 +2449,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "8e0ca00674030e4fed6eec774bfc6521cfc4a9acdb314d7ab759df84e373b137",
+      "contentHash": "b8c109eab6f805b5015e3300ca41f9787e75e44f8db663bc39a38d6b7da3b290",
       "description": "This report describes survey results from backyard flock owners' attitudes towards avian influenza.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765451&_=326386CE62EBA8B4315F849F9F3751A68029B3C7361E358425FEB01967577816",
       "id": "medical-update:cdc-mmwr:dca433417b1d76073beed232",
       "publishedAt": "2026-05-14T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2146,14 +2473,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "be1fe720c38b6cdd66b64f02571cd04c8844bd640f0f2fa930a65b81735f3e40",
+      "contentHash": "5c05bbb0dfcaf2ed31a5217fc7aff20ac2c4d958e128e681265bee9022dc7dd4",
       "description": "This report describes a fatal human case of highly pathogenic avian influenza in Washington.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765373&_=BC8EBF564D32EAE37A33EE6D54916BE3D7112F4E44130B17291F583C06D79034",
       "id": "medical-update:cdc-mmwr:8541473b95ecbe613789c13b",
       "publishedAt": "2026-05-07T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2165,14 +2497,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "a7211360aa7d5f2faf203be1b90754d20cd5b6c81c470a682e2b3976a6ef7de4",
+      "contentHash": "7772576b483ee32ab9c1567ecbac5154ca9b4943486bf4482ad5d344768913f3",
       "description": "This report describes 139 human exposures to cats infected with A(H5N1) in Los Angeles, California.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765372&_=FCF02FC6717F389B236B77F816C6EBA607416B972A65C2A546C15CC7B58798E2",
       "id": "medical-update:cdc-mmwr:34f5aa382da072269f0d6c7c",
       "publishedAt": "2026-05-07T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2184,14 +2521,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "8887ca91fd0918594ccbb50afb5da955c21f9a7e3c68e9175bedd276a1cc6be6",
+      "contentHash": "cc91224d72ca998c6abbd93afe52a1ccd2cbb63d0cce4e8a773b5e40e24ef72b",
       "description": "This report describes 50 large tuberculosis outbreaks in 23 states during 2017-2023.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765299&_=318B9A288CED24864C798C04462BAF190F315E57ED77ADDBB2E92466E5151530",
       "id": "medical-update:cdc-mmwr:5bd64d57444d6b6c19480f4a",
       "publishedAt": "2026-04-30T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Tuberculosis",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2222,14 +2564,19 @@
     },
     {
       "category": "vaccine-biologic",
-      "contentHash": "5a37615703cfb7975c3e92b0f81bcf6c541a7e2a60348339966713f1e30f95ca",
+      "contentHash": "4cf1f6eac58a60d5ac244c6aaffb2eb179edde71810ed82c0852238482ba148e",
       "description": "This report describes flu vaccination coverage among nursing home residents and health care providers working in nursing homes.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765132&_=1B1C8DCA4BB621B2962059145910C993138EE600D48A7923D6722CD9CD391EFB",
       "id": "medical-update:cdc-mmwr:743da7c8f3a42b89072af2e8",
       "publishedAt": "2026-04-23T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2260,14 +2607,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "d7171ebb78c316d0b5aa6c2f193eafe8d829468f6827ead96d822bfb830a19a3",
+      "contentHash": "004166a6eb5711b32d7c619fab672b143d1e626bdb1b08ad730106492c238f18",
       "description": "This report describes two clusters of invasive of Haemophilus influenzae type b among adults with special risk factors in Alaska, Oregon, and Washington.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764882&_=7E35FD14AEFE3848ECF89D0EC8C0D1330209D6FE1B239632077B36D3B397E9C7",
       "id": "medical-update:cdc-mmwr:56f16fbfd96b62c4d54bdb51",
       "publishedAt": "2026-04-16T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Haemophilus influenzae",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2279,14 +2631,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "7c547af4c7f450b769cb9de9b803415a7d39d1c28de5630f144469ee80225486",
+      "contentHash": "0cf8f286dc5a062d1d0137b7c1f68ae9e4fd1da73bda54eac265908360906a14",
       "description": "This report describes four cases of tetanus among children who had not received a primary tetanus toxoid-containing virus series before exposure.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764883&_=B3D8BC1EE92BC8045B96E80DB5541EBAD7CA52E05C4C088420C3551F61D9661A",
       "id": "medical-update:cdc-mmwr:3978400dd70991414a779bb2",
       "publishedAt": "2026-04-16T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Tetanus",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2298,14 +2655,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "bccb4d3f9d0764ef651b4cda31e78c613326110b6c852deeb441c7fcdd9daabc",
+      "contentHash": "ada14a1f2e908d148e311f55844c76304ebec7d166db1bbc7e805c087dd17dde",
       "description": "This report describes tetanus surveillance in the United States from 2009-2023",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764854&_=15DABEEC3C8AB9467BE6A7F01C0D922562E4A9EAE401AC284EDC7781E518D79D",
       "id": "medical-update:cdc-mmwr:18b037554e39843616007afc",
       "publishedAt": "2026-04-14T17:06:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Tetanus",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2355,14 +2717,23 @@
     },
     {
       "category": "vaccine-biologic",
-      "contentHash": "f0f9c02ea8ecc985ae8c21653c14741733a8eb34ab30c467654b477f2a4c1550",
+      "contentHash": "19d3757bb2e3bbc540ab4374d0f316b3f301feb8bb41c490524bde3e90dcb233",
       "description": "This report describes influenza and COVID-19 vaccination coverage among health care providers in the United States during the 2024-25 respiratory virus season.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764645&_=A2BB07CD4235BA6D7F0DFE2EABF4A988DDBBE1C9ABEB45988735C68E4489B30D",
       "id": "medical-update:cdc-mmwr:a883bc815d84c0b59233c517",
       "publishedAt": "2026-04-02T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "COVID-19",
+          "collection": "pathologyDiseases"
+        },
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2374,14 +2745,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "992903966144e355e034e1034b858d4fcad09053775146405b69d60b93001cdd",
+      "contentHash": "fd4fbae7f252d08429b8432c30e006221d0f0b7ad3227b1d8fc9b86c0765fcbe",
       "description": "This report describes an increase in reports linked to kratom-containing kava products in the United States from 2000-2025.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764644&_=4A78E67D5C13DF94E8174D3FF85F5C922002D8817A2D1C025454E27D6A09333E",
       "id": "medical-update:cdc-mmwr:0db08eaab1dbec549b031a83",
       "publishedAt": "2026-04-02T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Kratom",
+          "collection": "holisticRemedies"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2412,14 +2788,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "d868355fbec8e40f66fcba5945cc00859e4407909b129f7a8438091e4c084c3f",
+      "contentHash": "8ebfd43887fe5ec215eed5452dfe5ecab634da8fdc3fef33182384c955510579",
       "description": "This report describes kratom-related exposures in the United States from 2015-2024.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764507&_=FDACCF794E3E8343C75C06F84BB551AD905F606864B3E1E2A6F887B8CFE28D7F",
       "id": "medical-update:cdc-mmwr:f22e8c4661a4046e03ac3ce2",
       "publishedAt": "2026-03-26T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Kratom",
+          "collection": "holisticRemedies"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2431,14 +2812,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "5ab9a441ffa332036bcb2490c2ed0a538a8a23f9961a0922062bf4bc83d6dd8e",
+      "contentHash": "34c7b686e8989b5879855e6b93c876214409962ea775f57677a46aac8a24f47d",
       "description": "This report describes early detection and surveillance of the SARS-CoV-2 variant BA.3.2.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764321&_=8A4675AD5688528B7FFA7DD8D16AB5FF726A877E5AA0E10D482A3B0501A7A956",
       "id": "medical-update:cdc-mmwr:c310d420eacdd0d27b3f5104",
       "publishedAt": "2026-03-19T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "SARS-CoV-2",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2450,14 +2836,23 @@
     },
     {
       "category": "vaccine-biologic",
-      "contentHash": "a07ad8699688e6f29ba775035f43677f20760af33d23e674d60a5435682d0d9e",
+      "contentHash": "0fc571d5726688333523cd7923e0bdb555c922677499974bfc98c8d2f67a3b9c",
       "description": "This report describes interim estimates of 2025-26 flu vaccine effectiveness in California during October 2025-January 2026.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764128&_=603711215ED2E9C146D667A5F38D2AB61F84B18D4DB23C7FE86DC79FC561FE66",
       "id": "medical-update:cdc-mmwr:e7eb566c30e9f95a848ef662",
       "publishedAt": "2026-03-12T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza vaccine",
+          "collection": "clinicalReferenceEntries"
+        },
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2469,14 +2864,23 @@
     },
     {
       "category": "vaccine-biologic",
-      "contentHash": "be70b3d96587f74cbd99f2db7e67920a5ac8dd0427b1737f0868d120104cf165",
+      "contentHash": "cce55bc71610590f3b32fd61fa6c9a8ea584837b235a108266001a39dab20abb",
       "description": "This report describes interim estimates of 2025-26 seasonal flu vaccine effectiveness.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764127&_=AEFCBB3202F1EBDEE75154F9FA803794D7B017310DF9A587B730B04649808593",
       "id": "medical-update:cdc-mmwr:fb35c54a8ea50af40a78649d",
       "publishedAt": "2026-03-12T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza vaccine",
+          "collection": "clinicalReferenceEntries"
+        },
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2488,14 +2892,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "e27fbb334bbdd10abd5e612f215e5d6aed9b8251bd41f097b9be6d41543c43aa",
+      "contentHash": "1f48b852a730df88bdff183ffcec56037326e1903710a7b569d3cfa06a0017c9",
       "description": "This report describes a measles outbreak in New Mexico in 2025.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764126&_=2BF94EB643278723D22269E028C81C3FCAC0EBAE1756C559CD6E07D2B701D61C",
       "id": "medical-update:cdc-mmwr:f31c09c1efa72ab4a7f70670",
       "publishedAt": "2026-03-12T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Measles",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2507,14 +2916,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "be19c96f41ee1c0b30a2040e26347c70e7a2e3353a2357254922c97b650ce373",
+      "contentHash": "223813b49f224b318345059c19bcba1a9c37d95dafea51fc9c83890901c870c4",
       "description": "This report describes Kaposi sarcoma in an organ transplant recipient.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763925&_=26ACD822F547E797AECAA1BE16F4B1AF28FDB50894381B27D9327DEA6797EFD1",
       "id": "medical-update:cdc-mmwr:efcd72bc4cfcc82937ea347e",
       "publishedAt": "2026-03-05T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Kaposi sarcoma-associated herpesvirus",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2526,14 +2940,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "0b5e9b65a5ff5bd2c768c02c20ca0c3f8ebf75e3304350cb2ec84ab3f7aa1b13",
+      "contentHash": "4650aa9d876d3991a1caf0e3c8ecfec9738167abbebd766380c30c10b1a597c2",
       "description": "This report describes cases of congenital rubella in Florida.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763926&_=00A39A56CA907F83D0200EBE628039E5FF990A2FB0C82B8A4B899EE5BFE1ADAC",
       "id": "medical-update:cdc-mmwr:2c99f56c15717412cc9392d0",
       "publishedAt": "2026-03-05T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Rubella",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2583,14 +3002,19 @@
     },
     {
       "category": "guideline-public-health",
-      "contentHash": "bada1c18056e16470425ac3d0cfc7c0331fe47650bf9713c0d3e91226f89fe32",
+      "contentHash": "7e7763dd799fb004eb4ee17d525c98893ad34cc968d04366a9be52e6dd91da6f",
       "description": "This report describes receipt of COVID-19 antiviral prescriptions among outpatients aged 65 and older from June 1, 2023-September 30, 2025.",
       "descriptionOrigin": "source-provided",
       "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763660&_=B65CD0EE417AD519CAE24F71216900589AA7998B32E363D9F47F169DCD013EDC",
       "id": "medical-update:cdc-mmwr:fafbe6abe5ef885d096d4684",
       "publishedAt": "2026-02-19T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "COVID-19",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
       "sourceCategories": [
         "MMWR",
         "Morbidity & Mortality Weekly Report"
@@ -2677,9 +3101,9 @@
       "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7505a1.htm"
     }
   ],
-  "refreshStatus": "PARTIAL",
+  "refreshStatus": "CURRENT",
   "schemaVersion": "ani-medical-updates-dataset-v1",
-  "sourceConfigSha256": "87aaa0c94ca596a06bd2baa64a0bf62b5733f4e8939990975b8638ba9480d70a",
+  "sourceConfigSha256": "22087d368f2a35b18d8626e336ee22687f55472121c2050fc807dda01896951d",
   "sourceStatuses": [
     {
       "error": null,
@@ -2687,7 +3111,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -2698,7 +3122,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -2709,7 +3133,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 15,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -2720,7 +3144,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -2731,7 +3155,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 10,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -2742,21 +3166,21 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
     },
     {
-      "error": "Official source returned HTTP 403.",
-      "itemCount": 0,
-      "rawItemCount": 0,
-      "rejectedItemCount": 0,
+      "error": null,
+      "itemCount": 1,
+      "rawItemCount": 10,
+      "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": null,
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
-      "status": "stale"
+      "status": "current"
     },
     {
       "error": null,
@@ -2764,7 +3188,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"

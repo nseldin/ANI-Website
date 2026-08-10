@@ -2117,6 +2117,7 @@
       name: "Anion gap",
       category: "Acid-base labs",
       aliases: ["AG"],
+      commonMisspellings: ["anion app", "anion cap", "an iron gap"],
       range: "Often about 8-12 mEq/L without potassium, but facility calculation varies.",
       why: "An elevated anion gap flags unmeasured acids such as ketones, lactate, renal acids, toxic alcohols, or salicylates.",
       highCauses: ["DKA", "Lactic acidosis", "Renal failure/uremia", "Toxic alcohol ingestion", "Salicylate toxicity"],

@@ -12,14 +12,14 @@
     taxonomyVersion: core.TAXONOMY_VERSION,
     relationshipSchemaVersion: core.RELATIONSHIP_SCHEMA_VERSION,
     generatorVersion: core.GENERATOR_VERSION,
-    catalogVersion: "ani-microbiology-catalog-content-v4.4.0",
+    catalogVersion: "ani-microbiology-catalog-content-v4.5.0",
     architectureSha256,
     architectureStatus: "APPROVED",
     massExpansionEnabled: true,
     status: {
       architectureStatus: "APPROVED",
       massExpansionEnabled: true,
-      sourceEntryCount: 216,
+      sourceEntryCount: 223,
       membershipCount: 0
     },
     architecture,
@@ -4339,6 +4339,126 @@
         ]
       },
       {
+        "abbreviations": [
+          "BCYE agar"
+        ],
+        "aliases": [
+          "BCYE agar",
+          "buffered charcoal yeast extract medium"
+        ],
+        "browse": {
+          "branchId": "diagnostic-microbiology/culture-media",
+          "label": "Culture media",
+          "path": [
+            "diagnostic-microbiology",
+            "culture-media"
+          ],
+          "pillarId": "diagnostic-microbiology"
+        },
+        "canonicalName": "Buffered charcoal yeast extract agar",
+        "category": "Microbiology / Culture media",
+        "commonMisspellings": [],
+        "crossLinkRecords": [],
+        "definition": "Buffered charcoal yeast extract agar is a specialized medium used to recover Legionella species. Yeast extract supplies nutrients, activated charcoal reduces toxic compounds, and cysteine and iron support the organism's demanding growth requirements.",
+        "directTargetId": "microbiology:medium:bcye-agar",
+        "encyclopediaDomains": [
+          "microbiology"
+        ],
+        "encyclopediaSection": "microbiology",
+        "hidden": false,
+        "id": "microbiology:medium:bcye-agar",
+        "microbiology": {
+          "architectureVersion": "ani-microbiology-domain-v4",
+          "browsePath": "diagnostic-microbiology/culture-media",
+          "canonicalOwner": "Microbiology",
+          "classification": {
+            "mediumClass": "special-purpose"
+          },
+          "entryKind": "culture-medium",
+          "generatorVersion": "ani-microbiology-generator-v4",
+          "relationshipSchemaVersion": "ani-microbiology-relationships-v3",
+          "reviewStatus": "REVIEWED",
+          "reviewedAt": "2026-08-09",
+          "runtimeCollection": "clinicalReferenceEntries",
+          "schemaVersion": "ani-microbiology-catalog-v4",
+          "sourceEntrySha256": "93ee625e19274075e316b58fd21c2104da94d0f42d29ef07d5c6b5a6b280a29e",
+          "sourceKeys": [
+            "cdc-legionella-laboratories",
+            "ncbi-legionella-water-systems"
+          ],
+          "taxonomyVersion": "ani-microbiology-taxonomy-v4"
+        },
+        "microbiologyKind": "culture-medium",
+        "microbiologyRelationships": [],
+        "name": "Buffered charcoal yeast extract agar",
+        "primaryDomain": "Microbiology",
+        "searchTerms": [
+          "BCYE",
+          "BCYE agar",
+          "Buffered charcoal yeast extract agar",
+          "buffered charcoal yeast extract medium",
+          "Legionella culture medium",
+          "Legionnaires disease culture agar"
+        ],
+        "sections": [
+          {
+            "content": "Buffered charcoal yeast extract agar is a specialized medium used to recover Legionella species. Yeast extract supplies nutrients, activated charcoal reduces toxic compounds, and cysteine and iron support the organism's demanding growth requirements.",
+            "id": "definition-composition",
+            "title": "Definition and composition"
+          },
+          {
+            "content": "BCYE supports Legionella recovery from lower-respiratory or environmental specimens; selective versions add inhibitors to reduce competing flora. Recovery provides an isolate that can be characterized and compared during outbreak investigation.",
+            "id": "purpose-selective-differential-basis",
+            "title": "Purpose and selective or differential basis"
+          },
+          {
+            "content": "Clinical and public-health laboratories use validated nonselective and selective formulations with required controls. ANI does not provide preparation, inoculation, or incubation instructions.",
+            "id": "preparation-use",
+            "title": "Preparation and use"
+          },
+          {
+            "content": "Suspect Legionella colonies require confirmation because colony appearance is not unique. Dependence on key BCYE nutrients and validated identification methods help distinguish Legionella from contaminants.",
+            "id": "expected-growth-appearance",
+            "title": "Expected growth and appearance"
+          },
+          {
+            "content": "CDC recommends pairing lower-respiratory culture or molecular testing with urinary antigen testing for suspected Legionnaires' disease. Culture can detect types missed by the usual urinary antigen test and yields an isolate for epidemiologic comparison.",
+            "id": "interpretation",
+            "title": "Interpretation"
+          },
+          {
+            "content": "Culture takes longer than rapid tests, collection after antibiotics can reduce yield, and not every Legionella species grows equally well. A negative culture does not independently exclude Legionnaires' disease.",
+            "id": "limitations",
+            "title": "Limitations"
+          },
+          {
+            "content": "Potential Legionella cultures and respiratory specimens must be handled by trained personnel using the laboratory's aerosol containment, decontamination, and exposure procedures.",
+            "id": "safety-storage",
+            "title": "Safety and storage"
+          },
+          {
+            "content": "CDC Legionella laboratory guidance describes BCYE-based selective culture and recommends pairing lower-respiratory testing with urinary antigen testing; NCBI sources explain the medium's clinical and public-health role.",
+            "id": "sources",
+            "title": "Sources"
+          }
+        ],
+        "studentFacing": true,
+        "summary": "Buffered charcoal yeast extract agar is a specialized medium used to recover Legionella species. Yeast extract supplies nutrients, activated charcoal reduces toxic compounds, and cysteine and iron support the organism's demanding growth requirements.",
+        "type": "microbiology",
+        "typedAliases": [
+          {
+            "identity": true,
+            "kind": "abbreviation",
+            "value": "BCYE agar"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "buffered charcoal yeast extract medium"
+          }
+        ]
+      },
+      {
         "abbreviations": [],
         "aliases": [
           "blood agar plate"
@@ -4444,6 +4564,711 @@
             "identity": true,
             "kind": "common-name",
             "value": "blood agar plate"
+          }
+        ]
+      },
+      {
+        "abbreviations": [],
+        "aliases": [
+          "chocolate blood agar"
+        ],
+        "browse": {
+          "branchId": "diagnostic-microbiology/culture-media",
+          "label": "Culture media",
+          "path": [
+            "diagnostic-microbiology",
+            "culture-media"
+          ],
+          "pillarId": "diagnostic-microbiology"
+        },
+        "canonicalName": "Chocolate agar",
+        "category": "Microbiology / Culture media",
+        "commonMisspellings": [],
+        "crossLinkRecords": [],
+        "definition": "Chocolate agar is an enriched medium made from heated blood-containing material. Heating releases nutrients such as hemin and nicotinamide adenine dinucleotide that help demanding, or fastidious, bacteria grow; the brown color gives the medium its name and does not mean it contains chocolate.",
+        "directTargetId": "microbiology:medium:chocolate-agar",
+        "encyclopediaDomains": [
+          "microbiology"
+        ],
+        "encyclopediaSection": "microbiology",
+        "hidden": false,
+        "id": "microbiology:medium:chocolate-agar",
+        "microbiology": {
+          "architectureVersion": "ani-microbiology-domain-v4",
+          "browsePath": "diagnostic-microbiology/culture-media",
+          "canonicalOwner": "Microbiology",
+          "classification": {
+            "mediumClass": "enriched"
+          },
+          "entryKind": "culture-medium",
+          "generatorVersion": "ani-microbiology-generator-v4",
+          "relationshipSchemaVersion": "ani-microbiology-relationships-v3",
+          "reviewStatus": "REVIEWED",
+          "reviewedAt": "2026-08-09",
+          "runtimeCollection": "clinicalReferenceEntries",
+          "schemaVersion": "ani-microbiology-catalog-v4",
+          "sourceEntrySha256": "57f99a3f316645dd90985caed98a322f3cfd43c26393dbaaa75bfaa5fb2eaa45",
+          "sourceKeys": [
+            "cdc-clinical-bacteriology-manual",
+            "cdc-gonorrhea-laboratory-recommendations"
+          ],
+          "taxonomyVersion": "ani-microbiology-taxonomy-v4"
+        },
+        "microbiologyKind": "culture-medium",
+        "microbiologyRelationships": [],
+        "name": "Chocolate agar",
+        "primaryDomain": "Microbiology",
+        "searchTerms": [
+          "Chocolate agar",
+          "chocolate blood agar",
+          "Haemophilus culture medium",
+          "heated blood agar",
+          "Neisseria culture medium"
+        ],
+        "sections": [
+          {
+            "content": "Chocolate agar is an enriched medium made from heated blood-containing material. Heating releases nutrients such as hemin and nicotinamide adenine dinucleotide that help demanding, or fastidious, bacteria grow; the brown color gives the medium its name and does not mean it contains chocolate.",
+            "id": "definition-composition",
+            "title": "Definition and composition"
+          },
+          {
+            "content": "Its main role is enrichment rather than selection. It supports organisms that may not grow reliably on routine blood agar, including clinically important Haemophilus and Neisseria species when the rest of the laboratory conditions are appropriate.",
+            "id": "purpose-selective-differential-basis",
+            "title": "Purpose and selective or differential basis"
+          },
+          {
+            "content": "Clinical laboratories use validated, quality-controlled formulations and choose nonselective or supplemented versions for the suspected organism and specimen. ANI does not provide a bench recipe or incubation protocol.",
+            "id": "preparation-use",
+            "title": "Preparation and use"
+          },
+          {
+            "content": "Growth indicates that a viable organism could use the enriched conditions, but colony appearance alone is not species identification. The laboratory combines growth with microscopy, biochemical, mass-spectrometric, antigen, or molecular methods.",
+            "id": "expected-growth-appearance",
+            "title": "Expected growth and appearance"
+          },
+          {
+            "content": "Chocolate agar can recover fastidious organisms from clinically appropriate specimens, but growth does not prove that the isolate caused the patient's illness. Sterile-site growth has different significance from growth in a site with normal microbiota.",
+            "id": "interpretation",
+            "title": "Interpretation"
+          },
+          {
+            "content": "Standard chocolate agar is not inherently selective, so mixed flora may obscure a target organism. Heating disrupts red cells, so hemolysis patterns cannot be interpreted the way they are on intact blood agar.",
+            "id": "limitations",
+            "title": "Limitations"
+          },
+          {
+            "content": "Potential pathogens grown on enriched medium must be handled by trained laboratory personnel under organism-appropriate containment and exposure procedures.",
+            "id": "safety-storage",
+            "title": "Safety and storage"
+          },
+          {
+            "content": "CDC clinical bacteriology and gonorrhea laboratory guidance describe chocolate-based media for recovering fastidious Neisseria and distinguish nonselective from selective formulations.",
+            "id": "sources",
+            "title": "Sources"
+          }
+        ],
+        "studentFacing": true,
+        "summary": "Chocolate agar is an enriched medium made from heated blood-containing material. Heating releases nutrients such as hemin and nicotinamide adenine dinucleotide that help demanding, or fastidious, bacteria grow; the brown color gives the medium its name and does not mean it contains chocolate.",
+        "type": "microbiology",
+        "typedAliases": [
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "chocolate blood agar"
+          }
+        ]
+      },
+      {
+        "abbreviations": [
+          "LJ medium"
+        ],
+        "aliases": [
+          "LJ medium",
+          "Lowenstein Jensen medium"
+        ],
+        "browse": {
+          "branchId": "diagnostic-microbiology/culture-media",
+          "label": "Culture media",
+          "path": [
+            "diagnostic-microbiology",
+            "culture-media"
+          ],
+          "pillarId": "diagnostic-microbiology"
+        },
+        "canonicalName": "Lowenstein-Jensen medium",
+        "category": "Microbiology / Culture media",
+        "commonMisspellings": [],
+        "crossLinkRecords": [],
+        "definition": "Lowenstein-Jensen medium is an egg-based selective solid medium used for culturing mycobacteria. Nutrients support slow-growing mycobacteria, while malachite green suppresses much of the competing flora.",
+        "directTargetId": "microbiology:medium:lowenstein-jensen-medium",
+        "encyclopediaDomains": [
+          "microbiology"
+        ],
+        "encyclopediaSection": "microbiology",
+        "hidden": false,
+        "id": "microbiology:medium:lowenstein-jensen-medium",
+        "microbiology": {
+          "architectureVersion": "ani-microbiology-domain-v4",
+          "browsePath": "diagnostic-microbiology/culture-media",
+          "canonicalOwner": "Microbiology",
+          "classification": {
+            "mediumClass": "selective"
+          },
+          "entryKind": "culture-medium",
+          "generatorVersion": "ani-microbiology-generator-v4",
+          "relationshipSchemaVersion": "ani-microbiology-relationships-v3",
+          "reviewStatus": "REVIEWED",
+          "reviewedAt": "2026-08-09",
+          "runtimeCollection": "clinicalReferenceEntries",
+          "schemaVersion": "ani-microbiology-catalog-v4",
+          "sourceEntrySha256": "5c2b5cd5504809b0cc52884df42dc12142ef2b05920ab8d1984754175a360ec6",
+          "sourceKeys": [
+            "cdc-tb-diagnosis",
+            "cdc-tb-panel-physician"
+          ],
+          "taxonomyVersion": "ani-microbiology-taxonomy-v4"
+        },
+        "microbiologyKind": "culture-medium",
+        "microbiologyRelationships": [],
+        "name": "Lowenstein-Jensen medium",
+        "primaryDomain": "Microbiology",
+        "searchTerms": [
+          "LJ medium",
+          "Lowenstein Jensen medium",
+          "Lowenstein-Jensen medium",
+          "mycobacterial culture slant",
+          "TB culture medium",
+          "tuberculosis solid culture medium"
+        ],
+        "sections": [
+          {
+            "content": "Lowenstein-Jensen medium is an egg-based selective solid medium used for culturing mycobacteria. Nutrients support slow-growing mycobacteria, while malachite green suppresses much of the competing flora.",
+            "id": "definition-composition",
+            "title": "Definition and composition"
+          },
+          {
+            "content": "It provides visible colonies and a recoverable isolate for identification, drug-susceptibility testing, and public-health typing. Culture matters because smear and nucleic-acid results alone do not provide every resistance or epidemiologic answer.",
+            "id": "purpose-selective-differential-basis",
+            "title": "Purpose and selective or differential basis"
+          },
+          {
+            "content": "Tuberculosis laboratories use validated solid and liquid culture systems, quality controls, and high-containment workflows. ANI does not provide preparation, decontamination, inoculation, or incubation instructions.",
+            "id": "preparation-use",
+            "title": "Preparation and use"
+          },
+          {
+            "content": "Mycobacterium tuberculosis complex can develop rough, buff-colored colonies, but appearance and acid-fastness are preliminary clues rather than sufficient species confirmation.",
+            "id": "expected-growth-appearance",
+            "title": "Expected growth and appearance"
+          },
+          {
+            "content": "A confirmed positive culture for Mycobacterium tuberculosis establishes laboratory evidence of TB disease in the correct clinical context. A negative culture does not always exclude TB because organism burden, specimen quality, prior therapy, and extrapulmonary disease affect yield.",
+            "id": "interpretation",
+            "title": "Interpretation"
+          },
+          {
+            "content": "Growth is slow, contamination can interfere, and nontuberculous mycobacteria can also grow. Modern laboratories therefore combine solid and liquid culture with molecular and identification methods.",
+            "id": "limitations",
+            "title": "Limitations"
+          },
+          {
+            "content": "Mycobacterial culture can generate infectious aerosols and must be performed only in an appropriately equipped laboratory by trained personnel following TB containment and exposure protocols.",
+            "id": "safety-storage",
+            "title": "Safety and storage"
+          },
+          {
+            "content": "CDC TB guidance identifies culture as the laboratory gold standard, describes Lowenstein-Jensen as a solid mycobacterial medium, and emphasizes that negative culture does not always exclude disease.",
+            "id": "sources",
+            "title": "Sources"
+          }
+        ],
+        "studentFacing": true,
+        "summary": "Lowenstein-Jensen medium is an egg-based selective solid medium used for culturing mycobacteria. Nutrients support slow-growing mycobacteria, while malachite green suppresses much of the competing flora.",
+        "type": "microbiology",
+        "typedAliases": [
+          {
+            "identity": true,
+            "kind": "abbreviation",
+            "value": "LJ medium"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Lowenstein Jensen medium"
+          }
+        ]
+      },
+      {
+        "abbreviations": [
+          "MAC agar"
+        ],
+        "aliases": [
+          "MAC agar",
+          "MacConkey medium"
+        ],
+        "browse": {
+          "branchId": "diagnostic-microbiology/culture-media",
+          "label": "Culture media",
+          "path": [
+            "diagnostic-microbiology",
+            "culture-media"
+          ],
+          "pillarId": "diagnostic-microbiology"
+        },
+        "canonicalName": "MacConkey agar",
+        "category": "Microbiology / Culture media",
+        "commonMisspellings": [],
+        "crossLinkRecords": [],
+        "definition": "MacConkey agar is a selective and differential solid medium used mainly to recover many Gram-negative enteric bacteria and compare their lactose fermentation. Bile salts and crystal violet suppress many Gram-positive organisms; lactose and the neutral-red pH indicator reveal acid production.",
+        "directTargetId": "microbiology:medium:macconkey-agar",
+        "encyclopediaDomains": [
+          "microbiology"
+        ],
+        "encyclopediaSection": "microbiology",
+        "hidden": false,
+        "id": "microbiology:medium:macconkey-agar",
+        "microbiology": {
+          "architectureVersion": "ani-microbiology-domain-v4",
+          "browsePath": "diagnostic-microbiology/culture-media",
+          "canonicalOwner": "Microbiology",
+          "classification": {
+            "mediumClass": "selective-differential"
+          },
+          "entryKind": "culture-medium",
+          "generatorVersion": "ani-microbiology-generator-v4",
+          "relationshipSchemaVersion": "ani-microbiology-relationships-v3",
+          "reviewStatus": "REVIEWED",
+          "reviewedAt": "2026-08-09",
+          "runtimeCollection": "clinicalReferenceEntries",
+          "schemaVersion": "ani-microbiology-catalog-v4",
+          "sourceEntrySha256": "45187f45c799edaeff3de01e01b66e96a8c07a32995914a0e1c44006c413ba27",
+          "sourceKeys": [
+            "fda-bam-macconkey",
+            "ncbi-macconkey-medium"
+          ],
+          "taxonomyVersion": "ani-microbiology-taxonomy-v4"
+        },
+        "microbiologyKind": "culture-medium",
+        "microbiologyRelationships": [],
+        "name": "MacConkey agar",
+        "primaryDomain": "Microbiology",
+        "searchTerms": [
+          "gram negative enteric culture medium",
+          "lactose fermentation agar",
+          "MAC agar",
+          "MacConkey agar",
+          "MacConkey medium",
+          "pink colonies MacConkey"
+        ],
+        "sections": [
+          {
+            "content": "MacConkey agar is a selective and differential solid medium used mainly to recover many Gram-negative enteric bacteria and compare their lactose fermentation. Bile salts and crystal violet suppress many Gram-positive organisms; lactose and the neutral-red pH indicator reveal acid production.",
+            "id": "definition-composition",
+            "title": "Definition and composition"
+          },
+          {
+            "content": "Selection reduces competing Gram-positive growth, while differentiation separates stronger lactose fermenters from organisms that do not ferment lactose under the test conditions. This is clinically useful because the pattern quickly narrows an enteric Gram-negative differential before definitive identification is complete.",
+            "id": "purpose-selective-differential-basis",
+            "title": "Purpose and selective or differential basis"
+          },
+          {
+            "content": "Clinical laboratories use validated, quality-controlled preparations selected for the specimen and testing algorithm. ANI explains the clinical meaning and does not provide a bench recipe or incubation protocol.",
+            "id": "preparation-use",
+            "title": "Preparation and use"
+          },
+          {
+            "content": "Lactose-fermenting colonies commonly appear pink to red because acid changes the indicator. Non-lactose-fermenting colonies remain pale or colorless. Colony texture and intensity vary and must be interpreted with Gram stain and confirmatory identification.",
+            "id": "expected-growth-appearance",
+            "title": "Expected growth and appearance"
+          },
+          {
+            "content": "A pink colony supports lactose fermentation; it does not by itself prove Escherichia coli, Klebsiella, or another species. A pale colony narrows the pattern toward a non-lactose fermenter but does not identify a pathogen or establish infection.",
+            "id": "interpretation",
+            "title": "Interpretation"
+          },
+          {
+            "content": "Some Gram-negative organisms grow poorly or not at all, weak or delayed fermentation can blur the pattern, and recovery from a nonsterile site may represent colonization. Final interpretation requires the specimen source, organism identification, and susceptibility testing when indicated.",
+            "id": "limitations",
+            "title": "Limitations"
+          },
+          {
+            "content": "Cultured organisms can be more concentrated than the patient specimen. Only trained laboratory personnel should handle plates under the required containment and quality-control procedures.",
+            "id": "safety-storage",
+            "title": "Safety and storage"
+          },
+          {
+            "content": "FDA's Bacteriological Analytical Manual documents MacConkey medium components, and NCBI diagnostic references explain its selective and lactose-differential clinical role.",
+            "id": "sources",
+            "title": "Sources"
+          }
+        ],
+        "studentFacing": true,
+        "summary": "MacConkey agar is a selective and differential solid medium used mainly to recover many Gram-negative enteric bacteria and compare their lactose fermentation. Bile salts and crystal violet suppress many Gram-positive organisms; lactose and the neutral-red pH indicator reveal acid production.",
+        "type": "microbiology",
+        "typedAliases": [
+          {
+            "identity": true,
+            "kind": "abbreviation",
+            "value": "MAC agar"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "MacConkey medium"
+          }
+        ]
+      },
+      {
+        "abbreviations": [
+          "MSA"
+        ],
+        "aliases": [
+          "MSA"
+        ],
+        "browse": {
+          "branchId": "diagnostic-microbiology/culture-media",
+          "label": "Culture media",
+          "path": [
+            "diagnostic-microbiology",
+            "culture-media"
+          ],
+          "pillarId": "diagnostic-microbiology"
+        },
+        "canonicalName": "Mannitol salt agar",
+        "category": "Microbiology / Culture media",
+        "commonMisspellings": [],
+        "crossLinkRecords": [],
+        "definition": "Mannitol salt agar is a selective and differential medium. Its high salt concentration favors salt-tolerant organisms such as many staphylococci, while mannitol and a pH indicator reveal acid produced during mannitol fermentation.",
+        "directTargetId": "microbiology:medium:mannitol-salt-agar",
+        "encyclopediaDomains": [
+          "microbiology"
+        ],
+        "encyclopediaSection": "microbiology",
+        "hidden": false,
+        "id": "microbiology:medium:mannitol-salt-agar",
+        "microbiology": {
+          "architectureVersion": "ani-microbiology-domain-v4",
+          "browsePath": "diagnostic-microbiology/culture-media",
+          "canonicalOwner": "Microbiology",
+          "classification": {
+            "mediumClass": "selective-differential"
+          },
+          "entryKind": "culture-medium",
+          "generatorVersion": "ani-microbiology-generator-v4",
+          "relationshipSchemaVersion": "ani-microbiology-relationships-v3",
+          "reviewStatus": "REVIEWED",
+          "reviewedAt": "2026-08-09",
+          "runtimeCollection": "clinicalReferenceEntries",
+          "schemaVersion": "ani-microbiology-catalog-v4",
+          "sourceEntrySha256": "8a364c46dec2f844de5c4d430dcc279446a2ef4bdc673c78e92c6527ea806116",
+          "sourceKeys": [
+            "fda-bam-mannitol-salt",
+            "ncbi-staphylococcus-medical-microbiology"
+          ],
+          "taxonomyVersion": "ani-microbiology-taxonomy-v4"
+        },
+        "microbiologyKind": "culture-medium",
+        "microbiologyRelationships": [],
+        "name": "Mannitol salt agar",
+        "primaryDomain": "Microbiology",
+        "searchTerms": [
+          "mannitol fermentation yellow agar",
+          "Mannitol salt agar",
+          "MSA",
+          "salt tolerant bacteria medium",
+          "staphylococcus selective agar"
+        ],
+        "sections": [
+          {
+            "content": "Mannitol salt agar is a selective and differential medium. Its high salt concentration favors salt-tolerant organisms such as many staphylococci, while mannitol and a pH indicator reveal acid produced during mannitol fermentation.",
+            "id": "definition-composition",
+            "title": "Definition and composition"
+          },
+          {
+            "content": "Salt provides the selective pressure and mannitol metabolism provides the differential signal. This makes the medium useful for narrowing a staphylococcal differential, but neither growth nor a color change is a species diagnosis.",
+            "id": "purpose-selective-differential-basis",
+            "title": "Purpose and selective or differential basis"
+          },
+          {
+            "content": "Clinical laboratories use validated, quality-controlled preparations as one part of an organism-identification workflow. ANI does not provide a bench recipe or incubation protocol.",
+            "id": "preparation-use",
+            "title": "Preparation and use"
+          },
+          {
+            "content": "Growth supports salt tolerance. Mannitol fermentation produces acid that commonly changes the surrounding indicator toward yellow; growth without that reaction keeps the medium closer to its original red-pink color.",
+            "id": "expected-growth-appearance",
+            "title": "Expected growth and appearance"
+          },
+          {
+            "content": "Staphylococcus aureus often grows and ferments mannitol, but other organisms can share either trait and some strains behave atypically. Confirmatory species identification and susceptibility testing remain necessary when clinically indicated.",
+            "id": "interpretation",
+            "title": "Interpretation"
+          },
+          {
+            "content": "Mixed cultures, weak fermentation, unusual strains, and non-staphylococcal salt-tolerant organisms can mislead. The result cannot distinguish colonization from infection without the specimen source and clinical syndrome.",
+            "id": "limitations",
+            "title": "Limitations"
+          },
+          {
+            "content": "Any cultured isolate should be handled only by trained laboratory personnel under required containment and quality-control procedures.",
+            "id": "safety-storage",
+            "title": "Safety and storage"
+          },
+          {
+            "content": "FDA's Bacteriological Analytical Manual documents mannitol salt agar's high-salt, mannitol, and indicator composition; NCBI Staphylococcus references support its role within a larger identification workflow.",
+            "id": "sources",
+            "title": "Sources"
+          }
+        ],
+        "studentFacing": true,
+        "summary": "Mannitol salt agar is a selective and differential medium. Its high salt concentration favors salt-tolerant organisms such as many staphylococci, while mannitol and a pH indicator reveal acid produced during mannitol fermentation.",
+        "type": "microbiology",
+        "typedAliases": [
+          {
+            "identity": true,
+            "kind": "abbreviation",
+            "value": "MSA"
+          }
+        ]
+      },
+      {
+        "abbreviations": [
+          "SDA"
+        ],
+        "aliases": [
+          "Sabouraud dextrose agar",
+          "SDA"
+        ],
+        "browse": {
+          "branchId": "diagnostic-microbiology/culture-media",
+          "label": "Culture media",
+          "path": [
+            "diagnostic-microbiology",
+            "culture-media"
+          ],
+          "pillarId": "diagnostic-microbiology"
+        },
+        "canonicalName": "Sabouraud agar",
+        "category": "Microbiology / Culture media",
+        "commonMisspellings": [],
+        "crossLinkRecords": [],
+        "definition": "Sabouraud agar is a dextrose-containing medium with an acidic environment that is widely used to recover many yeasts, molds, and dermatophytes. Some validated formulations include selective additives, so the exact laboratory medium matters.",
+        "directTargetId": "microbiology:medium:sabouraud-agar",
+        "encyclopediaDomains": [
+          "microbiology"
+        ],
+        "encyclopediaSection": "microbiology",
+        "hidden": false,
+        "id": "microbiology:medium:sabouraud-agar",
+        "microbiology": {
+          "architectureVersion": "ani-microbiology-domain-v4",
+          "browsePath": "diagnostic-microbiology/culture-media",
+          "canonicalOwner": "Microbiology",
+          "classification": {
+            "mediumClass": "special-purpose"
+          },
+          "entryKind": "culture-medium",
+          "generatorVersion": "ani-microbiology-generator-v4",
+          "relationshipSchemaVersion": "ani-microbiology-relationships-v3",
+          "reviewStatus": "REVIEWED",
+          "reviewedAt": "2026-08-09",
+          "runtimeCollection": "clinicalReferenceEntries",
+          "schemaVersion": "ani-microbiology-catalog-v4",
+          "sourceEntrySha256": "fd4e0d164f739def6abf33fc60ac785835f8d3bdadc9cdc1d431353c78eb9f99",
+          "sourceKeys": [
+            "ncbi-principles-diagnosis",
+            "pmc-sabouraud-clinical"
+          ],
+          "taxonomyVersion": "ani-microbiology-taxonomy-v4"
+        },
+        "microbiologyKind": "culture-medium",
+        "microbiologyRelationships": [],
+        "name": "Sabouraud agar",
+        "primaryDomain": "Microbiology",
+        "searchTerms": [
+          "dermatophyte culture medium",
+          "fungal culture medium",
+          "Sabouraud agar",
+          "Sabouraud dextrose agar",
+          "SDA",
+          "yeast and mold agar"
+        ],
+        "sections": [
+          {
+            "content": "Sabouraud agar is a dextrose-containing medium with an acidic environment that is widely used to recover many yeasts, molds, and dermatophytes. Some validated formulations include selective additives, so the exact laboratory medium matters.",
+            "id": "definition-composition",
+            "title": "Definition and composition"
+          },
+          {
+            "content": "The nutrient and pH conditions favor many fungi and reduce some bacterial competition. The medium supports fungal recovery; it does not identify a fungus or prove disease by itself.",
+            "id": "purpose-selective-differential-basis",
+            "title": "Purpose and selective or differential basis"
+          },
+          {
+            "content": "Clinical laboratories choose a validated formulation for the specimen and suspected fungus and use quality controls. ANI does not provide a bench recipe, incubation schedule, or environmental culturing instructions.",
+            "id": "preparation-use",
+            "title": "Preparation and use"
+          },
+          {
+            "content": "Yeasts may appear as smooth colonies and molds may develop filamentous growth with characteristic surface and reverse colors. These appearances guide the next test but are not sufficient for definitive identification.",
+            "id": "expected-growth-appearance",
+            "title": "Expected growth and appearance"
+          },
+          {
+            "content": "Growth from a sterile site can be highly significant, while growth from skin, nails, respiratory material, or another nonsterile site may reflect infection, colonization, or contamination. Identification must be matched to the body site and clinical findings.",
+            "id": "interpretation",
+            "title": "Interpretation"
+          },
+          {
+            "content": "Some medically important fungi require other media, temperatures, prolonged observation, antigen testing, molecular methods, or histopathology. Prior antifungal exposure and poor specimens can reduce recovery.",
+            "id": "limitations",
+            "title": "Limitations"
+          },
+          {
+            "content": "Unknown molds and dimorphic fungi can pose inhalation or laboratory-acquired infection risks. Only trained personnel should manipulate cultures under the laboratory's containment and referral rules.",
+            "id": "safety-storage",
+            "title": "Safety and storage"
+          },
+          {
+            "content": "Peer-reviewed clinical mycology literature and NCBI diagnostic principles describe Sabouraud media as a fungal recovery tool whose growth requires confirmatory identification and clinical correlation.",
+            "id": "sources",
+            "title": "Sources"
+          }
+        ],
+        "studentFacing": true,
+        "summary": "Sabouraud agar is a dextrose-containing medium with an acidic environment that is widely used to recover many yeasts, molds, and dermatophytes. Some validated formulations include selective additives, so the exact laboratory medium matters.",
+        "type": "microbiology",
+        "typedAliases": [
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Sabouraud dextrose agar"
+          },
+          {
+            "identity": true,
+            "kind": "abbreviation",
+            "value": "SDA"
+          }
+        ]
+      },
+      {
+        "abbreviations": [
+          "MTM agar"
+        ],
+        "aliases": [
+          "modified Thayer-Martin medium",
+          "MTM agar"
+        ],
+        "browse": {
+          "branchId": "diagnostic-microbiology/culture-media",
+          "label": "Culture media",
+          "path": [
+            "diagnostic-microbiology",
+            "culture-media"
+          ],
+          "pillarId": "diagnostic-microbiology"
+        },
+        "canonicalName": "Thayer-Martin medium",
+        "category": "Microbiology / Culture media",
+        "commonMisspellings": [],
+        "crossLinkRecords": [],
+        "definition": "Thayer-Martin medium is a selective enriched medium designed to recover pathogenic Neisseria while suppressing much of the competing bacterial and fungal flora that may be present in genital, rectal, or pharyngeal specimens.",
+        "directTargetId": "microbiology:medium:thayer-martin-medium",
+        "encyclopediaDomains": [
+          "microbiology"
+        ],
+        "encyclopediaSection": "microbiology",
+        "hidden": false,
+        "id": "microbiology:medium:thayer-martin-medium",
+        "microbiology": {
+          "architectureVersion": "ani-microbiology-domain-v4",
+          "browsePath": "diagnostic-microbiology/culture-media",
+          "canonicalOwner": "Microbiology",
+          "classification": {
+            "mediumClass": "selective"
+          },
+          "entryKind": "culture-medium",
+          "generatorVersion": "ani-microbiology-generator-v4",
+          "relationshipSchemaVersion": "ani-microbiology-relationships-v3",
+          "reviewStatus": "REVIEWED",
+          "reviewedAt": "2026-08-09",
+          "runtimeCollection": "clinicalReferenceEntries",
+          "schemaVersion": "ani-microbiology-catalog-v4",
+          "sourceEntrySha256": "8360afdfc148490b837ef1c927f0793d77dfec6503e2974b5d6df1562cbb6a3e",
+          "sourceKeys": [
+            "cdc-clinical-bacteriology-manual",
+            "cdc-gonorrhea-laboratory-recommendations",
+            "ncbi-principles-diagnosis"
+          ],
+          "taxonomyVersion": "ani-microbiology-taxonomy-v4"
+        },
+        "microbiologyKind": "culture-medium",
+        "microbiologyRelationships": [],
+        "name": "Thayer-Martin medium",
+        "primaryDomain": "Microbiology",
+        "searchTerms": [
+          "gonococcal culture agar",
+          "modified Thayer-Martin medium",
+          "MTM agar",
+          "pathogenic Neisseria culture",
+          "selective gonorrhea culture medium",
+          "Thayer-Martin medium"
+        ],
+        "sections": [
+          {
+            "content": "Thayer-Martin medium is a selective enriched medium designed to recover pathogenic Neisseria while suppressing much of the competing bacterial and fungal flora that may be present in genital, rectal, or pharyngeal specimens.",
+            "id": "definition-composition",
+            "title": "Definition and composition"
+          },
+          {
+            "content": "A chocolate-agar nutrient base supports demanding Neisseria, while selective antimicrobial components reduce common contaminants. The medium selects for a target group; it does not differentiate or identify a species by colony color alone.",
+            "id": "purpose-selective-differential-basis",
+            "title": "Purpose and selective or differential basis"
+          },
+          {
+            "content": "A clinical laboratory uses a validated current formulation, quality controls, and the specimen-specific gonorrhea culture pathway. ANI does not provide a preparation recipe, antimicrobial concentrations, or incubation instructions.",
+            "id": "preparation-use",
+            "title": "Preparation and use"
+          },
+          {
+            "content": "Suspect colonies require confirmatory testing because other organisms can occasionally grow and pathogenic Neisseria cannot be identified safely from appearance alone.",
+            "id": "expected-growth-appearance",
+            "title": "Expected growth and appearance"
+          },
+          {
+            "content": "Recovery can provide a viable isolate for confirmation and antimicrobial susceptibility testing. That matters when treatment failure, resistance surveillance, or public-health investigation requires culture even when nucleic-acid testing is also used.",
+            "id": "interpretation",
+            "title": "Interpretation"
+          },
+          {
+            "content": "Organism viability falls with poor collection or transport, selective agents may inhibit some target strains, and contamination can still occur. A negative culture does not universally exclude gonorrhea or meningococcal disease.",
+            "id": "limitations",
+            "title": "Limitations"
+          },
+          {
+            "content": "Suspected Neisseria gonorrhoeae or Neisseria meningitidis isolates require trained laboratory handling and prompt use of the facility's exposure and referral procedures.",
+            "id": "safety-storage",
+            "title": "Safety and storage"
+          },
+          {
+            "content": "CDC laboratory references and NCBI diagnostic principles describe Thayer-Martin as a selective medium for pathogenic Neisseria and emphasize confirmatory identification.",
+            "id": "sources",
+            "title": "Sources"
+          }
+        ],
+        "studentFacing": true,
+        "summary": "Thayer-Martin medium is a selective enriched medium designed to recover pathogenic Neisseria while suppressing much of the competing bacterial and fungal flora that may be present in genital, rectal, or pharyngeal specimens.",
+        "type": "microbiology",
+        "typedAliases": [
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "modified Thayer-Martin medium"
+          },
+          {
+            "identity": true,
+            "kind": "abbreviation",
+            "value": "MTM agar"
           }
         ]
       },
@@ -65548,6 +66373,11 @@
         "url": "https://www.cdc.gov/creutzfeldt-jakob/hcp/infection-control/index.html"
       },
       {
+        "key": "cdc-clinical-bacteriology-manual",
+        "title": "CDC: Laboratory Methods in Clinical Bacteriology",
+        "url": "https://stacks.cdc.gov/view/cdc/23251/cdc_23251_DS1.pdf"
+      },
+      {
         "key": "cdc-cmv-about",
         "title": "CDC: About Cytomegalovirus",
         "url": "https://www.cdc.gov/cytomegalovirus/about/index.html"
@@ -65838,6 +66668,11 @@
         "url": "https://www.cdc.gov/foodborne-outbreaks/about/index.html"
       },
       {
+        "key": "cdc-gonorrhea-laboratory-recommendations",
+        "title": "CDC: Recommendations for Laboratory-Based Detection of Chlamydia trachomatis and Neisseria gonorrhoeae",
+        "url": "https://archive.cdc.gov/www_cdc_gov/std/laboratory/2014labrec/recommendations_1711994910.htm"
+      },
+      {
         "key": "cdc-gonorrhea",
         "title": "CDC: About Gonorrhea",
         "url": "https://www.cdc.gov/gonorrhea/about/index.html"
@@ -65956,6 +66791,11 @@
         "key": "cdc-isolation-recommendations",
         "title": "CDC Recommendations for Isolation Precautions",
         "url": "https://www.cdc.gov/infection-control/hcp/isolation-precautions/recommendations.html"
+      },
+      {
+        "key": "cdc-legionella-laboratories",
+        "title": "CDC: Laboratory Testing for Legionella",
+        "url": "https://www.cdc.gov/legionella/php/laboratories/index.html"
       },
       {
         "key": "cdc-legionella",
@@ -66208,6 +67048,11 @@
         "url": "https://www.cdc.gov/tb-healthcare-settings/hcp/infection-control/index.html"
       },
       {
+        "key": "cdc-tb-panel-physician",
+        "title": "CDC: Tuberculosis Technical Instructions for Panel Physicians",
+        "url": "https://www.cdc.gov/immigrant-refugee-health/hcp/panel-physicians/tuberculosis.html"
+      },
+      {
         "key": "cdc-tetanus",
         "title": "CDC: About Tetanus",
         "url": "https://www.cdc.gov/tetanus/about/index.html"
@@ -66303,6 +67148,16 @@
         "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=83f4adcd-893c-4e9e-8f2b-e06299dcf34d"
       },
       {
+        "key": "fda-bam-macconkey",
+        "title": "FDA Bacteriological Analytical Manual: MacConkey Agar",
+        "url": "https://www.fda.gov/food/laboratory-methods-food/bam-media-m91-macconkey-agar"
+      },
+      {
+        "key": "fda-bam-mannitol-salt",
+        "title": "FDA Bacteriological Analytical Manual: Mannitol Salt Agar",
+        "url": "https://www.fda.gov/food/laboratory-methods-food/bam-media-m97-mannitol-salt-agar"
+      },
+      {
         "key": "ictv-msl",
         "title": "International Committee on Taxonomy of Viruses: Master Species List",
         "url": "https://ictv.global/msl"
@@ -66343,9 +67198,19 @@
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5186301/"
       },
       {
+        "key": "ncbi-legionella-water-systems",
+        "title": "NCBI Bookshelf: Management of Legionella in Water Systems",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK555118/"
+      },
+      {
         "key": "ncbi-lemierre-syndrome",
         "title": "NCBI Bookshelf: Lemierre Syndrome",
         "url": "https://www.ncbi.nlm.nih.gov/books/NBK499846/"
+      },
+      {
+        "key": "ncbi-macconkey-medium",
+        "title": "NCBI Bookshelf: MacConkey Medium",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK557394/"
       },
       {
         "key": "ncbi-mesh-claviceps",
@@ -66591,6 +67456,11 @@
         "key": "pmc-pseudomonas-update",
         "title": "Peer-reviewed review: Epidemiology, Pathogenesis, and Treatment of Pseudomonas aeruginosa Infections",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8572145/"
+      },
+      {
+        "key": "pmc-sabouraud-clinical",
+        "title": "PubMed Central: Clinical Comparison of Fungal Culture Media Including Sabouraud Agar",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC85742/"
       },
       {
         "key": "pmc-stec-review",

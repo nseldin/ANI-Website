@@ -9172,7 +9172,7 @@ html[data-device-mode="phone"] .lecture-download-actions button {
 html[data-device-mode="phone"] .scroll-bottom-button {
   position: fixed;
   right: calc(14px + env(safe-area-inset-right, 0px));
-  bottom: calc(178px + env(safe-area-inset-bottom, 0px));
+  bottom: calc(178px + env(safe-area-inset-bottom, 0px) + var(--ani-scroll-bottom-avoidance, 0px));
   width: 44px;
   min-height: 44px;
   border-width: 2px;

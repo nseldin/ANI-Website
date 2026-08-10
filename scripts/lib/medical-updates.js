@@ -2,19 +2,21 @@
 
 const crypto = require("node:crypto");
 const fs = require("node:fs");
+const https = require("node:https");
 const path = require("node:path");
 
 const ROOT = path.resolve(__dirname, "..", "..");
 const CONFIG_SCHEMA = "ani-medical-updates-sources-v1";
 const DATASET_SCHEMA = "ani-medical-updates-dataset-v1";
 const RUNTIME_SCHEMA = "ani-medical-updates-runtime-v1";
-const GENERATOR_VERSION = "ani-medical-updates-generator-2026-08-08.1";
+const GENERATOR_VERSION = "ani-medical-updates-generator-2026-08-09.1";
 const CONFIG_RELATIVE_PATH = "config/ani-medical-updates-sources.v1.json";
 const DATA_RELATIVE_PATH = "data/medical-updates.json";
 const RUNTIME_RELATIVE_PATH = "data/medical-updates.js";
 const SOURCE_STATUS_VALUES = Object.freeze(["current", "stale", "disabled"]);
 const REFRESH_STATUS_VALUES = Object.freeze(["CURRENT", "PARTIAL", "STALE", "PENDING_INITIAL_REFRESH"]);
 const DESCRIPTION_ORIGINS = Object.freeze(["source-provided", "unavailable"]);
+const SOURCE_TRANSPORT_VALUES = Object.freeze(["fetch", "node-https"]);
 const CATEGORY_PRIORITY = Object.freeze({
   "safety-alert": 0,
   recall: 1,
@@ -96,7 +98,17 @@ function validIso(value) {
   return Number.isFinite(parsed.getTime()) && parsed.toISOString() === value;
 }
 
-function isoDate(value) {
+function isoDate(value, policy = "standard") {
+  if (policy === "calendar-date") {
+    const matched = cleanText(value).match(/^[A-Za-z]{3},\s*(\d{2})\/(\d{2})\/(\d{4})(?:\s+-\s+\d{2}:\d{2})?$/);
+    if (!matched) return "";
+    const month = Number(matched[1]);
+    const day = Number(matched[2]);
+    const year = Number(matched[3]);
+    const parsed = new Date(Date.UTC(year, month - 1, day));
+    if (parsed.getUTCFullYear() !== year || parsed.getUTCMonth() !== month - 1 || parsed.getUTCDate() !== day) return "";
+    return parsed.toISOString();
+  }
   const parsed = new Date(value);
   return Number.isFinite(parsed.getTime()) ? parsed.toISOString() : "";
 }
@@ -195,6 +207,8 @@ function validateConfig(config) {
     if (!Array.isArray(source.feedHosts) || !source.feedHosts.length || (feedUrl && !source.feedHosts.includes(feedUrl.hostname))) add("medical-updates-source-feed-host-invalid", `${base}.feedHosts`, "feedHosts must explicitly allow the feed hostname.", source.feedHosts);
     if (!Array.isArray(source.finalItemHosts) || !source.finalItemHosts.length) add("medical-updates-source-final-hosts-invalid", `${base}.finalItemHosts`, "At least one final official item hostname is required.", source.finalItemHosts);
     if (!Array.isArray(source.intermediateItemHosts)) add("medical-updates-source-intermediate-hosts-invalid", `${base}.intermediateItemHosts`, "intermediateItemHosts must be an array.", source.intermediateItemHosts);
+    if (!SOURCE_TRANSPORT_VALUES.includes(source.transport || "fetch")) add("medical-updates-source-transport-invalid", `${base}.transport`, "transport must be fetch or node-https.", source.transport);
+    if (!["standard", "calendar-date"].includes(source.publicationDatePolicy || "standard")) add("medical-updates-source-date-policy-invalid", `${base}.publicationDatePolicy`, "publicationDatePolicy must be standard or calendar-date.", source.publicationDatePolicy);
     if (!["source-provided", "title-only"].includes(source.descriptionPolicy)) add("medical-updates-description-policy-invalid", `${base}.descriptionPolicy`, "Use source-provided or title-only.", source.descriptionPolicy);
     if (!categorySet.has(source.defaultCategory)) add("medical-updates-default-category-invalid", `${base}.defaultCategory`, "defaultCategory must be registered.", source.defaultCategory);
     ["includeTitlePatterns", "excludeTitlePatterns", "categoryRules"].forEach((field) => {
@@ -291,8 +305,54 @@ function canonicalUrl(value, source, trackingParameters = []) {
   return parsed.toString();
 }
 
+function nodeHttpsFetch(urlValue, init = {}, options = {}) {
+  const maxBytes = Number(options.maxBytes) || 2097152;
+  return new Promise((resolve, reject) => {
+    const request = https.request(new URL(urlValue), {
+      method: init.method || "GET",
+      headers: init.headers || {},
+      signal: init.signal
+    }, (response) => {
+      const chunks = [];
+      let byteCount = 0;
+      let settled = false;
+      const fail = (error) => {
+        if (settled) return;
+        settled = true;
+        response.destroy();
+        reject(error);
+      };
+      response.on("data", (chunk) => {
+        byteCount += chunk.length;
+        if (byteCount > maxBytes) {
+          fail(new Error(`Official feed exceeds the ${maxBytes}-byte limit.`));
+          return;
+        }
+        chunks.push(chunk);
+      });
+      response.on("error", fail);
+      response.on("end", () => {
+        if (settled) return;
+        settled = true;
+        const bytes = Buffer.concat(chunks);
+        const headers = new Map(Object.entries(response.headers).map(([name, value]) => [name.toLowerCase(), Array.isArray(value) ? value.join(", ") : String(value || "")]));
+        resolve({
+          status: Number(response.statusCode) || 0,
+          ok: Number(response.statusCode) >= 200 && Number(response.statusCode) < 300,
+          headers: { get(name) { return headers.get(String(name).toLowerCase()) || null; } },
+          body: { async cancel() { response.destroy(); } },
+          async arrayBuffer() { return bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength); }
+        });
+      });
+    });
+    request.on("error", reject);
+    request.end();
+  });
+}
+
 async function fetchWithPolicy(urlValue, options = {}) {
-  const fetchImpl = options.fetchImpl || globalThis.fetch;
+  const fetchImpl = options.fetchImpl
+    || (options.transport === "node-https" ? options.nodeHttpsFetchImpl || nodeHttpsFetch : globalThis.fetch);
   if (typeof fetchImpl !== "function") throw new Error("A Fetch API implementation is required.");
   const allowedHosts = new Set(options.allowedHosts || []);
   const timeoutMs = options.timeoutMs || 20000;
@@ -305,7 +365,7 @@ async function fetchWithPolicy(urlValue, options = {}) {
     const timeout = setTimeout(() => controller.abort(), timeoutMs);
     let response;
     try {
-      response = await fetchImpl(current, {
+      const requestInit = {
         method: options.method || "GET",
         redirect: "manual",
         signal: controller.signal,
@@ -313,7 +373,10 @@ async function fetchWithPolicy(urlValue, options = {}) {
           "User-Agent": options.userAgent || "ANI-Medical-Updates/1.0",
           Accept: options.accept || "application/rss+xml, application/atom+xml, application/xml, text/xml;q=0.9, */*;q=0.1"
         }
-      });
+      };
+      response = options.transport === "node-https" && !options.fetchImpl
+        ? await fetchImpl(current, requestInit, { maxBytes })
+        : await fetchImpl(current, requestInit);
       if ([301, 302, 303, 307, 308].includes(response.status)) {
         const location = response.headers.get("location");
         if (!location) throw new Error(`Redirect ${response.status} did not provide a Location header.`);
@@ -354,6 +417,7 @@ async function resolveOfficialItemUrl(value, source, config, fetchImpl) {
     maxRedirects: config.maxRedirects,
     maxBytes: config.maxFeedBytes,
     userAgent: config.userAgent,
+    transport: source.transport || "fetch",
     accept: "text/html, application/xhtml+xml, */*;q=0.1"
   });
   let resolved;
@@ -446,7 +510,7 @@ function itemContentHash(item) {
 
 function feedItemEligibility(row, source, config, nowValue = Date.now()) {
   const title = sourcePlainText(row && row.title);
-  const publishedAt = isoDate(row && row.publishedAt);
+  const publishedAt = isoDate(row && row.publishedAt, source.publicationDatePolicy || "standard");
   const category = classifyItem(source, title);
   if (!title || !publishedAt || !category) return { eligible: false, title, publishedAt, category };
   const now = new Date(nowValue);
@@ -646,7 +710,8 @@ async function refreshDataset(options = {}) {
         timeoutMs: config.requestTimeoutMs,
         maxRedirects: config.maxRedirects,
         maxBytes: config.maxFeedBytes,
-        userAgent: config.userAgent
+        userAgent: config.userAgent,
+        transport: source.transport || "fetch"
       });
       if (!/(?:rss|atom|xml|text\/plain)/i.test(feed.contentType || "") && !/^\s*<\?xml|^\s*<(?:rss|feed)\b/i.test(feed.text)) {
         throw new Error(`Official feed returned unsupported content type: ${feed.contentType || "unknown"}.`);
@@ -925,6 +990,7 @@ module.exports = {
   SOURCE_STATUS_VALUES,
   REFRESH_STATUS_VALUES,
   DESCRIPTION_ORIGINS,
+  SOURCE_TRANSPORT_VALUES,
   sha256,
   stableJson,
   cleanText,
@@ -939,6 +1005,7 @@ module.exports = {
   parseOfficialFeed,
   classifyItem,
   canonicalUrl,
+  nodeHttpsFetch,
   fetchWithPolicy,
   resolveOfficialItemUrl,
   resolveRelatedCard,
