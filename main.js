@@ -46325,7 +46325,9 @@ function updateDepth() {
 function updateFocus() {
   const focus = getConversationFocus(getActiveChat());
   const focusText = conversationFocusDisplay(focus);
-  focusLabel.textContent = `Adaptive NCLEX: ${focusText} | ${difficultyLabels[normalizeQuestionDifficulty(currentDifficulty)]}`;
+  focusLabel.textContent = ANI_LAUNCH_PROFILE === "encyclopedia"
+    ? `Encyclopedia focus: ${focusText}`
+    : `Adaptive NCLEX: ${focusText} | ${difficultyLabels[normalizeQuestionDifficulty(currentDifficulty)]}`;
 }
 
 chatForm.addEventListener("submit", (event) => {

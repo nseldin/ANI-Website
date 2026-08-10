@@ -187,13 +187,24 @@ html[data-ani-surface="website"] .learner-language-support > strong {
  */
 @media (min-width: 761px) and (max-width: 1120px) {
   html[data-ani-surface="website"] .app-shell {
+    display: flex;
+    min-height: 100dvh;
+    flex-direction: column;
+    align-items: stretch;
     grid-template-columns: minmax(0, 1fr);
   }
 
   html[data-ani-surface="website"] .instructor-stage {
+    flex: 0 0 auto;
     grid-template-columns: minmax(0, 1fr) minmax(190px, 250px);
+    grid-template-rows: auto auto;
     gap: clamp(14px, 2vw, 22px);
     padding: clamp(20px, 3vw, 30px);
+    padding-bottom: clamp(12px, 2vw, 20px);
+  }
+
+  html[data-ani-surface="website"] .stage-copy {
+    padding-left: clamp(48px, 6vw, 58px);
   }
 
   html[data-ani-surface="website"] .avatar-scene {
@@ -207,6 +218,7 @@ html[data-ani-surface="website"] .learner-language-support > strong {
 
   html[data-ani-surface="website"] .learning-workspace {
     min-height: 680px;
+    flex: 1 0 680px;
   }
 
   html[data-ani-surface="website"] .tool-pane {
@@ -465,6 +477,10 @@ html[data-ani-surface="website"] .learner-language-support > strong {
   html[data-ani-surface="website"] .tool-pane,
   html[data-ani-surface="website"] .chat-pane {
     width: 100%;
+  }
+
+  html[data-ani-surface="website"][data-device-mode="phone"] .instructor-stage {
+    grid-template-rows: auto;
   }
 
   html[data-ani-surface="website"] .tool-pane {
