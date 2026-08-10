@@ -5,6 +5,130 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "guideline-public-health",
+      "contentHash": "061f18257f5b9df3d69763824b70aeb45382d54bc9e16c1de9385ed1355952f6",
+      "description": "This report describes the risk posed by the current Ebola outbreak to the general U.S. population.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765814&_=51ACF7E6C47CA5A86C7A0066302B59243C3FFB2322A20D2CAB2FF8734A26ECA4",
+      "id": "medical-update:cdc-mmwr:f31bb0861f965eae1ee9abc1",
+      "publishedAt": "2026-06-11T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Alcohol Consumption During Pregnancy Among Women Aged 18-49 Years - United States, 2021-2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7522a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "33c489e69902d84beff848c2ead1505d9d01358be3ed266def9e712e9edbe2cc",
+      "description": "This report describes the risk posed by the current Ebola outbreak to the general U.S. population.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765736&_=A8CC04FEC34BD00597BD5F702EB4F8186276C6683F912A2A75D9F15C2CA84D9A",
+      "id": "medical-update:cdc-mmwr:dd30c14ccc2b5eda71a18b89",
+      "publishedAt": "2026-06-11T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Assessment of Risk to the U.S. Population from the Ebola Disease Outbreak Caused by Bundibugyo Virus, 2026",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7522e2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "50e88ecd0d836aadfa35e8af011c9c96ba0e253901d07d3353ed93aa3b57a76c",
+      "description": "This report describes using a transmission model to project Ebola outbreak growth over three months.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765813&_=17AB00A3B594BEF26D8292121CE7476636B5D310CC27CAF6CB2F621881CBE7D9",
+      "id": "medical-update:cdc-mmwr:bed859d0fd4810664233dfae",
+      "publishedAt": "2026-06-11T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Legionnaires disease",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Legionnaires Disease Associated with a Private-Use Hot Tub in a Vacation Rental Property - New York, October 2024-April 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7522a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "af0d91560de1cf5bfe7fbd2c4da5c1d2a5f6bd6baed4e0e1a2ee568b1ecd4354",
+      "description": "This report describes using a transmission model to project Ebola outbreak growth over three months.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765739&_=4BCC4F57695950573D09AAF1DA5793AE1AEACDCD286A125F06E7AE24EE35E11D",
+      "id": "medical-update:cdc-mmwr:8ded03c2c3471075694225e2",
+      "publishedAt": "2026-06-11T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Modeled Scenario Projections for the Ebola Disease Outbreak Caused by Bundibugyo Virus, 2026",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7522e1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "abb22a2882de67424cdb25c063c817764077523a787d5e6eb770cf6265d2b2ef",
+      "description": "This report describes a large outbreak of Bundibugyo virus disease identified in the Democratic Republic of the Congo and Uganda.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765735&_=39D20D0CB991A529CE21AB08A2AD3EEFEE052FB678D1AE266597FFD935FB8C6A",
+      "id": "medical-update:cdc-mmwr:8324a86203bac4a4b13ea677",
+      "publishedAt": "2026-06-11T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Notes from the Field: Outbreak of Ebola Disease Caused by Bundibugyo Virus - Democratic Republic of the Congo and Uganda, May 2026",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7522e3.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "ec6e761aecfb362ab5dc0127c1e729b960f1b0ed8005ea5af3d09de46046258e",
+      "description": "This report describes a large outbreak of Bundibugyo virus disease identified in the Democratic Republic of the Congo and Uganda.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765815&_=75F09AD637FE7E9F66F5485AE7EEA65F2E4C96B5A4AA5050D64656CDF8A89560",
+      "id": "medical-update:cdc-mmwr:21a4caab68ecb918b295d136",
+      "publishedAt": "2026-06-11T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Colorectal cancer",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "QuickStats: Age-Adjusted Colorectal Cancer Death Rates, by State - United States, 2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7522a3.htm"
+    },
+    {
       "category": "drug-approval",
       "contentHash": "97a73de7fd202fef857105aebdf2318d5cfdcfd135d5a2a447e3d477d9e03dfb",
       "description": "FDA today issued an Emergency Use Authorization (EUA) for generic Nitenpyram Tablets (nitenpyram) for the treatment of New World screwworm (NWS) infestations (myiasis) in dogs, puppies, cats, and kittens that weigh at least two pounds and are at least four weeks old.",
@@ -1656,7 +1780,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-10T15:34:06.868Z",
+  "generatedAt": "2026-08-10T20:25:20.774Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -1676,8 +1800,24 @@
       "url": "https://www.fda.gov/drugs/news-events-human-drugs/advancing-generic-drug-development-leveraging-model-integrated-evidence-mie-development-approval"
     },
     {
+      "category": "safety-alert",
+      "contentHash": "27f83dbf5e0328591034b51e88c0ffcd11e352cdda1a5356a178918b2e017d99",
+      "description": "Abiomed and Oscor have identified a potential for introducer sheath leakage in 14Fr and 23Fr Introducers that may increase the risk of access-site bleeding.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/catheter-introducer-correction-abiomed-and-oscor-issue-correction-catheter-introducer",
+      "id": "medical-update:fda-medwatch:cf6a235cafb5a9e4e891b283",
+      "publishedAt": "2026-08-10T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-10T20:25:20.774Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Catheter Introducer Correction: Abiomed and Oscor Issue Correction for Catheter Introducer",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/catheter-introducer-correction-abiomed-and-oscor-issue-correction-catheter-introducer"
+    },
+    {
       "category": "recall",
-      "contentHash": "5e6609f5d741a6f8261f2eabd3be1c283a919eb709c72026946fbfc4ff2c7ae7",
+      "contentHash": "cdecd0a5268838af9cb6e26d35872ebb729acbabc9a46a00e71001513de8d9bd",
       "description": "Salinas, Calif., August 9, 2026 – Upon notification that Coast Citrus Distributors is voluntarily recalling fresh jalapeños due to potential Salmonella contamination, Taylor Fresh Foods is recalling finished products containing jalapeños subject to this recall.Salmonella, an organism which can cause",
       "descriptionOrigin": "source-provided",
       "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/taylor-fresh-foods-recalls-products-made-jalapeno-peppers-because-possible-health-risk",
@@ -1688,7 +1828,7 @@
       "sourceCategories": [],
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
-      "title": "Taylor Fresh Foods Recalls Products Made With Jalapeno Peppers Because of Possible Health Risk",
+      "title": "Taylor Fresh Foods Recalls Products Made with Jalapeno Peppers Because of Possible Health Risk",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/taylor-fresh-foods-recalls-products-made-jalapeno-peppers-because-possible-health-risk"
     },
     {
@@ -3027,130 +3167,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "title": "FDA Approves New Indication for Tzield (teplizumab) for Certain Pediatric Patients with Recently Diagnosed Stage 3 Type 1 Diabetes",
       "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-new-indication-tzield-teplizumab-certain-pediatric-patients-recently-diagnosed-stage-3"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "061f18257f5b9df3d69763824b70aeb45382d54bc9e16c1de9385ed1355952f6",
-      "description": "This report describes the risk posed by the current Ebola outbreak to the general U.S. population.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765814&_=51ACF7E6C47CA5A86C7A0066302B59243C3FFB2322A20D2CAB2FF8734A26ECA4",
-      "id": "medical-update:cdc-mmwr:f31bb0861f965eae1ee9abc1",
-      "publishedAt": "2026-06-11T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Alcohol Consumption During Pregnancy Among Women Aged 18-49 Years - United States, 2021-2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7522a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "33c489e69902d84beff848c2ead1505d9d01358be3ed266def9e712e9edbe2cc",
-      "description": "This report describes the risk posed by the current Ebola outbreak to the general U.S. population.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765736&_=A8CC04FEC34BD00597BD5F702EB4F8186276C6683F912A2A75D9F15C2CA84D9A",
-      "id": "medical-update:cdc-mmwr:dd30c14ccc2b5eda71a18b89",
-      "publishedAt": "2026-06-11T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Assessment of Risk to the U.S. Population from the Ebola Disease Outbreak Caused by Bundibugyo Virus, 2026",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7522e2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "50e88ecd0d836aadfa35e8af011c9c96ba0e253901d07d3353ed93aa3b57a76c",
-      "description": "This report describes using a transmission model to project Ebola outbreak growth over three months.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765813&_=17AB00A3B594BEF26D8292121CE7476636B5D310CC27CAF6CB2F621881CBE7D9",
-      "id": "medical-update:cdc-mmwr:bed859d0fd4810664233dfae",
-      "publishedAt": "2026-06-11T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Legionnaires disease",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Legionnaires Disease Associated with a Private-Use Hot Tub in a Vacation Rental Property - New York, October 2024-April 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7522a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "af0d91560de1cf5bfe7fbd2c4da5c1d2a5f6bd6baed4e0e1a2ee568b1ecd4354",
-      "description": "This report describes using a transmission model to project Ebola outbreak growth over three months.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765739&_=4BCC4F57695950573D09AAF1DA5793AE1AEACDCD286A125F06E7AE24EE35E11D",
-      "id": "medical-update:cdc-mmwr:8ded03c2c3471075694225e2",
-      "publishedAt": "2026-06-11T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Modeled Scenario Projections for the Ebola Disease Outbreak Caused by Bundibugyo Virus, 2026",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7522e1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "abb22a2882de67424cdb25c063c817764077523a787d5e6eb770cf6265d2b2ef",
-      "description": "This report describes a large outbreak of Bundibugyo virus disease identified in the Democratic Republic of the Congo and Uganda.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765735&_=39D20D0CB991A529CE21AB08A2AD3EEFEE052FB678D1AE266597FFD935FB8C6A",
-      "id": "medical-update:cdc-mmwr:8324a86203bac4a4b13ea677",
-      "publishedAt": "2026-06-11T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Notes from the Field: Outbreak of Ebola Disease Caused by Bundibugyo Virus - Democratic Republic of the Congo and Uganda, May 2026",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7522e3.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "ec6e761aecfb362ab5dc0127c1e729b960f1b0ed8005ea5af3d09de46046258e",
-      "description": "This report describes a large outbreak of Bundibugyo virus disease identified in the Democratic Republic of the Congo and Uganda.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765815&_=75F09AD637FE7E9F66F5485AE7EEA65F2E4C96B5A4AA5050D64656CDF8A89560",
-      "id": "medical-update:cdc-mmwr:21a4caab68ecb918b295d136",
-      "publishedAt": "2026-06-11T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Colorectal cancer",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "QuickStats: Age-Adjusted Colorectal Cancer Death Rates, by State - United States, 2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7522a3.htm"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -3162,8 +3178,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 0,
-      "retrievedAt": "2026-08-10T15:34:06.868Z",
+      "retainedItemCount": 1,
+      "retrievedAt": "2026-08-10T20:25:20.774Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3174,18 +3190,18 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-08-10T15:34:06.868Z",
+      "retrievedAt": "2026-08-10T20:25:20.774Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 3,
+      "itemCount": 2,
       "rawItemCount": 20,
-      "rejectedItemCount": 17,
-      "retainedItemCount": 3,
-      "retrievedAt": "2026-08-10T15:34:06.868Z",
+      "rejectedItemCount": 18,
+      "retainedItemCount": 4,
+      "retrievedAt": "2026-08-10T20:25:20.774Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -3196,7 +3212,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-10T15:34:06.868Z",
+      "retrievedAt": "2026-08-10T20:25:20.774Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -3207,7 +3223,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 10,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-10T15:34:06.868Z",
+      "retrievedAt": "2026-08-10T20:25:20.774Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -3218,7 +3234,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-10T15:34:06.868Z",
+      "retrievedAt": "2026-08-10T20:25:20.774Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -3229,7 +3245,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-10T15:34:06.868Z",
+      "retrievedAt": "2026-08-10T20:25:20.774Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -3240,7 +3256,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-10T15:34:06.868Z",
+      "retrievedAt": "2026-08-10T20:25:20.774Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -3251,7 +3267,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-10T15:34:06.868Z",
+      "retrievedAt": "2026-08-10T20:25:20.774Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
