@@ -2,6 +2,22 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "drug-approval",
+      "contentHash": "97a73de7fd202fef857105aebdf2318d5cfdcfd135d5a2a447e3d477d9e03dfb",
+      "description": "FDA today issued an Emergency Use Authorization (EUA) for generic Nitenpyram Tablets (nitenpyram) for the treatment of New World screwworm (NWS) infestations (myiasis) in dogs, puppies, cats, and kittens that weigh at least two pounds and are at least four weeks old.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/news-events/press-announcements/fda-issues-emergency-use-authorization-generic-over-counter-drug-treat-new-world-screwworm-dogs-and",
+      "id": "medical-update:fda-press-releases:b069e357849c36f10980d34a",
+      "publishedAt": "2026-06-11T12:21:28.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-press-releases",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
+      "title": "FDA Issues Emergency Use Authorization for Generic Over-the-Counter Drug to Treat New World Screwworm in Dogs and Cats",
+      "url": "https://www.fda.gov/news-events/press-announcements/fda-issues-emergency-use-authorization-generic-over-counter-drug-treat-new-world-screwworm-dogs-and"
+    },
+    {
       "category": "guideline-public-health",
       "contentHash": "29e063f5fbd73749d05b8a9e5c094a0ca1cf342bb26a3120b8e53bb0f03fce51",
       "description": "This report describes characteristics of patients who were hospitalized during a large measles outbreak in west Texas.",
@@ -1615,15 +1631,63 @@
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "title": "Outbreak of Neisseria meningitidis Conjunctivitis in Military Trainees - Texas, February-May 2025",
       "url": "https://www.cdc.gov/mmwr/volumes/74/wr/mm7433a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "16358e1fc2aab8b62bf3acea7a41f99bd5003085e7bce9bdbc08839429ce4aa9",
+      "description": null,
+      "descriptionOrigin": "unavailable",
+      "guid": "urn:uuid:432a1617-e2c5-4041-8b77-46838ced7106",
+      "id": "medical-update:who-news:b880d59ee6db0644699da701",
+      "publishedAt": "2024-07-31T05:00:27.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-10T15:34:06.868Z",
+      "sourceCategories": [],
+      "sourceId": "who-news",
+      "sourceName": "World Health Organization (WHO)",
+      "title": "India commits US$ 85 million to WHO Global Traditional Medicine Centre",
+      "url": "https://www.who.int/news/item/31-07-2024-india-commits-usd-85-million-to-who-global-traditional-medicine-centre"
     }
   ],
   "archivePolicy": "retain",
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-10T04:22:13.815Z",
+  "generatedAt": "2026-08-10T15:34:06.868Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "drug-approval",
+      "contentHash": "ecbd87d0a02c818e3cfcf8f743d1b63ee986ee2f82bf039ce4acd164b9064d06",
+      "description": "This half-day workshop includes a series of expert-lead presentations and audience Q&A sessions focused on the latest advancements and regulatory considerations in the evolving field of Model-Integrated Evidence (MIE)-supported generic drug development and approval.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/news-events-human-drugs/advancing-generic-drug-development-leveraging-model-integrated-evidence-mie-development-approval",
+      "id": "medical-update:fda-drugs:425ef2228a0b47f7ba0da756",
+      "publishedAt": "2026-08-10T14:43:36.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-10T15:34:06.868Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Advancing Generic Drug Development: Leveraging Model-Integrated Evidence (MIE) in the Development & Approval of Generic Drugs - 08/27/2026",
+      "url": "https://www.fda.gov/drugs/news-events-human-drugs/advancing-generic-drug-development-leveraging-model-integrated-evidence-mie-development-approval"
+    },
+    {
+      "category": "recall",
+      "contentHash": "5e6609f5d741a6f8261f2eabd3be1c283a919eb709c72026946fbfc4ff2c7ae7",
+      "description": "Salinas, Calif., August 9, 2026 – Upon notification that Coast Citrus Distributors is voluntarily recalling fresh jalapeños due to potential Salmonella contamination, Taylor Fresh Foods is recalling finished products containing jalapeños subject to this recall.Salmonella, an organism which can cause",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/taylor-fresh-foods-recalls-products-made-jalapeno-peppers-because-possible-health-risk",
+      "id": "medical-update:fda-recalls:c702952e07a5ceb878169ade",
+      "publishedAt": "2026-08-09T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-10T15:34:06.868Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Taylor Fresh Foods Recalls Products Made With Jalapeno Peppers Because of Possible Health Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/taylor-fresh-foods-recalls-products-made-jalapeno-peppers-because-possible-health-risk"
+    },
     {
       "category": "recall",
       "contentHash": "714193891e3ba4ea33692c5d07133642d94030e8848865b4e3764ad3fd1a6b58",
@@ -3084,25 +3148,9 @@
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "title": "QuickStats: Age-Adjusted Colorectal Cancer Death Rates, by State - United States, 2024",
       "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7522a3.htm"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "97a73de7fd202fef857105aebdf2318d5cfdcfd135d5a2a447e3d477d9e03dfb",
-      "description": "FDA today issued an Emergency Use Authorization (EUA) for generic Nitenpyram Tablets (nitenpyram) for the treatment of New World screwworm (NWS) infestations (myiasis) in dogs, puppies, cats, and kittens that weigh at least two pounds and are at least four weeks old.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/news-events/press-announcements/fda-issues-emergency-use-authorization-generic-over-counter-drug-treat-new-world-screwworm-dogs-and",
-      "id": "medical-update:fda-press-releases:b069e357849c36f10980d34a",
-      "publishedAt": "2026-06-11T12:21:28.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-press-releases",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
-      "title": "FDA Issues Emergency Use Authorization for Generic Over-the-Counter Drug to Treat New World Screwworm in Dogs and Cats",
-      "url": "https://www.fda.gov/news-events/press-announcements/fda-issues-emergency-use-authorization-generic-over-counter-drug-treat-new-world-screwworm-dogs-and"
     }
   ],
-  "refreshStatus": "PARTIAL",
+  "refreshStatus": "CURRENT",
   "schemaVersion": "ani-medical-updates-dataset-v1",
   "sourceConfigSha256": "bcda90ac53015cf0b9744061bc08ad8442b6173b990e7125516874c39b76e0db",
   "sourceStatuses": [
@@ -3112,7 +3160,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "retrievedAt": "2026-08-10T15:34:06.868Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3122,19 +3170,19 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "retainedItemCount": 1,
+      "retrievedAt": "2026-08-10T15:34:06.868Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 5,
+      "itemCount": 3,
       "rawItemCount": 20,
-      "rejectedItemCount": 15,
-      "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "rejectedItemCount": 17,
+      "retainedItemCount": 3,
+      "retrievedAt": "2026-08-10T15:34:06.868Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -3145,7 +3193,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "retrievedAt": "2026-08-10T15:34:06.868Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -3156,21 +3204,21 @@
       "rawItemCount": 20,
       "rejectedItemCount": 10,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "retrievedAt": "2026-08-10T15:34:06.868Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
     },
     {
-      "error": "Awaiting first scheduled official-source refresh.",
+      "error": null,
       "itemCount": 0,
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": null,
+      "retrievedAt": "2026-08-10T15:34:06.868Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
-      "status": "stale"
+      "status": "current"
     },
     {
       "error": null,
@@ -3178,7 +3226,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "retrievedAt": "2026-08-10T15:34:06.868Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -3189,7 +3237,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "retrievedAt": "2026-08-10T15:34:06.868Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -3200,7 +3248,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "retrievedAt": "2026-08-10T15:34:06.868Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
