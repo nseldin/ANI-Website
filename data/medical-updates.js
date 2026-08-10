@@ -1618,13 +1618,29 @@
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "title": "Outbreak of Neisseria meningitidis Conjunctivitis in Military Trainees - Texas, February-May 2025",
       "url": "https://www.cdc.gov/mmwr/volumes/74/wr/mm7433a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "16358e1fc2aab8b62bf3acea7a41f99bd5003085e7bce9bdbc08839429ce4aa9",
+      "description": null,
+      "descriptionOrigin": "unavailable",
+      "guid": "urn:uuid:432a1617-e2c5-4041-8b77-46838ced7106",
+      "id": "medical-update:who-news:b880d59ee6db0644699da701",
+      "publishedAt": "2024-07-31T05:00:27.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-10T05:11:54.574Z",
+      "sourceCategories": [],
+      "sourceId": "who-news",
+      "sourceName": "World Health Organization (WHO)",
+      "title": "India commits US$ 85 million to WHO Global Traditional Medicine Centre",
+      "url": "https://www.who.int/news/item/31-07-2024-india-commits-usd-85-million-to-who-global-traditional-medicine-centre"
     }
   ],
   "archivePolicy": "retain",
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-10T04:22:13.815Z",
+  "generatedAt": "2026-08-10T05:11:54.574Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -3105,7 +3121,7 @@
       "url": "https://www.fda.gov/news-events/press-announcements/fda-issues-emergency-use-authorization-generic-over-counter-drug-treat-new-world-screwworm-dogs-and"
     }
   ],
-  "refreshStatus": "PARTIAL",
+  "refreshStatus": "CURRENT",
   "schemaVersion": "ani-medical-updates-runtime-v1",
   "sourceConfigSha256": "bcda90ac53015cf0b9744061bc08ad8442b6173b990e7125516874c39b76e0db",
   "sourceStatuses": [
@@ -3115,7 +3131,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "retrievedAt": "2026-08-10T05:11:54.574Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3126,7 +3142,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "retrievedAt": "2026-08-10T05:11:54.574Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -3137,7 +3153,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 15,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "retrievedAt": "2026-08-10T05:11:54.574Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -3148,7 +3164,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "retrievedAt": "2026-08-10T05:11:54.574Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -3159,21 +3175,21 @@
       "rawItemCount": 20,
       "rejectedItemCount": 10,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "retrievedAt": "2026-08-10T05:11:54.574Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
     },
     {
-      "error": "Awaiting first scheduled official-source refresh.",
+      "error": null,
       "itemCount": 0,
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": null,
+      "retrievedAt": "2026-08-10T05:11:54.574Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
-      "status": "stale"
+      "status": "current"
     },
     {
       "error": null,
@@ -3181,7 +3197,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "retrievedAt": "2026-08-10T05:11:54.574Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -3192,7 +3208,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "retrievedAt": "2026-08-10T05:11:54.574Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -3203,7 +3219,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "retrievedAt": "2026-08-10T05:11:54.574Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
