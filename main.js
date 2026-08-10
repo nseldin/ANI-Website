@@ -5417,12 +5417,8 @@ function ensureClinicalReferenceResultMeanings(entry = {}) {
   if (entry.type === "foundation" || entry.educationalArticle === true || isMicrobiologyReferenceEntry(entry) || isSurgeryProcedureReferenceEntry(entry)) return entry;
   const existing = normalizeClinicalResultMeaningRows(entry.resultMeanings);
   if (existing.length) return { ...entry, resultMeanings: existing };
-  const fallback = BASE_CLINICAL_RESULT_MEANINGS[entry.name] || [
-    ["Expected / reassuring", `${clinicalReferenceDisplayName(entry) || entry.name} does not show the targeted abnormality in the available result.`],
-    ["Abnormal / concerning", `${clinicalReferenceDisplayName(entry) || entry.name} shows a finding that changes assessment, monitoring, treatment direction, or follow-up.`],
-    ["Clinical significance", "Interpret the result with symptoms, vital signs, timing, baseline risk, and whether the client is stable or deteriorating."]
-  ];
-  return { ...entry, resultMeanings: normalizeClinicalResultMeaningRows(fallback) };
+  const reviewed = BASE_CLINICAL_RESULT_MEANINGS[entry.name] || [];
+  return { ...entry, resultMeanings: normalizeClinicalResultMeaningRows(reviewed) };
 }
 
 const clinicalReferenceEntries = (() => {
@@ -18367,20 +18363,21 @@ function appendLearnerLanguageSupport(container, item = {}, options = {}) {
   if (!container || !item) return false;
   const standard = window.ANI_LEARNER_LANGUAGE_STANDARD;
   if (!standard || typeof standard.supportForItem !== "function") return false;
-  const support = standard.supportForItem(item, { maxGlosses: 6 });
+  const support = standard.supportForItem(item, {
+    maxGlosses: 6,
+    maxInferredGlosses: 3,
+    visibleText: safeText(options.visibleText)
+  });
   const plainLanguage = options.includePlainLanguage === false ? "" : safeText(support.plainLanguage);
-  const whyItMatters = options.includeWhyItMatters === false
-    ? ""
-    : safeText(options.whyItMatters || support.whyItMatters);
   const glosses = Array.isArray(support.glosses) ? support.glosses.filter((entry) => entry && entry.term && entry.plainLanguage) : [];
   const hasReviewedGlosses = Boolean(standard.explicitGlosses?.(item)?.length);
-  if (!support.analysis?.supportRecommended && !hasReviewedGlosses) return false;
+  if (!glosses.length || (!support.analysis?.supportRecommended && !hasReviewedGlosses)) return false;
 
   const existingText = normalizePharmText(container.textContent || "");
   const uniquePlainLanguage = plainLanguage && !existingText.includes(normalizePharmText(plainLanguage)) ? plainLanguage : "";
-  const uniqueWhyItMatters = whyItMatters && !existingText.includes(normalizePharmText(whyItMatters)) ? whyItMatters : "";
   const uniqueGlosses = glosses.filter((entry) => !existingText.includes(normalizePharmText(entry.plainLanguage)));
-  if (!uniquePlainLanguage && !uniqueWhyItMatters && !uniqueGlosses.length) return false;
+  const reviewedPlainLanguage = hasReviewedGlosses ? uniquePlainLanguage : "";
+  if (!reviewedPlainLanguage && !uniqueGlosses.length) return false;
 
   const section = document.createElement("section");
   section.className = "learner-language-support";
@@ -18407,8 +18404,7 @@ function appendLearnerLanguageSupport(container, item = {}, options = {}) {
     grid.append(row);
   };
 
-  addRow("In everyday words", uniquePlainLanguage, "is-plain-language");
-  addRow("Why this matters", uniqueWhyItMatters, "is-clinical-importance");
+  addRow("In everyday words", reviewedPlainLanguage, "is-plain-language");
   uniqueGlosses.forEach((entry) => addRow(entry.term, entry.plainLanguage, "is-glossary-term"));
   section.append(heading, grid);
   container.append(section);
@@ -21161,19 +21157,15 @@ function relatedPathologyTreatmentMedications(disease = {}) {
 function appendPathologyTreatmentMedicationSection(disease = {}) {
   const medications = relatedPathologyTreatmentMedications(disease);
 
+  // A missing reviewed disease-medication relationship is validation evidence,
+  // not learner-facing medical content. Keep the treatment section authored by
+  // the card and omit this generated navigation block until exact links exist.
+  if (!medications.length) return false;
+
   const section = document.createElement("section");
   section.className = "pathology-treatment-med-section";
   const heading = document.createElement("strong");
   heading.textContent = "Safety-reviewed treatment medication references";
-
-  if (!medications.length) {
-    const note = document.createElement("p");
-    note.className = "pathology-treatment-med-note";
-    note.textContent = "ANI does not infer treatment drugs from warnings, contraindications, prevention, postoperative care, or related complications. No medication buttons are shown until the condition-drug pair has completed a direct-treatment safety review. Use the treatment section for the current disease-specific explanation.";
-    section.append(heading, note);
-    pharmDrugDetail.append(section);
-    return true;
-  }
 
   const grid = document.createElement("div");
   grid.className = "pathology-treatment-med-grid";
@@ -25091,12 +25083,7 @@ function isCkdPathology(disease = {}) {
 }
 
 function isGfrLab(lab = {}) {
-  return /\b(egfr|gfr|glomerular filtration|glomerular filtration rate|creatinine\/egfr)\b/i.test([
-    lab.name,
-    lab.category,
-    lab.range,
-    lab.why
-  ].join(" "));
+  return labTextIncludes(lab, ["egfr", "gfr", "glomerular filtration", "glomerular filtration rate", "creatinine egfr"]);
 }
 
 function buildCkdStageDetailSection() {
@@ -32290,15 +32277,19 @@ function renderHolisticIndex() {
 }
 
 function labTextIncludes(lab = {}, patterns = []) {
-  const text = normalizePharmText([lab.name, lab.category, lab.populationGroup, lab.why, lab.range].join(" "));
-  return patterns.some((pattern) => text.includes(pattern));
+  const identities = [lab.name, lab.displayName, ...(lab.aliases || []), ...(lab.abbreviations || [])]
+    .map((value) => normalizePharmText(value))
+    .filter(Boolean);
+  return patterns.some((pattern) => {
+    const needle = normalizePharmText(pattern);
+    if (!needle) return false;
+    return identities.some((identity) => identity === needle || ` ${identity} `.includes(` ${needle} `));
+  });
 }
 
 function labTeachingSections(lab = {}) {
   const name = safeText(lab.name, "this lab");
-  const lowerName = normalizePharmText(name);
-
-  if (lowerName === "calcium" || lowerName.includes("ionized calcium")) {
+  if (labTextIncludes(lab, ["calcium", "ionized calcium"])) {
     return [
       ["What this lab tells you", "Calcium reflects neuromuscular excitability, cardiac conduction, parathyroid/vitamin D balance, renal handling, bone metabolism, and albumin binding. Ionized calcium is the physiologically active calcium."],
       ["Low pattern: hypocalcemia", "Think numbness/tingling around the mouth or fingers, muscle cramps, tetany, Chvostek/Trousseau signs, laryngospasm, seizures, prolonged QT, and dysrhythmias. After thyroid/parathyroid surgery, new tingling is a red flag."],
@@ -32421,11 +32412,7 @@ function labTeachingSections(lab = {}) {
     ];
   }
 
-  return [
-    ["How to read it clinically", `${name} should be read as a trend plus a patient picture: symptoms, vital signs, medications, age/pregnancy status, hydration, kidney/liver function, and the lab's printed reference range.`],
-    ["Priority nursing actions", "Verify whether the value is expected or new, assess the client before reacting to the number alone, compare to previous values, check related labs, and use hold/question/report parameters when safety is at stake."],
-    ["Common NCLEX trap / nuance", "NCLEX usually tests what the nurse does with the abnormal trend: monitor, hold, question, report, protect airway/breathing/circulation, prevent injury, or prepare for ordered treatment."]
-  ];
+  return [];
 }
 
 function renderPharmLabDetail(lab = activePharmLabResults[0]) {
@@ -32475,13 +32462,18 @@ function renderPharmLabDetail(lab = activePharmLabResults[0]) {
       appendMemoryBridgeSections(pharmDrugDetail, lab);
       learnerSupportRendered = appendLearnerLanguageSupport(pharmDrugDetail, lab, {
         currentLabel: lab.name,
+        visibleText: lab.range,
         includeWhyItMatters: false
       }) || learnerSupportRendered;
     }
   });
   if (!authoredPresentationAttempted) appendAuthoredPresentationVisuals(lab);
   if (!learnerSupportRendered) {
-    appendLearnerLanguageSupport(pharmDrugDetail, lab, { currentLabel: lab.name, includeWhyItMatters: false });
+    appendLearnerLanguageSupport(pharmDrugDetail, lab, {
+      currentLabel: lab.name,
+      visibleText: lab.range,
+      includeWhyItMatters: false
+    });
   }
   if (isGfrLab(lab)) {
     pharmDrugDetail.append(buildCkdStageDetailSection());
@@ -33606,6 +33598,7 @@ function renderClinicalReferenceDetail(entry = activeClinicalReferenceResults[0]
       }
       learnerSupportRendered = appendLearnerLanguageSupport(pharmDrugDetail, entry, {
         currentLabel: clinicalReferenceDisplayName(entry),
+        visibleText: entry.quickAnswer,
         includeWhyItMatters: false
       }) || learnerSupportRendered;
     }
@@ -33626,6 +33619,7 @@ function renderClinicalReferenceDetail(entry = activeClinicalReferenceResults[0]
   if (!learnerSupportRendered) {
     appendLearnerLanguageSupport(pharmDrugDetail, entry, {
       currentLabel: clinicalReferenceDisplayName(entry),
+      visibleText: entry.quickAnswer,
       includeWhyItMatters: false
     });
   }
@@ -33830,7 +33824,10 @@ function renderPathologyDetail(disease = activePathologyResults[0]) {
       appendAuthoredPresentationVisuals(disease);
       authoredPresentationAttempted = true;
       appendMemoryBridgeSections(pharmDrugDetail, disease);
-      learnerSupportRendered = appendLearnerLanguageSupport(pharmDrugDetail, disease, { currentLabel: disease.name }) || learnerSupportRendered;
+      learnerSupportRendered = appendLearnerLanguageSupport(pharmDrugDetail, disease, {
+        currentLabel: disease.name,
+        visibleText: firstGlanceText
+      }) || learnerSupportRendered;
     }
     if (isAlterationSection && isCkdPathology(disease)) {
       pharmDrugDetail.append(buildCkdStageDetailSection());
@@ -33844,7 +33841,10 @@ function renderPathologyDetail(disease = activePathologyResults[0]) {
   });
   if (!authoredPresentationAttempted) appendAuthoredPresentationVisuals(disease);
   if (!learnerSupportRendered) {
-    appendLearnerLanguageSupport(pharmDrugDetail, disease, { currentLabel: disease.name });
+    appendLearnerLanguageSupport(pharmDrugDetail, disease, {
+      currentLabel: disease.name,
+      visibleText: firstGlanceText
+    });
   }
   if (!treatmentMedicationsAppended) {
     appendPathologyTreatmentMedicationSection(disease);
@@ -33962,12 +33962,18 @@ function renderHolisticDetail(remedy = activeHolisticResults[0]) {
       appendAuthoredPresentationVisuals(remedy);
       authoredPresentationAttempted = true;
       appendMemoryBridgeSections(pharmDrugDetail, remedy);
-      learnerSupportRendered = appendLearnerLanguageSupport(pharmDrugDetail, remedy, { currentLabel: remedy.name }) || learnerSupportRendered;
+      learnerSupportRendered = appendLearnerLanguageSupport(pharmDrugDetail, remedy, {
+        currentLabel: remedy.name,
+        visibleText: holisticListText(remedy.usedFor)
+      }) || learnerSupportRendered;
     }
   });
   if (!authoredPresentationAttempted) appendAuthoredPresentationVisuals(remedy);
   if (!learnerSupportRendered) {
-    appendLearnerLanguageSupport(pharmDrugDetail, remedy, { currentLabel: remedy.name });
+    appendLearnerLanguageSupport(pharmDrugDetail, remedy, {
+      currentLabel: remedy.name,
+      visibleText: holisticListText(remedy.usedFor)
+    });
   }
 
   appendMedicalAbbreviationSection(pharmDrugDetail, [
@@ -34431,7 +34437,10 @@ function renderPharmDrugDetail(drug = activePharmResults[0]) {
       appendAuthoredPresentationVisuals(drug);
       authoredPresentationAttempted = true;
       appendMemoryBridgeSections(pharmDrugDetail, drug);
-      learnerSupportRendered = appendLearnerLanguageSupport(pharmDrugDetail, drug, { currentLabel: pharmDrugDisplayName(drug) }) || learnerSupportRendered;
+      learnerSupportRendered = appendLearnerLanguageSupport(pharmDrugDetail, drug, {
+        currentLabel: pharmDrugDisplayName(drug),
+        visibleText: pharmCardDescriptionText(drug)
+      }) || learnerSupportRendered;
     }
     if (label === "What this is" && isMedicationClassCardEntry(drug)) {
       appendMedicationClassExampleLinks(pharmDrugDetail, drug);
@@ -34440,7 +34449,10 @@ function renderPharmDrugDetail(drug = activePharmResults[0]) {
   });
   if (!authoredPresentationAttempted) appendAuthoredPresentationVisuals(drug);
   if (!learnerSupportRendered) {
-    appendLearnerLanguageSupport(pharmDrugDetail, drug, { currentLabel: pharmDrugDisplayName(drug) });
+    appendLearnerLanguageSupport(pharmDrugDetail, drug, {
+      currentLabel: pharmDrugDisplayName(drug),
+      visibleText: pharmCardDescriptionText(drug)
+    });
   }
   if (isMedicationClassCardEntry(drug) && !classExampleLinksAdded) {
     appendMedicationClassExampleLinks(pharmDrugDetail, drug);

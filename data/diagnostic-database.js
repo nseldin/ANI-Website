@@ -1728,7 +1728,7 @@
     const resultMeanings = normalizeMeaningRows(
       override.resultMeanings
       || RESULT_MEANING_OVERRIDES[cleanName]
-      || defaultResultMeanings({ name: cleanName, displayName, kind, domain, use: cleanUse })
+      || []
     );
 
     const defaultSections = [
@@ -1752,6 +1752,7 @@
       summary: override.summary || `${displayName} is a high-yield ${domain || "clinical"} diagnostic reference. ${cleanUse}`,
       quickAnswer: override.quickAnswer || `${displayName}: ${cleanUse} Nursing focus: prepare correctly, protect safety, trend results with assessment, and escalate red-flag findings.`,
       resultMeanings,
+      resultMeaningProvenance: resultMeanings.length ? "reviewed-canonical-profile" : "not-authored",
       sections: customSections || defaultSections,
       diagnosticKind: kind,
       tags: uniqueTerms([domain, kind, meta.icon, aliases, cleanName, override.tags || [], "result interpretation", "positive negative results", "diagnostic test", "NCLEX diagnostic tools"]),

@@ -7,7 +7,7 @@
 })(typeof window !== "undefined" ? window : (typeof globalThis !== "undefined" ? globalThis : null), function () {
   "use strict";
 
-  const VERSION = "2026-08-03.2";
+  const VERSION = "2026-08-10.1";
   const SCHEMA_VERSION = 1;
   const PRESENTATION_STANDARD = Object.freeze({
     schemaVersion: "ani-card-presentation-v1",
@@ -49,6 +49,55 @@
       role: "Limit jargon, define necessary medical terms, and organize information around the reader's task."
     })
   ]);
+
+  const ROUTINE_NURSING_TERMS = Object.freeze([
+    "hypotension", "hypertension", "edema", "tachypnea", "tachycardia", "bradycardia",
+    "fever", "nausea", "vomiting", "glucose", "airway", "dehydration"
+  ]);
+  const CONTEXTUAL_TERM_RULES = Object.freeze({
+    bradycardia: Object.freeze({
+      audienceTier: "routine-nursing",
+      explainWhen: Object.freeze(["symptomatic bradycardia", "sinus bradycardia", "fetal bradycardia", "relative bradycardia"]),
+      equivalentPhrases: Object.freeze(["slow heart rate", "heart rate is slow", "slower than expected heart rate"])
+    }),
+    edema: Object.freeze({
+      audienceTier: "routine-nursing",
+      explainWhen: Object.freeze(["cerebral edema", "pulmonary edema", "pitting edema", "non pitting edema", "nonpitting edema", "generalized edema"]),
+      equivalentPhrases: Object.freeze(["fluid related swelling", "swelling caused by fluid", "excess fluid in the tissues", "fluid buildup in tissues"])
+    }),
+    hypertension: Object.freeze({
+      audienceTier: "routine-nursing",
+      explainWhen: Object.freeze(["portal hypertension", "pulmonary hypertension", "intracranial hypertension", "gestational hypertension", "resistant hypertension", "malignant hypertension"]),
+      equivalentPhrases: Object.freeze(["high blood pressure", "blood pressure is high", "elevated blood pressure"])
+    }),
+    hypotension: Object.freeze({
+      audienceTier: "routine-nursing",
+      explainWhen: Object.freeze(["orthostatic hypotension", "permissive hypotension", "refractory hypotension", "profound hypotension", "relative hypotension"]),
+      equivalentPhrases: Object.freeze(["low blood pressure", "blood pressure is low", "reduced blood pressure"])
+    }),
+    tachycardia: Object.freeze({
+      audienceTier: "routine-nursing",
+      explainWhen: Object.freeze(["supraventricular tachycardia", "ventricular tachycardia", "sinus tachycardia", "inappropriate tachycardia", "relative tachycardia"]),
+      equivalentPhrases: Object.freeze(["fast heart rate", "heart rate is fast", "faster than expected heart rate"])
+    }),
+    tachypnea: Object.freeze({
+      audienceTier: "routine-nursing",
+      explainWhen: Object.freeze(["transient tachypnea", "persistent tachypnea"]),
+      equivalentPhrases: Object.freeze(["fast breathing", "breathing is fast", "rapid breathing", "respiratory rate is high"])
+    }),
+    cyanosis: Object.freeze({
+      equivalentPhrases: Object.freeze(["blue discoloration", "blue gray discoloration", "bluish discoloration", "blue or blue gray", "blue lips"])
+    }),
+    dysphagia: Object.freeze({
+      equivalentPhrases: Object.freeze(["difficulty swallowing", "trouble swallowing", "impaired swallowing"])
+    }),
+    hyperkalemia: Object.freeze({
+      equivalentPhrases: Object.freeze(["high blood potassium", "high serum potassium", "elevated potassium", "too much potassium"])
+    }),
+    hypokalemia: Object.freeze({
+      equivalentPhrases: Object.freeze(["low blood potassium", "low serum potassium", "reduced potassium", "too little potassium"])
+    })
+  });
 
   const rawGlossary = [
     ["acute", "starting suddenly or lasting a short time", "sudden or short-term", 1],
@@ -146,14 +195,20 @@
     ["virulence", "the ability of a microorganism to cause damage or disease", "ability to cause disease", 2]
   ];
 
-  const glossary = Object.freeze(rawGlossary.map((row, index) => Object.freeze({
-    id: `ani-learner-term-${String(index + 1).padStart(3, "0")}`,
-    term: row[0],
-    plainLanguage: row[1],
-    inlineGloss: row[2],
-    difficulty: row[3],
-    guidanceKeys: Object.freeze(["nih-plain-language", "cdc-simply-put"])
-  })).sort((left, right) => right.term.length - left.term.length));
+  const glossary = Object.freeze(rawGlossary.map((row, index) => {
+    const contextualRule = CONTEXTUAL_TERM_RULES[row[0]] || {};
+    return Object.freeze({
+      id: `ani-learner-term-${String(index + 1).padStart(3, "0")}`,
+      term: row[0],
+      plainLanguage: row[1],
+      inlineGloss: row[2],
+      difficulty: row[3],
+      audienceTier: contextualRule.audienceTier || (row[3] >= 3 ? "advanced-or-specialty" : "medical"),
+      explainWhen: contextualRule.explainWhen || Object.freeze([]),
+      equivalentPhrases: contextualRule.equivalentPhrases || Object.freeze([]),
+      guidanceKeys: Object.freeze(["nih-plain-language", "cdc-simply-put"])
+    });
+  }).sort((left, right) => right.term.length - left.term.length));
 
   function cleanText(value) {
     return String(value == null ? "" : value).replace(/\s+/g, " ").trim();
@@ -204,9 +259,18 @@
     const plain = normalize(match.plainLanguage);
     const inline = normalize(match.inlineGloss);
     if ((plain && local.includes(plain)) || (inline && local.includes(inline))) return true;
+    if ((match.equivalentPhrases || []).some((phrase) => local.includes(normalize(phrase)))) return true;
     if (!settings.strictExplanation && /^\s*(?:\(|[-,:])[^.!?]{2,120}(?:\)|[.!?]|$)/.test(after)) return true;
     if (/\b(?:means?|meaning|refers? to|also called|in everyday language|in plain language)\b/i.test(after.slice(0, 140))) return true;
     return false;
+  }
+
+  function termNeedsExplanation(text, match, options) {
+    const settings = options || {};
+    if (!match || Number(match.difficulty) < 2) return false;
+    if (match.audienceTier !== "routine-nursing" || settings.includeRoutineNursingTerms === true) return true;
+    const source = normalize(text);
+    return (match.explainWhen || []).some((phrase) => source.includes(normalize(phrase)));
   }
 
   function sentenceMetrics(text) {
@@ -226,7 +290,7 @@
     const tokens = normalize(source).split(" ").filter(Boolean);
     const matches = termMatches(source);
     const unexplained = matches.filter((match) => !hasNearbyExplanation(source, match, settings));
-    const difficult = unexplained.filter((match) => match.difficulty >= 2);
+    const difficult = unexplained.filter((match) => termNeedsExplanation(source, match, settings));
     const density = tokens.length ? Number((difficult.length / tokens.length * 100).toFixed(2)) : 0;
     const sentence = sentenceMetrics(source);
     const supportRecommended = difficult.length >= 3
@@ -270,22 +334,29 @@
     const raw = Array.isArray(item && item.plainLanguageGlosses)
       ? item.plainLanguageGlosses
       : (Array.isArray(item && item.learnerGlosses) ? item.learnerGlosses : []);
+    const seen = new Set();
     return raw.map((entry) => ({
       term: cleanText(entry && (entry.term || entry.medicalTerm)),
       plainLanguage: cleanText(entry && (entry.plainLanguage || entry.meaning || entry.definition)),
       sourceKeys: Array.isArray(entry && entry.sourceKeys) ? entry.sourceKeys.map(cleanText).filter(Boolean) : []
-    })).filter((entry) => entry.term && entry.plainLanguage);
+    })).filter((entry) => {
+      const key = normalize(entry.term);
+      if (!key || !entry.plainLanguage || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
   }
 
   function supportForItem(item, options) {
     const settings = options || {};
-    const source = textForItem(item || {});
+    const hasVisibleText = Object.prototype.hasOwnProperty.call(settings, "visibleText");
+    const source = hasVisibleText ? cleanText(settings.visibleText) : textForItem(item || {});
     const analysis = analyzeText(source, settings);
     const supplied = explicitGlosses(item || {});
     const suppliedTerms = new Set(supplied.map((entry) => normalize(entry.term)));
     const inferred = analysis.difficultUnexplainedTerms
       .filter((entry) => !suppliedTerms.has(normalize(entry.term)))
-      .slice(0, Number(settings.maxGlosses) || 6)
+      .slice(0, Number(settings.maxInferredGlosses) || 3)
       .map((entry) => ({
         term: entry.term,
         plainLanguage: entry.plainLanguage,
@@ -294,13 +365,21 @@
       }));
     const plainLanguage = cleanText(item && (item.plainLanguage || item.plainMeaning || item.termMeaning || item.literalMeaning));
     const whyItMatters = cleanText(item && (item.whyItMatters || item.clinicalSignificance || item.clinicalImportance));
+    const glosses = [];
+    const seenTerms = new Set();
+    [...supplied, ...inferred].forEach((entry) => {
+      const key = normalize(entry.term);
+      if (!key || seenTerms.has(key) || glosses.length >= (Number(settings.maxGlosses) || 6)) return;
+      seenTerms.add(key);
+      glosses.push(entry);
+    });
     return {
       version: VERSION,
       plainLanguage,
       whyItMatters,
-      glosses: [...supplied, ...inferred].slice(0, Number(settings.maxGlosses) || 6),
+      glosses,
       analysis,
-      shouldRender: Boolean(plainLanguage || whyItMatters || supplied.length || analysis.supportRecommended)
+      shouldRender: Boolean(glosses.length)
     };
   }
 
@@ -308,7 +387,9 @@
     const source = cleanText(text);
     const maximum = Math.max(0, Number(limit) || 2);
     if (!source || !maximum) return source;
-    const matches = termMatches(source).filter((match) => match.difficulty >= 2 && !hasNearbyExplanation(source, match)).slice(0, maximum);
+    const matches = termMatches(source)
+      .filter((match) => termNeedsExplanation(source, match) && !hasNearbyExplanation(source, match))
+      .slice(0, maximum);
     if (!matches.length) return source;
     let output = source;
     matches.slice().sort((left, right) => right.start - left.start).forEach((match) => {
@@ -322,11 +403,13 @@
     version: VERSION,
     guidanceSources: GUIDANCE_SOURCES,
     presentationStandard: PRESENTATION_STANDARD,
+    routineNursingTerms: ROUTINE_NURSING_TERMS,
     glossary,
     cleanText,
     normalize,
     termMatches,
     hasNearbyExplanation,
+    termNeedsExplanation,
     analyzeText,
     textForItem,
     explicitGlosses,

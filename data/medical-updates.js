@@ -1618,47 +1618,15 @@
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "title": "Outbreak of Neisseria meningitidis Conjunctivitis in Military Trainees - Texas, February-May 2025",
       "url": "https://www.cdc.gov/mmwr/volumes/74/wr/mm7433a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "16358e1fc2aab8b62bf3acea7a41f99bd5003085e7bce9bdbc08839429ce4aa9",
-      "description": null,
-      "descriptionOrigin": "unavailable",
-      "guid": "urn:uuid:432a1617-e2c5-4041-8b77-46838ced7106",
-      "id": "medical-update:who-news:b880d59ee6db0644699da701",
-      "publishedAt": "2024-07-31T05:00:27.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-10T05:11:54.574Z",
-      "sourceCategories": [],
-      "sourceId": "who-news",
-      "sourceName": "World Health Organization (WHO)",
-      "title": "India commits US$ 85 million to WHO Global Traditional Medicine Centre",
-      "url": "https://www.who.int/news/item/31-07-2024-india-commits-usd-85-million-to-who-global-traditional-medicine-centre"
     }
   ],
   "archivePolicy": "retain",
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-10T10:44:56.306Z",
+  "generatedAt": "2026-08-10T04:22:13.815Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
-    {
-      "category": "recall",
-      "contentHash": "5e6609f5d741a6f8261f2eabd3be1c283a919eb709c72026946fbfc4ff2c7ae7",
-      "description": "Salinas, Calif., August 9, 2026 – Upon notification that Coast Citrus Distributors is voluntarily recalling fresh jalapeños due to potential Salmonella contamination, Taylor Fresh Foods is recalling finished products containing jalapeños subject to this recall.Salmonella, an organism which can cause",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/taylor-fresh-foods-recalls-products-made-jalapeno-peppers-because-possible-health-risk",
-      "id": "medical-update:fda-recalls:c702952e07a5ceb878169ade",
-      "publishedAt": "2026-08-09T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-10T10:44:56.306Z",
-      "sourceCategories": [],
-      "sourceId": "fda-recalls",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
-      "title": "Taylor Fresh Foods Recalls Products Made With Jalapeno Peppers Because of Possible Health Risk",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/taylor-fresh-foods-recalls-products-made-jalapeno-peppers-because-possible-health-risk"
-    },
     {
       "category": "recall",
       "contentHash": "714193891e3ba4ea33692c5d07133642d94030e8848865b4e3764ad3fd1a6b58",
@@ -3137,7 +3105,7 @@
       "url": "https://www.fda.gov/news-events/press-announcements/fda-issues-emergency-use-authorization-generic-over-counter-drug-treat-new-world-screwworm-dogs-and"
     }
   ],
-  "refreshStatus": "CURRENT",
+  "refreshStatus": "PARTIAL",
   "schemaVersion": "ani-medical-updates-runtime-v1",
   "sourceConfigSha256": "bcda90ac53015cf0b9744061bc08ad8442b6173b990e7125516874c39b76e0db",
   "sourceStatuses": [
@@ -3147,7 +3115,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-10T10:44:56.306Z",
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3157,8 +3125,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 1,
-      "retrievedAt": "2026-08-10T10:44:56.306Z",
+      "retainedItemCount": 0,
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -3169,7 +3137,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 15,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-10T10:44:56.306Z",
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -3180,7 +3148,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-10T10:44:56.306Z",
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -3191,21 +3159,21 @@
       "rawItemCount": 20,
       "rejectedItemCount": 10,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-10T10:44:56.306Z",
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
     },
     {
-      "error": null,
+      "error": "Awaiting first scheduled official-source refresh.",
       "itemCount": 0,
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-10T10:44:56.306Z",
+      "retrievedAt": null,
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
-      "status": "current"
+      "status": "stale"
     },
     {
       "error": null,
@@ -3213,7 +3181,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-10T10:44:56.306Z",
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -3224,7 +3192,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-10T10:44:56.306Z",
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -3235,7 +3203,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-10T10:44:56.306Z",
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
