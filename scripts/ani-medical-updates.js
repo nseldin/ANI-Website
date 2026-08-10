@@ -3,7 +3,7 @@
 const path = require("node:path");
 const updates = require("./lib/medical-updates");
 
-const COMMANDS = new Set(["status", "check", "build", "refresh"]);
+const COMMANDS = new Set(["status", "check", "build", "rebase", "refresh"]);
 
 function parseArguments(argv = process.argv.slice(2)) {
   const values = Array.from(argv);
@@ -56,40 +56,77 @@ async function main(commandValue = process.argv[2], output = console, options = 
   }
   if (command === "refresh") {
     const project = updates.loadProject(root);
+    const auditRun = updates.createAuditRun(options.now || Date.now());
+    const onAudit = (event) => updates.appendAuditEvent(auditRun, event, options.now || Date.now());
     const configValidation = updates.validateConfig(project.config);
     if (!configValidation.valid) {
+      auditRun.completedAt = new Date(options.now || Date.now()).toISOString();
+      auditRun.outcome = "REJECTED_INVALID_CONFIG";
+      onAudit({ eventType: "refresh-rejected", reason: "invalid-source-registry" });
+      const audit = updates.writeAuditRun(root, auditRun);
       output.error(JSON.stringify({ status: "FAIL", command, issues: configValidation.issues, aiCalls: 0 }, null, 2));
       return 1;
     }
+    try {
+      const catalog = options.catalog || (options.useRuntimeCatalog ? buildCatalog(root) : null);
+      const dataset = await updates.refreshDataset({
+        config: project.config,
+        configSha256: project.configSha256,
+        previousDataset: project.dataset,
+        fetchImpl: options.fetchImpl,
+        now: options.now,
+        catalog,
+        onAudit
+      });
+      const validation = updates.validateDataset(dataset, { config: project.config, configSha256: project.configSha256, catalog });
+      if (!validation.valid) throw Object.assign(new Error("Generated Medical Updates failed deterministic validation."), { validationIssues: validation.issues });
+      const written = updates.writeDataset(root, dataset);
+      auditRun.completedAt = new Date(options.now || Date.now()).toISOString();
+      auditRun.outcome = "PASS";
+      onAudit({ eventType: "refresh-completed", refreshStatus: dataset.refreshStatus, currentItems: dataset.items.length, archivedItems: dataset.archive.length, changed: written.changed });
+      const audit = updates.writeAuditRun(root, auditRun);
+      output.log(JSON.stringify({
+        status: "PASS",
+        command,
+        refreshStatus: dataset.refreshStatus,
+        currentItems: dataset.items.length,
+        archivedItems: dataset.archive.length,
+        sources: dataset.sourceStatuses,
+        dataPath: path.relative(root, written.dataPath).replace(/\\/g, "/"),
+        runtimePath: path.relative(root, written.runtimePath).replace(/\\/g, "/"),
+        auditPath: path.relative(root, audit.auditPath).replace(/\\/g, "/"),
+        auditSha256: audit.sha256,
+        dataSha256: written.dataSha256,
+        runtimeSha256: written.runtimeSha256,
+        changed: written.changed,
+        aiCalls: 0
+      }, null, 2));
+      return 0;
+    } catch (error) {
+      auditRun.completedAt = new Date(options.now || Date.now()).toISOString();
+      auditRun.outcome = "FAIL_CLOSED";
+      onAudit({ eventType: "refresh-failed-closed", reason: String(error && error.message || error).slice(0, project.config.maxStatusErrorCharacters) });
+      const audit = updates.writeAuditRun(root, auditRun);
+      output.error(JSON.stringify({ status: "FAIL", command, error: error && error.message || String(error), issues: error && error.validationIssues || [], auditPath: path.relative(root, audit.auditPath).replace(/\\/g, "/"), aiCalls: 0 }, null, 2));
+      return 1;
+    }
+  }
+  if (command === "rebase") {
+    const project = updates.loadProject(root);
+    const configValidation = updates.validateConfig(project.config);
+    if (!configValidation.valid || !project.dataset) {
+      output.error(JSON.stringify({ status: "FAIL", command, issues: configValidation.issues, error: project.dataset ? null : "verified-prior-dataset-required", aiCalls: 0 }, null, 2));
+      return 1;
+    }
+    const dataset = updates.rebaseDatasetForConfig(project.dataset, project.config, project.configSha256, options.now || Date.now());
     const catalog = options.catalog || (options.useRuntimeCatalog ? buildCatalog(root) : null);
-    const dataset = await updates.refreshDataset({
-      config: project.config,
-      configSha256: project.configSha256,
-      previousDataset: project.dataset,
-      fetchImpl: options.fetchImpl,
-      now: options.now,
-      catalog
-    });
     const validation = updates.validateDataset(dataset, { config: project.config, configSha256: project.configSha256, catalog });
     if (!validation.valid) {
       output.error(JSON.stringify({ status: "FAIL", command, issues: validation.issues, aiCalls: 0 }, null, 2));
       return 1;
     }
     const written = updates.writeDataset(root, dataset);
-    output.log(JSON.stringify({
-      status: "PASS",
-      command,
-      refreshStatus: dataset.refreshStatus,
-      currentItems: dataset.items.length,
-      archivedItems: dataset.archive.length,
-      sources: dataset.sourceStatuses,
-      dataPath: path.relative(root, written.dataPath).replace(/\\/g, "/"),
-      runtimePath: path.relative(root, written.runtimePath).replace(/\\/g, "/"),
-      dataSha256: written.dataSha256,
-      runtimeSha256: written.runtimeSha256,
-      changed: written.changed,
-      aiCalls: 0
-    }, null, 2));
+    output.log(JSON.stringify({ status: "PASS", command, refreshStatus: dataset.refreshStatus, currentItems: dataset.items.length, archivedItems: dataset.archive.length, changed: written.changed, dataSha256: written.dataSha256, runtimeSha256: written.runtimeSha256, aiCalls: 0 }, null, 2));
     return 0;
   }
   const catalog = options.catalog || (options.useRuntimeCatalog ? buildCatalog(root) : null);

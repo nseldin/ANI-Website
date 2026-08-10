@@ -2061,6 +2061,63 @@ body.lecture-mode-active .voice-status {
   color: var(--pharm-updates-dark);
 }
 
+.medical-updates-date-filter {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid color-mix(in srgb, var(--pharm-updates) 30%, white);
+  border-radius: 9px;
+}
+
+.medical-updates-date-filter legend {
+  padding: 0 5px;
+  color: var(--pharm-updates-dark);
+  font-weight: 800;
+}
+
+.medical-updates-date-filter input {
+  width: 100%;
+  min-width: 0;
+  min-height: 38px;
+  border: 1px solid color-mix(in srgb, var(--pharm-updates) 36%, white);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--pharm-updates-dark);
+  font: inherit;
+  padding: 7px 9px;
+}
+
+.medical-updates-date-filter input[aria-invalid="true"] {
+  border-color: #a12d2d;
+  outline: 2px solid rgba(161, 45, 45, 0.15);
+}
+
+.medical-updates-date-actions {
+  display: flex;
+  align-items: end;
+  gap: 7px;
+}
+
+.medical-updates-date-actions button {
+  min-height: 38px;
+  border-color: color-mix(in srgb, var(--pharm-updates) 40%, white);
+  background: #ffffff;
+  color: var(--pharm-updates-dark);
+  font-weight: 800;
+}
+
+.medical-updates-date-message {
+  grid-column: 1 / -1;
+  min-height: 1.2em;
+  margin: 0;
+  color: var(--pharm-updates-dark);
+  font-size: 0.82rem;
+}
+
 .medical-updates-browse-controls span {
   grid-column: 1 / -1;
   color: var(--pharm-updates-dark);
@@ -2180,10 +2237,23 @@ body.lecture-mode-active .voice-status {
 }
 
 .pharm-detail-previous-back {
-  display: none !important;
+  display: inline-flex;
   border-color: rgba(72, 84, 88, 0.22);
   background: #f8fbfb;
   color: #334d52;
+}
+
+.pharm-detail-forward-next {
+  display: inline-flex;
+  border-color: rgba(18, 125, 122, 0.24);
+  background: #f2fbfa;
+  color: var(--teal-dark);
+}
+
+.pharm-detail-forward-next:disabled {
+  opacity: 0.48;
+  cursor: default;
+  box-shadow: none;
 }
 
 .pharm-detail-home-icon {
@@ -2264,7 +2334,7 @@ body.lecture-mode-active .voice-status {
 }
 
 .pharm-search-panel .pharm-index-toggle #pharmNclexToggle {
-  grid-column: 1 / -1;
+  grid-column: 3 / -1;
 }
 
 .pharm-index-toggle button.active,
@@ -8952,6 +9022,10 @@ html[data-device-mode="phone"] .pharm-search-panel .pharm-index-toggle {
   padding-inline: 0;
 }
 
+html[data-device-mode="phone"] .pharm-search-panel .pharm-index-toggle #pharmNclexToggle {
+  grid-column: 1 / -1;
+}
+
 html[data-device-mode="phone"] .pharm-index-toggle button {
   min-height: 48px;
   padding: 7px 8px;
@@ -9224,6 +9298,21 @@ html[data-device-mode="phone"] .composer {
   padding: 7px;
   border-radius: 8px;
   box-shadow: 0 -8px 20px rgba(23, 42, 44, 0.12);
+}
+
+/*
+ * The launch profile preserves the dormant upload feature but hides its
+ * button. Collapse that hidden track in the native shell so the textarea,
+ * rather than Send, remains the primary composer control.
+ */
+html[data-device-mode="phone"] .composer:has(.upload-button[hidden]) {
+  grid-template-columns: 40px minmax(0, 1fr) minmax(58px, 68px);
+}
+
+html[data-device-mode="phone"] .composer:has(.upload-button[hidden]) .send-button {
+  width: 100%;
+  min-width: 58px;
+  max-width: 68px;
 }
 
 html[data-device-mode="phone"] .composer textarea {
@@ -9997,6 +10086,19 @@ body.lane2-experience-open {
 
   .medical-updates-browse-controls > span {
     width: 100%;
+  }
+
+  .medical-updates-date-filter {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .medical-updates-date-actions {
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  .medical-updates-date-actions button {
+    flex: 1 1 130px;
   }
 
   .medical-update-result-meta {

@@ -149,7 +149,7 @@ html[data-ani-surface="website"] .pharm-index-toggle button[data-pharm-index-mod
 }
 
 html[data-ani-surface="website"] .pharm-search-panel .pharm-index-toggle #pharmNclexToggle {
-  grid-column: 1 / -1;
+  grid-column: 3 / -1;
 }
 
 html[data-ani-surface="website"] .pharm-detail-card {
@@ -291,7 +291,7 @@ html[data-ani-surface="website"] .learner-language-support > strong {
   }
 
   html[data-ani-surface="website"] .pharm-search-panel .pharm-index-toggle {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   html[data-ani-surface="website"] .clinical-sign-browse-controls {
@@ -531,6 +531,10 @@ html[data-ani-surface="website"] .learner-language-support > strong {
     max-width: 72px;
     min-height: 46px;
     padding-inline: 8px;
+  }
+
+  html[data-ani-surface="website"] .pharm-search-panel .pharm-index-toggle #pharmNclexToggle {
+    grid-column: 1 / -1;
   }
 
   html[data-ani-surface="website"] .pharm-database-screen {

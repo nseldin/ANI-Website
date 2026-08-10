@@ -3,6 +3,836 @@
   "archive": [
     {
       "category": "guideline-public-health",
+      "contentHash": "29e063f5fbd73749d05b8a9e5c094a0ca1cf342bb26a3120b8e53bb0f03fce51",
+      "description": "This report describes characteristics of patients who were hospitalized during a large measles outbreak in west Texas.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765694&_=9672D42EE69051FC6238CD438B797558E2902B3137F150A5F39CEFD6F8A3511D",
+      "id": "medical-update:cdc-mmwr:efac01f4f4a0278bf9b472c3",
+      "publishedAt": "2026-06-04T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Measles",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Measles Outbreak in a Child Care Facility - Lubbock, Texas, March-April 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7521a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "1e1d47286e1d5687ce8ad6133f58a195ffeae0ebb848d6cd412802b49a206716",
+      "description": "This report describes an outbreak of 39 cases of amatoxin mushroom poisoning in Northern California.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765695&_=DB5763E06BD3247A2E346E499AC880F64D2C4D702987AE7AAE168EF2AC278FD7",
+      "id": "medical-update:cdc-mmwr:2e8f9c98e11d43e96bc73b2a",
+      "publishedAt": "2026-06-04T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Lyme disease",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Notes from the Field: Borrelia mayonii Lyme Disease - New York, 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7521a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "437335a56a7dc517009f00bb5d4f02f0a71ad2018c7d393f9226e382a4219ea3",
+      "description": "This report describes an outbreak of 39 cases of amatoxin mushroom poisoning in Northern California.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765642&_=9C61549558DE7C54B5261B2B2EB89E2EF72601E4D318CFC3C88CC0C33E6F5C7B",
+      "id": "medical-update:cdc-mmwr:279073d03e531b31fa051ff4",
+      "publishedAt": "2026-05-28T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Amanita Species Mushroom Poisonings - Northern California, November 2025-March 2026",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7520a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "e33ddbc086a90d12668ffc38bd787cd55b61106a314cccdaf87c7cd6717ed722",
+      "description": "This report describes characteristics of patients who were hospitalized during a large measles outbreak in west Texas.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765641&_=CACB0701DFFAF1D42283BD53DD6EAE36CFC920156E7EC891140634F15B3DE82D",
+      "id": "medical-update:cdc-mmwr:08e27c49cfaf5932b493131d",
+      "publishedAt": "2026-05-28T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Measles",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Characteristics of Patients Hospitalized with Measles During an Outbreak - West Texas, January-March 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7520a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "caafad861d416ebad902143c8a4059ae13846c121e3fb7b6e0de7da5f66e87da",
+      "description": "This report describes an 8-month outbreak of carbapenemase-producing Enterobacterales in a long-term care facility in Ontario, Canada.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765602&_=51C75710C3D296BFA88B255F77492796A7A88194FCF869DDFE4D2276D858623F",
+      "id": "medical-update:cdc-mmwr:5e917ccb7f1d2aade04e8e54",
+      "publishedAt": "2026-05-21T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Klebsiella pneumoniae",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Klebsiella pneumoniae Carbapenemase-Producing Enterobacterales Infection and Colonization in a Long-Term Care Facility - Ontario, Canada, May 2024-January 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7519a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "76eaa7c7be127b32de94695bb2e0fc20ac2a9442a9908c4f38383b62a45bb3c4",
+      "description": "This report describes sunburns among adults.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765603&_=C07DB9E6B0164C8FC5D311ABA6C89FABD1ED97D9C9CA0936676015C2DDF57B4A",
+      "id": "medical-update:cdc-mmwr:bf34c05cd458f651eb6010f7",
+      "publishedAt": "2026-05-21T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Prevalence and Context of Sunburn Among U.S. Adults - United States, 2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7519a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "203c48ac8ba33c9b3446036c3a61c763d77fdc0b45152e761ebb840dc3165497",
+      "description": "This report describes operational guidance for public health investigation and response to mosquito-transmitted malaria in the United States.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765596&_=05323F9163F17CB3D295BF512D8DC1B30761153822C59636A727EE3117C70EB4",
+      "id": "medical-update:cdc-mmwr:5e2148c7bee8724e71be1ae5",
+      "publishedAt": "2026-05-19T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Malaria",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Recommendations and Reports: CDC Operational Guidance for Investigating Locally Acquired Mosquito-Transmitted Malaria - United States, 2026",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/rr/rr7501a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "0948edd08bf90a1640fda6f78b5f9d4ffe1e1b4144855d5871e1a1406be785c6",
+      "description": "This report describes an increase in dengue cases reported during 2024.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765450&_=DAA3CE758ADA77F0196723503484ECC6D9926D181E9E03CE012F8F2E6D834397",
+      "id": "medical-update:cdc-mmwr:148abc1623a789cc43124316",
+      "publishedAt": "2026-05-14T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Increase in Travel-Associated and Locally Acquired Dengue Cases - United States, 2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7518a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "b8c109eab6f805b5015e3300ca41f9787e75e44f8db663bc39a38d6b7da3b290",
+      "description": "This report describes survey results from backyard flock owners' attitudes towards avian influenza.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765451&_=326386CE62EBA8B4315F849F9F3751A68029B3C7361E358425FEB01967577816",
+      "id": "medical-update:cdc-mmwr:dca433417b1d76073beed232",
+      "publishedAt": "2026-05-14T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Knowledge, Attitudes, and Practices Regarding Avian Influenza Among Owners of Backyard Flocks - United States, July-December 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7518a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "5c05bbb0dfcaf2ed31a5217fc7aff20ac2c4d958e128e681265bee9022dc7dd4",
+      "description": "This report describes a fatal human case of highly pathogenic avian influenza in Washington.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765373&_=BC8EBF564D32EAE37A33EE6D54916BE3D7112F4E44130B17291F583C06D79034",
+      "id": "medical-update:cdc-mmwr:8541473b95ecbe613789c13b",
+      "publishedAt": "2026-05-07T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Fatal Human Case of Highly Pathogenic Avian Influenza A(H5N5) in a Backyard Flock Owner - Washington, November 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7517a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "7772576b483ee32ab9c1567ecbac5154ca9b4943486bf4482ad5d344768913f3",
+      "description": "This report describes 139 human exposures to cats infected with A(H5N1) in Los Angeles, California.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765372&_=FCF02FC6717F389B236B77F816C6EBA607416B972A65C2A546C15CC7B58798E2",
+      "id": "medical-update:cdc-mmwr:34f5aa382da072269f0d6c7c",
+      "publishedAt": "2026-05-07T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Serologic Evidence of Highly Pathogenic Avian Influenza A(H5N1) Virus Infection in a Veterinary Professional Exposed to an Infected Domestic Cat - Los Angeles County, California, December 2024-January 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7517a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "cc91224d72ca998c6abbd93afe52a1ccd2cbb63d0cce4e8a773b5e40e24ef72b",
+      "description": "This report describes 50 large tuberculosis outbreaks in 23 states during 2017-2023.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765299&_=318B9A288CED24864C798C04462BAF190F315E57ED77ADDBB2E92466E5151530",
+      "id": "medical-update:cdc-mmwr:5bd64d57444d6b6c19480f4a",
+      "publishedAt": "2026-04-30T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Tuberculosis",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Large Tuberculosis Outbreaks - United States, 2017-2023",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7516a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "1e4e926f05927126e650504be0554b853398e60916724c8af4eae3d5b2cc4d6c",
+      "description": "This report describes an increase in eastern equine encephalitis in northern Vermont during 2023-2024.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765300&_=9709DEBCFB1F241D1E7E027DED5C438DDCB0D88A2EFF659F3A80D9335EDD5A59",
+      "id": "medical-update:cdc-mmwr:d8c983adcc8079b0429e95fa",
+      "publishedAt": "2026-04-30T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Notes from the Field: Increase in Eastern Equine Encephalitis Virus Activity - Vermont, 2023-2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7516a2.htm"
+    },
+    {
+      "category": "vaccine-biologic",
+      "contentHash": "4cf1f6eac58a60d5ac244c6aaffb2eb179edde71810ed82c0852238482ba148e",
+      "description": "This report describes flu vaccination coverage among nursing home residents and health care providers working in nursing homes.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765132&_=1B1C8DCA4BB621B2962059145910C993138EE600D48A7923D6722CD9CD391EFB",
+      "id": "medical-update:cdc-mmwr:743da7c8f3a42b89072af2e8",
+      "publishedAt": "2026-04-23T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Influenza Vaccination Coverage Among Nursing Home Residents and Health Care Personnel - United States, 2024-25 Influenza Season",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7515a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "d6904a32e1de5fbec07952fa4df1e14167e7722125a9af7a5dd547aafa75b5ad",
+      "description": "This report describes contact tracing following mpox exposures during commercial air travel.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765133&_=4AFFF5B6574ACF191C9F6CD7365A9B16BE4033743B1F493AE72E7A7FEF815FD4",
+      "id": "medical-update:cdc-mmwr:9651005e0af935dba8b444ce",
+      "publishedAt": "2026-04-23T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Notes from the Field: Contact Tracing for Monkeypox virus Clade I Cases Associated with Air Travel - United States, November 2024-January 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7515a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "004166a6eb5711b32d7c619fab672b143d1e626bdb1b08ad730106492c238f18",
+      "description": "This report describes two clusters of invasive of Haemophilus influenzae type b among adults with special risk factors in Alaska, Oregon, and Washington.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764882&_=7E35FD14AEFE3848ECF89D0EC8C0D1330209D6FE1B239632077B36D3B397E9C7",
+      "id": "medical-update:cdc-mmwr:56f16fbfd96b62c4d54bdb51",
+      "publishedAt": "2026-04-16T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Haemophilus influenzae",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Clusters of Invasive Haemophilus influenzae Type b Disease Among Adults Using Substances or Experiencing Homelessness or Housing Instability - Alaska, Oregon, and Washington, 2023─2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7514a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "0cf8f286dc5a062d1d0137b7c1f68ae9e4fd1da73bda54eac265908360906a14",
+      "description": "This report describes four cases of tetanus among children who had not received a primary tetanus toxoid-containing virus series before exposure.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764883&_=B3D8BC1EE92BC8045B96E80DB5541EBAD7CA52E05C4C088420C3551F61D9661A",
+      "id": "medical-update:cdc-mmwr:3978400dd70991414a779bb2",
+      "publishedAt": "2026-04-16T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Tetanus",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Notes from the Field: Tetanus in Four Children - Idaho, Minnesota, Missouri, and Wisconsin, 2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7514a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "ada14a1f2e908d148e311f55844c76304ebec7d166db1bbc7e805c087dd17dde",
+      "description": "This report describes tetanus surveillance in the United States from 2009-2023",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764854&_=15DABEEC3C8AB9467BE6A7F01C0D922562E4A9EAE401AC284EDC7781E518D79D",
+      "id": "medical-update:cdc-mmwr:18b037554e39843616007afc",
+      "publishedAt": "2026-04-14T17:06:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Tetanus",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Surveillance Summaries: Tetanus Surveillance - United States, 2009-2023",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/ss/ss7501a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "433df57ff9e0d1ece62be0920adf359a1f03e06501d4834e2453efd9a5efbd84",
+      "description": "This report describes the emergence of drug-resistant shigellosis in the United States during 2011-2023.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764763&_=B2957F444F0221F226AFBE1AACAF3ABA31579FE70CB546F317D7D2E6BF77D110",
+      "id": "medical-update:cdc-mmwr:567ae4c87a5fe9c8c3304a3d",
+      "publishedAt": "2026-04-09T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Emergence of Extensively Drug-Resistant Shigellosis - United States, 2011-2023",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7513a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "1969d307ed3e4d08a94ce533610a6bd6bf682d5b6c6f40dcf2304b0525235c60",
+      "description": "This report describes severe illness associated with eating mushroom-containing chocolate products.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764764&_=18477F2BA84854AE66C5D7CB437BF83606D18023747AD982DC613CD0C6612E16",
+      "id": "medical-update:cdc-mmwr:c50fe95e6ca3ff2f91c1be7a",
+      "publishedAt": "2026-04-09T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Severe Illness Associated with Eating Mushroom-Containing Chocolate Products - United States, January-October 2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7513a2.htm"
+    },
+    {
+      "category": "vaccine-biologic",
+      "contentHash": "19d3757bb2e3bbc540ab4374d0f316b3f301feb8bb41c490524bde3e90dcb233",
+      "description": "This report describes influenza and COVID-19 vaccination coverage among health care providers in the United States during the 2024-25 respiratory virus season.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764645&_=A2BB07CD4235BA6D7F0DFE2EABF4A988DDBBE1C9ABEB45988735C68E4489B30D",
+      "id": "medical-update:cdc-mmwr:a883bc815d84c0b59233c517",
+      "publishedAt": "2026-04-02T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "COVID-19",
+          "collection": "pathologyDiseases"
+        },
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Influenza and COVID-19 Vaccination Coverage Among Health Care Personnel - United States, 2024-25 Respiratory Virus Season",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7512a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "fd4fbae7f252d08429b8432c30e006221d0f0b7ad3227b1d8fc9b86c0765fcbe",
+      "description": "This report describes an increase in reports linked to kratom-containing kava products in the United States from 2000-2025.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764644&_=4A78E67D5C13DF94E8174D3FF85F5C922002D8817A2D1C025454E27D6A09333E",
+      "id": "medical-update:cdc-mmwr:0db08eaab1dbec549b031a83",
+      "publishedAt": "2026-04-02T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Kratom",
+          "collection": "holisticRemedies"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Increase in Poison Center Reports Linked to Kratom-Containing Kava Products - National Poison Data System, United States, 2000-2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7512a1.htm"
+    },
+    {
+      "category": "vaccine-biologic",
+      "contentHash": "be0e947afec5528d0995eeba8ac2209e59dd87885841ef0c2d92306dd0cb0734",
+      "description": "This report describes vaccination coverage by age 2 among children born in 2021 and 2022.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764510&_=29FB7147E4AE74D5909613EF7222B3BFE43D886BA8021F81CFD6564F49D701E5",
+      "id": "medical-update:cdc-mmwr:5ac0ee0dd870a9f75d7f941c",
+      "publishedAt": "2026-03-26T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Vaccination Coverage by Age 24 Months Among Children Born in 2021 and 2022 - National Immunization Survey-Child, United States, 2022-2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7511a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "8ebfd43887fe5ec215eed5452dfe5ecab634da8fdc3fef33182384c955510579",
+      "description": "This report describes kratom-related exposures in the United States from 2015-2024.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764507&_=FDACCF794E3E8343C75C06F84BB551AD905F606864B3E1E2A6F887B8CFE28D7F",
+      "id": "medical-update:cdc-mmwr:f22e8c4661a4046e03ac3ce2",
+      "publishedAt": "2026-03-26T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Kratom",
+          "collection": "holisticRemedies"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Increases in Kratom-Related Reports to Poison Centers - National Poison Data System, United States, 2015-2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7511a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "34c7b686e8989b5879855e6b93c876214409962ea775f57677a46aac8a24f47d",
+      "description": "This report describes early detection and surveillance of the SARS-CoV-2 variant BA.3.2.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764321&_=8A4675AD5688528B7FFA7DD8D16AB5FF726A877E5AA0E10D482A3B0501A7A956",
+      "id": "medical-update:cdc-mmwr:c310d420eacdd0d27b3f5104",
+      "publishedAt": "2026-03-19T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "SARS-CoV-2",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Early Detection and Surveillance of the SARS-CoV-2 Variant BA.3.2 - Worldwide, November 2024-February 2026",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7510a1.htm"
+    },
+    {
+      "category": "vaccine-biologic",
+      "contentHash": "0fc571d5726688333523cd7923e0bdb555c922677499974bfc98c8d2f67a3b9c",
+      "description": "This report describes interim estimates of 2025-26 flu vaccine effectiveness in California during October 2025-January 2026.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764128&_=603711215ED2E9C146D667A5F38D2AB61F84B18D4DB23C7FE86DC79FC561FE66",
+      "id": "medical-update:cdc-mmwr:e7eb566c30e9f95a848ef662",
+      "publishedAt": "2026-03-12T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza vaccine",
+          "collection": "clinicalReferenceEntries"
+        },
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Interim Estimates of 2025-26 Seasonal Influenza Vaccine Effectiveness - California, October 2025-January 2026",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7509a3.htm"
+    },
+    {
+      "category": "vaccine-biologic",
+      "contentHash": "cce55bc71610590f3b32fd61fa6c9a8ea584837b235a108266001a39dab20abb",
+      "description": "This report describes interim estimates of 2025-26 seasonal flu vaccine effectiveness.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764127&_=AEFCBB3202F1EBDEE75154F9FA803794D7B017310DF9A587B730B04649808593",
+      "id": "medical-update:cdc-mmwr:fb35c54a8ea50af40a78649d",
+      "publishedAt": "2026-03-12T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza vaccine",
+          "collection": "clinicalReferenceEntries"
+        },
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Interim Estimates of 2025-26 Seasonal Influenza Vaccine Effectiveness - United States, September 2025-February 2026",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7509a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "1f48b852a730df88bdff183ffcec56037326e1903710a7b569d3cfa06a0017c9",
+      "description": "This report describes a measles outbreak in New Mexico in 2025.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764126&_=2BF94EB643278723D22269E028C81C3FCAC0EBAE1756C559CD6E07D2B701D61C",
+      "id": "medical-update:cdc-mmwr:f31c09c1efa72ab4a7f70670",
+      "publishedAt": "2026-03-12T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Measles",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Measles Outbreak - New Mexico, 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7509a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "223813b49f224b318345059c19bcba1a9c37d95dafea51fc9c83890901c870c4",
+      "description": "This report describes Kaposi sarcoma in an organ transplant recipient.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763925&_=26ACD822F547E797AECAA1BE16F4B1AF28FDB50894381B27D9327DEA6797EFD1",
+      "id": "medical-update:cdc-mmwr:efcd72bc4cfcc82937ea347e",
+      "publishedAt": "2026-03-05T18:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Kaposi sarcoma-associated herpesvirus",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Kaposi Sarcoma-Associated Herpesvirus Infection and Complications Among Solid Organ Transplant Recipients - United States, January 2021-September 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7508a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "4650aa9d876d3991a1caf0e3c8ecfec9738167abbebd766380c30c10b1a597c2",
+      "description": "This report describes cases of congenital rubella in Florida.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763926&_=00A39A56CA907F83D0200EBE628039E5FF990A2FB0C82B8A4B899EE5BFE1ADAC",
+      "id": "medical-update:cdc-mmwr:2c99f56c15717412cc9392d0",
+      "publishedAt": "2026-03-05T18:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Rubella",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Notes from the Field: Congenital Rubella Syndrome - Florida, 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7508a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "9b2a5a4c3807e60bf17b6a6de8c4592398377c41bf998729b588af2bb3cb8d69",
+      "description": "This report describes exposures to chemical munitions during commercial fishing operations.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763927&_=3DAE6AB4F1588B004D5F048FF2FC8E0745752ADCA5C8C5FB7CB624D2AFFDF49F",
+      "id": "medical-update:cdc-mmwr:172c4230108cdc676abeefeb",
+      "publishedAt": "2026-03-05T18:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Notes from the Field: Exposures to Chemical Munitions During Commercial Fishing Operations - New Jersey, 2016-2023",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7508a3.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "12473776740df0c855152b4219deb33c6a12200680ceb9a9db521fd4b5680516",
+      "description": "This report describes a 2024 Salmonella outbreak linked to ice in a cooler at a county fair in Illinois",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763711&_=8FABF2718D6D7BCF3BF75F50DE9C6AEFA211BEC2FCB9B72A727327A056C983AB",
+      "id": "medical-update:cdc-mmwr:72f02b9efbd3b7011c1e36d7",
+      "publishedAt": "2026-02-26T18:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Multicounty Outbreak of Salmonella Agbeni Linked to Ice in a Cooler at a County Fair - Illinois, August 2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7507a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "7e7763dd799fb004eb4ee17d525c98893ad34cc968d04366a9be52e6dd91da6f",
+      "description": "This report describes receipt of COVID-19 antiviral prescriptions among outpatients aged 65 and older from June 1, 2023-September 30, 2025.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763660&_=B65CD0EE417AD519CAE24F71216900589AA7998B32E363D9F47F169DCD013EDC",
+      "id": "medical-update:cdc-mmwr:fafbe6abe5ef885d096d4684",
+      "publishedAt": "2026-02-19T18:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "COVID-19",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "COVID-19 Antiviral Prescription Receipt Among Outpatients Aged ≥65 Years - United States, June 1, 2023-September 30, 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7506a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "6440383cc633d1f01a5cbbc5b4c07cf4731b5a99a7ad05c172492b7770252963",
+      "description": "This report describes regional increases in Valley fever in Arizona during 2005-2022.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763662&_=70AF80284A004CB2AE8458912B0DC0FF2293C2BE1462E8B5DB8DE5FC95E07CD0",
+      "id": "medical-update:cdc-mmwr:0701461d103a11c983008858",
+      "publishedAt": "2026-02-19T18:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Regional Increases in Incidence of Coccidioidomycosis (Valley Fever) - Arizona, 2005-2022",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7506a3.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "4170a6375545c31632e41bf519c768066be3d1074fbaac828f1b2fd25534443b",
+      "description": "This report describes respiratory virus activity in the United States during July 1, 2024-June 30, 2025.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763661&_=2C93D4BB050F38A0E825C7252F14AC489386B3D0FB6329A91B27D5D4520A99E6",
+      "id": "medical-update:cdc-mmwr:dc9714e44aa58d820a169bfa",
+      "publishedAt": "2026-02-19T18:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Respiratory Virus Activity - United States, July 1, 2024-June 30, 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7506a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "08604bf7d3851cb0320e90edc43d63e90385e561d67ee458571fd9dd19e0583b",
+      "description": "This report describes an outbreak of Purpureocillium lilacinum fungal skin infections associated with a dermatology clinic in Washington.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763459&_=3F090F0896CD6EFA7976B20E4310CFC757FFC6B0B0BCA243B86368C5F22E775C",
+      "id": "medical-update:cdc-mmwr:353af8d4bd8719580110d8ad",
+      "publishedAt": "2026-02-12T18:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Pseudo-Outbreak of Purpureocillium lilacinum Skin Infections at a Dermatology Clinic - Washington, 2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7505a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "0bd42a5ad453bfb6de63077a84250435508c92e44acf7b5877c8b53bc79d3af4",
+      "description": "This report describes the public health response to a Purpureocillium lilacinum keratitis outbreak in New York City associated with an ophthalmology clinic.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763458&_=EA31D532042435F4786B354D3D0C3448D00DA2F2CD5B1661F871346FC033CC68",
+      "id": "medical-update:cdc-mmwr:87e4648cfefc06c64f839326",
+      "publishedAt": "2026-02-12T18:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Purpureocillium lilacinum Keratitis Outbreak Associated with an Ophthalmology Clinic - New York City, 2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7505a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
       "contentHash": "861aa2ad71f69d8b025171e167e6307daae0e50841776e8d7f7880b01f9cc5a4",
       "description": "This report describes the public health response to a measles outbreak in Colorado among people exposed to an infectious traveler who arrived in Colorado in May 2025 on an international flight.",
       "descriptionOrigin": "source-provided",
@@ -787,11 +1617,12 @@
       "url": "https://www.cdc.gov/mmwr/volumes/74/wr/mm7433a1.htm"
     }
   ],
-  "archiveRetentionDays": 730,
-  "currentWindowDays": 180,
-  "datasetVersion": "ani-medical-updates-2026-08-09.1",
-  "generatedAt": "2026-08-09T16:28:05.753Z",
-  "generatorVersion": "ani-medical-updates-generator-2026-08-09.1",
+  "archivePolicy": "retain",
+  "archiveRetentionDays": 3650,
+  "currentWindowDays": 60,
+  "datasetVersion": "ani-medical-updates-2026-08-10.2",
+  "generatedAt": "2026-08-10T04:22:13.815Z",
+  "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
       "category": "recall",
@@ -2269,841 +3100,11 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "title": "FDA Issues Emergency Use Authorization for Generic Over-the-Counter Drug to Treat New World Screwworm in Dogs and Cats",
       "url": "https://www.fda.gov/news-events/press-announcements/fda-issues-emergency-use-authorization-generic-over-counter-drug-treat-new-world-screwworm-dogs-and"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "29e063f5fbd73749d05b8a9e5c094a0ca1cf342bb26a3120b8e53bb0f03fce51",
-      "description": "This report describes characteristics of patients who were hospitalized during a large measles outbreak in west Texas.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765694&_=9672D42EE69051FC6238CD438B797558E2902B3137F150A5F39CEFD6F8A3511D",
-      "id": "medical-update:cdc-mmwr:efac01f4f4a0278bf9b472c3",
-      "publishedAt": "2026-06-04T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Measles",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Measles Outbreak in a Child Care Facility - Lubbock, Texas, March-April 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7521a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "1e1d47286e1d5687ce8ad6133f58a195ffeae0ebb848d6cd412802b49a206716",
-      "description": "This report describes an outbreak of 39 cases of amatoxin mushroom poisoning in Northern California.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765695&_=DB5763E06BD3247A2E346E499AC880F64D2C4D702987AE7AAE168EF2AC278FD7",
-      "id": "medical-update:cdc-mmwr:2e8f9c98e11d43e96bc73b2a",
-      "publishedAt": "2026-06-04T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Lyme disease",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Notes from the Field: Borrelia mayonii Lyme Disease - New York, 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7521a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "437335a56a7dc517009f00bb5d4f02f0a71ad2018c7d393f9226e382a4219ea3",
-      "description": "This report describes an outbreak of 39 cases of amatoxin mushroom poisoning in Northern California.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765642&_=9C61549558DE7C54B5261B2B2EB89E2EF72601E4D318CFC3C88CC0C33E6F5C7B",
-      "id": "medical-update:cdc-mmwr:279073d03e531b31fa051ff4",
-      "publishedAt": "2026-05-28T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Amanita Species Mushroom Poisonings - Northern California, November 2025-March 2026",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7520a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "e33ddbc086a90d12668ffc38bd787cd55b61106a314cccdaf87c7cd6717ed722",
-      "description": "This report describes characteristics of patients who were hospitalized during a large measles outbreak in west Texas.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765641&_=CACB0701DFFAF1D42283BD53DD6EAE36CFC920156E7EC891140634F15B3DE82D",
-      "id": "medical-update:cdc-mmwr:08e27c49cfaf5932b493131d",
-      "publishedAt": "2026-05-28T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Measles",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Characteristics of Patients Hospitalized with Measles During an Outbreak - West Texas, January-March 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7520a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "caafad861d416ebad902143c8a4059ae13846c121e3fb7b6e0de7da5f66e87da",
-      "description": "This report describes an 8-month outbreak of carbapenemase-producing Enterobacterales in a long-term care facility in Ontario, Canada.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765602&_=51C75710C3D296BFA88B255F77492796A7A88194FCF869DDFE4D2276D858623F",
-      "id": "medical-update:cdc-mmwr:5e917ccb7f1d2aade04e8e54",
-      "publishedAt": "2026-05-21T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Klebsiella pneumoniae",
-          "collection": "clinicalReferenceEntries"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Klebsiella pneumoniae Carbapenemase-Producing Enterobacterales Infection and Colonization in a Long-Term Care Facility - Ontario, Canada, May 2024-January 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7519a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "76eaa7c7be127b32de94695bb2e0fc20ac2a9442a9908c4f38383b62a45bb3c4",
-      "description": "This report describes sunburns among adults.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765603&_=C07DB9E6B0164C8FC5D311ABA6C89FABD1ED97D9C9CA0936676015C2DDF57B4A",
-      "id": "medical-update:cdc-mmwr:bf34c05cd458f651eb6010f7",
-      "publishedAt": "2026-05-21T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Prevalence and Context of Sunburn Among U.S. Adults - United States, 2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7519a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "203c48ac8ba33c9b3446036c3a61c763d77fdc0b45152e761ebb840dc3165497",
-      "description": "This report describes operational guidance for public health investigation and response to mosquito-transmitted malaria in the United States.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765596&_=05323F9163F17CB3D295BF512D8DC1B30761153822C59636A727EE3117C70EB4",
-      "id": "medical-update:cdc-mmwr:5e2148c7bee8724e71be1ae5",
-      "publishedAt": "2026-05-19T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Malaria",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Recommendations and Reports: CDC Operational Guidance for Investigating Locally Acquired Mosquito-Transmitted Malaria - United States, 2026",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/rr/rr7501a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "0948edd08bf90a1640fda6f78b5f9d4ffe1e1b4144855d5871e1a1406be785c6",
-      "description": "This report describes an increase in dengue cases reported during 2024.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765450&_=DAA3CE758ADA77F0196723503484ECC6D9926D181E9E03CE012F8F2E6D834397",
-      "id": "medical-update:cdc-mmwr:148abc1623a789cc43124316",
-      "publishedAt": "2026-05-14T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Increase in Travel-Associated and Locally Acquired Dengue Cases - United States, 2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7518a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "b8c109eab6f805b5015e3300ca41f9787e75e44f8db663bc39a38d6b7da3b290",
-      "description": "This report describes survey results from backyard flock owners' attitudes towards avian influenza.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765451&_=326386CE62EBA8B4315F849F9F3751A68029B3C7361E358425FEB01967577816",
-      "id": "medical-update:cdc-mmwr:dca433417b1d76073beed232",
-      "publishedAt": "2026-05-14T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Influenza",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Knowledge, Attitudes, and Practices Regarding Avian Influenza Among Owners of Backyard Flocks - United States, July-December 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7518a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "5c05bbb0dfcaf2ed31a5217fc7aff20ac2c4d958e128e681265bee9022dc7dd4",
-      "description": "This report describes a fatal human case of highly pathogenic avian influenza in Washington.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765373&_=BC8EBF564D32EAE37A33EE6D54916BE3D7112F4E44130B17291F583C06D79034",
-      "id": "medical-update:cdc-mmwr:8541473b95ecbe613789c13b",
-      "publishedAt": "2026-05-07T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Influenza",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Fatal Human Case of Highly Pathogenic Avian Influenza A(H5N5) in a Backyard Flock Owner - Washington, November 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7517a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "7772576b483ee32ab9c1567ecbac5154ca9b4943486bf4482ad5d344768913f3",
-      "description": "This report describes 139 human exposures to cats infected with A(H5N1) in Los Angeles, California.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765372&_=FCF02FC6717F389B236B77F816C6EBA607416B972A65C2A546C15CC7B58798E2",
-      "id": "medical-update:cdc-mmwr:34f5aa382da072269f0d6c7c",
-      "publishedAt": "2026-05-07T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Influenza",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Serologic Evidence of Highly Pathogenic Avian Influenza A(H5N1) Virus Infection in a Veterinary Professional Exposed to an Infected Domestic Cat - Los Angeles County, California, December 2024-January 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7517a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "cc91224d72ca998c6abbd93afe52a1ccd2cbb63d0cce4e8a773b5e40e24ef72b",
-      "description": "This report describes 50 large tuberculosis outbreaks in 23 states during 2017-2023.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765299&_=318B9A288CED24864C798C04462BAF190F315E57ED77ADDBB2E92466E5151530",
-      "id": "medical-update:cdc-mmwr:5bd64d57444d6b6c19480f4a",
-      "publishedAt": "2026-04-30T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Tuberculosis",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Large Tuberculosis Outbreaks - United States, 2017-2023",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7516a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "1e4e926f05927126e650504be0554b853398e60916724c8af4eae3d5b2cc4d6c",
-      "description": "This report describes an increase in eastern equine encephalitis in northern Vermont during 2023-2024.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765300&_=9709DEBCFB1F241D1E7E027DED5C438DDCB0D88A2EFF659F3A80D9335EDD5A59",
-      "id": "medical-update:cdc-mmwr:d8c983adcc8079b0429e95fa",
-      "publishedAt": "2026-04-30T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Notes from the Field: Increase in Eastern Equine Encephalitis Virus Activity - Vermont, 2023-2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7516a2.htm"
-    },
-    {
-      "category": "vaccine-biologic",
-      "contentHash": "4cf1f6eac58a60d5ac244c6aaffb2eb179edde71810ed82c0852238482ba148e",
-      "description": "This report describes flu vaccination coverage among nursing home residents and health care providers working in nursing homes.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765132&_=1B1C8DCA4BB621B2962059145910C993138EE600D48A7923D6722CD9CD391EFB",
-      "id": "medical-update:cdc-mmwr:743da7c8f3a42b89072af2e8",
-      "publishedAt": "2026-04-23T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Influenza",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Influenza Vaccination Coverage Among Nursing Home Residents and Health Care Personnel - United States, 2024-25 Influenza Season",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7515a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "d6904a32e1de5fbec07952fa4df1e14167e7722125a9af7a5dd547aafa75b5ad",
-      "description": "This report describes contact tracing following mpox exposures during commercial air travel.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765133&_=4AFFF5B6574ACF191C9F6CD7365A9B16BE4033743B1F493AE72E7A7FEF815FD4",
-      "id": "medical-update:cdc-mmwr:9651005e0af935dba8b444ce",
-      "publishedAt": "2026-04-23T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Notes from the Field: Contact Tracing for Monkeypox virus Clade I Cases Associated with Air Travel - United States, November 2024-January 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7515a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "004166a6eb5711b32d7c619fab672b143d1e626bdb1b08ad730106492c238f18",
-      "description": "This report describes two clusters of invasive of Haemophilus influenzae type b among adults with special risk factors in Alaska, Oregon, and Washington.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764882&_=7E35FD14AEFE3848ECF89D0EC8C0D1330209D6FE1B239632077B36D3B397E9C7",
-      "id": "medical-update:cdc-mmwr:56f16fbfd96b62c4d54bdb51",
-      "publishedAt": "2026-04-16T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Haemophilus influenzae",
-          "collection": "clinicalReferenceEntries"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Clusters of Invasive Haemophilus influenzae Type b Disease Among Adults Using Substances or Experiencing Homelessness or Housing Instability - Alaska, Oregon, and Washington, 2023─2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7514a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "0cf8f286dc5a062d1d0137b7c1f68ae9e4fd1da73bda54eac265908360906a14",
-      "description": "This report describes four cases of tetanus among children who had not received a primary tetanus toxoid-containing virus series before exposure.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764883&_=B3D8BC1EE92BC8045B96E80DB5541EBAD7CA52E05C4C088420C3551F61D9661A",
-      "id": "medical-update:cdc-mmwr:3978400dd70991414a779bb2",
-      "publishedAt": "2026-04-16T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Tetanus",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Notes from the Field: Tetanus in Four Children - Idaho, Minnesota, Missouri, and Wisconsin, 2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7514a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "ada14a1f2e908d148e311f55844c76304ebec7d166db1bbc7e805c087dd17dde",
-      "description": "This report describes tetanus surveillance in the United States from 2009-2023",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764854&_=15DABEEC3C8AB9467BE6A7F01C0D922562E4A9EAE401AC284EDC7781E518D79D",
-      "id": "medical-update:cdc-mmwr:18b037554e39843616007afc",
-      "publishedAt": "2026-04-14T17:06:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Tetanus",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Surveillance Summaries: Tetanus Surveillance - United States, 2009-2023",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/ss/ss7501a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "433df57ff9e0d1ece62be0920adf359a1f03e06501d4834e2453efd9a5efbd84",
-      "description": "This report describes the emergence of drug-resistant shigellosis in the United States during 2011-2023.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764763&_=B2957F444F0221F226AFBE1AACAF3ABA31579FE70CB546F317D7D2E6BF77D110",
-      "id": "medical-update:cdc-mmwr:567ae4c87a5fe9c8c3304a3d",
-      "publishedAt": "2026-04-09T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Emergence of Extensively Drug-Resistant Shigellosis - United States, 2011-2023",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7513a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "1969d307ed3e4d08a94ce533610a6bd6bf682d5b6c6f40dcf2304b0525235c60",
-      "description": "This report describes severe illness associated with eating mushroom-containing chocolate products.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764764&_=18477F2BA84854AE66C5D7CB437BF83606D18023747AD982DC613CD0C6612E16",
-      "id": "medical-update:cdc-mmwr:c50fe95e6ca3ff2f91c1be7a",
-      "publishedAt": "2026-04-09T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Severe Illness Associated with Eating Mushroom-Containing Chocolate Products - United States, January-October 2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7513a2.htm"
-    },
-    {
-      "category": "vaccine-biologic",
-      "contentHash": "19d3757bb2e3bbc540ab4374d0f316b3f301feb8bb41c490524bde3e90dcb233",
-      "description": "This report describes influenza and COVID-19 vaccination coverage among health care providers in the United States during the 2024-25 respiratory virus season.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764645&_=A2BB07CD4235BA6D7F0DFE2EABF4A988DDBBE1C9ABEB45988735C68E4489B30D",
-      "id": "medical-update:cdc-mmwr:a883bc815d84c0b59233c517",
-      "publishedAt": "2026-04-02T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "COVID-19",
-          "collection": "pathologyDiseases"
-        },
-        {
-          "canonicalTitle": "Influenza",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Influenza and COVID-19 Vaccination Coverage Among Health Care Personnel - United States, 2024-25 Respiratory Virus Season",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7512a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "fd4fbae7f252d08429b8432c30e006221d0f0b7ad3227b1d8fc9b86c0765fcbe",
-      "description": "This report describes an increase in reports linked to kratom-containing kava products in the United States from 2000-2025.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764644&_=4A78E67D5C13DF94E8174D3FF85F5C922002D8817A2D1C025454E27D6A09333E",
-      "id": "medical-update:cdc-mmwr:0db08eaab1dbec549b031a83",
-      "publishedAt": "2026-04-02T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Kratom",
-          "collection": "holisticRemedies"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Increase in Poison Center Reports Linked to Kratom-Containing Kava Products - National Poison Data System, United States, 2000-2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7512a1.htm"
-    },
-    {
-      "category": "vaccine-biologic",
-      "contentHash": "be0e947afec5528d0995eeba8ac2209e59dd87885841ef0c2d92306dd0cb0734",
-      "description": "This report describes vaccination coverage by age 2 among children born in 2021 and 2022.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764510&_=29FB7147E4AE74D5909613EF7222B3BFE43D886BA8021F81CFD6564F49D701E5",
-      "id": "medical-update:cdc-mmwr:5ac0ee0dd870a9f75d7f941c",
-      "publishedAt": "2026-03-26T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Vaccination Coverage by Age 24 Months Among Children Born in 2021 and 2022 - National Immunization Survey-Child, United States, 2022-2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7511a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "8ebfd43887fe5ec215eed5452dfe5ecab634da8fdc3fef33182384c955510579",
-      "description": "This report describes kratom-related exposures in the United States from 2015-2024.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764507&_=FDACCF794E3E8343C75C06F84BB551AD905F606864B3E1E2A6F887B8CFE28D7F",
-      "id": "medical-update:cdc-mmwr:f22e8c4661a4046e03ac3ce2",
-      "publishedAt": "2026-03-26T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Kratom",
-          "collection": "holisticRemedies"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Increases in Kratom-Related Reports to Poison Centers - National Poison Data System, United States, 2015-2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7511a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "34c7b686e8989b5879855e6b93c876214409962ea775f57677a46aac8a24f47d",
-      "description": "This report describes early detection and surveillance of the SARS-CoV-2 variant BA.3.2.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764321&_=8A4675AD5688528B7FFA7DD8D16AB5FF726A877E5AA0E10D482A3B0501A7A956",
-      "id": "medical-update:cdc-mmwr:c310d420eacdd0d27b3f5104",
-      "publishedAt": "2026-03-19T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "SARS-CoV-2",
-          "collection": "clinicalReferenceEntries"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Early Detection and Surveillance of the SARS-CoV-2 Variant BA.3.2 - Worldwide, November 2024-February 2026",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7510a1.htm"
-    },
-    {
-      "category": "vaccine-biologic",
-      "contentHash": "0fc571d5726688333523cd7923e0bdb555c922677499974bfc98c8d2f67a3b9c",
-      "description": "This report describes interim estimates of 2025-26 flu vaccine effectiveness in California during October 2025-January 2026.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764128&_=603711215ED2E9C146D667A5F38D2AB61F84B18D4DB23C7FE86DC79FC561FE66",
-      "id": "medical-update:cdc-mmwr:e7eb566c30e9f95a848ef662",
-      "publishedAt": "2026-03-12T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Influenza vaccine",
-          "collection": "clinicalReferenceEntries"
-        },
-        {
-          "canonicalTitle": "Influenza",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Interim Estimates of 2025-26 Seasonal Influenza Vaccine Effectiveness - California, October 2025-January 2026",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7509a3.htm"
-    },
-    {
-      "category": "vaccine-biologic",
-      "contentHash": "cce55bc71610590f3b32fd61fa6c9a8ea584837b235a108266001a39dab20abb",
-      "description": "This report describes interim estimates of 2025-26 seasonal flu vaccine effectiveness.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764127&_=AEFCBB3202F1EBDEE75154F9FA803794D7B017310DF9A587B730B04649808593",
-      "id": "medical-update:cdc-mmwr:fb35c54a8ea50af40a78649d",
-      "publishedAt": "2026-03-12T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Influenza vaccine",
-          "collection": "clinicalReferenceEntries"
-        },
-        {
-          "canonicalTitle": "Influenza",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Interim Estimates of 2025-26 Seasonal Influenza Vaccine Effectiveness - United States, September 2025-February 2026",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7509a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "1f48b852a730df88bdff183ffcec56037326e1903710a7b569d3cfa06a0017c9",
-      "description": "This report describes a measles outbreak in New Mexico in 2025.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=764126&_=2BF94EB643278723D22269E028C81C3FCAC0EBAE1756C559CD6E07D2B701D61C",
-      "id": "medical-update:cdc-mmwr:f31c09c1efa72ab4a7f70670",
-      "publishedAt": "2026-03-12T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Measles",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Measles Outbreak - New Mexico, 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7509a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "223813b49f224b318345059c19bcba1a9c37d95dafea51fc9c83890901c870c4",
-      "description": "This report describes Kaposi sarcoma in an organ transplant recipient.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763925&_=26ACD822F547E797AECAA1BE16F4B1AF28FDB50894381B27D9327DEA6797EFD1",
-      "id": "medical-update:cdc-mmwr:efcd72bc4cfcc82937ea347e",
-      "publishedAt": "2026-03-05T18:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Kaposi sarcoma-associated herpesvirus",
-          "collection": "clinicalReferenceEntries"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Kaposi Sarcoma-Associated Herpesvirus Infection and Complications Among Solid Organ Transplant Recipients - United States, January 2021-September 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7508a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "4650aa9d876d3991a1caf0e3c8ecfec9738167abbebd766380c30c10b1a597c2",
-      "description": "This report describes cases of congenital rubella in Florida.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763926&_=00A39A56CA907F83D0200EBE628039E5FF990A2FB0C82B8A4B899EE5BFE1ADAC",
-      "id": "medical-update:cdc-mmwr:2c99f56c15717412cc9392d0",
-      "publishedAt": "2026-03-05T18:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Rubella",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Notes from the Field: Congenital Rubella Syndrome - Florida, 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7508a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "9b2a5a4c3807e60bf17b6a6de8c4592398377c41bf998729b588af2bb3cb8d69",
-      "description": "This report describes exposures to chemical munitions during commercial fishing operations.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763927&_=3DAE6AB4F1588B004D5F048FF2FC8E0745752ADCA5C8C5FB7CB624D2AFFDF49F",
-      "id": "medical-update:cdc-mmwr:172c4230108cdc676abeefeb",
-      "publishedAt": "2026-03-05T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Notes from the Field: Exposures to Chemical Munitions During Commercial Fishing Operations - New Jersey, 2016-2023",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7508a3.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "12473776740df0c855152b4219deb33c6a12200680ceb9a9db521fd4b5680516",
-      "description": "This report describes a 2024 Salmonella outbreak linked to ice in a cooler at a county fair in Illinois",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763711&_=8FABF2718D6D7BCF3BF75F50DE9C6AEFA211BEC2FCB9B72A727327A056C983AB",
-      "id": "medical-update:cdc-mmwr:72f02b9efbd3b7011c1e36d7",
-      "publishedAt": "2026-02-26T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Multicounty Outbreak of Salmonella Agbeni Linked to Ice in a Cooler at a County Fair - Illinois, August 2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7507a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "7e7763dd799fb004eb4ee17d525c98893ad34cc968d04366a9be52e6dd91da6f",
-      "description": "This report describes receipt of COVID-19 antiviral prescriptions among outpatients aged 65 and older from June 1, 2023-September 30, 2025.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763660&_=B65CD0EE417AD519CAE24F71216900589AA7998B32E363D9F47F169DCD013EDC",
-      "id": "medical-update:cdc-mmwr:fafbe6abe5ef885d096d4684",
-      "publishedAt": "2026-02-19T18:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "COVID-19",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "COVID-19 Antiviral Prescription Receipt Among Outpatients Aged ≥65 Years - United States, June 1, 2023-September 30, 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7506a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "6440383cc633d1f01a5cbbc5b4c07cf4731b5a99a7ad05c172492b7770252963",
-      "description": "This report describes regional increases in Valley fever in Arizona during 2005-2022.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763662&_=70AF80284A004CB2AE8458912B0DC0FF2293C2BE1462E8B5DB8DE5FC95E07CD0",
-      "id": "medical-update:cdc-mmwr:0701461d103a11c983008858",
-      "publishedAt": "2026-02-19T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Regional Increases in Incidence of Coccidioidomycosis (Valley Fever) - Arizona, 2005-2022",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7506a3.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "4170a6375545c31632e41bf519c768066be3d1074fbaac828f1b2fd25534443b",
-      "description": "This report describes respiratory virus activity in the United States during July 1, 2024-June 30, 2025.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763661&_=2C93D4BB050F38A0E825C7252F14AC489386B3D0FB6329A91B27D5D4520A99E6",
-      "id": "medical-update:cdc-mmwr:dc9714e44aa58d820a169bfa",
-      "publishedAt": "2026-02-19T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Respiratory Virus Activity - United States, July 1, 2024-June 30, 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7506a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "08604bf7d3851cb0320e90edc43d63e90385e561d67ee458571fd9dd19e0583b",
-      "description": "This report describes an outbreak of Purpureocillium lilacinum fungal skin infections associated with a dermatology clinic in Washington.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763459&_=3F090F0896CD6EFA7976B20E4310CFC757FFC6B0B0BCA243B86368C5F22E775C",
-      "id": "medical-update:cdc-mmwr:353af8d4bd8719580110d8ad",
-      "publishedAt": "2026-02-12T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Pseudo-Outbreak of Purpureocillium lilacinum Skin Infections at a Dermatology Clinic - Washington, 2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7505a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "0bd42a5ad453bfb6de63077a84250435508c92e44acf7b5877c8b53bc79d3af4",
-      "description": "This report describes the public health response to a Purpureocillium lilacinum keratitis outbreak in New York City associated with an ophthalmology clinic.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=763458&_=EA31D532042435F4786B354D3D0C3448D00DA2F2CD5B1661F871346FC033CC68",
-      "id": "medical-update:cdc-mmwr:87e4648cfefc06c64f839326",
-      "publishedAt": "2026-02-12T18:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Purpureocillium lilacinum Keratitis Outbreak Associated with an Ophthalmology Clinic - New York City, 2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7505a1.htm"
     }
   ],
-  "refreshStatus": "CURRENT",
+  "refreshStatus": "PARTIAL",
   "schemaVersion": "ani-medical-updates-dataset-v1",
-  "sourceConfigSha256": "22087d368f2a35b18d8626e336ee22687f55472121c2050fc807dda01896951d",
+  "sourceConfigSha256": "bcda90ac53015cf0b9744061bc08ad8442b6173b990e7125516874c39b76e0db",
   "sourceStatuses": [
     {
       "error": null,
@@ -3159,6 +3160,17 @@
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
+    },
+    {
+      "error": "Awaiting first scheduled official-source refresh.",
+      "itemCount": 0,
+      "rawItemCount": 0,
+      "rejectedItemCount": 0,
+      "retainedItemCount": 0,
+      "retrievedAt": null,
+      "sourceId": "cdc-han",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
+      "status": "stale"
     },
     {
       "error": null,

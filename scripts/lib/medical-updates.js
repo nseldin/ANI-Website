@@ -9,10 +9,12 @@ const ROOT = path.resolve(__dirname, "..", "..");
 const CONFIG_SCHEMA = "ani-medical-updates-sources-v1";
 const DATASET_SCHEMA = "ani-medical-updates-dataset-v1";
 const RUNTIME_SCHEMA = "ani-medical-updates-runtime-v1";
-const GENERATOR_VERSION = "ani-medical-updates-generator-2026-08-09.1";
+const GENERATOR_VERSION = "ani-medical-updates-generator-2026-08-10.2";
 const CONFIG_RELATIVE_PATH = "config/ani-medical-updates-sources.v1.json";
 const DATA_RELATIVE_PATH = "data/medical-updates.json";
 const RUNTIME_RELATIVE_PATH = "data/medical-updates.js";
+const AUDIT_RELATIVE_PATH = "reports/ANI_MEDICAL_UPDATES_REFRESH_LOG.json";
+const AUDIT_SCHEMA = "ani-medical-updates-refresh-log-v1";
 const SOURCE_STATUS_VALUES = Object.freeze(["current", "stale", "disabled"]);
 const REFRESH_STATUS_VALUES = Object.freeze(["CURRENT", "PARTIAL", "STALE", "PENDING_INITIAL_REFRESH"]);
 const DESCRIPTION_ORIGINS = Object.freeze(["source-provided", "unavailable"]);
@@ -128,7 +130,8 @@ function projectPaths(root = ROOT) {
     root: resolvedRoot,
     configPath: path.join(resolvedRoot, ...CONFIG_RELATIVE_PATH.split("/")),
     dataPath: path.join(resolvedRoot, ...DATA_RELATIVE_PATH.split("/")),
-    runtimePath: path.join(resolvedRoot, ...RUNTIME_RELATIVE_PATH.split("/"))
+    runtimePath: path.join(resolvedRoot, ...RUNTIME_RELATIVE_PATH.split("/")),
+    auditPath: path.join(resolvedRoot, ...AUDIT_RELATIVE_PATH.split("/"))
   };
 }
 
@@ -173,6 +176,8 @@ function validateConfig(config) {
   ].forEach((field) => {
     if (!Number.isInteger(config[field]) || config[field] <= 0) add("medical-updates-config-limit-invalid", field, `${field} must be a positive integer.`, config[field]);
   });
+  if (!['retain', 'expire'].includes(config.archivePolicy)) add("medical-updates-archive-policy-invalid", "archivePolicy", "archivePolicy must be retain or expire.", config.archivePolicy);
+  if (typeof config.requireResolvedItemUrls !== "boolean") add("medical-updates-url-verification-policy-invalid", "requireResolvedItemUrls", "requireResolvedItemUrls must be a boolean.", config.requireResolvedItemUrls);
   if (cleanText(config.datasetVersion).length > config.maxDatasetVersionCharacters) add("medical-updates-dataset-version-too-long", "datasetVersion", `datasetVersion must not exceed ${config.maxDatasetVersionCharacters} characters.`, config.datasetVersion);
   if (GENERATOR_VERSION.length > config.maxGeneratorVersionCharacters) add("medical-updates-generator-version-too-long", "maxGeneratorVersionCharacters", `generatorVersion must not exceed ${config.maxGeneratorVersionCharacters} characters.`, GENERATOR_VERSION);
   if (Number.isInteger(config.archiveRetentionDays) && Number.isInteger(config.currentWindowDays) && config.archiveRetentionDays <= config.currentWindowDays) {
@@ -181,6 +186,10 @@ function validateConfig(config) {
   const categories = Array.isArray(config.categories) ? config.categories : [];
   if (!categories.length || new Set(categories).size !== categories.length) add("medical-updates-categories-invalid", "categories", "categories must be a nonempty unique array.", config.categories);
   const categorySet = new Set(categories);
+  if (!Array.isArray(config.administrativeExcludeTitlePatterns)) add("medical-updates-administrative-patterns-invalid", "administrativeExcludeTitlePatterns", "administrativeExcludeTitlePatterns must be an array.", config.administrativeExcludeTitlePatterns);
+  else {
+    try { compilePatterns(config.administrativeExcludeTitlePatterns); } catch (error) { add("medical-updates-administrative-pattern-invalid", "administrativeExcludeTitlePatterns", error.message, config.administrativeExcludeTitlePatterns); }
+  }
   if (!Array.isArray(config.relatedCardRules)) add("medical-updates-related-rules-invalid", "relatedCardRules", "relatedCardRules must be an array.", config.relatedCardRules);
   asArray(config.relatedCardRules).forEach((rule, index) => {
     const target = rule && rule.target;
@@ -208,6 +217,9 @@ function validateConfig(config) {
     if (!Array.isArray(source.finalItemHosts) || !source.finalItemHosts.length) add("medical-updates-source-final-hosts-invalid", `${base}.finalItemHosts`, "At least one final official item hostname is required.", source.finalItemHosts);
     if (!Array.isArray(source.intermediateItemHosts)) add("medical-updates-source-intermediate-hosts-invalid", `${base}.intermediateItemHosts`, "intermediateItemHosts must be an array.", source.intermediateItemHosts);
     if (!SOURCE_TRANSPORT_VALUES.includes(source.transport || "fetch")) add("medical-updates-source-transport-invalid", `${base}.transport`, "transport must be fetch or node-https.", source.transport);
+    if (typeof source.resolveItemRedirects !== "boolean") add("medical-updates-source-redirect-policy-invalid", `${base}.resolveItemRedirects`, "resolveItemRedirects must be a boolean.", source.resolveItemRedirects);
+    if (config.requireResolvedItemUrls === true && source.resolveItemRedirects !== true) add("medical-updates-source-url-verification-disabled", `${base}.resolveItemRedirects`, "Every enabled official source must verify item URL reachability and redirect boundaries.", source.resolveItemRedirects);
+    if (source.applyAdministrativeExclusions !== undefined && typeof source.applyAdministrativeExclusions !== "boolean") add("medical-updates-source-relevance-policy-invalid", `${base}.applyAdministrativeExclusions`, "applyAdministrativeExclusions must be a boolean when supplied.", source.applyAdministrativeExclusions);
     if (!["standard", "calendar-date"].includes(source.publicationDatePolicy || "standard")) add("medical-updates-source-date-policy-invalid", `${base}.publicationDatePolicy`, "publicationDatePolicy must be standard or calendar-date.", source.publicationDatePolicy);
     if (!["source-provided", "title-only"].includes(source.descriptionPolicy)) add("medical-updates-description-policy-invalid", `${base}.descriptionPolicy`, "Use source-provided or title-only.", source.descriptionPolicy);
     if (!categorySet.has(source.defaultCategory)) add("medical-updates-default-category-invalid", `${base}.defaultCategory`, "defaultCategory must be registered.", source.defaultCategory);
@@ -288,6 +300,19 @@ function classifyItem(source, title) {
   if (asArray(source.includeTitlePatterns).length && !patternMatch(title, source.includeTitlePatterns)) return null;
   const matchingRule = asArray(source.categoryRules).find((rule) => patternMatch(title, rule.titlePatterns));
   return matchingRule ? matchingRule.category : source.defaultCategory;
+}
+
+function itemAuditKey(row, sourceId = "unknown") {
+  const material = [sourceId, cleanText(row && row.guid), cleanText(row && row.link), sourcePlainText(row && row.title)].join("\n");
+  return sha256(material).slice(0, 24);
+}
+
+function emitAudit(options, eventType, details = {}) {
+  if (!options || typeof options.onAudit !== "function") return;
+  options.onAudit({
+    eventType,
+    ...stableValue(details)
+  });
 }
 
 function canonicalUrl(value, source, trackingParameters = []) {
@@ -511,12 +536,19 @@ function itemContentHash(item) {
 function feedItemEligibility(row, source, config, nowValue = Date.now()) {
   const title = sourcePlainText(row && row.title);
   const publishedAt = isoDate(row && row.publishedAt, source.publicationDatePolicy || "standard");
+  if (!title) return { eligible: false, title, publishedAt, category: null, reason: "missing-title" };
+  if (!publishedAt) return { eligible: false, title, publishedAt, category: null, reason: "invalid-publication-date" };
+  if (source.applyAdministrativeExclusions !== false
+    && asArray(config.administrativeExcludeTitlePatterns).length
+    && patternMatch(title, config.administrativeExcludeTitlePatterns)) {
+    return { eligible: false, title, publishedAt, category: null, reason: "administrative-or-low-value-title" };
+  }
   const category = classifyItem(source, title);
-  if (!title || !publishedAt || !category) return { eligible: false, title, publishedAt, category };
+  if (!category) return { eligible: false, title, publishedAt, category, reason: "outside-clinical-relevance-rules" };
   const now = new Date(nowValue);
   const futureLimit = now.getTime() + config.futureDateToleranceHours * 60 * 60 * 1000;
-  if (new Date(publishedAt).getTime() > futureLimit) return { eligible: false, title, publishedAt, category };
-  return { eligible: true, title, publishedAt, category };
+  if (new Date(publishedAt).getTime() > futureLimit) return { eligible: false, title, publishedAt, category, reason: "future-publication-date" };
+  return { eligible: true, title, publishedAt, category, reason: null };
 }
 
 async function normalizeFeedItem(row, source, config, options = {}) {
@@ -565,6 +597,7 @@ function newestFirst(left, right) {
 }
 
 function deduplicateItems(items) {
+  const options = arguments.length > 1 && arguments[1] || {};
   const ordered = asArray(items).filter(Boolean).slice().sort(newestFirst);
   const seenIds = new Set();
   const seenUrls = new Set();
@@ -573,7 +606,15 @@ function deduplicateItems(items) {
   return ordered.filter((item) => {
     const guidKey = item.guid ? `${item.sourceId}:${normalizeIdentity(item.guid)}` : "";
     const titleDateKey = `${item.sourceId}:${normalizeIdentity(item.title)}:${item.publishedAt.slice(0, 10)}`;
-    if (seenIds.has(item.id) || seenUrls.has(item.url) || (guidKey && seenGuid.has(guidKey)) || seenSourceTitleDate.has(titleDateKey)) return false;
+    let duplicateReason = "";
+    if (seenIds.has(item.id)) duplicateReason = "stable-id";
+    else if (seenUrls.has(item.url)) duplicateReason = "canonical-url";
+    else if (guidKey && seenGuid.has(guidKey)) duplicateReason = "source-guid";
+    else if (seenSourceTitleDate.has(titleDateKey)) duplicateReason = "source-title-date";
+    if (duplicateReason) {
+      if (typeof options.onDuplicate === "function") options.onDuplicate({ item, duplicateReason });
+      return false;
+    }
     seenIds.add(item.id);
     seenUrls.add(item.url);
     if (guidKey) seenGuid.add(guidKey);
@@ -582,7 +623,7 @@ function deduplicateItems(items) {
   });
 }
 
-function partitionItems(items, nowValue, currentWindowDays, archiveRetentionDays) {
+function partitionItems(items, nowValue, currentWindowDays, archiveRetentionDays, archivePolicy = "expire") {
   const now = new Date(nowValue);
   const currentCutoff = now.getTime() - currentWindowDays * 24 * 60 * 60 * 1000;
   const retentionCutoff = now.getTime() - archiveRetentionDays * 24 * 60 * 60 * 1000;
@@ -590,7 +631,7 @@ function partitionItems(items, nowValue, currentWindowDays, archiveRetentionDays
   const archive = [];
   deduplicateItems(items).forEach((item) => {
     const published = new Date(item.publishedAt).getTime();
-    if (!Number.isFinite(published) || published < retentionCutoff) return;
+    if (!Number.isFinite(published) || (archivePolicy === "expire" && published < retentionCutoff)) return;
     if (published >= currentCutoff) current.push(item); else archive.push(item);
   });
   return { current: current.sort(newestFirst), archive: archive.sort(newestFirst) };
@@ -602,13 +643,34 @@ function previousItemsForSource(previousDataset, sourceId) {
     .filter((item) => item && item.sourceId === sourceId);
 }
 
-function mergeAcceptedWithPrevious(acceptedItems, previousItems) {
-  const accepted = deduplicateItems(acceptedItems);
+function mergeAcceptedWithPrevious(acceptedItems, previousItems, options = {}) {
+  const previous = asArray(previousItems).filter(Boolean);
+  const previousByUrl = new Map(previous.filter((item) => item.url).map((item) => [item.url, item]));
+  const previousByGuid = new Map(previous.filter((item) => item.guid).map((item) => [`${item.sourceId}:${normalizeIdentity(item.guid)}`, item]));
+  const previousByTitleDate = new Map(previous.map((item) => [`${item.sourceId}:${normalizeIdentity(item.title)}:${item.publishedAt.slice(0, 10)}`, item]));
+  const stabilized = asArray(acceptedItems).map((item) => {
+    const guidKey = item.guid ? `${item.sourceId}:${normalizeIdentity(item.guid)}` : "";
+    const titleDateKey = `${item.sourceId}:${normalizeIdentity(item.title)}:${item.publishedAt.slice(0, 10)}`;
+    const prior = (guidKey && previousByGuid.get(guidKey)) || previousByUrl.get(item.url) || previousByTitleDate.get(titleDateKey);
+    if (!prior) return item;
+    if (prior.contentHash !== item.contentHash) emitAudit(options, "official-notice-updated", { sourceId: item.sourceId, itemKey: itemAuditKey(item, item.sourceId) });
+    return {
+      ...item,
+      id: prior.id,
+      retrievedAt: validIso(prior.retrievedAt) ? prior.retrievedAt : item.retrievedAt
+    };
+  });
+  const accepted = deduplicateItems(stabilized, {
+    onDuplicate({ item, duplicateReason }) {
+      emitAudit(options, "duplicate-detected", { sourceId: item.sourceId, itemKey: itemAuditKey(item, item.sourceId), duplicateReason });
+    }
+  });
   const acceptedIds = new Set(accepted.map((item) => item.id));
   const acceptedUrls = new Set(accepted.map((item) => item.url));
   const acceptedGuids = new Set(accepted.filter((item) => item.guid).map((item) => `${item.sourceId}:${normalizeIdentity(item.guid)}`));
   const acceptedTitleDates = new Set(accepted.map((item) => `${item.sourceId}:${normalizeIdentity(item.title)}:${item.publishedAt.slice(0, 10)}`));
-  const retainedCandidates = asArray(previousItems).filter((item) => {
+  const retainedCandidates = previous.filter((item) => {
+    if (typeof options.retainPreviousPredicate === "function" && !options.retainPreviousPredicate(item)) return false;
     const guidKey = item.guid ? `${item.sourceId}:${normalizeIdentity(item.guid)}` : "";
     const titleDateKey = `${item.sourceId}:${normalizeIdentity(item.title)}:${item.publishedAt.slice(0, 10)}`;
     return !acceptedIds.has(item.id)
@@ -672,7 +734,116 @@ function boundedStatusError(value, config) {
   return message.slice(0, config.maxStatusErrorCharacters);
 }
 
+function validDateOnly(value) {
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const parsed = new Date(`${value}T00:00:00.000Z`);
+  return Number.isFinite(parsed.getTime()) && parsed.toISOString().slice(0, 10) === value;
+}
+
+function filterItemsByOfficialDate(items, input = {}) {
+  const startDate = cleanText(input.startDate);
+  const endDate = cleanText(input.endDate);
+  if (startDate && !validDateOnly(startDate)) return { valid: false, error: "invalid-start-date", items: [] };
+  if (endDate && !validDateOnly(endDate)) return { valid: false, error: "invalid-end-date", items: [] };
+  if (startDate && endDate && startDate > endDate) return { valid: false, error: "start-date-after-end-date", items: [] };
+  const filtered = asArray(items).filter((item) => {
+    if (!item || !validIso(item.publishedAt)) return false;
+    const date = item.publishedAt.slice(0, 10);
+    return (!startDate || date >= startDate) && (!endDate || date <= endDate);
+  }).sort(newestFirst);
+  return { valid: true, error: null, items: filtered };
+}
+
+function createAuditRun(nowValue = Date.now()) {
+  const now = new Date(nowValue);
+  if (!Number.isFinite(now.getTime())) throw new Error("Medical Updates audit requires a valid time.");
+  return {
+    runId: `medical-updates-refresh:${now.toISOString().replace(/[:.]/g, "-")}`,
+    startedAt: now.toISOString(),
+    completedAt: null,
+    outcome: "RUNNING",
+    aiCalls: 0,
+    events: []
+  };
+}
+
+function appendAuditEvent(run, event, nowValue = Date.now()) {
+  if (!run || !Array.isArray(run.events) || !event || typeof event !== "object") return;
+  const now = new Date(nowValue);
+  run.events.push({
+    occurredAt: Number.isFinite(now.getTime()) ? now.toISOString() : run.startedAt,
+    ...stableValue(event)
+  });
+}
+
+function writeAuditRun(root, run, options = {}) {
+  const auditPath = projectPaths(root).auditPath;
+  let prior = null;
+  try { prior = readJson(auditPath); } catch (_error) { prior = null; }
+  const maximumRuns = Number.isInteger(options.maximumRuns) && options.maximumRuns > 0 ? options.maximumRuns : 50;
+  const existing = prior && prior.schemaVersion === AUDIT_SCHEMA && Array.isArray(prior.runs) ? prior.runs : [];
+  const payload = {
+    schemaVersion: AUDIT_SCHEMA,
+    maxRuns: maximumRuns,
+    aiCalls: 0,
+    runs: existing.concat([stableValue(run)]).slice(-maximumRuns)
+  };
+  atomicWrite(auditPath, stableJson(payload));
+  return { auditPath, sha256: sha256(stableJson(payload)), runCount: payload.runs.length };
+}
+
+function rebaseDatasetForConfig(previousDataset, config, configSha256, nowValue = Date.now()) {
+  if (!previousDataset || typeof previousDataset !== "object") throw new Error("A verified prior Medical Updates dataset is required for an offline rebase.");
+  const configValidation = validateConfig(config);
+  if (!configValidation.valid) throw new Error("Cannot rebase against an invalid Medical Updates registry.");
+  const now = new Date(nowValue);
+  if (!Number.isFinite(now.getTime())) throw new Error("Medical Updates rebase requires a valid time.");
+  const sourceById = new Map(config.sources.map((source) => [source.id, source]));
+  const previousStatuses = new Map(asArray(previousDataset.sourceStatuses).map((status) => [status && status.sourceId, status]));
+  const retained = asArray(previousDataset.items).concat(asArray(previousDataset.archive)).filter((item) => {
+    const source = sourceById.get(item && item.sourceId);
+    if (!source || !item || typeof item !== "object") return false;
+    let parsedUrl;
+    try { parsedUrl = new URL(item.url); } catch (_error) { parsedUrl = null; }
+    return Boolean(parsedUrl && parsedUrl.protocol === "https:" && source.finalItemHosts.includes(parsedUrl.hostname));
+  });
+  const partitioned = partitionItems(retained, now, config.currentWindowDays, config.archiveRetentionDays, config.archivePolicy);
+  const sourceStatuses = config.sources.map((source) => {
+    const previous = previousStatuses.get(source.id);
+    if (!source.enabled) return { sourceId: source.id, sourceName: source.name, status: "disabled", retrievedAt: null, itemCount: 0, rawItemCount: 0, rejectedItemCount: 0, retainedItemCount: 0, error: null };
+    if (!previous) return { sourceId: source.id, sourceName: source.name, status: "stale", retrievedAt: null, itemCount: 0, rawItemCount: 0, rejectedItemCount: 0, retainedItemCount: 0, error: "Awaiting first scheduled official-source refresh." };
+    return { ...previous, sourceName: source.name };
+  });
+  const enabledStatuses = sourceStatuses.filter((status) => status.status !== "disabled");
+  const currentCount = enabledStatuses.filter((status) => status.status === "current").length;
+  const refreshStatus = currentCount === enabledStatuses.length ? "CURRENT" : currentCount > 0 ? "PARTIAL" : "STALE";
+  return boundDataset({
+    schemaVersion: DATASET_SCHEMA,
+    datasetVersion: config.datasetVersion,
+    generatorVersion: GENERATOR_VERSION,
+    generatedAt: now.toISOString(),
+    refreshStatus,
+    currentWindowDays: config.currentWindowDays,
+    archiveRetentionDays: config.archiveRetentionDays,
+    archivePolicy: config.archivePolicy,
+    sourceConfigSha256: configSha256,
+    aiCalls: 0,
+    sourceStatuses,
+    items: partitioned.current,
+    archive: partitioned.archive
+  }, config);
+}
+
 function boundDataset(candidate, config) {
+  if (config.archivePolicy === "retain") {
+    const currentCount = asArray(candidate.items).length;
+    const archiveCount = asArray(candidate.archive).length;
+    const bytes = Buffer.byteLength(stableJson(candidate), "utf8");
+    if (currentCount > config.maxCurrentItems || archiveCount > config.maxArchiveItems || bytes > config.maxDatasetBytes) {
+      throw new Error(`Retained Medical Updates exceed a configured delivery bound (current ${currentCount}/${config.maxCurrentItems}, archive ${archiveCount}/${config.maxArchiveItems}, bytes ${bytes}/${config.maxDatasetBytes}); refusing to evict verified updates.`);
+    }
+    return candidate;
+  }
   const bounded = {
     ...candidate,
     items: asArray(candidate.items).slice(0, config.maxCurrentItems),
@@ -703,6 +874,7 @@ async function refreshDataset(options = {}) {
     const prior = previousItemsForSource(options.previousDataset, source.id);
     const previousStatus = asArray(options.previousDataset && options.previousDataset.sourceStatuses)
       .find((status) => status && status.sourceId === source.id);
+    emitAudit(options, "source-check-started", { sourceId: source.id });
     try {
       const feed = await fetchWithPolicy(source.feedUrl, {
         fetchImpl: options.fetchImpl,
@@ -721,19 +893,27 @@ async function refreshDataset(options = {}) {
       let eligibleItemCount = 0;
       let failedEligibleItemCount = 0;
       for (const row of rawRows) {
-        if (!feedItemEligibility(row, source, config, now).eligible) continue;
+        const eligibility = feedItemEligibility(row, source, config, now);
+        if (!eligibility.eligible) {
+          emitAudit(options, "candidate-rejected", { sourceId: source.id, itemKey: itemAuditKey(row, source.id), reason: eligibility.reason });
+          continue;
+        }
         eligibleItemCount += 1;
         try {
           const item = await normalizeFeedItem(row, source, config, { now, fetchImpl: options.fetchImpl, catalog: options.catalog });
-          if (item) normalized.push(item);
-        } catch (_error) {
+          if (item) {
+            normalized.push(item);
+            emitAudit(options, "candidate-verified", { sourceId: source.id, itemKey: itemAuditKey(row, source.id) });
+          }
+        } catch (error) {
           failedEligibleItemCount += 1;
+          emitAudit(options, "candidate-verification-failed", { sourceId: source.id, itemKey: itemAuditKey(row, source.id), reason: boundedStatusError(error, config) });
         }
       }
       if (eligibleItemCount > 0 && failedEligibleItemCount === eligibleItemCount) {
         throw new Error(`All ${eligibleItemCount} eligible feed items failed deterministic destination or item validation.`);
       }
-      const mergedResult = mergeAcceptedWithPrevious(normalized, prior);
+      const mergedResult = mergeAcceptedWithPrevious(normalized, prior, { onAudit: options.onAudit });
       collected.push(...mergedResult.merged);
       const partiallyDegraded = failedEligibleItemCount > 0;
       sourceStatuses.push({
@@ -749,6 +929,14 @@ async function refreshDataset(options = {}) {
           ? boundedStatusError(`Partial item routing failure: ${failedEligibleItemCount} of ${eligibleItemCount} eligible feed items failed deterministic normalization; last-good source items were retained.`, config)
           : null
       });
+      emitAudit(options, "source-check-completed", {
+        sourceId: source.id,
+        status: partiallyDegraded ? "stale" : "current",
+        rawItemCount: rawRows.length,
+        verifiedItemCount: mergedResult.accepted.length,
+        rejectedItemCount: rawRows.length - mergedResult.accepted.length,
+        retainedItemCount: mergedResult.retainedItemCount
+      });
     } catch (error) {
       collected.push(...prior);
       sourceStatuses.push({
@@ -762,10 +950,14 @@ async function refreshDataset(options = {}) {
         retainedItemCount: prior.length,
         error: boundedStatusError(error, config)
       });
+      emitAudit(options, "source-outage-or-parser-failure", { sourceId: source.id, retainedItemCount: prior.length, reason: boundedStatusError(error, config) });
     }
   }
   const stableItems = preserveUnchangedRetrievalTimes(collected, options.previousDataset);
-  const partitioned = partitionItems(stableItems, now, config.currentWindowDays, config.archiveRetentionDays);
+  const partitioned = partitionItems(stableItems, now, config.currentWindowDays, config.archiveRetentionDays, config.archivePolicy);
+  const priorCurrentIds = new Set(asArray(options.previousDataset && options.previousDataset.items).map((item) => item && item.id));
+  const archivedTransitions = partitioned.archive.filter((item) => priorCurrentIds.has(item.id));
+  if (archivedTransitions.length) emitAudit(options, "current-to-archive-transition", { count: archivedTransitions.length, itemKeys: archivedTransitions.map((item) => itemAuditKey(item, item.sourceId)).slice(0, 100) });
   const enabledStatuses = sourceStatuses.filter((status) => status.status !== "disabled");
   const currentCount = enabledStatuses.filter((status) => status.status === "current").length;
   const refreshStatus = currentCount === enabledStatuses.length
@@ -781,6 +973,7 @@ async function refreshDataset(options = {}) {
     refreshStatus,
     currentWindowDays: config.currentWindowDays,
     archiveRetentionDays: config.archiveRetentionDays,
+    archivePolicy: config.archivePolicy,
     sourceConfigSha256: options.configSha256 || sha256(stableJson(config)),
     aiCalls: 0,
     sourceStatuses,
@@ -822,12 +1015,14 @@ function validateDataset(dataset, options = {}) {
   if (dataset.generatorVersion !== GENERATOR_VERSION) add("medical-updates-generator-version-drift", "generatorVersion", `Expected ${GENERATOR_VERSION}.`, dataset.generatorVersion);
   if (!validIso(dataset.generatedAt)) add("medical-updates-generated-at-invalid", "generatedAt", "generatedAt must be an ISO UTC timestamp.", dataset.generatedAt);
   if (!REFRESH_STATUS_VALUES.includes(dataset.refreshStatus)) add("medical-updates-refresh-status-invalid", "refreshStatus", "refreshStatus is invalid.", dataset.refreshStatus);
+  if (!["retain", "expire"].includes(dataset.archivePolicy)) add("medical-updates-archive-policy-invalid", "archivePolicy", "archivePolicy must be retain or expire.", dataset.archivePolicy);
   if (dataset.aiCalls !== 0) add("medical-updates-ai-usage-nonzero", "aiCalls", "Medical Updates must remain zero-AI.", dataset.aiCalls);
   if (config) {
     if (!cleanText(dataset.datasetVersion) || cleanText(dataset.datasetVersion).length > config.maxDatasetVersionCharacters) add("medical-updates-dataset-version-invalid", "datasetVersion", `datasetVersion must be nonblank and at most ${config.maxDatasetVersionCharacters} characters.`, dataset.datasetVersion);
     if (!cleanText(dataset.generatorVersion) || cleanText(dataset.generatorVersion).length > config.maxGeneratorVersionCharacters) add("medical-updates-generator-version-invalid", "generatorVersion", `generatorVersion must be nonblank and at most ${config.maxGeneratorVersionCharacters} characters.`, dataset.generatorVersion);
     if (dataset.datasetVersion !== config.datasetVersion) add("medical-updates-dataset-version-drift", "datasetVersion", "datasetVersion does not match the source registry.", dataset.datasetVersion);
     if (dataset.currentWindowDays !== config.currentWindowDays || dataset.archiveRetentionDays !== config.archiveRetentionDays) add("medical-updates-retention-config-drift", "currentWindowDays/archiveRetentionDays", "Dataset retention windows do not match the source registry.", { currentWindowDays: dataset.currentWindowDays, archiveRetentionDays: dataset.archiveRetentionDays });
+    if (dataset.archivePolicy !== config.archivePolicy) add("medical-updates-archive-policy-drift", "archivePolicy", "Dataset archive policy does not match the source registry.", dataset.archivePolicy);
     if (options.configSha256 && dataset.sourceConfigSha256 !== options.configSha256) add("medical-updates-config-hash-drift", "sourceConfigSha256", "The generated dataset is not bound to the current source registry bytes.", dataset.sourceConfigSha256);
     const datasetBytes = Buffer.byteLength(stableJson(dataset), "utf8");
     if (datasetBytes > config.maxDatasetBytes) add("medical-updates-dataset-size-limit-exceeded", "dataset", `Dataset exceeds the ${config.maxDatasetBytes}-byte browser cache limit.`, datasetBytes);
@@ -889,7 +1084,7 @@ function validateDataset(dataset, options = {}) {
     if (source && Number.isFinite(publishedTime) && Number.isFinite(generatedTime) && publishedTime > generatedTime + Number(config.futureDateToleranceHours) * 3600000) add("medical-updates-future-date-invalid", `${field}.publishedAt`, "Publication date exceeds the configured future tolerance.", item.publishedAt);
     if (section === "items" && publishedTime < currentCutoff) add("medical-updates-current-item-too-old", field, "Current items must be inside the current window.", item.publishedAt);
     if (section === "archive" && publishedTime >= currentCutoff) add("medical-updates-archive-item-too-new", field, "Archived items must be older than the current window.", item.publishedAt);
-    if (publishedTime < retentionCutoff) add("medical-updates-item-beyond-retention", field, "Items beyond archive retention must be removed.", item.publishedAt);
+    if (dataset.archivePolicy === "expire" && publishedTime < retentionCutoff) add("medical-updates-item-beyond-retention", field, "Items beyond archive retention must be removed.", item.publishedAt);
     if (!cleanText(item.title) || /<[^>]+>/.test(item.title)) add("medical-updates-title-invalid", `${field}.title`, "Title must be nonblank source-provided plain text.", item.title);
     if (config && typeof item.title === "string" && item.title.length > config.maxTitleCharacters) add("medical-updates-title-too-long", `${field}.title`, `Title must not exceed ${config.maxTitleCharacters} characters.`, item.title.length);
     if (!DESCRIPTION_ORIGINS.includes(item.descriptionOrigin)) add("medical-updates-description-origin-invalid", `${field}.descriptionOrigin`, "Description origin is invalid.", item.descriptionOrigin);
@@ -987,6 +1182,8 @@ module.exports = {
   CONFIG_RELATIVE_PATH,
   DATA_RELATIVE_PATH,
   RUNTIME_RELATIVE_PATH,
+  AUDIT_RELATIVE_PATH,
+  AUDIT_SCHEMA,
   SOURCE_STATUS_VALUES,
   REFRESH_STATUS_VALUES,
   DESCRIPTION_ORIGINS,
@@ -1004,6 +1201,7 @@ module.exports = {
   validateConfig,
   parseOfficialFeed,
   classifyItem,
+  feedItemEligibility,
   canonicalUrl,
   nodeHttpsFetch,
   fetchWithPolicy,
@@ -1020,6 +1218,11 @@ module.exports = {
   preserveUnchangedRetrievalTimes,
   preserveUnchangedSourceTimes,
   datasetSemanticMaterial,
+  filterItemsByOfficialDate,
+  createAuditRun,
+  appendAuditEvent,
+  writeAuditRun,
+  rebaseDatasetForConfig,
   refreshDataset,
   validateDataset,
   runtimePayload,

@@ -1,8 +1,9 @@
 {
   "schemaVersion": "ani-medical-updates-sources-v1",
-  "datasetVersion": "ani-medical-updates-2026-08-09.1",
-  "currentWindowDays": 180,
-  "archiveRetentionDays": 730,
+  "datasetVersion": "ani-medical-updates-2026-08-10.2",
+  "currentWindowDays": 60,
+  "archiveRetentionDays": 3650,
+  "archivePolicy": "retain",
   "futureDateToleranceHours": 48,
   "maxItemsPerSource": 100,
   "maxCurrentItems": 240,
@@ -26,6 +27,7 @@
   "maxFeedBytes": 2097152,
   "requestTimeoutMs": 20000,
   "maxRedirects": 6,
+  "requireResolvedItemUrls": true,
   "userAgent": "ANI-Medical-Updates/1.0 (+https://aniapp.ai; deterministic zero-AI official-feed reader)",
   "categories": [
     "drug-approval",
@@ -42,6 +44,21 @@
     "utm_medium",
     "utm_source",
     "utm_term"
+  ],
+  "administrativeExcludeTitlePatterns": [
+    "funding grant(?:s)?",
+    "announces? grant awards?",
+    "funding opportunit(?:y|ies)",
+    "request for (?:applications|proposals|comments)",
+    "\\bconference\\b",
+    "registration (?:opens?|is open) for .*\\bwebinar\\b",
+    "advisory committee meeting",
+    "\\bappoint(?:s|ed|ment)?\\b",
+    "\\bstaffing\\b",
+    "\\bleadership\\b",
+    "\\borganizational\\b",
+    "\\bbudget\\b",
+    "\\bcontract award\\b"
   ],
   "relatedCardRules": [
     { "terms": ["Cefazolin"], "target": { "collection": "pharmDrugs", "canonicalTitle": "Cefazolin" } },
@@ -98,7 +115,7 @@
       "feedHosts": ["www.fda.gov"],
       "finalItemHosts": ["www.fda.gov", "fda.gov"],
       "intermediateItemHosts": [],
-      "resolveItemRedirects": false,
+      "resolveItemRedirects": true,
       "descriptionPolicy": "source-provided",
       "defaultCategory": "safety-alert",
       "includeTitlePatterns": [],
@@ -116,7 +133,7 @@
       "feedHosts": ["www.fda.gov"],
       "finalItemHosts": ["www.fda.gov", "fda.gov"],
       "intermediateItemHosts": [],
-      "resolveItemRedirects": false,
+      "resolveItemRedirects": true,
       "descriptionPolicy": "source-provided",
       "defaultCategory": "recall",
       "includeTitlePatterns": [],
@@ -132,7 +149,7 @@
       "feedHosts": ["www.fda.gov"],
       "finalItemHosts": ["www.fda.gov", "fda.gov"],
       "intermediateItemHosts": [],
-      "resolveItemRedirects": false,
+      "resolveItemRedirects": true,
       "descriptionPolicy": "source-provided",
       "defaultCategory": "medical-development",
       "includeTitlePatterns": [
@@ -161,7 +178,7 @@
       "feedHosts": ["www.fda.gov"],
       "finalItemHosts": ["www.fda.gov", "fda.gov"],
       "intermediateItemHosts": [],
-      "resolveItemRedirects": false,
+      "resolveItemRedirects": true,
       "descriptionPolicy": "source-provided",
       "defaultCategory": "vaccine-biologic",
       "includeTitlePatterns": [
@@ -190,7 +207,7 @@
       "feedHosts": ["www.fda.gov"],
       "finalItemHosts": ["www.fda.gov", "fda.gov"],
       "intermediateItemHosts": [],
-      "resolveItemRedirects": false,
+      "resolveItemRedirects": true,
       "descriptionPolicy": "source-provided",
       "defaultCategory": "medical-development",
       "includeTitlePatterns": [
@@ -211,6 +228,26 @@
         { "category": "drug-approval", "titlePatterns": ["\\bapprov(?:e|es|ed|al|als|ing)\\b", "emergency use authorization"] },
         { "category": "guideline-public-health", "titlePatterns": ["public health emergency", "\\bguideline\\b"] },
         { "category": "vaccine-biologic", "titlePatterns": ["\\bvaccine\\b"] }
+      ]
+    },
+    {
+      "id": "cdc-han",
+      "name": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
+      "enabled": true,
+      "required": false,
+      "feedUrl": "https://tools.cdc.gov/api/v2/resources/media/413690.rss",
+      "feedHosts": ["tools.cdc.gov"],
+      "finalItemHosts": ["www.cdc.gov", "cdc.gov", "emergency.cdc.gov"],
+      "intermediateItemHosts": ["tools.cdc.gov"],
+      "resolveItemRedirects": true,
+      "applyAdministrativeExclusions": false,
+      "descriptionPolicy": "source-provided",
+      "defaultCategory": "guideline-public-health",
+      "includeTitlePatterns": [],
+      "excludeTitlePatterns": [],
+      "categoryRules": [
+        { "category": "safety-alert", "titlePatterns": ["health alert", "health advisory", "outbreak", "emerging health threat"] },
+        { "category": "vaccine-biologic", "titlePatterns": ["\\bvaccin(?:e|es|ation|ations)\\b", "immunization"] }
       ]
     },
     {
@@ -243,13 +280,13 @@
       "feedHosts": ["www.nih.gov"],
       "finalItemHosts": ["www.nih.gov", "nih.gov"],
       "intermediateItemHosts": [],
-      "resolveItemRedirects": false,
+      "resolveItemRedirects": true,
       "descriptionPolicy": "source-provided",
       "defaultCategory": "medical-development",
       "includeTitlePatterns": [
         "clinical trial",
         "\\btreatment\\b",
-        "\\btherapy\\b",
+        "\\btherap(?:y|ies)\\b",
         "\\bdrug\\b",
         "\\bvaccine\\b",
         "\\bdiagnostic\\b",
@@ -276,7 +313,7 @@
       "feedHosts": ["www.who.int"],
       "finalItemHosts": ["www.who.int", "who.int"],
       "intermediateItemHosts": [],
-      "resolveItemRedirects": false,
+      "resolveItemRedirects": true,
       "descriptionPolicy": "title-only",
       "defaultCategory": "guideline-public-health",
       "includeTitlePatterns": [

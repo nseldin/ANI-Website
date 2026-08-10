@@ -39,6 +39,15 @@ jobs:
       - name: Validate generated update assets
         run: node scripts/ani-medical-updates.js check --root .
 
+      - name: Preserve deterministic refresh diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ani-medical-updates-refresh-log
+          path: reports/ANI_MEDICAL_UPDATES_REFRESH_LOG.json
+          if-no-files-found: warn
+          retention-days: 30
+
       - name: Commit only changed update data
         shell: bash
         run: |
