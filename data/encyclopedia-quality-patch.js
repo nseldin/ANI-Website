@@ -3157,7 +3157,7 @@
     {
       name: "Capillary refill",
       category: "Perfusion / bedside assessment",
-      aliases: ["cap refill", "capillary refill time", "CRT", "nailbed refill"],
+      aliases: ["cap refill", "capillary refill time", "CRT", "nailbed refill", "delayed capillary refill", "prolonged capillary refill", "slow capillary refill"],
       pronunciation: "KAP-ih-lair-ee REE-fill",
       definition: "Capillary refill is a bedside estimate of peripheral perfusion by pressing until skin blanches, releasing, and timing return of color. Delayed refill can signal poor perfusion, vasoconstriction, hypovolemia, shock, hypothermia, or local vascular disease, but it must be interpreted with temperature, age, lighting, and site.",
       etiology: "Hypovolemia, sepsis/shock compensation, cardiogenic shock, obstructive shock, hypothermia, vasopressors, peripheral arterial disease, dehydration, pain/stress vasoconstriction, and low cardiac output can prolong refill.",
