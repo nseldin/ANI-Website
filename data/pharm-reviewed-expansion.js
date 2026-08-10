@@ -4,8 +4,8 @@
   const payload = {
   "schemaVersion": "ani-pharmacy-reviewed-runtime-v1",
   "builderVersion": "ani-pharmacy-builder-2026-08-08.2",
-  "domainVersion": "2026-08-08.1",
-  "sourceSha256": "2a06853fb96ede59c8b48f8d86455f68dda2819bf16a49349d2e43e78b600fe3",
+  "domainVersion": "2026-08-09.1",
+  "sourceSha256": "5ffd61705effeaf9019b0505794712ca5390c35fa3f6616cdec142ef26cffa9d",
   "subsections": [
     {
       "id": "peptides-peptide-based-therapies",
@@ -156,6 +156,64 @@
             "note": "FDA states cagrilintide cannot be used in compounding under federal law and is not a component of an FDA-approved drug.",
             "sourceUrl": "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss"
           }
+        },
+        {
+          "canonicalGeneric": "liraglutide",
+          "canonicalName": "Liraglutide",
+          "peptideModality": "SYNTHETIC_PEPTIDE_ANALOG",
+          "regulatory": {
+            "jurisdiction": "US",
+            "agency": "FDA",
+            "productStatus": "FDA_APPROVED",
+            "labelAsOf": "2026-08-09",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5a9ef4ea-c76a-4d34-a604-27c5b505f5a4"
+          },
+          "useContexts": [
+            {
+              "status": "FDA_LABELED",
+              "use": "Victoza: improve glycemic control in type 2 diabetes and reduce major cardiovascular events in selected adults with type 2 diabetes",
+              "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5a9ef4ea-c76a-4d34-a604-27c5b505f5a4"
+            },
+            {
+              "status": "FDA_LABELED",
+              "use": "Saxenda: long-term weight reduction in eligible adults and adolescents with product-specific criteria",
+              "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3946d389-0926-4f77-a708-0acb8153b143"
+            }
+          ],
+          "compounding": {
+            "status": "NOT_APPLICABLE",
+            "note": "This card covers FDA-approved liraglutide products and does not establish that a compounded product is FDA approved, equivalent, or interchangeable.",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5a9ef4ea-c76a-4d34-a604-27c5b505f5a4"
+          }
+        },
+        {
+          "canonicalGeneric": "dulaglutide",
+          "canonicalName": "Dulaglutide",
+          "peptideModality": "PEPTIDE_BASED_FUSION",
+          "regulatory": {
+            "jurisdiction": "US",
+            "agency": "FDA",
+            "productStatus": "FDA_APPROVED",
+            "labelAsOf": "2026-08-09",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=463050bd-2b1c-40f5-b3c3-0a04bb433309"
+          },
+          "useContexts": [
+            {
+              "status": "FDA_LABELED",
+              "use": "Improve glycemic control in adults and patients 10 years and older with type 2 diabetes mellitus",
+              "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=463050bd-2b1c-40f5-b3c3-0a04bb433309"
+            },
+            {
+              "status": "FDA_LABELED",
+              "use": "Reduce major cardiovascular events in adults with type 2 diabetes and established cardiovascular disease or multiple cardiovascular risk factors",
+              "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=463050bd-2b1c-40f5-b3c3-0a04bb433309"
+            }
+          ],
+          "compounding": {
+            "status": "NOT_APPLICABLE",
+            "note": "This card covers the FDA-approved Trulicity product and does not establish that a compounded product is FDA approved, equivalent, or interchangeable.",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=463050bd-2b1c-40f5-b3c3-0a04bb433309"
+          }
         }
       ]
     }
@@ -266,7 +324,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
     },
     {
       "id": "medication.cobicistat",
@@ -372,7 +430,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
     },
     {
       "id": "medication.collagenase-santyl",
@@ -475,7 +533,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
     },
     {
       "id": "medication.collagenase-xiaflex",
@@ -582,7 +640,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
     },
     {
       "id": "medication.cromolyn-sodium",
@@ -720,7 +778,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
     },
     {
       "id": "medication.efgartigimod-alfa-fcab",
@@ -822,7 +880,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
     },
     {
       "id": "medication.avacopan",
@@ -923,7 +981,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
     },
     {
       "id": "medication.belzutifan",
@@ -1028,7 +1086,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
     },
     {
       "id": "medication.elacestrant",
@@ -1129,7 +1187,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
     },
     {
       "id": "medication.capivasertib",
@@ -1235,7 +1293,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
     },
     {
       "id": "medication.guanfacine",
@@ -1383,7 +1441,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
     },
     {
       "id": "medication.povidone-iodine",
@@ -1509,7 +1567,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
     },
     {
       "id": "medication.bulevirtide-gmod",
@@ -1681,7 +1739,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
     },
     {
       "id": "medication.dasiglucagon",
@@ -1842,7 +1900,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
     },
     {
       "id": "medication.terlipressin",
@@ -2005,7 +2063,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
     },
     {
       "id": "medication.ziconotide",
@@ -2171,7 +2229,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
     },
     {
       "id": "medication.retatrutide",
@@ -2348,7 +2406,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
     },
     {
       "id": "medication.cagrilintide",
@@ -2527,7 +2585,374 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-08.1"
+      "pharmacyDomainVersion": "2026-08-09.1"
+    },
+    {
+      "id": "medication.liraglutide",
+      "name": "Liraglutide",
+      "displayName": "Liraglutide (Victoza; Saxenda)",
+      "generic": "liraglutide",
+      "aliases": [
+        "Victoza",
+        "Saxenda",
+        "liraglutid",
+        "liraglutide daily GLP-1",
+        "daily incretin injection"
+      ],
+      "brandExamples": [
+        "Victoza",
+        "Saxenda"
+      ],
+      "class": "Once-daily glucagon-like peptide-1 receptor agonist; synthetic peptide analog",
+      "pharmacyTags": [
+        "peptide-based-therapy",
+        "glp-1-receptor-agonist",
+        "diabetes",
+        "weight-management"
+      ],
+      "updateMatchTerms": [
+        "liraglutide",
+        "Victoza",
+        "Saxenda"
+      ],
+      "peptideModality": "SYNTHETIC_PEPTIDE_ANALOG",
+      "plainLanguage": "Liraglutide is a once-daily injection that copies part of the gut hormone GLP-1. It helps lower glucose when glucose is high and can reduce appetite, but Victoza and Saxenda have different approved uses and dosing plans.",
+      "whyItMatters": "The product name matters: Victoza is used for type 2 diabetes and labeled cardiovascular-risk reduction, while Saxenda is used for long-term weight management. Both can cause serious gastrointestinal complications, dehydration-related kidney injury, pancreatitis, gallbladder disease, and a labeled thyroid-tumor warning.",
+      "plainLanguageGlosses": [
+        {
+          "term": "glucagon-like peptide-1 receptor agonist",
+          "plainLanguage": "a medicine that activates the GLP-1 hormone pathway to increase glucose-dependent insulin, lower glucagon when glucose is high, slow stomach emptying, and increase fullness",
+          "sourceKeys": [
+            "dailymed-victoza-label",
+            "dailymed-saxenda-label"
+          ]
+        },
+        {
+          "term": "medullary thyroid carcinoma",
+          "plainLanguage": "a cancer arising from the thyroid's hormone-producing C cells",
+          "sourceKeys": [
+            "dailymed-victoza-label",
+            "dailymed-saxenda-label"
+          ]
+        }
+      ],
+      "description": "Liraglutide is a synthetic GLP-1 peptide analog administered once daily. Victoza and Saxenda contain the same active ingredient but are separate products with different FDA-labeled purposes, target doses, titration plans, age criteria, and response checks. Keeping those product rules separate prevents a diabetes plan from being applied incorrectly to weight management or vice versa. Xultophy is a distinct insulin-degludec/liraglutide combination product and is not an alias for single-ingredient liraglutide.",
+      "mechanism": "Liraglutide activates the GLP-1 receptor and resists rapid breakdown by DPP-4. When glucose is elevated, receptor signaling increases cyclic AMP in pancreatic beta cells and strengthens glucose-triggered insulin release while reducing inappropriate glucagon output. It also slows gastric emptying and increases satiety signaling in the brain. Glucose dependence explains the relatively low intrinsic hypoglycemia risk, whereas slower gastric transit and reduced intake explain nausea, interactions with some oral medicines, dehydration risk, and peri-procedure aspiration concern.",
+      "usedToTreat": "Victoza is FDA labeled as an adjunct to diet and exercise for type 2 diabetes in adults and eligible pediatric patients and to reduce major cardiovascular events in selected adults with type 2 diabetes and established cardiovascular disease. Saxenda is FDA labeled with reduced-calorie nutrition and increased activity for long-term weight reduction in eligible adults and adolescents. Product-specific eligibility and response rules must be followed.",
+      "boxedWarning": "Boxed warning: liraglutide caused thyroid C-cell tumors in rodents; whether it causes these tumors in humans is unknown. Victoza and Saxenda are contraindicated in patients with a personal or family history of medullary thyroid carcinoma or Multiple Endocrine Neoplasia syndrome type 2. Teach patients to report a neck mass, persistent hoarseness, trouble swallowing, or shortness of breath.",
+      "contraindications": [
+        "Personal or family history of medullary thyroid carcinoma or Multiple Endocrine Neoplasia syndrome type 2 because of the labeled thyroid C-cell tumor risk.",
+        "Prior serious hypersensitivity to liraglutide or a product component."
+      ],
+      "adverseEffects": [
+        "Nausea, vomiting, diarrhea, constipation, abdominal discomfort, dyspepsia, headache, fatigue, reduced appetite, and injection-site reactions.",
+        "Hypoglycemia is more likely when liraglutide is combined with insulin or an insulin secretagogue."
+      ],
+      "seriousAdverseReactions": [
+        "Acute pancreatitis, acute gallbladder disease, severe gastrointestinal reactions, dehydration-related acute kidney injury, and serious hypersensitivity.",
+        "Pulmonary aspiration during general anesthesia or deep sedation, sustained heart-rate increase, severe hypoglycemia with companion therapy, and possible thyroid C-cell tumor risk."
+      ],
+      "interactions": [
+        "Insulin and sulfonylureas can add hypoglycemia; the companion dose may require clinician-directed reduction.",
+        "Delayed gastric emptying may change how quickly oral medicines are absorbed, so time-sensitive or narrow-therapeutic-index medicines require review.",
+        "Do not coadminister Victoza, Saxenda, another liraglutide-containing product, or another GLP-1 receptor agonist unless an authoritative product-specific plan explicitly supports it."
+      ],
+      "nursingEssentials": [
+        "Verify the exact product, labeled purpose, current dose, titration stage, last dose, and concurrent insulin or secretagogue before administration. Victoza and Saxenda are not interchangeable dosing plans.",
+        "Assess glucose or weight response according to the product's purpose. Monitor gastrointestinal tolerance, hydration, renal function when intake is poor, pulse, and symptoms of pancreatitis or gallbladder disease.",
+        "Ask about planned anesthesia or deep sedation because delayed gastric emptying can leave stomach contents present. Escalate severe persistent abdominal pain, repeated vomiting, oliguria, jaundice, a neck mass, or hypersensitivity promptly."
+      ],
+      "keyLabs": [
+        "A1c and glucose trends for diabetes treatment; monitor for hypoglycemia when insulin or secretagogues are used.",
+        "Body-weight response at the product-specific Saxenda assessment point.",
+        "Renal function and electrolytes during significant vomiting, diarrhea, or poor intake; symptom-directed pancreatic or gallbladder evaluation when indicated."
+      ],
+      "patientEducation": [
+        "Use the prescribed product and schedule only. Do not substitute Victoza, Saxenda, or a combination product because they contain the same ingredient.",
+        "Use a new needle, rotate subcutaneous sites, and never share a pen even if the needle is changed because blood-borne infection can be transmitted.",
+        "Report severe persistent abdominal pain, repeated vomiting, dehydration, jaundice, a neck lump, persistent hoarseness, trouble swallowing, or breathing difficulty. Tell the procedural team before anesthesia or deep sedation."
+      ],
+      "administration": [
+        "Administer subcutaneously once daily in the abdomen, thigh, or upper arm according to the exact product label; it may be given without regard to meals. Titrate gradually to reduce gastrointestinal intolerance.",
+        "Inspect the solution and follow the product's storage, priming, missed-dose, and pen instructions. When insulin is also used, give separate injections and never mix the products in one syringe."
+      ],
+      "toxicityManagement": [
+        "There is no specific antidote. Stop further dosing after a clinically important suspected adverse reaction and obtain poison-control or urgent clinician guidance; provide glucose, hydration, renal, airway, allergy, pancreatic, or gallbladder support as indicated.",
+        "Severe hypoglycemia from companion insulin or secretagogues requires immediate glucose treatment and reassessment of the combined regimen."
+      ],
+      "specialPopulations": [
+        "Use only the exact product-specific pediatric indication and titration. Growth, nutrition, dehydration, and hypoglycemia risk require additional attention.",
+        "Older adults and patients with frailty, impaired renal reserve, gastroparesis, or poor intake can be harmed disproportionately by vomiting and dehydration.",
+        "Pregnancy and lactation decisions are product- and indication-specific. Intentional weight-loss treatment does not provide pregnancy benefit; diabetes treatment requires an individualized maternal-fetal plan."
+      ],
+      "nclexTraps": [
+        "Victoza and Saxenda contain liraglutide but are not interchangeable treatment plans.",
+        "Low intrinsic hypoglycemia risk does not protect a patient whose insulin or sulfonylurea dose is now excessive.",
+        "A favorable glucose or weight trend does not outrank severe abdominal pain, dehydration, or aspiration risk."
+      ],
+      "routes": [
+        "Subcutaneous injection once daily; abdomen, thigh, or upper arm"
+      ],
+      "notApplicable": [
+        "specific antidote"
+      ],
+      "relatedTopics": [
+        "Type 2 diabetes mellitus",
+        "Obesity",
+        "Hypoglycemia",
+        "Acute pancreatitis"
+      ],
+      "regulatoryStatus": "FDA-approved prescription peptide medicine marketed under product-specific Victoza and Saxenda labels.",
+      "regulatory": {
+        "jurisdiction": "US",
+        "agency": "FDA",
+        "productStatus": "FDA_APPROVED",
+        "labelAsOf": "2026-08-09",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5a9ef4ea-c76a-4d34-a604-27c5b505f5a4"
+      },
+      "useContexts": [
+        {
+          "status": "FDA_LABELED",
+          "use": "Victoza: improve glycemic control in type 2 diabetes and reduce major cardiovascular events in selected adults with type 2 diabetes",
+          "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5a9ef4ea-c76a-4d34-a604-27c5b505f5a4"
+        },
+        {
+          "status": "FDA_LABELED",
+          "use": "Saxenda: long-term weight reduction in eligible adults and adolescents with product-specific criteria",
+          "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3946d389-0926-4f77-a708-0acb8153b143"
+        }
+      ],
+      "compounding": {
+        "status": "NOT_APPLICABLE",
+        "note": "This card covers FDA-approved liraglutide products and does not establish that a compounded product is FDA approved, equivalent, or interchangeable.",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5a9ef4ea-c76a-4d34-a604-27c5b505f5a4"
+      },
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-09",
+      "sourceNote": "Original ANI synthesis from current DailyMed Victoza and Saxenda prescribing information: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5a9ef4ea-c76a-4d34-a604-27c5b505f5a4 and https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3946d389-0926-4f77-a708-0acb8153b143.",
+      "provenance": [
+        {
+          "key": "dailymed-victoza-label",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5a9ef4ea-c76a-4d34-a604-27c5b505f5a4",
+          "documentVersion": "Updated 10/14/2025; current version checked 2026-08-09",
+          "fieldsSupported": [
+            "identity",
+            "type 2 diabetes indication",
+            "cardiovascular indication",
+            "mechanism",
+            "boxed warning",
+            "contraindications",
+            "warnings",
+            "adverse effects",
+            "interactions",
+            "administration",
+            "patient counseling",
+            "special populations"
+          ]
+        },
+        {
+          "key": "dailymed-saxenda-label",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3946d389-0926-4f77-a708-0acb8153b143",
+          "documentVersion": "Updated 02/25/2026; checked 2026-08-09",
+          "fieldsSupported": [
+            "identity",
+            "weight-management indication",
+            "mechanism",
+            "boxed warning",
+            "contraindications",
+            "warnings",
+            "adverse effects",
+            "administration",
+            "patient counseling",
+            "special populations"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-09.1"
+    },
+    {
+      "id": "medication.dulaglutide",
+      "name": "Dulaglutide",
+      "displayName": "Dulaglutide (Trulicity)",
+      "generic": "dulaglutide",
+      "aliases": [
+        "Trulicity",
+        "dulaglutid",
+        "dulaglutide weekly",
+        "weekly GLP-1 pen",
+        "trulicity diabetes"
+      ],
+      "brandExamples": [
+        "Trulicity"
+      ],
+      "class": "Once-weekly glucagon-like peptide-1 receptor agonist; peptide-based Fc-fusion medicine",
+      "pharmacyTags": [
+        "peptide-based-therapy",
+        "glp-1-receptor-agonist",
+        "diabetes",
+        "cardiovascular-risk-reduction"
+      ],
+      "updateMatchTerms": [
+        "dulaglutide",
+        "Trulicity"
+      ],
+      "peptideModality": "PEPTIDE_BASED_FUSION",
+      "plainLanguage": "Dulaglutide is a once-weekly injection that activates the GLP-1 hormone pathway. It helps the pancreas release insulin when glucose is high, lowers excess glucagon, slows stomach emptying, and can increase fullness.",
+      "whyItMatters": "Dulaglutide can improve type 2 diabetes control and reduce major cardiovascular events in eligible adults, but weekly dosing does not make it low risk. Severe gastrointestinal symptoms can cause dehydration and kidney injury, and pancreatitis, gallbladder disease, aspiration, hypoglycemia with companion drugs, and the boxed thyroid warning require active monitoring.",
+      "plainLanguageGlosses": [
+        {
+          "term": "Fc-fusion protein",
+          "plainLanguage": "a peptide medicine joined to part of an antibody protein so it stays in the body longer and can be dosed weekly",
+          "sourceKeys": [
+            "dailymed-trulicity-label"
+          ]
+        },
+        {
+          "term": "major adverse cardiovascular events",
+          "plainLanguage": "cardiovascular death, a nonfatal heart attack, or a nonfatal stroke",
+          "sourceKeys": [
+            "dailymed-trulicity-label"
+          ]
+        }
+      ],
+      "description": "Dulaglutide is a long-acting GLP-1 receptor agonist formed from two GLP-1 analog chains linked to a modified IgG4 Fc fragment. The Fc portion slows clearance and supports once-weekly dosing. Trulicity is FDA labeled for type 2 diabetes in adults and eligible pediatric patients and for cardiovascular-risk reduction in selected adults. Weight loss may occur during treatment, but dulaglutide is not FDA labeled as a chronic weight-management medicine.",
+      "mechanism": "Dulaglutide activates Gs-coupled GLP-1 receptors on pancreatic beta cells, increasing cyclic AMP and strengthening glucose-triggered insulin release. It suppresses excess glucagon when glucose is high, reduces hepatic glucose output, delays gastric emptying most strongly after early doses, and increases satiety signaling. The modified Fc fusion increases molecular size and prolongs half-life. These mechanisms explain both the glucose benefit and common nausea, delayed oral-drug absorption, dehydration risk, and retained-stomach-content concern before anesthesia.",
+      "usedToTreat": "FDA-labeled adjunct to diet and exercise to improve glycemic control in adults and patients 10 years and older with type 2 diabetes mellitus, and to reduce major cardiovascular events in adults with type 2 diabetes who have established cardiovascular disease or multiple cardiovascular risk factors.",
+      "boxedWarning": "Boxed warning: dulaglutide caused thyroid C-cell tumors in rats; whether it causes these tumors in humans is unknown. Trulicity is contraindicated in patients with a personal or family history of medullary thyroid carcinoma or Multiple Endocrine Neoplasia syndrome type 2. Teach patients to report a neck mass, persistent hoarseness, trouble swallowing, or shortness of breath.",
+      "contraindications": [
+        "Personal or family history of medullary thyroid carcinoma or Multiple Endocrine Neoplasia syndrome type 2.",
+        "Prior serious hypersensitivity to dulaglutide or a product component."
+      ],
+      "adverseEffects": [
+        "Nausea, diarrhea, vomiting, abdominal pain, decreased appetite, dyspepsia, and fatigue.",
+        "Hypoglycemia is more likely when dulaglutide is used with insulin or an insulin secretagogue."
+      ],
+      "seriousAdverseReactions": [
+        "Acute pancreatitis, severe gastrointestinal reactions, dehydration-related acute kidney injury, serious hypersensitivity, acute gallbladder disease, and diabetic-retinopathy complications.",
+        "Pulmonary aspiration during general anesthesia or deep sedation and possible thyroid C-cell tumor risk."
+      ],
+      "interactions": [
+        "Insulin and insulin secretagogues can add hypoglycemia; companion doses may require clinician-directed reduction.",
+        "Delayed gastric emptying can slow absorption of oral medicines, especially when treatment begins or the dose increases.",
+        "Avoid unreviewed duplication with another GLP-1 receptor agonist because overlapping exposure can add adverse effects without an established benefit."
+      ],
+      "nursingEssentials": [
+        "Verify the weekly day, current dose, last dose, missed-dose interval, concurrent glucose-lowering medicines, and whether the patient has severe gastroparesis or a planned procedure with anesthesia or deep sedation.",
+        "Monitor A1c and glucose, gastrointestinal tolerance, hydration, renal function during significant fluid loss, weight trend, and symptoms of pancreatitis, gallbladder disease, thyroid tumor, or hypersensitivity.",
+        "Review eye symptoms and retinopathy history when glucose improves quickly. Escalate persistent severe abdominal pain, repeated vomiting, oliguria, jaundice, visual change, airway symptoms, or an allergic reaction."
+      ],
+      "keyLabs": [
+        "A1c and glucose trends; bedside glucose when symptoms or companion insulin/secretagogue therapy create hypoglycemia risk.",
+        "Renal function and electrolytes during prolonged vomiting, diarrhea, or poor intake.",
+        "Symptom-directed pancreatic, gallbladder, retinal, or thyroid evaluation; routine calcitonin or thyroid ultrasound has uncertain value for early MTC detection."
+      ],
+      "patientEducation": [
+        "Use one dose on the same day each week and follow the current label's missed-dose interval rather than guessing. Never share the single-patient pen or syringe.",
+        "Report severe persistent abdominal pain, repeated vomiting, dehydration, jaundice, vision changes, a neck lump, hoarseness, trouble swallowing, or breathing difficulty.",
+        "Tell the procedural and anesthesia team that dulaglutide slows stomach emptying. Weight loss during treatment does not mean Trulicity is an FDA-approved obesity medicine."
+      ],
+      "administration": [
+        "Administer subcutaneously once weekly in the abdomen, thigh, or upper arm, with or without food. Follow the current label for stepwise dose increases and the exact missed-dose rule.",
+        "Use each single-dose device once, rotate injection sites, inspect the product, and do not share it. If insulin is also used, give separate injections and do not mix them."
+      ],
+      "toxicityManagement": [
+        "There is no specific antidote. Stop further dosing after a clinically important suspected reaction, contact Poison Control or the treating clinician, and provide glucose, hydration, renal, airway, allergy, pancreatic, or gallbladder support as indicated.",
+        "Treat severe hypoglycemia immediately and reassess companion insulin or secretagogue dosing."
+      ],
+      "specialPopulations": [
+        "Pediatric use begins at age 10 under the current type 2 diabetes label; the pediatric maximum differs from the adult maximum, so do not transfer an adult escalation plan.",
+        "Older adults and patients with frailty, impaired renal reserve, severe gastrointestinal disease, or retinopathy require closer monitoring for dehydration and rapid glucose-change complications.",
+        "Pregnancy use requires an individualized benefit-risk decision, and lactation data are limited. Dulaglutide is not a pregnancy weight-loss treatment."
+      ],
+      "nclexTraps": [
+        "Once weekly does not mean the missed dose can be given on any day without checking how soon the next dose is due.",
+        "Dulaglutide is not insulin and does not treat diabetic ketoacidosis.",
+        "Weight loss as an effect is not the same as an FDA-labeled weight-management indication."
+      ],
+      "routes": [
+        "Subcutaneous injection once weekly; abdomen, thigh, or upper arm"
+      ],
+      "notApplicable": [
+        "specific antidote",
+        "FDA-labeled chronic weight-management indication"
+      ],
+      "relatedTopics": [
+        "Type 2 diabetes mellitus",
+        "Coronary artery disease",
+        "Hypoglycemia",
+        "Acute pancreatitis",
+        "Diabetic retinopathy"
+      ],
+      "regulatoryStatus": "FDA-approved prescription peptide-based biologic for type 2 diabetes and labeled cardiovascular-risk reduction.",
+      "regulatory": {
+        "jurisdiction": "US",
+        "agency": "FDA",
+        "productStatus": "FDA_APPROVED",
+        "labelAsOf": "2026-08-09",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=463050bd-2b1c-40f5-b3c3-0a04bb433309"
+      },
+      "useContexts": [
+        {
+          "status": "FDA_LABELED",
+          "use": "Improve glycemic control in adults and patients 10 years and older with type 2 diabetes mellitus",
+          "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=463050bd-2b1c-40f5-b3c3-0a04bb433309"
+        },
+        {
+          "status": "FDA_LABELED",
+          "use": "Reduce major cardiovascular events in adults with type 2 diabetes and established cardiovascular disease or multiple cardiovascular risk factors",
+          "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=463050bd-2b1c-40f5-b3c3-0a04bb433309"
+        }
+      ],
+      "compounding": {
+        "status": "NOT_APPLICABLE",
+        "note": "This card covers the FDA-approved Trulicity product and does not establish that a compounded product is FDA approved, equivalent, or interchangeable.",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=463050bd-2b1c-40f5-b3c3-0a04bb433309"
+      },
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-09",
+      "sourceNote": "Original ANI synthesis from the current DailyMed Trulicity prescribing information: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=463050bd-2b1c-40f5-b3c3-0a04bb433309.",
+      "provenance": [
+        {
+          "key": "dailymed-trulicity-label",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=463050bd-2b1c-40f5-b3c3-0a04bb433309",
+          "documentVersion": "Updated 03/12/2026; checked 2026-08-09",
+          "fieldsSupported": [
+            "identity",
+            "indications",
+            "mechanism",
+            "boxed warning",
+            "contraindications",
+            "warnings",
+            "adverse effects",
+            "interactions",
+            "administration",
+            "patient counseling",
+            "special populations"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-09.1"
     }
   ]
 };
@@ -2537,7 +2962,7 @@
   const retained = (Array.isArray(db.drugs) ? db.drugs : []).filter((card) => !replacementByKey.has(normalize(card && (card.generic || card.name || card.displayName))));
   db.drugs = retained.concat(payload.cards);
   db.reviewedExpansion = { schemaVersion: payload.schemaVersion, builderVersion: payload.builderVersion, domainVersion: payload.domainVersion, sourceSha256: payload.sourceSha256, cardCount: payload.cards.length };
-  db.version = [db.version, "reviewed-pharmacy-2026-08-08.1"].filter(Boolean).join("+");
+  db.version = [db.version, "reviewed-pharmacy-2026-08-09.1"].filter(Boolean).join("+");
   window.ANI_PHARM_DATABASE = db;
   window.ANI_PHARMACY_REVIEWED_EXPANSION = payload;
 }());
