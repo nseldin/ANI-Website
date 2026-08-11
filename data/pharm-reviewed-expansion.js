@@ -4,8 +4,8 @@
   const payload = {
   "schemaVersion": "ani-pharmacy-reviewed-runtime-v1",
   "builderVersion": "ani-pharmacy-builder-2026-08-08.2",
-  "domainVersion": "2026-08-10.2",
-  "sourceSha256": "e52c8d3a98c9d9650aaff73f43539168c3e7902f9f5280ec93b2b10711de2036",
+  "domainVersion": "2026-08-11.1",
+  "sourceSha256": "b402f46cf4ab596ceb420204ef61e3005327eab0f2c6c49c31f1187b8893072a",
   "subsections": [
     {
       "id": "peptides-peptide-based-therapies",
@@ -298,6 +298,40 @@
           }
         },
         {
+          "canonicalGeneric": "oxytocin",
+          "canonicalName": "Oxytocin",
+          "peptideModality": "NATIVE_PEPTIDE_OR_HORMONE",
+          "regulatory": {
+            "jurisdiction": "US",
+            "agency": "FDA",
+            "productStatus": "FDA_APPROVED",
+            "labelAsOf": "2026-08-11",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6e5a66fc-e507-497c-b5ce-44a8c95898ad"
+          },
+          "useContexts": [
+            {
+              "status": "FDA_LABELED",
+              "use": "Medically indicated induction of labor and stimulation or reinforcement of labor in selected patients when vaginal delivery is appropriate",
+              "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6e5a66fc-e507-497c-b5ce-44a8c95898ad"
+            },
+            {
+              "status": "FDA_LABELED",
+              "use": "Produce uterine contractions during the third stage of labor and control postpartum bleeding or hemorrhage",
+              "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6e5a66fc-e507-497c-b5ce-44a8c95898ad"
+            },
+            {
+              "status": "FDA_LABELED",
+              "use": "Adjunctive management of incomplete or inevitable abortion",
+              "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6e5a66fc-e507-497c-b5ce-44a8c95898ad"
+            }
+          ],
+          "compounding": {
+            "status": "NOT_APPLICABLE",
+            "note": "This card covers the FDA-approved Pitocin product and does not authorize or characterize a compounded substitute as FDA approved.",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6e5a66fc-e507-497c-b5ce-44a8c95898ad"
+          }
+        },
+        {
           "canonicalGeneric": "abaloparatide",
           "canonicalName": "Abaloparatide",
           "peptideModality": "SYNTHETIC_PEPTIDE_ANALOG",
@@ -435,7 +469,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.cobicistat",
@@ -541,7 +575,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.collagenase-santyl",
@@ -644,7 +678,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.collagenase-xiaflex",
@@ -751,7 +785,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.cromolyn-sodium",
@@ -889,7 +923,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.efgartigimod-alfa-fcab",
@@ -991,7 +1025,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.avacopan",
@@ -1092,7 +1126,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.belzutifan",
@@ -1197,7 +1231,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.elacestrant",
@@ -1298,7 +1332,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.capivasertib",
@@ -1404,7 +1438,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.guanfacine",
@@ -1552,7 +1586,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.povidone-iodine",
@@ -1678,7 +1712,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.bulevirtide-gmod",
@@ -1850,7 +1884,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.dasiglucagon",
@@ -2011,7 +2045,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.terlipressin",
@@ -2174,7 +2208,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.ziconotide",
@@ -2340,7 +2374,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.retatrutide",
@@ -2517,7 +2551,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.cagrilintide",
@@ -2696,7 +2730,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.liraglutide",
@@ -2890,7 +2924,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.dulaglutide",
@@ -3063,7 +3097,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.insulin-glargine",
@@ -3240,7 +3274,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.insulin-lispro",
@@ -3418,7 +3452,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.glucagon",
@@ -3621,7 +3655,198 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
+    },
+    {
+      "id": "medication.oxytocin",
+      "name": "Oxytocin",
+      "displayName": "Oxytocin injection (Pitocin)",
+      "generic": "oxytocin",
+      "aliases": [
+        "Pitocin",
+        "oxytocin injection",
+        "oxytocin injection USP"
+      ],
+      "brandExamples": [
+        "Pitocin"
+      ],
+      "class": "Oxytocin-receptor agonist uterotonic; synthetic form of a native nonapeptide hormone",
+      "pharmacyTags": [
+        "peptide-based-therapy",
+        "obstetric medication",
+        "uterotonic"
+      ],
+      "updateMatchTerms": [
+        "oxytocin",
+        "Pitocin"
+      ],
+      "peptideModality": "NATIVE_PEPTIDE_OR_HORMONE",
+      "plainLanguage": "Oxytocin injection is a synthetic version of the body's oxytocin hormone. In a hospital it makes the uterus contract: before delivery to medically induce or strengthen labor, and after delivery to help the uterus contract and control bleeding.",
+      "whyItMatters": "Excessive uterine activity can reduce placental blood flow, injure the mother or fetus, rupture the uterus, or cause death. Prolonged high-dose infusion can also cause life-threatening water intoxication, so intravenous oxytocin requires continuous trained observation and the ability to stop the infusion immediately.",
+      "plainLanguageGlosses": [
+        {
+          "term": "uterine hypertonicity",
+          "plainLanguage": "a uterus that stays too tense and does not relax normally between contractions",
+          "sourceKeys": [
+            "dailymed-pitocin-label-2026-03"
+          ]
+        },
+        {
+          "term": "uteroplacental hypoperfusion",
+          "plainLanguage": "too little blood flowing through the uterus and placenta to support fetal oxygen delivery",
+          "sourceKeys": [
+            "dailymed-pitocin-label-2026-03"
+          ]
+        },
+        {
+          "term": "water intoxication",
+          "plainLanguage": "dangerous excess body water caused by oxytocin's antidiuretic effect, which can lead to convulsions, coma, or death",
+          "sourceKeys": [
+            "dailymed-pitocin-label-2026-03"
+          ]
+        }
+      ],
+      "description": "Oxytocin injection is synthetic oxytocin, a nine-amino-acid hormone used as a titratable uterotonic in obstetric care. Its labeled antepartum role is medical induction or reinforcement of labor when vaginal delivery is appropriate; its separate postpartum role is to produce uterine contractions during the third stage of labor and control postpartum bleeding or hemorrhage. It is also labeled as adjunctive therapy for incomplete or inevitable abortion. It is not indicated for convenience-only elective induction.",
+      "mechanism": "Oxytocin acts at specific receptors in uterine muscle and increases intracellular calcium. Calcium activates myosin light-chain kinase and actomyosin contraction, increasing uterine contraction frequency and tone. Receptor concentration rises during pregnancy and is greatest in early labor at term, so response is individualized. At large exposure, oxytocin's intrinsic antidiuretic and pressor properties can become clinically important.",
+      "usedToTreat": "FDA-labeled antepartum use includes medically indicated induction of labor, stimulation or reinforcement of labor in selected uterine inertia, and adjunctive management of incomplete or inevitable abortion. Separately, FDA-labeled postpartum use is to produce uterine contractions during the third stage of labor and control postpartum bleeding or hemorrhage.",
+      "boxedWarning": "No FDA boxed warning. The current label instead contains an Important Notice that Pitocin is not indicated for elective convenience-only induction and a warning that induction or augmentation must use the intravenous route with adequate medical supervision in a hospital.",
+      "contraindications": [
+        "Antepartum use is contraindicated with significant cephalopelvic disproportion or an unfavorable fetal position or presentation that cannot be delivered vaginally without conversion.",
+        "Antepartum use is contraindicated when an obstetric emergency favors surgical intervention, fetal distress is present and delivery is not imminent, adequate uterine activity has failed to produce satisfactory progress, or the uterus is already hyperactive or hypertonic.",
+        "Antepartum use is contraindicated whenever vaginal delivery is contraindicated, including invasive cervical carcinoma, active genital herpes, total placenta previa, vasa previa, or cord presentation or prolapse.",
+        "Hypersensitivity to oxytocin."
+      ],
+      "adverseEffects": [
+        "Label-reported maternal nausea and vomiting.",
+        "Label-reported maternal cardiac arrhythmia, premature ventricular contractions, and hypertensive episodes; the reviewed label does not provide incidence rates."
+      ],
+      "seriousAdverseReactions": [
+        "Uterine hypertonicity, spasm, tetanic contraction, rupture, cervical or vaginal laceration, postpartum hemorrhage, or uteroplacental hypoperfusion with fetal-heart-rate deceleration, hypoxia, hypercapnia, permanent brain injury, perinatal hepatic necrosis, or death.",
+        "Anaphylaxis, subarachnoid hemorrhage, fatal afibrinogenemia, or severe water intoxication with convulsions, coma, or maternal death.",
+        "Fetal or neonatal bradycardia and other arrhythmias, low five-minute Apgar score, neonatal jaundice, retinal hemorrhage, neonatal seizure, permanent central nervous system injury, or death."
+      ],
+      "interactions": [
+        "Severe hypertension has been reported when oxytocin was given three to four hours after a prophylactic vasoconstrictor used with caudal-block anesthesia.",
+        "The current label reports that cyclopropane anesthesia can alter oxytocin's cardiovascular effects, including hypotension, maternal sinus bradycardia, and abnormal atrioventricular rhythms; do not broaden this into a general anesthetic interaction."
+      ],
+      "nursingEssentials": [
+        "Keep the indication and stage explicit. Induction or augmentation is intravenous-only, in a hospital, with continuous observation by trained personnel and a clinician able to manage complications immediately available.",
+        "During antepartum infusion, use an accurately controlled infusion pump and continuously monitor uterine tone, contraction amplitude and frequency, and fetal heart rate. Evaluate maternal and fetal condition throughout rather than titrating to a universal number.",
+        "Immediately discontinue the infusion for uterine hyperactivity or fetal distress and activate the hospital obstetric response; carry out the label- and protocol-directed response, including maternal lateral positioning and urgent maternal-fetal evaluation, and provide oxygen as directed by the current label and hospital protocol.",
+        "For the separate postpartum indication, assess uterine contraction or atony and ongoing bleeding; intravenous infusion or intramuscular administration after placental delivery follows the current product label and hospital hemorrhage protocol."
+      ],
+      "keyLabs": [
+        "The label directs titration to uterine response and does not specify a routine serum oxytocin level.",
+        "Antepartum: continuous electronic fetal-heart-rate and uterine-activity monitoring, including tone, amplitude, and frequency, plus maternal vital signs and clinical status.",
+        "Fluid intake, output, and neurologic status during prolonged or high-dose infusion; the label identifies water-intoxication risk but does not prescribe a universal serum-sodium schedule, so laboratory evaluation follows the clinical situation and hospital protocol.",
+        "Postpartum: uterine tone or atony and ongoing blood loss; additional hemorrhage assessment follows the clinical presentation and hospital protocol."
+      ],
+      "administration": [
+        "For induction or augmentation, administer only by controlled intravenous infusion in a hospital. Individualize to uterine response under the current label and local obstetric protocol; indication-specific schedules must not be generalized across patients or uses.",
+        "The current label describes establishing a separate physiologic-electrolyte infusion and connecting the pump-controlled oxytocin infusion close to the infusion site so oxytocin can be stopped promptly without interrupting the base fluid.",
+        "For postpartum bleeding, the label permits intravenous infusion adjusted to sustain uterine contraction and control atony, or intramuscular administration after delivery of the placenta. Keep this route context separate from labor induction.",
+        "Adjunctive treatment of incomplete or inevitable abortion uses intravenous infusion under clinician-directed obstetric care according to the current label and facility protocol; do not extrapolate a self-administered regimen."
+      ],
+      "patientEducation": [
+        "Explain whether oxytocin is being used before delivery to induce or strengthen labor or after delivery to contract the uterus and control bleeding; these are different monitored uses.",
+        "During antepartum labor infusion, explain that continuous monitoring is needed because contractions that are too strong, too frequent, or do not relax enough can reduce fetal oxygen delivery and can injure the uterus.",
+        "Explain that prolonged high-dose infusion and excess fluid exposure can rarely cause serious water intoxication and that staff will monitor fluid balance and neurologic status.",
+        "This is a hospital-administered medicine, not a medication to adjust or self-administer."
+      ],
+      "toxicityManagement": [
+        "There is no specific reversal agent described in the current label. Immediately discontinue oxytocin for uterine hyperactivity, fetal distress, or suspected overdosage and provide urgent symptom-directed and supportive obstetric care.",
+        "For suspected water intoxication, stop oxytocin immediately and provide emergency symptomatic and supportive treatment; convulsions or coma require immediate resuscitative care."
+      ],
+      "specialPopulations": [
+        "Before antepartum use, assess pelvic adequacy and maternal and fetal conditions. Prior major cervical or uterine surgery, uterine overdistention, grand multiparity, prior uterine sepsis or traumatic delivery, prematurity, hydramnios, partial placenta previa, and related rupture risks are label cautions requiring individualized benefit-risk judgment; do not misstate all of them as absolute contraindications.",
+        "The reviewed label describes no first-trimester indication other than use related to spontaneous or induced abortion and reports fetal and neonatal risks arising from induced uterine activity.",
+        "The reviewed Pitocin label does not provide pediatric- or geriatric-specific dosing guidance; this obstetric card must not invent it."
+      ],
+      "nclexTraps": [
+        "Induction or augmentation is intravenous-only and hospital monitored; intramuscular use belongs to the separate postpartum context after delivery of the placenta.",
+        "More contractions are not automatically better. Uterine hyperactivity can reduce placental perfusion and must trigger immediate discontinuation and evaluation.",
+        "Pitocin is not indicated for convenience-only elective induction, while postpartum uterine contraction and bleeding control are separately labeled uses."
+      ],
+      "routes": [
+        "Intravenous infusion for medically indicated induction or augmentation of labor and labeled abortion-related adjunctive use",
+        "Intravenous infusion or intramuscular injection after delivery for the postpartum uterine-contraction and bleeding-control indication"
+      ],
+      "notApplicable": [
+        "reversal",
+        "routine therapeutic drug level",
+        "outpatient self-administration"
+      ],
+      "relatedTopics": [
+        "Postpartum hemorrhage",
+        "Uterine atony",
+        "Uterine rupture"
+      ],
+      "regulatoryStatus": "FDA-approved prescription Pitocin (oxytocin injection, USP) under NDA 018261; the reviewed current branded SPL covers NDC 42023-116-93.",
+      "regulatory": {
+        "jurisdiction": "US",
+        "agency": "FDA",
+        "productStatus": "FDA_APPROVED",
+        "labelAsOf": "2026-08-11",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6e5a66fc-e507-497c-b5ce-44a8c95898ad"
+      },
+      "useContexts": [
+        {
+          "status": "FDA_LABELED",
+          "use": "Medically indicated induction of labor and stimulation or reinforcement of labor in selected patients when vaginal delivery is appropriate",
+          "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6e5a66fc-e507-497c-b5ce-44a8c95898ad"
+        },
+        {
+          "status": "FDA_LABELED",
+          "use": "Produce uterine contractions during the third stage of labor and control postpartum bleeding or hemorrhage",
+          "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6e5a66fc-e507-497c-b5ce-44a8c95898ad"
+        },
+        {
+          "status": "FDA_LABELED",
+          "use": "Adjunctive management of incomplete or inevitable abortion",
+          "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6e5a66fc-e507-497c-b5ce-44a8c95898ad"
+        }
+      ],
+      "compounding": {
+        "status": "NOT_APPLICABLE",
+        "note": "This card covers the FDA-approved Pitocin product and does not authorize or characterize a compounded substitute as FDA approved.",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6e5a66fc-e507-497c-b5ce-44a8c95898ad"
+      },
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-11",
+      "sourceNote": "Original ANI synthesis from the current DailyMed Pitocin prescribing information (SPL version 15; prescribing-information revision R03/2026): https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6e5a66fc-e507-497c-b5ce-44a8c95898ad",
+      "provenance": [
+        {
+          "key": "dailymed-pitocin-label-2026-03",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6e5a66fc-e507-497c-b5ce-44a8c95898ad",
+          "documentVersion": "Current SPL version 15, published 2026-05-21; PI R03/2026; checked 2026-08-11",
+          "fieldsSupported": [
+            "identity",
+            "FDA approval and product status",
+            "peptide identity",
+            "mechanism",
+            "indications and use contexts",
+            "routes and administration",
+            "contraindications",
+            "warnings and precautions",
+            "adverse reactions",
+            "interactions",
+            "continuous monitoring",
+            "pregnancy and fetal or neonatal risks",
+            "overdosage and toxicity management"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-11.1"
     },
     {
       "id": "medication.abaloparatide",
@@ -3827,7 +4052,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.2"
+      "pharmacyDomainVersion": "2026-08-11.1"
     }
   ]
 };
@@ -3837,7 +4062,7 @@
   const retained = (Array.isArray(db.drugs) ? db.drugs : []).filter((card) => !replacementByKey.has(normalize(card && (card.generic || card.name || card.displayName))));
   db.drugs = retained.concat(payload.cards);
   db.reviewedExpansion = { schemaVersion: payload.schemaVersion, builderVersion: payload.builderVersion, domainVersion: payload.domainVersion, sourceSha256: payload.sourceSha256, cardCount: payload.cards.length };
-  db.version = [db.version, "reviewed-pharmacy-2026-08-10.2"].filter(Boolean).join("+");
+  db.version = [db.version, "reviewed-pharmacy-2026-08-11.1"].filter(Boolean).join("+");
   window.ANI_PHARM_DATABASE = db;
   window.ANI_PHARMACY_REVIEWED_EXPANSION = payload;
 }());
