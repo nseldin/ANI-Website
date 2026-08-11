@@ -1,4 +1,4 @@
-const CACHE_VERSION = "ani-pwa-v335-web-6b7cbb835f39";
+const CACHE_VERSION = "ani-pwa-v336-web-6b7cbb835f39";
 const APP_SHELL = [
   "/",
   "/index.html",

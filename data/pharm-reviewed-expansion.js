@@ -4,8 +4,8 @@
   const payload = {
   "schemaVersion": "ani-pharmacy-reviewed-runtime-v1",
   "builderVersion": "ani-pharmacy-builder-2026-08-08.2",
-  "domainVersion": "2026-08-09.1",
-  "sourceSha256": "5ffd61705effeaf9019b0505794712ca5390c35fa3f6616cdec142ef26cffa9d",
+  "domainVersion": "2026-08-10.1",
+  "sourceSha256": "f4d29ad634fbb29b2e35c3b9751ac3df3b83e1c27a93f5703416bdbfe47be73d",
   "subsections": [
     {
       "id": "peptides-peptide-based-therapies",
@@ -214,6 +214,88 @@
             "note": "This card covers the FDA-approved Trulicity product and does not establish that a compounded product is FDA approved, equivalent, or interchangeable.",
             "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=463050bd-2b1c-40f5-b3c3-0a04bb433309"
           }
+        },
+        {
+          "canonicalGeneric": "insulin glargine",
+          "canonicalName": "Insulin glargine",
+          "peptideModality": "RECOMBINANT_PEPTIDE",
+          "regulatory": {
+            "jurisdiction": "US",
+            "agency": "FDA",
+            "productStatus": "FDA_APPROVED",
+            "labelAsOf": "2026-08-10",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=406883ea-7f97-4eff-8d43-0bab004654f1"
+          },
+          "useContexts": [
+            {
+              "status": "FDA_LABELED",
+              "use": "Improve glycemic control in adult and pediatric patients with diabetes mellitus using the Lantus U-100 product-specific plan",
+              "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=406883ea-7f97-4eff-8d43-0bab004654f1"
+            }
+          ],
+          "compounding": {
+            "status": "NOT_APPLICABLE",
+            "note": "This card covers the FDA-approved Lantus U-100 product and does not establish that a compounded insulin glargine product is FDA approved, equivalent, or interchangeable.",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=406883ea-7f97-4eff-8d43-0bab004654f1"
+          }
+        },
+        {
+          "canonicalGeneric": "insulin lispro",
+          "canonicalName": "Insulin lispro",
+          "peptideModality": "RECOMBINANT_PEPTIDE",
+          "regulatory": {
+            "jurisdiction": "US",
+            "agency": "FDA",
+            "productStatus": "FDA_APPROVED",
+            "labelAsOf": "2026-08-10",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=97d5e596-aae1-42c9-ae89-c3780959c467"
+          },
+          "useContexts": [
+            {
+              "status": "FDA_LABELED",
+              "use": "Improve glycemic control in adult and pediatric patients with diabetes mellitus using the Humalog U-100 product-specific route and timing instructions",
+              "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=97d5e596-aae1-42c9-ae89-c3780959c467"
+            }
+          ],
+          "compounding": {
+            "status": "NOT_APPLICABLE",
+            "note": "This card covers the FDA-approved Humalog U-100 product and does not establish that a compounded insulin lispro product is FDA approved, equivalent, or interchangeable.",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=97d5e596-aae1-42c9-ae89-c3780959c467"
+          }
+        },
+        {
+          "canonicalGeneric": "glucagon",
+          "canonicalName": "Glucagon",
+          "peptideModality": "NATIVE_PEPTIDE_OR_HORMONE",
+          "regulatory": {
+            "jurisdiction": "US",
+            "agency": "FDA",
+            "productStatus": "FDA_APPROVED",
+            "labelAsOf": "2026-08-10",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=15b49500-0aae-4e25-9a1d-709983233cc6"
+          },
+          "useContexts": [
+            {
+              "status": "FDA_LABELED",
+              "use": "Treat severe hypoglycemia in pediatric and adult patients with diabetes using the reviewed glucagon injection kit",
+              "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=15b49500-0aae-4e25-9a1d-709983233cc6"
+            },
+            {
+              "status": "FDA_LABELED",
+              "use": "Temporarily inhibit gastrointestinal movement as a diagnostic aid during selected radiologic examinations in adults",
+              "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=15b49500-0aae-4e25-9a1d-709983233cc6"
+            },
+            {
+              "status": "OFF_LABEL",
+              "use": "Specialist-directed intravenous glucagon bolus followed by infusion for symptomatic bradycardia or hypotension in life-threatening beta-blocker poisoning within a monitored toxicology resuscitation plan",
+              "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41122889/"
+            }
+          ],
+          "compounding": {
+            "status": "NOT_APPLICABLE",
+            "note": "This card covers an FDA-approved glucagon injection product and does not establish that a compounded glucagon product is FDA approved, equivalent, or interchangeable.",
+            "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=15b49500-0aae-4e25-9a1d-709983233cc6"
+          }
         }
       ]
     }
@@ -324,7 +406,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.cobicistat",
@@ -430,7 +512,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.collagenase-santyl",
@@ -533,7 +615,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.collagenase-xiaflex",
@@ -640,7 +722,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.cromolyn-sodium",
@@ -778,7 +860,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.efgartigimod-alfa-fcab",
@@ -880,7 +962,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.avacopan",
@@ -981,7 +1063,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.belzutifan",
@@ -1086,7 +1168,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.elacestrant",
@@ -1187,7 +1269,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.capivasertib",
@@ -1293,7 +1375,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.guanfacine",
@@ -1441,7 +1523,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.povidone-iodine",
@@ -1567,7 +1649,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.bulevirtide-gmod",
@@ -1739,7 +1821,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.dasiglucagon",
@@ -1900,7 +1982,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.terlipressin",
@@ -2063,7 +2145,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.ziconotide",
@@ -2229,7 +2311,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.retatrutide",
@@ -2406,7 +2488,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.cagrilintide",
@@ -2585,7 +2667,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.liraglutide",
@@ -2779,7 +2861,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
     },
     {
       "id": "medication.dulaglutide",
@@ -2952,7 +3034,565 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-09.1"
+      "pharmacyDomainVersion": "2026-08-10.1"
+    },
+    {
+      "id": "medication.insulin-glargine",
+      "name": "Insulin glargine",
+      "displayName": "Insulin glargine (Lantus U-100)",
+      "generic": "insulin glargine",
+      "aliases": [
+        "Lantus",
+        "insulin glargin",
+        "long-acting insulin glargine",
+        "basal insulin glargine"
+      ],
+      "brandExamples": [
+        "Lantus"
+      ],
+      "class": "Long-acting recombinant human insulin analog for basal glucose control",
+      "pharmacyTags": [
+        "peptide-based-therapy",
+        "insulin",
+        "basal-insulin",
+        "diabetes"
+      ],
+      "updateMatchTerms": [
+        "insulin glargine",
+        "Lantus"
+      ],
+      "peptideModality": "RECOMBINANT_PEPTIDE",
+      "plainLanguage": "Insulin glargine is a long-acting insulin that supplies the body's background insulin between meals and overnight. The reviewed product here is Lantus U-100, given under the skin once daily at the same time each day.",
+      "whyItMatters": "Glargine can prevent fasting hyperglycemia and, in type 1 diabetes, loss of basal insulin can contribute to ketone formation. Too much insulin or a mismatch with food, activity, illness, or kidney or liver function can cause life-threatening hypoglycemia, and every product or concentration change needs close glucose monitoring.",
+      "plainLanguageGlosses": [
+        {
+          "term": "basal insulin",
+          "plainLanguage": "background insulin that works between meals and overnight rather than covering one specific meal",
+          "sourceKeys": [
+            "dailymed-lantus-u100-label"
+          ]
+        },
+        {
+          "term": "localized cutaneous amyloidosis",
+          "plainLanguage": "a firm protein deposit that can form where insulin is injected repeatedly and can make absorption unpredictable",
+          "sourceKeys": [
+            "dailymed-lantus-u100-label"
+          ]
+        },
+        {
+          "term": "hypokalemia",
+          "plainLanguage": "a dangerously low blood potassium level that can weaken muscles or disturb heart rhythm",
+          "sourceKeys": [
+            "dailymed-lantus-u100-label"
+          ]
+        }
+      ],
+      "description": "Insulin glargine is a recombinant long-acting human insulin analog used as basal insulin. The reviewed product scope is Lantus U-100, not every glargine brand or concentration. It provides a slower, prolonged glucose-lowering profile after subcutaneous injection, so it supports fasting and between-meal control but does not replace rapid mealtime insulin in type 1 diabetes. Product, concentration, device, timing, and injection site must be verified because an insulin substitution or administration error can cause severe hypoglycemia or hyperglycemia.",
+      "mechanism": "Insulin glargine binds insulin receptors and lowers blood glucose by increasing glucose uptake in skeletal muscle and fat while reducing glucose production by the liver. Insulin also inhibits lipolysis and proteolysis and supports protein synthesis. Compared with human NPH insulin, subcutaneous glargine has slower, more prolonged absorption and a relatively constant concentration-time profile without a pronounced peak. Like all insulin, it shifts potassium into cells, which explains the risk of hypokalemia during excessive exposure or in a susceptible patient.",
+      "usedToTreat": "The referenced Lantus U-100 label is FDA approved to improve glycemic control in adults and pediatric patients with diabetes mellitus. In type 1 diabetes it must be used with short-acting insulin. It is not recommended for diabetic ketoacidosis and is not a rapid correction or meal-coverage insulin.",
+      "boxedWarning": "The referenced Lantus U-100 label has no boxed warning. Major hazards include life-threatening hypoglycemia, hypokalemia, severe hypersensitivity, medication errors, and fluid retention or heart-failure worsening when insulin is combined with a thiazolidinedione.",
+      "contraindications": [
+        "Do not administer during an episode of hypoglycemia.",
+        "Do not administer to a patient with hypersensitivity to insulin glargine or a product excipient.",
+        "Lantus U-100 must not be given intravenously, through an insulin pump, diluted, or mixed with another insulin or solution."
+      ],
+      "adverseEffects": [
+        "Hypoglycemia, injection-site reactions, itching, rash, edema, weight gain, lipodystrophy, and localized cutaneous amyloidosis.",
+        "A change from repeatedly used abnormal injection tissue to normal tissue can abruptly increase absorption and cause hypoglycemia."
+      ],
+      "seriousAdverseReactions": [
+        "Severe hypoglycemia with seizure, coma, injury, neurologic impairment, or death.",
+        "Life-threatening hypokalemia or anaphylaxis, and heart-failure worsening when a thiazolidinedione causes additive fluid retention."
+      ],
+      "interactions": [
+        "Other glucose-lowering medicines, alcohol, and medicines that alter glucose metabolism can change insulin requirements and hypoglycemia risk.",
+        "Beta blockers, clonidine, guanethidine, and reserpine can reduce or hide adrenergic warning signs of hypoglycemia.",
+        "Thiazolidinediones used with insulin can cause dose-related fluid retention and worsen heart failure."
+      ],
+      "nursingEssentials": [
+        "Verify the exact Lantus U-100 product, concentration, device, dose in units, administration time, current glucose, and recent regimen changes before every dose. Do not transfer this card's instructions to Toujeo, Basaglar, Semglee, or another glargine product without its current label and order.",
+        "Administer subcutaneously once daily at the same time each day and rotate sites within an appropriate region. Inspect for lipodystrophy or amyloid deposits and increase glucose monitoring when changing to unaffected tissue.",
+        "In type 1 diabetes, confirm the prescribed short-acting insulin plan and do not treat glargine as meal coverage or IV treatment for diabetic ketoacidosis."
+      ],
+      "keyLabs": [
+        "Bedside or home glucose trends, continuous-glucose-monitor data when used, and A1c for longitudinal control.",
+        "Potassium when excessive insulin exposure, potassium-lowering therapy, or acute illness creates risk.",
+        "Renal and hepatic function, weight and edema, injection sites, and the timing and pattern of hypoglycemia."
+      ],
+      "patientEducation": [
+        "Check the label before every injection, use the exact prescribed product and device, and never share a pen, syringe, or needle even if the needle is changed.",
+        "Take Lantus U-100 once daily at the same time, rotate injection sites, and do not mix, dilute, pump, or inject it into a vein.",
+        "Know the personal hypoglycemia plan and carry rapid carbohydrate. Report recurrent low glucose, severe allergy, weakness or palpitations that could indicate low potassium, or rapid swelling and shortness of breath."
+      ],
+      "administration": [
+        "Administer Lantus U-100 by subcutaneous injection in the abdomen, thigh, or deltoid once daily at the same time each day; rotate sites and use only clear, colorless solution without particles.",
+        "Individualize and change the dose only with appropriate glucose monitoring and medical supervision. Do not administer intravenously or by pump and do not dilute or mix it."
+      ],
+      "toxicityManagement": [
+        "There is no product-specific antidote. Treat mild hypoglycemia with oral glucose when swallowing is safe; severe episodes may require emergency glucagon or concentrated intravenous glucose and airway support.",
+        "Continue carbohydrate and observation because hypoglycemia can recur after apparent recovery, especially with a long-acting insulin, and correct hypokalemia appropriately."
+      ],
+      "specialPopulations": [
+        "The current label supports pediatric diabetes use, but the dose is individualized and type 1 diabetes still requires short-acting insulin.",
+        "Older adults and patients with renal or hepatic impairment may have greater hypoglycemia risk and need more frequent monitoring and conservative adjustment.",
+        "Pregnancy and lactation require individualized glucose targets and insulin management; uncontrolled diabetes also creates maternal and fetal risk."
+      ],
+      "nclexTraps": [
+        "Basal insulin is not meal coverage, and glargine is not the intravenous insulin used for acute diabetic ketoacidosis.",
+        "Do not mix or dilute Lantus U-100 and do not use it in an insulin pump.",
+        "A shared ingredient name does not make Lantus U-100 interchangeable with another glargine product or concentration."
+      ],
+      "routes": [
+        "Subcutaneous injection only for the reviewed Lantus U-100 product"
+      ],
+      "notApplicable": [
+        "specific antidote",
+        "intravenous administration",
+        "insulin-pump administration"
+      ],
+      "relatedTopics": [
+        "Type 1 diabetes mellitus",
+        "Type 2 diabetes mellitus",
+        "Hypoglycemia",
+        "DKA",
+        "Hypokalemia"
+      ],
+      "regulatoryStatus": "FDA-approved prescription recombinant insulin analog; this reviewed card is scoped to Lantus U-100.",
+      "regulatory": {
+        "jurisdiction": "US",
+        "agency": "FDA",
+        "productStatus": "FDA_APPROVED",
+        "labelAsOf": "2026-08-10",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=406883ea-7f97-4eff-8d43-0bab004654f1"
+      },
+      "useContexts": [
+        {
+          "status": "FDA_LABELED",
+          "use": "Improve glycemic control in adult and pediatric patients with diabetes mellitus using the Lantus U-100 product-specific plan",
+          "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=406883ea-7f97-4eff-8d43-0bab004654f1"
+        }
+      ],
+      "compounding": {
+        "status": "NOT_APPLICABLE",
+        "note": "This card covers the FDA-approved Lantus U-100 product and does not establish that a compounded insulin glargine product is FDA approved, equivalent, or interchangeable.",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=406883ea-7f97-4eff-8d43-0bab004654f1"
+      },
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-10",
+      "sourceNote": "Original ANI synthesis from the current DailyMed Lantus U-100 insulin glargine prescribing information: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=406883ea-7f97-4eff-8d43-0bab004654f1. Other glargine brands and concentrations require their own product-specific labeling and are not covered by this card's administration instructions.",
+      "provenance": [
+        {
+          "key": "dailymed-lantus-u100-label",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=406883ea-7f97-4eff-8d43-0bab004654f1",
+          "documentVersion": "Revised 06/2023; current label checked 2026-08-10",
+          "fieldsSupported": [
+            "identity",
+            "FDA-labeled use",
+            "recombinant insulin analog",
+            "mechanism",
+            "contraindications",
+            "warnings",
+            "adverse effects",
+            "interactions",
+            "administration",
+            "overdose management",
+            "patient counseling",
+            "special populations"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-10.1"
+    },
+    {
+      "id": "medication.insulin-lispro",
+      "name": "Insulin lispro",
+      "displayName": "Insulin lispro (Humalog U-100)",
+      "generic": "insulin lispro",
+      "aliases": [
+        "Humalog",
+        "insulin lispro rapid acting",
+        "lispro mealtime insulin",
+        "insulin lispra"
+      ],
+      "brandExamples": [
+        "Humalog"
+      ],
+      "class": "Rapid-acting recombinant human insulin analog for meal and correction coverage",
+      "pharmacyTags": [
+        "peptide-based-therapy",
+        "insulin",
+        "rapid-acting-insulin",
+        "diabetes"
+      ],
+      "updateMatchTerms": [
+        "insulin lispro",
+        "Humalog"
+      ],
+      "peptideModality": "RECOMBINANT_PEPTIDE",
+      "plainLanguage": "Insulin lispro is a rapid-acting insulin used around meals and for correction doses. The reviewed product here is Humalog U-100, and its timing, pump, mixing, dilution, and intravenous rules cannot be copied to another lispro formulation without checking that product's label.",
+      "whyItMatters": "Lispro begins working quickly, so giving it without available carbohydrate can cause abrupt life-threatening hypoglycemia. Pump interruption can also remove both meal and background rapid-insulin delivery and lead quickly to severe hyperglycemia or ketoacidosis.",
+      "plainLanguageGlosses": [
+        {
+          "term": "prandial insulin",
+          "plainLanguage": "insulin timed to cover the rise in glucose caused by a meal",
+          "sourceKeys": [
+            "dailymed-humalog-u100-label"
+          ]
+        },
+        {
+          "term": "continuous subcutaneous insulin infusion",
+          "plainLanguage": "insulin delivered continuously through a pump into tissue under the skin",
+          "sourceKeys": [
+            "dailymed-humalog-u100-label"
+          ]
+        },
+        {
+          "term": "hypokalemia",
+          "plainLanguage": "a dangerously low blood potassium level that can weaken muscles or disturb heart rhythm",
+          "sourceKeys": [
+            "dailymed-humalog-u100-label"
+          ]
+        }
+      ],
+      "description": "Insulin lispro is a recombinant rapid-acting human insulin analog used to match meals and correct elevated glucose. The reviewed product scope is Humalog U-100. It can be given subcutaneously, through a compatible insulin pump, or by a properly diluted intravenous infusion under medical supervision. Its short, rapid action improves meal matching but makes dose timing, actual carbohydrate availability, pump function, product concentration, and route critical safety checks.",
+      "mechanism": "Insulin lispro binds insulin receptors and lowers blood glucose by increasing glucose uptake in skeletal muscle and fat while reducing hepatic glucose production; it also inhibits lipolysis and proteolysis and supports protein synthesis. The lysine and proline residues at positions B28 and B29 are reversed relative to human insulin. After subcutaneous injection, the labeled product is absorbed faster, begins acting sooner, and has a shorter duration than regular human insulin. Like other insulins, excessive exposure can shift potassium into cells and cause hypokalemia.",
+      "usedToTreat": "The referenced Humalog U-100 label is FDA approved to improve glycemic control in adult and pediatric patients with diabetes mellitus. It is used for meal and correction coverage by product-specific subcutaneous, compatible-pump, or medically supervised intravenous routes and is generally paired with intermediate- or long-acting insulin when given by injection.",
+      "boxedWarning": "The referenced Humalog U-100 label has no boxed warning. Major hazards include life-threatening hypoglycemia, hypokalemia, severe hypersensitivity, medication errors, pump-related hyperglycemia or ketoacidosis, and fluid retention or heart-failure worsening with thiazolidinediones.",
+      "contraindications": [
+        "Do not administer during an episode of hypoglycemia.",
+        "Do not administer to a patient with hypersensitivity to insulin lispro or a product excipient.",
+        "Do not use another lispro product, concentration, pump, dilution, intravenous preparation, or mixing instruction unless that exact product and route are authorized."
+      ],
+      "adverseEffects": [
+        "Hypoglycemia, injection- or infusion-site reactions, itching, rash, edema, weight gain, lipodystrophy, and localized cutaneous amyloidosis.",
+        "Pump occlusion or malfunction can cause rapid hyperglycemia and ketoacidosis because no long-acting depot is present."
+      ],
+      "seriousAdverseReactions": [
+        "Severe hypoglycemia with seizure, coma, injury, neurologic impairment, or death.",
+        "Life-threatening hypokalemia or anaphylaxis, and severe hyperglycemia or ketoacidosis after interrupted pump delivery."
+      ],
+      "interactions": [
+        "Other glucose-lowering medicines, alcohol, and medicines that alter glucose metabolism can change insulin requirements and hypoglycemia risk.",
+        "Beta blockers, clonidine, guanethidine, and reserpine can reduce or hide adrenergic warning signs of hypoglycemia.",
+        "Thiazolidinediones used with insulin can cause dose-related fluid retention and worsen heart failure."
+      ],
+      "nursingEssentials": [
+        "Verify the exact Humalog U-100 product, route, concentration, device, dose in units, current glucose, meal arrival and expected intake, and recent regimen changes before administration.",
+        "For subcutaneous dosing, coordinate the dose within 15 minutes before or immediately after a meal. If the patient cannot eat or the meal is absent, stop and clarify rather than giving a routine prandial dose.",
+        "For pump therapy, verify compatibility, site, tubing, reservoir, and backup injection plan. Unexplained hyperglycemia requires prompt pump troubleshooting and ketone assessment."
+      ],
+      "keyLabs": [
+        "Premeal and postmeal glucose or continuous-glucose-monitor trends and A1c for longitudinal control.",
+        "Potassium during intravenous therapy, excessive exposure, or another high-risk clinical context.",
+        "Ketones and acid-base status when pump interruption or missed rapid insulin raises concern for diabetic ketoacidosis."
+      ],
+      "patientEducation": [
+        "Check the label before every dose, use the exact prescribed product and device, and never share a pen, syringe, or needle even if the needle is changed.",
+        "Match the subcutaneous dose to the meal timing exactly and know the personal hypoglycemia rescue plan. Carry rapid carbohydrate and make sure glucagon is available when prescribed.",
+        "Pump users need backup insulin and injection supplies. Treat unexplained high glucose, ketones, nausea, or vomiting as a possible delivery failure rather than repeatedly correcting through a malfunctioning set."
+      ],
+      "administration": [
+        "Give Humalog U-100 subcutaneously in the abdomen, thigh, upper arm, or buttocks within 15 minutes before or immediately after a meal and rotate sites. The referenced product may be mixed with NPH only for subcutaneous injection, with lispro drawn first and injected immediately.",
+        "Use in a pump only when the pump is labeled for Humalog compatibility; never dilute or mix pump insulin. Intravenous administration requires label-directed dilution, medical supervision, and close glucose and potassium monitoring."
+      ],
+      "toxicityManagement": [
+        "There is no product-specific antidote. Treat mild hypoglycemia with oral glucose when swallowing is safe; severe episodes may require emergency glucagon or concentrated intravenous glucose and airway support.",
+        "Continue carbohydrate and observation because hypoglycemia can recur after apparent recovery, and correct hypokalemia appropriately."
+      ],
+      "specialPopulations": [
+        "The current label supports pediatric diabetes use, but dose, meal timing, caregiver skills, and device selection must be individualized.",
+        "Older adults and patients with renal or hepatic impairment may have greater hypoglycemia risk and need more frequent monitoring and adjustment.",
+        "Pregnancy and lactation require individualized glucose targets and insulin management; uncontrolled diabetes also creates maternal and fetal risk."
+      ],
+      "nclexTraps": [
+        "Do not give rapid mealtime insulin simply because the scheduled time arrived when the patient cannot eat or the tray is absent.",
+        "Humalog U-100 may be mixed subcutaneously with NPH under the exact label, but pump insulin must never be mixed or diluted.",
+        "Admelog, Lyumjev, U-200, and insulin lispro-aabc are not aliases in this product-scoped card; their formulation-specific instructions require separate current labels."
+      ],
+      "routes": [
+        "Subcutaneous injection",
+        "Compatible continuous subcutaneous insulin-infusion pump",
+        "Diluted intravenous infusion under medical supervision"
+      ],
+      "notApplicable": [
+        "specific antidote"
+      ],
+      "relatedTopics": [
+        "Type 1 diabetes mellitus",
+        "Type 2 diabetes mellitus",
+        "Hypoglycemia",
+        "DKA",
+        "Hypokalemia"
+      ],
+      "regulatoryStatus": "FDA-approved prescription recombinant insulin analog; this reviewed card is scoped to Humalog U-100.",
+      "regulatory": {
+        "jurisdiction": "US",
+        "agency": "FDA",
+        "productStatus": "FDA_APPROVED",
+        "labelAsOf": "2026-08-10",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=97d5e596-aae1-42c9-ae89-c3780959c467"
+      },
+      "useContexts": [
+        {
+          "status": "FDA_LABELED",
+          "use": "Improve glycemic control in adult and pediatric patients with diabetes mellitus using the Humalog U-100 product-specific route and timing instructions",
+          "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=97d5e596-aae1-42c9-ae89-c3780959c467"
+        }
+      ],
+      "compounding": {
+        "status": "NOT_APPLICABLE",
+        "note": "This card covers the FDA-approved Humalog U-100 product and does not establish that a compounded insulin lispro product is FDA approved, equivalent, or interchangeable.",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=97d5e596-aae1-42c9-ae89-c3780959c467"
+      },
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-10",
+      "sourceNote": "Original ANI synthesis from the current DailyMed Humalog U-100 insulin lispro prescribing information: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=97d5e596-aae1-42c9-ae89-c3780959c467. Admelog, Lyumjev, other concentrations, and other lispro formulations require their own product-specific labeling and are not covered by this card's administration instructions.",
+      "provenance": [
+        {
+          "key": "dailymed-humalog-u100-label",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=97d5e596-aae1-42c9-ae89-c3780959c467",
+          "documentVersion": "DailyMed updated 06/17/2025; prescribing information revised 09/2023; checked 2026-08-10",
+          "fieldsSupported": [
+            "identity",
+            "FDA-labeled use",
+            "recombinant insulin analog",
+            "mechanism",
+            "contraindications",
+            "warnings",
+            "adverse effects",
+            "interactions",
+            "administration",
+            "pump safety",
+            "overdose management",
+            "patient counseling",
+            "special populations"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-10.1"
+    },
+    {
+      "id": "medication.glucagon",
+      "name": "Glucagon",
+      "displayName": "Glucagon for injection",
+      "generic": "glucagon",
+      "aliases": [
+        "glucagon emergency kit",
+        "injectable glucagon",
+        "hypoglycemia rescue glucagon",
+        "glucogon"
+      ],
+      "brandExamples": [],
+      "class": "Native-sequence glucagon hormone for severe hypoglycemia rescue and gastrointestinal relaxation",
+      "pharmacyTags": [
+        "peptide-based-therapy",
+        "hypoglycemia-rescue",
+        "endocrine-emergency",
+        "toxicology-adjunct"
+      ],
+      "updateMatchTerms": [
+        "glucagon",
+        "glucagon for injection"
+      ],
+      "peptideModality": "NATIVE_PEPTIDE_OR_HORMONE",
+      "plainLanguage": "Glucagon is a 29-amino-acid hormone medicine that tells the liver to release stored glucose. The reviewed injection kit can rescue severe hypoglycemia when swallowing is unsafe and can temporarily relax the gastrointestinal tract for selected adult radiologic examinations.",
+      "whyItMatters": "Severe hypoglycemia can cause seizure, coma, serious injury, or death. Glucagon is an emergency bridge, not definitive treatment: call for help, protect the airway, recheck glucose, give carbohydrate after recovery when swallowing is safe, and use intravenous glucose if the response is inadequate or liver glycogen is depleted.",
+      "plainLanguageGlosses": [
+        {
+          "term": "hepatic glycogen",
+          "plainLanguage": "glucose stored in the liver for release when the body urgently needs fuel",
+          "sourceKeys": [
+            "dailymed-glucagon-mylan-label"
+          ]
+        },
+        {
+          "term": "counterregulatory hormone",
+          "plainLanguage": "a hormone that raises glucose and opposes insulin's glucose-lowering effect",
+          "sourceKeys": [
+            "dailymed-glucagon-mylan-label"
+          ]
+        },
+        {
+          "term": "off-label",
+          "plainLanguage": "a clinician-directed use that is supported for a specific situation but is not listed as an FDA-approved use in this product's label",
+          "sourceKeys": [
+            "dailymed-glucagon-mylan-label",
+            "pubmed-aha-special-circumstances-2025"
+          ]
+        }
+      ],
+      "description": "Glucagon is a synthetic-origin peptide with the same amino-acid sequence as native human glucagon. The reviewed Mylan injection kit is FDA labeled for severe hypoglycemia in adults and children with diabetes and as an adult radiologic diagnostic aid that temporarily inhibits gastrointestinal movement. In a distinct off-label context, current AHA guidance supports monitored intravenous glucagon as one adjunct for symptomatic bradycardia or hypotension in life-threatening beta-blocker poisoning; it is not a universal antidote and must not delay vasopressors, high-dose insulin, or other toxicology-directed resuscitation.",
+      "mechanism": "Glucagon binds hepatic glucagon receptors and activates adenylate cyclase, increasing cyclic AMP. This activates pathways that break down liver glycogen and release glucose into the circulation. Because glucagon mobilizes stored fuel rather than supplying glucose, it may not work when hepatic glycogen is inadequate. Glucagon also relaxes smooth muscle in the stomach, duodenum, small bowel, and colon, which supports its labeled radiologic use. The current AHA toxicology guideline supports the monitored clinical use context for beta-blocker poisoning but describes limited and inconsistent hemodynamic evidence.",
+      "usedToTreat": "FDA-labeled uses are severe hypoglycemia in pediatric and adult patients with diabetes and temporary gastrointestinal-motility inhibition during selected adult radiologic examinations. Off-label under toxicology and critical-care direction, an intravenous bolus followed by infusion may be used for symptomatic bradycardia or hypotension in life-threatening beta-blocker poisoning as part of multimodal resuscitation.",
+      "boxedWarning": "The referenced glucagon label has no boxed warning. Major hazards include failure when hepatic glycogen is depleted, vomiting with aspiration risk, severe hypersensitivity, a hypertensive crisis in pheochromocytoma, recurrent hypoglycemia in insulinoma, and cardiovascular stress during diagnostic use in a patient with heart disease.",
+      "contraindications": [
+        "Pheochromocytoma because glucagon can trigger a substantial catecholamine-mediated blood-pressure increase.",
+        "Insulinoma because an initial glucose rise can provoke exaggerated insulin release and recurrent hypoglycemia.",
+        "Known hypersensitivity to glucagon or a product excipient; glucagonoma is an additional contraindication when glucagon is used as a diagnostic aid."
+      ],
+      "adverseEffects": [
+        "Nausea, vomiting, headache, dizziness, injection-site reactions, transient pulse or blood-pressure change, and hyperglycemia during diagnostic use.",
+        "Toxicology doses can cause frequent nausea and vomiting, and the hemodynamic response may be small, short-lived, or absent."
+      ],
+      "seriousAdverseReactions": [
+        "Aspiration after vomiting in a patient with reduced consciousness, severe hypersensitivity or anaphylactic shock, and hypertensive crisis in pheochromocytoma.",
+        "Recurrent or persistent hypoglycemia when hepatic glycogen is inadequate or the causative insulin or secretagogue continues to act."
+      ],
+      "interactions": [
+        "Patients taking beta blockers may have a transient increase in pulse and blood pressure after glucagon; monitor and treat when clinically important.",
+        "Indomethacin can blunt the glucose rise or cause hypoglycemia, and glucagon may increase warfarin's anticoagulant effect.",
+        "Anticholinergic medicines are not recommended with glucagon used as a diagnostic aid because gastrointestinal adverse effects can increase."
+      ],
+      "nursingEssentials": [
+        "For severe hypoglycemia, give the exact prescribed injection product promptly, call emergency assistance, position the patient on the side when feasible, monitor airway and serial glucose, and obtain intravenous access if the response is inadequate.",
+        "After the patient responds and can swallow safely, give oral carbohydrate to restore liver glycogen and reduce recurrence; identify whether insulin, a secretagogue, missed food, adrenal insufficiency, chronic hypoglycemia, or starvation contributed.",
+        "For life-threatening beta-blocker poisoning, use intravenous glucagon only within a monitored toxicology resuscitation plan. Prepare for vomiting, trend ECG and perfusion, and do not delay vasopressors, high-dose insulin with euglycemia support, or escalation of circulatory support."
+      ],
+      "keyLabs": [
+        "Immediate and serial bedside glucose before and after rescue; continue monitoring because severe hypoglycemia may recur.",
+        "For toxicology use, trend ECG, heart rate, blood pressure, perfusion, glucose, potassium, acid-base status, and cause-directed laboratory studies.",
+        "Assess for low hepatic glycogen when starvation, adrenal insufficiency, or chronic hypoglycemia makes glucagon response unreliable."
+      ],
+      "patientEducation": [
+        "Patients and caregivers should learn the exact kit before an emergency, keep it available and in date, give it promptly for severe hypoglycemia, and call emergency help immediately.",
+        "Place an unconscious person on the side when possible and never force food or drink before the person is awake and swallowing safely.",
+        "After recovery, give oral carbohydrate and seek clinical review of the cause because one rescue dose may wear off before the cause has ended."
+      ],
+      "administration": [
+        "For the reviewed injection kit, reconstitute with the supplied diluent, use the clear solution immediately, inject by the label-supported subcutaneous or intramuscular route, and discard unused solution; intravenous administration is for healthcare professionals.",
+        "Product, dose, route, and repeat instructions vary by indication and patient weight. The off-label beta-blocker toxicology regimen uses monitored intravenous bolus and infusion orders that are not interchangeable with community hypoglycemia rescue."
+      ],
+      "toxicityManagement": [
+        "There is no specific reversal agent for glucagon. Stop further exposure when a serious reaction is suspected and provide airway, blood-pressure, heart-rate, glucose, fluid, electrolyte, nausea, or allergy support as indicated.",
+        "If severe hypoglycemia does not respond, give glucose as soon as safe access is available and treat the cause rather than delaying for repeated glucagon alone."
+      ],
+      "specialPopulations": [
+        "The severe-hypoglycemia indication includes pediatric patients, with product- and weight-specific dose instructions; caregivers must train on the exact kit.",
+        "Pregnancy data have not identified a drug-associated risk in decades of use, and glucagon is degraded in the digestive tract, but emergency treatment and product decisions remain clinician directed.",
+        "Patients with pheochromocytoma, insulinoma, glucagonoma in the diagnostic setting, cardiac disease, starvation, adrenal insufficiency, or chronic hypoglycemia need the label-specific contraindication or monitoring plan."
+      ],
+      "nclexTraps": [
+        "Glucagon releases stored liver glucose; it does not contain or directly supply glucose.",
+        "Do not force oral carbohydrate into an unconscious patient. Give carbohydrate only after recovery and safe swallowing.",
+        "The community hypoglycemia injection plan is not the off-label toxicology infusion plan, and glucagon is not a universal beta-blocker antidote."
+      ],
+      "routes": [
+        "Subcutaneous injection",
+        "Intramuscular injection",
+        "Intravenous administration by healthcare professionals"
+      ],
+      "notApplicable": [
+        "specific antidote",
+        "oral administration",
+        "universal beta-blocker antidote designation"
+      ],
+      "relatedTopics": [
+        "Hypoglycemia",
+        "Pheochromocytoma",
+        "Beta-blocker and calcium-channel-blocker poisoning rescue pathway",
+        "High-dose insulin euglycemia therapy"
+      ],
+      "regulatoryStatus": "FDA-approved native-sequence synthetic glucagon injection for severe hypoglycemia and adult radiologic diagnostic use; beta-blocker toxicology use is off-label.",
+      "regulatory": {
+        "jurisdiction": "US",
+        "agency": "FDA",
+        "productStatus": "FDA_APPROVED",
+        "labelAsOf": "2026-08-10",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=15b49500-0aae-4e25-9a1d-709983233cc6"
+      },
+      "useContexts": [
+        {
+          "status": "FDA_LABELED",
+          "use": "Treat severe hypoglycemia in pediatric and adult patients with diabetes using the reviewed glucagon injection kit",
+          "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=15b49500-0aae-4e25-9a1d-709983233cc6"
+        },
+        {
+          "status": "FDA_LABELED",
+          "use": "Temporarily inhibit gastrointestinal movement as a diagnostic aid during selected radiologic examinations in adults",
+          "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=15b49500-0aae-4e25-9a1d-709983233cc6"
+        },
+        {
+          "status": "OFF_LABEL",
+          "use": "Specialist-directed intravenous glucagon bolus followed by infusion for symptomatic bradycardia or hypotension in life-threatening beta-blocker poisoning within a monitored toxicology resuscitation plan",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41122889/"
+        }
+      ],
+      "compounding": {
+        "status": "NOT_APPLICABLE",
+        "note": "This card covers an FDA-approved glucagon injection product and does not establish that a compounded glucagon product is FDA approved, equivalent, or interchangeable.",
+        "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=15b49500-0aae-4e25-9a1d-709983233cc6"
+      },
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-10",
+      "sourceNote": "Original ANI synthesis from the current DailyMed Mylan glucagon injection label and the current AHA special-circumstances guideline indexed at PubMed: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=15b49500-0aae-4e25-9a1d-709983233cc6 and https://pubmed.ncbi.nlm.nih.gov/41122889/. The label supports severe-hypoglycemia and diagnostic uses; the AHA guideline supports the separately classified off-label beta-blocker toxicology context.",
+      "provenance": [
+        {
+          "key": "dailymed-glucagon-mylan-label",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=15b49500-0aae-4e25-9a1d-709983233cc6",
+          "documentVersion": "Revised 12/2024; checked 2026-08-10",
+          "fieldsSupported": [
+            "identity",
+            "native human glucagon sequence",
+            "peptide synthesis",
+            "FDA-labeled severe-hypoglycemia use",
+            "FDA-labeled diagnostic use",
+            "mechanism",
+            "contraindications",
+            "warnings",
+            "adverse effects",
+            "interactions",
+            "administration",
+            "patient counseling",
+            "special populations"
+          ]
+        },
+        {
+          "key": "pubmed-aha-special-circumstances-2025",
+          "authority": "PubMed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41122889/",
+          "documentVersion": "2025 AHA guideline; checked 2026-08-10",
+          "fieldsSupported": [
+            "off-label life-threatening beta-blocker poisoning use context",
+            "symptomatic bradycardia or hypotension",
+            "intravenous glucagon bolus and continuous infusion",
+            "evidence limitations",
+            "larger-than-hypoglycemia dose distinction",
+            "nausea and vomiting",
+            "high-dose insulin and vasopressor escalation"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-10.1"
     }
   ]
 };
@@ -2962,7 +3602,7 @@
   const retained = (Array.isArray(db.drugs) ? db.drugs : []).filter((card) => !replacementByKey.has(normalize(card && (card.generic || card.name || card.displayName))));
   db.drugs = retained.concat(payload.cards);
   db.reviewedExpansion = { schemaVersion: payload.schemaVersion, builderVersion: payload.builderVersion, domainVersion: payload.domainVersion, sourceSha256: payload.sourceSha256, cardCount: payload.cards.length };
-  db.version = [db.version, "reviewed-pharmacy-2026-08-09.1"].filter(Boolean).join("+");
+  db.version = [db.version, "reviewed-pharmacy-2026-08-10.1"].filter(Boolean).join("+");
   window.ANI_PHARM_DATABASE = db;
   window.ANI_PHARMACY_REVIEWED_EXPANSION = payload;
 }());
