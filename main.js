@@ -2391,9 +2391,16 @@ function isVisibleMedicationEntry(drug = {}) {
   );
 }
 
+function isNavigationOnlyGeneratedMedicationClass(drug = {}) {
+  return Boolean(drug
+    && drug.generatedClassCard === true
+    && drug.generatedClassContentOwnership === "navigation-only");
+}
+
 function pharmDrugMetaText(drug = {}) {
   const parts = [];
-  if (drug.nclexEssential || isNclexCorePharmEntry(drug)) {
+  const navigationOnlyGeneratedClass = isNavigationOnlyGeneratedMedicationClass(drug);
+  if (!navigationOnlyGeneratedClass && (drug.nclexEssential || isNclexCorePharmEntry(drug))) {
     parts.push("NCLEX ESSENTIAL");
   }
   const classText = pharmDisplayClass(drug);
@@ -2633,47 +2640,49 @@ function isMedicationClassCardNameAvailable(name = "", byGeneric = new Map()) {
   return !byGeneric.has(key);
 }
 
-function generatedMedicationClassCardProfile(segment = "", examples = [], members = []) {
+const PHARM_GENERATED_CLASS_EXPLICIT_PROFILE_SEGMENTS = new Set([
+  "ace inhibitor antihypertensive",
+  "alpha 1 blocker",
+  "aminoglycoside 30s ribosomal inhibitor antibiotic",
+  "aminoglycoside antibiotic",
+  "anticoagulant",
+  "antidote or reversal agent",
+  "beta 1 selective beta blocker",
+  "beta lactam antibiotic",
+  "bisphosphonate",
+  "fluoroquinolone antibiotic",
+  "macrolide 50s ribosomal inhibitor antibiotic",
+  "macrolide antibiotic",
+  "monoclonal antibody biologic",
+  "parenteral direct thrombin inhibitor anticoagulant",
+  "selective 5 ht3 receptor antagonist antiemetic"
+]);
+
+function generatedMedicationClassNavigationDescription(segment = "", examples = []) {
   const label = medicationClassSegmentLabel(segment);
-  // generated-class-card-member-derivation
-  const valueText = (value) => Array.isArray(value)
-    ? value.map((item) => safeText(item)).filter(Boolean).join(" ")
-    : safeText(value);
-  const representative = (Array.isArray(members) ? members : []).find((member) => {
-    const memberMechanism = valueText(member?.mechanism);
-    const memberUses = valueText(member?.usedToTreat || member?.uses || member?.indications);
-    return memberMechanism.length >= 80
-      && memberUses.length >= 20
-      && !pharmMechanismBaseIsGeneric(memberMechanism)
-      && !pharmOpeningRawTextIsGeneric(memberMechanism);
-  }) || null;
-  const representativeMechanism = representative ? valueText(representative.mechanism) : "";
-  const representativeUses = representative
-    ? valueText(representative.usedToTreat || representative.uses || representative.indications)
-    : "";
-  const blob = normalizePharmText([
-    label,
-    ...normalizeMedicationClassExampleNames(examples)
-  ].join(" "));
   const exampleText = normalizeMedicationClassExampleNames(examples).slice(0, 8).join(", ");
   const exampleClause = exampleText ? ` Common examples in this installed set include ${exampleText}.` : "";
+  return `${label} is a generated medication-class index for the linked individual drug cards.${exampleClause} Class-level indications, mechanism, monitoring, and exam teaching appear only when an explicit class-owned profile exists; otherwise, use the linked drug cards for drug-specific details.`;
+}
+
+function generatedMedicationClassCardProfile(segment = "", examples = []) {
+  const label = medicationClassSegmentLabel(segment);
+  // generated-class-card-class-owned-profile
+  // A linked member name is navigation evidence, not ownership evidence for
+  // class-level teaching. Profiles may match only the class segment itself.
+  const blob = normalizePharmText(label);
   const profile = {
-    description: representative
-      ? `The ${label} class is defined by a specific shared target or physiologic action: ${representativeMechanism}${exampleClause}`
-      : `${label} groups medications with a shared pharmacology pattern.${exampleClause}`,
-    usedToTreat: representativeUses || `${label} entries are used when their shared pharmacology matches the ordered clinical problem, such as replacement, blockade, stimulation, antimicrobial coverage, symptom control, or toxicity reversal depending on the class.`,
-    mechanism: representativeMechanism || `${label} medications share a class-level target or physiologic effect. Member drugs may differ by receptor selectivity, tissue distribution, route, onset, duration, metabolism, and toxicity profile, so the class card summarizes the common pathway while linked cards carry drug-specific details.`,
-    nursingEssentials: representative && Array.isArray(representative.nursingEssentials)
-      ? representative.nursingEssentials.slice(0, 2)
-      : [],
-    keyLabs: representative && Array.isArray(representative.keyLabs) && representative.keyLabs.length
-      ? representative.keyLabs.slice(0, 3)
-      : ["Monitoring commonly follows the pathway affected by the class: vital signs, ECG/electrolytes, renal/hepatic function, drug levels, cultures, bleeding markers, glucose, pregnancy status, or organ-toxicity markers when relevant."],
-    nclexTraps: representative && Array.isArray(representative.nclexTraps) && representative.nclexTraps.length
-      ? representative.nclexTraps.slice(0, 2)
-      : ["A broad class name can hide clinically important subtype differences such as receptor selectivity, route-specific onset, renal clearance, pregnancy risk, QT risk, bleeding risk, infection risk, or organ toxicity."]
+    contentOwnership: "navigation-only",
+    description: generatedMedicationClassNavigationDescription(label, examples),
+    usedToTreat: "",
+    mechanism: "",
+    nursingEssentials: [],
+    keyLabs: [],
+    nclexTraps: []
   };
-  const set = (values = {}) => Object.assign(profile, values);
+  const set = (values = {}) => Object.assign(profile, { contentOwnership: "explicit-class-profile" }, values);
+
+  if (!PHARM_GENERATED_CLASS_EXPLICIT_PROFILE_SEGMENTS.has(blob)) return profile;
 
   if (/\b(methotrexate cleaving antidote enzyme|glucarpidase|carboxypeptidase g2)\b/.test(blob)) {
     set({
@@ -2982,11 +2991,10 @@ function generatedMedicationClassCardProfile(segment = "", examples = [], member
   return profile;
 }
 
-function createMedicationClassCard(segment = "", examples = [], members = []) {
+function createMedicationClassCard(segment = "", examples = []) {
   const name = medicationClassCardNameForSegment(segment);
   const classExampleNames = normalizeMedicationClassExampleNames(examples);
-  const exampleLine = medicationClassCardExampleLine(classExampleNames);
-  const profile = generatedMedicationClassCardProfile(segment, classExampleNames, members);
+  const profile = generatedMedicationClassCardProfile(segment, classExampleNames);
   return {
     name,
     generic: normalizePharmText(name),
@@ -2996,19 +3004,20 @@ function createMedicationClassCard(segment = "", examples = [], members = []) {
     description: profile.description,
     usedToTreat: profile.usedToTreat,
     mechanism: profile.mechanism,
-    nursingEssentials: [
-      exampleLine,
-      ...(profile.nursingEssentials || []),
-      "Use the linked drug examples to compare exact indications, warning details, contraindications, labs, interactions, and patient teaching."
-    ].filter(Boolean),
-    interactions: ["Drug interactions are agent-specific. Check the individual medication card before giving or teaching."],
+    nursingEssentials: profile.contentOwnership === "explicit-class-profile"
+      ? (profile.nursingEssentials || []).filter(Boolean)
+      : [],
+    interactions: [],
     keyLabs: profile.keyLabs,
     nclexTraps: profile.nclexTraps,
     tags: ["drug class", "class reference", normalizePharmText(segment)],
     classCard: true,
+    generatedClassCard: true,
+    generatedClassContentOwnership: profile.contentOwnership,
+    generatedClassSegment: segment,
     classExampleNames,
     classExampleKeys: classExampleNames.map((example) => normalizePharmText(example)).filter(Boolean),
-    nclexEssential: classExampleNames.length >= 2
+    nclexEssential: profile.contentOwnership === "explicit-class-profile" && classExampleNames.length >= 2
   };
 }
 
@@ -3030,24 +3039,23 @@ function addMedicationClassCards(byGeneric = new Map()) {
   drugs.forEach((drug) => {
     medicationClassSegmentsForDrug(drug).forEach((segment) => {
       const key = normalizePharmText(segment);
-      if (!groups.has(key)) groups.set(key, { segment, examples: [], members: [], seen: new Set() });
+      if (!groups.has(key)) groups.set(key, { segment, examples: [], seen: new Set() });
       const group = groups.get(key);
       const displayName = pharmDrugDisplayName(drug, "");
       const displayKey = normalizePharmText(displayName);
       if (displayName && !group.seen.has(displayKey)) {
         group.seen.add(displayKey);
         group.examples.push(displayName);
-        group.members.push(drug);
       }
     });
   });
 
-  groups.forEach(({ segment, examples, members }) => {
+  groups.forEach(({ segment, examples }) => {
     if (examples.length < PHARM_CLASS_CARD_MIN_EXAMPLES) return;
     const limitedExamples = normalizeMedicationClassExampleNames(examples).slice(0, PHARM_CLASS_CARD_MAX_EXAMPLES);
     const cardName = medicationClassCardNameForSegment(segment);
     if (!isMedicationClassCardNameAvailable(cardName, byGeneric)) return;
-    const card = createMedicationClassCard(segment, limitedExamples, members.slice(0, PHARM_CLASS_CARD_MAX_EXAMPLES));
+    const card = createMedicationClassCard(segment, limitedExamples);
     byGeneric.set(normalizePharmText(card.generic || card.name), card);
   });
 }
@@ -5823,6 +5831,10 @@ function isLikelyCombinationDrugEntry(drug = {}) {
 
 function isNclexCorePharmEntry(drug = {}) {
   if (!drug || typeof drug !== "object") {
+    return false;
+  }
+  if (drug.generatedClassCard === true
+    && drug.generatedClassContentOwnership === "navigation-only") {
     return false;
   }
   if (pharmNclexCoreEntryCache.has(drug)) {
@@ -16183,6 +16195,23 @@ function lectureDetails(topic) {
     return pathologyLectureDetails(pathologyMatch);
   }
 
+  if (isNavigationOnlyGeneratedMedicationClass(matchedDrug)
+    && (drugDirect || hasMedicationLectureCue(lookupTopic))) {
+    const classPathway = pharmClassPathwayText(matchedDrug);
+    const examples = normalizeMedicationClassExampleNames(matchedDrug.classExampleNames || []).join(", ");
+    return {
+      label: pharmDrugDisplayName(matchedDrug),
+      frame: generatedMedicationClassNavigationDescription(matchedDrug.generatedClassSegment, matchedDrug.classExampleNames),
+      patho: "This generated entry is a navigation index, not a reviewed class-level clinical teaching profile.",
+      nclex: "No class-wide NCLEX, mechanism, safety, monitoring, or administration teaching is published for this index. Open an exact linked medication card for drug-specific guidance.",
+      details: [
+        classPathway && `Specific class / pathway: ${classPathway}.`,
+        examples && `Linked medication examples: ${examples}.`
+      ].filter(Boolean).join(" "),
+      redirect: "Choose an individual linked medication card before studying indications, mechanism, warnings, interactions, monitoring, or nursing actions."
+    };
+  }
+
   if (matchedDrug && !matchedDrug.expandedIndex && (drugDirect || hasMedicationLectureCue(lookupTopic))) {
     const essentials = pharmListText(matchedDrug.nursingEssentials);
     const interactions = pharmListText(matchedDrug.interactions);
@@ -20021,10 +20050,36 @@ function pharmSearchUseText(drug = {}) {
 
 function pharmEntryTerms(drug = {}, options = {}) {
   const includeTags = options.includeTags !== false;
-  const cacheKey = includeTags ? "withTags" : "withoutTags";
+  const navigationOnlyGeneratedClass = drug.generatedClassCard === true
+    && drug.generatedClassContentOwnership === "navigation-only";
+  const cacheKey = navigationOnlyGeneratedClass
+    ? (includeTags ? "navigationWithTags" : "navigationWithoutTags")
+    : (includeTags ? "withTags" : "withoutTags");
   const cached = pharmEntryTermCache.get(drug);
   if (cached?.[cacheKey]) {
     return cached[cacheKey];
+  }
+  if (navigationOnlyGeneratedClass) {
+    const navigationTerms = [
+      pharmDrugDisplayName(drug, ""),
+      drug.name,
+      drug.generic,
+      drug.displayName,
+      drug.class,
+      pharmClassPathwayText(drug),
+      drug.templateKey,
+      ...medicalAbbreviationSearchTermsForText([drug.class, drug.templateKey, pharmClassPathwayText(drug)].join(" ")),
+      ...(drug.brandExamples || []),
+      ...(drug.aliases || []),
+      ...(Array.isArray(drug.classPathway) ? drug.classPathway : []),
+      ...(includeTags ? (drug.tags || []) : [])
+    ]
+      .map((term) => normalizePharmText(term))
+      .filter(Boolean)
+      .filter((term) => isAllowedStandaloneMedicationSearchTerm(drug, term, { allowPrimary: true }));
+    const uniqueNavigationTerms = Array.from(new Set(navigationTerms));
+    pharmEntryTermCache.set(drug, { ...(cached || {}), [cacheKey]: uniqueNavigationTerms });
+    return uniqueNavigationTerms;
   }
   const terms = [
     pharmDrugDisplayName(drug, ""),
@@ -20240,6 +20295,20 @@ function flattenDescriptionPieces(value) {
 
 function descriptionPiecesForCandidate(type = "", item = {}) {
   if (type === "drug") {
+    if (isNavigationOnlyGeneratedMedicationClass(item)) {
+      return flattenDescriptionPieces([
+        pharmDrugDisplayName(item, ""),
+        item.name,
+        item.generic,
+        item.displayName,
+        item.class,
+        pharmClassPathwayText(item),
+        item.templateKey,
+        item.brandExamples,
+        item.aliases,
+        item.tags
+      ]);
+    }
     return flattenDescriptionPieces([
       pharmDrugDisplayName(item, ""),
       item.name,
@@ -20635,6 +20704,10 @@ function scorePharmEntry(drug = {}, query = "") {
     score += Math.max(...terms.map((term) => pharmTokenCloseness(token, term)), 0);
   });
   score += pharmSubclassQualifierScore(cleanQuery, terms);
+
+  if (isNavigationOnlyGeneratedMedicationClass(drug)) {
+    return score;
+  }
 
   const searchableText = normalizePharmText([
     pharmUsedToTreat(drug),
@@ -27987,6 +28060,10 @@ function boxedWarningLooksThin(value = "") {
 }
 
 function pharmSpecificBoxedWarningText(drug = {}) {
+  if (drug.generatedClassCard === true
+    && drug.generatedClassContentOwnership === "navigation-only") {
+    return "";
+  }
   const name = pharmDrugDisplayName(drug, "This medication");
   const identityTerms = pharmIdentityTermsForEntry(drug);
   const identityBlob = normalizePharmText([
@@ -28240,6 +28317,7 @@ function pharmRawSafetyCueText(drug = {}) {
 }
 
 function pharmFallbackSafetyPatternText(drug = {}) {
+  if (drug.generatedClassCard === true) return "";
   const name = pharmDrugDisplayName(drug, "This medication");
   const classText = safeText(pharmDisplayClass(drug));
   const blob = normalizePharmText([
@@ -28298,6 +28376,10 @@ function pharmFallbackSafetyPatternText(drug = {}) {
 }
 
 function pharmBoxedWarningDisplay(drug = {}, fallback = "") {
+  if (drug.generatedClassCard === true) {
+    if (drug.generatedClassContentOwnership === "navigation-only") return "";
+    return sanitizeMedicalReferenceText(drug.boxedWarning || "");
+  }
   const overlayWarning = pharmTeachingOverlay(drug).warning;
   const isCuratedStudyCard = /\bcurated (?:full study|drug class) card\b/i.test([drug.confidenceTier, drug.templateKey].filter(Boolean).join(" "));
   const raw = sanitizeMedicalReferenceText(fallback || (isCuratedStudyCard ? drug.boxedWarning : "") || overlayWarning || drug.boxedWarning);
@@ -28346,6 +28428,17 @@ function pharmBoxedWarningDisplay(drug = {}, fallback = "") {
   return raw;
 }
 function pharmAdverseEffectsText(drug = {}) {
+  if (drug.generatedClassCard === true) {
+    if (drug.generatedClassContentOwnership === "navigation-only") return "";
+    return pharmListText([
+      ...pharmFieldList(drug.adverseEffects),
+      ...pharmFieldList(drug.adverseReactions),
+      ...pharmFieldList(drug.sideEffects),
+      ...pharmFieldList(drug.commonSideEffects),
+      ...pharmFieldList(drug.seriousAdverseEffects),
+      ...pharmFieldList(drug.toxicity)
+    ].filter(Boolean));
+  }
   const overlay = pharmTeachingOverlay(drug);
   const explicitAdverse = [
     ...pharmFieldList(overlay.adverseEffects),
@@ -29473,6 +29566,7 @@ function pharmOpeningOverrideForDrug(drug = {}) {
 }
 
 function pharmTeachingOverlay(drug = {}) {
+  if (drug.generatedClassCard === true) return {};
   const exactOpeningOverlay = pharmOpeningOverrideForDrug(drug);
   const identityTerms = pharmIdentityTermsForEntry(drug);
   const identityBlob = normalizePharmText(identityTerms.join(" "));
@@ -29817,6 +29911,7 @@ const PHARM_CLASS_CRASH_COURSE_FALLBACKS = [
 ];
 
 function pharmClassCrashCourseFallback(drug = {}) {
+  if (drug.generatedClassCard === true) return null;
   const blob = normalizePharmText([
     pharmDrugDisplayName(drug, ""),
     drug.generic,
@@ -29834,6 +29929,10 @@ function pharmClassCrashCourseFallback(drug = {}) {
 }
 
 function pharmUsedToTreat(drug = {}) {
+  if (drug.generatedClassCard === true
+    && drug.generatedClassContentOwnership === "navigation-only") {
+    return "";
+  }
   if (pharmUsedToTreatCache.has(drug)) {
     return pharmUsedToTreatCache.get(drug);
   }
@@ -29842,6 +29941,9 @@ function pharmUsedToTreat(drug = {}) {
     return value;
   };
   const direct = pharmListText(Array.isArray(drug.usedToTreat) ? drug.usedToTreat : [drug.usedToTreat || drug.indications || drug.commonUses]);
+  if (drug.generatedClassCard === true) {
+    return finish(drug.generatedClassContentOwnership === "explicit-class-profile" ? direct : "");
+  }
   const isCuratedStudyCard = /\bcurated (?:full study|drug class) card\b/i.test(
     [drug.confidenceTier, drug.templateKey].filter(Boolean).join(" ")
   );
@@ -30481,10 +30583,19 @@ function pharmMechanismClinicalAngle(drug = {}, blob = "") {
 }
 
 function pharmMechanismText(drug = {}) {
+  if (drug.generatedClassCard === true
+    && drug.generatedClassContentOwnership === "navigation-only") {
+    return "";
+  }
   if (pharmMechanismCache.has(drug)) {
     return pharmMechanismCache.get(drug);
   }
   const rawMechanism = safeText(drug.mechanism);
+  if (drug.generatedClassCard === true) {
+    const value = drug.generatedClassContentOwnership === "explicit-class-profile" ? rawMechanism : "";
+    pharmMechanismCache.set(drug, value);
+    return value;
+  }
   const isCuratedStudyCard = /\bcurated (?:full study|drug class) card\b/i.test(
     [drug.confidenceTier, drug.templateKey].filter(Boolean).join(" ")
   );
@@ -31059,6 +31170,7 @@ function pharmClassPathwaySegments(drug = {}) {
 }
 
 function pharmClassPathwayText(drug = {}) {
+  if (drug.generatedClassCard === true) return safeText(drug.generatedClassSegment);
   return pharmClassPathwaySegments(drug).join(" > ");
 }
 
@@ -31076,6 +31188,7 @@ function pharmCoverageNote(drug = {}) {
 }
 
 function pharmNormalizedPopulationRisks(entity = {}) {
+  if (isNavigationOnlyGeneratedMedicationClass(entity)) return [];
   const risks = Array.isArray(entity.populationRisks) ? entity.populationRisks : [];
   const keyed = new Map();
   risks.forEach((risk, index) => {
@@ -31124,6 +31237,7 @@ function createPharmRiskIcon(risk = {}) {
 }
 
 function renderPharmRiskIcons(drug = {}) {
+  if (isNavigationOnlyGeneratedMedicationClass(drug)) return null;
   const risks = pharmNormalizedPopulationRisks(drug);
   if (!risks.length) return null;
 
@@ -34209,6 +34323,10 @@ function pharmCardDescriptionText(drug = {}) {
   const placeholder = /\b(description pending|not fully curated|verify current|recognition only|expanded medication reference|works through its drug class|expected action should match|mechanism depends on the individual medication|class reference for medications|used in [a-z, /-]+ contexts|for nclex study, connect|labeled indication and formulation match|class suggests the main clinical role|this is a monitoring card)\b/i;
   // curated-frontier-opening-precedence
   const direct = pharmListText(Array.isArray(drug.description) ? drug.description : [drug.description || drug.summary || drug.overview]);
+  if (isNavigationOnlyGeneratedMedicationClass(drug)) {
+    return generatedMedicationClassNavigationDescription(drug.generatedClassSegment, drug.classExampleNames);
+  }
+  if (drug.generatedClassCard === true) return direct;
   const isCuratedFullStudyCard = /\bcurated (?:full study|drug class) card\b/i.test([drug.confidenceTier, drug.templateKey].filter(Boolean).join(" "))
     || (Array.isArray(drug.tags) && drug.tags.some((tag) => /^frontier wave\d+$/i.test(normalizePharmText(tag))));
   const overlayDescription = safeText(pharmTeachingOverlay(drug).description);
@@ -34443,6 +34561,8 @@ function renderPharmDrugDetail(drug = activePharmResults[0]) {
     return;
   }
 
+  const navigationOnlyGeneratedClass = drug.generatedClassCard === true
+    && drug.generatedClassContentOwnership === "navigation-only";
   const title = document.createElement("div");
   title.className = "pharm-detail-title";
   const name = document.createElement("h2");
@@ -34452,11 +34572,31 @@ function renderPharmDrugDetail(drug = activePharmResults[0]) {
   title.append(name, drugClass);
   appendPharmFavoriteButton(title, "drugs", drug);
   appendPeptideStatusBadges(title, drug);
-  const riskIcons = renderPharmRiskIcons(drug);
+  const riskIcons = navigationOnlyGeneratedClass ? null : renderPharmRiskIcons(drug);
   if (riskIcons) {
     title.append(riskIcons);
   }
   pharmDrugDetail.append(title);
+
+  if (navigationOnlyGeneratedClass) {
+    [
+      ["What this is", pharmCardDescriptionText(drug)],
+      ["Specific class / pathway", pharmClassPathwayText(drug)]
+    ].forEach(([label, value]) => {
+      if (!value) return;
+      const section = document.createElement("section");
+      const heading = document.createElement("strong");
+      heading.textContent = label;
+      const text = document.createElement("div");
+      text.className = "pharm-detail-text";
+      appendReadableDetailText(text, value, { currentLabel: pharmDrugDisplayName(drug) });
+      section.append(heading, text);
+      pharmDrugDetail.append(section);
+    });
+    appendMedicationClassExampleLinks(pharmDrugDetail, drug);
+    syncPharmDetailReadableText();
+    return;
+  }
 
   const sections = [
     ["What this is", pharmCardDescriptionText(drug)],
@@ -37394,6 +37534,18 @@ function makeOfflinePharmResponseFromDrug(drug = {}) {
   updateFocus();
   const drugDisplayName = pharmDrugDisplayName(drug);
   const classPathway = pharmClassPathwayText(drug);
+  if (drug.generatedClassCard === true
+    && drug.generatedClassContentOwnership === "navigation-only") {
+    const examples = normalizeMedicationClassExampleNames(drug.classExampleNames || []).join(", ");
+    return [
+      `**${drugDisplayName}**`,
+      `**Crash course:** ${pharmCardDescriptionText(drug)}`,
+      `**Class:** ${pharmDisplayClass(drug)}`,
+      classPathway ? `**Specific class / pathway:** ${classPathway}` : "",
+      examples ? `**Examples:** ${examples}` : "",
+      "Verify current labels and facility policy for real clinical decisions."
+    ].filter(Boolean).join("\n\n");
+  }
 
   return [
     `**${drugDisplayName}**`,
@@ -42059,6 +42211,7 @@ function teratogenicReasonOverride(drug = {}) {
 
 function findOfflineTeratogenicDrugMatches() {
   return uniqueOfflineDrugMatches(pharmDrugs.filter((drug) => {
+    if (isNavigationOnlyGeneratedMedicationClass(drug)) return false;
     if (isLikelyCombinationDrugEntry(drug)) {
       return false;
     }
@@ -42075,6 +42228,7 @@ function findOfflineTeratogenicDrugMatches() {
 }
 
 function teratogenicDrugReason(drug = {}) {
+  if (isNavigationOnlyGeneratedMedicationClass(drug)) return "";
   const override = teratogenicReasonOverride(drug);
   if (override) return override;
   const pregnancyRisk = (drug.populationRisks || []).find((risk) => risk?.type === "pregnancy");
@@ -42632,6 +42786,14 @@ function offlineBroadCandidateSections(candidate = {}) {
     ];
   }
   if (candidate.type === "drug") {
+    if (isNavigationOnlyGeneratedMedicationClass(item)) {
+      return [
+        ["class", item.class],
+        ["specific class / pathway", pharmClassPathwayText(item)],
+        ["examples", normalizeMedicationClassExampleNames(item.classExampleNames || []).join(", ")],
+        ["tags", (item.tags || []).join(" ")]
+      ];
+    }
     return [
       ["class", item.class],
       ["used to treat", pathologyListText(item.usedFor || item.indications)],
@@ -42972,27 +43134,41 @@ function inputNamesPharmDrug(input = "", drug = {}) {
 
 function findPopulationRiskDrugCandidate(input = "") {
   if (!wantsPopulationRiskExplanation(input)) return null;
-  const fastDrug = collectFastLookupCandidates(input, ["drug"])
+  const isEligiblePopulationRiskDrug = (drug) => Boolean(drug)
+    && !(drug.generatedClassCard === true
+      && drug.generatedClassContentOwnership === "navigation-only");
+  const namedNavigationOnlyClass = pharmDrugs.find((drug) =>
+    !isEligiblePopulationRiskDrug(drug) && inputNamesPharmDrug(input, drug));
+  if (namedNavigationOnlyClass) return null;
+  const fastMatch = collectFastLookupCandidates(input, ["drug"])
     .filter((candidate) => candidate.type === "drug")
     .map((candidate) => ({
       drug: candidate.item,
       score: scoreFastLookupCandidate(candidate, input).score
     }))
     .filter(({ drug, score }) => score >= 80 && inputNamesPharmDrug(input, drug))
-    .sort((a, b) => b.score - a.score || pharmDrugDisplayName(a.drug).localeCompare(pharmDrugDisplayName(b.drug)))[0]?.drug;
-  if (fastDrug) return fastDrug;
+    .sort((a, b) => b.score - a.score || pharmDrugDisplayName(a.drug).localeCompare(pharmDrugDisplayName(b.drug)))[0];
+  if (fastMatch) {
+    return isEligiblePopulationRiskDrug(fastMatch.drug) ? fastMatch.drug : null;
+  }
 
   const directDrug = pharmDrugs
-    .filter((drug) => inputNamesPharmDrug(input, drug))
+    .filter((drug) => isEligiblePopulationRiskDrug(drug) && inputNamesPharmDrug(input, drug))
     .sort((a, b) => {
       const aPrimary = [a.name, a.generic].some((term) => normalizedTextHasPhrase(normalizePharmText(input), normalizePharmText(term)));
       const bPrimary = [b.name, b.generic].some((term) => normalizedTextHasPhrase(normalizePharmText(input), normalizePharmText(term)));
       return Number(bPrimary) - Number(aPrimary) || pharmDrugDisplayName(a).localeCompare(pharmDrugDisplayName(b));
     })[0];
-  return directDrug || bestPharmMatch(input, { requireIdentityMatch: true });
+  if (directDrug) return directDrug;
+  const fallbackDrug = bestPharmMatch(input, { requireIdentityMatch: true });
+  return isEligiblePopulationRiskDrug(fallbackDrug) ? fallbackDrug : null;
 }
 
 function inferredPopulationRiskNote(drug = {}, type = "") {
+  if (drug.generatedClassCard === true
+    && drug.generatedClassContentOwnership === "navigation-only") {
+    return "";
+  }
   const identityTerms = pharmIdentityTermsForEntry(drug);
   const blob = normalizePharmText([
     ...identityTerms,
@@ -43055,6 +43231,10 @@ function makePopulationIconLegendAnswer(input = "") {
 function makeOfflinePopulationRiskAnswer(input = "") {
   if (!wantsPopulationRiskExplanation(input)) return "";
   const drug = findPopulationRiskDrugCandidate(input);
+  if (drug?.generatedClassCard === true
+    && drug.generatedClassContentOwnership === "navigation-only") {
+    return "";
+  }
   if (!drug) {
     return makePopulationIconLegendAnswer(input);
   }
@@ -43346,6 +43526,14 @@ function offlineSegmentValue(candidate = {}, intent = "", input = "") {
   const record = (sourceSectionId, label, value) => offlineSegmentSourceRecord(sourceSectionId, label, value);
 
   if (candidate.type === "drug") {
+    if (item.generatedClassCard === true
+      && item.generatedClassContentOwnership === "navigation-only") {
+      if (intent !== "class") return [];
+      return offlineSegmentSourceRecords([
+        record("class", "Class", pharmDisplayClass(item)),
+        record("generatedClassSegment", "Specific class / pathway", pharmClassPathwayText(item))
+      ]);
+    }
     const populationText = pharmListText([
       ...(item.populationRisks || []).map((risk) => `${risk.label}: ${risk.note}`),
       ...(item.specialPopulations || [])
@@ -45673,6 +45861,9 @@ function buildAniQuestionLocalContextPacket(input = "") {
   if (!candidate?.strictCanonical || !item || item.hidden === true || item.studentFacing === false || item.deprecated === true) {
     return null;
   }
+  if (candidate.type === "drug" && isNavigationOnlyGeneratedMedicationClass(item)) {
+    return null;
+  }
   const title = safeText(item.name || item.displayName || item.generic || item.title);
   if (!title) return null;
   const fieldOrder = [
@@ -45986,6 +46177,30 @@ function lane4RuntimeAliases(record = {}) {
 }
 
 function lane4RuntimeFields(record = {}, type = "reference") {
+  if (type === "drug" && isNavigationOnlyGeneratedMedicationClass(record)) {
+    return {
+      definition: lane4RuntimeFieldValues(generatedMedicationClassNavigationDescription(record.generatedClassSegment, record.classExampleNames)),
+      overview: [],
+      causes: [],
+      mechanism: [],
+      pathophysiology: [],
+      symptoms: [],
+      diagnostics: [],
+      interpretation: [],
+      normalRange: [],
+      treatments: [],
+      medicationClasses: lane4RuntimeFieldValues(record.class, pharmClassPathwayText(record)),
+      uses: [],
+      adverseEffects: [],
+      contraindications: [],
+      pregnancy: [],
+      nursingInterventions: [],
+      complications: [],
+      patientEducation: [],
+      safetyWarnings: [],
+      redFlags: []
+    };
+  }
   const populationRisks = Array.isArray(record.populationRisks) ? record.populationRisks : [];
   const pregnancyRisks = populationRisks.filter((risk) => risk?.type === "pregnancy" || /pregnan|fetal|embryo/i.test(`${risk?.label || ""} ${risk?.note || ""}`));
   return {
