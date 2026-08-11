@@ -1780,7 +1780,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-11T15:33:30.795Z",
+  "generatedAt": "2026-08-11T20:27:43.060Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -1798,6 +1798,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "title": "Novel Drug Approvals for 2026",
       "url": "https://www.fda.gov/drugs/novel-drug-approvals-fda/novel-drug-approvals-2026"
+    },
+    {
+      "category": "recall",
+      "contentHash": "a737980fef99d833d0fe34bf668d315d7dab6401bc17d94becf274d37c632135",
+      "description": "Rocky Hill, CT -- Henkel Corporation (“Henkel”) is voluntarily recalling its Schwarzkopf Professional Osis Grip 6.76 fl. Oz/200 ml sold in the United States due to a potential packaging issue in which product could leak from the package under pressure, which creates a risk of explosion.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/henkel-corp-announces-nationwide-recall-schwarzkopf-professional-osis-grip-676-fl-oz200-ml-due",
+      "id": "medical-update:fda-recalls:92b763cc2a0808c508143327",
+      "publishedAt": "2026-08-11T15:06:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-11T20:27:43.060Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Henkel Corp. Announces a Nationwide Recall of Schwarzkopf Professional Osis Grip 6.76 fl. Oz/200 ml Due to Packaging Imperfection",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/henkel-corp-announces-nationwide-recall-schwarzkopf-professional-osis-grip-676-fl-oz200-ml-due"
     },
     {
       "category": "recall",
@@ -1830,6 +1846,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "title": "Competitive Generic Therapy Approvals",
       "url": "https://www.fda.gov/drugs/generic-drugs/competitive-generic-therapy-approvals"
+    },
+    {
+      "category": "recall",
+      "contentHash": "19f6086b5f7c1be9ce847530b4127bfd62d0c72ce9e070cdc397cce660188199",
+      "description": "The ventilator breathing circuits are intended to connect a ventilator to a patient tube or mask. Obstruction may result in inadequate ventilation.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/breathing-circuit-set-recall-hamilton-medical-removes-breathing-circuit-set",
+      "id": "medical-update:fda-medwatch:473f86a0ecbca7537b6e4915",
+      "publishedAt": "2026-08-11T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-11T20:27:43.060Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Breathing Circuit Set Recall: Hamilton Medical Removes Breathing Circuit Set",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/breathing-circuit-set-recall-hamilton-medical-removes-breathing-circuit-set"
     },
     {
       "category": "drug-approval",
@@ -3226,8 +3258,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 1,
-      "retrievedAt": "2026-08-11T15:33:30.795Z",
+      "retainedItemCount": 3,
+      "retrievedAt": "2026-08-11T20:27:43.060Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3237,8 +3269,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 1,
-      "retrievedAt": "2026-08-11T15:33:30.795Z",
+      "retainedItemCount": 2,
+      "retrievedAt": "2026-08-11T20:27:43.060Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -3249,7 +3281,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 5,
-      "retrievedAt": "2026-08-11T15:33:30.795Z",
+      "retrievedAt": "2026-08-11T20:27:43.060Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -3260,7 +3292,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-11T15:33:30.795Z",
+      "retrievedAt": "2026-08-11T20:27:43.060Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -3271,7 +3303,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 10,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-11T15:33:30.795Z",
+      "retrievedAt": "2026-08-11T20:27:43.060Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -3282,7 +3314,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-11T15:33:30.795Z",
+      "retrievedAt": "2026-08-11T20:27:43.060Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -3293,7 +3325,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-11T15:33:30.795Z",
+      "retrievedAt": "2026-08-11T20:27:43.060Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -3304,7 +3336,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-11T15:33:30.795Z",
+      "retrievedAt": "2026-08-11T20:27:43.060Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -3315,7 +3347,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-11T15:33:30.795Z",
+      "retrievedAt": "2026-08-11T20:27:43.060Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
