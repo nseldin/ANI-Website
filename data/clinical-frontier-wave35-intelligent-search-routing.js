@@ -3,7 +3,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "2026-07-29-wave35-intelligent-search-routing-27";
+  const VERSION = "2026-07-29-wave35-intelligent-search-routing-28";
   if (window.ANI_WAVE35_INTELLIGENT_SEARCH_ROUTING
     && window.ANI_WAVE35_INTELLIGENT_SEARCH_ROUTING.version === VERSION) return;
 
@@ -978,6 +978,9 @@
       if (pendingOfflineLookupSuggestions.length
         && ((typeof isOfflineLookupConfirmation === "function" && isOfflineLookupConfirmation(input))
           || (typeof isOfflineLookupRejection === "function" && isOfflineLookupRejection(input)))) {
+        return baseHandleOfflineLookupFlow(input, options);
+      }
+      if (["heart blocks", "heart block", "av block", "atrioventricular block"].includes(normalize(input))) {
         return baseHandleOfflineLookupFlow(input, options);
       }
       const directCollisionResponse = tenCollisionResponse(input);

@@ -19532,6 +19532,25 @@ const RESPONSIVE_ENCYCLOPEDIA_EXACT_PRIORITIES = Object.freeze({
   cte: { type: "pathology", identity: "chronic traumatic encephalopathy" }
 });
 
+const RESPONSIVE_ENCYCLOPEDIA_FAMILY_QUERIES = Object.freeze({
+  "heart blocks": Object.freeze([
+    "heart blocks",
+    "first degree av block",
+    "second degree av block type i",
+    "second degree av block type ii",
+    "third degree av block"
+  ])
+});
+
+function responsiveEncyclopediaFamilyCandidates(input = "") {
+  const identities = RESPONSIVE_ENCYCLOPEDIA_FAMILY_QUERIES[normalizePharmText(input)];
+  if (!identities) return [];
+  return identities.map((identity) => {
+    const item = pathologyDiseases.find((entry) => normalizePharmText(entry?.name) === identity);
+    return item ? { type: "pathology", item } : null;
+  }).filter(Boolean);
+}
+
 function responsiveEncyclopediaExactPriority(input = "") {
   const priority = RESPONSIVE_ENCYCLOPEDIA_EXACT_PRIORITIES[normalizePharmText(input)];
   if (!priority) return null;
@@ -19573,6 +19592,18 @@ function responsiveEncyclopediaPrefixPriority(input = "", scored = []) {
 }
 
 function responsiveEncyclopediaSearchMatches(input = "") {
+  const familyCandidates = responsiveEncyclopediaFamilyCandidates(input);
+  if (familyCandidates.length) {
+    return {
+      lab: [],
+      pathology: familyCandidates.map((candidate) => candidate.item),
+      reference: [],
+      holistic: [],
+      drug: [],
+      preferred: null,
+      candidateCount: familyCandidates.length
+    };
+  }
   const types = ["lab", "pathology", "reference", "holistic", "drug"];
   const sharedIdentityResolution = resolveEncyclopediaIdentity(input, { mode: "suggest", limit: 8 });
   const candidateMap = new Map();
@@ -19828,6 +19859,42 @@ function medicalPhoneticIdentityCandidates(input = "", limit = 4) {
 }
 
 function medicalSearchAssistCandidates(input = "", limit = 6) {
+  const familyCandidates = responsiveEncyclopediaFamilyCandidates(input);
+  if (familyCandidates.length) {
+    return {
+      query: safeText(input),
+      core: normalizePharmText(input),
+      candidates: familyCandidates.slice(0, Math.max(1, limit)).map((candidate) => ({
+        type: candidate.type,
+        item: candidate.item,
+        label: offlineLookupEntityLabel(candidate),
+        kind: offlineLookupEntityKind(candidate),
+        matchKind: "reviewed-family",
+        mayAutoOpen: false
+      })),
+      preferred: null,
+      matchKind: "reviewed-family",
+      mayAutoOpen: false
+    };
+  }
+  const exactPriority = responsiveEncyclopediaExactPriority(input);
+  if (exactPriority) {
+    const preferred = { type: exactPriority.type, item: exactPriority.item };
+    return {
+      query: safeText(input),
+      core: normalizePharmText(input),
+      candidates: [{
+        ...preferred,
+        label: offlineLookupEntityLabel(preferred),
+        kind: offlineLookupEntityKind(preferred),
+        matchKind: "reviewed-exact",
+        mayAutoOpen: true
+      }],
+      preferred,
+      matchKind: "reviewed-exact",
+      mayAutoOpen: true
+    };
+  }
   const identity = resolveEncyclopediaIdentity(input, { mode: "suggest", limit });
   const candidates = identity.candidates.map((candidate) => ({
     type: candidate.type,
@@ -43030,7 +43097,8 @@ function makeOfflinePopulationRiskAnswer(input = "") {
 const OFFLINE_SEGMENT_INTENT_TERMS = Object.freeze([
   "nursing", "nurse", "priority", "priorities", "intervention", "interventions",
   "action", "actions", "monitoring", "warning", "warnings", "boxed", "contraindication",
-  "contraindications", "interaction", "interactions", "adverse", "effect", "effects",
+  "contraindications", "interaction", "interactions", "adverse", "effect", "effects", "side",
+  "risk", "risks", "factor", "factors",
   "symptom", "symptoms", "finding", "findings", "diagnostic", "diagnostics", "diagnosis",
   "cause", "causes", "trigger", "triggers", "etiology", "pathophysiology", "treatment",
   "treatments", "teaching", "education", "mechanism", "class", "range", "ranges", "value",
@@ -43136,19 +43204,23 @@ function offlineSegmentIntents(input = "", candidate = null) {
   if (!candidate && hasExplicitLabRangeCue(input) && bestLabMatch(input)) add("range");
   if (/\bnormal\b[\s\S]{0,80}\b(height|weight|growth|percentile|percentiles)\b/i.test(lower)) add("range");
   if (/\b(class|drug class|med class|medication class|category|type of drug|what kind of drug)\b/i.test(lower)) add("class");
-  if (/\b(used for|use for|treats?|treated with|indication|indications|why (?:is|do|does).*used|what.*for)\b/i.test(lower)) add("uses");
+  if (/\b(used for|use for|treats?|treated with|indication|indications|why (?:is|do|does).*used)\b/i.test(lower)
+    || /\bwhat\s+(?:is|are)\s+(?:(?:it|this|that)\s+)?for\b/i.test(lower)) add("uses");
   const causalMechanismRequest = /\b(why can|why does|why do|why did|how can|what makes)\b/i.test(lower)
     && !/\b(use|used|prescribed|given|indicated|recommended)\b/i.test(lower);
-  if (/\b(how (?:does|do|is).*work|mechanism|mechanisms|mechanism of action|pharmacodynamics|pharmacokinetics|action|how it works|what does.*do)\b/i.test(lower) || causalMechanismRequest) add("mechanism");
+  if (/\b(how (?:does|do|is).*work|mechanism|mechanisms|mechanism of action|pharmacodynamics|pharmacokinetics|how it works|what does.*do)\b/i.test(lower) || causalMechanismRequest) add("mechanism");
   if (/\b(black box|boxed warning|box warning|high alert|high-alert|major warning|warnings?|red flags?|urgent|reportable)\b/i.test(lower)) add("warning");
   if (/\b(contraindication|contraindications|contraindicated|do not give|don'?t give|avoid|unsafe|who should not|who shouldn'?t|clarify before)\b/i.test(lower)) add("contraindications");
   if (/\b(interaction|interactions|mix|mixed with|combine|combined with|take with|taken with|together|drug-drug)\b/i.test(lower)) add("interactions");
-  if (/\b(side effect|side effects|adverse|adverse effect|adverse effects|risk|risks|toxicity|toxicities|danger|dangerous|complication|complications)\b/i.test(lower)) add("risks");
-  if (/\b(lab|labs|laboratory|monitor|monitoring|assessment|assessments|parameter|parameters|check before|check prior|checklist|baseline)\b/i.test(lower)) add("labs");
-  if (/\b(nursing|nurse|priority|priorities|intervention|interventions|action|actions|monitor for|watch for|hold|question|report|safety)\b/i.test(lower)) add("nursing");
+  if (/\b(side effect|side effects|adverse|adverse effect|adverse effects|risk|risks|toxicity|toxicities|danger|dangerous|complication|complications)\b/i.test(lower)
+    && !/\brisk factors?\b/i.test(lower)) add("risks");
+  if (/\b(lab|labs|laboratory|monitor|monitoring|parameter|parameters|check before|check prior|checklist|baseline)\b/i.test(lower)) add("labs");
+  if (/\b(nursing|nurse|priority|priorities|intervention|interventions|monitor for|watch for|hold|question|report|safety)\b/i.test(lower)) add("nursing");
   if (/\b(sign|signs|symptom|symptoms|finding|findings|manifestation|manifestations|presentation|presents?)\b/i.test(lower)) add("signs");
-  if (/\b(diagnose|diagnosis|diagnostic|diagnostics|workup|screen|screening|test|tests|tool|tools|measure|measures|measured|evaluate|evaluates|show|shows|indicate|indicates|mean|meaning|means|interpret|interpretation|result|results|positive|negative|abnormal)\b/i.test(lower)
-    || /\bwhat\b[\s\S]{0,60}\btells?\b/i.test(lower)) add("diagnostics");
+  const semanticDiagnosticQuestion = ["lab", "reference"].includes(candidate?.type)
+    && /\bwhat\b[\s\S]{0,60}\b(?:shows?|indicates?|means?|tells?)\b/i.test(lower);
+  if (/\b(diagnose|diagnosis|diagnostic|diagnostics|workup|screen|screening|test|tests|tool|tools|measure|measures|measured|evaluate|evaluates|meaning|interpret|interpretation|result|results|positive|negative|abnormal)\b/i.test(lower)
+    || semanticDiagnosticQuestion) add("diagnostics");
   if (/\b(cause|causes|caused by|etiology|risk factor|risk factors|trigger|triggers|precipitant|precipitants|why does|why do|why is)\b/i.test(lower)) add("etiology");
   if (/\b(patho|pathophysiology|pathology|what is happening|what happens|disease process|process)\b/i.test(lower)) add("pathophysiology");
   if (/\b(treat|treatment|treatments|therapy|therapies|manage|management|first line|priority treatment|how to treat)\b/i.test(lower)) add("treatment");
@@ -43156,7 +43228,8 @@ function offlineSegmentIntents(input = "", candidate = null) {
   if (/\b(nclex|trap|traps|nuance|testable|board|boards|exam likes|high yield|high-yield)\b/i.test(lower)) add("nclex");
   if (wantsPopulationRiskExplanation(input)) add("population");
   if (/\b(pregnancy|pregnant|maternity|maternal|pediatric|peds|kid|kids|child|children|geriatric|older adult|elderly|population)\b/i.test(lower)) add("population");
-  if (/\b(before|after|during|prep|prepare|preparation|steps|procedure steps|position|positioning)\b/i.test(lower)) add("procedureSteps");
+  if (candidate?.type === "reference"
+    && /\b(procedure steps|preparation|how to prepare|positioning|collection steps|before (?:the )?(?:test|procedure)|during (?:the )?(?:test|procedure)|after (?:the )?(?:test|procedure))\b/i.test(lower)) add("procedureSteps");
 
   return intents;
 }
@@ -43221,30 +43294,9 @@ function offlineSegmentCandidate(input = "") {
   if (namedReference) {
     return namedReference;
   }
-  // high-yield-clue-before-broad-segment-candidate
-  const highYieldQuestion = /\b(which|what|why|how|compare|difference|distinguish|versus|vs)\b/i.test(normalizeIntentText(input));
-  // Section extraction follows the explicit card + section contract. If no
-  // identity was found and the input is not a clue-style question, fail closed
-  // instead of synchronously running broad content rankers that can return an
-  // unrelated card.
-  if (!highYieldQuestion) return null;
-  const highYieldDrug = highYieldDrugClueMatch(input);
-  if (highYieldDrug) {
-    const highYieldCandidate = {
-      type: "drug",
-      item: highYieldDrug,
-      score: 2700 + pharmIdentityPreferenceScore(highYieldDrug)
-    };
-    if (inputDirectlyNamesOfflineCandidate(input, highYieldCandidate) || highYieldQuestion) {
-      return highYieldCandidate;
-    }
-  }
-  const suggestions = offlineLookupSuggestions(input);
-  if (!suggestions.length) return null;
-  const top = suggestions[0];
-  if (inputDirectlyNamesOfflineCandidate(input, top) || offlineLookupIsDirectEnough(input, top) || top.score >= 120) {
-    return top;
-  }
+  // A targeted section answer requires an exact, near, or directly named card.
+  // Clue-ranked suggestions remain available to the broader lookup flow, but
+  // cannot lend an unrelated card's section to this narrow response path.
   return null;
 }
 
@@ -43275,154 +43327,182 @@ function offlineSegmentTitle(intent = "", candidate = null) {
   }[intent] || "Key point";
 }
 
+function offlineSegmentSourceRecord(sourceSectionId = "", label = "", value = "") {
+  const text = Array.isArray(value) ? readableListText(value) : safeText(value);
+  if (!text) return null;
+  return {
+    sourceSectionId: safeText(sourceSectionId),
+    label: safeText(label, "Key point"),
+    value: text
+  };
+}
+
+function offlineSegmentSourceRecords(records = []) {
+  return records.filter((record) => record && safeText(record.value));
+}
+
 function offlineSegmentValue(candidate = {}, intent = "", input = "") {
   const item = candidate.item || {};
+  const record = (sourceSectionId, label, value) => offlineSegmentSourceRecord(sourceSectionId, label, value);
 
   if (candidate.type === "drug") {
-    const populationText = pharmListText((item.populationRisks || []).map((risk) => `${risk.label}: ${risk.note}`));
+    const populationText = pharmListText([
+      ...(item.populationRisks || []).map((risk) => `${risk.label}: ${risk.note}`),
+      ...(item.specialPopulations || [])
+    ]);
     const values = {
-      range: pharmListText(item.keyLabs),
-      class: pharmDisplayClass(item),
-      uses: pharmUsedToTreat(item),
-      mechanism: pharmMechanismText(item),
-      warning: pharmOverlayValue(item, "warning", pharmBoxedWarningDisplay(item)),
-      contraindications: pharmOverlayValue(item, "contraindications", pharmListText(item.contraindications)),
-      interactions: pharmOverlayValue(item, "interactions", pharmListText(item.interactions)),
-      risks: pharmOverlayValue(item, "adverseEffects", pharmAdverseEffectsText(item)),
-      labs: pharmOverlayValue(item, "labs", pharmListText(item.keyLabs)),
-      nursing: pharmOverlayValue(item, "nursing", pharmListText(item.nursingEssentials)),
-      signs: pharmOverlayValue(item, "adverseEffects", pharmListText(item.nursingEssentials)),
-      diagnostics: pharmOverlayValue(item, "labs", pharmListText(item.keyLabs)),
-      treatment: pharmUsedToTreat(item),
-      teaching: pharmOverlayValue(item, "nursing", pharmListText(item.nursingEssentials)),
-      nclex: pharmOverlayValue(item, "trap", pharmListText(item.nclexTraps)),
-      population: populationText
+      class: [record("class", "Class", pharmDisplayClass(item))],
+      uses: [record("usedToTreat", "Used for / common uses", pharmUsedToTreat(item))],
+      mechanism: [record("mechanism", "Mechanism / how it works", pharmMechanismText(item))],
+      warning: [record("boxedWarning", "Boxed warning / major warning", pharmBoxedWarningDisplay(item))],
+      contraindications: [record("contraindications", "Contraindications / clarify before giving", pharmListText(item.contraindications))],
+      interactions: [record("interactions", "Interactions to watch", pharmListText(item.interactions))],
+      risks: [record("adverseEffects", "Major risks / adverse-effect cues", pharmAdverseEffectsText(item))],
+      labs: [record("keyLabs", "Labs / assessment monitoring", pharmListText(item.keyLabs))],
+      nursing: [record("nursingEssentials", "Priority nursing actions", pharmListText(item.nursingEssentials))],
+      teaching: [record("patientEducation", "Client teaching", pharmListText(item.patientEducation))],
+      nclex: [record("nclexTraps", "NCLEX trap / high-yield nuance", pharmListText(item.nclexTraps))],
+      population: [record("populationRisks", "Population-specific notes", populationText)]
     };
-    return values[intent] || "";
+    return offlineSegmentSourceRecords(values[intent] || []);
   }
 
   if (candidate.type === "lab") {
-    const teaching = labTeachingSections(item);
-    const sectionText = (patterns = []) => teaching
-      .filter(([label]) => patterns.some((pattern) => pattern.test(label)))
-      .map(([label, value]) => `**${label}:** ${value}`)
-      .join("\n\n");
+    const teaching = labTeachingSections(item).map(([label, value]) => record(
+      `teaching:${normalizePharmText(label)}`,
+      label,
+      value
+    ));
+    const pickTeaching = (patterns = []) => teaching.filter((section) => (
+      section && patterns.some((pattern) => pattern.test(section.label))
+    ));
+    const range = record("range", "Reference range / values", item.range);
+    const why = record("why", "What this lab tells you", item.why);
+    const groupNote = record("groupNote", "Population-specific notes", item.groupNote);
     const values = {
-      range: item.range,
-      uses: item.why,
-      mechanism: item.why,
-      warning: sectionText([/concerning/i, /trap/i]),
-      contraindications: sectionText([/concerning/i, /priority/i]),
-      interactions: item.why,
-      risks: sectionText([/concerning/i, /trap/i]),
-      labs: `${item.range}${item.why ? `\n\n${item.why}` : ""}`,
-      nursing: sectionText([/priority/i]) || "Assess the client, compare the value with the trend, check related labs/medications, and follow ordered hold/question/report parameters.",
-      signs: sectionText([/concerning/i]),
-      diagnostics: item.why,
-      etiology: item.why,
-      pathophysiology: item.why,
-      treatment: sectionText([/priority/i]),
-      teaching: "Teach that ranges vary by facility and context; symptoms and trends matter more than one isolated number.",
-      nclex: sectionText([/trap/i]) || "Use the number as a cue, then decide whether to monitor, hold, question, report, or intervene.",
-      population: item.groupNote || item.range
+      class: [record("category", "Category", item.category)],
+      range: [range],
+      uses: [why],
+      warning: pickTeaching([/red flag|danger|critical|urgent|concerning/i]),
+      contraindications: pickTeaching([/^contraindications?|when not to|do not use/i]),
+      interactions: pickTeaching([/^interactions?/i]),
+      risks: pickTeaching([/red flag|danger|critical|concerning|low pattern|high pattern/i]),
+      labs: [range, why],
+      nursing: pickTeaching([/^priority nursing|nursing actions?|monitoring/i]),
+      signs: pickTeaching([/low pattern|high pattern|signs?|symptoms?|findings?|concerning/i]),
+      diagnostics: [why],
+      etiology: pickTeaching([/^etiology|^causes?|risk factors?/i]),
+      pathophysiology: pickTeaching([/^pathophysiology|disease process/i]),
+      treatment: pickTeaching([/treatment direction|^treatment|^management/i]),
+      teaching: pickTeaching([/patient teaching|client teaching|education/i]),
+      nclex: pickTeaching([/nclex|trap|nuance/i]),
+      population: offlineSegmentSourceRecords([groupNote, ...pickTeaching([/pregnan|pediatric|geriatric|population|trimester|age/i])]),
+      procedureSteps: pickTeaching([/^procedure|collection steps?|before collection|during collection|after collection/i])
     };
-    return values[intent] || "";
+    return offlineSegmentSourceRecords(values[intent] || []);
   }
 
   if (candidate.type === "pathology") {
-    const diagnosticWithAlterations = pathologyDiagnosticsWithAlterations(item);
+    const populationText = pathologyListText([
+      ...(item.populationRisks || []),
+      ...(item.specialPopulations || [])
+    ]);
     const values = {
-      range: diagnosticWithAlterations,
-      uses: item.pathology,
-      mechanism: item.pathology,
-      warning: pathologyListText([...(item.complications || []), ...(item.nclexTraps || [])]),
-      contraindications: pathologyListText(item.nursingPriorities),
-      interactions: pathologyListText(item.nclexTraps),
-      risks: pathologyListText(item.complications),
-      labs: diagnosticWithAlterations,
-      nursing: pathologyListText(item.nursingPriorities),
-      signs: pathologyListText(item.signsSymptoms),
-      diagnostics: diagnosticWithAlterations,
-      etiology: item.etiology,
-      pathophysiology: item.pathology,
-      treatment: pathologyListText(item.treatments),
-      teaching: pathologyListText(item.patientEducation),
-      nclex: pathologyListText(item.nclexTraps),
-      population: pathologyListText([...(item.signsSymptoms || []), ...(item.nursingPriorities || [])])
+      class: [record("category", "Category", item.category)],
+      mechanism: [record("pathology", "Pathophysiology", item.pathology)],
+      warning: [record("redFlags", "Warnings / urgent reportable cues", pathologyListText(item.redFlags))],
+      contraindications: [record("contraindications", "Contraindications", pathologyListText(item.contraindications))],
+      risks: [record("complications", "Complications", pathologyListText(item.complications))],
+      nursing: [record("nursingPriorities", "Priority nursing actions", pathologyListText(item.nursingPriorities))],
+      signs: [record("signsSymptoms", "Signs, symptoms, and clinical findings", pathologyListText(item.signsSymptoms))],
+      diagnostics: [record("diagnostics", "Diagnostics / expected alterations", pathologyDiagnosticsWithAlterations(item))],
+      etiology: [record("etiology", "Etiology / risk factors", item.etiology)],
+      pathophysiology: [record("pathology", "Pathophysiology", item.pathology)],
+      treatment: [record("treatments", "Treatment / management", pathologyListText(item.treatments))],
+      teaching: [record("patientEducation", "Client teaching", pathologyListText(item.patientEducation))],
+      nclex: [record("nclexTraps", "NCLEX trap / high-yield nuance", pathologyListText(item.nclexTraps))],
+      population: [record("populationRisks", "Population-specific notes", populationText)]
     };
-    return values[intent] || "";
+    return offlineSegmentSourceRecords(values[intent] || []);
   }
 
   if (candidate.type === "holistic") {
     const populationText = pharmListText((item.populationRisks || []).map((risk) => `${risk.label}: ${risk.note}`));
     const values = {
-      uses: holisticListText(item.usedFor),
-      mechanism: holisticMechanismText(item),
-      warning: holisticListText(item.majorRisks),
-      contraindications: holisticListText(item.contraindications),
-      interactions: holisticListText(item.interactions),
-      risks: holisticListText(item.majorRisks),
-      labs: holisticListText(item.nursingAssessment),
-      nursing: holisticListText(item.nursingAssessment),
-      signs: holisticListText(item.majorRisks),
-      diagnostics: holisticListText(item.nursingAssessment),
-      etiology: holisticMechanismText(item),
-      pathophysiology: holisticMechanismText(item),
-      treatment: holisticListText(item.usedFor),
-      teaching: holisticListText(item.teaching),
-      nclex: holisticListText(item.nclexTraps),
-      population: populationText
+      class: [record("category", "Category", item.category)],
+      uses: [record("usedFor", "Used for / common uses", holisticListText(item.usedFor))],
+      mechanism: [record("mechanism", "Mechanism / how it works", holisticMechanismText(item))],
+      warning: [record("majorRisks", "Warnings / urgent reportable cues", holisticListText(item.majorRisks))],
+      contraindications: [record("contraindications", "Contraindications / clarify before using", holisticListText(item.contraindications))],
+      interactions: [record("interactions", "Interactions to watch", holisticListText(item.interactions))],
+      risks: [record("majorRisks", "Major risks / adverse-effect cues", holisticListText(item.majorRisks))],
+      nursing: [record("nursingAssessment", "Priority nursing assessment", holisticListText(item.nursingAssessment))],
+      teaching: [record("teaching", "Client teaching", holisticListText(item.teaching))],
+      nclex: [record("nclexTraps", "NCLEX trap / high-yield nuance", holisticListText(item.nclexTraps))],
+      population: [record("populationRisks", "Population-specific notes", populationText)]
     };
-    return values[intent] || "";
+    return offlineSegmentSourceRecords(values[intent] || []);
   }
 
   if (candidate.type === "reference") {
-    const sections = clinicalReferenceSectionPairs(item);
-    const pickSections = (patterns = []) => sections
-      .filter(([label, value]) => value && patterns.some((pattern) => pattern.test(label)))
-      .map(([label, value]) => `**${label}:** ${value}`)
-      .join("\n\n");
+    const authoredSections = clinicalReferenceSectionRecords(item).map((section) => record(
+      `section:${normalizePharmText(section.label)}`,
+      section.label,
+      section.value
+    ));
+    const pickSections = (patterns = []) => authoredSections.filter((section) => (
+      section && patterns.some((pattern) => pattern.test(section.label))
+    ));
+    const patterns = {
+      range: [/reference range|normal range|expected range|threshold|target range|percentile|weeks?|trimester/i],
+      uses: [/^purpose\b|^used for\b|^indications?\b|when .*used/i],
+      mechanism: [/^mechanism\b|^how it works\b|^physiology\b/i],
+      warning: [/^red flags?\b|^warnings?\b|^urgent\b|when to report|danger/i],
+      contraindications: [/^contraindications?\b|when not to|do not use|avoid .*before/i],
+      interactions: [/^interactions?\b/i],
+      risks: [/^risks?\b|^major risks?\b|^adverse|^complications?\b/i],
+      labs: [/^labs?\b|^laboratory\b/i],
+      nursing: [/^priority nursing\b|^nursing\b|nursing assessment|assessment and documentation|^monitoring\b/i],
+      signs: [/^signs?\b|^symptoms?\b|clinical findings|manifestations/i],
+      diagnostics: [/^diagnostics?\b|result interpretation|how to interpret|^what .*\b(?:tells|measures|evaluates|assesses)\b/i],
+      etiology: [/^etiology\b|^causes?\b|risk factors?|^triggers?\b/i],
+      pathophysiology: [/^pathophysiology\b|disease process/i],
+      treatment: [/^treatment\b|^management\b/i],
+      teaching: [/patient teaching|client teaching|patient education|client education|^teaching\b/i],
+      nclex: [/nclex|trap|high-yield nuance/i],
+      population: [/pregnan|trimester|pediatric|geriatric|population|maternal|fetal|growth|percentile|age-specific/i],
+      procedureSteps: [/^procedure steps?\b|^before\b|^during\b|^after\b|positioning|collection steps?|how to perform/i]
+    };
+    const selected = pickSections(patterns[intent] || []);
+    if (intent !== "diagnostics") return offlineSegmentSourceRecords(selected);
+
     const resultRows = clinicalReferenceResultMeaningRows(item);
     const normalizedInput = normalizeIntentText(input);
-    const focusedResultRows = /\b(positive|abnormal|high|elevated)\b/i.test(normalizedInput)
-      ? (resultRows.filter((row) => /positive|detected|abnormal|high/i.test(row.label)) || resultRows)
+    const requestedResultRows = /\b(positive|abnormal|high|elevated)\b/i.test(normalizedInput)
+      ? resultRows.filter((row) => /positive|detected|abnormal|high/i.test(row.label))
       : (/\b(negative|normal|expected|reassuring)\b/i.test(normalizedInput)
-        ? (resultRows.filter((row) => /negative|not detected|normal|expected|reassuring|no diagnostic/i.test(row.label)) || resultRows)
+        ? resultRows.filter((row) => /negative|not detected|normal|expected|reassuring|no diagnostic/i.test(row.label))
         : resultRows);
-    const selectedResultRows = focusedResultRows.length ? focusedResultRows : resultRows;
-    const resultMeaningText = selectedResultRows
+    const resultMeaningText = (requestedResultRows.length ? requestedResultRows : resultRows)
       .map((row) => `**${row.label}:** ${row.meaning}`)
       .join("\n\n");
-    const diagnosticOverview = [
-      item.summary || item.quickAnswer,
-      resultMeaningText ? `**How to interpret the result pattern:**\n${resultMeaningText}` : "",
-      pickSections([/what .*tells/i, /what .*measure/i, /what .*evaluat/i, /result interpretation/i, /how to interpret/i])
-    ].filter(Boolean).join("\n\n");
-    const priorityNursingSections = pickSections([/^priority nursing/i, /^nursing/i, /nursing assessment/i, /assessment and documentation/i]);
-    const values = {
-      range: pickSections([/range|anchor|percentile|score|weeks?|trimester/i]) || item.quickAnswer,
-      uses: item.summary || item.quickAnswer,
-      mechanism: pickSections([/what it is|what .*evaluates|what .*measures|why|how|mechanism|physiology/i]) || item.summary,
-      warning: pickSections([/red flag|danger|concerning|report|warning|reaction|urgent/i]),
-      contraindications: pickSections([/before|avoid|contraindication|verify|consent|risk/i]),
-      interactions: pickSections([/interaction|risk|trap/i]),
-      risks: pickSections([/red flag|danger|trap|report|reaction|urgent|warning/i]),
-      labs: pickSections([/lab|screen|test|diagnostic|result|score|fluid|culture/i]) || diagnosticOverview,
-      nursing: priorityNursingSections || pickSections([/priority|role|monitor|assess|safety|after|before|during|stop/i]) || item.quickAnswer,
-      signs: pickSections([/red flag|symptom|sign|finding|danger|movement|bleeding|fever/i]),
-      diagnostics: diagnosticOverview,
-      etiology: item.summary,
-      pathophysiology: item.summary,
-      treatment: pickSections([/treatment|priority|after|during|reaction|stop|action/i]) || item.quickAnswer,
-      teaching: pickSections([/teach|teaching|explain|client|after|before/i]) || item.quickAnswer,
-      nclex: pickSections([/NCLEX|trap/i]),
-      population: pickSections([/age|pregnancy|trimester|pediatric|growth|percentile|maternal|fetal/i]) || item.quickAnswer,
-      procedureSteps: pickSections([/before|during|after|steps|position|role|how to perform|collection|safety/i]) || item.quickAnswer
-    };
-    return values[intent] || "";
+    return offlineSegmentSourceRecords([
+      ...selected,
+      record("resultMeanings", "Result interpretation", resultMeaningText)
+    ]);
   }
 
-  return "";
+  return [];
+}
+
+function offlineSegmentCanReportUnavailable(input = "", candidate = null) {
+  if (!candidate?.item) return false;
+  return candidate.score >= 3000 || inputDirectlyNamesOfflineCandidate(input, candidate);
+}
+
+function offlineSegmentUnavailableNotice(intent = "", candidate = null) {
+  const requestedSection = offlineSegmentTitle(intent, candidate);
+  return `This card does not currently include a reviewed "${requestedSection}" section. ANI did not substitute a nearby section.`;
 }
 
 function buildOfflineSegmentAnswer(input = "", candidate = null, intents = []) {
@@ -43434,18 +43514,24 @@ function buildOfflineSegmentAnswer(input = "", candidate = null, intents = []) {
     return "";
   }
   const label = offlineLookupEntityLabel(candidate);
-  const seenSectionValues = new Set();
-  const sections = intents
-    .map((intent) => ({ intent, value: offlineSegmentValue(candidate, intent, input) }))
-    .filter(({ value }) => safeText(value))
-    .filter(({ value }) => {
-      const key = normalizePharmText(value);
-      if (!key || seenSectionValues.has(key)) return false;
-      seenSectionValues.add(key);
+  const sectionsByIntent = intents.map((intent) => ({
+    intent,
+    records: offlineSegmentValue(candidate, intent, input)
+  }));
+  const seenSections = new Set();
+  const sections = sectionsByIntent
+    .flatMap(({ intent, records }) => records.map((section) => ({ ...section, intent })))
+    .filter((section) => {
+      const key = `${normalizePharmText(section.sourceSectionId)}:${normalizePharmText(section.value)}`;
+      if (!key || seenSections.has(key)) return false;
+      seenSections.add(key);
       return true;
     });
+  const missingIntents = offlineSegmentCanReportUnavailable(input, candidate)
+    ? sectionsByIntent.filter(({ records }) => !records.length).map(({ intent }) => intent)
+    : [];
 
-  if (!sections.length) {
+  if (!sections.length && !missingIntents.length) {
     return "";
   }
 
@@ -43453,8 +43539,9 @@ function buildOfflineSegmentAnswer(input = "", candidate = null, intents = []) {
   currentTopic = label;
   updateFocus();
   return [
-    `**${label} - ${sections.length === 1 ? offlineSegmentTitle(sections[0].intent, candidate) : "targeted encyclopedia answer"}**`,
-    ...sections.map(({ intent, value }) => `**${offlineSegmentTitle(intent, candidate)}:** ${value}`)
+    `**${label} - ${sections.length === 1 && !missingIntents.length ? sections[0].label : "targeted encyclopedia answer"}**`,
+    ...sections.map(({ label: sectionLabel, value }) => `**${sectionLabel}:** ${value}`),
+    ...missingIntents.map((intent) => `**${offlineSegmentTitle(intent, candidate)}:** ${offlineSegmentUnavailableNotice(intent, candidate)}`)
   ].filter(Boolean).join("\n\n");
 }
 
@@ -43970,6 +44057,31 @@ function handleOfflineLookupFlow(input = "", options = {}) {
       return makeOfflineDidYouMean(pendingOfflineLookupSuggestions[0]);
     }
     return "Okay, not that one. Try a shorter phrase, a brand/generic name, a lab nickname like mag or MAP, or the main symptom, and I will search the clinical reference again.";
+  }
+  const normalizedHeartBlockQuery = normalizePharmText(trimmed);
+  if (["heart block", "av block", "atrioventricular block"].includes(normalizedHeartBlockQuery)) {
+    const item = pathologyDiseases.find((entry) => normalizePharmText(entry?.name) === "heart blocks");
+    if (item) {
+      const candidate = { type: "pathology", item, score: 4000, exactIdentity: true };
+      pendingOfflineLookupSuggestions = [];
+      rememberOfflineLookupTarget(candidate, trimmed);
+      return options.preferDatabaseRedirect
+        ? offlineLookupDatabaseRedirect(candidate, trimmed)
+        : offlineLookupDirectResponse(candidate, trimmed);
+    }
+  }
+  const familyCandidates = responsiveEncyclopediaFamilyCandidates(trimmed);
+  if (familyCandidates.length) {
+    pendingOfflineLookupSuggestions = [];
+    if (options.preferDatabaseRedirect) {
+      return {
+        type: "pharm-database",
+        query: "heart blocks",
+        detailType: "pathology",
+        openDetail: false
+      };
+    }
+    return `I found the heart-block family: ${familyCandidates.map((candidate) => `**${offlineLookupEntityLabel(candidate)}**`).join(", ")}. Open the encyclopedia results to choose the exact card.`;
   }
   const reviewedResolution = fastReviewedSearchResolution(trimmed);
   if (reviewedResolution?.ambiguousIdentity === true) {

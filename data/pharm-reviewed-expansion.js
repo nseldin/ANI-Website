@@ -4,8 +4,8 @@
   const payload = {
   "schemaVersion": "ani-pharmacy-reviewed-runtime-v1",
   "builderVersion": "ani-pharmacy-builder-2026-08-08.2",
-  "domainVersion": "2026-08-10.1",
-  "sourceSha256": "f4d29ad634fbb29b2e35c3b9751ac3df3b83e1c27a93f5703416bdbfe47be73d",
+  "domainVersion": "2026-08-10.2",
+  "sourceSha256": "e52c8d3a98c9d9650aaff73f43539168c3e7902f9f5280ec93b2b10711de2036",
   "subsections": [
     {
       "id": "peptides-peptide-based-therapies",
@@ -296,6 +296,35 @@
             "note": "This card covers an FDA-approved glucagon injection product and does not establish that a compounded glucagon product is FDA approved, equivalent, or interchangeable.",
             "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=15b49500-0aae-4e25-9a1d-709983233cc6"
           }
+        },
+        {
+          "canonicalGeneric": "abaloparatide",
+          "canonicalName": "Abaloparatide",
+          "peptideModality": "SYNTHETIC_PEPTIDE_ANALOG",
+          "regulatory": {
+            "jurisdiction": "US",
+            "agency": "FDA",
+            "productStatus": "FDA_APPROVED",
+            "labelAsOf": "2026-08-10",
+            "sourceUrl": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/208743s017lbl.pdf"
+          },
+          "useContexts": [
+            {
+              "status": "FDA_LABELED",
+              "use": "Treat postmenopausal women with osteoporosis at high risk for fracture, or who have failed or are intolerant to other available osteoporosis therapy; TYMLOS reduces vertebral and nonvertebral fracture risk in this population",
+              "sourceUrl": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/208743s017lbl.pdf"
+            },
+            {
+              "status": "FDA_LABELED",
+              "use": "Increase bone density in men with osteoporosis at high risk for fracture, or who have failed or are intolerant to other available osteoporosis therapy",
+              "sourceUrl": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/208743s017lbl.pdf"
+            }
+          ],
+          "compounding": {
+            "status": "NOT_APPLICABLE",
+            "note": "This card covers the FDA-approved TYMLOS single-patient-use prefilled pen and does not establish that a compounded abaloparatide product is FDA approved, equivalent, or interchangeable.",
+            "sourceUrl": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/208743s017lbl.pdf"
+          }
         }
       ]
     }
@@ -406,7 +435,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.cobicistat",
@@ -512,7 +541,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.collagenase-santyl",
@@ -615,7 +644,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.collagenase-xiaflex",
@@ -722,7 +751,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.cromolyn-sodium",
@@ -860,7 +889,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.efgartigimod-alfa-fcab",
@@ -962,7 +991,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.avacopan",
@@ -1063,7 +1092,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.belzutifan",
@@ -1168,7 +1197,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.elacestrant",
@@ -1269,7 +1298,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.capivasertib",
@@ -1375,7 +1404,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.guanfacine",
@@ -1523,7 +1552,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.povidone-iodine",
@@ -1649,7 +1678,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.bulevirtide-gmod",
@@ -1821,7 +1850,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.dasiglucagon",
@@ -1982,7 +2011,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.terlipressin",
@@ -2145,7 +2174,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.ziconotide",
@@ -2311,7 +2340,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.retatrutide",
@@ -2488,7 +2517,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.cagrilintide",
@@ -2667,7 +2696,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.liraglutide",
@@ -2861,7 +2890,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.dulaglutide",
@@ -3034,7 +3063,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.insulin-glargine",
@@ -3211,7 +3240,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.insulin-lispro",
@@ -3389,7 +3418,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
     },
     {
       "id": "medication.glucagon",
@@ -3592,7 +3621,213 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-10.1"
+      "pharmacyDomainVersion": "2026-08-10.2"
+    },
+    {
+      "id": "medication.abaloparatide",
+      "name": "Abaloparatide",
+      "displayName": "Abaloparatide (Tymlos)",
+      "generic": "abaloparatide",
+      "aliases": [
+        "Tymlos",
+        "abaloparatide injection"
+      ],
+      "brandExamples": [
+        "Tymlos"
+      ],
+      "class": "Parathyroid hormone-related peptide 1-34 analog and PTH1-receptor agonist",
+      "pharmacyTags": [
+        "peptide-based-therapy",
+        "osteoporosis",
+        "bone-formation"
+      ],
+      "updateMatchTerms": [
+        "abaloparatide",
+        "Tymlos"
+      ],
+      "peptideModality": "SYNTHETIC_PEPTIDE_ANALOG",
+      "plainLanguage": "Abaloparatide (Tymlos) is a once-daily injection under the skin that activates a bone-signaling receptor and stimulates new bone formation. The FDA label says it treats high-fracture-risk osteoporosis in postmenopausal women and increases bone density in high-fracture-risk men.",
+      "whyItMatters": "The labeled outcome differs by population: TYMLOS reduces vertebral and nonvertebral fracture risk in postmenopausal women, while the labeled outcome in men is increased bone density. The drug can also cause a position-related blood-pressure drop, high blood calcium, increased urine calcium, and serious allergy, and its human osteosarcoma risk is unknown.",
+      "plainLanguageGlosses": [
+        {
+          "term": "PTHrP(1-34) analog",
+          "plainLanguage": "a synthetic 34-amino-acid peptide that resembles part of human parathyroid hormone-related peptide and activates its bone-signaling receptor",
+          "sourceKeys": [
+            "dailymed-tymlos-label",
+            "fda-tymlos-208743-s017-label"
+          ]
+        },
+        {
+          "term": "osteosarcoma",
+          "plainLanguage": "a cancer that begins in bone",
+          "sourceKeys": [
+            "dailymed-tymlos-label",
+            "fda-tymlos-208743-s017-label"
+          ]
+        },
+        {
+          "term": "orthostatic hypotension",
+          "plainLanguage": "a blood-pressure drop after changing position that can cause dizziness, lightheadedness, or a fast heartbeat",
+          "sourceKeys": [
+            "dailymed-tymlos-label",
+            "fda-tymlos-208743-s017-label"
+          ]
+        },
+        {
+          "term": "hypercalciuria",
+          "plainLanguage": "more calcium in the urine than expected, which can contribute to kidney stones",
+          "sourceKeys": [
+            "dailymed-tymlos-label",
+            "fda-tymlos-208743-s017-label"
+          ]
+        }
+      ],
+      "description": "Abaloparatide is a synthetic 34-amino-acid PTHrP(1-34) analog supplied as the TYMLOS single-patient-use prefilled pen for once-daily subcutaneous use. Its two labeled populations must remain distinct: it treats postmenopausal women at high fracture risk and reduces the risk of vertebral and nonvertebral fractures in that population, while its labeled purpose in men at high fracture risk is to increase bone density. Safety and efficacy have not been evaluated beyond 2 years, and use for more than 2 years during a patient's lifetime is not recommended.",
+      "mechanism": "Abaloparatide activates the parathyroid hormone 1 receptor, or PTH1R, and turns on cyclic-AMP signaling inside target cells. With once-daily administration, this signaling stimulates osteoblast activity—the work of bone-forming cells—on the inner spongy (trabecular) and outer dense (cortical) bone surfaces. The result is new bone formation and increased bone mineral density.",
+      "usedToTreat": "TYMLOS is FDA labeled to treat postmenopausal women with osteoporosis at high risk for fracture, or who have failed or are intolerant to other available osteoporosis therapy; in postmenopausal women it reduces vertebral and nonvertebral fracture risk. It is separately FDA labeled to increase bone density in men with osteoporosis at high risk for fracture, or who have failed or are intolerant to other available osteoporosis therapy.",
+      "boxedWarning": "The current TYMLOS prescribing information revised March 2025 has no boxed warning. It warns that abaloparatide caused a dose-dependent increase in osteosarcoma in rats and that whether TYMLOS causes osteosarcoma in humans is unknown. Avoid use in patients with increased baseline osteosarcoma risk, including open epiphyses, metabolic bone disease other than osteoporosis, bone metastases or prior skeletal malignancy, skeletal radiation, or a hereditary osteosarcoma-predisposition disorder.",
+      "contraindications": [
+        "History of systemic hypersensitivity to abaloparatide or any TYMLOS component; reported reactions include anaphylaxis, dyspnea, and urticaria."
+      ],
+      "adverseEffects": [
+        "In postmenopausal women, common reactions include hypercalciuria, dizziness, nausea, headache, palpitations, fatigue, upper abdominal pain, and vertigo.",
+        "In men, common reactions include injection-site redness, swelling or pain, dizziness, joint pain, bruising, nausea, diarrhea, abdominal distension or pain, and bone pain."
+      ],
+      "seriousAdverseReactions": [
+        "Systemic hypersensitivity, including anaphylaxis, difficulty breathing, or hives.",
+        "Clinically important orthostatic hypotension or hypercalcemia; increased urine calcium may contribute to kidney stones."
+      ],
+      "interactions": [
+        "No specific drug-drug interaction studies have been performed. Review prescription medicines, over-the-counter products, vitamins, and herbal supplements rather than interpreting the absence of formal studies as proof that interactions cannot occur."
+      ],
+      "nursingEssentials": [
+        "Verify the exact labeled population and outcome. The label supports fracture-risk reduction in postmenopausal women, but its labeled male outcome is increased bone density; do not extend the women's fracture claim to men.",
+        "Give the first several doses where the patient can sit or lie down. Assess dizziness, lightheadedness, palpitations, or a fast heart rate after injection because orthostatic hypotension typically occurs within 4 hours and may improve when the patient lies down.",
+        "Before treatment, review systemic allergy, baseline osteosarcoma-risk conditions, pre-existing hypercalcemia or a hypercalcemic disorder, and kidney-stone or hypercalciuria history. Consider urinary calcium measurement when active stones or pre-existing hypercalciuria are suspected."
+      ],
+      "keyLabs": [
+        "Serum calcium before and during therapy when ordered or when symptoms suggest hypercalcemia.",
+        "Urinary calcium excretion when active urolithiasis or pre-existing hypercalciuria is suspected.",
+        "Serum calcium and phosphorus with suspected overdose; bone mineral density after treatment when ordered."
+      ],
+      "patientEducation": [
+        "Use the TYMLOS pen only after training. Never share the pen or needles, never transfer the medicine to a syringe, use a new needle for each injection, and place used needles in an appropriate sharps container.",
+        "Sit or lie down for dizziness, lightheadedness, or palpitations after a dose. If symptoms persist or worsen, contact the prescriber before continuing. Seek immediate help for trouble breathing, hives, or another serious allergic reaction.",
+        "Report persistent localized bone pain, a new tender soft-tissue mass, symptoms of high calcium such as nausea, vomiting, constipation, low energy, or muscle weakness, and kidney-stone symptoms such as back or lower-abdominal pain, painful urination, or blood in urine.",
+        "Use for more than 2 years during a patient's lifetime is not recommended. Do not extend treatment on the assumption that high fracture risk creates a labeled exception."
+      ],
+      "administration": [
+        "Administer 80 mcg subcutaneously once daily in the periumbilical region of the abdomen, following the Instructions for Use to avoid the 2-inch area directly around the navel. Rotate the site daily, give at approximately the same time each day, and do not administer intravenously or intramuscularly.",
+        "Give the first several doses where the patient can sit or lie down. Inspect the solution before use; it should be clear and colorless, and it must not be used if cloudy, colored, or visibly particulate. Ensure the patient or caregiver has pen training.",
+        "Provide supplemental calcium and vitamin D when dietary intake is inadequate. Refrigerate before first use at 2°C to 8°C; after first use store up to 30 days at 20°C to 25°C, do not freeze or expose to heat, and discard after 30 days even if medicine remains."
+      ],
+      "toxicityManagement": [
+        "Overdose may cause hypercalcemia, nausea, vomiting, dizziness, fast heart rate, orthostatic hypotension, headache, weakness, or low energy.",
+        "There is no specific antidote. Discontinue TYMLOS after suspected overdose, monitor serum calcium and phosphorus, provide supportive care such as hydration, and obtain poison-control or urgent clinical guidance. Abaloparatide is not expected to be dialyzable."
+      ],
+      "specialPopulations": [
+        "TYMLOS is not indicated for females of reproductive potential. There are no human pregnancy data, no abaloparatide animal reproduction studies, and no information on drug presence in human milk or effects on the breastfed infant or milk production.",
+        "Safety and effectiveness are not established in pediatric patients. It is not recommended in pediatric patients with open epiphyses or hereditary disorders that predispose to osteosarcoma because baseline osteosarcoma risk is increased.",
+        "No overall safety or effectiveness differences were observed between older and younger study participants, although greater sensitivity in some older adults cannot be ruled out.",
+        "No dosage adjustment is required for mild, moderate, or severe renal impairment, but severe impairment increases abaloparatide exposure and may increase adverse reactions; monitor accordingly. Patients receiving dialysis were not included in the renal study."
+      ],
+      "nclexTraps": [
+        "Female and male label outcomes are not interchangeable: fracture-risk reduction is stated for postmenopausal women, while the male indication is to increase bone density.",
+        "The label does not say to continue beyond 2 years when fracture risk remains high. It says safety and efficacy have not been evaluated beyond 2 years and use for more than 2 years during a patient's lifetime is not recommended.",
+        "Pre-existing hypercalcemia is a labeled not-recommended condition, not the formal contraindication; the formal contraindication is systemic hypersensitivity. High osteosarcoma-risk states are labeled avoid-use warnings."
+      ],
+      "routes": [
+        "Subcutaneous injection into the periumbilical region of the abdomen"
+      ],
+      "notApplicable": [
+        "reversal"
+      ],
+      "relatedTopics": [
+        "Osteoporosis",
+        "Hypercalcemia",
+        "Orthostatic hypotension"
+      ],
+      "regulatoryStatus": "FDA-approved prescription synthetic peptide analog marketed as TYMLOS for the labeled postmenopausal-women treatment and men's bone-density indications.",
+      "regulatory": {
+        "jurisdiction": "US",
+        "agency": "FDA",
+        "productStatus": "FDA_APPROVED",
+        "labelAsOf": "2026-08-10",
+        "sourceUrl": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/208743s017lbl.pdf"
+      },
+      "useContexts": [
+        {
+          "status": "FDA_LABELED",
+          "use": "Treat postmenopausal women with osteoporosis at high risk for fracture, or who have failed or are intolerant to other available osteoporosis therapy; TYMLOS reduces vertebral and nonvertebral fracture risk in this population",
+          "sourceUrl": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/208743s017lbl.pdf"
+        },
+        {
+          "status": "FDA_LABELED",
+          "use": "Increase bone density in men with osteoporosis at high risk for fracture, or who have failed or are intolerant to other available osteoporosis therapy",
+          "sourceUrl": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/208743s017lbl.pdf"
+        }
+      ],
+      "compounding": {
+        "status": "NOT_APPLICABLE",
+        "note": "This card covers the FDA-approved TYMLOS single-patient-use prefilled pen and does not establish that a compounded abaloparatide product is FDA approved, equivalent, or interchangeable.",
+        "sourceUrl": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/208743s017lbl.pdf"
+      },
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-10",
+      "sourceNote": "Original ANI synthesis from the current DailyMed TYMLOS prescribing information and the FDA full prescribing information for NDA 208743/S-017: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=712143d9-e21e-4013-bb3b-3426a21060a8 and https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/208743s017lbl.pdf.",
+      "provenance": [
+        {
+          "key": "dailymed-tymlos-label",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=712143d9-e21e-4013-bb3b-3426a21060a8",
+          "documentVersion": "DailyMed updated 04/04/2025; prescribing information revised 03/2025; checked 2026-08-10",
+          "fieldsSupported": [
+            "identity",
+            "Tymlos brand",
+            "synthetic 34-amino-acid peptide classification",
+            "PTHrP(1-34) analog classification",
+            "mechanism",
+            "formulation",
+            "contraindication",
+            "warnings and precautions",
+            "adverse reactions",
+            "drug-interaction evidence limitation",
+            "administration",
+            "treatment duration",
+            "overdose and no-specific-antidote management",
+            "storage",
+            "patient counseling",
+            "special populations"
+          ]
+        },
+        {
+          "key": "fda-tymlos-208743-s017-label",
+          "authority": "FDA",
+          "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/208743s017lbl.pdf",
+          "documentVersion": "NDA 208743/S-017; prescribing information revised 03/2025; Reference ID 5559722; checked 2026-08-10",
+          "fieldsSupported": [
+            "FDA-approved product status",
+            "postmenopausal-women indication",
+            "postmenopausal-women vertebral and nonvertebral fracture-risk reduction",
+            "men's bone-density indication",
+            "dose and route",
+            "treatment duration",
+            "osteosarcoma warning",
+            "hypercalcemia and hypercalciuria warnings",
+            "overdose management"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-10.2"
     }
   ]
 };
@@ -3602,7 +3837,7 @@
   const retained = (Array.isArray(db.drugs) ? db.drugs : []).filter((card) => !replacementByKey.has(normalize(card && (card.generic || card.name || card.displayName))));
   db.drugs = retained.concat(payload.cards);
   db.reviewedExpansion = { schemaVersion: payload.schemaVersion, builderVersion: payload.builderVersion, domainVersion: payload.domainVersion, sourceSha256: payload.sourceSha256, cardCount: payload.cards.length };
-  db.version = [db.version, "reviewed-pharmacy-2026-08-10.1"].filter(Boolean).join("+");
+  db.version = [db.version, "reviewed-pharmacy-2026-08-10.2"].filter(Boolean).join("+");
   window.ANI_PHARM_DATABASE = db;
   window.ANI_PHARMACY_REVIEWED_EXPANSION = payload;
 }());
