@@ -3,7 +3,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "2026-07-29-wave35-intelligent-search-routing-28";
+  const VERSION = "2026-07-29-wave35-intelligent-search-routing-29";
   if (window.ANI_WAVE35_INTELLIGENT_SEARCH_ROUTING
     && window.ANI_WAVE35_INTELLIGENT_SEARCH_ROUTING.version === VERSION) return;
 
@@ -1060,6 +1060,16 @@
     makeModelEnhancedResponse = function (input) {
       const args = Array.prototype.slice.call(arguments, 1);
       if (priorActiveEmergency(input)) return baseMakeModelEnhancedResponse.apply(this, [input, ...args]);
+      const reviewedFamilyCandidates = typeof responsiveEncyclopediaFamilyCandidates === "function"
+        ? responsiveEncyclopediaFamilyCandidates(input)
+        : [];
+      if (reviewedFamilyCandidates.length && baseHandleOfflineLookupFlow) {
+        return baseHandleOfflineLookupFlow(input, {
+          force: true,
+          allowPrompt: false,
+          preferDatabaseRedirect: true
+        });
+      }
       const directCollisionResponse = tenCollisionResponse(input);
       if (directCollisionResponse) return directCollisionResponse;
       const reviewedSearchSafetyOwner = reviewedSearchResolutionFor(input);
