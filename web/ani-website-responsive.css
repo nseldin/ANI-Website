@@ -679,6 +679,73 @@ html[data-ani-surface="website"] .learner-language-support > strong {
   }
 }
 
+/* Explicit learner-controlled full-card view; normal Encyclopedia layout is unchanged. */
+html[data-ani-surface="website"] .pharm-database-screen.pharm-detail-expanded {
+  overflow: hidden;
+  padding: 0;
+  background: #ffffff;
+  backdrop-filter: none;
+}
+
+html[data-ani-surface="website"] .pharm-database-screen.pharm-detail-expanded .pharm-database-shell {
+  width: 100%;
+  max-width: none;
+  min-height: 100dvh;
+  height: 100dvh;
+  grid-template-rows: minmax(0, 1fr);
+  gap: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+html[data-ani-surface="website"] .pharm-database-screen.pharm-detail-expanded :where(
+  .pharm-database-header,
+  .pharm-search-panel,
+  .pharm-results-card,
+  .pharm-labs-card
+) {
+  display: none;
+}
+
+html[data-ani-surface="website"] .pharm-database-screen.pharm-detail-expanded .pharm-layout {
+  display: block;
+  grid-row: 1;
+  min-height: 100dvh;
+  height: 100dvh;
+  padding: 0;
+}
+
+html[data-ani-surface="website"] .pharm-database-screen.pharm-detail-expanded .pharm-detail-card {
+  display: grid;
+  width: 100%;
+  min-height: 100dvh;
+  max-height: none;
+  height: 100dvh;
+  border: 0;
+  border-radius: 0;
+  overflow: auto;
+  padding: 0 clamp(16px, 3vw, 52px) max(28px, env(safe-area-inset-bottom, 0px));
+}
+
+html[data-ani-surface="website"] .pharm-database-screen.pharm-detail-expanded .pharm-detail-toolbar {
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 0;
+  padding-top: max(10px, env(safe-area-inset-top, 0px));
+}
+
+@media (max-width: 760px) {
+  html[data-ani-surface="website"] .pharm-database-screen.pharm-detail-expanded .pharm-detail-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html[data-ani-surface="website"] *,
   html[data-ani-surface="website"] *::before,

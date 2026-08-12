@@ -486,6 +486,7 @@ let currentPharmDetailCandidate = null;
 let pharmDetailHistoryStack = [];
 let pharmDetailForwardStack = [];
 let pharmDetailForwardButton = null;
+let pharmDetailExpandButton = null;
 let pharmBrowserHistoryApplying = false;
 let pharmBrowserRouteScrollFrame = null;
 let pharmAutoReadMuted = ANI_AUTOMATED_TEST || localStorage.getItem(PHARM_AUTO_READ_MUTED_KEY) === "true";
@@ -7021,6 +7022,80 @@ function isPharmDetailOpen() {
   return Boolean(pharmDatabaseScreen && pharmDatabaseScreen.classList.contains("pharm-detail-open"));
 }
 
+function isPharmDetailExpanded() {
+  return Boolean(pharmDatabaseScreen && pharmDatabaseScreen.classList.contains("pharm-detail-expanded"));
+}
+
+function pharmDetailUsesResponsiveFullViewport() {
+  return isPhoneDeviceMode()
+    || Boolean(window.matchMedia?.("(max-width: 760px)")?.matches);
+}
+
+function isPharmDetailEffectivelyExpanded() {
+  return isPharmDetailExpanded()
+    || (isPharmDetailOpen() && pharmDetailUsesResponsiveFullViewport());
+}
+
+function pharmDetailWindowIcon(expanded = false) {
+  const state = expanded ? "shrink" : "expand";
+  const paths = expanded
+    ? '<path d="M20 10h-6V4"/><path d="M4 14h6v6"/>'
+    : '<path d="M14 4h6v6"/><path d="M10 20H4v-6"/>';
+  return `
+    <svg class="pharm-detail-window-icon" data-window-icon="${state}" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      ${paths}
+    </svg>
+  `;
+}
+
+function updatePharmDetailExpandControl() {
+  if (!pharmDetailExpandButton) return;
+  const expanded = isPharmDetailEffectivelyExpanded();
+  const label = expanded
+    ? "Shrink card and show the medical encyclopedia"
+    : "Expand card to full screen";
+  pharmDetailExpandButton.innerHTML = pharmDetailWindowIcon(expanded);
+  pharmDetailExpandButton.setAttribute("aria-label", label);
+  pharmDetailExpandButton.setAttribute("aria-pressed", String(expanded));
+  pharmDetailExpandButton.setAttribute("aria-controls", "pharmDrugDetail");
+  pharmDetailExpandButton.title = label;
+  pharmDetailExpandButton.dataset.windowAction = expanded ? "shrink" : "expand";
+}
+
+function replacePharmBrowserDetailExpansion(expanded = false) {
+  if (!pharmUsesBrowserHistory() || pharmBrowserHistoryApplying) return false;
+  const route = currentPharmBrowserRoute();
+  if (route?.view !== "detail") return false;
+  window.history.replaceState(pharmBrowserState({
+    ...route,
+    expanded: expanded === true,
+    scrollTop: Math.max(0, Number(pharmDrugDetail?.scrollTop || route.scrollTop || 0))
+  }), "");
+  return true;
+}
+
+function setPharmDetailExpanded(expanded = false, options = {}) {
+  if (!pharmDatabaseScreen) return false;
+  const next = expanded === true;
+  pharmDatabaseScreen.classList.toggle("pharm-detail-expanded", next);
+  if (pharmDrugDetail) {
+    pharmDrugDetail.dataset.expanded = String(next);
+  }
+  updatePharmDetailExpandControl();
+  if (options.skipBrowserHistory !== true) {
+    replacePharmBrowserDetailExpansion(next);
+  }
+  return next;
+}
+
+function togglePharmDetailExpanded() {
+  if (pharmDetailUsesResponsiveFullViewport() && isPharmDetailOpen()) {
+    requestPharmIndexNavigation();
+    return false;
+  }
+  return setPharmDetailExpanded(!isPharmDetailExpanded());
+}
+
 function pharmDetailCandidateKey(candidate = {}) {
   if (!candidate?.type || !candidate.item) return "";
   const label = offlineLookupEntityLabel(candidate) || candidate.item?.name || candidate.item?.generic || "";
@@ -7158,6 +7233,7 @@ function pushPharmBrowserDetailState(candidate = {}) {
       type: candidate.type,
       key,
       label,
+      expanded: isPharmDetailExpanded(),
       scrollTop: Math.max(0, Number(pharmDrugDetail?.scrollTop || 0))
     }), "");
     updatePharmNavigationControls();
@@ -7183,6 +7259,7 @@ function pushPharmBrowserDetailState(candidate = {}) {
     type: candidate.type,
     key,
     label,
+    expanded: isPharmDetailExpanded(),
     forwardAvailable: false,
     scrollTop: 0
   }), "");
@@ -7240,6 +7317,7 @@ function applyPharmBrowserRoute(state = window.history?.state) {
     openPharmDatabase(route.label, {
       openDetail: true,
       targetCandidate: candidate,
+      expandDetail: route.expanded === true,
       autoFocus: false,
       autoRead: false,
       fastDetail: true,
@@ -7400,6 +7478,7 @@ function navigateForwardPharmDetail() {
 
 function closePharmDetailPage(options = {}) {
   pharmDatabaseScreen?.classList.remove("pharm-detail-open");
+  setPharmDetailExpanded(false, { skipBrowserHistory: true });
   // A redirect highlight belongs only to the card that is currently visible.
   // Clear it when leaving detail view so a later inline answer or unrelated
   // card cannot inherit a stale yellow source marker from the previous topic.
@@ -7420,6 +7499,7 @@ function closePharmDetailPage(options = {}) {
 
 function showPharmDetailPage() {
   pharmDatabaseScreen?.classList.add("pharm-detail-open");
+  updatePharmDetailExpandControl();
   clearPharmSearchRenderTimer();
   clearPharmResultChunkTimers();
   window.requestAnimationFrame(() => {
@@ -7489,13 +7569,21 @@ function resetPharmDetailCard() {
     requestNextPharmNavigation();
   });
   pharmDetailForwardButton = forwardButton;
-  nav.append(searchButton, previousButton, homeButton, forwardButton);
+  const expandButton = document.createElement("button");
+  expandButton.type = "button";
+  expandButton.className = "pharm-detail-index-back pharm-detail-expand-toggle";
+  expandButton.addEventListener("click", () => {
+    togglePharmDetailExpanded();
+  });
+  pharmDetailExpandButton = expandButton;
+  nav.append(searchButton, previousButton, homeButton, forwardButton, expandButton);
   toolbar.append(nav);
   if (pharmVoiceControls) {
     toolbar.append(pharmVoiceControls);
   }
   pharmDrugDetail.append(toolbar);
   updatePharmNavigationControls();
+  updatePharmDetailExpandControl();
 }
 
 function setLectureModeActive(active = false) {
@@ -11275,6 +11363,7 @@ function linkOpeningReferencePreface(bubble, sourceText = "") {
       event.stopPropagation();
       openPharmDatabase(offlineLookupQuery(target.candidate), {
         openDetail: true,
+        expandDetail: true,
         autoFocus: false,
         detailType: target.candidate.type,
         fastDetail: true,
@@ -11310,7 +11399,15 @@ function linkBoundEncyclopediaTargetInBubble(bubble, target = null) {
   link.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    openPharmDetailCandidate({ type: candidate.type, item: candidate.item });
+    openPharmDatabase(offlineLookupQuery(candidate), {
+      openDetail: true,
+      expandDetail: true,
+      autoFocus: false,
+      detailType: candidate.type,
+      fastDetail: true,
+      highlightQuery: label,
+      targetCandidate: { type: candidate.type, item: candidate.item }
+    });
   });
   strong.replaceWith(link);
   return true;
@@ -11324,8 +11421,13 @@ function setBubbleText(bubble, role, text = "", editable = false, options = {}) 
 
   bubble.textContent = "";
   appendFormattedText(bubble, applyNclexEssentialMarkup(text));
-  linkOpeningReferencePreface(bubble, text);
-  linkBoundEncyclopediaTargetInBubble(bubble, options.boundEncyclopediaTarget || null);
+  const linkedBoundTarget = linkBoundEncyclopediaTargetInBubble(
+    bubble,
+    options.boundEncyclopediaTarget || null
+  );
+  if (!linkedBoundTarget) {
+    linkOpeningReferencePreface(bubble, text);
+  }
   linkEncyclopediaTermsInBubble(bubble, text);
 }
 
@@ -16119,6 +16221,9 @@ function normalizeLectureTopic(input = "") {
     .replace(/[?.!]+$/g, "")
     .replace(/\s+/g, " ")
     .trim();
+  if (offlineDoseUnitExpressionOnly(cleaned || input)) {
+    return cleaned || currentTopic;
+  }
   if (isHeartBlockLectureTopic(input) || isHeartBlockLectureTopic(cleaned)) {
     return "Atrioventricular heart blocks";
   }
@@ -16126,7 +16231,18 @@ function normalizeLectureTopic(input = "") {
     return "Antiarrhythmic medication classes";
   }
   const lookup = normalizeLectureLookupText(input) || cleaned;
-  const sharedIdentity = resolveEncyclopediaIdentity(lookup, { mode: "suggest", limit: 8 });
+  const directSharedIdentity = resolveEncyclopediaIdentity(cleaned || input, { mode: "suggest", limit: 8 });
+  const sharedIdentity = directSharedIdentity.mayAutoOpen || directSharedIdentity.suppressUnrelatedMatches === true
+    ? directSharedIdentity
+    : resolveEncyclopediaIdentity(lookup, { mode: "suggest", limit: 8 });
+  if (sharedIdentity.suppressUnrelatedMatches === true) {
+    return cleaned || currentTopic;
+  }
+  if (sharedIdentity.mayAutoOpen && sharedIdentity.preferred?.item) {
+    return sharedIdentity.preferred.type === "drug"
+      ? pharmDrugDisplayName(sharedIdentity.preferred.item)
+      : safeText(sharedIdentity.preferred.item.displayName || sharedIdentity.preferred.item.name || cleaned || currentTopic);
+  }
   const directPathology = lectureDirectCandidate(lookup, "pathology");
   const directDrug = lectureDirectCandidate(lookup, "drug");
   if (directDrug?.item?.name && (!directPathology || (hasMedicationLectureCue(lookup) && !hasPathologyLectureCue(lookup)))) {
@@ -16160,7 +16276,8 @@ function lectureDetails(topic) {
   const lookupTopic = normalizeLectureLookupText(topic) || topic;
   const lower = lookupTopic.toLowerCase();
   const sharedIdentity = resolveEncyclopediaIdentity(lookupTopic, { mode: "suggest", limit: 8 });
-  const suppressBareContentMatch = !lookupTopic.includes(" ") && !sharedIdentity.mayAutoOpen;
+  const suppressBareContentMatch = sharedIdentity.suppressUnrelatedMatches === true
+    || (!lookupTopic.includes(" ") && !sharedIdentity.mayAutoOpen);
   const pathologyMatch = suppressBareContentMatch ? null : (bestPathologyMatch(lookupTopic) || bestPathologyMatch(topic));
   const matchedDrug = suppressBareContentMatch ? null : (bestPharmMatch(lookupTopic, { requireIdentityMatch: true })
     || bestPharmMatch(topic, { requireIdentityMatch: true }));
@@ -18086,7 +18203,40 @@ const MEDICAL_ABBREVIATION_EXPANSIONS = [
   { short: "FHR", full: "fetal heart rate" },
   { short: "FOBT", full: "fecal occult blood test", aliases: ["occult blood test", "stool occult blood test", "stool blood test"] },
   { short: "FFR", full: "fractional flow reserve" },
-  { short: "GBS", full: "group B Streptococcus" },
+  {
+    short: "GBS",
+    full: "group B Streptococcus",
+    displayFull: "Guillain-Barre syndrome or group B Streptococcus (context dependent)",
+    contextRequired: true,
+    reviewedMeanings: [
+      {
+        type: "pathology",
+        canonicalTitle: "Guillain-Barre syndrome",
+        full: "Guillain-Barre syndrome",
+        preferredBare: true,
+        includePattern: /\b(?:syndrome|guillain|ascending weakness|ascending paralysis|areflexia|areflexic|absent reflex(?:es)?|hyporeflexia|neuropathy|paralysis|post[- ]?infectious|after diarrhea|after gastroenteritis|respiratory weakness|ventilatory weakness|albuminocytologic|ivig|plasmapheresis|plasma exchange)\b/i,
+        intentRoute: "reviewed-gbs-neurologic-owner"
+      },
+      {
+        type: "reference",
+        canonicalTitle: "GBS screen",
+        full: "group B Streptococcus screening",
+        includePattern: /\b(?:pregnan(?:cy|t)|prenatal|antenatal|labor|delivery|intrapartum|maternal|vaginal[- ]?rectal|culture|colonization|screen|screening|bacteriuria|membrane rupture|prophylaxis)\b/i,
+        intentRoute: "reviewed-gbs-obstetric-screen-owner"
+      },
+      {
+        type: "pathology",
+        canonicalTitle: "Group B streptococcal infection",
+        full: "group B streptococcal infection",
+        includePattern: /\b(?:newborn|neonatal|early[- ]?onset|late[- ]?onset|sepsis|meningitis|pneumonia|bacteremia|infection|infected|group b strep(?:tococcus|tococcal)?)\b/i,
+        intentRoute: "reviewed-gbs-infection-owner"
+      }
+    ],
+    sourceUrls: [
+      "https://www.ninds.nih.gov/health-information/disorders/guillain-barre-syndrome",
+      "https://www.cdc.gov/group-b-strep/testing/index.html"
+    ]
+  },
   { short: "GCS", full: "Glasgow Coma Scale" },
   { short: "GERD", full: "gastroesophageal reflux disease" },
   { short: "GFR", full: "glomerular filtration rate" },
@@ -18210,7 +18360,9 @@ function medicalAbbreviationEntriesForText(value = "", limit = 10) {
 
 function medicalAbbreviationSearchTermsForText(value = "") {
   return medicalAbbreviationEntriesForText(value, 20)
-    .flatMap((entry) => [entry.short, entry.full, ...(entry.aliases || [])])
+    .flatMap((entry) => entry.contextRequired === true
+      ? [entry.short]
+      : [entry.short, entry.full, ...(entry.aliases || [])])
     .map((term) => normalizePharmText(term))
     .filter(Boolean);
 }
@@ -18364,7 +18516,7 @@ function appendMedicalAbbreviationSection(container, pieces = []) {
   text.setAttribute("aria-hidden", "true");
   appendReadableDetailText(
     text,
-    entries.map((entry) => `${entry.short}: ${entry.full}`).join("; "),
+    entries.map((entry) => `${entry.short}: ${entry.displayFull || entry.full}`).join("; "),
     { currentLabel: "Abbreviations" }
   );
   toggle.addEventListener("click", () => {
@@ -18388,41 +18540,159 @@ function medicalWordPartText(part = {}) {
   return [rootText, note].filter(Boolean).join("; ");
 }
 
+function learnerSupportVisibleText(value, authoredSection = null) {
+  const standard = window.ANI_LEARNER_LANGUAGE_STANDARD;
+  if (authoredSection && value && typeof value === "object"
+    && standard && typeof standard.clinicalReferenceStructuredSectionProjection === "function") {
+    return safeText(standard.clinicalReferenceStructuredSectionProjection(authoredSection).text);
+  }
+  return safeText(value);
+}
+
+function learnerSupportSafetyVisible(label = "", authoredSection = null) {
+  return safeText(authoredSection && authoredSection.presentation).toLowerCase() === "urgent"
+    || /(?:urgent|warning|contraindication|adverse|toxicity|red flag|escalat|priority action|safety)/i.test(safeText(label));
+}
+
+function learnerSupportVisibleBlocks(sections = [], options = {}) {
+  const prefix = safeText(options.prefix || "visible-section");
+  return (Array.isArray(sections) ? sections : []).map((entry, index) => {
+    const source = entry && typeof entry === "object" && !Array.isArray(entry)
+      ? entry
+      : { label: Array.isArray(entry) ? entry[0] : "", value: Array.isArray(entry) ? entry[1] : entry };
+    const authoredSection = source.authoredSection || null;
+    const sourceIndex = Number.isInteger(authoredSection && authoredSection.sourceIndex)
+      ? authoredSection.sourceIndex
+      : index;
+    return {
+      id: safeText(source.id) || `${prefix}-${index + 1}`,
+      path: safeText(source.path) || (authoredSection
+        ? `sections.${sourceIndex}.value`
+        : `visibleSections.${index}`),
+      label: safeText(source.label),
+      text: learnerSupportVisibleText(
+        Object.prototype.hasOwnProperty.call(source, "learnerText") ? source.learnerText : source.value,
+        authoredSection
+      ),
+      safetyVisible: learnerSupportSafetyVisible(source.label, authoredSection),
+      sourceIndex
+    };
+  }).filter((block) => block.text);
+}
+
+function projectVisibleLearnerSupport(item = {}, sections = [], options = {}) {
+  const standard = window.ANI_LEARNER_LANGUAGE_STANDARD;
+  if (!standard || typeof standard.visibleLearnerSupportProjection !== "function") {
+    return { blocks: [], byId: new Map(), metrics: {} };
+  }
+  const blocks = learnerSupportVisibleBlocks(sections, options);
+  const projection = standard.visibleLearnerSupportProjection(item, blocks, {
+    maximumInferredGlossesPerBlock: 3
+  });
+  return {
+    ...projection,
+    byId: new Map(projection.blocks.map((block) => [block.id, block]))
+  };
+}
+
+function runtimeVisibleLearnerSupportBlocks(sourceCollection = "", item = {}) {
+  let sections = [];
+  let prefix = "visible-section";
+  if (sourceCollection === "pharmSearchableLabRanges") {
+    sections = labVisibleLearnerSections(item);
+    prefix = "lab-visible-section";
+  } else if (sourceCollection === "pathologyDiseases") {
+    sections = pathologyVisibleLearnerDetail(item).learnerSections;
+    prefix = "pathology-visible-section";
+  } else if (sourceCollection === "holisticRemedies") {
+    sections = holisticVisibleLearnerSections(item);
+    prefix = "holistic-visible-section";
+  } else if (sourceCollection === "pharmDrugs") {
+    sections = pharmacyVisibleLearnerSections(item);
+    prefix = "pharmacy-visible-section";
+  }
+  return learnerSupportVisibleBlocks(sections, { prefix });
+}
+
+function runtimeVisibleLearnerSupportProjection(sourceCollection = "", item = {}) {
+  const blocks = runtimeVisibleLearnerSupportBlocks(sourceCollection, item)
+    .map((block) => Object.freeze({ ...block }));
+  return Object.freeze({
+    schemaVersion: "ani-runtime-visible-learner-blocks-v1",
+    sourceCollection: safeText(sourceCollection),
+    blocks: Object.freeze(blocks)
+  });
+}
+
 function appendLearnerLanguageSupport(container, item = {}, options = {}) {
   if (!container || !item) return false;
   const standard = window.ANI_LEARNER_LANGUAGE_STANDARD;
   if (!standard || typeof standard.supportForItem !== "function") return false;
-  const support = standard.supportForItem(item, {
-    maxGlosses: 6,
-    maxInferredGlosses: 3,
-    visibleText: safeText(options.visibleText)
-  });
+  const projectedBlock = options.projectedBlock && typeof options.projectedBlock === "object"
+    ? options.projectedBlock
+    : null;
+  const support = projectedBlock
+    ? {
+        version: standard.version,
+        plainLanguage: safeText(item.plainLanguage || item.plainMeaning || item.termMeaning || item.literalMeaning),
+        glosses: Array.isArray(projectedBlock.glosses) ? projectedBlock.glosses : [],
+        analysis: { supportRecommended: true }
+      }
+    : standard.supportForItem(item, {
+        maxGlosses: 6,
+        maxInferredGlosses: 3,
+        visibleText: safeText(options.visibleText)
+      });
   const plainLanguage = options.includePlainLanguage === false ? "" : safeText(support.plainLanguage);
   const glosses = Array.isArray(support.glosses) ? support.glosses.filter((entry) => entry && entry.term && entry.plainLanguage) : [];
-  const hasReviewedGlosses = Boolean(standard.explicitGlosses?.(item)?.length);
-  if (!glosses.length || (!support.analysis?.supportRecommended && !hasReviewedGlosses)) return false;
+  const hasReviewedGlosses = projectedBlock
+    ? projectedBlock.hasValidExplicitGlosses === true
+    : Boolean(standard.explicitGlosses?.(item)?.some((entry) => Array.isArray(entry.sourceKeys) && entry.sourceKeys.length));
+  if ((!glosses.length && !(plainLanguage && hasReviewedGlosses))
+    || (!support.analysis?.supportRecommended && !hasReviewedGlosses)) return false;
 
   const existingText = normalizePharmText(container.textContent || "");
-  const uniquePlainLanguage = plainLanguage && !existingText.includes(normalizePharmText(plainLanguage)) ? plainLanguage : "";
-  const uniqueGlosses = glosses.filter((entry) => !existingText.includes(normalizePharmText(entry.plainLanguage)));
+  const visibleSupportText = safeText(projectedBlock?.text || options.visibleText);
+  const comparable = typeof standard.openingOwnershipComparable === "function"
+    ? standard.openingOwnershipComparable
+    : normalizePharmText;
+  const uniquePlainLanguage = plainLanguage
+    && comparable(visibleSupportText) !== comparable(plainLanguage)
+    ? plainLanguage
+    : "";
+  const uniqueGlosses = projectedBlock
+    ? glosses
+    : glosses.filter((entry) => !existingText.includes(normalizePharmText(entry.plainLanguage)));
   const reviewedPlainLanguage = hasReviewedGlosses ? uniquePlainLanguage : "";
   if (!reviewedPlainLanguage && !uniqueGlosses.length) return false;
 
   const section = document.createElement("section");
-  section.className = "learner-language-support";
+  section.className = ["learner-language-support", projectedBlock ? "is-section-adjacent" : ""]
+    .filter(Boolean).join(" ");
   section.dataset.learnerLanguageVersion = safeText(support.version || standard.version);
+  if (projectedBlock) {
+    section.dataset.learnerBlockId = safeText(projectedBlock.id);
+    section.dataset.learnerBlockPath = safeText(projectedBlock.path);
+    section.dataset.learnerSupportTrigger = safeText(projectedBlock.trigger);
+    section.dataset.safetyVisible = String(Boolean(projectedBlock.safetyVisible));
+  }
   section.setAttribute("aria-label", "Medical terms explained");
   const heading = document.createElement("strong");
-  heading.textContent = "Medical terms explained";
+  heading.textContent = safeText(options.heading) || "Medical terms explained";
   const grid = document.createElement("div");
   grid.className = "learner-language-grid";
   const currentLabel = safeText(options.currentLabel || item.name || item.displayName || item.generic || item.title);
 
-  const addRow = (label, value, className = "") => {
+  const addRow = (label, value, className = "", metadata = null) => {
     const text = safeText(value);
     if (!text) return;
     const row = document.createElement("div");
     row.className = ["learner-language-row", className].filter(Boolean).join(" ");
+    if (metadata) {
+      row.dataset.learnerTerm = safeText(metadata.term || label);
+      row.dataset.learnerSourceKind = safeText(metadata.kind);
+      row.dataset.learnerSourceKeys = Array.isArray(metadata.sourceKeys) ? metadata.sourceKeys.join("|") : "";
+    }
     const rowLabel = document.createElement("span");
     rowLabel.className = "learner-language-label";
     rowLabel.textContent = label;
@@ -18434,7 +18704,7 @@ function appendLearnerLanguageSupport(container, item = {}, options = {}) {
   };
 
   addRow("In everyday words", reviewedPlainLanguage, "is-plain-language");
-  uniqueGlosses.forEach((entry) => addRow(entry.term, entry.plainLanguage, "is-glossary-term"));
+  uniqueGlosses.forEach((entry) => addRow(entry.term, entry.plainLanguage, "is-glossary-term", entry));
   section.append(heading, grid);
   container.append(section);
   return true;
@@ -19436,6 +19706,364 @@ function encyclopediaIdentityPrimaryTerms(candidate = {}) {
   return [item.name, item.displayName];
 }
 
+const ENCYCLOPEDIA_IDENTITY_TERM_KIND_RANK = Object.freeze({
+  "preferred-bare-alias": 500,
+  abbreviation: 400,
+  "acronym-alias": 350,
+  "identity-alias": 300,
+  brand: 200,
+  misspelling: 100
+});
+
+function encyclopediaIdentityOwnerRank(candidate = {}) {
+  return Math.max(0, ...(candidate.termKinds || [])
+    .map((kind) => ENCYCLOPEDIA_IDENTITY_TERM_KIND_RANK[kind] || 0));
+}
+
+function stableEncyclopediaIdentityOwners(candidates = []) {
+  return Array.from(new Map((candidates || [])
+    .filter((candidate) => candidate?.type && candidate?.item)
+    .map((candidate) => [offlineLookupEntityKey(candidate), candidate])).values())
+    .sort((a, b) => offlineLookupEntityLabel(a).localeCompare(offlineLookupEntityLabel(b))
+      || safeText(a.type).localeCompare(safeText(b.type)));
+}
+
+function highestRankedEncyclopediaIdentityOwners(candidates = []) {
+  const ranked = stableEncyclopediaIdentityOwners(candidates);
+  const highestRank = Math.max(0, ...ranked.map(encyclopediaIdentityOwnerRank));
+  return highestRank > 0
+    ? ranked.filter((candidate) => encyclopediaIdentityOwnerRank(candidate) === highestRank)
+    : ranked;
+}
+
+function medicalAbbreviationEntryForExactCore(core = "") {
+  return MEDICAL_ABBREVIATION_EXPANSIONS.find((entry) => (
+    normalizePharmText(entry.short) === core
+  )) || null;
+}
+
+function reviewedMedicalAbbreviationExpansionResolution(core = "") {
+  const entry = medicalAbbreviationEntryForExactCore(core);
+  if (!entry || entry.contextRequired === true) return null;
+  const fullCore = normalizePharmText(entry.full);
+  const owners = highestRankedEncyclopediaIdentityOwners(
+    fastVoiceIdentityCandidates(fullCore).filter((candidate) => (
+      encyclopediaIdentityPrimaryTerms(candidate)
+        .some((term) => normalizePharmText(term) === fullCore)
+    ))
+  );
+  // This learner-display registry explains abbreviations but is not card
+  // ownership metadata. It may surface the exact full-form destination as a
+  // suggestion, but automatic navigation requires an installed card alias,
+  // abbreviation, or reviewed preferred-bare owner.
+  return {
+    recognized: true,
+    preferred: null,
+    candidates: owners,
+    matchKind: owners.length > 1
+      ? "exact-abbreviation-ambiguity"
+      : owners.length === 1
+        ? "reviewed-abbreviation-owner-missing"
+        : "unresolved-reviewed-abbreviation",
+    intentRoute: `reviewed-abbreviation-owner-missing-${normalizePharmText(entry.short)}`
+  };
+}
+
+function reviewedSharedContextualIdentityResolution(input = "") {
+  const route = fastReviewedContextualIdentityResolution(input);
+  if (!route) return null;
+  if (route.ambiguousIdentity === true) {
+    return {
+      recognized: true,
+      preferred: null,
+      candidates: stableEncyclopediaIdentityOwners(route.ambiguityCandidates || []),
+      matchKind: "reviewed-contextual-ambiguity",
+      intentRoute: route.intentRoute || "reviewed-contextual-identity-required"
+    };
+  }
+  if (!route.type || !route.item) return null;
+  return {
+    recognized: true,
+    preferred: route,
+    candidates: [route],
+    matchKind: "reviewed-contextual-identity",
+    intentRoute: route.intentRoute || "reviewed-contextual-identity"
+  };
+}
+
+function explicitMedicalAbbreviationFullFormResolution(input = "") {
+  const normalized = normalizePharmText(applyClinicalSpeechFixups(input) || input);
+  if (!normalized) return null;
+  const entry = MEDICAL_ABBREVIATION_EXPANSIONS.find((candidate) => {
+    const short = normalizePharmText(candidate.short);
+    const full = normalizePharmText(candidate.full);
+    return short && full && (normalized === `${short} ${full}` || normalized === `${full} ${short}`);
+  });
+  if (!entry) return null;
+  const full = normalizePharmText(entry.full);
+  const exactOwners = stableEncyclopediaIdentityOwners(fastVoiceIdentityCandidates(full));
+  const canonicalOwners = exactOwners.filter((candidate) => (
+    encyclopediaIdentityPrimaryTerms(candidate)
+      .some((term) => normalizePharmText(term) === full)
+  ));
+  const combinedExplicitOwners = stableEncyclopediaIdentityOwners(
+    fastVoiceIdentityCandidates(input).filter((candidate) => (
+      Array.isArray(candidate.termKinds) && candidate.termKinds.includes("abbreviation")
+    ))
+  );
+  // A canonical full-form destination remains authoritative. If the full form
+  // itself is an alias shared by multiple cards, one exact authored
+  // abbreviation owner may still resolve the combined "SHORT full form"
+  // expression. Multiple authored owners stay ambiguous.
+  const owners = canonicalOwners.length
+    ? canonicalOwners
+    : combinedExplicitOwners.length === 1
+      ? combinedExplicitOwners
+      : exactOwners;
+  if (!owners.length) return null;
+  return {
+    recognized: true,
+    preferred: owners.length === 1 ? owners[0] : null,
+    candidates: owners,
+    matchKind: owners.length === 1
+      ? "reviewed-abbreviation-full-form-identity"
+      : "reviewed-abbreviation-full-form-ambiguity",
+    intentRoute: `reviewed-abbreviation-full-form-${normalizePharmText(entry.short)}`
+  };
+}
+
+function reviewedContextualMedicalAbbreviationResolution(input = "", core = "") {
+  const normalized = normalizePharmText(applyClinicalSpeechFixups(input) || input);
+  if (!normalized) return null;
+  const entry = MEDICAL_ABBREVIATION_EXPANSIONS.find((candidate) => (
+    candidate.contextRequired === true
+    && Array.isArray(candidate.reviewedMeanings)
+    && new RegExp(`\\b${escapeRegExpText(normalizePharmText(candidate.short))}\\b`, "i").test(normalized)
+  ));
+  if (!entry) return null;
+  const exactShortOwners = fastVoiceIdentityCandidates(entry.short);
+  const reviewedOwnerTitles = new Set(entry.reviewedMeanings
+    .filter((meaning) => meaning.type !== "reference")
+    .map((meaning) => `${meaning.type}:${normalizePharmText(meaning.canonicalTitle)}`));
+  const boundShortOwners = exactShortOwners.filter((owner) => reviewedOwnerTitles.has(
+    `${owner.type}:${normalizePharmText(owner.item?.name || owner.item?.displayName)}`
+  ));
+  // The reviewed contextual policy may not fabricate ownership. If a future
+  // catalog edit removes or adds a bare GBS owner, fall back to the exact
+  // installed-card contenders and require explicit user selection.
+  if (boundShortOwners.length !== reviewedOwnerTitles.size
+    || exactShortOwners.some((owner) => !boundShortOwners.includes(owner))) {
+    return {
+      recognized: true,
+      preferred: null,
+      candidates: stableEncyclopediaIdentityOwners(exactShortOwners),
+      matchKind: "exact-abbreviation-ambiguity",
+      intentRoute: "reviewed-abbreviation-owner-drift"
+    };
+  }
+  if (/\b(?:i|my|me|we|our|patient|client|child|baby|toddler)\b/.test(normalized)) {
+    return {
+      recognized: true,
+      preferred: null,
+      candidates: stableEncyclopediaIdentityOwners(exactShortOwners),
+      matchKind: "reviewed-abbreviation-clinical-narrative",
+      intentRoute: "reviewed-abbreviation-clinical-narrative"
+    };
+  }
+  const matchedMeanings = entry.reviewedMeanings.filter((meaning) => (
+    meaning.includePattern instanceof RegExp && meaning.includePattern.test(normalized)
+  ));
+  const selectedMeanings = matchedMeanings.length
+    ? matchedMeanings
+    : entry.reviewedMeanings.filter((meaning) => meaning.preferredBare === true);
+  const candidates = stableEncyclopediaIdentityOwners(selectedMeanings.map((meaning) => {
+    const candidate = fastReviewedOwnerCandidate(
+      meaning.type,
+      meaning.canonicalTitle,
+      meaning.intentRoute,
+      { exactIdentity: false, score: 3950 }
+    );
+    return candidate ? {
+      ...candidate,
+      reviewedAbbreviation: entry.short,
+      reviewedAbbreviationMeaning: meaning.full,
+      termKinds: [meaning.preferredBare ? "preferred-bare-alias" : "abbreviation"]
+    } : null;
+  }));
+  if (candidates.length === 1) {
+    return {
+      recognized: true,
+      preferred: candidates[0],
+      candidates,
+      matchKind: matchedMeanings.length ? "reviewed-contextual-abbreviation" : "reviewed-preferred-abbreviation",
+      intentRoute: candidates[0].intentRoute
+    };
+  }
+  return {
+    recognized: true,
+    preferred: null,
+    candidates: candidates.length ? candidates : stableEncyclopediaIdentityOwners(exactShortOwners),
+    matchKind: "reviewed-abbreviation-ambiguity",
+    intentRoute: "reviewed-abbreviation-context-required"
+  };
+}
+
+function reviewedMedicalAbbreviationPrefixSuggestionResolution(input = "", core = "") {
+  const normalized = normalizePharmText(applyClinicalSpeechFixups(input) || input);
+  if (!normalized || !core.includes(" ")) return null;
+  const words = normalized.split(" ").filter(Boolean);
+  const matches = MEDICAL_ABBREVIATION_EXPANSIONS.map((entry) => {
+    if (entry.contextRequired !== true || !Array.isArray(entry.reviewedMeanings)) return null;
+    const short = normalizePharmText(entry.short);
+    const prefix = words.find((word) => word.length === 2
+      && short.length > word.length
+      && short.startsWith(word));
+    return prefix ? { entry, prefix } : null;
+  }).filter(Boolean);
+  // An incomplete abbreviation is recommendation evidence only. If more than
+  // one reviewed abbreviation starts with the same fragment, do not guess.
+  if (matches.length !== 1) return null;
+  const { entry, prefix } = matches[0];
+  const matchedMeanings = entry.reviewedMeanings.filter((meaning) => (
+    meaning.includePattern instanceof RegExp && meaning.includePattern.test(normalized)
+  ));
+  const selectedMeanings = matchedMeanings.length
+    ? matchedMeanings
+    : entry.reviewedMeanings.filter((meaning) => meaning.preferredBare === true);
+  const candidates = stableEncyclopediaIdentityOwners(selectedMeanings.map((meaning) => {
+    const candidate = fastReviewedOwnerCandidate(
+      meaning.type,
+      meaning.canonicalTitle,
+      meaning.intentRoute,
+      { exactIdentity: false, score: 3940 }
+    );
+    return candidate ? {
+      ...candidate,
+      reviewedAbbreviation: entry.short,
+      reviewedAbbreviationPrefix: prefix,
+      reviewedAbbreviationMeaning: meaning.full,
+      termKinds: [meaning.preferredBare ? "preferred-bare-alias" : "abbreviation"]
+    } : null;
+  }));
+  if (!candidates.length) return null;
+  return {
+    recognized: true,
+    preferred: null,
+    candidates,
+    matchKind: candidates.length > 1
+      ? "reviewed-abbreviation-prefix-ambiguity"
+      : "reviewed-abbreviation-prefix-suggestion",
+    intentRoute: `reviewed-abbreviation-prefix-${prefix}-suggestion`
+  };
+}
+
+function installedAbbreviationTermsInQuery(input = "") {
+  const rawInput = safeText(input);
+  const normalized = normalizePharmText(applyClinicalSpeechFixups(rawInput) || rawInput);
+  if (!normalized) return [];
+  const words = normalized.split(" ").filter(Boolean);
+  const possibleTerms = new Set(words);
+  for (let width = 2; width <= Math.min(3, words.length); width += 1) {
+    for (let index = 0; index <= words.length - width; index += 1) {
+      possibleTerms.add(words.slice(index, index + width).join(" "));
+    }
+  }
+  const identityIndex = getFastVoiceIdentityIndex();
+  return Array.from(possibleTerms).map((term) => {
+    const isNumericUnit = ["mcg", "ug", "mg", "g", "kg", "ml", "l", "meq", "mmol", "unit", "units", "mmhg", "bpm"].includes(term)
+      && new RegExp(`(?:\\b\\d+(?:\\.\\d+)?\\s*${escapeRegExpText(term)}\\b|\\b${escapeRegExpText(term)}\\s*\\/(?:kg|ml|l|min|hr|day)\\b)`, "i").test(rawInput);
+    if (isNumericUnit) return { term, owners: [] };
+    const owners = identityIndex.get(term) || [];
+    const recognized = owners.some((owner) => (
+      owner.termKinds?.includes("abbreviation")
+      || owner.termKinds?.includes("acronym-alias")
+      || owner.termKinds?.includes("preferred-bare-alias")
+    ));
+    return { term, owners: recognized ? owners : [] };
+  }).filter((record) => record.owners.length);
+}
+
+function contextualInstalledAbbreviationResolution(input = "") {
+  const normalized = normalizePharmText(applyClinicalSpeechFixups(input) || input);
+  const installedTerms = installedAbbreviationTermsInQuery(input);
+  if (installedTerms.length !== 1) return null;
+  const { term, owners } = installedTerms[0];
+  const stableOwners = stableEncyclopediaIdentityOwners(owners);
+  if (stableOwners.length < 2) return null;
+  const preferredOwners = stableOwners.filter((owner) => (
+    owner.termKinds?.includes("preferred-bare-alias")
+    || (Array.isArray(owner.item?.preferredBareAliases)
+      && owner.item.preferredBareAliases.some((value) => normalizePharmText(value) === term))
+  ));
+  const personalNarrative = /\b(?:i|my|me|we|our|patient|client|child|baby|toddler)\b/.test(normalized);
+  const typeCues = new Set();
+  if (/\b(?:level|levels|range|ranges|normal|serum|plasma|blood value|lab|laboratory|trough|peak|therapeutic value)\b/.test(normalized)) {
+    typeCues.add("lab");
+  }
+  if (/\b(?:drug|medication|medicine|med|dose|dosing|administer|administration|injection|tablet|capsule|side effect|adverse effect|contraindication|interaction)\b/.test(normalized)) {
+    typeCues.add("drug");
+  }
+  if (/\b(?:syndrome|disease|disorder|condition|symptom|symptoms|signs|pathology|pathophysiology|diagnosis|cause|causes|complication|complications)\b/.test(normalized)) {
+    typeCues.add("pathology");
+  }
+  if (/\b(?:screen|screening|procedure|surgery|anatomy|physiology|maneuver|assessment|score|scale)\b/.test(normalized)) {
+    typeCues.add("reference");
+  }
+  if (/\b(?:supplement|herb|herbal|remedy|complementary|integrative)\b/.test(normalized)) {
+    typeCues.add("holistic");
+  }
+  const termPattern = term.split(/\s+/).filter(Boolean).map(escapeRegExpText).join("\\s+");
+  const contextualIdentityCore = normalizePharmText(termPattern
+    ? normalized.replace(new RegExp(`\\b${termPattern}\\b`, "gi"), " ")
+    : normalized);
+  const explicitlyNamedContextOwners = contextualIdentityCore
+    ? stableOwners.filter((owner) => encyclopediaIdentityPrimaryTerms(owner)
+        .map((value) => normalizePharmText(value))
+        .filter(Boolean)
+        .some((primaryTerm) => primaryTerm === contextualIdentityCore
+          || (primaryTerm.length >= 4 && new RegExp(`\\b${escapeRegExpText(primaryTerm)}\\b`, "i")
+            .test(contextualIdentityCore))))
+    : [];
+  const contextualOwners = typeCues.size === 1
+    ? stableOwners.filter((owner) => owner.type === Array.from(typeCues)[0])
+    : [];
+  const explicitlyNamedContextOwner = explicitlyNamedContextOwners.length === 1
+    && (typeCues.size === 0 || typeCues.has(explicitlyNamedContextOwners[0].type))
+    ? explicitlyNamedContextOwners[0]
+    : null;
+  const selected = !personalNarrative && explicitlyNamedContextOwner
+    ? explicitlyNamedContextOwner
+    : !personalNarrative && contextualOwners.length === 1
+      ? contextualOwners[0]
+    : !personalNarrative && typeCues.size === 0 && preferredOwners.length === 1
+      ? preferredOwners[0]
+      : null;
+  if (selected) {
+    return {
+      recognized: true,
+      preferred: selected,
+      candidates: [selected, ...stableOwners.filter((owner) => owner !== selected)],
+      matchKind: explicitlyNamedContextOwner
+        ? "contextual-abbreviation-named-owner"
+        : contextualOwners.length === 1
+          ? "contextual-abbreviation"
+        : "reviewed-preferred-abbreviation",
+      intentRoute: `installed-abbreviation-${term}-${selected.type}`
+    };
+  }
+  return {
+    recognized: true,
+    preferred: null,
+    candidates: stableOwners,
+    matchKind: personalNarrative
+      ? "abbreviation-clinical-narrative"
+      : typeCues.size > 1
+        ? "contextual-abbreviation-ambiguity"
+        : "exact-abbreviation-ambiguity",
+    intentRoute: `installed-abbreviation-${term}-context-required`
+  };
+}
+
 /*
  * One identity resolver serves encyclopedia typing, chat, lecture, and voice
  * navigation. Body-text relevance is intentionally excluded: a short fragment
@@ -19451,21 +20079,103 @@ function resolveEncyclopediaIdentity(input = "", options = {}) {
   }
 
   const reviewed = REVIEWED_ENCYCLOPEDIA_PREFIX_PRIORITIES[core] || null;
-  const exactOwners = fastVoiceIdentityCandidates(core);
+  const exactOwners = fastVoiceIdentityCandidates(input);
   const prefixOwners = fastVoiceIdentitySearchCandidates(core, Math.max(limit * 3, 18));
   const deduped = Array.from(new Map([...exactOwners, ...prefixOwners]
     .filter((candidate) => candidate?.type && candidate?.item)
     .map((candidate) => [offlineLookupEntityKey(candidate), candidate])).values());
   const primaryExactOwners = deduped.filter((candidate) => encyclopediaIdentityPrimaryTerms(candidate)
     .some((term) => normalizePharmText(term) === core));
+  const primaryExactOwnerTypes = new Set(primaryExactOwners.map((candidate) => candidate.type));
+  const unqualifiedPrimaryOwners = primaryExactOwners.filter((candidate) => (
+    !safeText(candidate.item?.populationGroup).trim()
+  ));
+  const uniqueUnqualifiedPrimaryOwner = primaryExactOwners.length > 1
+    && primaryExactOwnerTypes.size === 1
+    && unqualifiedPrimaryOwners.length === 1
+    && primaryExactOwners.every((candidate) => (
+      candidate === unqualifiedPrimaryOwners[0]
+      || safeText(candidate.item?.populationGroup).trim()
+    ))
+    ? unqualifiedPrimaryOwners[0]
+    : null;
+  // When one base card and one or more explicitly population-qualified cards
+  // share a canonical label, the bare label belongs to the base card. The
+  // qualified aliases remain exact routes to their own population records.
+  const canonicalExactOwner = primaryExactOwners.length === 1
+    ? primaryExactOwners[0]
+    : uniqueUnqualifiedPrimaryOwner;
+  const reviewedContextualIdentity = reviewedSharedContextualIdentityResolution(fixed);
+  const contextualAbbreviation = reviewedContextualIdentity
+    || (canonicalExactOwner
+      ? null
+      : reviewedContextualMedicalAbbreviationResolution(fixed, core)
+        || explicitMedicalAbbreviationFullFormResolution(fixed)
+        || contextualInstalledAbbreviationResolution(input));
+  const preferredBareOwners = canonicalExactOwner || contextualAbbreviation
+    ? []
+    : exactOwners.filter((candidate) => (
+      candidate.termKinds?.includes("preferred-bare-alias")
+      || (Array.isArray(candidate.item?.preferredBareAliases)
+        && candidate.item.preferredBareAliases.some((term) => normalizePharmText(term) === core))
+    ));
+  const preferredBareOwner = preferredBareOwners.length === 1 ? preferredBareOwners[0] : null;
+  const expansionAbbreviation = canonicalExactOwner
+    || contextualAbbreviation
+    || preferredBareOwner
+    || exactOwners.length
+    ? null
+    : reviewedMedicalAbbreviationExpansionResolution(core);
+  const incompleteAbbreviationPrefix = canonicalExactOwner
+    || contextualAbbreviation
+    || preferredBareOwner
+    || exactOwners.length
+    ? null
+    : reviewedMedicalAbbreviationPrefixSuggestionResolution(fixed, core);
+  const abbreviationResolution = contextualAbbreviation
+    || expansionAbbreviation
+    || incompleteAbbreviationPrefix;
   const reviewedOwner = reviewed
     ? deduped.find((candidate) => candidate.type === reviewed.type
       && encyclopediaIdentityPrimaryTerms(candidate)
         .some((term) => normalizePharmText(term) === reviewed.identity)) || null
     : null;
-  const exactOwner = primaryExactOwners.length === 1
-    ? primaryExactOwners[0]
-    : (exactOwners.length === 1 ? exactOwners[0] : null);
+  const exactOwner = canonicalExactOwner
+    || preferredBareOwner
+    || (exactOwners.length === 1 ? exactOwners[0] : null);
+  const abbreviationOwner = abbreviationResolution?.preferred || null;
+  const exactAmbiguityOwners = !canonicalExactOwner
+    && !preferredBareOwner
+    && !abbreviationOwner
+    && exactOwners.length > 1
+    ? stableEncyclopediaIdentityOwners(exactOwners)
+    : [];
+  const abbreviationAmbiguityOwners = !abbreviationOwner && abbreviationResolution?.recognized === true
+    ? stableEncyclopediaIdentityOwners(abbreviationResolution.candidates || [])
+    : [];
+  const ambiguityOwners = abbreviationAmbiguityOwners.length
+    ? abbreviationAmbiguityOwners
+    : exactAmbiguityOwners;
+  if (ambiguityOwners.length || (abbreviationResolution?.recognized === true && !abbreviationOwner)) {
+    return {
+      core,
+      candidates: ambiguityOwners.slice(0, limit).map((candidate) => ({
+        ...candidate,
+        ambiguousIdentity: true,
+        identitySuggestionOnly: true,
+        mayAutoOpen: false
+      })),
+      preferred: null,
+      matchKind: abbreviationResolution?.matchKind
+        || (exactAmbiguityOwners.length ? "exact-identity-ambiguity" : "unresolved-reviewed-abbreviation"),
+      unique: false,
+      mayAutoOpen: false,
+      reviewed: Boolean(abbreviationResolution),
+      recognizedAbbreviation: Boolean(abbreviationResolution),
+      suppressUnrelatedMatches: true,
+      intentRoute: abbreviationResolution?.intentRoute || "exact-identity-context-required"
+    };
+  }
   // Sound-alike medication help is suggestion-only. When the reviewed
   // phonetic index already has a candidate, do not spend time on fuzzy search
   // and never convert that sound-alike into an automatic navigation route.
@@ -19507,8 +20217,19 @@ function resolveEncyclopediaIdentity(input = "", options = {}) {
         mayAutoOpen: false
       }))
     : [];
-  const preferred = reviewedOwner || exactOwner || safeNearIdentityOwner;
-  const matchKind = reviewedOwner
+  const preferred = canonicalExactOwner
+    || preferredBareOwner
+    || abbreviationOwner
+    || exactOwner
+    || reviewedOwner
+    || safeNearIdentityOwner;
+  const matchKind = canonicalExactOwner
+    ? "exact-identity"
+    : preferredBareOwner
+      ? "reviewed-preferred-abbreviation"
+      : abbreviationOwner
+        ? abbreviationResolution.matchKind
+    : reviewedOwner
     ? "reviewed-prefix"
     : exactOwner
       ? "exact-identity"
@@ -19524,18 +20245,41 @@ function resolveEncyclopediaIdentity(input = "", options = {}) {
     : safeNearIdentityAmbiguities.length
       ? safeNearIdentityAmbiguities
       : deduped;
+  const unresolvedShortPrefix = !preferred
+    && matchKind === "prefix-suggestions"
+    && core.length === 2
+    && !core.includes(" ")
+    && candidates.length > 0;
+  const visibleCandidates = candidates.slice(0, limit).map((candidate) => (
+    unresolvedShortPrefix ? {
+      ...candidate,
+      ambiguousIdentity: true,
+      identitySuggestionOnly: true,
+      mayAutoOpen: false
+    } : candidate
+  ));
   return {
     core,
-    candidates: candidates.slice(0, limit),
+    candidates: visibleCandidates,
     preferred,
     matchKind,
-    unique: Boolean(preferred) && (reviewedOwner
+    unique: Boolean(preferred) && (canonicalExactOwner
+      ? true
+      : preferredBareOwner
+        ? true
+        : abbreviationOwner
+          ? true
+      : reviewedOwner
       ? true
       : safeNearIdentityOwner
         ? true
         : primaryExactOwners.length === 1 || exactOwners.length === 1),
     mayAutoOpen: Boolean(preferred),
-    reviewed: Boolean(reviewedOwner)
+    reviewed: Boolean(reviewedOwner || preferredBareOwner || abbreviationOwner),
+    recognizedAbbreviation: Boolean(preferredBareOwner || abbreviationResolution),
+    suppressUnrelatedMatches: unresolvedShortPrefix,
+    intentRoute: abbreviationResolution?.intentRoute
+      || (unresolvedShortPrefix ? "short-prefix-suggestion-only" : "")
   };
 }
 
@@ -19634,7 +20378,23 @@ function responsiveEncyclopediaSearchMatches(input = "") {
     };
   }
   const types = ["lab", "pathology", "reference", "holistic", "drug"];
+  const exactPrioritySource = responsiveEncyclopediaExactPriority(input);
   const sharedIdentityResolution = resolveEncyclopediaIdentity(input, { mode: "suggest", limit: 8 });
+  if (!exactPrioritySource && sharedIdentityResolution.suppressUnrelatedMatches === true) {
+    const groups = { lab: [], pathology: [], reference: [], holistic: [], drug: [] };
+    sharedIdentityResolution.candidates.forEach((candidate) => {
+      if (groups[candidate.type] && !groups[candidate.type].includes(candidate.item)) {
+        groups[candidate.type].push(candidate.item);
+      }
+    });
+    return {
+      ...groups,
+      preferred: null,
+      candidateCount: sharedIdentityResolution.candidates.length,
+      ambiguousIdentity: true,
+      matchKind: sharedIdentityResolution.matchKind
+    };
+  }
   const candidateMap = new Map();
   const add = (type, item, fastBoost = 0, fastEvidenceScore = 0, fastMatchCount = 0) => {
     if (!item) return;
@@ -19656,7 +20416,6 @@ function responsiveEncyclopediaSearchMatches(input = "") {
     candidate.fastEvidenceScore,
     candidate.fastMatchCount
   ));
-  const exactPrioritySource = responsiveEncyclopediaExactPriority(input);
   if (exactPrioritySource) add(
     exactPrioritySource.type,
     exactPrioritySource.item,
@@ -19930,8 +20689,14 @@ function medicalSearchAssistCandidates(input = "", limit = 6) {
     item: candidate.item,
     label: offlineLookupEntityLabel(candidate),
     kind: offlineLookupEntityKind(candidate),
-    matchKind: candidate === identity.preferred ? identity.matchKind : "prefix-suggestion",
-    mayAutoOpen: candidate === identity.preferred && identity.mayAutoOpen
+    matchKind: candidate === identity.preferred || identity.suppressUnrelatedMatches === true
+      ? identity.matchKind
+      : "prefix-suggestion",
+    mayAutoOpen: candidate === identity.preferred && identity.mayAutoOpen,
+    ambiguousIdentity: candidate.ambiguousIdentity === true || identity.suppressUnrelatedMatches === true,
+    identitySuggestionOnly: candidate.identitySuggestionOnly === true || identity.suppressUnrelatedMatches === true,
+    termKinds: Array.isArray(candidate.termKinds) ? [...candidate.termKinds] : [],
+    sourceFields: Array.isArray(candidate.sourceFields) ? [...candidate.sourceFields] : []
   }));
   if (!candidates.length) {
     medicalPhoneticIdentityCandidates(input, limit).forEach((candidate) => candidates.push({
@@ -19952,7 +20717,9 @@ function medicalSearchAssistCandidates(input = "", limit = 6) {
       .slice(0, Math.max(1, limit)),
     preferred: identity.preferred,
     matchKind: identity.matchKind,
-    mayAutoOpen: identity.mayAutoOpen
+    mayAutoOpen: identity.mayAutoOpen,
+    ambiguousIdentity: identity.suppressUnrelatedMatches === true,
+    recognizedAbbreviation: identity.recognizedAbbreviation === true
   };
 }
 
@@ -25893,6 +26660,10 @@ function clinicalReferenceResultMeaningRows(entry = {}) {
 }
 
 function clinicalReferenceResultMeaningText(entry = {}) {
+  const standard = window.ANI_LEARNER_LANGUAGE_STANDARD;
+  if (standard && typeof standard.clinicalReferenceResultMeaningText === "function") {
+    return safeText(standard.clinicalReferenceResultMeaningText(entry));
+  }
   return clinicalReferenceResultMeaningRows(entry)
     .map((row) => `${row.label}: ${row.meaning}`)
     .join(" ");
@@ -25900,15 +26671,26 @@ function clinicalReferenceResultMeaningText(entry = {}) {
 
 function clinicalReferenceSectionRecords(entry = {}) {
   return (Array.isArray(entry.sections) ? entry.sections : [])
-    .map((section) => {
+    .map((section, sourceIndex) => {
       if (Array.isArray(section)) {
-        return { label: safeText(section[0]), value: section[1], presentation: "" };
+        return {
+          id: "",
+          label: safeText(section[0]),
+          value: section[1],
+          presentation: "",
+          defaultOpen: false,
+          sourceIndex,
+          source: section
+        };
       }
       return {
+        id: safeText(section?.id || section?.sectionId),
         label: safeText(section?.label || section?.heading || section?.title),
         value: section?.text || section?.value || section?.content || section?.description,
         presentation: safeText(section?.presentation),
-        defaultOpen: section?.defaultOpen === true
+        defaultOpen: section?.defaultOpen === true,
+        sourceIndex,
+        source: section
       };
     })
     .filter((section) => section.label && section.value);
@@ -25917,6 +26699,30 @@ function clinicalReferenceSectionRecords(entry = {}) {
 function clinicalReferenceSectionPairs(entry = {}) {
   return clinicalReferenceSectionRecords(entry)
     .map((section) => [section.label, section.value]);
+}
+
+function clinicalReferenceVisibleSectionProjection(entry = {}, options = {}) {
+  const sectionRecords = Array.isArray(options.sectionRecords)
+    ? options.sectionRecords
+    : clinicalReferenceSectionRecords(entry);
+  const standard = window.ANI_LEARNER_LANGUAGE_STANDARD;
+  if (standard && typeof standard.clinicalReferenceOpeningProjection === "function") {
+    return standard.clinicalReferenceOpeningProjection(entry, { ...options, sectionRecords });
+  }
+  const hasQuickAnswerOverride = Object.prototype.hasOwnProperty.call(options, "quickAnswerOverride");
+  const quickAnswer = hasQuickAnswerOverride
+    ? safeText(options.quickAnswerOverride)
+    : safeText(entry.quickAnswer || entry.summary);
+  const whyItMatters = safeText(entry.whyItMatters);
+  return {
+    schemaVersion: "ani-clinical-reference-opening-fallback-v1",
+    quickAnswer,
+    whyItMatters,
+    learnerSupportText: [quickAnswer, whyItMatters].filter(Boolean).join(" "),
+    sectionRecords,
+    whySuffixSplit: false,
+    suppressedSectionIndexes: []
+  };
 }
 
 function clinicalReferenceIdentityTerms(entry = {}) {
@@ -26170,59 +26976,72 @@ function fastIdentityText(value = "") {
   return safeText(value?.name || value?.displayName || value?.brand || value?.label || value?.term || "");
 }
 
+function isAcronymShapedIdentityAlias(value = "") {
+  const text = fastIdentityText(value).trim();
+  if (!text || text.length > 16 || text.split(/\s+/).length > 2) return false;
+  return /[A-Z].*[A-Z]/.test(text) || /[A-Za-z].*\d|\d.*[A-Za-z]/.test(text);
+}
+
 function getFastVoiceIdentityIndex() {
   if (fastVoiceIdentityIndex) return fastVoiceIdentityIndex;
   const index = new Map();
-  const register = (type, item, values = []) => {
-    const seenTerms = new Set();
-    values.flat().forEach((value) => {
-      const key = normalizePharmText(fastIdentityText(value));
-      if (!key || seenTerms.has(key)) return;
-      seenTerms.add(key);
-      const owners = index.get(key) || [];
-      if (!owners.some((owner) => owner.type === type && owner.item === item)) {
-        owners.push({ type, item });
-        index.set(key, owners);
-      }
+  const register = (type, item, groups = []) => {
+    groups.forEach((group) => {
+      const declaredTermKind = safeText(group?.termKind || "identity-alias");
+      const sourceField = safeText(group?.sourceField || "aliases");
+      (Array.isArray(group?.values) ? group.values.flat() : [group?.values]).forEach((value) => {
+        const termKind = declaredTermKind === "identity-alias" && isAcronymShapedIdentityAlias(value)
+          ? "acronym-alias"
+          : declaredTermKind;
+        const key = normalizePharmText(fastIdentityText(value));
+        if (!key) return;
+        const owners = index.get(key) || [];
+        let owner = owners.find((candidate) => candidate.type === type && candidate.item === item);
+        if (!owner) {
+          owner = { type, item, termKinds: [], sourceFields: [], matchedIdentity: key };
+          owners.push(owner);
+          index.set(key, owners);
+        }
+        if (!owner.termKinds.includes(termKind)) owner.termKinds.push(termKind);
+        if (!owner.sourceFields.includes(sourceField)) owner.sourceFields.push(sourceField);
+      });
     });
   };
   pathologyDiseases.forEach((item) => register("pathology", item, [
-    item.name,
-    item.displayName,
-    item.aliases || [],
-    item.abbreviations || [],
-    item.commonMisspellings || []
+    { values: [item.name, item.displayName], termKind: "canonical", sourceField: "name/displayName" },
+    { values: item.preferredBareAliases || [], termKind: "preferred-bare-alias", sourceField: "preferredBareAliases" },
+    { values: item.abbreviations || [], termKind: "abbreviation", sourceField: "abbreviations" },
+    { values: item.aliases || [], termKind: "identity-alias", sourceField: "aliases" },
+    { values: item.commonMisspellings || [], termKind: "misspelling", sourceField: "commonMisspellings" }
   ]));
   clinicalReferenceEntries.forEach((item) => register("reference", item, [
-    item.name,
-    item.displayName,
-    item.fullForm,
-    item.aliases || [],
-    item.abbreviations || [],
-    item.commonMisspellings || []
+    { values: [item.name, item.displayName, item.fullForm], termKind: "canonical", sourceField: "name/displayName/fullForm" },
+    { values: item.preferredBareAliases || [], termKind: "preferred-bare-alias", sourceField: "preferredBareAliases" },
+    { values: item.abbreviations || [], termKind: "abbreviation", sourceField: "abbreviations" },
+    { values: item.aliases || [], termKind: "identity-alias", sourceField: "aliases" },
+    { values: item.commonMisspellings || [], termKind: "misspelling", sourceField: "commonMisspellings" }
   ]));
   pharmSearchableLabRanges.forEach((item) => register("lab", item, [
-    item.name,
-    item.displayName,
-    item.aliases || [],
-    item.abbreviations || [],
-    item.commonMisspellings || []
+    { values: [item.name, item.displayName], termKind: "canonical", sourceField: "name/displayName" },
+    { values: item.preferredBareAliases || [], termKind: "preferred-bare-alias", sourceField: "preferredBareAliases" },
+    { values: item.abbreviations || [], termKind: "abbreviation", sourceField: "abbreviations" },
+    { values: item.aliases || [], termKind: "identity-alias", sourceField: "aliases" },
+    { values: item.commonMisspellings || [], termKind: "misspelling", sourceField: "commonMisspellings" }
   ]));
   holisticRemedies.forEach((item) => register("holistic", item, [
-    item.name,
-    item.displayName,
-    item.aliases || [],
-    item.commonMisspellings || []
+    { values: [item.name, item.displayName], termKind: "canonical", sourceField: "name/displayName" },
+    { values: item.preferredBareAliases || [], termKind: "preferred-bare-alias", sourceField: "preferredBareAliases" },
+    { values: item.abbreviations || [], termKind: "abbreviation", sourceField: "abbreviations" },
+    { values: item.aliases || [], termKind: "identity-alias", sourceField: "aliases" },
+    { values: item.commonMisspellings || [], termKind: "misspelling", sourceField: "commonMisspellings" }
   ]));
   pharmDrugs.forEach((item) => register("drug", item, [
-    item.name,
-    item.generic,
-    item.displayName,
-    pharmDrugDisplayName(item, ""),
-    item.aliases || [],
-    item.brandExamples || [],
-    item.brands || [],
-    item.commonMisspellings || []
+    { values: [item.name, item.generic, item.displayName, pharmDrugDisplayName(item, "")], termKind: "canonical", sourceField: "name/generic/displayName" },
+    { values: item.preferredBareAliases || [], termKind: "preferred-bare-alias", sourceField: "preferredBareAliases" },
+    { values: item.abbreviations || [], termKind: "abbreviation", sourceField: "abbreviations" },
+    { values: item.aliases || [], termKind: "identity-alias", sourceField: "aliases" },
+    { values: [item.brandExamples || [], item.brands || []], termKind: "brand", sourceField: "brandExamples/brands" },
+    { values: item.commonMisspellings || [], termKind: "misspelling", sourceField: "commonMisspellings" }
   ]));
   fastVoiceIdentityIndex = index;
   return fastVoiceIdentityIndex;
@@ -26275,6 +27094,8 @@ function fastVoiceSortedIdentityStart(sortedIdentities = [], query = "") {
 function fastVoiceIdentityCandidates(input = "") {
   const fixed = applyClinicalSpeechFixups(input) || input;
   const variants = Array.from(new Set([
+    normalizePharmText(input),
+    normalizeOfflineLookupText(input, { dropLookupWords: false }),
     normalizePharmText(fixed),
     normalizeOfflineLookupText(fixed, { dropLookupWords: false })
   ].filter(Boolean)));
@@ -26282,9 +27103,28 @@ function fastVoiceIdentityCandidates(input = "") {
   const candidates = [];
   variants.forEach((variant) => {
     (index.get(variant) || []).forEach((candidate) => {
-      if (!candidates.some((owner) => owner.type === candidate.type && owner.item === candidate.item)) {
-        candidates.push(candidate);
+      const existing = candidates.find((owner) => owner.type === candidate.type && owner.item === candidate.item);
+      if (!existing) {
+        candidates.push({
+          ...candidate,
+          termKinds: Array.from(new Set(candidate.termKinds || [])),
+          sourceFields: Array.from(new Set(candidate.sourceFields || [])),
+          matchedIdentities: [variant]
+        });
+        return;
       }
+      existing.termKinds = Array.from(new Set([
+        ...(existing.termKinds || []),
+        ...(candidate.termKinds || [])
+      ]));
+      existing.sourceFields = Array.from(new Set([
+        ...(existing.sourceFields || []),
+        ...(candidate.sourceFields || [])
+      ]));
+      existing.matchedIdentities = Array.from(new Set([
+        ...(existing.matchedIdentities || []),
+        variant
+      ]));
     });
   });
   return candidates;
@@ -26335,13 +27175,20 @@ function fastVoiceIdentitySearchCandidates(input = "", limit = 80) {
         : normalizedPrimaryTerms.some((term) => term.startsWith(query))
           ? 380
           : 0;
-      const ownerEvidence = evidence + primaryEvidence;
+      const preferredBarePrefixEvidence = identity !== query
+        && owner.termKinds?.includes("preferred-bare-alias")
+        ? ENCYCLOPEDIA_IDENTITY_TERM_KIND_RANK["preferred-bare-alias"]
+        : 0;
+      const ownerEvidence = evidence + primaryEvidence + preferredBarePrefixEvidence;
       const key = offlineLookupEntityKey(owner);
       const previous = collected.get(key);
       if (!previous || ownerEvidence > previous.fastEvidenceScore) {
         collected.set(key, {
           type: owner.type,
           item: owner.item,
+          termKinds: Array.isArray(owner.termKinds) ? [...owner.termKinds] : [],
+          sourceFields: Array.isArray(owner.sourceFields) ? [...owner.sourceFields] : [],
+          matchedIdentity: identity,
           fastBoost: ownerEvidence >= 1000 ? 520 : 300,
           fastEvidenceScore: ownerEvidence,
           fastMatchCount: 1,
@@ -31382,6 +32229,94 @@ function appendReadableDetailText(parent, value = "", options = {}) {
   appendPharmDetailText(parent, softenSemicolonProse(value), options);
 }
 
+function appendClinicalReferenceStructuredItems(parent, items = [], options = {}) {
+  const rows = Array.isArray(items) ? items.filter((item) => safeText(item?.text)) : [];
+  if (!rows.length) return 0;
+  if (rows.length === 1) {
+    const text = document.createElement("div");
+    text.className = "clinical-result-meaning-text";
+    text.dataset.leafPath = safeText(rows[0].path);
+    appendPharmDetailText(text, rows[0].text, options);
+    parent.append(text);
+    return 1;
+  }
+  const list = document.createElement("ul");
+  list.className = "pharm-readable-list";
+  rows.forEach((item) => {
+    const li = document.createElement("li");
+    li.dataset.leafPath = safeText(item.path);
+    appendPharmDetailText(li, item.text, options);
+    list.append(li);
+  });
+  parent.append(list);
+  return rows.length;
+}
+
+function appendClinicalReferenceStructuredField(parent, field = {}, options = {}) {
+  const items = Array.isArray(field.items) ? field.items : [];
+  if (!items.length) return 0;
+  const block = document.createElement("div");
+  block.className = "clinical-result-meaning-card";
+  block.dataset.fieldKey = safeText(field.key);
+  const label = document.createElement("b");
+  label.textContent = safeText(field.label || field.key);
+  const value = document.createElement("div");
+  value.className = "pharm-detail-text clinical-result-meaning-text";
+  const rendered = appendClinicalReferenceStructuredItems(value, items, options);
+  block.append(label, value);
+  parent.append(block);
+  return rendered;
+}
+
+function appendClinicalReferenceStructuredDetail(parent, section = {}, options = {}) {
+  const standard = window.ANI_LEARNER_LANGUAGE_STANDARD;
+  if (!standard || typeof standard.clinicalReferenceStructuredSectionProjection !== "function") {
+    appendReadableDetailText(parent, section.value, options);
+    return safeText(section.value) ? 1 : 0;
+  }
+  const projection = standard.clinicalReferenceStructuredSectionProjection(section);
+  parent.dataset.structuredSchema = safeText(projection.schemaVersion);
+  parent.dataset.structuredKind = safeText(projection.kind);
+  parent.dataset.structuredCoverage = projection.coverageComplete ? "complete" : "incomplete";
+  parent.dataset.structuredLeafCount = String(projection.projectedLeafCount || 0);
+  if (projection.kind === "text") {
+    appendReadableDetailText(parent, section.value, options);
+    return projection.projectedLeafCount;
+  }
+  if (projection.kind === "list") {
+    return appendClinicalReferenceStructuredItems(parent, projection.items, options);
+  }
+  const grid = document.createElement("div");
+  grid.className = "clinical-result-meaning-grid";
+  let rendered = 0;
+  if (projection.kind === "fields") {
+    projection.fields.forEach((field) => {
+      rendered += appendClinicalReferenceStructuredField(grid, field, options);
+    });
+  } else if (projection.kind === "records") {
+    projection.records.forEach((record) => {
+      const card = document.createElement("article");
+      card.className = "clinical-result-meaning-card";
+      card.dataset.recordIndex = String(record.index);
+      record.fields.forEach((field) => {
+        if (!Array.isArray(field.items) || !field.items.length) return;
+        const fieldBlock = document.createElement("div");
+        fieldBlock.dataset.fieldKey = safeText(field.key);
+        const label = document.createElement("b");
+        label.textContent = safeText(field.label || field.key);
+        const value = document.createElement("div");
+        value.className = "pharm-detail-text clinical-result-meaning-text";
+        rendered += appendClinicalReferenceStructuredItems(value, field.items, options);
+        fieldBlock.append(label, value);
+        card.append(fieldBlock);
+      });
+      if (record.fields.some((field) => Array.isArray(field.items) && field.items.length)) grid.append(card);
+    });
+  }
+  if (rendered) parent.append(grid);
+  return rendered;
+}
+
 function normalizeHighYieldImageTerm(value = "") {
   return String(value || "")
     .toLowerCase()
@@ -32117,6 +33052,7 @@ function linkEncyclopediaTermsInBubble(root, sourceText = "", options = {}) {
         event.stopPropagation();
         openPharmDatabase(range.candidate.query, {
           openDetail: true,
+          expandDetail: true,
           autoFocus: false,
           detailType: range.candidate.type,
           fastDetail: true,
@@ -32596,6 +33532,24 @@ function labTeachingSections(lab = {}) {
   return [];
 }
 
+function labVisibleLearnerSections(lab = {}) {
+  const sections = [
+    ["Reference range / threshold", lab.range],
+    ["Why every nurse should know it", lab.why],
+    ["Population note", lab.groupNote],
+    ...labTeachingSections(lab),
+    ["NCLEX use", "Use the range as a cue, then connect it to the client trend, symptoms, medication risks, and whether the nurse should hold, question, monitor, or intervene."],
+    ["Study safety note", "Ranges can vary by facility, age, pregnancy status, specimen type, and lab method. Use these numbers as NCLEX study anchors and verify the printed lab reference range in real care."]
+  ];
+  return sections.map(([label, value], index) => ({
+    id: `lab-visible-section-${index + 1}`,
+    label,
+    value,
+    path: `visibleLabSections.${index}`,
+    learnerText: ["NCLEX use", "Study safety note"].includes(label) ? "" : value
+  }));
+}
+
 function renderPharmLabDetail(lab = activePharmLabResults[0]) {
   if (!pharmDrugDetail) return;
   resetPharmDetailCard();
@@ -32615,19 +33569,14 @@ function renderPharmLabDetail(lab = activePharmLabResults[0]) {
   appendPharmFavoriteButton(title, "labs", lab);
   pharmDrugDetail.append(title);
 
-  const sections = [
-    ["Reference range / threshold", lab.range],
-    ["Why every nurse should know it", lab.why],
-    ["Population note", lab.groupNote],
-    ...labTeachingSections(lab),
-    ["NCLEX use", "Use the range as a cue, then connect it to the client trend, symptoms, medication risks, and whether the nurse should hold, question, monitor, or intervene."],
-    ["Study safety note", "Ranges can vary by facility, age, pregnancy status, specimen type, and lab method. Use these numbers as NCLEX study anchors and verify the printed lab reference range in real care."]
-  ];
+  const learnerSections = labVisibleLearnerSections(lab);
+  const sections = learnerSections.map(({ label, value }) => [label, value]);
+  const learnerProjection = projectVisibleLearnerSupport(lab, learnerSections, { prefix: "lab-visible-section" });
+  const firstLearnerBlockId = learnerProjection.blocks[0]?.id || "";
 
   let treatmentMedicationsAppended = false;
-  let learnerSupportRendered = false;
   let authoredPresentationAttempted = false;
-  sections.forEach(([label, value]) => {
+  learnerSections.forEach(({ id, label, value }) => {
     if (!value) return;
     const section = document.createElement("section");
     const heading = document.createElement("strong");
@@ -32637,25 +33586,22 @@ function renderPharmLabDetail(lab = activePharmLabResults[0]) {
     appendReadableDetailText(text, value, { currentLabel: lab.name });
     section.append(heading, text);
     pharmDrugDetail.append(section);
+    const learnerBlock = learnerProjection.byId.get(id);
+    if (learnerBlock) {
+      appendLearnerLanguageSupport(pharmDrugDetail, lab, {
+        currentLabel: lab.name,
+        projectedBlock: learnerBlock,
+        includePlainLanguage: learnerBlock.id === firstLearnerBlockId,
+        heading: learnerBlock.id === firstLearnerBlockId ? "Medical terms explained" : "Terms in this section"
+      });
+    }
     if (label === "Reference range / threshold") {
       appendAuthoredPresentationVisuals(lab);
       authoredPresentationAttempted = true;
       appendMemoryBridgeSections(pharmDrugDetail, lab);
-      learnerSupportRendered = appendLearnerLanguageSupport(pharmDrugDetail, lab, {
-        currentLabel: lab.name,
-        visibleText: lab.range,
-        includeWhyItMatters: false
-      }) || learnerSupportRendered;
     }
   });
   if (!authoredPresentationAttempted) appendAuthoredPresentationVisuals(lab);
-  if (!learnerSupportRendered) {
-    appendLearnerLanguageSupport(pharmDrugDetail, lab, {
-      currentLabel: lab.name,
-      visibleText: lab.range,
-      includeWhyItMatters: false
-    });
-  }
   if (isGfrLab(lab)) {
     pharmDrugDetail.append(buildCkdStageDetailSection());
   }
@@ -33729,35 +34675,71 @@ function renderClinicalReferenceDetail(entry = activeClinicalReferenceResults[0]
     : isFoundation
       ? (entry.studySafetyNote || "Use this foundation to understand normal structure and physiology, then connect it with ANI's disease, medication, laboratory, and diagnostic cards. For real clinical decisions, follow current professional guidance and local policy.")
       : (entry.sourceNote || "Use these values as NCLEX study anchors. For real care, verify current facility references, provider orders, and official source materials.");
-  const authoredSectionRecords = clinicalReferenceSectionRecords(entry);
-  const authoredSectionByLabel = new Map(authoredSectionRecords.map((section) => [section.label, section]));
+  const rawAuthoredSectionRecords = entry.type === "growth"
+    ? growthFocusedSectionPairs(entry, detailIntent || "growth chart", 5)
+      .map(([label, value], sourceIndex) => ({ label, value, presentation: "", defaultOpen: false, sourceIndex }))
+    : clinicalReferenceSectionRecords(entry);
+  const openingProjection = clinicalReferenceVisibleSectionProjection(entry, {
+    sectionRecords: rawAuthoredSectionRecords,
+    ...(entry.type === "growth"
+      ? { quickAnswerOverride: growthQuickAnswerForInput(entry, detailIntent || "growth chart") }
+      : {})
+  });
+  const authoredSectionRecords = openingProjection.sectionRecords;
   const hasStructuredPresentation = entry.presentation?.schemaVersion === ANI_CARD_PRESENTATION_SCHEMA;
-  const sections = entry.type === "growth"
-    ? [
-      ["Quick answer", growthQuickAnswerForInput(entry, detailIntent || "growth chart")],
-      ["Why every nurse should know it", entry.whyItMatters || entry.summary],
-      ...growthFocusedSectionPairs(entry, detailIntent || "growth chart", 5),
-      ["Study safety note", studySafetyNote]
-    ]
-    : [
-      ["Quick answer", entry.quickAnswer],
-      ["Why every nurse should know it", entry.whyItMatters || entry.summary],
-      ...clinicalReferenceSectionPairs(entry),
-      ["Study safety note", studySafetyNote]
-    ];
+  const sections = [
+    { id: "clinical-reference-opening", path: "quickAnswer", label: "Quick answer", value: openingProjection.quickAnswer, authoredSection: null },
+    { id: "clinical-reference-significance", path: "whyItMatters", label: "Why every nurse should know it", value: openingProjection.whyItMatters, authoredSection: null },
+    ...authoredSectionRecords.map((section, index) => ({
+      id: `clinical-reference-authored-${Number.isInteger(section.sourceIndex) ? section.sourceIndex : index}`,
+      path: `sections.${Number.isInteger(section.sourceIndex) ? section.sourceIndex : index}.value`,
+      label: section.label,
+      value: section.value,
+      authoredSection: section
+    })),
+    {
+      id: "clinical-reference-study-safety",
+      path: "studySafetyNote",
+      label: "Study safety note",
+      value: studySafetyNote,
+      learnerText: "",
+      authoredSection: null
+    }
+  ];
+  const learnerSections = [
+    ...sections,
+    {
+      id: "clinical-reference-result-meanings",
+      path: "resultMeanings",
+      label: "Results - what each result means",
+      value: clinicalReferenceResultMeaningText(entry),
+      authoredSection: null
+    }
+  ];
+  const learnerProjection = projectVisibleLearnerSupport(entry, learnerSections, { prefix: "clinical-reference-visible-section" });
+  const firstLearnerBlockId = learnerProjection.blocks[0]?.id || "";
+  const visualAnchorLabel = openingProjection.whyItMatters
+    ? "Why every nurse should know it"
+    : (openingProjection.quickAnswer ? "Quick answer" : "");
 
-  let learnerSupportRendered = false;
   let memoryBridgeRendered = false;
   let structuredVisualsRendered = false;
-  sections.forEach(([label, value]) => {
+  sections.forEach(({ id, label, value, authoredSection }) => {
     if (!value) return;
     const section = document.createElement("section");
+    if (authoredSection?.id) section.dataset.sectionId = authoredSection.id;
+    if (authoredSection?.presentation) section.dataset.presentation = authoredSection.presentation;
+    if (Number.isInteger(authoredSection?.sourceIndex)) section.dataset.sourceIndex = String(authoredSection.sourceIndex);
     const heading = document.createElement("strong");
     heading.textContent = label;
     const text = document.createElement("div");
     text.className = "pharm-detail-text";
-    appendReadableDetailText(text, value, { currentLabel: clinicalReferenceDisplayName(entry) });
-    const authoredSection = authoredSectionByLabel.get(label);
+    const detailOptions = { currentLabel: clinicalReferenceDisplayName(entry) };
+    const renderedLeafCount = authoredSection && typeof value === "object"
+      ? appendClinicalReferenceStructuredDetail(text, authoredSection, detailOptions)
+      : (appendReadableDetailText(text, value, detailOptions), safeText(value) ? 1 : 0);
+    if (!renderedLeafCount) return;
+    let learnerContainer = pharmDrugDetail;
     if (authoredSection?.presentation === "disclosure") {
       section.className = "pharm-progressive-section";
       const details = document.createElement("details");
@@ -33768,22 +34750,27 @@ function renderClinicalReferenceDetail(entry = activeClinicalReferenceResults[0]
       summary.append(heading);
       details.append(summary, text);
       section.append(details);
+      learnerContainer = details;
     } else {
       section.append(heading, text);
     }
     pharmDrugDetail.append(section);
+    const learnerBlock = learnerProjection.byId.get(id);
+    if (learnerBlock) {
+      appendLearnerLanguageSupport(learnerContainer, entry, {
+        currentLabel: clinicalReferenceDisplayName(entry),
+        projectedBlock: learnerBlock,
+        includePlainLanguage: learnerBlock.id === firstLearnerBlockId,
+        heading: learnerBlock.id === firstLearnerBlockId ? "Medical terms explained" : "Terms in this section"
+      });
+    }
     if (label === "Quick answer") {
       if (!hasStructuredPresentation) {
         appendMemoryBridgeSections(pharmDrugDetail, entry);
         memoryBridgeRendered = true;
       }
-      learnerSupportRendered = appendLearnerLanguageSupport(pharmDrugDetail, entry, {
-        currentLabel: clinicalReferenceDisplayName(entry),
-        visibleText: entry.quickAnswer,
-        includeWhyItMatters: false
-      }) || learnerSupportRendered;
     }
-    if (label === "Why every nurse should know it") {
+    if (label === visualAnchorLabel) {
       structuredVisualsRendered = appendClinicalReferenceVisuals(entry, detailIntent) > 0;
       if (hasStructuredPresentation && !memoryBridgeRendered) {
         appendMemoryBridgeSections(pharmDrugDetail, entry);
@@ -33796,13 +34783,6 @@ function renderClinicalReferenceDetail(entry = activeClinicalReferenceResults[0]
   }
   if (!memoryBridgeRendered) {
     appendMemoryBridgeSections(pharmDrugDetail, entry);
-  }
-  if (!learnerSupportRendered) {
-    appendLearnerLanguageSupport(pharmDrugDetail, entry, {
-      currentLabel: clinicalReferenceDisplayName(entry),
-      visibleText: entry.quickAnswer,
-      includeWhyItMatters: false
-    });
   }
   appendMedicalAbbreviationSection(pharmDrugDetail, [
     entry.name,
@@ -33818,7 +34798,17 @@ function renderClinicalReferenceDetail(entry = activeClinicalReferenceResults[0]
     ...clinicalReferenceSectionPairs(entry).flat()
   ]);
   appendMedicalTermTeachingSection(pharmDrugDetail, entry);
-  appendClinicalReferenceResultMeaningSection(pharmDrugDetail, entry);
+  if (appendClinicalReferenceResultMeaningSection(pharmDrugDetail, entry)) {
+    const resultMeaningLearnerBlock = learnerProjection.byId.get("clinical-reference-result-meanings");
+    if (resultMeaningLearnerBlock) {
+      appendLearnerLanguageSupport(pharmDrugDetail, entry, {
+        currentLabel: clinicalReferenceDisplayName(entry),
+        projectedBlock: resultMeaningLearnerBlock,
+        includePlainLanguage: false,
+        heading: "Terms in this section"
+      });
+    }
+  }
   appendHighYieldImageSection(pharmDrugDetail, entry, "procedures");
 
   appendMicrobiologyRelationshipSection(pharmDrugDetail, entry);
@@ -33833,7 +34823,7 @@ function renderClinicalReferenceDetail(entry = activeClinicalReferenceResults[0]
     entry.summary,
     entry.quickAnswer,
     entry.sections,
-    sections
+    sections.map(({ label, value }) => [label, value])
   ], clinicalReferenceDisplayName(entry));
   if (isMicrobiology) {
     appendEvidenceSourceSection(pharmDrugDetail, microbiologyDatabase, entry);
@@ -33929,29 +34919,7 @@ function pathologySectionValueWithoutOpeningDuplicate(value = "", firstGlance = 
   return remaining.length ? remaining.join(" ") : "";
 }
 
-function renderPathologyDetail(disease = activePathologyResults[0]) {
-  if (!pharmDrugDetail) return;
-  resetPharmDetailCard();
-  setPharmDetailTheme("diseases");
-  if (!disease) {
-    renderPharmDrugDetail(null);
-    return;
-  }
-
-  const title = document.createElement("div");
-  title.className = "pharm-detail-title pharm-pathology-title";
-  const name = document.createElement("h2");
-  name.textContent = safeText(disease.name);
-  const category = document.createElement("span");
-  category.textContent = safeText(`${disease.category || "Pathology"} | DISEASE/PATHOLOGY CARD`);
-  title.append(name, category);
-  appendPharmFavoriteButton(title, "diseases", disease);
-  pharmDrugDetail.append(title);
-
-  const aliases = Array.from(new Set([
-    ...(Array.isArray(disease.abbreviations) ? disease.abbreviations : []),
-    ...(Array.isArray(disease.aliases) ? disease.aliases : [])
-  ].filter(Boolean)));
+function pathologyVisibleLearnerDetail(disease = {}) {
   const diagnosticAlterations = pathologyDiagnosticAlterations(disease);
   const pathophysiologyText = pathologyListText(disease.pathophysiology);
   const pathologyText = safeText(disease.pathology);
@@ -33981,11 +34949,51 @@ function renderPathologyDetail(disease = activePathologyResults[0]) {
     ["Common NCLEX traps / nuance", pathologyListText(disease.nclexTraps)],
     ["Related topics to explore", pathologyListText(disease.relatedTopics)]
   ];
+  return {
+    diagnosticAlterations,
+    learnerSections: sections.map(([label, value], index) => ({
+      id: `pathology-visible-section-${index + 1}`,
+      label,
+      value,
+      path: `visiblePathologySections.${index}`,
+      learnerText: label === "Lab/value alterations to expect" ? pathologyDiagnosticAlterationText(disease) : value
+    }))
+  };
+}
+
+function renderPathologyDetail(disease = activePathologyResults[0]) {
+  if (!pharmDrugDetail) return;
+  resetPharmDetailCard();
+  setPharmDetailTheme("diseases");
+  if (!disease) {
+    renderPharmDrugDetail(null);
+    return;
+  }
+
+  const title = document.createElement("div");
+  title.className = "pharm-detail-title pharm-pathology-title";
+  const name = document.createElement("h2");
+  name.textContent = safeText(disease.name);
+  const category = document.createElement("span");
+  category.textContent = safeText(`${disease.category || "Pathology"} | DISEASE/PATHOLOGY CARD`);
+  title.append(name, category);
+  appendPharmFavoriteButton(title, "diseases", disease);
+  pharmDrugDetail.append(title);
+
+  const aliases = Array.from(new Set([
+    ...(Array.isArray(disease.abbreviations) ? disease.abbreviations : []),
+    ...(Array.isArray(disease.aliases) ? disease.aliases : [])
+  ].filter(Boolean)));
+  const visibleDetail = pathologyVisibleLearnerDetail(disease);
+  const diagnosticAlterations = visibleDetail.diagnosticAlterations;
+  const learnerSections = visibleDetail.learnerSections;
+  const sections = learnerSections.map(({ label, value }) => [label, value]);
+  const learnerProjection = projectVisibleLearnerSupport(disease, learnerSections, { prefix: "pathology-visible-section" });
+  const firstLearnerBlockId = learnerProjection.blocks[0]?.id || "";
 
   let treatmentMedicationsAppended = false;
-  let learnerSupportRendered = false;
   let authoredPresentationAttempted = false;
-  sections.forEach(([label, value]) => {
+  learnerSections.forEach(({ id, label, value }) => {
     if (!value) return;
     const section = document.createElement("section");
     const heading = document.createElement("strong");
@@ -34001,14 +35009,19 @@ function renderPathologyDetail(disease = activePathologyResults[0]) {
     }
     section.append(heading, text);
     pharmDrugDetail.append(section);
+    const learnerBlock = learnerProjection.byId.get(id);
+    if (learnerBlock) {
+      appendLearnerLanguageSupport(pharmDrugDetail, disease, {
+        currentLabel: disease.name,
+        projectedBlock: learnerBlock,
+        includePlainLanguage: learnerBlock.id === firstLearnerBlockId,
+        heading: learnerBlock.id === firstLearnerBlockId ? "Medical terms explained" : "Terms in this section"
+      });
+    }
     if (label === "Crash-course definition") {
       appendAuthoredPresentationVisuals(disease);
       authoredPresentationAttempted = true;
       appendMemoryBridgeSections(pharmDrugDetail, disease);
-      learnerSupportRendered = appendLearnerLanguageSupport(pharmDrugDetail, disease, {
-        currentLabel: disease.name,
-        visibleText: firstGlanceText
-      }) || learnerSupportRendered;
     }
     if (isAlterationSection && isCkdPathology(disease)) {
       pharmDrugDetail.append(buildCkdStageDetailSection());
@@ -34021,12 +35034,6 @@ function renderPathologyDetail(disease = activePathologyResults[0]) {
     }
   });
   if (!authoredPresentationAttempted) appendAuthoredPresentationVisuals(disease);
-  if (!learnerSupportRendered) {
-    appendLearnerLanguageSupport(pharmDrugDetail, disease, {
-      currentLabel: disease.name,
-      visibleText: firstGlanceText
-    });
-  }
   if (!treatmentMedicationsAppended) {
     appendPathologyTreatmentMedicationSection(disease);
   }
@@ -34092,6 +35099,26 @@ function renderPathologyDetail(disease = activePathologyResults[0]) {
   syncPharmDetailReadableText();
 }
 
+function holisticVisibleLearnerSections(remedy = {}) {
+  const sections = [
+    ["Used for / marketed for", holisticListText(remedy.usedFor)],
+    ["Mechanism / how it works", holisticMechanismText(remedy)],
+    ["Major risks every nurse should catch", holisticListText(remedy.majorRisks)],
+    ["Interactions to watch", holisticListText(remedy.interactions)],
+    ["Contraindications / clarify-before-use", holisticListText(remedy.contraindications)],
+    ["Nursing assessment", holisticListText(remedy.nursingAssessment)],
+    ["Client teaching", holisticListText(remedy.teaching)],
+    ["Population risk notes", pharmPopulationRiskText(remedy)],
+    ["Common NCLEX trap / nuance", holisticListText(remedy.nclexTraps)]
+  ];
+  return sections.map(([label, value], index) => ({
+    id: `holistic-visible-section-${index + 1}`,
+    label,
+    value,
+    path: `visibleHolisticSections.${index}`
+  }));
+}
+
 function renderHolisticDetail(remedy = activeHolisticResults[0]) {
   if (!pharmDrugDetail) return;
   resetPharmDetailCard();
@@ -34115,21 +35142,13 @@ function renderHolisticDetail(remedy = activeHolisticResults[0]) {
   }
   pharmDrugDetail.append(title);
 
-  const sections = [
-    ["Used for / marketed for", holisticListText(remedy.usedFor)],
-    ["Mechanism / how it works", holisticMechanismText(remedy)],
-    ["Major risks every nurse should catch", holisticListText(remedy.majorRisks)],
-    ["Interactions to watch", holisticListText(remedy.interactions)],
-    ["Contraindications / clarify-before-use", holisticListText(remedy.contraindications)],
-    ["Nursing assessment", holisticListText(remedy.nursingAssessment)],
-    ["Client teaching", holisticListText(remedy.teaching)],
-    ["Population risk notes", pharmPopulationRiskText(remedy)],
-    ["Common NCLEX trap / nuance", holisticListText(remedy.nclexTraps)]
-  ];
+  const learnerSections = holisticVisibleLearnerSections(remedy);
+  const sections = learnerSections.map(({ label, value }) => [label, value]);
+  const learnerProjection = projectVisibleLearnerSupport(remedy, learnerSections, { prefix: "holistic-visible-section" });
+  const firstLearnerBlockId = learnerProjection.blocks[0]?.id || "";
 
-  let learnerSupportRendered = false;
   let authoredPresentationAttempted = false;
-  sections.forEach(([label, value]) => {
+  learnerSections.forEach(({ id, label, value }) => {
     if (!value) return;
     const section = document.createElement("section");
     const heading = document.createElement("strong");
@@ -34139,23 +35158,22 @@ function renderHolisticDetail(remedy = activeHolisticResults[0]) {
     appendReadableDetailText(text, value, { currentLabel: remedy.name });
     section.append(heading, text);
     pharmDrugDetail.append(section);
+    const learnerBlock = learnerProjection.byId.get(id);
+    if (learnerBlock) {
+      appendLearnerLanguageSupport(pharmDrugDetail, remedy, {
+        currentLabel: remedy.name,
+        projectedBlock: learnerBlock,
+        includePlainLanguage: learnerBlock.id === firstLearnerBlockId,
+        heading: learnerBlock.id === firstLearnerBlockId ? "Medical terms explained" : "Terms in this section"
+      });
+    }
     if (label === "Used for / marketed for") {
       appendAuthoredPresentationVisuals(remedy);
       authoredPresentationAttempted = true;
       appendMemoryBridgeSections(pharmDrugDetail, remedy);
-      learnerSupportRendered = appendLearnerLanguageSupport(pharmDrugDetail, remedy, {
-        currentLabel: remedy.name,
-        visibleText: holisticListText(remedy.usedFor)
-      }) || learnerSupportRendered;
     }
   });
   if (!authoredPresentationAttempted) appendAuthoredPresentationVisuals(remedy);
-  if (!learnerSupportRendered) {
-    appendLearnerLanguageSupport(pharmDrugDetail, remedy, {
-      currentLabel: remedy.name,
-      visibleText: holisticListText(remedy.usedFor)
-    });
-  }
 
   appendMedicalAbbreviationSection(pharmDrugDetail, [
     remedy.name,
@@ -34549,6 +35567,41 @@ function appendMedicationClassExampleLinks(container, card = {}) {
   container.append(section);
 }
 
+function pharmacyVisibleLearnerSections(drug = {}) {
+  if (drug.generatedClassCard === true
+    && drug.generatedClassContentOwnership === "navigation-only") return [];
+  const sections = [
+    ["What this is", pharmCardDescriptionText(drug)],
+    ["NCLEX status", isNclexCorePharmEntry(drug) ? `${pharmStudyTier(drug)}${drug.nclexEssentialRank ? ` #${drug.nclexEssentialRank}` : ""}` : ""],
+    ["Specific class / pathway", pharmClassPathwayText(drug)],
+    ["Used to treat / common uses", pharmUsedToTreat(drug)],
+    ["Mechanism / how it works", pharmMechanismText(drug)],
+    ["Action sequence / timing", pharmListText(drug.administrationTiming)],
+    ["Boxed warning / high-alert warning", pharmBoxedWarningDisplay(drug, pharmOverlayValue(drug, "warning", drug.boxedWarning))],
+    ["Major adverse effects / toxicity cues", pharmOverlayValue(drug, "adverseEffects", pharmAdverseEffectsText(drug))],
+    ["Serious adverse reactions", pharmListText(drug.seriousAdverseReactions)],
+    ["Contraindications / clarify-before-giving", pharmOverlayValue(drug, "contraindications", pharmListText(drug.contraindications))],
+    ["Key nursing concepts", pharmOverlayValue(drug, "nursing", pharmListText(drug.nursingEssentials))],
+    ["Interactions to watch", pharmOverlayValue(drug, "interactions", pharmListText(drug.interactions))],
+    ["Routes / administration", pharmListText([drug.routes, drug.administration])],
+    ["Toxicity / overdose response", pharmListText(drug.toxicityManagement)],
+    ["Population risk notes", pharmPopulationRiskText(drug)],
+    ["Special populations", pharmListText(drug.specialPopulations)],
+    ["Labs / assessment", pharmOverlayValue(drug, "labs", pharmListText(drug.keyLabs))],
+    ["Patient education", pharmListText(drug.patientEducation)],
+    ["Escalation / recurrence", pharmListText(drug.escalationRecurrence)],
+    ["Evidence boundaries", pharmListText(drug.evidenceLimitations)],
+    ["Regulatory / approval context", drug.regulatoryStatus],
+    ["NCLEX trap", pharmOverlayValue(drug, "trap", pharmListText(drug.nclexTraps))]
+  ];
+  return sections.map(([label, value], index) => ({
+    id: `pharmacy-visible-section-${index + 1}`,
+    label,
+    value,
+    path: `visiblePharmacySections.${index}`
+  }));
+}
+
 function renderPharmDrugDetail(drug = activePharmResults[0]) {
   if (!pharmDrugDetail) return;
   resetPharmDetailCard();
@@ -34598,35 +35651,14 @@ function renderPharmDrugDetail(drug = activePharmResults[0]) {
     return;
   }
 
-  const sections = [
-    ["What this is", pharmCardDescriptionText(drug)],
-    ["NCLEX status", isNclexCorePharmEntry(drug) ? `${pharmStudyTier(drug)}${drug.nclexEssentialRank ? ` #${drug.nclexEssentialRank}` : ""}` : ""],
-    ["Specific class / pathway", pharmClassPathwayText(drug)],
-    ["Used to treat / common uses", pharmUsedToTreat(drug)],
-    ["Mechanism / how it works", pharmMechanismText(drug)],
-    ["Action sequence / timing", pharmListText(drug.administrationTiming)],
-    ["Boxed warning / high-alert warning", pharmBoxedWarningDisplay(drug, pharmOverlayValue(drug, "warning", drug.boxedWarning))],
-    ["Major adverse effects / toxicity cues", pharmOverlayValue(drug, "adverseEffects", pharmAdverseEffectsText(drug))],
-    ["Serious adverse reactions", pharmListText(drug.seriousAdverseReactions)],
-    ["Contraindications / clarify-before-giving", pharmOverlayValue(drug, "contraindications", pharmListText(drug.contraindications))],
-    ["Key nursing concepts", pharmOverlayValue(drug, "nursing", pharmListText(drug.nursingEssentials))],
-    ["Interactions to watch", pharmOverlayValue(drug, "interactions", pharmListText(drug.interactions))],
-    ["Routes / administration", pharmListText([drug.routes, drug.administration])],
-    ["Toxicity / overdose response", pharmListText(drug.toxicityManagement)],
-    ["Population risk notes", pharmPopulationRiskText(drug)],
-    ["Special populations", pharmListText(drug.specialPopulations)],
-    ["Labs / assessment", pharmOverlayValue(drug, "labs", pharmListText(drug.keyLabs))],
-    ["Patient education", pharmListText(drug.patientEducation)],
-    ["Escalation / recurrence", pharmListText(drug.escalationRecurrence)],
-    ["Evidence boundaries", pharmListText(drug.evidenceLimitations)],
-    ["Regulatory / approval context", drug.regulatoryStatus],
-    ["NCLEX trap", pharmOverlayValue(drug, "trap", pharmListText(drug.nclexTraps))]
-  ];
+  const learnerSections = pharmacyVisibleLearnerSections(drug);
+  const sections = learnerSections.map(({ label, value }) => [label, value]);
+  const learnerProjection = projectVisibleLearnerSupport(drug, learnerSections, { prefix: "pharmacy-visible-section" });
+  const firstLearnerBlockId = learnerProjection.blocks[0]?.id || "";
 
   let classExampleLinksAdded = false;
-  let learnerSupportRendered = false;
   let authoredPresentationAttempted = false;
-  sections.forEach(([label, value]) => {
+  learnerSections.forEach(({ id, label, value }) => {
     if (!value) return;
     const section = document.createElement("section");
     if (label === "NCLEX status") {
@@ -34640,14 +35672,19 @@ function renderPharmDrugDetail(drug = activePharmResults[0]) {
     appendReadableDetailText(text, value, { currentLabel: pharmDrugDisplayName(drug) });
     section.append(heading, text);
     pharmDrugDetail.append(section);
+    const learnerBlock = learnerProjection.byId.get(id);
+    if (learnerBlock) {
+      appendLearnerLanguageSupport(pharmDrugDetail, drug, {
+        currentLabel: pharmDrugDisplayName(drug),
+        projectedBlock: learnerBlock,
+        includePlainLanguage: learnerBlock.id === firstLearnerBlockId,
+        heading: learnerBlock.id === firstLearnerBlockId ? "Medical terms explained" : "Terms in this section"
+      });
+    }
     if (label === "What this is") {
       appendAuthoredPresentationVisuals(drug);
       authoredPresentationAttempted = true;
       appendMemoryBridgeSections(pharmDrugDetail, drug);
-      learnerSupportRendered = appendLearnerLanguageSupport(pharmDrugDetail, drug, {
-        currentLabel: pharmDrugDisplayName(drug),
-        visibleText: pharmCardDescriptionText(drug)
-      }) || learnerSupportRendered;
     }
     if (label === "What this is" && isMedicationClassCardEntry(drug)) {
       appendMedicationClassExampleLinks(pharmDrugDetail, drug);
@@ -34655,12 +35692,6 @@ function renderPharmDrugDetail(drug = activePharmResults[0]) {
     }
   });
   if (!authoredPresentationAttempted) appendAuthoredPresentationVisuals(drug);
-  if (!learnerSupportRendered) {
-    appendLearnerLanguageSupport(pharmDrugDetail, drug, {
-      currentLabel: pharmDrugDisplayName(drug),
-      visibleText: pharmCardDescriptionText(drug)
-    });
-  }
   if (isMedicationClassCardEntry(drug) && !classExampleLinksAdded) {
     appendMedicationClassExampleLinks(pharmDrugDetail, drug);
   }
@@ -36622,9 +37653,27 @@ function exactPharmDetailCandidate(query = "", preferredType = "") {
   if (reviewedResolution?.ambiguousIdentity === true) {
     const matching = (reviewedResolution.ambiguityCandidates || [])
       .filter((candidate) => normalizedPreferredType && candidate.type === normalizedPreferredType);
-    return matching.length === 1
-      ? { type: matching[0].type, item: matching[0].item }
+    const unqualifiedMatching = matching.filter((candidate) => (
+      !safeText(candidate.item?.populationGroup).trim()
+    ));
+    const strictTypedCanonical = normalizedPreferredType
+      ? strictCanonicalEncyclopediaCandidate(query, normalizedPreferredType)
       : null;
+    const reviewedStrictTypedCanonical = strictTypedCanonical
+      && matching.some((candidate) => (
+        candidate.type === strictTypedCanonical.type
+        && candidate.item === strictTypedCanonical.item
+      ))
+      ? strictTypedCanonical
+      : null;
+    const selected = matching.length === 1
+      ? matching[0]
+      : reviewedStrictTypedCanonical
+        ? reviewedStrictTypedCanonical
+        : unqualifiedMatching.length === 1
+          ? unqualifiedMatching[0]
+          : null;
+    return selected ? { type: selected.type, item: selected.item } : null;
   }
   // A reviewed cross-domain ambiguity (for example hCG as a test versus a
   // medication identity) must fail closed. For every nonambiguous route, exact
@@ -37210,6 +38259,9 @@ function openPharmDatabase(query = "", options = {}) {
   if (!shouldPreserveDetailForHistory) {
     closePharmDetailPage({ clearHistory: true });
   }
+  if (typeof options.expandDetail === "boolean") {
+    setPharmDetailExpanded(options.expandDetail, { skipBrowserHistory: true });
+  }
   document.body.classList.add("pharm-database-active");
   if (query && pharmSearchInput) {
     pharmSearchInput.value = query;
@@ -37299,6 +38351,14 @@ function handleAniBackNavigation() {
   hideActionMenu();
 
   if (pharmDatabaseScreen && !pharmDatabaseScreen.hidden) {
+    if (isPharmDetailExpanded()) {
+      if (pharmDetailUsesResponsiveFullViewport()) {
+        requestPharmIndexNavigation();
+      } else {
+        setPharmDetailExpanded(false);
+      }
+      return true;
+    }
     if (pharmUsesBrowserHistory() && currentPharmBrowserRoute()) {
       window.history.back();
       return true;
@@ -41443,20 +42503,25 @@ function fastReviewedSearchResolution(input = "") {
     || fastReviewedSearchSafetySuggestion(input);
   if (contextual) return contextual;
   const sharedIdentity = resolveEncyclopediaIdentity(input, { mode: "navigate", limit: 8 });
-  if (sharedIdentity.matchKind === "near-identity-ambiguity"
-    && sharedIdentity.candidates.length > 1) {
+  if ((sharedIdentity.suppressUnrelatedMatches === true
+      || /ambiguity|unresolved-reviewed-abbreviation/.test(sharedIdentity.matchKind))
+    && (sharedIdentity.candidates.length > 0 || sharedIdentity.recognizedAbbreviation === true)) {
     return {
       ambiguousIdentity: true,
-      ambiguityCandidates: sharedIdentity.candidates
+      ambiguityCandidates: sharedIdentity.candidates,
+      recognizedAbbreviation: sharedIdentity.recognizedAbbreviation === true,
+      suppressUnrelatedMatches: true,
+      intentRoute: sharedIdentity.intentRoute || "shared-identity-context-required"
     };
   }
   if (!sharedIdentity.mayAutoOpen || !sharedIdentity.preferred) return null;
   return {
     type: sharedIdentity.preferred.type,
     item: sharedIdentity.preferred.item,
-    score: sharedIdentity.matchKind === "reviewed-prefix" ? 3900 : 3720,
-    exactIdentity: sharedIdentity.matchKind === "exact-identity",
+    score: sharedIdentity.reviewed ? 3900 : 3720,
+    exactIdentity: ["exact-identity", "exact-canonical", "reviewed-preferred-abbreviation", "reviewed-abbreviation-expansion"].includes(sharedIdentity.matchKind),
     reviewedPrefixIdentity: sharedIdentity.matchKind === "reviewed-prefix",
+    reviewedAbbreviationIdentity: sharedIdentity.recognizedAbbreviation === true,
     nearIdentity: false,
     sharedIdentityResolution: true
   };
@@ -41584,9 +42649,43 @@ function cloneOfflineLookupSuggestions(suggestions = []) {
     .filter(Boolean);
 }
 
+function offlineLookupInputWithoutDoseUnits(input = "") {
+  const raw = safeText(input);
+  const numericDosePattern = /\b\d+(?:\.\d+)?\s*(?:mcg|ug|mg|g|kg|ml|l|meq|mmol|unit|units)(?:\s*\/\s*(?:kg|ml|l|min|hr|day)){0,2}\b/gi;
+  const ratioDosePattern = /\b(?:mcg|ug|mg|g|kg|ml|l|meq|mmol|unit|units)\s*\/\s*(?:kg|ml|l|min|hr|day)(?:\s*\/\s*(?:kg|ml|l|min|hr|day))?\b/gi;
+  if (!numericDosePattern.test(raw) && !ratioDosePattern.test(raw)) return raw;
+  numericDosePattern.lastIndex = 0;
+  ratioDosePattern.lastIndex = 0;
+  return raw
+    .replace(numericDosePattern, " ")
+    .replace(ratioDosePattern, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+const OFFLINE_DOSE_CONTEXT_ONLY_WORDS = new Set([
+  "a", "an", "and", "at", "by", "daily", "dose", "doses", "dosing", "for",
+  "hour", "hours", "infusion", "infusions", "iv", "of", "per", "po", "rate",
+  "received", "the", "to", "was", "were"
+]);
+
+function offlineDoseUnitExpressionOnly(input = "") {
+  const raw = safeText(input).replace(/\s+/g, " ").trim();
+  const stripped = offlineLookupInputWithoutDoseUnits(raw);
+  if (!raw || stripped === raw) return false;
+  const meaningfulTokens = normalizePharmText(stripped)
+    .split(" ")
+    .filter((token) => token && !OFFLINE_DOSE_CONTEXT_ONLY_WORDS.has(token));
+  return meaningfulTokens.length === 0;
+}
+
 function offlineLookupSuggestions(input = "") {
   const fixed = applyClinicalSpeechFixups(input) || input;
-  const cacheKey = normalizePharmText(fixed);
+  const unitRatioInput = /\b(?:mcg|ug|mg|g|kg|ml|l|meq|mmol|unit|units)\s*\/\s*(?:kg|ml|l|min|hr|day)\b/i.test(safeText(input));
+  const normalizedCacheKey = normalizePharmText(fixed);
+  const cacheKey = normalizedCacheKey
+    ? `${normalizedCacheKey}${unitRatioInput ? "|unit-ratio" : ""}`
+    : "";
   const contextDependent = isBareOfflineLookupFollowup(fixed)
     || isOfflineLookupConfirmation(fixed)
     || isOfflineLookupRejection(fixed);
@@ -41597,7 +42696,10 @@ function offlineLookupSuggestions(input = "") {
     offlineLookupSuggestionCache.set(cacheKey, cached);
     return cloneOfflineLookupSuggestions(cached);
   }
-  const suggestions = offlineLookupSuggestionsUncached(fixed);
+  const doseSafeInput = offlineLookupInputWithoutDoseUnits(input);
+  const suggestions = offlineDoseUnitExpressionOnly(input)
+    ? []
+    : offlineLookupSuggestionsUncached(doseSafeInput);
   if (cacheKey && !contextDependent) {
     const snapshot = cloneOfflineLookupSuggestions(suggestions);
     offlineLookupSuggestionCache.set(cacheKey, snapshot);
@@ -46850,6 +47952,13 @@ function sendUserMessage(text, options = {}) {
   const cleaned = text.trim();
   const images = pendingImages.slice();
   const resources = pendingResources.slice();
+  const directEncyclopediaTarget = options.directEncyclopediaTarget?.item
+    && options.directEncyclopediaTarget?.type
+    ? {
+        type: options.directEncyclopediaTarget.type,
+        item: options.directEncyclopediaTarget.item
+      }
+    : null;
   if (!cleaned && !images.length && !resources.length) {
     return;
   }
@@ -46883,6 +47992,31 @@ function sendUserMessage(text, options = {}) {
     voiceStatus.textContent = shouldUseStructuredRenderer(outgoingText, images, resources)
       ? "Building interactive NCLEX item with OpenAI..."
       : "Checking ANI's local reference...";
+  }
+  if (directEncyclopediaTarget) {
+    const targetLabel = offlineLookupEntityLabel(directEncyclopediaTarget) || cleaned;
+    addMessage(
+      "assistant",
+      `Opening **${targetLabel}** in the clinical reference.`,
+      false,
+      false,
+      true,
+      { boundEncyclopediaTarget: directEncyclopediaTarget }
+    );
+    openPharmDatabase(offlineLookupQuery(directEncyclopediaTarget) || targetLabel, {
+      openDetail: true,
+      expandDetail: true,
+      autoFocus: false,
+      autoRead: true,
+      detailType: directEncyclopediaTarget.type,
+      fastDetail: true,
+      highlightQuery: cleaned || targetLabel,
+      targetCandidate: directEncyclopediaTarget
+    });
+    if (voiceStatus) {
+      voiceStatus.textContent = "Voice ready";
+    }
+    return;
   }
   const finishUserMessage = async () => {
     const response = await makeModelEnhancedResponse(outgoingText, images, resources);
@@ -46932,7 +48066,13 @@ function sendUserMessage(text, options = {}) {
           addMessage("assistant", response.preface, false, false, true,
             responseTarget ? { boundEncyclopediaTarget: responseTarget } : {});
         }
-        openPharmDatabase(response.query || "", { openDetail: response.openDetail, detailType: response.detailType, fastDetail: true, highlightQuery: response.highlightQuery });
+        openPharmDatabase(response.query || "", {
+          openDetail: response.openDetail,
+          expandDetail: response.openDetail === true,
+          detailType: response.detailType,
+          fastDetail: true,
+          highlightQuery: response.highlightQuery
+        });
         if (!response.preface) {
           addMessage("assistant", "I opened the clinical reference. You can search by medication, class, interaction, warning, lab, disease, pathology, herbal, supplement, or typo-close spelling.", false, false);
         }
@@ -48745,11 +49885,17 @@ function acceptMedicalSearchAssist(index, options = {}) {
     const requestGeneration = ++pharmSearchRequestGeneration;
     renderPharmResults({ expectedQuery: record.label, requestGeneration });
     if (options.openDetail === true) {
+      setPharmDetailExpanded(false, { skipBrowserHistory: true });
       openPharmDetailCandidate({ type: record.type, item: record.item }, {
         highlightQuery: record.label,
         autoRead: true
       });
     }
+  } else if (input === messageInput && options.submit === true) {
+    sendUserMessage(record.label, {
+      directEncyclopediaTarget: { type: record.type, item: record.item },
+      displayText: record.label
+    });
   } else {
     input.focus?.();
   }
@@ -48798,13 +49944,19 @@ function renderMedicalSearchAssist(input) {
     detail.textContent = record.matchKind === "phonetic-suggestion"
       ? `Sounds like this · ${record.kind}`
       : `${record.kind}${record.mayAutoOpen ? " · reviewed direct match" : ""}`;
+    if (record.ambiguousIdentity === true) {
+      detail.textContent = `Context-dependent abbreviation - choose this ${record.kind}`;
+    }
     option.append(title, detail);
     option.addEventListener("mouseenter", () => {
       medicalSearchAssistActiveIndex = index;
       updateMedicalSearchAssistSelection();
     });
     option.addEventListener("click", () => {
-      acceptMedicalSearchAssist(index, { openDetail: input === pharmSearchInput });
+      acceptMedicalSearchAssist(index, {
+        openDetail: input === pharmSearchInput,
+        submit: input === messageInput
+      });
     });
     medicalSearchAssistBox.append(option);
   });
@@ -48853,8 +50005,15 @@ function bindMedicalSearchAssist(input) {
       return;
     }
     if (event.key === "Tab" && medicalSearchAssistRecords.length) {
-      event.preventDefault();
-      acceptMedicalSearchAssist(medicalSearchAssistActiveIndex >= 0 ? medicalSearchAssistActiveIndex : 0);
+      const selectedIndex = medicalSearchAssistActiveIndex >= 0
+        ? medicalSearchAssistActiveIndex
+        : medicalSearchAssistRecords[0]?.mayAutoOpen === true
+          ? 0
+          : -1;
+      if (selectedIndex >= 0) {
+        event.preventDefault();
+        acceptMedicalSearchAssist(selectedIndex);
+      }
       return;
     }
     if (event.key === "Enter") {
@@ -48868,7 +50027,10 @@ function bindMedicalSearchAssist(input) {
       if (selectedIndex >= 0) {
         event.preventDefault();
         event.stopImmediatePropagation?.();
-        acceptMedicalSearchAssist(selectedIndex, { openDetail: input === pharmSearchInput });
+        acceptMedicalSearchAssist(selectedIndex, {
+          openDetail: input === pharmSearchInput,
+          submit: input === messageInput
+        });
       }
     }
   });
@@ -48876,7 +50038,10 @@ function bindMedicalSearchAssist(input) {
 
 bindMedicalSearchAssist(messageInput);
 bindMedicalSearchAssist(pharmSearchInput);
-window.addEventListener("resize", () => positionMedicalSearchAssist(medicalSearchAssistInput));
+window.addEventListener("resize", () => {
+  positionMedicalSearchAssist(medicalSearchAssistInput);
+  updatePharmDetailExpandControl();
+});
 window.addEventListener("scroll", () => positionMedicalSearchAssist(medicalSearchAssistInput), { passive: true });
 window.addEventListener("ani-medical-phonetic-index-ready", () => {
   if (medicalSearchAssistInput) queueMedicalSearchAssist(medicalSearchAssistInput, 0);

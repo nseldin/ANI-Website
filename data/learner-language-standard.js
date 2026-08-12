@@ -7,8 +7,80 @@
 })(typeof window !== "undefined" ? window : (typeof globalThis !== "undefined" ? globalThis : null), function () {
   "use strict";
 
-  const VERSION = "2026-08-10.1";
+  const VERSION = "2026-08-11.3";
   const SCHEMA_VERSION = 1;
+  const CLINICAL_REFERENCE_OPENING_STANDARD = Object.freeze({
+    schemaVersion: "ani-clinical-reference-opening-v1",
+    quickAnswerFallbackField: "summary",
+    whyItMattersField: "whyItMatters",
+    exactDuplicateFirstSectionLabels: Object.freeze([
+      "definition",
+      "scope",
+      "principle",
+      "what it is and why it matters",
+      "definition and composition",
+      "definition and purpose"
+    ]),
+    equalityPolicy: "case-whitespace-terminal-sentence-punctuation-only",
+    preservedClinicalOperators: Object.freeze(["+", "-", "−", "<", ">", "<=", ">=", "≤", "≥", "=", "%", "/"]),
+    preserveLaterSections: true,
+    preserveSafetySections: true
+  });
+  const CLINICAL_REFERENCE_STRUCTURED_SECTION_FIELD_ORDERS = Object.freeze({
+    complications: Object.freeze(["early", "ostomySpecific", "later"]),
+    "report-or-escalate-immediately": Object.freeze(["finding", "action", "why"]),
+    "nclex-and-exam-focus": Object.freeze([
+      "priorityAssessment",
+      "mostImportantComplication",
+      "positioningPrecaution",
+      "patientTeaching",
+      "immediateActionFinding",
+      "commonMisconception"
+    ])
+  });
+  const CLINICAL_REFERENCE_STRUCTURED_SECTION_FIELD_LABELS = Object.freeze({
+    early: "Early complications",
+    ostomySpecific: "Ostomy-specific complications",
+    later: "Later complications",
+    finding: "Finding",
+    action: "Action",
+    why: "Why it matters",
+    priorityAssessment: "Priority assessment",
+    mostImportantComplication: "Most important complication",
+    positioningPrecaution: "Positioning precaution",
+    patientTeaching: "Patient teaching",
+    immediateActionFinding: "Immediate action finding",
+    commonMisconception: "Common misconception"
+  });
+  const CLINICAL_REFERENCE_STRUCTURED_SECTION_STANDARD = Object.freeze({
+    schemaVersion: "ani-clinical-reference-structured-section-v1",
+    surgeryRuntimeCollection: "clinicalReferenceEntries",
+    surgeryCanonicalOwner: "Surgeries & Procedures",
+    surgeryStableIdPrefix: "surgery-procedure:",
+    exactOwnedWhySectionId: "why-it-matters",
+    exactOwnedWhySectionLabel: "Why it matters",
+    urgentSectionId: "report-or-escalate-immediately",
+    fieldOrders: CLINICAL_REFERENCE_STRUCTURED_SECTION_FIELD_ORDERS,
+    fieldLabels: CLINICAL_REFERENCE_STRUCTURED_SECTION_FIELD_LABELS,
+    preserveArrayOrder: true,
+    preserveUnknownScalarLeaves: true,
+    urgentFieldCardinality: "exactly-one-nonempty-scalar",
+    unknownShapesBlockPublication: true
+  });
+  const VISIBLE_LEARNER_SUPPORT_STANDARD = Object.freeze({
+    schemaVersion: "ani-visible-learner-support-v1",
+    placement: "first-visible-term-occurrence",
+    explicitGlossSourceKeysRequired: true,
+    maximumInferredGlossesPerBlock: 3,
+    maximumInferredGlossesPerCard: 3,
+    preserveAuthoredText: true,
+    preserveVisibleBlockOrder: true,
+    duplicatePlacementAllowed: false,
+    nearbyExplanationSuppressesSupport: true,
+    routineNursingContextGate: true,
+    longSentenceMinimumWords: 40,
+    longSentenceMinimumDifficultTerms: 2
+  });
   const PRESENTATION_STANDARD = Object.freeze({
     schemaVersion: "ani-card-presentation-v1",
     allowedVisualTypes: Object.freeze([
@@ -223,6 +295,325 @@
       .trim();
   }
 
+  function clinicalReferenceSectionRecords(item) {
+    return (Array.isArray(item && item.sections) ? item.sections : [])
+      .map((section, index) => {
+        if (Array.isArray(section)) {
+          return {
+            label: cleanText(section[0]),
+            value: section[1],
+            presentation: "",
+            defaultOpen: false,
+            sourceIndex: index,
+            source: section
+          };
+        }
+        return {
+          ...(section && typeof section === "object" ? section : {}),
+          label: cleanText(section && (section.label || section.heading || section.title)),
+          value: section && (section.text || section.value || section.content || section.description || section.body),
+          presentation: cleanText(section && section.presentation),
+          defaultOpen: Boolean(section && section.defaultOpen === true),
+          sourceIndex: index,
+          source: section
+        };
+      })
+      .filter((section) => section.label && section.value);
+  }
+
+  function clinicalReferenceResultMeaningText(item) {
+    return (Array.isArray(item && item.resultMeanings) ? item.resultMeanings : [])
+      .map((row) => {
+        if (Array.isArray(row)) {
+          return { label: cleanText(row[0]), meaning: cleanText(row[1]) };
+        }
+        return {
+          label: cleanText(row && (row.label || row.result || row.name)),
+          meaning: cleanText(row && (row.meaning || row.interpretation || row.description))
+        };
+      })
+      .filter((row) => row.label && row.meaning)
+      .map((row) => `${row.label}: ${row.meaning}`)
+      .join(" ");
+  }
+
+  function isPlainObject(value) {
+    return Boolean(value && typeof value === "object" && !Array.isArray(value));
+  }
+
+  function structuredSectionFieldLabel(key) {
+    if (CLINICAL_REFERENCE_STRUCTURED_SECTION_FIELD_LABELS[key]) {
+      return CLINICAL_REFERENCE_STRUCTURED_SECTION_FIELD_LABELS[key];
+    }
+    return cleanText(String(key || "")
+      .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
+      .replace(/[-_]+/g, " "))
+      .replace(/^./, (character) => character.toUpperCase());
+  }
+
+  function orderedStructuredSectionKeys(value, sectionId) {
+    const actual = Object.keys(isPlainObject(value) ? value : {});
+    const preferred = CLINICAL_REFERENCE_STRUCTURED_SECTION_FIELD_ORDERS[sectionId] || [];
+    return [
+      ...preferred.filter((key) => actual.includes(key)),
+      ...actual.filter((key) => !preferred.includes(key))
+    ];
+  }
+
+  function clinicalReferenceStructuredScalarLeaves(value, path, output, seen) {
+    const currentPath = Array.isArray(path) ? path : [];
+    const leaves = Array.isArray(output) ? output : [];
+    const visited = seen instanceof Set ? seen : new Set();
+    if (value === undefined || value === null) return leaves;
+    if (["string", "number", "boolean"].includes(typeof value)) {
+      const text = cleanText(value);
+      if (text) leaves.push(Object.freeze({ path: currentPath.join("."), text }));
+      return leaves;
+    }
+    if (typeof value !== "object" || visited.has(value)) return leaves;
+    visited.add(value);
+    if (Array.isArray(value)) {
+      value.forEach((item, index) => clinicalReferenceStructuredScalarLeaves(
+        item,
+        currentPath.concat(String(index)),
+        leaves,
+        visited
+      ));
+    } else {
+      Object.entries(value).forEach(([key, item]) => clinicalReferenceStructuredScalarLeaves(
+        item,
+        currentPath.concat(key),
+        leaves,
+        visited
+      ));
+    }
+    return leaves;
+  }
+
+  function structuredSectionItems(value, path) {
+    return Object.freeze(clinicalReferenceStructuredScalarLeaves(value, path || [], [], new Set()));
+  }
+
+  function clinicalReferenceStructuredValueProjection(value, options) {
+    const settings = options || {};
+    const sectionId = cleanText(settings.sectionId);
+    const sourceLeaves = structuredSectionItems(value, []);
+    const unsupportedPaths = [];
+    let kind = "text";
+    let items = Object.freeze([]);
+    let fields = Object.freeze([]);
+    let records = Object.freeze([]);
+
+    if (Array.isArray(value)) {
+      const scalarOnly = value.every((item) => ["string", "number", "boolean"].includes(typeof item));
+      const objectOnly = value.every((item) => isPlainObject(item));
+      if (scalarOnly) {
+        kind = "list";
+        items = structuredSectionItems(value, []);
+      } else if (objectOnly) {
+        kind = "records";
+        const required = sectionId === CLINICAL_REFERENCE_STRUCTURED_SECTION_STANDARD.urgentSectionId
+          ? CLINICAL_REFERENCE_STRUCTURED_SECTION_FIELD_ORDERS[sectionId]
+          : [];
+        if (!required.length) unsupportedPaths.push("unsupported object-array section");
+        records = Object.freeze(value.map((record, recordIndex) => {
+          const keys = orderedStructuredSectionKeys(record, sectionId);
+          required.filter((key) => !Object.prototype.hasOwnProperty.call(record, key))
+            .forEach((key) => unsupportedPaths.push(`${recordIndex}.${key}:missing`));
+          keys.filter((key) => required.length && !required.includes(key))
+            .forEach((key) => unsupportedPaths.push(`${recordIndex}.${key}:unexpected`));
+          return Object.freeze({
+            index: recordIndex,
+            fields: Object.freeze(keys.map((key) => {
+              const fieldValue = record[key];
+              const fieldItems = structuredSectionItems(fieldValue, [String(recordIndex), key]);
+              if (required.includes(key)) {
+                const scalar = ["string", "number", "boolean"].includes(typeof fieldValue);
+                if (!scalar) unsupportedPaths.push(`${recordIndex}.${key}:non-scalar`);
+                if (fieldItems.length !== 1) {
+                  unsupportedPaths.push(`${recordIndex}.${key}:${fieldItems.length ? "multiple-leaves" : "empty"}`);
+                }
+              }
+              return Object.freeze({
+                key,
+                label: structuredSectionFieldLabel(key),
+                items: fieldItems
+              });
+            }))
+          });
+        }));
+      } else {
+        kind = "list";
+        items = sourceLeaves;
+        unsupportedPaths.push("mixed or nested array shape");
+      }
+    } else if (isPlainObject(value)) {
+      kind = "fields";
+      const required = sectionId === "complications"
+        ? ["early", "later"]
+        : (sectionId === "nclex-and-exam-focus"
+          ? CLINICAL_REFERENCE_STRUCTURED_SECTION_FIELD_ORDERS[sectionId]
+          : []);
+      const allowed = CLINICAL_REFERENCE_STRUCTURED_SECTION_FIELD_ORDERS[sectionId] || [];
+      if (!allowed.length) unsupportedPaths.push("unsupported object section");
+      required.filter((key) => !Object.prototype.hasOwnProperty.call(value, key))
+        .forEach((key) => unsupportedPaths.push(`${key}:missing`));
+      const keys = orderedStructuredSectionKeys(value, sectionId);
+      keys.filter((key) => allowed.length && !allowed.includes(key))
+        .forEach((key) => unsupportedPaths.push(`${key}:unexpected`));
+      fields = Object.freeze(keys.map((key) => Object.freeze({
+        key,
+        label: structuredSectionFieldLabel(key),
+        items: structuredSectionItems(value[key], [key])
+      })));
+    } else {
+      items = sourceLeaves;
+    }
+
+    const projectedLeaves = kind === "records"
+      ? records.flatMap((record) => record.fields.flatMap((field) => field.items))
+      : (kind === "fields" ? fields.flatMap((field) => field.items) : items);
+    if (projectedLeaves.length !== sourceLeaves.length) {
+      unsupportedPaths.push(`leaf-count:${sourceLeaves.length}->${projectedLeaves.length}`);
+    }
+    const coverageComplete = sourceLeaves.length > 0 && unsupportedPaths.length === 0;
+    return Object.freeze({
+      schemaVersion: CLINICAL_REFERENCE_STRUCTURED_SECTION_STANDARD.schemaVersion,
+      sectionId,
+      kind,
+      items,
+      fields,
+      records,
+      leaves: Object.freeze(projectedLeaves),
+      text: projectedLeaves.map((leaf) => leaf.text).join(" "),
+      sourceLeafCount: sourceLeaves.length,
+      projectedLeafCount: projectedLeaves.length,
+      coverageComplete,
+      unsupportedPaths: Object.freeze(unsupportedPaths)
+    });
+  }
+
+  function clinicalReferenceStructuredSectionProjection(section) {
+    const source = section && typeof section === "object" ? section : {};
+    const value = Object.prototype.hasOwnProperty.call(source, "value")
+      ? source.value
+      : (source.text || source.content || source.body || source.description);
+    return clinicalReferenceStructuredValueProjection(value, {
+      sectionId: cleanText(source.id || source.sectionId)
+    });
+  }
+
+  function isSurgeryClinicalReference(item) {
+    const source = item && typeof item === "object" ? item : {};
+    const metadata = isPlainObject(source.surgeryProcedure) ? source.surgeryProcedure : {};
+    const stableId = cleanText(source.directTargetId || source.id || metadata.stableId);
+    return cleanText(metadata.canonicalOwner) === CLINICAL_REFERENCE_STRUCTURED_SECTION_STANDARD.surgeryCanonicalOwner
+      && cleanText(metadata.runtimeCollection) === CLINICAL_REFERENCE_STRUCTURED_SECTION_STANDARD.surgeryRuntimeCollection
+      && stableId.startsWith(CLINICAL_REFERENCE_STRUCTURED_SECTION_STANDARD.surgeryStableIdPrefix);
+  }
+
+  function isExactOwnedSurgeryWhySection(item, section, whyItMatters) {
+    if (!isSurgeryClinicalReference(item) || !section || typeof section !== "object") return false;
+    if (cleanText(section.id) !== CLINICAL_REFERENCE_STRUCTURED_SECTION_STANDARD.exactOwnedWhySectionId) return false;
+    if (cleanText(section.label) !== CLINICAL_REFERENCE_STRUCTURED_SECTION_STANDARD.exactOwnedWhySectionLabel) return false;
+    if (cleanText(section.presentation).toLowerCase() === "urgent" || !Array.isArray(section.value)) return false;
+    const safetyVisible = new Set(
+      Array.isArray(item && item.procedure && item.procedure.safetyVisibleSectionIds)
+        ? item.procedure.safetyVisibleSectionIds.map(cleanText)
+        : []
+    );
+    if (safetyVisible.has(cleanText(section.id))) return false;
+    const projection = clinicalReferenceStructuredSectionProjection(section);
+    return projection.kind === "list"
+      && projection.coverageComplete
+      && openingOwnershipComparable(projection.text) === openingOwnershipComparable(whyItMatters);
+  }
+
+  function openingOwnershipTokens(value) {
+    const text = cleanText(value).normalize("NFC");
+    const tokens = Array.from(text.matchAll(/\S+/gu)).map((match) => ({
+      value: match[0],
+      index: match.index,
+      comparable: match[0].normalize("NFC").toLocaleLowerCase("en-US")
+    }));
+    if (tokens.length) {
+      tokens[tokens.length - 1].comparable = tokens[tokens.length - 1].comparable.replace(/[.!?]+$/u, "");
+    }
+    return tokens.filter((token) => token.comparable);
+  }
+
+  function openingOwnershipComparable(value) {
+    return openingOwnershipTokens(value).map((token) => token.comparable).join(" ");
+  }
+
+  function quickAnswerWithoutExactWhySuffix(quickAnswer, whyItMatters) {
+    const quick = cleanText(quickAnswer);
+    const why = cleanText(whyItMatters);
+    const quickTokens = openingOwnershipTokens(quick);
+    const whyTokens = openingOwnershipTokens(why);
+    if (!whyTokens.length || whyTokens.length > quickTokens.length) {
+      return { value: quick, split: false };
+    }
+    const suffixTokens = quickTokens.slice(-whyTokens.length);
+    if (!suffixTokens.every((token, index) => token.comparable === whyTokens[index].comparable)) {
+      return { value: quick, split: false };
+    }
+    const suffixStart = suffixTokens[0] && suffixTokens[0].index;
+    if (!Number.isInteger(suffixStart)) return { value: quick, split: false };
+    return {
+      value: quick.slice(0, suffixStart).trim(),
+      split: true
+    };
+  }
+
+  function clinicalReferenceOpeningProjection(item, options) {
+    const source = item && typeof item === "object" ? item : {};
+    const settings = options || {};
+    const hasQuickAnswerOverride = Object.prototype.hasOwnProperty.call(settings, "quickAnswerOverride");
+    const authoredQuickAnswer = cleanText(source.quickAnswer);
+    const whyItMatters = cleanText(source.whyItMatters);
+    const openingSource = hasQuickAnswerOverride
+      ? cleanText(settings.quickAnswerOverride)
+      : (authoredQuickAnswer || cleanText(source.summary));
+    const quickProjection = !hasQuickAnswerOverride && authoredQuickAnswer
+      ? quickAnswerWithoutExactWhySuffix(openingSource, whyItMatters)
+      : { value: openingSource, split: false };
+    const sectionRecords = Array.isArray(settings.sectionRecords)
+      ? settings.sectionRecords
+      : clinicalReferenceSectionRecords(source);
+    const displayedOpeningValues = new Set(
+      [quickProjection.value, whyItMatters].map(openingOwnershipComparable).filter(Boolean)
+    );
+    const openingLabels = new Set(CLINICAL_REFERENCE_OPENING_STANDARD.exactDuplicateFirstSectionLabels);
+    const suppressedSectionIndexes = [];
+    const suppressedOwnedWhySectionIndexes = [];
+    const visibleSectionRecords = sectionRecords.filter((section, index) => {
+      const sourceIndex = Number.isInteger(section && section.sourceIndex) ? section.sourceIndex : index;
+      if (isExactOwnedSurgeryWhySection(source, section, whyItMatters)) {
+        suppressedSectionIndexes.push(sourceIndex);
+        suppressedOwnedWhySectionIndexes.push(sourceIndex);
+        return false;
+      }
+      if (index !== 0 || !openingLabels.has(normalize(section && section.label))) return true;
+      const value = section && section.value;
+      if (typeof value !== "string" && typeof value !== "number") return true;
+      const duplicate = displayedOpeningValues.has(openingOwnershipComparable(value));
+      if (duplicate) suppressedSectionIndexes.push(sourceIndex);
+      return !duplicate;
+    });
+
+    return Object.freeze({
+      schemaVersion: CLINICAL_REFERENCE_OPENING_STANDARD.schemaVersion,
+      quickAnswer: quickProjection.value,
+      whyItMatters,
+      learnerSupportText: [quickProjection.value, whyItMatters].filter(Boolean).join(" "),
+      sectionRecords: Object.freeze(visibleSectionRecords),
+      whySuffixSplit: quickProjection.split,
+      suppressedSectionIndexes: Object.freeze(suppressedSectionIndexes),
+      suppressedOwnedWhySectionIndexes: Object.freeze(suppressedOwnedWhySectionIndexes)
+    });
+  }
+
   function escapeRegex(value) {
     return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
@@ -273,15 +664,52 @@
     return (match.explainWhen || []).some((phrase) => source.includes(normalize(phrase)));
   }
 
+  function sentenceRecords(text) {
+    const source = cleanText(text);
+    const values = source.split(/(?<=[.!?])\s+/).map(cleanText).filter(Boolean);
+    let cursor = 0;
+    return values.map((value) => {
+      const start = source.indexOf(value, cursor);
+      const safeStart = start >= 0 ? start : cursor;
+      const end = safeStart + value.length;
+      cursor = end;
+      return {
+        text: value,
+        start: safeStart,
+        end,
+        wordCount: normalize(value).split(" ").filter(Boolean).length
+      };
+    });
+  }
+
   function sentenceMetrics(text) {
-    const sentences = cleanText(text).split(/(?<=[.!?])\s+/).map(cleanText).filter(Boolean);
-    const wordCounts = sentences.map((sentence) => normalize(sentence).split(" ").filter(Boolean).length);
+    const sentences = sentenceRecords(text);
+    const wordCounts = sentences.map((sentence) => sentence.wordCount);
     const average = wordCounts.length ? wordCounts.reduce((sum, count) => sum + count, 0) / wordCounts.length : 0;
     return {
       sentenceCount: sentences.length,
       averageSentenceWords: Number(average.toFixed(1)),
       maximumSentenceWords: wordCounts.length ? Math.max(...wordCounts) : 0
     };
+  }
+
+  function hasLongSentenceWithDifficultTerms(text, difficultTerms, options) {
+    const settings = options || {};
+    const minimumWords = Math.max(1, Number(settings.minimumWords)
+      || VISIBLE_LEARNER_SUPPORT_STANDARD.longSentenceMinimumWords);
+    const minimumTerms = Math.max(1, Number(settings.minimumTerms)
+      || VISIBLE_LEARNER_SUPPORT_STANDARD.longSentenceMinimumDifficultTerms);
+    const positioned = (Array.isArray(difficultTerms) ? difficultTerms : [])
+      .filter((entry) => entry && Number.isInteger(entry.start) && Number.isInteger(entry.end));
+    if (positioned.length < minimumTerms) return false;
+    return sentenceRecords(text).some((sentence) => {
+      if (sentence.wordCount < minimumWords) return false;
+      const keys = new Set(positioned
+        .filter((entry) => entry.start >= sentence.start && entry.end <= sentence.end)
+        .map((entry) => normalize(entry.term))
+        .filter(Boolean));
+      return keys.size >= minimumTerms;
+    });
   }
 
   function analyzeText(text, options) {
@@ -295,7 +723,7 @@
     const sentence = sentenceMetrics(source);
     const supportRecommended = difficult.length >= 3
       || (difficult.length >= 2 && density >= 0.75)
-      || (difficult.length >= 2 && sentence.maximumSentenceWords >= 40);
+      || hasLongSentenceWithDifficultTerms(source, difficult);
     return {
       wordCount: tokens.length,
       matchedTerms: matches,
@@ -347,32 +775,237 @@
     });
   }
 
+  function explicitGlossMatch(text, entry) {
+    const source = cleanText(text);
+    const term = cleanText(entry && entry.term);
+    if (!source || !term) return null;
+    const match = termPattern(term).exec(source);
+    if (!match) return null;
+    return {
+      ...entry,
+      matchedText: match[0],
+      start: match.index,
+      end: match.index + match[0].length
+    };
+  }
+
+  function visibleLearnerSupportProjection(item, blocks, options) {
+    const source = item && typeof item === "object" ? item : {};
+    const settings = options || {};
+    const maximumInferredPerBlock = Math.max(0, Number(settings.maximumInferredGlossesPerBlock)
+      || VISIBLE_LEARNER_SUPPORT_STANDARD.maximumInferredGlossesPerBlock);
+    const maximumInferredPerCard = Math.max(0, Number(settings.maximumInferredGlossesPerCard)
+      || VISIBLE_LEARNER_SUPPORT_STANDARD.maximumInferredGlossesPerCard);
+    const supplied = explicitGlosses(source);
+    const validExplicit = supplied.filter((entry) => entry.sourceKeys.length > 0);
+    const invalidExplicit = supplied.filter((entry) => entry.sourceKeys.length === 0);
+    const explicitByKey = new Map(validExplicit.map((entry) => [normalize(entry.term), entry]));
+    const invalidByKey = new Map(invalidExplicit.map((entry) => [normalize(entry.term), entry]));
+    const seenTerms = new Set((Array.isArray(settings.seenTerms) ? settings.seenTerms : [])
+      .map(normalize).filter(Boolean));
+    const observedExplicitKeys = new Set();
+    const placedTerms = new Set();
+    const duplicatePlacements = [];
+    const unresolvedEligibleTerms = [];
+
+    const normalizedBlocks = (Array.isArray(blocks) ? blocks : []).map((block, index) => ({
+      id: cleanText(block && (block.id || block.path)) || `visible-block-${index + 1}`,
+      path: cleanText(block && block.path) || `visibleBlocks.${index}`,
+      text: cleanText(block && (block.text || block.value || block.content)),
+      safetyVisible: Boolean(block && block.safetyVisible),
+      sourceIndex: Number.isInteger(block && block.sourceIndex) ? block.sourceIndex : index
+    })).filter((block) => block.text);
+    const blockCandidates = normalizedBlocks.map((block) => {
+      const registryMatches = termMatches(block.text);
+      const explicitMatches = supplied.map((entry) => explicitGlossMatch(block.text, entry)).filter(Boolean);
+      const matchesByKey = new Map();
+      [...registryMatches, ...explicitMatches]
+        .sort((left, right) => left.start - right.start || right.term.length - left.term.length)
+        .forEach((match) => {
+          const key = normalize(match.term);
+          if (!key || matchesByKey.has(key)) return;
+          matchesByKey.set(key, match);
+        });
+      const explicitCandidates = [];
+      const inferredCandidates = [];
+      matchesByKey.forEach((match, key) => {
+        if (explicitByKey.has(key) || invalidByKey.has(key)) observedExplicitKeys.add(key);
+        if (seenTerms.has(key)) return;
+        const invalid = invalidByKey.get(key);
+        const explicit = explicitByKey.get(key);
+        const candidate = explicit ? { ...match, ...explicit } : match;
+        if (invalid) {
+          seenTerms.add(key);
+          return;
+        }
+        if (!explicit && !termNeedsExplanation(block.text, candidate, { strictExplanation: true })) {
+          return;
+        }
+        seenTerms.add(key);
+        if (hasNearbyExplanation(block.text, candidate, { strictExplanation: true })) return;
+        const placement = {
+          key,
+          term: cleanText(candidate.term),
+          plainLanguage: cleanText(candidate.plainLanguage),
+          kind: explicit ? "authored-sourced-gloss" : "reviewed-registry-gloss",
+          sourceKeys: explicit ? explicit.sourceKeys.slice() : [],
+          guidanceKeys: !explicit && Array.isArray(candidate.guidanceKeys) ? candidate.guidanceKeys.slice() : [],
+          matchedText: cleanText(candidate.matchedText),
+          start: candidate.start,
+          end: candidate.end,
+          path: block.path,
+          blockId: block.id
+        };
+        if (explicit) explicitCandidates.push(placement);
+        else inferredCandidates.push(placement);
+      });
+      return { block, explicitCandidates, inferredCandidates };
+    });
+
+    const inferredCandidates = blockCandidates.flatMap((entry) => entry.inferredCandidates);
+    const visibleText = normalizedBlocks.map((block) => block.text).join(" ");
+    const visibleWordCount = normalize(visibleText).split(" ").filter(Boolean).length;
+    const inferredDensity = visibleWordCount
+      ? Number((inferredCandidates.length / visibleWordCount * 100).toFixed(2))
+      : 0;
+    const longSentenceWithMultipleDifficultTerms = blockCandidates.some((entry) =>
+      hasLongSentenceWithDifficultTerms(entry.block.text, entry.inferredCandidates));
+    const supportRecommended = inferredCandidates.length >= 3
+      || (inferredCandidates.length >= 2 && inferredDensity >= 0.75)
+      || longSentenceWithMultipleDifficultTerms;
+    let inferredPlaced = 0;
+    let explicitPlaced = 0;
+    const projectedBlocks = blockCandidates.map(({ block, explicitCandidates, inferredCandidates: blockInferred }) => {
+      const glosses = [];
+      explicitCandidates.forEach((candidate) => {
+        if (placedTerms.has(candidate.key)) {
+          duplicatePlacements.push({ term: candidate.term, path: block.path });
+          return;
+        }
+        placedTerms.add(candidate.key);
+        explicitPlaced += 1;
+        glosses.push(candidate);
+      });
+      if (supportRecommended) {
+        blockInferred.forEach((candidate, index) => {
+          const blockLimitReached = index >= maximumInferredPerBlock;
+          const cardLimitReached = inferredPlaced >= maximumInferredPerCard;
+          if (blockLimitReached || cardLimitReached) {
+            unresolvedEligibleTerms.push({
+              term: candidate.term,
+              path: block.path,
+              reason: blockLimitReached
+                ? "maximum-inferred-glosses-per-block"
+                : "maximum-inferred-glosses-per-card"
+            });
+            return;
+          }
+          if (placedTerms.has(candidate.key)) {
+            duplicatePlacements.push({ term: candidate.term, path: block.path });
+            return;
+          }
+          placedTerms.add(candidate.key);
+          inferredPlaced += 1;
+          glosses.push(candidate);
+        });
+      }
+      const frozenGlosses = glosses.map((candidate) => Object.freeze({
+        term: candidate.term,
+        plainLanguage: candidate.plainLanguage,
+        kind: candidate.kind,
+        sourceKeys: Object.freeze(candidate.sourceKeys),
+        guidanceKeys: Object.freeze(candidate.guidanceKeys),
+        matchedText: candidate.matchedText
+      }));
+      return Object.freeze({
+        ...block,
+        hasValidExplicitGlosses: validExplicit.length > 0,
+        glosses: Object.freeze(frozenGlosses),
+        trigger: frozenGlosses.length ? "first-visible-unexplained-term" : ""
+      });
+    });
+
+    const unplacedExplicitGlosses = supplied
+      .filter((entry) => !observedExplicitKeys.has(normalize(entry.term)))
+      .map((entry) => Object.freeze({
+        term: entry.term,
+        plainLanguage: entry.plainLanguage,
+        sourceKeys: Object.freeze(entry.sourceKeys.slice())
+      }));
+    return Object.freeze({
+      schemaVersion: VISIBLE_LEARNER_SUPPORT_STANDARD.schemaVersion,
+      blocks: Object.freeze(projectedBlocks),
+      unplacedExplicitGlosses: Object.freeze(unplacedExplicitGlosses),
+      invalidExplicitGlosses: Object.freeze(invalidExplicit.map((entry) => Object.freeze({
+        term: entry.term,
+        plainLanguage: entry.plainLanguage,
+        sourceKeys: Object.freeze([])
+      }))),
+      seenTerms: Object.freeze(Array.from(seenTerms)),
+      duplicatePlacements: Object.freeze(duplicatePlacements),
+      unresolvedEligibleTerms: Object.freeze(unresolvedEligibleTerms),
+      analysis: Object.freeze({
+        visibleWordCount,
+        difficultUnexplainedTermCount: inferredCandidates.length,
+        difficultUnexplainedTerms: Object.freeze(inferredCandidates.map((entry) => Object.freeze({
+          term: entry.term,
+          matchedText: entry.matchedText,
+          path: entry.path,
+          start: entry.start,
+          end: entry.end
+        }))),
+        jargonDensityPer100Words: inferredDensity,
+        longSentenceWithMultipleDifficultTerms,
+        supportRecommended,
+        maximumInferredGlossesPerBlock: maximumInferredPerBlock,
+        maximumInferredGlossesPerCard: maximumInferredPerCard
+      }),
+      metrics: Object.freeze({
+        visibleBlocksChecked: normalizedBlocks.length,
+        explicitGlossTerms: supplied.length,
+        validExplicitGlossTerms: validExplicit.length,
+        explicitGlossTermsObserved: observedExplicitKeys.size,
+        explicitGlossesPlaced: explicitPlaced,
+        inferredGlossesPlaced: inferredPlaced,
+        invalidExplicitGlossesSuppressed: invalidExplicit.length,
+        unplacedExplicitGlosses: unplacedExplicitGlosses.length,
+        duplicatePlacements: duplicatePlacements.length,
+        unresolvedEligibleTerms: unresolvedEligibleTerms.length,
+        supportRecommended
+      })
+    });
+  }
+
   function supportForItem(item, options) {
     const settings = options || {};
     const hasVisibleText = Object.prototype.hasOwnProperty.call(settings, "visibleText");
     const source = hasVisibleText ? cleanText(settings.visibleText) : textForItem(item || {});
-    const analysis = analyzeText(source, settings);
-    const supplied = explicitGlosses(item || {});
-    const suppliedTerms = new Set(supplied.map((entry) => normalize(entry.term)));
-    const inferred = analysis.difficultUnexplainedTerms
-      .filter((entry) => !suppliedTerms.has(normalize(entry.term)))
-      .slice(0, Number(settings.maxInferredGlosses) || 3)
-      .map((entry) => ({
-        term: entry.term,
-        plainLanguage: entry.plainLanguage,
-        guidanceKeys: entry.guidanceKeys,
-        inferredFromReviewedGlossary: true
-      }));
+    const projection = visibleLearnerSupportProjection(item || {}, [{
+      id: "visible-text",
+      path: "visibleText",
+      text: source
+    }], {
+      maximumInferredGlossesPerBlock: Number(settings.maxInferredGlosses) || 3,
+      maximumInferredGlossesPerCard: Number(settings.maxInferredGlosses) || 3
+    });
+    const baseAnalysis = analyzeText(source, settings);
+    const analysis = {
+      ...baseAnalysis,
+      difficultUnexplainedTerms: projection.analysis.difficultUnexplainedTerms,
+      jargonDensityPer100Words: projection.analysis.jargonDensityPer100Words,
+      supportRecommended: projection.analysis.supportRecommended,
+      difficultyBand: projection.analysis.supportRecommended
+        ? "most-learners-may-need-help"
+        : (projection.analysis.difficultUnexplainedTermCount ? "some-learners-may-need-help" : "accessible-or-explained")
+    };
     const plainLanguage = cleanText(item && (item.plainLanguage || item.plainMeaning || item.termMeaning || item.literalMeaning));
     const whyItMatters = cleanText(item && (item.whyItMatters || item.clinicalSignificance || item.clinicalImportance));
-    const glosses = [];
-    const seenTerms = new Set();
-    [...supplied, ...inferred].forEach((entry) => {
-      const key = normalize(entry.term);
-      if (!key || seenTerms.has(key) || glosses.length >= (Number(settings.maxGlosses) || 6)) return;
-      seenTerms.add(key);
-      glosses.push(entry);
-    });
+    const glosses = (projection.blocks[0]?.glosses || [])
+      .slice(0, Number(settings.maxGlosses) || 6)
+      .map((entry) => ({
+        ...entry,
+        inferredFromReviewedGlossary: entry.kind === "reviewed-registry-gloss"
+      }));
     return {
       version: VERSION,
       plainLanguage,
@@ -403,6 +1036,9 @@
     version: VERSION,
     guidanceSources: GUIDANCE_SOURCES,
     presentationStandard: PRESENTATION_STANDARD,
+    clinicalReferenceOpeningStandard: CLINICAL_REFERENCE_OPENING_STANDARD,
+    clinicalReferenceStructuredSectionStandard: CLINICAL_REFERENCE_STRUCTURED_SECTION_STANDARD,
+    visibleLearnerSupportStandard: VISIBLE_LEARNER_SUPPORT_STANDARD,
     routineNursingTerms: ROUTINE_NURSING_TERMS,
     glossary,
     cleanText,
@@ -413,6 +1049,15 @@
     analyzeText,
     textForItem,
     explicitGlosses,
+    hasLongSentenceWithDifficultTerms,
+    visibleLearnerSupportProjection,
+    clinicalReferenceSectionRecords,
+    clinicalReferenceResultMeaningText,
+    clinicalReferenceStructuredScalarLeaves,
+    clinicalReferenceStructuredValueProjection,
+    clinicalReferenceStructuredSectionProjection,
+    clinicalReferenceOpeningProjection,
+    openingOwnershipComparable,
     supportForItem,
     annotateFirstTerms
   });

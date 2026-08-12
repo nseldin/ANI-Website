@@ -2199,6 +2199,64 @@ body.lecture-mode-active .voice-status {
   padding: 14px 16px 16px;
 }
 
+.pharm-database-screen.pharm-detail-expanded {
+  overflow: hidden;
+  padding: 0;
+  background: #ffffff;
+  backdrop-filter: none;
+}
+
+.pharm-database-screen.pharm-detail-expanded .pharm-database-shell {
+  width: 100%;
+  max-width: none;
+  min-height: 100dvh;
+  height: 100dvh;
+  gap: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.pharm-database-screen.pharm-detail-expanded .pharm-database-header,
+.pharm-database-screen.pharm-detail-expanded .pharm-search-panel,
+.pharm-database-screen.pharm-detail-expanded .pharm-results-card,
+.pharm-database-screen.pharm-detail-expanded .pharm-labs-card {
+  display: none;
+}
+
+.pharm-database-screen.pharm-detail-expanded .pharm-layout {
+  display: block;
+  min-height: 100dvh;
+  height: 100dvh;
+  padding: 0;
+}
+
+.pharm-database-screen.pharm-detail-expanded .pharm-detail-card {
+  display: grid;
+  width: 100%;
+  min-height: 100dvh;
+  max-height: none;
+  height: 100dvh;
+  border: 0;
+  border-radius: 0;
+  overflow: auto;
+  padding: 0 clamp(16px, 3vw, 52px) max(28px, env(safe-area-inset-bottom, 0px));
+  scroll-padding-top: 74px;
+}
+
+.pharm-database-screen.pharm-detail-expanded .pharm-detail-toolbar {
+  z-index: 12;
+  flex-wrap: wrap;
+  margin-top: 0;
+  padding-top: max(10px, env(safe-area-inset-top, 0px));
+}
+
+.pharm-database-screen.pharm-detail-expanded .pharm-detail-card > :not(.pharm-detail-toolbar) {
+  width: min(100%, 1480px);
+  margin-inline: auto;
+}
+
 .pharm-detail-nav {
   display: inline-flex;
   align-items: center;
@@ -2254,6 +2312,41 @@ body.lecture-mode-active .voice-status {
   opacity: 0.48;
   cursor: default;
   box-shadow: none;
+}
+
+.pharm-detail-expand-toggle {
+  width: 34px;
+  min-width: 34px;
+  height: 34px;
+  min-height: 34px;
+  padding: 0;
+  border-color: rgba(18, 125, 122, 0.34);
+  background: #edf8f6;
+  color: var(--teal-dark);
+}
+
+.pharm-detail-expand-toggle:hover,
+.pharm-detail-expand-toggle[aria-pressed="true"] {
+  border-color: var(--teal);
+  background: var(--teal);
+  color: #ffffff;
+}
+
+.pharm-detail-expand-toggle:focus-visible {
+  outline: 3px solid rgba(18, 125, 122, 0.3);
+  outline-offset: 2px;
+}
+
+.pharm-detail-window-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .pharm-detail-home-icon {

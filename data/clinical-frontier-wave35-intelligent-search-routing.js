@@ -1161,9 +1161,17 @@
       if (reviewedSearchSafetyOwner?.ambiguousIdentity === true) {
         const matching = safeArray(reviewedSearchSafetyOwner.ambiguityCandidates)
           .filter((candidate) => reviewedPreferredType && candidate.type === reviewedPreferredType);
-        return matching.length === 1
-          ? { type: matching[0].type, item: matching[0].item }
-          : null;
+        if (matching.length === 1) {
+          return { type: matching[0].type, item: matching[0].item };
+        }
+        if (matching.length > 1 && reviewedPreferredType) {
+          const baseTypedOwner = baseExactPharmDetailCandidate.apply(this, [input, preferredType, ...args]);
+          const remainsInReviewedAmbiguitySet = baseTypedOwner
+            && baseTypedOwner.type === reviewedPreferredType
+            && matching.some((candidate) => candidate.item === baseTypedOwner.item);
+          if (remainsInReviewedAmbiguitySet) return baseTypedOwner;
+        }
+        return null;
       }
       // Preserve exact installed-card ownership before nonambiguous alias and
       // intent overlays. Reviewed cross-domain ambiguity remains fail-closed.
