@@ -326,6 +326,147 @@ const ANI_SERVER_TRANSCRIPTION_ENABLED = ANI_BACKEND_SERVICES_ENABLED && aniFeat
 const ANI_SERVER_IMAGE_ANALYSIS_ENABLED = ANI_BACKEND_SERVICES_ENABLED && aniFeatureEnabled("serverImageAnalysis");
 const ANI_SERVER_LECTURE_AUDIO_ENABLED = ANI_BACKEND_SERVICES_ENABLED && aniFeatureEnabled("serverLectureAudio");
 
+const ANI_UI_TIMING_SCHEMA_VERSION = 1;
+const ANI_UI_TIMING_RUNTIME_VERSION = "lane1-ui-performance-v1";
+const ANI_UI_TIMING_MAX_SAMPLES = 64;
+const aniUiTimingState = {
+  nextSequence: 0,
+  droppedSamples: 0,
+  pending: new Map(),
+  samples: []
+};
+
+function aniUiTimingNow() {
+  const value = Number(window.performance?.now?.());
+  return Number.isFinite(value) && value >= 0 ? value : Date.now();
+}
+
+function aniUiTimingLabel(value = "runtime") {
+  const normalized = String(value || "runtime")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9-]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 64);
+  return normalized || "runtime";
+}
+
+function aniUiTimingSurface() {
+  return isNativeShell ? "android-webview" : "website";
+}
+
+function aniUiTimingDeviceMode() {
+  const declared = aniUiTimingLabel(document.documentElement?.dataset?.deviceMode || "");
+  if (declared !== "runtime") return declared;
+  return window.matchMedia?.("(max-width: 760px)")?.matches ? "phone" : "desktop";
+}
+
+function beginAniUiTiming(kind, source = "runtime", options = {}) {
+  const sequence = ++aniUiTimingState.nextSequence;
+  const requestedStart = Number(options.startedAtMs);
+  const startedAtMs = Number.isFinite(requestedStart) && requestedStart >= 0
+    ? requestedStart
+    : aniUiTimingNow();
+  aniUiTimingState.pending.set(sequence, {
+    sequence,
+    kind: aniUiTimingLabel(kind),
+    source: aniUiTimingLabel(source),
+    surface: aniUiTimingSurface(),
+    deviceMode: aniUiTimingDeviceMode(),
+    startedAtMs
+  });
+  return sequence;
+}
+
+function cancelAniUiTiming(sequence) {
+  if (!Number.isInteger(Number(sequence))) return false;
+  return aniUiTimingState.pending.delete(Number(sequence));
+}
+
+function completeAniUiTiming(sequence, options = {}) {
+  const pending = aniUiTimingState.pending.get(Number(sequence));
+  if (!pending) return null;
+  aniUiTimingState.pending.delete(Number(sequence));
+  const completedAtMs = aniUiTimingNow();
+  const durationMs = Math.max(0, completedAtMs - pending.startedAtMs);
+  const sample = Object.freeze({
+    ...pending,
+    ...(options.bindCurrentSurfaceAndDeviceMode === true ? {
+      surface: aniUiTimingSurface(),
+      deviceMode: aniUiTimingDeviceMode()
+    } : {}),
+    completedAtMs: Number(completedAtMs.toFixed(3)),
+    durationMs: Number(durationMs.toFixed(3)),
+    paintFrames: Math.max(0, Math.min(4, Number(options.paintFrames || 0))),
+    state: aniUiTimingLabel(options.state || "painted")
+  });
+  aniUiTimingState.samples.push(sample);
+  if (aniUiTimingState.samples.length > ANI_UI_TIMING_MAX_SAMPLES) {
+    aniUiTimingState.samples.shift();
+    aniUiTimingState.droppedSamples += 1;
+  }
+  return sample;
+}
+
+function completeAniUiTimingAfterPaint(sequence, predicate = () => true, options = {}) {
+  if (!aniUiTimingState.pending.has(Number(sequence))) return false;
+  const frame = typeof window.requestAnimationFrame === "function"
+    ? window.requestAnimationFrame.bind(window)
+    : (callback) => window.setTimeout(callback, 0);
+  frame(() => frame(() => {
+    let ready = false;
+    try {
+      ready = predicate() === true;
+    } catch {
+      ready = false;
+    }
+    if (ready) completeAniUiTiming(sequence, { ...options, paintFrames: 2 });
+    else cancelAniUiTiming(sequence);
+  }));
+  return true;
+}
+
+function aniUiTimingEvidenceSnapshot() {
+  return {
+    schemaVersion: ANI_UI_TIMING_SCHEMA_VERSION,
+    runtimeVersion: ANI_UI_TIMING_RUNTIME_VERSION,
+    sourceFile: "main.js",
+    surface: aniUiTimingSurface(),
+    deviceMode: aniUiTimingDeviceMode(),
+    maximumSamples: ANI_UI_TIMING_MAX_SAMPLES,
+    nextSequence: aniUiTimingState.nextSequence,
+    droppedSamples: aniUiTimingState.droppedSamples,
+    pending: Array.from(aniUiTimingState.pending.values(), (entry) => ({
+      sequence: entry.sequence,
+      kind: entry.kind,
+      source: entry.source,
+      surface: entry.surface,
+      deviceMode: entry.deviceMode,
+      startedAtMs: Number(entry.startedAtMs.toFixed(3))
+    })),
+    samples: aniUiTimingState.samples.map((entry) => ({ ...entry }))
+  };
+}
+
+window.ANI_GET_UI_TIMING_EVIDENCE = aniUiTimingEvidenceSnapshot;
+const aniStartupTimingToken = beginAniUiTiming("startup-app-ready", "navigation", { startedAtMs: 0 });
+let pendingPharmSearchTimingToken = 0;
+let pendingPharmBrowserRouteTimingToken = 0;
+
+function replacePendingPharmBrowserRouteTiming(sequence = 0) {
+  if (pendingPharmBrowserRouteTimingToken && pendingPharmBrowserRouteTimingToken !== sequence) {
+    cancelAniUiTiming(pendingPharmBrowserRouteTimingToken);
+  }
+  pendingPharmBrowserRouteTimingToken = Number(sequence || 0);
+}
+
+function completePendingPharmBrowserRouteTiming(predicate, state = "navigation-painted") {
+  const sequence = pendingPharmBrowserRouteTimingToken;
+  pendingPharmBrowserRouteTimingToken = 0;
+  if (!sequence) return false;
+  return completeAniUiTimingAfterPaint(sequence, predicate, { state });
+}
+
 function applyAniLaunchFeatureGates() {
   document.body.dataset.aniLaunchProfile = ANI_LAUNCH_PROFILE;
   document.querySelectorAll("[data-ani-feature]").forEach((element) => {
@@ -3311,6 +3452,18 @@ function compactMedicationIdentityQuery(input = "") {
     .join(" ");
 }
 
+function medicationIdentityNumericDiscriminators(value = "") {
+  return normalizePharmText(value).match(/\d+/g) || [];
+}
+
+function medicationIdentityHasConflictingNumericDiscriminator(left = "", right = "") {
+  const leftDiscriminators = medicationIdentityNumericDiscriminators(left);
+  const rightDiscriminators = medicationIdentityNumericDiscriminators(right);
+  return leftDiscriminators.length > 0
+    && rightDiscriminators.length > 0
+    && leftDiscriminators.join("|") !== rightDiscriminators.join("|");
+}
+
 const pharmIdentityTermsCache = new WeakMap();
 let pharmIdentityExactIndex = null;
 let pharmPrimaryIdentityExactIndex = null;
@@ -3456,6 +3609,10 @@ function exactPharmIdentityMatch(input = "") {
     if (!isVisibleMedicationEntry(drug)) continue;
     const terms = pharmIdentityTermsForEntry(drug);
     for (const term of terms) {
+      // A numeric subtype is an identity discriminator, not a fuzzy token.
+      // For example, PDE-5 must never inherit a PDE-4 or PD-1 card merely
+      // because the permissive fallback also sees the token "pde" or "pd".
+      if (medicationIdentityHasConflictingNumericDiscriminator(clean, term)) continue;
       let score = 0;
       if (term === clean) {
         score = 520;
@@ -7092,12 +7249,25 @@ function setPharmDetailExpanded(expanded = false, options = {}) {
 }
 
 function togglePharmDetailExpanded() {
+  const shrinking = isPharmDetailEffectivelyExpanded();
+  const timingToken = beginAniUiTiming(
+    shrinking ? "card-shrink-painted" : "card-expand-painted",
+    "expand-toggle"
+  );
   if (pharmDetailUsesResponsiveFullViewport() && isPharmDetailOpen()) {
     ensurePharmBrowseChromeHydrated();
-    requestPharmIndexNavigation();
+    requestPharmIndexNavigation({ timingToken, timingSource: "responsive-shrink" });
     return false;
   }
-  return setPharmDetailExpanded(!isPharmDetailExpanded());
+  const expanded = setPharmDetailExpanded(!isPharmDetailExpanded());
+  completeAniUiTimingAfterPaint(
+    timingToken,
+    () => isPharmDetailOpen()
+      && isPharmDetailExpanded() === expanded
+      && pharmDetailExpandButton?.dataset?.windowAction === (expanded ? "shrink" : "expand"),
+    { state: expanded ? "expanded-painted" : "shrunk-painted" }
+  );
+  return expanded;
 }
 
 function pharmDetailCandidateKey(candidate = {}) {
@@ -7304,18 +7474,32 @@ function applyPharmBrowserRoute(state = window.history?.state) {
       if (pharmDatabaseScreen && !pharmDatabaseScreen.hidden) {
         closePharmDatabase({ fromBrowserHistory: true });
       }
+      completePendingPharmBrowserRouteTiming(
+        () => Boolean(pharmDatabaseScreen?.hidden),
+        "database-closed-painted"
+      );
       return true;
     }
     if (route.view === "index") {
       restorePharmIndexBrowserSnapshot(route.indexState);
       openPharmDatabase("", { autoFocus: false, skipBrowserHistory: true });
       updatePharmNavigationControls();
+      completePendingPharmBrowserRouteTiming(
+        () => pharmDatabaseScreen?.hidden === false
+          && !isPharmDetailOpen()
+          && pharmResultsList?.getAttribute("aria-busy") !== "true",
+        "index-painted"
+      );
       return true;
     }
     const candidate = resolvePharmBrowserCandidate(route);
     if (!candidate) {
       window.history.replaceState(pharmBrowserState({ view: "index", depth: 0 }), "");
       openPharmDatabase("", { autoFocus: false, skipBrowserHistory: true });
+      completePendingPharmBrowserRouteTiming(
+        () => pharmDatabaseScreen?.hidden === false && !isPharmDetailOpen(),
+        "index-fallback-painted"
+      );
       return false;
     }
     openPharmDatabase(route.label, {
@@ -7330,6 +7514,13 @@ function applyPharmBrowserRoute(state = window.history?.state) {
       restoreScrollTop: route.scrollTop
     });
     updatePharmNavigationControls();
+    completePendingPharmBrowserRouteTiming(
+      () => isPharmDetailOpen()
+        && Boolean(pharmDrugDetail?.querySelector(".pharm-detail-title h2"))
+        && (offlineLookupEntityKey(currentPharmDetailCandidate)
+          || pharmDetailCandidateKey(currentPharmDetailCandidate)) === route.key,
+      "detail-painted"
+    );
     return true;
   } finally {
     pharmBrowserHistoryApplying = false;
@@ -7337,28 +7528,58 @@ function applyPharmBrowserRoute(state = window.history?.state) {
 }
 
 function requestPreviousPharmNavigation() {
+  const timingToken = beginAniUiTiming("card-previous-painted", "previous-control");
   if (pharmUsesBrowserHistory() && currentPharmBrowserRoute()?.view === "detail") {
+    replacePendingPharmBrowserRouteTiming(timingToken);
     window.history.back();
     return true;
   }
-  return navigateBackPharmDetail();
+  const navigated = navigateBackPharmDetail();
+  if (navigated) {
+    completeAniUiTimingAfterPaint(
+      timingToken,
+      () => pharmDatabaseScreen?.hidden === false
+        && (isPharmDetailOpen() || pharmResultsList?.getAttribute("aria-busy") !== "true"),
+      { state: "previous-painted" }
+    );
+  } else {
+    cancelAniUiTiming(timingToken);
+  }
+  return navigated;
 }
 
 function requestNextPharmNavigation() {
   const route = pharmUsesBrowserHistory() ? currentPharmBrowserRoute() : null;
   if (route) {
     if (route.forwardAvailable === true && typeof window.history.forward === "function") {
+      const timingToken = beginAniUiTiming("card-forward-painted", "forward-control");
+      replacePendingPharmBrowserRouteTiming(timingToken);
       window.history.forward();
       return true;
     }
     return false;
   }
-  return navigateForwardPharmDetail();
+  const timingToken = beginAniUiTiming("card-forward-painted", "forward-control");
+  const navigated = navigateForwardPharmDetail();
+  if (navigated) {
+    completeAniUiTimingAfterPaint(
+      timingToken,
+      () => isPharmDetailOpen()
+        && Boolean(pharmDrugDetail?.querySelector(".pharm-detail-title h2")),
+      { state: "forward-painted" }
+    );
+  } else {
+    cancelAniUiTiming(timingToken);
+  }
+  return navigated;
 }
 
-function requestPharmIndexNavigation() {
+function requestPharmIndexNavigation(options = {}) {
+  const timingToken = Number(options.timingToken || 0)
+    || beginAniUiTiming("card-back-to-index-painted", options.timingSource || "search-control");
   const route = pharmUsesBrowserHistory() ? currentPharmBrowserRoute() : null;
   if (route?.view === "detail") {
+    replacePendingPharmBrowserRouteTiming(timingToken);
     const depth = Math.max(1, Number(route.depth || 1));
     if (typeof window.history.go === "function") {
       window.history.go(-depth);
@@ -7368,6 +7589,13 @@ function requestPharmIndexNavigation() {
     return true;
   }
   returnToPharmIndex();
+  completeAniUiTimingAfterPaint(
+    timingToken,
+    () => pharmDatabaseScreen?.hidden === false
+      && !isPharmDetailOpen()
+      && pharmResultsList?.getAttribute("aria-busy") !== "true",
+    { state: "index-painted" }
+  );
   return true;
 }
 
@@ -7942,9 +8170,16 @@ function aiUnavailableMessage() {
 }
 
 function hideAppSplash() {
+  const completeStartupTiming = () => completeAniUiTimingAfterPaint(
+    aniStartupTimingToken,
+    () => document.body.classList.contains("app-ready")
+      && (!appSplash || appSplash.classList.contains("is-hidden")),
+    { state: "app-ready-painted", bindCurrentSurfaceAndDeviceMode: true }
+  );
   if (!appSplash) {
     document.body.classList.remove("app-booting");
     document.body.classList.add("app-ready");
+    completeStartupTiming();
     return;
   }
   window.setTimeout(() => {
@@ -7954,6 +8189,7 @@ function hideAppSplash() {
       appSplash.setAttribute("aria-hidden", "true");
       document.body.classList.remove("app-booting");
       document.body.classList.add("app-ready");
+      completeStartupTiming();
     }, 140);
   }, isNativeShell ? 220 : 140);
 }
@@ -19742,7 +19978,7 @@ function highestRankedEncyclopediaIdentityOwners(candidates = []) {
 
 function medicalAbbreviationEntryForExactCore(core = "") {
   return MEDICAL_ABBREVIATION_EXPANSIONS.find((entry) => (
-    normalizePharmText(entry.short) === core
+    Array.isArray(entry.searchTerms) && entry.searchTerms.includes(core)
   )) || null;
 }
 
@@ -32550,6 +32786,8 @@ function getPharmDetailLinkCandidates() {
 
   pharmSearchableLabRanges.forEach((lab) => {
     addPharmDetailLinkCandidate(candidates, seen, lab.name, "lab", lab, "canonical");
+    (lab.aliases || []).forEach((alias) => addPharmDetailLinkCandidate(candidates, seen, alias, "lab", lab, "alias"));
+    (lab.abbreviations || []).forEach((abbreviation) => addPharmDetailLinkCandidate(candidates, seen, abbreviation, "lab", lab, "abbreviation"));
   });
   pathologyDiseases.forEach((disease) => {
     addPharmDetailLinkCandidate(candidates, seen, disease.name, "pathology", disease, "canonical");
@@ -36806,6 +37044,17 @@ function finishPharmSearchRender(querySnapshot = "", requestGeneration = pharmSe
   pharmResultsList.dataset.renderedQuery = querySnapshot;
   pharmResultsList.dataset.renderGeneration = String(requestGeneration);
   replacePharmBrowserIndexSnapshot();
+  const timingToken = pendingPharmSearchTimingToken;
+  pendingPharmSearchTimingToken = 0;
+  if (timingToken) {
+    completeAniUiTimingAfterPaint(
+      timingToken,
+      () => pharmResultsList.getAttribute("aria-busy") === "false"
+        && pharmResultsList.dataset.renderedQuery === querySnapshot
+        && pharmResultsList.dataset.renderGeneration === String(requestGeneration),
+      { state: "results-painted" }
+    );
+  }
 }
 
 function pharmResultOpenOptions(renderedQuery = "", currentQuery = pharmSearchInput?.value || "") {
@@ -37549,6 +37798,11 @@ function queuePharmSearchRender() {
   const querySnapshot = pharmSearchInput?.value || "";
   const queryLength = normalizePharmText(querySnapshot).length;
   const requestGeneration = ++pharmSearchRequestGeneration;
+  if (pendingPharmSearchTimingToken) cancelAniUiTiming(pendingPharmSearchTimingToken);
+  pendingPharmSearchTimingToken = beginAniUiTiming(
+    "search-results-painted",
+    isPhoneDeviceMode() ? "typed-search-phone" : "typed-search-desktop"
+  );
   clearPharmResultChunkTimers();
   pharmResultRenderGeneration += 1;
   pharmResultsList?.setAttribute("aria-busy", "true");
@@ -37574,6 +37828,10 @@ function clearPharmSearchRenderTimer() {
   if (pharmSearchRenderFrame !== null) {
     window.cancelAnimationFrame?.(pharmSearchRenderFrame);
     pharmSearchRenderFrame = null;
+  }
+  if (pendingPharmSearchTimingToken) {
+    cancelAniUiTiming(pendingPharmSearchTimingToken);
+    pendingPharmSearchTimingToken = 0;
   }
 }
 
@@ -37647,6 +37905,49 @@ function detailQueryMatchesTerms(query = "", terms = []) {
   }));
 }
 
+function exactLabDetailCandidate(query = "") {
+  const fixedQuery = applyClinicalSpeechFixups(query) || query;
+  const labNamesForItem = (entry) => [entry.name, entry.displayName, ...(entry.aliases || [])];
+  const populationPrefixPattern = /^(?:adult|pediatric|pregnancy|geriatric|female|male)\s+/;
+  const baseExactQueries = [
+    query,
+    fixedQuery,
+    normalizeOfflineLookupText(query),
+    normalizeOfflineLookupText(fixedQuery)
+  ].map((value) => normalizePharmText(value)).filter(Boolean);
+  const exactQueries = [];
+  baseExactQueries.forEach((candidateQuery) => {
+    if (!exactQueries.includes(candidateQuery)) exactQueries.push(candidateQuery);
+    const withoutGeneratedPopulationPrefix = candidateQuery.replace(populationPrefixPattern, "");
+    if (withoutGeneratedPopulationPrefix && !exactQueries.includes(withoutGeneratedPopulationPrefix)) {
+      exactQueries.push(withoutGeneratedPopulationPrefix);
+    }
+  });
+  let exactIndex = -1;
+  let exactIdentity = "";
+  exactQueries.some((candidateQuery) => {
+    const candidateIndex = encyclopediaExactIdentityIndex(
+      pharmSearchableLabRanges,
+      labNamesForItem,
+      [candidateQuery]
+    );
+    if (candidateIndex < 0) return false;
+    exactIndex = candidateIndex;
+    exactIdentity = candidateQuery;
+    return true;
+  });
+  return exactIndex >= 0
+    ? resolveOfflineNearIdentityLab(
+      {
+        item: pharmSearchableLabRanges[exactIndex],
+        identity: exactIdentity
+      },
+      fixedQuery,
+      labNamesForItem
+    )
+    : null;
+}
+
 function exactPharmDetailCandidate(query = "", preferredType = "") {
   const normalizedPreferredType = preferredType === "procedures" ? "reference" : preferredType;
   if (preferredType === "procedures") {
@@ -37666,6 +37967,10 @@ function exactPharmDetailCandidate(query = "", preferredType = "") {
     if (exactProcedureMatches.length === 1) {
       return { type: "reference", item: exactProcedureMatches[0] };
     }
+  }
+  if (normalizedPreferredType === "lab") {
+    const explicitLab = exactLabDetailCandidate(query);
+    if (explicitLab) return { type: "lab", item: explicitLab };
   }
   const reviewedResolution = fastReviewedSearchResolution(query);
   if (reviewedResolution?.ambiguousIdentity === true) {
@@ -37709,46 +38014,7 @@ function exactPharmDetailCandidate(query = "", preferredType = "") {
 
   for (const type of typeOrder) {
     if (type === "lab") {
-      const fixedQuery = applyClinicalSpeechFixups(query) || query;
-      const labNamesForItem = (entry) => [entry.name, entry.displayName, ...(entry.aliases || [])];
-      const populationPrefixPattern = /^(?:adult|pediatric|pregnancy|geriatric|female|male)\s+/;
-      const baseExactQueries = [
-        query,
-        fixedQuery,
-        normalizeOfflineLookupText(query),
-        normalizeOfflineLookupText(fixedQuery)
-      ].map((value) => normalizePharmText(value)).filter(Boolean);
-      const exactQueries = [];
-      baseExactQueries.forEach((candidateQuery) => {
-        if (!exactQueries.includes(candidateQuery)) exactQueries.push(candidateQuery);
-        const withoutGeneratedPopulationPrefix = candidateQuery.replace(populationPrefixPattern, "");
-        if (withoutGeneratedPopulationPrefix && !exactQueries.includes(withoutGeneratedPopulationPrefix)) {
-          exactQueries.push(withoutGeneratedPopulationPrefix);
-        }
-      });
-      let exactIndex = -1;
-      let exactIdentity = "";
-      exactQueries.some((candidateQuery) => {
-        const candidateIndex = encyclopediaExactIdentityIndex(
-          pharmSearchableLabRanges,
-          labNamesForItem,
-          [candidateQuery]
-        );
-        if (candidateIndex < 0) return false;
-        exactIndex = candidateIndex;
-        exactIdentity = candidateQuery;
-        return true;
-      });
-      const exactLab = exactIndex >= 0
-        ? resolveOfflineNearIdentityLab(
-          {
-            item: pharmSearchableLabRanges[exactIndex],
-            identity: exactIdentity
-          },
-          fixedQuery,
-          labNamesForItem
-        )
-        : null;
+      const exactLab = exactLabDetailCandidate(query);
       if (exactLab) return { type: "lab", item: exactLab };
     } else if (type === "pathology") {
       const disease = exactPathologyIdentityMatch(query);
@@ -38176,6 +38442,11 @@ function applyPharmRedirectHighlight(candidate = {}, query = "") {
 
 function openPharmDetailCandidate(candidate = {}, options = {}) {
   if (!candidate?.item) return false;
+  if (!["lab", "pathology", "holistic", "reference", "drug", "update"].includes(candidate.type)) return false;
+  const timingToken = beginAniUiTiming(
+    "card-open-painted",
+    options.timingSource || (options.skipHistory ? "history" : "encyclopedia-detail")
+  );
   const nextCandidate = {
     type: candidate.type,
     item: candidate.item
@@ -38202,8 +38473,6 @@ function openPharmDetailCandidate(candidate = {}, options = {}) {
     renderPharmDrugDetail(candidate.item);
   } else if (candidate.type === "update") {
     renderMedicalUpdateDetail(candidate.item);
-  } else {
-    return false;
   }
   currentPharmDetailCandidate = nextCandidate;
   if (!options.skipBrowserHistory) {
@@ -38226,6 +38495,18 @@ function openPharmDetailCandidate(candidate = {}, options = {}) {
     autoReadCurrentPharmDetail();
   }
   updatePharmNavigationControls();
+  const expectedCandidateKey = offlineLookupEntityKey(nextCandidate) || pharmDetailCandidateKey(nextCandidate);
+  const detailPainted = () => isPharmDetailOpen()
+    && Boolean(pharmDrugDetail?.querySelector(".pharm-detail-title h2"))
+    && (offlineLookupEntityKey(currentPharmDetailCandidate) || pharmDetailCandidateKey(currentPharmDetailCandidate)) === expectedCandidateKey;
+  completeAniUiTimingAfterPaint(timingToken, detailPainted, { state: "detail-painted" });
+  if (options.performanceTimingToken) {
+    completeAniUiTimingAfterPaint(
+      options.performanceTimingToken,
+      () => detailPainted() && isPharmDetailEffectivelyExpanded(),
+      { state: "recommendation-detail-painted" }
+    );
+  }
   return true;
 }
 
@@ -38241,7 +38522,9 @@ function openBestPharmDetailForQuery(query = "", options = {}) {
       highlightQuery: options.highlightQuery,
       skipHistory: options.skipHistory,
       skipBrowserHistory: options.skipBrowserHistory,
-      restoreScrollTop: options.restoreScrollTop
+      restoreScrollTop: options.restoreScrollTop,
+      timingSource: options.timingSource,
+      performanceTimingToken: options.performanceTimingToken
     });
   }
   const directLab = inferredPreferredType === "lab" ? bestLabMatch(query) : null;
@@ -38257,7 +38540,9 @@ function openBestPharmDetailForQuery(query = "", options = {}) {
     highlightQuery: options.highlightQuery,
     skipHistory: options.skipHistory,
     skipBrowserHistory: options.skipBrowserHistory,
-    restoreScrollTop: options.restoreScrollTop
+    restoreScrollTop: options.restoreScrollTop,
+    timingSource: options.timingSource,
+    performanceTimingToken: options.performanceTimingToken
   });
 }
 
@@ -38281,7 +38566,7 @@ function openPharmDatabase(query = "", options = {}) {
     setPharmDetailExpanded(options.expandDetail, { skipBrowserHistory: true });
   }
   document.body.classList.add("pharm-database-active");
-  if (query && pharmSearchInput) {
+  if (query && pharmSearchInput && !shouldPreserveDetailForHistory) {
     pharmSearchInput.value = query;
     activePharmLetter = "All";
   }
@@ -38297,7 +38582,9 @@ function openPharmDatabase(query = "", options = {}) {
       highlightQuery: options.highlightQuery,
       skipHistory: options.skipHistory,
       skipBrowserHistory: options.skipBrowserHistory,
-      restoreScrollTop: options.restoreScrollTop
+      restoreScrollTop: options.restoreScrollTop,
+      timingSource: options.timingSource,
+      performanceTimingToken: options.performanceTimingToken
     })) {
       if (options.autoFocus === true) pharmSearchInput?.blur?.();
       return;
@@ -38315,7 +38602,9 @@ function openPharmDatabase(query = "", options = {}) {
       highlightQuery: options.highlightQuery,
       skipHistory: options.skipHistory,
       skipBrowserHistory: options.skipBrowserHistory,
-      restoreScrollTop: options.restoreScrollTop
+      restoreScrollTop: options.restoreScrollTop,
+      timingSource: options.timingSource,
+      performanceTimingToken: options.performanceTimingToken
     })) {
       if (options.autoFocus === true) {
         pharmSearchInput?.blur?.();
@@ -48029,7 +48318,9 @@ function sendUserMessage(text, options = {}) {
       detailType: directEncyclopediaTarget.type,
       fastDetail: true,
       highlightQuery: cleaned || targetLabel,
-      targetCandidate: directEncyclopediaTarget
+      targetCandidate: directEncyclopediaTarget,
+      timingSource: "chat-recommendation",
+      performanceTimingToken: options.performanceTimingToken
     });
     if (voiceStatus) {
       voiceStatus.textContent = "Voice ready";
@@ -49910,9 +50201,14 @@ function acceptMedicalSearchAssist(index, options = {}) {
       });
     }
   } else if (input === messageInput && options.submit === true) {
+    const performanceTimingToken = beginAniUiTiming(
+      "chat-recommendation-card-painted",
+      "chat-suggestion"
+    );
     sendUserMessage(record.label, {
       directEncyclopediaTarget: { type: record.type, item: record.item },
-      displayText: record.label
+      displayText: record.label,
+      performanceTimingToken
     });
   } else {
     input.focus?.();

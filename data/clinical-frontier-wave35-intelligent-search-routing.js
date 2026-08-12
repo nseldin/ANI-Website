@@ -3,7 +3,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "2026-08-11-wave35-intelligent-search-routing-30";
+  const VERSION = "2026-08-12-wave35-intelligent-search-routing-31";
   if (window.ANI_WAVE35_INTELLIGENT_SEARCH_ROUTING
     && window.ANI_WAVE35_INTELLIGENT_SEARCH_ROUTING.version === VERSION) return;
 
@@ -1166,8 +1166,12 @@
           return procedureOwner;
         }
       }
-      const reviewedSearchSafetyOwner = reviewedSearchResolutionFor(input);
       const reviewedPreferredType = preferredType === "procedures" ? "reference" : String(preferredType || "");
+      if (reviewedPreferredType === "lab") {
+        const exactLabOwner = baseExactPharmDetailCandidate.apply(this, [input, preferredType, ...args]);
+        if (exactLabOwner?.type === "lab") return exactLabOwner;
+      }
+      const reviewedSearchSafetyOwner = reviewedSearchResolutionFor(input);
       if (reviewedSearchSafetyOwner?.ambiguousIdentity === true) {
         const matching = safeArray(reviewedSearchSafetyOwner.ambiguityCandidates)
           .filter((candidate) => reviewedPreferredType && candidate.type === reviewedPreferredType);

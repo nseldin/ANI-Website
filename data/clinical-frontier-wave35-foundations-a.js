@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "2026-07-20-wave35-foundations-a-1";
+  const VERSION = "2026-08-12-wave35-foundations-a-2";
   const SOURCE_NOTE = "Core anatomy and physiology are grounded in the cited OpenStax Anatomy and Physiology 2e sections and the listed NIH resources. Clinical connections are educational synthesis for offline study, not a substitute for current orders, facility policy, or condition-specific guidance.";
 
   const sourceReferences = [
@@ -348,7 +348,7 @@
       name: "Skeletal Muscle Contraction",
       category: "Musculoskeletal physiology / excitation-contraction coupling",
       aliases: ["muscle contraction", "sliding filament theory", "excitation contraction coupling", "actin myosin troponin tropomyosin", "how skeletal muscle contracts", "why calcium makes muscle contract", "sarcomere contraction", "motor unit physiology", "neuromuscular contraction", "how ATP relaxes muscle"],
-      abbreviations: ["ACh", "SR", "ATP", "CK", "NMJ"],
+      abbreviations: ["ACh", "SR", "ATP", "NMJ"],
       commonMisspellings: ["skeletel muscle", "sarcromere", "tropomyosin troponan", "excitation contracton", "actine myosin", "musle contraction"],
       summary: "Skeletal muscle contracts when a somatic motor neuron releases acetylcholine, the muscle membrane generates an action potential, T-tubules carry depolarization inward, the sarcoplasmic reticulum releases calcium, and calcium moves tropomyosin away from actin binding sites through troponin. Myosin then uses ATP in repeated cross-bridge cycles to slide thin filaments and shorten sarcomeres.",
       quickAnswer: "Electrical excitation opens access to the contractile machinery; calcium is the switch and ATP powers both cycling and relaxation. ATP binds myosin so it can detach from actin, is hydrolyzed to recock the head, and also powers calcium pumps that return calcium to the sarcoplasmic reticulum. Without ATP, cross-bridges cannot release normally.",

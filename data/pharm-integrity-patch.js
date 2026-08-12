@@ -2482,6 +2482,16 @@
     ]
   }
 ];
+  const labIdentityPatches = [
+  {
+    "name": "Creatine kinase (CK)",
+    "aliases": [
+      "creatine kinase",
+      "CK lab",
+      "CK level"
+    ]
+  }
+];
   const knownCombinationComponents = {
   "albuterol ipratropium": [
     "albuterol",
@@ -2714,6 +2724,13 @@
   };
   const cleanAliases = (aliases, ownerKey) => Array.from(new Set((aliases || []).map(String).filter((alias) => !isUnsafeAlias(alias, ownerKey))));
   const mergeArrays = (...arrays) => Array.from(new Set(arrays.flatMap((value) => Array.isArray(value) ? value : []).filter(Boolean)));
+  const labIdentityMap = new Map((db.labRanges || []).map((lab) => [normalize(lab.name), lab]));
+  labIdentityPatches.forEach((patch) => {
+    const lab = labIdentityMap.get(normalize(patch.name));
+    if (!lab) return;
+    lab.aliases = mergeArrays(lab.aliases, patch.aliases);
+    lab.abbreviations = mergeArrays(lab.abbreviations, patch.abbreviations);
+  });
   const generatedPlaceholderPattern = /\b(used in [^.]+ contexts\. for nclex study|for nclex study, connect|works through its [^.]+ pharmacology|tie the mechanism|intended effect|intended therapeutic effect|priority assessments|the adverse effect that would make the nurse hold|no known drug-specific boxed warning is listed|still check current prescribing information|not fully curated|verify current label|recognition only|expected action should match|should be studied through|specific indication, formulation, route|read the name as|study the linked examples|class reference for medications)\b/i;
   const broadSourceClassPattern = /^(?:cardiovascular|respiratory|endocrine|renal|gastrointestinal|central nervous system|neurology|antiinfective|psychiatric\/?cns|emergency\/?critical-care|hematology|oncology|biologics|transplant|pain|anesthesia|dermatology|ophthalmic|otic)(?: drug| medication| reference)?$/i;
   const sourceTaxonomyListPattern = /\b(?:renal,\s*electrolytes,\s*dialysis,\s*urinary|cardiac rhythm,\s*heart failure,\s*hypertension,\s*antianginal|emergency,\s*acls,\s*critical care,\s*shock,\s*vasopressors|gi,\s*liver,\s*pancreas,\s*bowel|hematology,\s*oncology,\s*biologics,\s*transplant|pain,\s*anesthesia,\s*anti-inflammatory|dermatology,\s*ophthalmic,\s*otic|neurology\s*-\s*seizures|lipid,\s*vascular,\s*pad)\b/i;
