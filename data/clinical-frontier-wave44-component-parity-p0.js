@@ -10,8 +10,8 @@
 (function () {
   "use strict";
 
-  const VERSION = "2026-07-22-wave44-component-parity-p0-1";
-  const GENERATED_AT = "2026-07-22";
+  const VERSION = "2026-08-12-wave44-component-parity-p0-3";
+  const GENERATED_AT = "2026-08-12";
   const GLOBAL_NAME = "ANI_CLINICAL_FRONTIER_WAVE44_COMPONENT_PARITY_P0";
   if (window[GLOBAL_NAME] && window[GLOBAL_NAME].version === VERSION) return;
 
@@ -72,6 +72,42 @@
       key: "medlineplus",
       label: "MedlinePlus Medical Encyclopedia",
       url: "https://medlineplus.gov/encyclopedia.html"
+    },
+    "esicm-circulatory-shock-2025": {
+      key: "esicm-circulatory-shock-2025",
+      label: "ESICM Guidelines on Circulatory Shock and Hemodynamic Monitoring (2025)",
+      url: "https://link.springer.com/article/10.1007/s00134-025-08137-z",
+      note: "Supports serial central venous oxygen-saturation measurement in adult shock when a central venous catheter is present, integrated with serial perfusion assessment; it does not establish one universal treatment target."
+    },
+    "sccm-scv-svo2-meta-analysis-2024": {
+      key: "sccm-scv-svo2-meta-analysis-2024",
+      label: "Central Venous Oxygen Saturation for Estimating Mixed Venous Oxygen Saturation and Cardiac Index: A Systematic Review and Meta-Analysis (2024)",
+      url: "https://pubmed.ncbi.nlm.nih.gov/39258966/",
+      note: "Supports moderate but variable ScvO2-SvO2 agreement in critically ill adults, a pooled mean difference of 2.98 percentage points toward ScvO2, and limited evidence for independently estimating cardiac index."
+    },
+    "aast-hemodynamic-monitoring-consensus-2020": {
+      key: "aast-hemodynamic-monitoring-consensus-2020",
+      label: "AAST Critical Care Committee, Contemporary Hemodynamic Monitoring Consensus",
+      url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7066619/",
+      note: "Supports the distinct sampling sites and physiology of ScvO2 and SvO2, the possible reversal of their usual relationship during critical illness, and use as contextual adjuncts rather than isolated resuscitation endpoints."
+    },
+    "ssc-sepsis-2012": {
+      key: "ssc-sepsis-2012",
+      label: "Surviving Sepsis Campaign Guidelines (2012)",
+      url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7095153/",
+      note: "Supports the historical early septic-shock protocol goals of ScvO2 at or above 70% or SvO2 at or above 65%; later evidence moved away from treating these static values as universal resuscitation targets."
+    },
+    "pmc10175700-scv-o2-interpretation": {
+      key: "pmc10175700-scv-o2-interpretation",
+      label: "PubMed Central: ScvO2 interpretation in critically ill adults (PMC10175700)",
+      url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10175700/",
+      note: "Supports 70-80% as a contextual ScvO2 interpretation band in critically ill adults, below 70% as a possible oxygen delivery-demand imbalance, and 80% or higher as possible impaired extraction; these are contextual interpretation anchors, not universal treatment targets."
+    },
+    "pmc6785823-svo2-interpretation": {
+      key: "pmc6785823-svo2-interpretation",
+      label: "PubMed Central: SvO2 physiology and clinical interpretation (PMC6785823)",
+      url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6785823/",
+      note: "Supports 60-80% as a common contextual SvO2 interval in adult critical-care physiology and roughly below 60-65% as a possible oxygen delivery-demand imbalance; sampling conditions, clinical context, and trend remain essential, so these anchors are not universal treatment targets."
     },
     "ninds-nihss": {
       key: "ninds-nihss",
@@ -766,16 +802,16 @@
       category: "Diagnostics and Tests / Perfusion and Oxygen Delivery",
       aliases: ["ScvO2", "central venous O2 saturation", "superior vena cava oxygen saturation", "central line venous saturation"],
       abbreviations: ["ScvO2"],
-      definition: "Central venous oxygen saturation is the hemoglobin oxygen saturation measured from blood in the superior vena cava or right atrial region through an appropriately positioned central line. It reflects the balance among oxygen delivery, tissue extraction, and metabolic demand in the upper body; it is a trend, not a direct cardiac-output measurement.",
+      definition: "Central venous oxygen saturation (ScvO2) is the percentage of hemoglobin carrying oxygen in blood sampled from the superior vena cava or right atrial region through an appropriately positioned central line. A falling or contextually low ScvO2 can signal that upper-body oxygen delivery is inadequate relative to tissue extraction and metabolic demand, so serial change can affect perfusion monitoring. No universal standalone normal, emergency, or treatment target applies across shock types, sampling sites, and stages of illness; it is a trend, not a direct cardiac-output measurement.",
       method: "Confirm line identity and position, discard or clear dead-space blood according to policy, avoid contamination by infused fluid, and analyze the sample promptly or use a calibrated continuous sensor. Record oxygen therapy, hemoglobin, arterial saturation, temperature, sedation, vasoactive support, and collection site.",
-      interpretation: "Low ScvO2 can result from low cardiac output, anemia, hypoxemia, or increased demand such as fever, shivering, pain, or seizures. A normal or high value does not prove adequate perfusion; sepsis-related extraction failure, shunting, sedation, hypothermia, or very low demand can elevate it despite serious illness.",
-      limitations: "ScvO2 is not numerically interchangeable with mixed venous SvO2 because it omits much lower-body and coronary venous blood. Site, sampling error, central-line infusion, rapidly changing physiology, and device calibration affect the result.",
+      interpretation: "In many critically ill adults, about 70-80% is a common contextual ScvO2 interpretation band, while a value roughly below 70% can suggest oxygen delivery-demand imbalance. These anchors depend on diagnosis, sampling site, intervention, and trend; they are not a universal normal range, treatment target, or automatic trigger. Low ScvO2 can result from low cardiac output, anemia, hypoxemia, or increased demand such as fever, shivering, pain, or seizures. Historical 2012 Surviving Sepsis Campaign early septic-shock protocols used ScvO2 at or above 70% as a resuscitation goal; that historical protocol value is not a modern universal target, normal range, or automatic treatment trigger. A normal or high value can falsely reassure and does not prove adequate perfusion because extraction failure, shunting, sedation, hypothermia, or very low demand can elevate it despite serious illness.",
+      limitations: "ScvO2 is not numerically interchangeable with mixed venous SvO2 because it omits much lower-body and coronary venous blood, and the usual relationship can reverse during critical illness. A 2024 ICU meta-analysis found moderate agreement but a pooled mean difference of 2.98 percentage points toward ScvO2, with variability by sampling site and sepsis; site, infusate contamination, rapidly changing physiology, and calibration also affect the result.",
       safety: "Do not give fluid, transfusion, inotrope, or oxygen solely to normalize ScvO2. Integrate mental status, capillary refill, blood pressure, urine output, lactate, hemoglobin, arterial oxygenation, cardiac findings, and the cause of shock.",
       nursing: "Use sterile line technique, pause incompatible infusions per protocol, label source and time, trend the result with interventions, and assess the central line for infection or malfunction.",
       urgent: "Escalate a falling value with hypotension, altered mental status, oliguria, rising lactate, hypoxemia, bleeding, or other shock signs; treat the unstable patient rather than waiting for repeat sampling.",
-      resultMeanings: [["Low", "Oxygen delivery may be inadequate or demand high."], ["Normal-range", "Balance may be acceptable, but regional or global hypoperfusion can still exist."], ["High", "May reflect adequate delivery, low demand, impaired extraction, or shunting; context determines meaning."]],
+      resultMeanings: [["Roughly below 70% (contextual)", "In many critically ill adults this can suggest oxygen delivery-demand imbalance; verify the sampling site, clinical state, intervention, and trend rather than treating 70% as a universal cutoff."], ["About 70-80% (common contextual band)", "This may fit a commonly encountered adult critical-care band, but it is not a universal normal range or treatment target and does not prove adequate perfusion."], ["Normal-looking or high", "This can falsely reassure when extraction is impaired, blood is shunted, or metabolic demand is low; interpret the site and trend with other perfusion evidence."]],
       relatedTopics: ["Mixed venous oxygen saturation", "ScvO2 / SvO2", "Cardiac output", "Oxygen delivery", "Shock", "Serum lactate"],
-      sourceKeys: ["medlineplus"]
+      sourceKeys: ["esicm-circulatory-shock-2025", "sccm-scv-svo2-meta-analysis-2024", "aast-hemodynamic-monitoring-consensus-2020", "ssc-sepsis-2012", "pmc10175700-scv-o2-interpretation"]
     }),
     diagnosticCard({
       name: "Mixed venous oxygen saturation",
@@ -784,16 +820,16 @@
       category: "Diagnostics and Tests / Perfusion and Oxygen Delivery",
       aliases: ["SvO2", "mixed venous O2 saturation", "pulmonary artery oxygen saturation", "true mixed venous saturation"],
       abbreviations: ["SvO2"],
-      definition: "Mixed venous oxygen saturation is measured from blood in the pulmonary artery after venous return from the superior vena cava, inferior vena cava, and coronary sinus has mixed. It reflects the whole-body relationship among cardiac output, arterial oxygen content, hemoglobin, oxygen consumption, and tissue extraction.",
+      definition: "Mixed venous oxygen saturation (SvO2) is the percentage of hemoglobin carrying oxygen in pulmonary-artery blood after venous return from the superior vena cava, inferior vena cava, and coronary sinus has mixed. A falling or contextually low SvO2 can signal that whole-body oxygen delivery is inadequate relative to oxygen consumption, so serial change can affect perfusion and hemodynamic monitoring. No universal standalone normal, emergency, or treatment target applies across shock types and stages of illness.",
       method: "Obtain from a correctly positioned pulmonary artery catheter distal lumen or a validated continuous oximetry system. Confirm waveform/position, avoid wedged sampling or infusate contamination, record ventilatory and hemodynamic conditions, and analyze promptly.",
-      interpretation: "Low SvO2 suggests oxygen delivery is inadequate relative to demand because of low cardiac output, hypoxemia, anemia, or increased metabolic use. High SvO2 can occur with high delivery or reduced extraction from sepsis, shunting, sedation, hypothermia, or mitochondrial dysfunction. Direction and response to treatment are often more useful than one value.",
-      limitations: "Pulmonary artery catheters carry procedural risk and are not justified merely to obtain SvO2. The value is global and can miss regional ischemia. Catheter position, calibration, timing, and changing oxygen consumption affect interpretation; ScvO2 is related but not interchangeable.",
+      interpretation: "In many adult critical-care settings, about 60-80% is a common contextual SvO2 interpretation band, while a value roughly below 60-65% can suggest oxygen delivery-demand imbalance. These anchors depend on diagnosis, pulmonary-artery sampling, intervention, and trend; they are not a universal normal range, treatment target, or automatic trigger. Low SvO2 can result from low cardiac output, hypoxemia, anemia, or increased metabolic use. Historical 2012 Surviving Sepsis Campaign early septic-shock protocols used SvO2 at or above 65% as a resuscitation goal; that historical protocol value is not a modern universal target, normal range, or automatic treatment trigger. A normal or high SvO2 can falsely reassure and can occur with high delivery or impaired extraction, shunting, sedation, hypothermia, mitochondrial dysfunction, or low demand, so direction and response to treatment are often more useful than one value.",
+      limitations: "Pulmonary artery catheters carry procedural risk and are not justified merely to obtain SvO2. The value is global and can miss regional ischemia. Catheter position, calibration, timing, and changing oxygen consumption affect interpretation; a 2024 ICU meta-analysis found only moderate, variable agreement with ScvO2, so the two measurements are related but not numerically interchangeable.",
       safety: "Do not chase SvO2 with indiscriminate fluid, transfusion, or inotrope. Identify whether cardiac output, hemoglobin, saturation, or demand is abnormal and balance treatment harms. Watch for catheter dysrhythmia, infection, thrombosis, rupture, knotting, or accidental wedging.",
       nursing: "Verify distal-lumen use and waveform, maintain sterile catheter care, trend hemodynamics and perfusion, document interventions and sample conditions, and promptly report abrupt changes or catheter complications.",
       urgent: "Escalate low or falling SvO2 with shock, active bleeding, severe hypoxemia, ischemia, rising lactate, oliguria, or altered consciousness and any pulmonary artery catheter complication.",
-      resultMeanings: [["Low", "Delivery is inadequate relative to whole-body oxygen consumption."], ["Normal-range", "Global supply-demand balance may be adequate but does not exclude regional ischemia."], ["High", "Consider high delivery, low demand, impaired extraction, or shunting."]],
+      resultMeanings: [["Roughly below 60-65% (contextual)", "In many adult critical-care settings this can suggest oxygen delivery-demand imbalance; verify pulmonary-artery sampling, clinical state, intervention, and trend rather than treating one value as a universal cutoff."], ["About 60-80% (common contextual band)", "This may fit a commonly encountered adult critical-care band, but it is not a universal normal range or treatment target and does not exclude regional ischemia."], ["Normal-looking or high", "This can falsely reassure when extraction is impaired, blood is shunted, or metabolic demand is low; interpret the trend with other perfusion evidence."]],
       relatedTopics: ["Central venous oxygen saturation", "ScvO2 / SvO2", "Pulmonary artery catheter", "Cardiac output", "Oxygen extraction ratio", "Shock"],
-      sourceKeys: ["medlineplus"]
+      sourceKeys: ["esicm-circulatory-shock-2025", "sccm-scv-svo2-meta-analysis-2024", "aast-hemodynamic-monitoring-consensus-2020", "ssc-sepsis-2012", "pmc6785823-svo2-interpretation"]
     })
   ];
 

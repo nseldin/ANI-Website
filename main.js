@@ -500,7 +500,7 @@ window.addEventListener("offline", updateAniConnectionIndicator);
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = !ANI_AUTOMATED_TEST && !isNativeShell && SpeechRecognition ? new SpeechRecognition() : null;
 const PHONE_DEVICE_QUERY = "(max-width: 760px), (pointer: coarse) and (max-width: 920px)";
-const DEFAULT_GREETING = "Hi, I am ANI, your medical encyclopedia librarian. Ask for a topic or one specific part of a card, such as nursing interventions for Crohn disease or the boxed warning for phenytoin. I will answer directly from the encyclopedia and link the full card when you want to explore more.";
+const DEFAULT_GREETING = "Hi, I am ANI, your medical encyclopedia librarian. Ask for a topic or one specific part of a card. I will answer directly from the encyclopedia and link the full card when you want to explore more.";
 const DEFAULT_DEPTH_LEVEL = 3;
 const OPENAI_REQUIRED_MESSAGE = "ANI's AI brain is not active yet. Start the ANI server with an OpenAI API key configured, then try again.";
 const ANI_BACKEND_UNREACHABLE_MESSAGE = "ANI cannot reach the app server right now. Make sure the ANI server is running on your computer, keep your phone and computer on the same Wi-Fi, then try again.";
@@ -628,6 +628,11 @@ let pharmDetailHistoryStack = [];
 let pharmDetailForwardStack = [];
 let pharmDetailForwardButton = null;
 let pharmDetailExpandButton = null;
+// Full-card mode is a detail-navigation session preference, not a property of
+// one card. Once the learner expands a card, every internally linked card and
+// Previous/Forward destination stays in the same window until they explicitly
+// shrink it or leave the detail view.
+let pharmDetailExpansionSessionPreference = null;
 let pharmBrowserHistoryApplying = false;
 let pharmBrowserRouteScrollFrame = null;
 let pharmAutoReadMuted = ANI_AUTOMATED_TEST || localStorage.getItem(PHARM_AUTO_READ_MUTED_KEY) === "true";
@@ -4272,7 +4277,9 @@ const medicalTerminologySupplements = [
     nclexEssential: true,
     aliases: ["refractory hypoxaemia", "oxygen-refractory hypoxemia", "hypoxemia despite oxygen", "severe refractory hypoxemia"],
     pronunciation: "reh-FRAK-tuh-ree hy-pok-SEE-mee-uh",
-    plainMeaning: "ARDS-level oxygen problem: low arterial oxygen that does not correct adequately with ordinary supplemental oxygen because shunt, severe V/Q mismatch, or alveolar collapse/flooding keeps blood from contacting ventilated air.",
+    definition: "Refractory hypoxemia means arterial oxygen remains dangerously inadequate despite verified and optimized oxygen or ventilatory support, after reversible technical causes such as a displaced airway, oxygen-source or circuit failure, mucus plugging, and pneumothorax are checked. No uniformly accepted PaO2, SpO2, PaO2/FiO2, FiO2, PEEP, or duration cutoff defines it in every population or disease; document the support, timing, trend, and cause.",
+    plainMeaning: "A severe oxygenation problem that persists even after the oxygen-delivery equipment and airway are checked and appropriate breathing support is optimized. Shunt, severe V/Q mismatch, or flooded or collapsed alveoli may keep blood from contacting ventilated air.",
+    whyItMatters: "Refractory hypoxemia matters because persistent inadequate arterial oxygen can rapidly cause dysrhythmia, brain or myocardial injury, cardiac arrest, and multiorgan failure. Nurses must verify equipment and airway causes, trend the response to support, and activate critical-care rescue without waiting for one universal number.",
     wordParts: [
       { root: "refractory", meaning: "resistant to treatment or hard to correct" },
       { root: "hypo-", meaning: "low" },
@@ -4283,13 +4290,20 @@ const medicalTerminologySupplements = [
     pathology: "Refractory hypoxemia usually means the problem is not simply too little oxygen in the mask or cannula. In ARDS, pneumonia, atelectasis, or pulmonary edema, alveoli may be flooded or collapsed, so blood passes by airspaces that are not ventilated. That creates shunt physiology and severe V/Q mismatch: deoxygenated venous blood mixes into arterial blood even when FiO2 is high.",
     etiology: "Common causes include ARDS, severe pneumonia, atelectasis, pulmonary edema, aspiration, pulmonary contusion, right-to-left intracardiac or intrapulmonary shunt, and severe ventilation-perfusion mismatch.",
     signsSymptoms: ["Low SpO2/PaO2 despite escalating oxygen", "Tachypnea, dyspnea, accessory-muscle use, cyanosis, restlessness, confusion, or fatigue", "May require high-flow oxygen, noninvasive ventilation, or mechanical ventilation with PEEP"],
-    diagnostics: ["ABG with low PaO2 relative to FiO2", "PaO2/FiO2 ratio to stage ARDS severity", "Chest imaging for bilateral opacities, atelectasis, edema, pneumothorax, or pneumonia", "Evaluate airway, ventilator settings, hemoglobin, perfusion, and cardiac/shunt causes"],
+    diagnostics: [
+      "Confirm airway position, oxygen source, circuit integrity, delivered FiO2, PEEP, pulse-oximeter waveform, breath sounds, arterial blood gas, and hemodynamics before calling hypoxemia refractory",
+      "Use PaO2/FiO2 and, when appropriate, SpO2/FiO2 to describe oxygenation severity and trend; neither ratio alone proves that hypoxemia is refractory",
+      "In the 2024 Global ARDS definition, severe intubated ARDS uses PaO2/FiO2 at or below 100 mm Hg or SpO2/FiO2 at or below 148 when SpO2 is at or below 97%, together with the required acute timing, imaging, cause, and support context; this grades ARDS severity rather than universally defining refractory hypoxemia",
+      "In the 2023 ESICM adult ARDS guideline, PaO2/FiO2 remaining below 150 mm Hg with PEEP at or above 5 cm H2O after optimized ventilation identifies the prone-positioning treatment context, not a universal refractory-hypoxemia cutoff",
+      "Use chest imaging for bilateral opacities, atelectasis, edema, pneumothorax, or pneumonia and evaluate hemoglobin, perfusion, intracardiac or intrapulmonary shunt, and the underlying cause"
+    ],
     treatments: ["Treat the cause", "PEEP or CPAP to recruit alveoli when appropriate", "Lung-protective ventilation in ARDS", "Prone positioning for severe ARDS when ordered", "Optimize perfusion, hemoglobin, sedation/ventilator synchrony, and fluid strategy"],
     nursingPriorities: ["Do not keep turning up oxygen without reassessing lung recruitment, airway position, work of breathing, and hemodynamics", "Escalate persistent low SpO2/PaO2, increasing fatigue, altered mental status, hypotension, or cyanosis", "Monitor response to PEEP/proning: oxygenation, blood pressure, skin/line/tube safety, and ventilator synchrony"],
     complications: ["Cardiac arrest", "Dysrhythmias", "Brain injury from hypoxia", "Shock", "Ventilator-associated lung injury", "Multi-organ failure"],
     patientEducation: ["In acute care this is usually a monitored/ICU problem; family teaching focuses on why higher-level oxygen or ventilator support is needed."],
     nclexTraps: ["Refractory hypoxemia is not fixed by nasal cannula escalation alone when shunt is the cause.", "ARDS oxygenation often needs PEEP and sometimes proning because collapsed/flooded alveoli must be recruited.", "Watch blood pressure: more PEEP can improve oxygenation but reduce venous return in vulnerable clients."],
-    tags: ["refractory hypoxemia", "ARDS", "shunt physiology", "PEEP", "prone positioning", "PaO2 FiO2", "oxygenation"]
+    tags: ["refractory hypoxemia", "ARDS", "shunt physiology", "PEEP", "prone positioning", "PaO2 FiO2", "oxygenation"],
+    sourceKeys: ["w33a-ards-ats", "w33a-ards-global", "w33a-ards-gas", "w33a-ards-esicm-2023", "w33a-refractory-hypoxemia-annalsats"]
   },
   {
     name: "Intrapulmonary shunt",
@@ -7234,6 +7248,9 @@ function replacePharmBrowserDetailExpansion(expanded = false) {
 function setPharmDetailExpanded(expanded = false, options = {}) {
   if (!pharmDatabaseScreen) return false;
   const next = expanded === true;
+  if (options.preserveSessionPreference !== true) {
+    pharmDetailExpansionSessionPreference = next;
+  }
   if (!next && isPharmDetailExpanded()) {
     ensurePharmBrowseChromeHydrated();
   }
@@ -7246,6 +7263,13 @@ function setPharmDetailExpanded(expanded = false, options = {}) {
     replacePharmBrowserDetailExpansion(next);
   }
   return next;
+}
+
+function pharmDetailExpansionForBrowserRoute(route = {}) {
+  if (pharmDetailExpansionSessionPreference !== null) {
+    return pharmDetailExpansionSessionPreference === true;
+  }
+  return route?.expanded === true;
 }
 
 function togglePharmDetailExpanded() {
@@ -7505,7 +7529,7 @@ function applyPharmBrowserRoute(state = window.history?.state) {
     openPharmDatabase(route.label, {
       openDetail: true,
       targetCandidate: candidate,
-      expandDetail: route.expanded === true,
+      expandDetail: pharmDetailExpansionForBrowserRoute(route),
       autoFocus: false,
       autoRead: false,
       fastDetail: true,
@@ -9358,7 +9382,11 @@ function renderActiveChat() {
   const session = getActiveChat();
   if (!session.messages.length) {
     updateFocus();
-    addMessage("assistant", DEFAULT_GREETING, false, false, false);
+    const welcome = randomizedWelcomeForSession(session);
+    addMessage("assistant", welcome.text, false, false, false, {
+      boundEncyclopediaTargets: welcome.targets,
+      maxEncyclopediaLinks: 2
+    });
     return;
   }
 
@@ -11661,14 +11689,19 @@ function setBubbleText(bubble, role, text = "", editable = false, options = {}) 
 
   bubble.textContent = "";
   appendFormattedText(bubble, applyNclexEssentialMarkup(text));
-  const linkedBoundTarget = linkBoundEncyclopediaTargetInBubble(
-    bubble,
-    options.boundEncyclopediaTarget || null
-  );
+  const boundTargets = Array.isArray(options.boundEncyclopediaTargets)
+    ? options.boundEncyclopediaTargets
+    : [options.boundEncyclopediaTarget || null];
+  const linkedBoundTarget = boundTargets
+    .filter(Boolean)
+    .map((target) => linkBoundEncyclopediaTargetInBubble(bubble, target))
+    .some(Boolean);
   if (!linkedBoundTarget) {
     linkOpeningReferencePreface(bubble, text);
   }
-  linkEncyclopediaTermsInBubble(bubble, text);
+  linkEncyclopediaTermsInBubble(bubble, text, {
+    maxLinks: Number(options.maxEncyclopediaLinks || 0) || undefined
+  });
 }
 
 function addMessage(role, text, editable = false, shouldSpeak = true, shouldRemember = true, options = {}) {
@@ -24605,17 +24638,22 @@ function wantsOfflinePulsePressureMeaningAnswer(input = "") {
 function makeOfflinePulsePressureMeaningAnswer(input = "") {
   if (!wantsOfflinePulsePressureMeaningAnswer(input)) return "";
   const lower = normalizeIntentText(input);
-  const narrow = /\b(narrow|narrowed|low)\b/i.test(lower);
+  const narrowCue = /\b(narrow|narrowed|low)\b/i.test(lower);
+  const wideCue = /\b(wide|widened|high)\b/i.test(lower);
+  const pattern = narrowCue && !wideCue ? "narrow" : (wideCue && !narrowCue ? "wide" : "general");
   currentTopic = "Pulse pressure";
   updateFocus();
   return [
-    `**${narrow ? "Narrow" : "Wide"} pulse pressure - what it means**`,
-    "**Definition:** pulse pressure is systolic minus diastolic blood pressure. It gives a quick clue to stroke volume, vascular tone, and arterial compliance.",
-    narrow
-      ? "**Narrow pattern:** often means low stroke volume or poor forward flow. Think hypovolemia/hemorrhage, cardiogenic shock, tamponade, tension pneumothorax, severe aortic stenosis, or late shock physiology."
-      : "**Wide pattern:** can mean high stroke volume, low diastolic runoff/tone, or stiff arteries. Think aortic regurgitation, sepsis/vasodilation, fever, anemia, hyperthyroidism, pregnancy physiology, AV fistula, or older-adult arterial stiffness.",
-    "**Nursing focus:** pair it with MAP, HR/rhythm, pulse quality, mentation, capillary refill, urine output, skin temperature, lung sounds, chest pain/dyspnea, bleeding, infection, and valve clues.",
-    "**NCLEX trap:** a normal-looking systolic pressure can hide a dangerous narrow pulse pressure and poor perfusion."
+    `**${pattern === "narrow" ? "Narrow pulse pressure" : (pattern === "wide" ? "Wide pulse pressure" : "Pulse pressure")} - what it means**`,
+    "**Definition:** pulse pressure is systolic minus diastolic blood pressure (PP = SBP - DBP), measured in mm Hg. A blood pressure of 120/80 mm Hg gives a pulse pressure of 40 mm Hg; about 40 mm Hg is typical for a resting young adult.",
+    "**Numbers in context:** a commonly cited adult narrow pulse pressure is less than 25% of SBP. A pulse pressure of 60 mm Hg or greater is an arterial-stiffness and cardiovascular-risk marker in older adults; greater than 100 mm Hg is a conventional threshold for markedly widened pulse pressure. No single cutoff applies to every age, pregnancy, or clinical situation, and pulse pressure is not a stand-alone diagnosis.",
+    pattern === "narrow"
+      ? "**Narrow pattern:** often means low stroke volume (less blood pumped forward with each beat) or poor forward flow. Think hypovolemia or hemorrhage, cardiogenic shock, tamponade, tension pneumothorax, severe aortic stenosis, or late shock physiology."
+      : (pattern === "wide"
+        ? "**Wide pattern:** can reflect forceful ejection, low diastolic vascular tone, rapid runoff, or stiff arteries. Think aortic regurgitation, sepsis or vasodilation, fever, anemia, hyperthyroidism, pregnancy physiology, AV fistula, or older-adult arterial stiffness."
+        : "**Pattern interpretation:** a narrow pattern can reflect low stroke volume or poor forward flow, while a wide pattern can reflect forceful ejection, rapid runoff, vasodilation, or stiff arteries. Use the measured value, trend, and clinical context rather than assuming one cause."),
+    "**Nursing focus:** confirm the blood-pressure technique, then pair pulse pressure with MAP, heart rate and rhythm, pulse quality, mentation, capillary refill, urine output, skin temperature, lung sounds, chest pain or dyspnea, bleeding, infection, valve clues, age, pregnancy status, and the trend. Use age- and condition-specific standards in children and pregnancy.",
+    "**NCLEX trap:** the numerical markers are clinical clues, not automatic emergency triggers or diagnoses. A normal-looking systolic pressure can still hide a dangerous narrowing trend and poor perfusion."
   ].join("\n\n");
 }
 
@@ -38474,6 +38512,12 @@ function openPharmDetailCandidate(candidate = {}, options = {}) {
   } else if (candidate.type === "update") {
     renderMedicalUpdateDetail(candidate.item);
   }
+  if (pharmDetailExpansionSessionPreference === true && !isPharmDetailExpanded()) {
+    setPharmDetailExpanded(true, {
+      skipBrowserHistory: true,
+      preserveSessionPreference: true
+    });
+  }
   currentPharmDetailCandidate = nextCandidate;
   if (!options.skipBrowserHistory) {
     pushPharmBrowserDetailState(nextCandidate);
@@ -39388,6 +39432,122 @@ function offlineLookupEntityKind(candidate = {}) {
 function offlineLookupQuery(candidate = {}) {
   if (candidate.type === "lab") return pharmLabLookupQuery(candidate.item);
   return offlineLookupEntityLabel(candidate);
+}
+
+function aniWelcomeSeededRandom(seed = "") {
+  let state = 2166136261;
+  String(seed || "ani-welcome").split("").forEach((character) => {
+    state ^= character.charCodeAt(0);
+    state = Math.imul(state, 16777619);
+  });
+  return () => {
+    state += 0x6D2B79F5;
+    let value = state;
+    value = Math.imul(value ^ (value >>> 15), value | 1);
+    value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+    return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function aniWelcomeRandomIndex(length = 0, random = Math.random) {
+  if (!length) return -1;
+  const sampled = Number(random());
+  const bounded = Number.isFinite(sampled) ? Math.max(0, Math.min(0.999999999, sampled)) : 0;
+  return Math.floor(bounded * length);
+}
+
+function aniWelcomeCandidate(type = "", item = null, category = "", prompt = "") {
+  if (!item || item.hidden === true || item.studentFacing === false || item.deprecated === true) return null;
+  const candidate = { type, item };
+  const label = safeText(offlineLookupEntityLabel(candidate)).replace(/\s+/g, " ").trim();
+  const key = offlineLookupEntityKey(candidate);
+  if (!key || label.length < 3 || label.length > 90 || /[\n*]/.test(label)) return null;
+  return { candidate, category, prompt, label, key };
+}
+
+function aniWelcomeCandidatePool(type = "", items = [], category = "", prompt = "", predicate = null) {
+  const seen = new Set();
+  return (items || [])
+    .filter((item) => !predicate || predicate(item))
+    .map((item) => aniWelcomeCandidate(type, item, category, prompt))
+    .filter((entry) => {
+      if (!entry || seen.has(entry.key)) return false;
+      seen.add(entry.key);
+      return true;
+    })
+    .sort((a, b) => a.key.localeCompare(b.key));
+}
+
+function aniWelcomeHasFocusedMedicationWarning(drug = {}) {
+  const warning = safeText(drug.boxedWarning).replace(/\s+/g, " ").trim();
+  if (!warning || /^(?:no\b|drug-specific boxed warning status is not)/i.test(warning)) return false;
+  return /\b(?:boxed|black box|high-alert|life-threatening|fatal)\b/i.test(warning);
+}
+
+function aniWelcomeTopicPools() {
+  const nclexDrug = (drug) => isNclexCorePharmEntry(drug) || Boolean(drug.nclexEssentialRank);
+  return [
+    {
+      category: "disease",
+      items: aniWelcomeCandidatePool("pathology", pathologyDiseases, "disease", "nursing priorities for")
+    },
+    {
+      category: "medication",
+      items: aniWelcomeCandidatePool("drug", pharmDrugs, "medication", "how to safely use", nclexDrug)
+    },
+    {
+      category: "lab",
+      items: aniWelcomeCandidatePool("lab", pharmSearchableLabRanges, "lab", "how to interpret")
+    },
+    {
+      category: "concept",
+      items: aniWelcomeCandidatePool("reference", clinicalReferenceEntries, "concept", "the clinical meaning of")
+    },
+    {
+      category: "warning",
+      items: aniWelcomeCandidatePool(
+        "drug",
+        pharmDrugs,
+        "warning",
+        "the major safety warning for",
+        (drug) => nclexDrug(drug) && aniWelcomeHasFocusedMedicationWarning(drug)
+      )
+    }
+  ].filter((pool) => pool.items.length);
+}
+
+function randomizedWelcomeSuggestions(sessionKey = "", random = null) {
+  const rng = typeof random === "function" ? random : aniWelcomeSeededRandom(sessionKey);
+  const pools = aniWelcomeTopicPools().slice();
+  const selected = [];
+  const usedKeys = new Set();
+
+  while (selected.length < 2 && pools.length) {
+    const poolIndex = aniWelcomeRandomIndex(pools.length, rng);
+    const pool = pools.splice(poolIndex, 1)[0];
+    const eligible = pool.items.filter((entry) => !usedKeys.has(entry.key));
+    if (!eligible.length) continue;
+    const entry = eligible[aniWelcomeRandomIndex(eligible.length, rng)];
+    selected.push(entry);
+    usedKeys.add(entry.key);
+  }
+  return selected;
+}
+
+function randomizedWelcomeForSession(session = {}, random = null) {
+  const suggestions = randomizedWelcomeSuggestions(session.id || "", random);
+  if (suggestions.length !== 2) {
+    return { text: DEFAULT_GREETING, targets: [] };
+  }
+  const [first, second] = suggestions;
+  return {
+    text: `${DEFAULT_GREETING} For a place to start, try ${first.prompt} **${first.label}**, or ${second.prompt} **${second.label}**. Each new chat mixes examples from ANI's diseases, medications, labs, clinical concepts, and medication warnings.`,
+    targets: suggestions.map((entry) => ({
+      candidate: entry.candidate,
+      label: entry.label,
+      key: entry.key
+    }))
+  };
 }
 
 function rememberOfflineLookupTarget(candidate = {}, sourceInput = "") {

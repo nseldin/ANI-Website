@@ -10,11 +10,13 @@
       : database.diseases;
   }
 
-  const VERSION = "2026-07-19-wave33-pathology-nursing-a-1";
+  const VERSION = "2026-08-12-wave33-pathology-nursing-a-2";
   const sources = [
     { id: "w33a-ards-ats", label: "ATS/ESICM/SCCM, Mechanical Ventilation in Adult ARDS", url: "https://www.thoracic.org/statements/resources/cc/ards-guidelines.pdf", note: "Supports adult ARDS lung-protective ventilation, pressure limitation, prolonged prone positioning, and monitoring for ventilator-induced lung injury; it does not prescribe one setting for every patient." },
     { id: "w33a-ards-global", label: "ATS Workshop, New Global Definition of ARDS", url: "https://www.atsjournals.org/doi/full/10.1164/rccm.202303-0558WS", note: "Supports the current conceptual model of permeability injury, edema, atelectasis, shunt, dead space, reduced compliance, and severity classification; bedside diagnosis still requires the complete clinical context." },
     { id: "w33a-ards-gas", label: "ATS, Gas Exchange in Acute Respiratory Distress Syndrome", url: "https://www.atsjournals.org/doi/full/10.1164/rccm.201610-2156SO", note: "Supports physiologic distinctions among shunt, low ventilation-perfusion matching, alveolar dead space, oxygenation response, and ventilatory consequences in ARDS." },
+    { id: "w33a-ards-esicm-2023", label: "ESICM, ARDS Definition and Respiratory Support Guidelines (2023)", url: "https://link.springer.com/article/10.1007/s00134-023-07050-7", note: "Supports the adult ARDS prone-positioning treatment context of PaO2/FiO2 below 150 mm Hg with PEEP at or above 5 cm H2O despite optimized ventilation; this treatment threshold is not a universal definition of refractory hypoxemia." },
+    { id: "w33a-refractory-hypoxemia-annalsats", label: "AnnalsATS, Refractory Hypoxemia and ARDS Adjunctive Therapies", url: "https://academic.oup.com/annalsats/article/14/12/1768/8453655", note: "Documents that refractory hypoxemia has no uniformly accepted numeric definition and that published thresholds vary with oxygen, PEEP, duration, recruitment, and ARDS context." },
     { id: "w33a-cap-idsa", label: "ATS/IDSA, Adult Community-Acquired Pneumonia Guideline", url: "https://www.idsociety.org/practice-guideline/community-acquired-pneumonia-cap-in-adults", note: "Supports severity assessment, diagnostic testing, empiric treatment, and reassessment in adult community-acquired pneumonia; pediatric, immunocompromised, and hospital-acquired pneumonia require different guidance." },
     { id: "w33a-sepsis-sccm-2026", label: "SCCM/ESICM, Surviving Sepsis Campaign Adult Guidelines 2026", url: "https://www.sccm.org/survivingsepsiscampaign/guidelines-and-resources/surviving-sepsis-campaign-adult-guidelines", note: "Supports contextual lactate interpretation, capillary-refill assessment, dynamic fluid-responsiveness measures, perfusion targets, vasopressors, and urgent sepsis care; isolated values do not define adequate circulation." },
     { id: "w33a-fluid-ncbi", label: "NCBI Bookshelf, Physiology of Colloid Osmotic Pressure", url: "https://www.ncbi.nlm.nih.gov/books/NBK541067/", note: "Supports hydrostatic, oncotic, permeability, and lymphatic determinants of transcapillary fluid movement; simplified Starling concepts must be applied with the patient's organ function and cause of edema." },
@@ -477,7 +479,7 @@
       "Explain that proteinuria is a marker rather than one diagnosis, so repeat quantification and kidney function reveal whether the leak is persistent and high risk.",
       "Teach patients to report swelling, foamy urine, blood in urine, reduced output, or clot symptoms and to avoid unreviewed nephrotoxic medicines."
     ]),
-    card("Refractory hypoxemia", ["w33a-ards-ats", "w33a-ards-global", "w33a-ards-gas"], [
+    card("Refractory hypoxemia", ["w33a-ards-ats", "w33a-ards-global", "w33a-ards-gas", "w33a-ards-esicm-2023", "w33a-refractory-hypoxemia-annalsats"], [
       "Confirm airway position, oxygen source, circuit integrity, FiO2, PEEP, breath sounds, blood gas, and hemodynamics because equipment failure, pneumothorax, mucus plugging, or shock may mimic refractory lung disease.",
       "Trend SpO2, PaO2/FiO2 ratio, plateau and driving pressures, compliance, synchrony, cardiac output, and lactate context because rescue oxygenation can fail if ventilation or perfusion worsens.",
       "Maintain protocol-based lung-protective ventilation and coordinate prolonged prone positioning for appropriate moderate-to-severe ARDS because recruitment and more uniform ventilation can reduce shunt without excessive tidal stress.",
@@ -824,6 +826,22 @@
     });
     appliedNames.push(patch.name);
   });
+
+  const refractoryHypoxemiaSourceIds = new Set(
+    cards.find((entry) => entry.name === "Refractory hypoxemia")?.sourceIds || []
+  );
+  const referenceMap = new Map((Array.isArray(database.sourceReferences) ? database.sourceReferences : [])
+    .map((reference) => [String(reference && (reference.key || reference.id) || "").trim(), reference])
+    .filter(([key]) => key));
+  sources.filter((source) => refractoryHypoxemiaSourceIds.has(source.id)).forEach((source) => {
+    referenceMap.set(source.id, {
+      key: source.id,
+      label: source.label,
+      url: source.url,
+      note: source.note
+    });
+  });
+  database.sourceReferences = Array.from(referenceMap.values());
 
   const names = cards.map((entry) => entry.name);
   window.ANI_PATHOLOGY_NURSING_WAVE33_A = {

@@ -7,7 +7,7 @@
 })(typeof window !== "undefined" ? window : (typeof globalThis !== "undefined" ? globalThis : null), function () {
   "use strict";
 
-  const VERSION = "2026-08-11.3";
+  const VERSION = "2026-08-12.2";
   const SCHEMA_VERSION = 1;
   const CLINICAL_REFERENCE_OPENING_STANDARD = Object.freeze({
     schemaVersion: "ani-clinical-reference-opening-v1",
@@ -80,6 +80,127 @@
     routineNursingContextGate: true,
     longSentenceMinimumWords: 40,
     longSentenceMinimumDifficultTerms: 2
+  });
+  const CLINICAL_MEASURABILITY_REVIEW_STANDARD = Object.freeze({
+    schemaVersion: "ani-clinical-measurability-review-standard-v1",
+    reviewStage: "p0-p1-high-confidence",
+    clinicalApplicabilityStatus: "NOT_ASSESSED",
+    universalCutoffStatus: "NOT_ASSESSED",
+    criterionExpectationStatus: "NOT_ASSESSED",
+    phraseFamilies: Object.freeze([
+      Object.freeze({
+        id: "magnitude-or-threshold",
+        phrases: Object.freeze([
+          "critically high", "critically low", "dangerously high", "dangerously low",
+          "significantly elevated", "significantly increased", "significantly decreased", "significantly reduced",
+          "markedly elevated", "markedly increased", "markedly decreased", "markedly reduced",
+          "abnormally high", "abnormally low", "profoundly high", "profoundly low",
+          "high", "low", "elevated", "increased", "decreased", "reduced", "abnormal",
+          "critical", "dangerous", "marked", "significant", "profound", "severe"
+        ])
+      }),
+      Object.freeze({
+        id: "time-or-trajectory",
+        phrases: Object.freeze([
+          "rapid", "persistent", "persistently elevated", "persistently low", "persistently high",
+          "sustained", "prolonged", "worsening"
+        ])
+      }),
+      Object.freeze({
+        id: "control-or-stability",
+        phrases: Object.freeze(["uncontrolled", "unstable", "poor"])
+      })
+    ]),
+    anchorKinds: Object.freeze([
+      "numeric-comparator-or-range",
+      "named-score-stage-grade-or-criteria",
+      "duration-or-frequency",
+      "trend-or-baseline",
+      "explicit-reference-dependency",
+      "counterexample-or-negative-proposition"
+    ]),
+    reviewDispositions: Object.freeze([
+      "AUTHOR_OBJECTIVE_THRESHOLD",
+      "AUTHOR_OBSERVABLE_CRITERIA",
+      "ADD_REFERENCE_DEPENDENCY",
+      "CLINICAL_JUDGMENT_LANGUAGE_APPROPRIATE",
+      "CRITERION_ALREADY_PRESENT",
+      "NO_UNIVERSAL_CUTOFF_APPLIES",
+      "NOT_APPLICABLE",
+      "NEEDS_AUTHORITATIVE_SOURCE_REVIEW"
+    ]),
+    policy: Object.freeze({
+      signalOnly: true,
+      automaticRewrite: false,
+      medicalReviewRequired: true,
+      clinicalApplicabilityInferred: false,
+      universalCutoffInferred: false,
+      criterionExpectationInferred: false,
+      runtimeScannerEnabled: false
+    })
+  });
+  const BROAD_TO_SPECIFIC_EDUCATION_STANDARD = Object.freeze({
+    schemaVersion: "ani-broad-to-specific-education-standard-v1",
+    teachingSequence: Object.freeze([
+      "broad-educational-statement",
+      "qualitative-description",
+      "objective-or-specific-anchor",
+      "relevant-concrete-example"
+    ]),
+    qualitativeLanguagePolicy: "preserve-and-pair-with-specificity-when-clinically-appropriate",
+    objectiveAnchorKinds: Object.freeze([
+      "normal-reference-range",
+      "abnormal-threshold-or-cutoff",
+      "clinical-action-threshold",
+      "bounded-range",
+      "named-score-stage-grade-or-criteria",
+      "timing-or-frequency",
+      "trend-or-baseline",
+      "observable-clinical-criteria",
+      "population-laboratory-assay-protocol-or-label-dependency"
+    ]),
+    exampleKinds: Object.freeze([
+      "representative-generic-medication",
+      "representative-treatment-or-procedure",
+      "concrete-clinical-manifestation",
+      "measurement-or-criterion-example"
+    ]),
+    medicationExamplePolicy: Object.freeze({
+      preserveDrugClass: true,
+      preferGenericNames: true,
+      representativeNotExhaustive: true,
+      suggestedMaximumExamples: 3,
+      requireIndicationPopulationAndContextRelevance: true
+    }),
+    variabilityContexts: Object.freeze([
+      "guideline", "laboratory", "assay", "age", "sex", "pregnancy", "population",
+      "disease-state", "measurement-method", "clinical-context", "protocol", "product-label"
+    ]),
+    reviewDispositions: Object.freeze([
+      "PRESERVE_QUALITATIVE_ADD_OBJECTIVE_ANCHOR",
+      "AUTHOR_NORMAL_RANGE_AND_CLINICAL_THRESHOLD",
+      "AUTHOR_NAMED_CRITERIA_OR_STAGE",
+      "AUTHOR_TIMING_OR_FREQUENCY_CRITERION",
+      "AUTHOR_OBSERVABLE_CRITERIA",
+      "AUTHOR_REPRESENTATIVE_GENERIC_EXAMPLE",
+      "GENERIC_EXAMPLE_ALREADY_PRESENT",
+      "CLASS_ONLY_CLINICALLY_APPROPRIATE",
+      "EXAMPLE_REQUIRES_INDICATION_OR_POPULATION_CONTEXT",
+      "NO_SINGLE_REPRESENTATIVE_EXAMPLE",
+      "ADD_REFERENCE_DEPENDENCY",
+      "NO_UNIVERSAL_CUTOFF_APPLIES",
+      "NEEDS_AUTHORITATIVE_SOURCE_REVIEW",
+      "NOT_APPLICABLE"
+    ]),
+    policy: Object.freeze({
+      signalOnly: true,
+      automaticRewrite: false,
+      medicalReviewRequired: true,
+      clinicalApplicabilityInferred: false,
+      universalCutoffInferred: false,
+      exampleRelevanceInferred: false,
+      runtimeScannerEnabled: false
+    })
   });
   const PRESENTATION_STANDARD = Object.freeze({
     schemaVersion: "ani-card-presentation-v1",
@@ -1039,6 +1160,8 @@
     clinicalReferenceOpeningStandard: CLINICAL_REFERENCE_OPENING_STANDARD,
     clinicalReferenceStructuredSectionStandard: CLINICAL_REFERENCE_STRUCTURED_SECTION_STANDARD,
     visibleLearnerSupportStandard: VISIBLE_LEARNER_SUPPORT_STANDARD,
+    clinicalMeasurabilityReviewStandard: CLINICAL_MEASURABILITY_REVIEW_STANDARD,
+    broadToSpecificEducationStandard: BROAD_TO_SPECIFIC_EDUCATION_STANDARD,
     routineNursingTerms: ROUTINE_NURSING_TERMS,
     glossary,
     cleanText,

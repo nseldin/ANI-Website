@@ -847,8 +847,10 @@
     },
     {
       name: "Pulse pressure",
-      definition: "Pulse pressure is systolic blood pressure minus diastolic blood pressure, reflecting stroke volume, arterial stiffness, and diastolic runoff. A widened pulse pressure can suggest stiff arteries, aortic regurgitation, hyperdynamic states, or raised intracranial-pressure patterns; a narrow pulse pressure can warn of low stroke volume, tamponade, severe heart failure, shock, or hypovolemia.",
-      pathology: "Interpret the number with MAP, heart rate, perfusion, rhythm, valve findings, volume status, and trend. It is a hemodynamic clue, not a stand-alone diagnosis.",
+      definition: "Pulse pressure (PP) is systolic blood pressure (SBP) minus diastolic blood pressure (DBP): PP = SBP - DBP, measured in mm Hg. A blood pressure of 120/80 mm Hg gives a pulse pressure of 40 mm Hg; about 40 mm Hg is typical for a resting young adult. A commonly cited adult definition of narrow pulse pressure is less than 25% of SBP. Definitions of wide pulse pressure vary by purpose: 60 mm Hg or greater is an arterial-stiffness and cardiovascular-risk marker in older adults, while greater than 100 mm Hg is a conventional threshold for markedly widened pulse pressure. No single cutoff applies to every age, pregnancy, or clinical situation, and pulse pressure is not a stand-alone diagnosis.",
+      plainLanguage: "Pulse pressure is the gap between the top and bottom blood-pressure numbers.",
+      whyItMatters: "Pulse pressure matters because a narrowing trend with poor perfusion can warn of falling forward blood flow and shock, while persistent widening can signal stiff arteries or another circulatory problem; nurses confirm the measurement, assess symptoms and perfusion, and trend the value.",
+      pathology: "Pulse pressure is shaped by stroke volume (blood pumped with each beat), arterial compliance (how easily arteries stretch), vascular tone, and diastolic runoff (how quickly pressure falls between beats). Low forward flow tends to narrow the gap; forceful ejection, rapid runoff, vasodilation, or age-related aortic stiffening can widen it. Interpret the number with MAP, heart rate, perfusion, rhythm, valve findings, volume status, age, pregnancy status, symptoms, and trend.",
       tags: ["first-sentence-crash-course-2026-07-11", "hemodynamics", "pulse pressure"]
     },
     {

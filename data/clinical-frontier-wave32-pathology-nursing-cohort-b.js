@@ -45,7 +45,8 @@
     { id: "niddk-nephrotic", label: "NIDDK, Nephrotic Syndrome in Adults", url: "https://www.niddk.nih.gov/health-information/kidney-disease/nephrotic-syndrome-adults", note: "Supports heavy proteinuria, hypoalbuminemia, edema, lipid changes, cause-directed therapy, and infection, thrombosis, kidney, and volume complication surveillance." },
     { id: "nhlbi-sleep", label: "NHLBI, Sleep Apnea", url: "https://www.nhlbi.nih.gov/health/sleep-apnea", note: "Supports sleep-study diagnosis, obstructive and central distinctions, positive-airway-pressure treatment, symptom follow-up, and cardiovascular and safety consequences." },
     { id: "niddk-incontinence", label: "NIDDK, Urinary Incontinence Diagnosis and Treatment", url: "https://www.niddk.nih.gov/health-information/urologic-diseases/bladder-control-problems", note: "Supports bladder diaries, subtype and reversible-cause assessment, pelvic-floor and bladder training, medicines, devices, procedures, and skin protection." },
-    { id: "nih-pulse", label: "NCBI Bookshelf, Physiology, Pulse Pressure", url: "https://www.ncbi.nlm.nih.gov/books/NBK482408/", note: "Supports pulse-pressure calculation, relationships with stroke volume and arterial compliance, measurement context, and interpretation of unusually narrow or wide values." },
+    { id: "nih-pulse", label: "NCBI Bookshelf, Physiology, Pulse Pressure", url: "https://www.ncbi.nlm.nih.gov/books/NBK482408/", note: "Supports PP = SBP - DBP in mm Hg, about 40 mm Hg in a resting young adult, less than 25% of SBP as a commonly cited narrow criterion, greater than 100 mm Hg as markedly widened, and context-dependent interpretation." },
+    { id: "eapc-vascular-ageing", label: "European Association of Preventive Cardiology Consensus: Vascular Ageing", url: "https://academic.oup.com/eurjpc/article/30/11/1101/7026201", note: "Supports brachial pulse pressure of 60 mm Hg or greater as a marker of arterial stiffness and hypertension-mediated organ damage in older people, with age-dependent interpretation." },
     { id: "cdc-adhd", label: "CDC, Clinical Care of ADHD", url: "https://www.cdc.gov/adhd/hcp/treatment-recommendations/index.html", note: "Supports multi-setting diagnosis, evaluation of mimics and co-occurring conditions, age-specific behavioral and medication treatment, and outcome and adverse-effect monitoring." },
     { id: "svs-cvi", label: "Society for Vascular Surgery, Chronic Venous Insufficiency Patient Guide", url: "https://vascular.org/sites/default/files/2025-12/SVS_YVH_CVI.pdf", note: "Supports venous reflux and pooling mechanisms, edema and skin assessment, compression and movement, ulcer care, and evaluation for venous intervention." },
     { id: "niams-eczema", label: "NIAMS, Atopic Dermatitis Diagnosis and Treatment", url: "https://www.niams.nih.gov/health-topics/atopic-dermatitis/diagnosis-treatment-and-steps-to-take", note: "Supports barrier repair, trigger reduction, topical and systemic therapy, itch control, and bacterial, viral, and treatment-related complication recognition." },
@@ -534,20 +535,20 @@
       "Keep a two- or three-day bladder diary because timing, intake, urgency, and activity reveal the subtype more accurately than memory alone.",
       "Do not restrict fluids enough to become dehydrated and do not practice pelvic-floor squeezes while urinating because both strategies can worsen bladder problems."
     ]),
-    card("Pulse pressure", ["nih-pulse", "aha-hypotension"], [
-      "Calculate systolic minus diastolic pressure only after repeating a correctly measured blood pressure because cuff error, movement, pain, and rhythm irregularity can create a misleading pulse pressure.",
-      "Interpret the value with age, baseline, heart rate, stroke volume, arterial stiffness, pregnancy, fever, anemia, valve disease, trauma, and symptoms because wide and narrow values are physiologic clues rather than diagnoses.",
-      "Assess pulses, capillary refill, skin temperature, mental status, urine output, chest symptoms, bleeding, and orthostasis because a narrowing trend may reflect falling stroke volume even before systolic pressure crosses a standard threshold.",
-      "Trend serial measurements, rhythm, perfusion, fluid balance, hemoglobin, ECG, and cause-specific imaging or laboratories because changes over time distinguish chronic arterial stiffness from acute hemodynamic deterioration.",
-      "Escalate for a rapidly narrowing pulse pressure with shock findings, new very wide pressure with chest pain or bounding pulses, neurologic deficit, syncope, or pregnancy emergency because hemorrhage, pump failure, aortic disease, or severe vascular stress may be present."
+    card("Pulse pressure", ["nih-pulse", "eapc-vascular-ageing"], [
+      "Confirm a correctly measured blood pressure, then calculate PP = SBP - DBP in mm Hg because cuff error, movement, pain, and rhythm irregularity can make the calculated gap misleading; for example, 120/80 gives a pulse pressure of 40 mm Hg, about the typical resting value for a young adult.",
+      "Recognize less than 25% of SBP as a commonly cited adult narrow criterion, 60 mm Hg or greater as an arterial-stiffness and cardiovascular-risk marker in older adults, and greater than 100 mm Hg as markedly widened because objective criteria are more useful than vague labels when their population and purpose remain explicit.",
+      "Do not use any of those numbers as a universal cutoff or stand-alone diagnosis because age, baseline, symptoms, trend, heart rate, stroke volume, arterial stiffness, pregnancy, fever, anemia, valve disease, trauma, and clinical setting change their meaning.",
+      "Assess pulses, capillary refill, skin temperature, mental status, urine output, chest symptoms, bleeding, and orthostasis, then trend serial pressure, rhythm, perfusion, fluid balance, hemoglobin, ECG, and cause-specific studies because a narrowing trend may reflect falling forward blood flow.",
+      "Escalate a narrow or rapidly narrowing pulse pressure with shock findings, or a newly markedly widened pressure with chest pain, bounding pulses, neurologic deficit, syncope, or pregnancy-emergency symptoms because hemorrhage, pump failure, aortic disease, or severe vascular stress may be present."
     ], [
-      "Rapidly narrowing pulse pressure with tachycardia, cool skin, confusion, or oliguria",
-      "Wide pulse pressure with acute chest or back pain, syncope, or pulse asymmetry",
+      "Either pulse pressure less than 25% of SBP or a rapidly narrowing trend, together with tachycardia, cool skin, confusion, oliguria, or other poor-perfusion findings",
+      "Markedly widened pulse pressure greater than 100 mm Hg with acute chest or back pain, syncope, bounding pulses, or pulse asymmetry",
       "New neurologic deficit, severe headache, vision change, or seizure",
       "Pregnancy or postpartum symptoms with severe hypertension, bleeding, pain, or collapse"
     ], [
-      "Pulse pressure is the difference between the top and bottom numbers, but its meaning depends on symptoms, age, rhythm, and the trend.",
-      "Bring repeated properly taken readings rather than reacting to one unusual value because technique and temporary stress can change both numbers."
+      "Pulse pressure is the top number minus the bottom number. About 40 mm Hg is typical for a resting young adult, but age, pregnancy, symptoms, and the trend change what an unusual gap means.",
+      "Bring repeated properly taken readings rather than reacting to one unusual value. The less-than-25%-of-SBP narrow criterion, 60 mm Hg older-adult marker, and greater-than-100 mm Hg markedly widened threshold are clinical clues, not diagnoses by themselves."
     ]),
     card("Sensitivity", ["nih-diagnostic", "nih-clinical-methods-diagnostic"], [
       "Verify and document the target condition, reference standard, population, specimen, threshold, and disease stage for a culture, troponin assay, imaging study, or other test because sensitivity is the proportion of affected people whom that test identifies under specified conditions.",
@@ -858,6 +859,21 @@
       });
       appliedNames.push(patch.name);
     });
+  }
+
+  if (database && typeof database === "object") {
+    const referenceMap = new Map((Array.isArray(database.sourceReferences) ? database.sourceReferences : [])
+      .map((reference) => [String(reference && (reference.key || reference.id) || "").trim(), reference])
+      .filter(([key]) => key));
+    sources.filter((source) => ["nih-pulse", "eapc-vascular-ageing"].includes(source.id)).forEach((source) => {
+      referenceMap.set(source.id, {
+        key: source.id,
+        label: source.label,
+        url: source.url,
+        note: source.note
+      });
+    });
+    database.sourceReferences = Array.from(referenceMap.values());
   }
 
   const names = patches.map((patch) => patch.name);

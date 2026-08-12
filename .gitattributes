@@ -1,0 +1,3 @@
+config/ani-medical-updates-sources.v1.json text eol=lf
+data/medical-updates.json text eol=lf
+data/medical-updates.js text eol=lf
