@@ -7077,6 +7077,9 @@ function replacePharmBrowserDetailExpansion(expanded = false) {
 function setPharmDetailExpanded(expanded = false, options = {}) {
   if (!pharmDatabaseScreen) return false;
   const next = expanded === true;
+  if (!next && isPharmDetailExpanded()) {
+    ensurePharmBrowseChromeHydrated();
+  }
   pharmDatabaseScreen.classList.toggle("pharm-detail-expanded", next);
   if (pharmDrugDetail) {
     pharmDrugDetail.dataset.expanded = String(next);
@@ -7090,6 +7093,7 @@ function setPharmDetailExpanded(expanded = false, options = {}) {
 
 function togglePharmDetailExpanded() {
   if (pharmDetailUsesResponsiveFullViewport() && isPharmDetailOpen()) {
+    ensurePharmBrowseChromeHydrated();
     requestPharmIndexNavigation();
     return false;
   }
@@ -37196,7 +37200,10 @@ function renderPharmResults(options = {}) {
   }
   const resultFragment = document.createDocumentFragment();
   let detailRendered = false;
-  const shouldPreviewDetail = document.documentElement.dataset.deviceMode !== "phone" && !isSearchMode;
+  const preserveOpenDetail = options.preserveOpenDetail === true && isPharmDetailOpen();
+  const shouldPreviewDetail = !preserveOpenDetail
+    && document.documentElement.dataset.deviceMode !== "phone"
+    && !isSearchMode;
   const totalSearchMatchCount = activePharmResults.length
     + activePharmLabResults.length
     + activePathologyResults.length
@@ -37491,13 +37498,24 @@ function renderPharmResults(options = {}) {
   finishPharmSearchRender(rawQuery, requestGeneration);
 }
 
-function renderPharmDatabase() {
+function renderPharmDatabase(options = {}) {
   updatePharmFilterUi();
   updatePharmIndexModeUi();
   renderPharmLabs();
   renderPharmAlphabet();
-  renderPharmResults();
+  renderPharmResults({ preserveOpenDetail: options.preserveOpenDetail === true });
   replacePharmBrowserIndexSnapshot();
+}
+
+function ensurePharmBrowseChromeHydrated() {
+  if (!pharmDatabaseScreen
+      || pharmDatabaseScreen.hidden
+      || !isPharmDetailOpen()
+      || !pharmNeedsResultsRender) {
+    return false;
+  }
+  renderPharmDatabase({ preserveOpenDetail: true });
+  return !pharmNeedsResultsRender;
 }
 
 function clearPharmResultChunkTimers() {
