@@ -3,7 +3,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "2026-07-29-wave35-intelligent-search-routing-29";
+  const VERSION = "2026-08-11-wave35-intelligent-search-routing-30";
   if (window.ANI_WAVE35_INTELLIGENT_SEARCH_ROUTING
     && window.ANI_WAVE35_INTELLIGENT_SEARCH_ROUTING.version === VERSION) return;
 
@@ -279,7 +279,7 @@
       || /\bwhat (?:is|are)\b.+\bmean(?:s|ing)?\b/i.test(text)
       || /\bwhat (?:is|are) the meaning of\b/i.test(text)
       || /\bmeaning of\b/i.test(text)
-      || /\b(?:explain|why does|why do|how does|how do)\b/i.test(text);
+      || /\b(?:explain|why (?:is|are|was|were|does|do)|how (?:does|do))\b/i.test(text);
   };
 
   const directDefinitionIntent = (input) => {
@@ -986,21 +986,26 @@
       const directCollisionResponse = tenCollisionResponse(input);
       if (directCollisionResponse) return directCollisionResponse;
       if (typeof isDegenerateOfflineLookupInput === "function"
-        && isDegenerateOfflineLookupInput(input)) return "";
+          && isDegenerateOfflineLookupInput(input)) return "";
       const reviewedSearchSafetyOwner = reviewedSearchResolutionFor(input);
-      if (reviewedSearchSafetyOwner?.ambiguousIdentity === true) {
-        pendingOfflineLookupSuggestions = safeArray(reviewedSearchSafetyOwner.ambiguityCandidates)
-          .map((candidate) => ({ ...candidate, ambiguousIdentity: true }));
-        return reviewedAmbiguityPrompt({ ambiguityCandidates: pendingOfflineLookupSuggestions });
-      }
       if (directExplanationIntent(input)
-        && !currentPersonalSymptoms(input)
-        && typeof makeOfflineSmartDatabaseAnswer === "function") {
-        const reviewedDirectAnswer = makeOfflineSmartDatabaseAnswer(input);
+        && !currentPersonalSymptoms(input)) {
+        const focusedDirectAnswer = typeof makeOfflinePreRuntimeFocusedAnswer === "function"
+          ? makeOfflinePreRuntimeFocusedAnswer(input)
+          : "";
+        const reviewedDirectAnswer = focusedDirectAnswer
+          || (typeof makeOfflineSmartDatabaseAnswer === "function"
+            ? makeOfflineSmartDatabaseAnswer(input)
+            : "");
         if (typeof reviewedDirectAnswer === "string" && reviewedDirectAnswer.trim()) {
           pendingOfflineLookupSuggestions = [];
           return reviewedDirectAnswer;
         }
+      }
+      if (reviewedSearchSafetyOwner?.ambiguousIdentity === true) {
+        pendingOfflineLookupSuggestions = safeArray(reviewedSearchSafetyOwner.ambiguityCandidates)
+          .map((candidate) => ({ ...candidate, ambiguousIdentity: true }));
+        return reviewedAmbiguityPrompt({ ambiguityCandidates: pendingOfflineLookupSuggestions });
       }
       const strictCanonicalOwner = typeof strictCanonicalEncyclopediaCandidate === "function"
         ? strictCanonicalEncyclopediaCandidate(input)
@@ -1073,21 +1078,26 @@
       const directCollisionResponse = tenCollisionResponse(input);
       if (directCollisionResponse) return directCollisionResponse;
       const reviewedSearchSafetyOwner = reviewedSearchResolutionFor(input);
-      if (reviewedSearchSafetyOwner?.ambiguousIdentity === true) {
-        return reviewedAmbiguityPrompt(reviewedSearchSafetyOwner);
-      }
       // Preserve a reviewed focused explanation when the user asks what a
       // value or finding means. Exact-card ownership is correct for bare
       // identity searches (for example, "D-dimer"), but it must not replace
       // the more useful bedside interpretation for "What does a positive
-      // D-dimer mean?". Ambiguous identities still fail closed above.
+      // D-dimer mean?". Ambiguity still fails closed when no reviewed
+      // focused answer owns the complete question.
       if (directExplanationIntent(input) && !currentPersonalSymptoms(input)) {
-        if (typeof makeOfflineSmartDatabaseAnswer === "function") {
-          const reviewedDirectAnswer = makeOfflineSmartDatabaseAnswer(input);
-          if (typeof reviewedDirectAnswer === "string" && reviewedDirectAnswer.trim()) {
-            return reviewedDirectAnswer;
-          }
+        const focusedDirectAnswer = typeof makeOfflinePreRuntimeFocusedAnswer === "function"
+          ? makeOfflinePreRuntimeFocusedAnswer(input)
+          : "";
+        const reviewedDirectAnswer = focusedDirectAnswer
+          || (typeof makeOfflineSmartDatabaseAnswer === "function"
+            ? makeOfflineSmartDatabaseAnswer(input)
+            : "");
+        if (typeof reviewedDirectAnswer === "string" && reviewedDirectAnswer.trim()) {
+          return reviewedDirectAnswer;
         }
+      }
+      if (reviewedSearchSafetyOwner?.ambiguousIdentity === true) {
+        return reviewedAmbiguityPrompt(reviewedSearchSafetyOwner);
       }
       if (directDefinitionIntent(input)
         && !currentPersonalSymptoms(input)
