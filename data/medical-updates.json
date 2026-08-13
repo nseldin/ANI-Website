@@ -1777,9 +1777,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-12T20:23:52.923Z",
+  "generatedAt": "2026-08-13T05:52:30.384Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "300d0a213d3f0603f1fae308f2dffb56a59e42972abf8586c084083dca7161e8",
+      "description": "Oma's Pride of Avon, Connecticut, is voluntarily recalling one lot of Woof Complete Canine Chicken Recipe, 6 lb bag (Lot BB012729) because it is contaminated with Salmonella.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/omas-pride-voluntarily-recalls-one-lot-woof-complete-canine-chicken-recipe-6-lb-bag-because-possible",
+      "id": "medical-update:fda-recalls:8b3bffe7052e0b6f124cd171",
+      "publishedAt": "2026-08-12T21:55:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-13T05:52:30.384Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Oma's Pride Voluntarily Recalls One Lot of Woof Complete Canine Chicken Recipe (6 Lb Bag) Because of Possible Salmonella Health Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/omas-pride-voluntarily-recalls-one-lot-woof-complete-canine-chicken-recipe-6-lb-bag-because-possible"
+    },
     {
       "category": "recall",
       "contentHash": "be4a105ae4caae93e2eeb014b9f0a538695bdea08cd5e187dd4bb1f43ba1dacf",
@@ -1832,6 +1848,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Update on Alert: Convenience Kit Issue from Medline",
       "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/update-alert-convenience-kit-issue-medline"
+    },
+    {
+      "category": "recall",
+      "contentHash": "5fc995eec8721bf6fcd05d7fc98b44db362aefdc4787dd4fa58c8a1d426d28a5",
+      "description": "ARLINGTON, VA – AUGUST 11, 2026 – Lidl US is recalling one lot of Vitasia Asian Style Wok Spice Mix 1.58 oz (45g) (UPC 4335619355491) with Lot # 155846 and BBD JUN 2028 because it has the potential to be contaminated with Salmonella.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/lidl-us-recalls-vitasia-asian-style-wok-spice-mix-due-potential-salmonella-contamination",
+      "id": "medical-update:fda-recalls:994c248c20c686fe54a40cbd",
+      "publishedAt": "2026-08-11T21:21:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-13T05:52:30.384Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Lidl US Recalls Vitasia Asian Style Wok Spice Mix Due to Potential Salmonella Contamination",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/lidl-us-recalls-vitasia-asian-style-wok-spice-mix-due-potential-salmonella-contamination"
     },
     {
       "category": "drug-approval",
@@ -3325,7 +3357,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 4,
-      "retrievedAt": "2026-08-12T20:23:52.923Z",
+      "retrievedAt": "2026-08-13T05:52:30.384Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3335,8 +3367,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 3,
-      "retrievedAt": "2026-08-12T20:23:52.923Z",
+      "retainedItemCount": 4,
+      "retrievedAt": "2026-08-13T05:52:30.384Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -3347,7 +3379,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 20,
       "retainedItemCount": 9,
-      "retrievedAt": "2026-08-12T20:23:52.923Z",
+      "retrievedAt": "2026-08-13T05:52:30.384Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -3358,7 +3390,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-12T20:23:52.923Z",
+      "retrievedAt": "2026-08-13T05:52:30.384Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -3369,7 +3401,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 10,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-12T20:23:52.923Z",
+      "retrievedAt": "2026-08-13T05:52:30.384Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -3380,7 +3412,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-12T20:23:52.923Z",
+      "retrievedAt": "2026-08-13T05:52:30.384Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -3391,7 +3423,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-12T20:23:52.923Z",
+      "retrievedAt": "2026-08-13T05:52:30.384Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -3402,7 +3434,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-12T20:23:52.923Z",
+      "retrievedAt": "2026-08-13T05:52:30.384Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -3413,7 +3445,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-12T20:23:52.923Z",
+      "retrievedAt": "2026-08-13T05:52:30.384Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
