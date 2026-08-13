@@ -7,7 +7,7 @@
 })(typeof window !== "undefined" ? window : (typeof globalThis !== "undefined" ? globalThis : null), function () {
   "use strict";
 
-  const VERSION = "2026-08-12.2";
+  const VERSION = "2026-08-12.5";
   const SCHEMA_VERSION = 1;
   const CLINICAL_REFERENCE_OPENING_STANDARD = Object.freeze({
     schemaVersion: "ani-clinical-reference-opening-v1",
@@ -170,7 +170,39 @@
       preferGenericNames: true,
       representativeNotExhaustive: true,
       suggestedMaximumExamples: 3,
-      requireIndicationPopulationAndContextRelevance: true
+      requireIndicationPopulationAndContextRelevance: true,
+      reviewSignalStage: "ani-medication-class-generic-example-review-stage-v1",
+      exactCanonicalGenericIdentityRequired: true,
+      sameSentenceOrLeafRequiredForLocalSatisfaction: true,
+      compatibleIndividualMedicationClassMetadataRequired: true,
+      positiveTreatmentContextRequired: true,
+      exampleCueWithoutGenericSatisfies: false,
+      aliasOrBrandSatisfies: false,
+      siblingLeafSatisfies: false,
+      unrelatedFamilyOrDomainSatisfies: false,
+      genericChoiceInferred: false,
+      positiveTreatmentContextInferred: false,
+      exampleRelevanceStatus: "NOT_ASSESSED",
+      indicationPopulationContextStatus: "NOT_ASSESSED"
+    }),
+    interventionExamplePolicy: Object.freeze({
+      reviewSignalStage: "ani-clinical-specificity-intervention-example-review-stage-v1",
+      preserveBroadInterventionLanguage: true,
+      representativeNotExhaustive: true,
+      requireClinicalApplicabilityAndContextReview: true,
+      positiveActionContextRequired: true,
+      sameSentenceOrLeafRequiredForLocalSatisfaction: true,
+      uniqueValidatorTopicIdBindingRequired: true,
+      uniquelyBoundAliasVariantMaySatisfy: false,
+      unreviewedAliasObservationRetained: true,
+      exampleCueWithoutIdentitySatisfies: false,
+      siblingLeafSatisfies: false,
+      ambiguousIdentitySatisfies: false,
+      validatorTopicIdMayAuthorizeProductionIdentity: false,
+      authoringLeafProvenanceRequiredBeforeMutation: true,
+      clinicalDeficiencyInferred: false,
+      longLeafAssessmentStatus: "NOT_ASSESSED",
+      runtimeScannerEnabled: false
     }),
     variabilityContexts: Object.freeze([
       "guideline", "laboratory", "assay", "age", "sex", "pregnancy", "population",

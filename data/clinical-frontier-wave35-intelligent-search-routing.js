@@ -3,7 +3,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "2026-08-12-wave35-intelligent-search-routing-31";
+  const VERSION = "2026-08-12-wave35-intelligent-search-routing-32";
   if (window.ANI_WAVE35_INTELLIGENT_SEARCH_ROUTING
     && window.ANI_WAVE35_INTELLIGENT_SEARCH_ROUTING.version === VERSION) return;
 
@@ -504,8 +504,6 @@
   ]);
 
   const AMBIGUITY_CASES = Object.freeze([
-    Object.freeze({ query: "GBS screening in pregnancy before delivery", target: "groupBStrep", guard: "gbs-obstetric" }),
-    Object.freeze({ query: "GBS after diarrhea with ascending weakness and absent reflexes", target: "guillainBarre", guard: "gbs-neurologic" }),
     Object.freeze({ query: "PCP pneumonia in HIV with hypoxemia", target: "pneumocystis", optional: true, guard: "pcp-pneumocystis" }),
     Object.freeze({ query: "PCP appointment with my family doctor", target: "", guard: "pcp-primary-care" }),
     Object.freeze({ query: "PT INR while taking warfarin", target: "prothrombinTime", guard: "pt-coagulation" }),
@@ -597,6 +595,11 @@
         "New, severe, unexplained, or worsening pain still needs assessment, especially with trauma, fever, weakness, numbness, or bowel or bladder changes."
       ].join(" ");
     }
+    if (!explicitlyNamesTenCondition
+      && !/\bTEN\b/.test(raw)
+      && /^(?:what is |what does )?ten[?.!]*$/i.test(raw.trim())) {
+      return "**Ten is the number 10.** I read lowercase **ten** as an ordinary number word, not as the medical abbreviation **TEN**. If you meant toxic epidermal necrolysis, use the full condition name or uppercase TEN with clinical context.";
+    }
     if (!explicitlyNamesTenCondition && /\btens of\b/i.test(text)) {
       return "**\u201cTens of\u201d describes an approximate quantity, usually several dozen.** I read **ten** here as a number word, not as a medical abbreviation. Your message does not ask a clinical question, so tell me what you want to understand rather than being sent to an unrelated encyclopedia entry.";
     }
@@ -614,14 +617,6 @@
         target: "",
         blockedLabels: ["Toxic epidermal necrolysis", "Toxic epidermal necrolysis (TEN)"]
       };
-    }
-    if (/\bgbs\b/i.test(text)) {
-      if (/\b(pregnan|prenatal|antenatal|labor|delivery|newborn|neonat|vaginal rectal|culture|screen|colonization)\b/i.test(text)) {
-        return { guard: "gbs-obstetric", target: "groupBStrep" };
-      }
-      if (/\b(ascending weakness|areflex|absent reflex|neuropathy|paralysis|post infectious|after diarrhea|after gastroenteritis|ventilatory weakness|csf protein)\b/i.test(text)) {
-        return { guard: "gbs-neurologic", target: "guillainBarre" };
-      }
     }
     if (/\bpcp\b/i.test(text)) {
       if (/\b(primary care|family doctor|family medicine|general practitioner|appointment|provider|checkup)\b/i.test(text)) {
@@ -1156,6 +1151,8 @@
     exactPharmDetailCandidate = function (input, preferredType) {
       const args = Array.prototype.slice.call(arguments, 2);
       if (tenCollisionResponse(input)) return null;
+      if (typeof commonWordAbbreviationNeedsExplicitContext === "function"
+        && commonWordAbbreviationNeedsExplicitContext(input, normalize(input))) return null;
       if (typeof isDegenerateOfflineLookupInput === "function"
         && isDegenerateOfflineLookupInput(input)) return null;
       if (preferredType === "procedures") {

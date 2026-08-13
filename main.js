@@ -621,6 +621,7 @@ let registrationPendingVerification = false;
 let activeActionMenu = null;
 let currentPharmReadableText = "";
 let currentPharmHighlightText = "";
+let currentPharmSelectedParagraph = null;
 const PHARM_DETAIL_HISTORY_LIMIT = 36;
 const PHARM_BROWSER_HISTORY_KEY = "aniEncyclopediaRoute";
 let currentPharmDetailCandidate = null;
@@ -6889,6 +6890,7 @@ function estimatePharmSpeechDuration(text = "") {
 
 function updatePharmVoiceControls() {
   const hasHighlight = Boolean(currentPharmHighlightText.trim());
+  const readingAll = pharmReadingActive && pharmReadingMode === "all";
   const readingHighlight = pharmReadingActive && pharmReadingMode === "highlight";
   if (pharmMuteToggle) {
     pharmMuteToggle.textContent = pharmAutoReadMuted ? "Unmute" : "Mute";
@@ -6899,12 +6901,14 @@ function updatePharmVoiceControls() {
   }
 
   if (pharmReadAllButton) {
-    pharmReadAllButton.textContent = pharmReadingActive ? "Stop reading" : "Read all";
-    pharmReadAllButton.classList.toggle("is-stop", pharmReadingActive);
-    pharmReadAllButton.disabled = !pharmReadingActive && !currentPharmReadableText.trim();
-    pharmReadAllButton.title = pharmReadingActive
+    pharmReadAllButton.textContent = readingAll ? "Stop reading" : "Read all";
+    pharmReadAllButton.classList.toggle("is-stop", readingAll);
+    pharmReadAllButton.disabled = !readingAll && !currentPharmReadableText.trim();
+    pharmReadAllButton.title = readingAll
       ? "Stop ANI reading the encyclopedia"
-      : "Read the current encyclopedia entry out loud";
+      : readingHighlight
+        ? "Switch from the highlight to the rest of this encyclopedia entry"
+        : "Read the current encyclopedia entry out loud";
   }
 
   if (pharmCopyHighlightButton) {
@@ -6996,6 +7000,14 @@ function readCurrentPharmHighlight() {
     return;
   }
   startPharmReading(text, { force: true, source: "highlight" });
+}
+
+function readCurrentPharmAll() {
+  if (pharmReadingActive && pharmReadingMode === "all") {
+    stopPharmReading("ANI stopped reading the encyclopedia.");
+    return false;
+  }
+  return startPharmReading(readablePharmDetailTextForReadAll(), { force: true, source: "all" });
 }
 
 function readablePharmSectionHeading(section = {}) {
@@ -7175,8 +7187,231 @@ function readablePharmDetailText() {
   return speechReadyText([speakStandaloneTitle ? titleLead : "", ...bodies].filter(Boolean).join("\n\n"));
 }
 
+const PHARM_SELECTABLE_PARAGRAPH_SELECTOR = [
+  "p",
+  "li",
+  "td",
+  "dd",
+  "[data-leaf-path]",
+  ".clinical-result-meaning-text",
+  ".pharm-detail-text",
+  ".pharm-learning-visual-intro"
+].join(", ");
+
+const PHARM_PARAGRAPH_INTERACTIVE_SELECTOR = [
+  "button",
+  "a",
+  "input",
+  "label",
+  "select",
+  "textarea",
+  "summary",
+  "[contenteditable='true']",
+  "[role='button']",
+  "[role='link']"
+].join(", ");
+
+const PHARM_PARAGRAPH_SKIPPED_SECTION_PATTERN = /also searchable|brand names?\s*\/\s*aliases|medical abbreviations?|explore related|evidence sources?|source note/i;
+
+function pharmParagraphElementIsWithinDetail(element = null) {
+  return Boolean(element && pharmDrugDetail && pharmDrugDetail.contains?.(element));
+}
+
+function pharmParagraphHasReadableDescendant(element = null) {
+  if (!element?.querySelectorAll) return false;
+  return Array.from(element.querySelectorAll(PHARM_SELECTABLE_PARAGRAPH_SELECTOR))
+    .some((descendant) => descendant !== element && Boolean(readableTextFromElement(descendant)));
+}
+
+function isPharmSelectableParagraph(element = null) {
+  if (!element?.matches?.(PHARM_SELECTABLE_PARAGRAPH_SELECTOR)
+    || !pharmParagraphElementIsWithinDetail(element)
+    || element.closest?.(".pharm-detail-toolbar, .pharm-detail-title, .pharm-abbreviation-section")
+    || element.closest?.("[data-skip-read='true'], [aria-hidden='true'], [hidden]")
+    || elementIsInsideClosedDisclosure(element)
+    || pharmParagraphHasReadableDescendant(element)) {
+    return false;
+  }
+  const section = element.closest?.("section, .pharm-detail-section");
+  if (section && PHARM_PARAGRAPH_SKIPPED_SECTION_PATTERN.test(readablePharmSectionHeading(section))) {
+    return false;
+  }
+  return Boolean(readableTextFromElement(element));
+}
+
+function pharmSelectableParagraphFromTarget(target = null) {
+  let element = target?.nodeType === 3 ? target.parentElement : target;
+  if (!element || element.closest?.(PHARM_PARAGRAPH_INTERACTIVE_SELECTOR)) return null;
+  while (element && element !== pharmDrugDetail) {
+    if (isPharmSelectableParagraph(element)) return element;
+    element = element.parentElement || null;
+  }
+  return null;
+}
+
+function pharmSelectableParagraphElements() {
+  if (!pharmDrugDetail?.querySelectorAll) return [];
+  return Array.from(pharmDrugDetail.querySelectorAll(PHARM_SELECTABLE_PARAGRAPH_SELECTOR))
+    .filter((element, index, records) => records.indexOf(element) === index)
+    .filter(isPharmSelectableParagraph);
+}
+
+function pharmParagraphStructuredVisual(element = null) {
+  return element?.closest?.(".pharm-learning-visual, .pharm-growth-visual, .pharm-flow-visual") || null;
+}
+
+function isPharmAutomaticContinuationParagraph(element = null, selectedVisual = null) {
+  if (!isPharmSelectableParagraph(element)) return false;
+  const visual = pharmParagraphStructuredVisual(element);
+  if (!visual) return true;
+  if (selectedVisual && visual === selectedVisual) return true;
+  if (element.closest?.(".pharm-learning-visual-intro")) return true;
+  if (visual.matches?.(".pharm-growth-visual")) {
+    return element.matches?.(".pharm-growth-visual-subtitle")
+      || Boolean(element.closest?.(".pharm-growth-visual-subtitle"));
+  }
+  return false;
+}
+
+function preparePharmSelectableParagraph(element = null) {
+  if (!isPharmSelectableParagraph(element)) return false;
+  const selected = currentPharmSelectedParagraph?.element === element;
+  element.dataset.aniReadableParagraph = "true";
+  element.setAttribute?.("tabindex", "0");
+  element.setAttribute?.("aria-keyshortcuts", "Enter Space");
+  element.setAttribute?.("aria-description", selected
+    ? "Selected for read aloud. Press Enter or Space to deselect."
+    : "Press Enter or Space to select this paragraph for read aloud.");
+  element.setAttribute?.("title", selected
+    ? "Selected for read aloud. Press Enter or Space to deselect."
+    : "Press Enter or Space to select this paragraph for read aloud.");
+  return true;
+}
+
+function enhancePharmSelectableParagraphs() {
+  const elements = pharmSelectableParagraphElements();
+  elements.forEach(preparePharmSelectableParagraph);
+  return elements.length;
+}
+
+function selectedPharmParagraphText() {
+  const record = currentPharmSelectedParagraph;
+  if (!record?.element || !isPharmSelectableParagraph(record.element)) {
+    clearPharmSelectedParagraph({ updateControls: false });
+    return "";
+  }
+  return readableTextFromElement(record.element);
+}
+
+function clearPharmSelectedParagraph(options = {}) {
+  const record = currentPharmSelectedParagraph;
+  currentPharmSelectedParagraph = null;
+  if (record?.element) {
+    record.element.classList?.remove("pharm-paragraph-selected");
+    delete record.element.dataset?.aniParagraphSelected;
+    record.element.removeAttribute?.("aria-current");
+    record.element.setAttribute?.("aria-description", "Press Enter or Space to select this paragraph for read aloud.");
+    record.element.setAttribute?.("title", "Press Enter or Space to select this paragraph for read aloud.");
+  }
+  if (!options.preserveHighlightText) currentPharmHighlightText = "";
+  if (options.announce && voiceStatus) voiceStatus.textContent = "Paragraph selection cleared.";
+  if (options.updateControls !== false) updatePharmVoiceControls();
+  return Boolean(record);
+}
+
+function selectPharmParagraph(element = null, options = {}) {
+  if (!isPharmSelectableParagraph(element)) return false;
+  if (currentPharmSelectedParagraph?.element === element) {
+    clearPharmSelectedParagraph({ announce: options.announce !== false });
+    return false;
+  }
+
+  clearPharmSelectedParagraph({ updateControls: false });
+  window.getSelection?.()?.removeAllRanges?.();
+  const text = readableTextFromElement(element);
+  currentPharmSelectedParagraph = {
+    element,
+    text
+  };
+  element.classList?.add("pharm-paragraph-selected");
+  element.dataset.aniParagraphSelected = "true";
+  element.setAttribute?.("aria-current", "true");
+  element.setAttribute?.("aria-description", "Selected for read aloud. Press Enter or Space to deselect.");
+  element.setAttribute?.("title", "Selected for read aloud. Press Enter or Space to deselect.");
+  currentPharmHighlightText = text;
+  if (options.announce !== false && voiceStatus) voiceStatus.textContent = "Paragraph selected for read aloud.";
+  updatePharmVoiceControls();
+  return true;
+}
+
+function readablePharmDetailTextFromParagraph(element = null) {
+  if (!isPharmSelectableParagraph(element)) return "";
+  const paragraphs = pharmSelectableParagraphElements();
+  const startIndex = paragraphs.indexOf(element);
+  const selectedVisual = element.closest?.(".pharm-learning-visual-intro")
+    ? null
+    : pharmParagraphStructuredVisual(element);
+  const tail = (startIndex >= 0 ? paragraphs.slice(startIndex) : [element])
+    .filter((paragraph) => isPharmAutomaticContinuationParagraph(paragraph, selectedVisual));
+  const seen = new Set();
+  return speechReadyText(tail
+    .map((paragraph) => readableTextFromElement(paragraph))
+    .filter((text) => {
+      const key = normalizePharmText(text);
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .join("\n\n"));
+}
+
+function readablePharmDetailTextForReadAll() {
+  const selectedElement = currentPharmSelectedParagraph?.element;
+  if (selectedElement) {
+    const selectedTail = readablePharmDetailTextFromParagraph(selectedElement);
+    if (selectedTail) return selectedTail;
+  }
+  return currentPharmReadableText || readablePharmDetailText();
+}
+
+function activatePharmParagraphFromEvent(event = {}) {
+  if (event.defaultPrevented || selectedPharmText()) return false;
+  const paragraph = pharmSelectableParagraphFromTarget(event.target);
+  if (!paragraph) return false;
+  const readingWasActive = pharmReadingActive && !pharmAutoReadMuted && !aniMuted;
+  const readingMode = pharmReadingMode || "all";
+  const selected = selectPharmParagraph(paragraph);
+  if (!selected || !readingWasActive) return selected;
+  const text = readingMode === "all"
+    ? readablePharmDetailTextFromParagraph(paragraph)
+    : selectedPharmParagraphText();
+  startPharmReading(text, {
+    force: true,
+    source: readingMode === "all" ? "all" : "highlight"
+  });
+  return true;
+}
+
+function handlePharmParagraphKeydown(event = {}) {
+  if (event.key !== "Enter" && event.key !== " ") return false;
+  const paragraph = pharmSelectableParagraphFromTarget(event.target);
+  if (!paragraph) return false;
+  event.preventDefault?.();
+  return activatePharmParagraphFromEvent({ ...event, target: paragraph, defaultPrevented: false });
+}
+
+function handlePharmParagraphDisclosureToggle(event = {}) {
+  const disclosure = event.target;
+  if (safeText(disclosure?.tagName).toLowerCase() !== "details" || disclosure.open === true) return false;
+  const selectedElement = currentPharmSelectedParagraph?.element;
+  if (!selectedElement || !disclosure.contains?.(selectedElement)) return false;
+  clearPharmSelectedParagraph({ announce: true });
+  return true;
+}
+
 function syncPharmDetailReadableText() {
   currentPharmReadableText = readablePharmDetailText();
+  enhancePharmSelectableParagraphs();
   updatePharmVoiceControls();
   return currentPharmReadableText;
 }
@@ -7739,6 +7974,7 @@ function closePharmDetailPage(options = {}) {
   // Clear it when leaving detail view so a later inline answer or unrelated
   // card cannot inherit a stale yellow source marker from the previous topic.
   clearPharmRedirectHighlight();
+  clearPharmSelectedParagraph({ updateControls: false });
   currentPharmHighlightText = "";
   if (options.clearHistory !== false) {
     currentPharmDetailCandidate = null;
@@ -7777,6 +8013,7 @@ function openPharmDetailPage(renderDetail, options = {}) {
 
 function resetPharmDetailCard() {
   if (!pharmDrugDetail) return;
+  clearPharmSelectedParagraph({ updateControls: false });
   currentPharmHighlightText = "";
   activePharmDetailLinkTargets.clear();
   pharmDrugDetail.textContent = "";
@@ -11510,7 +11747,11 @@ function maybeShowPharmSelectionMenu() {
 function capturePharmHighlightedText() {
   const selected = selectedPharmText();
   if (selected?.text) {
+    clearPharmSelectedParagraph({ preserveHighlightText: true, updateControls: false });
     currentPharmHighlightText = selected.text;
+  } else {
+    const selectedParagraphText = selectedPharmParagraphText();
+    if (selectedParagraphText) currentPharmHighlightText = selectedParagraphText;
   }
   updatePharmVoiceControls();
   return currentPharmHighlightText.trim();
@@ -18453,8 +18694,60 @@ const MEDICAL_ABBREVIATION_EXPANSIONS = [
   { short: "CMP", full: "comprehensive metabolic panel" },
   { short: "COPD", full: "chronic obstructive pulmonary disease" },
   { short: "CPP", full: "cerebral perfusion pressure" },
+  {
+    short: "CPR",
+    full: "cardiopulmonary resuscitation",
+    sourceUrls: [
+      "https://cpr.heart.org/en/resources/what-is-cpr"
+    ]
+  },
   { short: "CSF", full: "cerebrospinal fluid" },
-  { short: "CST", full: "contraction stress test" },
+  {
+    short: "CST",
+    full: "contraction stress test",
+    displayFull: "contraction stress test or corticospinal tract (context dependent)",
+    contextRequired: true,
+    reviewedOwners: [
+      { type: "reference", canonicalTitle: "CST" },
+      { type: "pathology", canonicalTitle: "Corticospinal tract" },
+      { type: "pathology", canonicalTitle: "Internal capsule and corticospinal tract stroke localization" },
+      { type: "reference", canonicalTitle: "Spinal Cord Tracts and Reflex Arc" }
+    ],
+    reviewedMeanings: [
+      {
+        type: "reference",
+        canonicalTitle: "CST",
+        full: "contraction stress test",
+        includePattern: /\b(?:contraction stress test|pregnan(?:cy|t)|antenatal|prenatal|fetal|fetus|uterine contractions?|oxytocin|nipple stimulation|late decelerations?|nonstress test|nst|biophysical profile|bpp)\b/i,
+        intentRoute: "reviewed-cst-obstetric-test-owner"
+      },
+      {
+        type: "pathology",
+        canonicalTitle: "Corticospinal tract",
+        full: "corticospinal tract",
+        includePattern: /\b(?:tract|corticospinal|pyramidal|voluntary motor|upper motor neuron|umn|spasticity|babinski|motor pathway)\b/i,
+        intentRoute: "reviewed-cst-corticospinal-tract-owner"
+      },
+      {
+        type: "pathology",
+        canonicalTitle: "Internal capsule and corticospinal tract stroke localization",
+        full: "corticospinal tract stroke localization",
+        includePattern: /\b(?:stroke|internal capsule|posterior limb|plic|pure motor|hemiparesis|corona radiata)\b/i,
+        intentRoute: "reviewed-cst-stroke-localization-owner"
+      },
+      {
+        type: "reference",
+        canonicalTitle: "Spinal Cord Tracts and Reflex Arc",
+        full: "spinal cord tract and reflex-arc anatomy",
+        includePattern: /\b(?:spinal cord|reflex arc|ascending tract|descending tract|dcml|spinothalamic|sensory level)\b/i,
+        intentRoute: "reviewed-cst-spinal-cord-tracts-owner"
+      }
+    ],
+    sourceUrls: [
+      "https://www.acog.org/womens-health/faqs/when-pregnancy-goes-past-your-due-date",
+      "https://www.ncbi.nlm.nih.gov/books/NBK541082/"
+    ]
+  },
   { short: "CT", full: "computed tomography" },
   { short: "CRP", full: "C-reactive protein" },
   { short: "CVA", full: "cerebrovascular accident" },
@@ -18554,11 +18847,74 @@ const MEDICAL_ABBREVIATION_EXPANSIONS = [
   { short: "PaCO2", full: "partial pressure of arterial carbon dioxide" },
   { short: "PaO2", full: "partial pressure of arterial oxygen" },
   { short: "PAD", full: "peripheral artery disease" },
-  { short: "PCA", full: "patient-controlled analgesia" },
+  {
+    short: "PCA",
+    full: "patient-controlled analgesia",
+    displayFull: "patient-controlled analgesia or posterior cerebral artery (context dependent)",
+    contextRequired: true,
+    reviewedOwners: [
+      { type: "pathology", canonicalTitle: "Cerebral arterial territories" },
+      { type: "pathology", canonicalTitle: "Circle of Willis" },
+      { type: "pathology", canonicalTitle: "Circle of Willis and cerebral arterial territories" },
+      { type: "pathology", canonicalTitle: "Patient-controlled analgesia opioid safety" },
+      { type: "pathology", canonicalTitle: "Posterior cerebral artery stroke" },
+      { type: "reference", canonicalTitle: "Brain Lobes and Functional Localization" }
+    ],
+    reviewedMeanings: [
+      {
+        type: "pathology",
+        canonicalTitle: "Patient-controlled analgesia opioid safety",
+        full: "patient-controlled analgesia",
+        includePattern: /\b(?:pain|analgesia|analgesic|opioid|pump|button|bolus|lockout|basal rate|morphine|hydromorphone|family press|proxy)\b/i,
+        intentRoute: "reviewed-pca-analgesia-owner"
+      },
+      {
+        type: "pathology",
+        canonicalTitle: "Posterior cerebral artery stroke",
+        full: "posterior cerebral artery stroke",
+        includePattern: /\b(?:posterior cerebral|artery|stroke|occipital|visual field|hemianopia|p1|p2|thalamic|infarct|occlusion)\b/i,
+        intentRoute: "reviewed-pca-posterior-cerebral-owner"
+      }
+    ],
+    sourceUrls: [
+      "https://www.ncbi.nlm.nih.gov/books/NBK551610/",
+      "https://www.ncbi.nlm.nih.gov/books/NBK532296/"
+    ]
+  },
   { short: "PCI", full: "percutaneous coronary intervention" },
   { short: "PFT", full: "pulmonary function test", aliases: ["PFTs", "pulmonary function tests"] },
   { short: "PE", full: "pulmonary embolism" },
   { short: "PDE-5", full: "phosphodiesterase-5 inhibitor", aliases: ["PDE5"] },
+  {
+    short: "PD",
+    full: "Parkinson disease",
+    displayFull: "Parkinson disease or peritoneal dialysis (context dependent)",
+    contextRequired: true,
+    reviewedOwners: [
+      { type: "pathology", canonicalTitle: "Parkinson disease" },
+      { type: "pathology", canonicalTitle: "Peritoneal dialysis: exchanges, dwell, transport, and adequacy" }
+    ],
+    reviewedMeanings: [
+      {
+        type: "pathology",
+        canonicalTitle: "Parkinson disease",
+        full: "Parkinson disease",
+        includePattern: /\b(?:parkinson|tremor|resting tremor|rigidity|bradykinesia|shuffling|freezing|dopamine|levodopa|carbidopa|substantia nigra|cogwheel)\b/i,
+        intentRoute: "reviewed-pd-parkinson-owner"
+      },
+      {
+        type: "pathology",
+        canonicalTitle: "Peritoneal dialysis: exchanges, dwell, transport, and adequacy",
+        full: "peritoneal dialysis",
+        includePattern: /\b(?:peritoneal|dialysis|dialysate|exchange|dwell|cycler|capd|apd|peritoneum|effluent|abdominal catheter)\b/i,
+        intentRoute: "reviewed-pd-peritoneal-dialysis-owner"
+      }
+    ],
+    sourceUrls: [
+      "https://www.ninds.nih.gov/current-research/focus-disorders/parkinsons-disease-research/parkinsons-disease-challenges-progress-and-promise",
+      "https://www.niddk.nih.gov/health-information/kidney-disease/kidney-failure/peritoneal-dialysis"
+    ]
+  },
   { short: "PID", full: "pelvic inflammatory disease" },
   { short: "PNA", full: "pneumonia" },
   { short: "PRBC", full: "packed red blood cells" },
@@ -20106,17 +20462,37 @@ function explicitMedicalAbbreviationFullFormResolution(input = "") {
 }
 
 function reviewedContextualMedicalAbbreviationResolution(input = "", core = "") {
+  const rawInput = safeText(input);
   const normalized = normalizePharmText(applyClinicalSpeechFixups(input) || input);
   if (!normalized) return null;
-  const entry = MEDICAL_ABBREVIATION_EXPANSIONS.find((candidate) => (
+  const entries = MEDICAL_ABBREVIATION_EXPANSIONS.filter((candidate) => (
     candidate.contextRequired === true
     && Array.isArray(candidate.reviewedMeanings)
-    && new RegExp(`\\b${escapeRegExpText(normalizePharmText(candidate.short))}\\b`, "i").test(normalized)
+    && new RegExp(`(?:^|[^A-Za-z0-9-])${escapeRegExpText(safeText(candidate.short))}(?=$|[^A-Za-z0-9-])`, "i").test(rawInput)
   ));
+  // A query that contains two independently reviewed short forms is not one
+  // abbreviation-resolution request. Keep every installed exact owner visible
+  // and require the learner to choose instead of letting registry order make
+  // the first abbreviation silently win.
+  if (entries.length > 1) {
+    const owners = stableEncyclopediaIdentityOwners(entries.flatMap((candidate) => (
+      fastVoiceIdentityCandidates(candidate.short)
+    )));
+    return {
+      recognized: true,
+      preferred: null,
+      candidates: owners,
+      matchKind: "reviewed-multiple-abbreviation-ambiguity",
+      intentRoute: "reviewed-multiple-abbreviation-context-required"
+    };
+  }
+  const entry = entries[0] || null;
   if (!entry) return null;
   const exactShortOwners = fastVoiceIdentityCandidates(entry.short);
-  const reviewedOwnerTitles = new Set(entry.reviewedMeanings
-    .filter((meaning) => meaning.type !== "reference")
+  const reviewedOwnerContracts = Array.isArray(entry.reviewedOwners)
+    ? entry.reviewedOwners
+    : entry.reviewedMeanings.filter((meaning) => meaning.type !== "reference");
+  const reviewedOwnerTitles = new Set(reviewedOwnerContracts
     .map((meaning) => `${meaning.type}:${normalizePharmText(meaning.canonicalTitle)}`));
   const boundShortOwners = exactShortOwners.filter((owner) => reviewedOwnerTitles.has(
     `${owner.type}:${normalizePharmText(owner.item?.name || owner.item?.displayName)}`
@@ -20134,7 +20510,8 @@ function reviewedContextualMedicalAbbreviationResolution(input = "", core = "") 
       intentRoute: "reviewed-abbreviation-owner-drift"
     };
   }
-  if (/\b(?:i|my|me|we|our|patient|client|child|baby|toddler)\b/.test(normalized)) {
+  const narrativeFrame = normalized.replace(/\bpatient controlled analgesia\b/g, " ");
+  if (/\b(?:i|my|me|we|our|patient|client|child|baby|toddler)\b/.test(narrativeFrame)) {
     return {
       recognized: true,
       preferred: null,
@@ -20246,6 +20623,7 @@ function installedAbbreviationTermsInQuery(input = "") {
     const isNumericUnit = ["mcg", "ug", "mg", "g", "kg", "ml", "l", "meq", "mmol", "unit", "units", "mmhg", "bpm"].includes(term)
       && new RegExp(`(?:\\b\\d+(?:\\.\\d+)?\\s*${escapeRegExpText(term)}\\b|\\b${escapeRegExpText(term)}\\s*\\/(?:kg|ml|l|min|hr|day)\\b)`, "i").test(rawInput);
     if (isNumericUnit) return { term, owners: [] };
+    if (commonWordAbbreviationNeedsExplicitContext(rawInput, term)) return { term, owners: [] };
     const owners = identityIndex.get(term) || [];
     const recognized = owners.some((owner) => (
       owner.termKinds?.includes("abbreviation")
@@ -20254,6 +20632,23 @@ function installedAbbreviationTermsInQuery(input = "") {
     ));
     return { term, owners: recognized ? owners : [] };
   }).filter((record) => record.owners.length);
+}
+
+function commonWordAbbreviationNeedsExplicitContext(input = "", term = "") {
+  const raw = safeText(input);
+  const normalizedInput = normalizePharmText(raw);
+  const normalizedTerm = normalizePharmText(term);
+  if (normalizedTerm === "ten") {
+    const explicitlyUppercase = /\bTEN\b/.test(raw);
+    const conditionContext = /\b(?:toxic epidermal necrolysis|lyell|sjs[\s/-]*ten|epidermal detachment|mucosal lesions?|scorten)\b/i.test(raw);
+    return !explicitlyUppercase && !conditionContext;
+  }
+  if (normalizedTerm === "fast") {
+    const explicitlyUppercase = /\b(?:BE[- ]?FAST|FAST)\b/.test(raw);
+    const strokeContext = /\b(?:stroke|face droop|arm weakness|speech difficulty|balance loss|vision loss)\b/i.test(normalizedInput);
+    return !explicitlyUppercase && !strokeContext;
+  }
+  return false;
 }
 
 function contextualInstalledAbbreviationResolution(input = "") {
@@ -20350,9 +20745,24 @@ function resolveEncyclopediaIdentity(input = "", options = {}) {
   if (!core || core.length < 2) {
     return { core, candidates: [], preferred: null, matchKind: "none", unique: false, mayAutoOpen: false };
   }
+  if (commonWordAbbreviationNeedsExplicitContext(input, core)) {
+    return {
+      core,
+      candidates: [],
+      preferred: null,
+      matchKind: "common-word-abbreviation-context-required",
+      unique: false,
+      mayAutoOpen: false,
+      recognizedAbbreviation: false,
+      suppressUnrelatedMatches: true,
+      intentRoute: `common-word-${core}-not-medical-abbreviation`
+    };
+  }
 
   const reviewed = REVIEWED_ENCYCLOPEDIA_PREFIX_PRIORITIES[core] || null;
-  const exactOwners = fastVoiceIdentityCandidates(input);
+  const exactOwners = commonWordAbbreviationNeedsExplicitContext(input, core)
+    ? []
+    : fastVoiceIdentityCandidates(input);
   const prefixOwners = fastVoiceIdentitySearchCandidates(core, Math.max(limit * 3, 18));
   const deduped = Array.from(new Map([...exactOwners, ...prefixOwners]
     .filter((candidate) => candidate?.type && candidate?.item)
@@ -20378,12 +20788,20 @@ function resolveEncyclopediaIdentity(input = "", options = {}) {
   const canonicalExactOwner = primaryExactOwners.length === 1
     ? primaryExactOwners[0]
     : uniqueUnqualifiedPrimaryOwner;
+  const standaloneReviewedShort = MEDICAL_ABBREVIATION_EXPANSIONS.some((entry) => (
+    entry.contextRequired === true && normalizePharmText(entry.short) === core
+  ));
   const reviewedContextualIdentity = reviewedSharedContextualIdentityResolution(fixed);
+  const reviewedContextualAbbreviation = standaloneReviewedShort
+    ? reviewedContextualMedicalAbbreviationResolution(fixed, core)
+    : canonicalExactOwner || exactOwners.length === 1
+      ? null
+      : reviewedContextualMedicalAbbreviationResolution(fixed, core);
   const contextualAbbreviation = reviewedContextualIdentity
+    || reviewedContextualAbbreviation
     || (canonicalExactOwner
       ? null
-      : reviewedContextualMedicalAbbreviationResolution(fixed, core)
-        || explicitMedicalAbbreviationFullFormResolution(fixed)
+      : explicitMedicalAbbreviationFullFormResolution(fixed)
         || contextualInstalledAbbreviationResolution(input));
   const preferredBareOwners = canonicalExactOwner || contextualAbbreviation
     ? []
@@ -39541,7 +39959,7 @@ function randomizedWelcomeForSession(session = {}, random = null) {
   }
   const [first, second] = suggestions;
   return {
-    text: `${DEFAULT_GREETING} For a place to start, try ${first.prompt} **${first.label}**, or ${second.prompt} **${second.label}**. Each new chat mixes examples from ANI's diseases, medications, labs, clinical concepts, and medication warnings.`,
+    text: `${DEFAULT_GREETING} For a place to start, try ${first.prompt} **${first.label}**, or ${second.prompt} **${second.label}**.`,
     targets: suggestions.map((entry) => ({
       candidate: entry.candidate,
       label: entry.label,
@@ -45781,7 +46199,7 @@ function makeOfflineAmbiguityPrompt(candidates = []) {
     if (!key || seen.has(key)) return false;
     seen.add(key);
     return true;
-  }).slice(0, 4);
+  }).slice(0, 8);
   return choices.length
     ? `I found more than one encyclopedia meaning for that wording: ${choices.map(({ label, kind }) => `**${label}** (${kind})`).join(" or ")}. Say which one you mean so I do not open the wrong card.`
     : "I found more than one close encyclopedia match. Add one more specific word so I do not open the wrong card.";
@@ -50255,15 +50673,12 @@ closePharmDatabaseButton?.addEventListener("click", requestClosePharmDatabase);
 pharmMuteToggle?.addEventListener("click", () => {
   setPharmAutoReadMuted(!pharmAutoReadMuted);
 });
-pharmReadAllButton?.addEventListener("click", () => {
-  if (pharmReadingActive) {
-    stopPharmReading("ANI stopped reading the encyclopedia.");
-    return;
-  }
-  startPharmReading(currentPharmReadableText || readablePharmDetailText(), { force: true, source: "all" });
-});
+pharmReadAllButton?.addEventListener("click", readCurrentPharmAll);
 pharmCopyHighlightButton?.addEventListener("click", copyCurrentPharmHighlight);
 pharmReadHighlightButton?.addEventListener("click", readCurrentPharmHighlight);
+pharmDrugDetail?.addEventListener("click", activatePharmParagraphFromEvent);
+pharmDrugDetail?.addEventListener("keydown", handlePharmParagraphKeydown);
+pharmDrugDetail?.addEventListener("toggle", handlePharmParagraphDisclosureToggle, true);
 pharmDrugDetail?.addEventListener("mouseup", updatePharmHighlightFromSelection);
 pharmDrugDetail?.addEventListener("touchend", updatePharmHighlightFromSelection);
 pharmDrugDetail?.addEventListener("scroll", () => {

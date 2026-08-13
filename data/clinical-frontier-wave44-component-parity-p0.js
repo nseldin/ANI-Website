@@ -10,7 +10,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "2026-08-12-wave44-component-parity-p0-3";
+  const VERSION = "2026-08-12-wave44-component-parity-p0-4";
   const GENERATED_AT = "2026-08-12";
   const GLOBAL_NAME = "ANI_CLINICAL_FRONTIER_WAVE44_COMPONENT_PARITY_P0";
   if (window[GLOBAL_NAME] && window[GLOBAL_NAME].version === VERSION) return;
@@ -712,7 +712,7 @@
       diagnosticKind: "lab",
       category: "Diagnostics and Tests / Endocrinology / Endogenous Insulin Secretion",
       aliases: ["C-peptide level", "C peptide blood test", "connecting peptide", "fasting C-peptide", "stimulated C-peptide", "endogenous insulin production test"],
-      abbreviations: ["C-peptide", "CPR"],
+      abbreviations: ["C-peptide"],
       commonMisspellings: ["c peptid", "see peptide", "c-peptied"],
       definition: "C-peptide is released in roughly equimolar amounts when pancreatic beta cells split proinsulin into endogenous insulin and connecting peptide. Injected insulin contains no C-peptide, so a blood or urine C-peptide result helps estimate the body's own insulin secretion. It must be interpreted with the simultaneous glucose, kidney function, timing, and whether the sample was fasting or stimulated.",
       method: "Collect the ordered fasting, random, meal-stimulated, glucagon-stimulated, or timed urine specimen according to protocol. Pair blood C-peptide with glucose and document insulin, sulfonylurea or meglitinide use, food, treatment, kidney function, and timing. Use the laboratory's units and reference interval because methods differ.",

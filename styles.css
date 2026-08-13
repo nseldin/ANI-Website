@@ -3305,6 +3305,33 @@ body.lecture-mode-active .voice-status {
   overflow-wrap: anywhere;
 }
 
+[data-ani-readable-paragraph="true"] {
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 120ms ease, box-shadow 120ms ease;
+}
+
+[data-ani-readable-paragraph="true"]:focus-visible {
+  outline: 3px solid #9a6d00;
+  outline-offset: 3px;
+}
+
+.pharm-detail-card .pharm-paragraph-selected {
+  background: #ffeb3b !important;
+  color: #1f2937 !important;
+  box-shadow: 0 0 0 2px #9a6d00;
+}
+
+@media (forced-colors: active) {
+  .pharm-detail-card .pharm-paragraph-selected {
+    background: Highlight !important;
+    color: HighlightText !important;
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+}
+
 .pharm-detail-card .pharm-memory-bridge-section {
   display: grid;
   gap: 10px;

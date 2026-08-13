@@ -4,13 +4,25 @@
   const database = window.ANI_PATHOLOGY_DATABASE;
   if (!database || !Array.isArray(database.diseases)) return;
 
-  const VERSION = "2026-07-17-wave26-pathology-nursing-1";
+  const VERSION = "2026-08-12-wave26-pathology-nursing-3";
   const sources = [
     {
       id: "aha-als-2025",
       label: "American Heart Association, 2025 Adult Advanced Life Support",
       url: "https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/adult-advanced-life-support",
-      note: "Supports rhythm recognition, defibrillation, cardioversion, reversible-cause assessment, and post-arrest priorities."
+      note: "Supports rhythm recognition, defibrillation, cardioversion, reversible-cause assessment, post-arrest priorities, and the context-specific finding that torsades risk increases when QTc exceeds 500 ms with bradycardia."
+    },
+    {
+      id: "esc-lqts-qt-measurement",
+      label: "European Society of Cardiology, How to Measure the QT Interval",
+      url: "https://www.escardio.org/communities/councils/genomics/scientific-documents-and-publications/cardiogenomics-insights/volume-9/how-to-measure-the-qt-interval/",
+      note: "Supports manual QT measurement, repeated-ECG and reversible-cause context, Bazett-corrected QTc diagnostic anchors of at least 480 ms or at least 460 ms with symptoms, and Schwartz-score or genetic diagnostic pathways."
+    },
+    {
+      id: "esc-va-scd-2022",
+      label: "European Society of Cardiology, 2022 Ventricular Arrhythmias and Sudden Cardiac Death Guideline",
+      url: "https://academic.oup.com/eurheartj/article/43/40/3997/6675633",
+      note: "Supports genetic evaluation, preferred nonselective beta blockers nadolol or propranolol for documented congenital long QT syndrome, genotype-directed mexiletine for LQT3, and specialist-selected defibrillator pathways."
     },
     {
       id: "aha-special-2025",
@@ -22,7 +34,7 @@
       id: "sccm-sepsis-2026",
       label: "Society of Critical Care Medicine, Surviving Sepsis Campaign Adult Guidelines",
       url: "https://sccm.org/survivingsepsiscampaign/guidelines-and-resources/surviving-sepsis-campaign-adult-guidelines",
-      note: "Supports prompt recognition, cultures and antimicrobials, lactate and perfusion reassessment, fluids, vasopressors, and source-control escalation."
+      note: "Supports prompt recognition, cultures and antimicrobials, lactate and perfusion reassessment, the conditional initial 30 mL/kg IV-crystalloid recommendation for adult sepsis-induced hypoperfusion or septic shock, balanced crystalloids such as lactated Ringer solution, patient-specific volume selection and frequent reassessment including heart-failure context, vasopressors, and source-control escalation."
     },
     {
       id: "ada-hospital-2026",
@@ -182,8 +194,16 @@
     }
   ];
 
-  function card(name, sourceIds, nursingPriorities, redFlags, patientEducation) {
-    return { name, sourceIds, nursingPriorities, redFlags, patientEducation };
+  function card(name, sourceIds, nursingPriorities, redFlags, patientEducation, options = {}) {
+    return {
+      name,
+      sourceIds,
+      nursingPriorities,
+      redFlags,
+      patientEducation,
+      contentPatch: options.contentPatch && typeof options.contentPatch === "object" ? { ...options.contentPatch } : {},
+      bindSourceKeys: options.bindSourceKeys === true
+    };
   }
 
   const cards = [
@@ -284,7 +304,17 @@
     ], [
       "Teach patients and caregivers that infection accompanied by confusion, severe breathlessness, very low urine output, mottled skin, or rapid deterioration requires emergency care.",
       "Explain the infection source, antimicrobial plan, device or wound care, and follow-up needed to reduce recurrence."
-    ]),
+    ], {
+      bindSourceKeys: true,
+      contentPatch: {
+        treatments: [
+          "Start prescribed broad antimicrobial therapy promptly, obtain cultures first when doing so will not delay treatment, and narrow therapy when microbiology and the clinical course permit.",
+          "For adults with sepsis-induced hypoperfusion, use ordered IV crystalloid fluid. The 2026 Surviving Sepsis Campaign conditionally suggests at least 30 mL/kg in the first 3 hours, with patient-specific volume selection and frequent reassessment; balanced crystalloids such as lactated Ringer solution are preferred for most adults, while traumatic brain injury and heart-failure fluid-overload risk change the choice or pace.",
+          "Use an ordered vasopressor when shock persists despite appropriate initial fluid, and reassess mean arterial pressure and organ perfusion rather than treating one blood-pressure value in isolation.",
+          "Control the infection source and provide oxygenation or other organ support according to the failing physiology."
+        ]
+      }
+    }),
     card("Septic shock", ["sccm-sepsis-2026"], [
       "Administer prescribed antimicrobials and coordinate urgent source control because vasopressors cannot reverse shock while an uncontrolled infection continues to generate inflammation.",
       "Give ordered crystalloid in reassessed increments and evaluate lungs, capillary refill, blood pressure, and urine output because both inadequate preload and fluid overload can worsen organ function.",
@@ -298,7 +328,17 @@
     ], [
       "Explain that septic shock is organ-threatening even when the original infection seemed minor, which is why monitoring and treatment continue after blood pressure improves.",
       "Before discharge, review infection warning signs, medication completion, wound or line care, and when to return immediately."
-    ]),
+    ], {
+      bindSourceKeys: true,
+      contentPatch: {
+        treatments: [
+          "Give prescribed broad antimicrobial therapy promptly and obtain urgent source control because vasopressors cannot reverse an uncontrolled infection.",
+          "Give ordered IV crystalloids in reassessed increments. The 2026 Surviving Sepsis Campaign conditionally suggests at least 30 mL/kg in the first 3 hours for adults with sepsis-induced hypoperfusion or septic shock; balanced crystalloids such as lactated Ringer solution are preferred for most adults, while traumatic brain injury and heart-failure fluid-overload risk require individualized fluid choice, volume, and pace.",
+          "Use norepinephrine as the usual first-line vasopressor when septic shock persists, then individualize additional vasoactive support and monitor rhythm, extremity perfusion, lactate, and urine output.",
+          "Provide oxygenation, ventilation, kidney, and other organ support according to the patient's response and failing physiology."
+        ]
+      }
+    }),
     card("Hypovolemic shock", ["aha-als-2025"], [
       "Identify and control visible blood or fluid loss while activating the appropriate hemorrhage and transfusion pathway because replacement alone cannot overcome ongoing volume loss.",
       "Establish rapid vascular access and administer ordered warmed fluids or blood products because restoring circulating volume is necessary to recover preload and tissue perfusion.",
@@ -1147,12 +1187,12 @@
       "Teach individualized activity and hydration guidance and the importance of family screening because hypertrophic cardiomyopathy may be inherited.",
       "Tell the patient to seek urgent care for fainting, sustained palpitations, chest pain, severe dyspnea, or a device shock."
     ]),
-    card("Long QT syndrome", ["aha-als-2025"], [
-      "Place the patient on continuous cardiac monitoring and measure the corrected QT interval because prolonged repolarization can deteriorate into torsades de pointes.",
+    card("Long QT syndrome", ["aha-als-2025", "esc-lqts-qt-measurement", "esc-va-scd-2022"], [
+      "Place the patient on continuous cardiac monitoring and verify the corrected QT interval on repeated 12-lead electrocardiograms because prolonged repolarization can deteriorate into torsades de pointes; manual QT review is safer than accepting one automated value without context.",
       "Review all prescription, over-the-counter, and interacting drugs and hold newly suspected QT-prolonging agents as directed because combined effects increase arrhythmia risk.",
       "Check and correct ordered potassium, magnesium, and calcium abnormalities because electrolyte depletion further delays ventricular repolarization.",
       "Maintain defibrillation readiness and administer ordered magnesium for torsades because polymorphic ventricular tachycardia can become pulseless rapidly.",
-      "Escalate immediately for syncope, recurrent palpitations, runs of polymorphic ventricular tachycardia, seizure-like collapse, or family history of sudden death because urgent electrophysiology evaluation is required."
+      "Escalate immediately for QTc above 500 ms with bradycardia, syncope, recurrent palpitations, runs of polymorphic ventricular tachycardia, seizure-like collapse, or family history of sudden death because torsades risk or inherited disease needs urgent review."
     ], [
       "Syncope or seizure-like collapse during exertion or startle",
       "Runs of polymorphic ventricular tachycardia",
@@ -1161,7 +1201,63 @@
     ], [
       "Teach the patient to check new medicines for QT risk and to follow individualized exercise, fever, electrolyte, and device guidance.",
       "Explain that fainting or seizure-like activity may be an arrhythmia and warrants urgent evaluation rather than assuming a neurologic cause."
-    ]),
+    ], {
+      bindSourceKeys: true,
+      contentPatch: {
+        definition: "Long QT syndrome is an inherited or acquired delay in ventricular repolarization (the heart's electrical reset after each beat) that prolongs the heart-rate-corrected QT interval (QTc) and can trigger torsades de pointes, fainting, seizure-like episodes, cardiac arrest, or sudden death. ESC guidance supports diagnosis from repeated electrocardiograms when Bazett-corrected QTc is at least 480 ms, or at least 460 ms in a symptomatic person, after excluding QT-prolonging drugs and electrolyte disturbances; a Schwartz score of at least 3.5 or a pathogenic long-QT-syndrome gene variant can also establish the diagnosis. QTc above 500 ms with bradycardia raises torsades risk, but no isolated automated QTc is universally diagnostic: manual measurement, heart rate and correction formula, age, sex, QRS width, symptoms, medicines, electrolytes, and genetics all matter.",
+        pathology: "The QT interval runs from the start of the QRS complex to the end of the T wave and represents ventricular activation plus recovery. In long QT syndrome, ventricular recovery is prolonged, creating electrical instability rather than a blocked coronary artery or a primary pump disorder.",
+        pathophysiology: "Delayed repolarization leaves the ventricles vulnerable to torsades de pointes, a polymorphic ventricular tachycardia associated with long QT. Episodes may stop and recur, become sustained, or deteriorate into ventricular fibrillation; risk increases when QTc is above 500 ms and bradycardia is present.",
+        etiology: "Long QT syndrome may reflect a pathogenic inherited variant or acquired QT prolongation from medicines, drug interactions, or electrolyte disturbances. A repeated prolonged QTc should therefore be interpreted only after reversible causes are reviewed.",
+        riskFactors: [
+          "A pathogenic LQTS-causing gene variant or family history of unexplained fainting, cardiac arrest, or sudden death",
+          "QT-prolonging medicines, interacting drugs, or multiple QT-risk exposures",
+          "Electrolyte disturbances, especially hypokalemia, that further delay repolarization",
+          "QTc above 500 ms with bradycardia or pause-triggered ventricular ectopy"
+        ],
+        signsSymptoms: [
+          "No symptoms despite a pathogenic variant or prolonged QTc",
+          "Sudden syncope or seizure-like collapse, especially with exertion, startle, or another individual trigger",
+          "Palpitations or documented polymorphic ventricular tachycardia",
+          "Cardiac arrest or a family history of sudden heart-related death"
+        ],
+        diagnostics: [
+          "Obtain repeated 12-lead ECGs and manually verify QT from QRS onset to T-wave end; lead II or V5 is preferred, biphasic T waves are included, and U waves are excluded.",
+          "Correct QT for heart rate. Bazett QTc equals QT divided by the square root of RR and is widely used in LQTS, but it can overcorrect at high heart rates and undercorrect at low heart rates.",
+          "Use the reviewed diagnostic pathways: repeated Bazett QTc at least 480 ms, QTc at least 460 ms in a symptomatic person, Schwartz score at least 3.5, or a pathogenic LQTS-causing variant, after reversible causes are excluded.",
+          "Review symptoms, family history, every prescription and nonprescription medicine, electrolytes, heart rate, QRS width, and prior ECGs; arrange electrophysiology and genetic evaluation when inherited disease is suspected."
+        ],
+        labs: [
+          "No blood test diagnoses long QT syndrome. Check potassium and other ordered QT-relevant electrolytes to identify reversible contributors; hypokalemia is a specifically emphasized torsades risk.",
+          "Interpret electrolyte results with the ECG, medicine timeline, symptoms, renal function, and trend rather than using one universal electrolyte target for every patient."
+        ],
+        treatments: [
+          "Stop or replace suspected QT-prolonging medicines as directed and correct hypokalemia and other electrolyte disturbances.",
+          "For congenital LQTS with documented QT prolongation, preferred nonselective beta blockers include nadolol and propranolol; selection and dosing require genotype, symptoms, heart rate, tolerance, pregnancy, and specialist context.",
+          "Mexiletine is a genotype-directed option for selected LQT3 with prolonged QT, not a routine treatment for every long-QT presentation.",
+          "Sustained polymorphic ventricular tachycardia is unstable and requires immediate unsynchronized shock. Recurrent torsades associated with long QT may be treated with intravenous magnesium; bradycardia- or pause-triggered recurrence needs expert review for overdrive pacing or isoproterenol.",
+          "For congenital LQTS, an implantable cardioverter-defibrillator is recommended after cardiac arrest and for patients who remain symptomatic while receiving beta-blocker and genotype-specific therapy; other advanced pathways require specialist risk assessment and are not triggered by one QTc value."
+        ],
+        complications: [
+          "Recurrent torsades de pointes",
+          "Ventricular fibrillation and cardiac arrest",
+          "Syncope or seizure-like collapse with secondary injury",
+          "Sudden cardiac death"
+        ],
+        contraindications: [
+          "Do not diagnose or exclude LQTS from one automated QTc; manually verify repeated tracings and reversible causes.",
+          "Avoid unreviewed QT-prolonging medicines and interactions; some antiarrhythmic drugs can lengthen QT and worsen torsades.",
+          "Do not confuse chronic specialist beta-blocker prevention in congenital LQTS with acute treatment of pause-triggered torsades, where additional bradycardia can be harmful.",
+          "Do not use synchronized cardioversion for sustained polymorphic ventricular tachycardia; its changing QRS morphology cannot be synchronized reliably."
+        ],
+        nclexTraps: [
+          "A prolonged automated QTc is a clue, not a complete diagnosis.",
+          "Torsades is polymorphic ventricular tachycardia with long QT; polymorphic ventricular tachycardia with a normal QT has different common causes, and routine magnesium is not supported for the normal-QT form.",
+          "A normal-looking QTc does not exclude a pathogenic-variant diagnosis, and a high QTc does not erase medicine, electrolyte, heart-rate, and measurement context.",
+          "Chronic nadolol or propranolol prevention and acute bradycardia-associated torsades management are different clinical settings."
+        ],
+        whyItMatters: "A prolonged QTc matters because delayed electrical recovery can turn into torsades de pointes and sudden loss of perfusion; objective QTc values help identify risk, while symptoms and reversible causes determine the immediate response."
+      }
+    }),
     card("Myocarditis", ["acc-heart-failure-2022"], [
       "Assess recent infection or immune exposure with chest pain, dyspnea, palpitations, syncope, and exercise intolerance because myocarditis can mimic infarction or progress to pump failure.",
       "Obtain and trend electrocardiograms, troponin, inflammatory markers, echocardiographic function, and perfusion findings because injury severity can change rapidly.",
@@ -1834,11 +1930,32 @@
     const matches = database.diseases.filter((entry) => canonicalName(entry) === patch.name);
     if (matches.length !== 1) return;
     Object.assign(matches[0], {
+      ...patch.contentPatch,
       nursingPriorities: patch.nursingPriorities.slice(),
       redFlags: patch.redFlags.slice(),
       patientEducation: patch.patientEducation.slice()
     });
+    if (patch.bindSourceKeys) {
+      matches[0].sourceKeys = Array.from(new Set([
+        ...(Array.isArray(matches[0].sourceKeys) ? matches[0].sourceKeys : []),
+        ...patch.sourceIds
+      ]));
+    }
   });
+
+  const boundSourceIds = new Set(cards.filter((patch) => patch.bindSourceKeys).flatMap((patch) => patch.sourceIds));
+  const referenceMap = new Map((Array.isArray(database.sourceReferences) ? database.sourceReferences : [])
+    .map((reference) => [String(reference && (reference.key || reference.id) || "").trim(), reference])
+    .filter(([key]) => key));
+  sources.filter((source) => boundSourceIds.has(source.id)).forEach((source) => {
+    referenceMap.set(source.id, {
+      key: source.id,
+      label: source.label,
+      url: source.url,
+      note: source.note
+    });
+  });
+  database.sourceReferences = Array.from(referenceMap.values());
 
   const names = cards.map((entry) => entry.name);
   window.ANI_PATHOLOGY_NURSING_WAVE26 = {

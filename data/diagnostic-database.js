@@ -30,6 +30,24 @@
       key: "acg-h-pylori-2024",
       label: "ACG 2024 H. pylori guideline highlights",
       url: "https://gi.org/wp-content/uploads/2025/01/ACG-Hpylori-Guidelines-Highlights-2024-FINAL.pdf.pdf"
+    },
+    {
+      key: "acog-fhr-monitoring-2025",
+      label: "ACOG Clinical Practice Guideline: Intrapartum Fetal Heart Rate Monitoring (2025)",
+      url: "https://www.acog.org/clinical/clinical-guidance/clinical-practice-guideline/articles/2025/10/intrapartum-fetal-heart-rate-monitoring-interpretation-and-management",
+      note: "Supports current intrapartum fetal-heart-rate nomenclature, the three-tier category framework, maternal-fetal evaluation, intrauterine resuscitation, escalation, and context-dependent delivery decisions."
+    },
+    {
+      key: "ahrq-nichd-fhr-definitions",
+      label: "AHRQ Perinatal Safety: NICHD Electronic Fetal Monitoring Definitions",
+      url: "https://www.ahrq.gov/patient-safety/settings/labor-delivery/perinatal-care/modules/strategies/safe-electronic-tool.html",
+      note: "Supports the objective baseline, variability, acceleration, deceleration, recurrence, and contraction-frequency definitions used to describe fetal monitoring patterns."
+    },
+    {
+      key: "nhlbi-asthma-action-plan",
+      label: "NHLBI Asthma Action Plan",
+      url: "https://www.nhlbi.nih.gov/sites/default/files/publications/07-5251.pdf",
+      note: "Supports green, yellow, and red peak-flow zones of at least 80%, 50-79%, and below 50% of personal best, interpreted with symptoms and the person's written asthma action plan."
     }
   ];
 
@@ -651,6 +669,21 @@
       sourceNote: "Medication holds and test-of-cure timing follow the American College of Gastroenterology's 2024 H. pylori guideline highlights. Apply the prescriber's instructions and local testing protocol rather than stopping treatment independently.",
       tags: ["H. pylori breath test", "H pylori stool test", "urea breath test", "stool antigen", "Helicobacter pylori", "false negative PPI", "bismuth", "antibiotics", "eradication testing"]
     },
+    "Peak Flow": {
+      summary: "Peak flow, or peak expiratory flow, is a quick effort-dependent measure of how fast a person can blow air out. In asthma it is compared with that person's established personal best so a broad change such as reduced airflow has an objective anchor.",
+      quickAnswer: "Keep the qualitative zones and the numbers together: green is near personal best at 80% or more, yellow is reduced at 50-79%, and red is severely reduced below 50%. Symptoms and the individualized written asthma action plan still govern what to do; a reassuring number does not override severe distress.",
+      whyItMatters: "Peak flow matters because a fall from personal best can reveal worsening airway obstruction early, prompt the person's written asthma action plan, and identify severe reduction that needs urgent assessment.",
+      sections: [
+        ["What it tells you", "Peak expiratory flow reflects large-airway flow and can reveal worsening asthma before symptoms become obvious. It is effort- and technique-dependent, so use the same meter when possible, repeat the maneuver correctly, and compare the best acceptable reading with the person's own personal best."],
+        ["Objective traffic-light zones", "A common NHLBI written-action-plan framework defines green or near personal best as at least 80% of personal best, yellow or reduced as 50-79%, and red or severely reduced as below 50%. These percentages are individualized zones, not one universal liters-per-minute cutoff for every age, height, sex, meter, or patient."],
+        ["Priority nursing actions", "Record the value and percent of personal best with cough, wheeze, chest tightness, speech, activity tolerance, work of breathing, oxygenation, rescue-medicine use, and response. Follow the person's written asthma action plan and prescribed rescue steps rather than improvising treatment from a color alone."],
+        ["Urgent context", "Severe breathlessness, inability to speak or perform usual activity, cyanosis, exhaustion, altered consciousness, a silent chest, or poor response to prescribed rescue medicine requires urgent assessment even when technique or the displayed peak-flow value is uncertain."],
+        ["Common NCLEX trap / teaching", "Do not compare one person's raw peak-flow number with another person's personal best, and do not treat a green-zone number as proof that breathing is safe when the clinical examination shows severe distress."]
+      ],
+      sourceKeys: ["nhlbi-asthma-action-plan"],
+      sourceNote: "NHLBI's written asthma action plan supplies the common personal-best percentages. The patient's symptoms, technique, meter, clinician-defined zones, and written plan determine real-world action.",
+      tags: ["peak expiratory flow", "peak flow personal best", "green zone 80 100", "yellow zone 50 79", "red zone below 50", "asthma action plan"]
+    },
     "LFTs": {
       summary: "Liver function tests (LFTs), also called a hepatic function panel or liver chemistries, are a group of blood tests used to separate liver-cell injury, impaired bile flow, bilirubin-processing problems, and reduced synthetic function. The name is imperfect because AST, ALT, alkaline phosphatase, and GGT mainly show injury or cholestasis; albumin and PT/INR more directly reflect the liver's protein-synthesis capacity.",
       quickAnswer: "Liver function tests are a panel, not one test and not one universal range. Read AST and ALT as hepatocyte-injury markers; alkaline phosphatase with GGT as a bile-flow/source pattern; direct and indirect bilirubin as processing and excretion clues; and albumin plus PT/INR as synthetic-function context. The pattern, symptoms, baseline, and trend matter more than any isolated value.",
@@ -889,19 +922,24 @@
     },
     "Fetal heart rate patterns": {
       summary: "Fetal heart rate pattern interpretation connects baseline rate, variability, accelerations, decelerations, and contractions to fetal oxygenation reserve.",
-      quickAnswer: "Baseline 110-160 is expected. Moderate variability is reassuring. Early decels mirror contractions and are usually head compression. Variable decels are abrupt cord-compression patterns. Late decels start after contraction onset and suggest uteroplacental insufficiency until proven otherwise.",
+      quickAnswer: "Baseline 110-160 beats/min is expected, and moderate variability means a 6-25 beats/min peak-to-trough amplitude. Early decelerations mirror contractions and are usually head compression; variable decelerations are abrupt drops of at least 15 beats/min lasting 15 seconds to under 2 minutes; late decelerations lag behind contractions. Interpret every pattern with recurrence, contractions, gestational age, maternal status, and the trend.",
+      whyItMatters: "Fetal heart rate patterns matter because changes in baseline, variability, decelerations, and uterine activity can reveal threatened fetal oxygenation and determine when monitoring, intrauterine resuscitation, escalation, or urgent birth is needed.",
       sections: [
         ["What it tells you", "The tracing estimates fetal oxygenation and neurologic/autonomic responsiveness during uterine activity. It is interpreted with maternal vitals, gestational age, medications, labor stage, and contraction pattern."],
-        ["Reassuring features", "Baseline 110-160, moderate variability, accelerations, and absence of recurrent late/variable decelerations are generally reassuring in the right context."],
-        ["Deceleration patterns", "Early decels are gradual and mirror contractions. Variable decels are abrupt V/U/W-shaped drops from cord compression. Late decels are gradual drops that begin after contraction onset and recover after the contraction, suggesting uteroplacental insufficiency."],
+        ["Baseline and variability", "Determine baseline over a 10-minute window with at least 2 identifiable baseline minutes. A normal baseline is 110-160 beats/min; a baseline below 110 is bradycardia and above 160 is tachycardia when sustained for at least 10 minutes. Variability is absent when undetectable, minimal when detectable at 5 beats/min or less, moderate at 6-25 beats/min, and marked above 25 beats/min."],
+        ["Accelerations and reassuring features", "At 32 weeks or later, an acceleration rises at least 15 beats/min for at least 15 seconds but under 2 minutes; before 32 weeks, use at least 10 beats/min for at least 10 seconds but under 2 minutes. Baseline 110-160 with moderate variability and no late or variable decelerations meets the core Category I features; accelerations and early decelerations may be present or absent."],
+        ["Deceleration patterns", "A gradual deceleration takes at least 30 seconds from onset to nadir, while an abrupt deceleration reaches its nadir in under 30 seconds. Early decelerations are gradual and mirror contractions. Variable decelerations are abrupt drops of at least 15 beats/min lasting at least 15 seconds but under 2 minutes and often reflect cord compression. Late decelerations are gradual drops whose onset, nadir, and recovery occur after the contraction's beginning, peak, and end, suggesting uteroplacental insufficiency. A prolonged deceleration drops at least 15 beats/min for 2 minutes to under 10 minutes; 10 minutes establishes a new baseline."],
+        ["Frequency and uterine activity", "Recurrent decelerations occur with at least 50% of contractions in a 20-minute segment; intermittent means below 50%. Normal uterine activity is 5 or fewer contractions in 10 minutes averaged over 30 minutes, while tachysystole is more than 5 contractions in 10 minutes averaged over 30 minutes and must be reported with whether fetal decelerations are present."],
         ["Priority nursing actions", "For nonreassuring patterns: reposition, stop oxytocin if running per protocol, IV fluid bolus if appropriate, correct hypotension, assess tachysystole, give oxygen only when clinically indicated by protocol, notify provider, and prepare for urgent birth if unresolved severe compromise."],
         ["Common NCLEX trap / teaching", "Link each deceleration pattern to the action. Late decels plus minimal/absent variability are a perfusion problem. Variable decels point to cord compression and position/amnioinfusion-style interventions depending orders."]
       ],
       resultMeanings: [
-        ["Category I / reassuring", "Normal baseline with moderate variability and no recurrent concerning decels supports continued monitoring."],
-        ["Category II / indeterminate", "Requires evaluation and corrective measures because it is not clearly normal or clearly abnormal."],
-        ["Category III / abnormal", "Absent variability with recurrent late/variable decels, bradycardia, or sinusoidal pattern requires prompt intrauterine resuscitation and escalation."]
+        ["Category I / reassuring", "Baseline 110-160 with moderate variability of 6-25 beats/min, no late or variable decelerations, and accelerations or early decelerations either present or absent supports continued monitoring in the clinical context."],
+        ["Category II / indeterminate", "Requires evaluation, clinical correlation, and continued surveillance because it is not clearly normal or clearly abnormal; use corrective measures when the maternal-fetal findings indicate them."],
+        ["Category III / abnormal", "Absent variability with recurrent late or variable decelerations or bradycardia, or a sinusoidal pattern, requires prompt intrauterine resuscitation and escalation; delivery timing and route depend on response and maternal-fetal status."]
       ],
+      sourceKeys: ["acog-fhr-monitoring-2025", "ahrq-nichd-fhr-definitions"],
+      sourceNote: "AHRQ's NICHD terminology provides the objective pattern definitions; ACOG's current intrapartum guideline supplies the three-tier interpretation and context-dependent management framework.",
       tags: ["fetal heart rate", "FHR", "late decelerations", "variable decelerations", "early decelerations", "moderate variability", "uteroplacental insufficiency", "cord compression"]
     },
     "Insulin action profile": {
@@ -1291,9 +1329,9 @@
       ["Clinical significance", "PFTs classify physiology; they do not replace oxygenation assessment during acute respiratory distress."]
     ],
     "Peak Flow": [
-      ["Green / near personal best", "Airflow is near the client's usual controlled range."],
-      ["Yellow / reduced", "Airflow is worsening; follow the asthma action plan and assess symptoms/medication response."],
-      ["Red / severely reduced", "Severe obstruction risk. Respiratory distress, cyanosis, exhaustion, or poor response to rescue medication needs urgent care."]
+      ["Green / near personal best (at least 80%)", "Airflow is near the client's usual controlled range; continue the individualized written asthma action plan while still checking symptoms."],
+      ["Yellow / reduced (50-79%)", "Airflow is worsening; follow the written asthma action plan and assess symptoms and response to prescribed rescue medicine."],
+      ["Red / severely reduced (below 50%)", "Severe obstruction risk. Follow the red-zone plan and seek urgent help as directed; respiratory distress, cyanosis, exhaustion, or poor rescue response is an emergency regardless of the number."]
     ],
     "Sputum culture": [
       ["No growth / normal flora", "No dominant bacterial pathogen is isolated, or the sample reflects expected airway flora."],
@@ -1751,6 +1789,7 @@
       aliases: searchableAliases,
       summary: override.summary || `${displayName} is a high-yield ${domain || "clinical"} diagnostic reference. ${cleanUse}`,
       quickAnswer: override.quickAnswer || `${displayName}: ${cleanUse} Nursing focus: prepare correctly, protect safety, trend results with assessment, and escalate red-flag findings.`,
+      whyItMatters: override.whyItMatters || "",
       resultMeanings,
       resultMeaningProvenance: resultMeanings.length ? "reviewed-canonical-profile" : "not-authored",
       sections: customSections || defaultSections,

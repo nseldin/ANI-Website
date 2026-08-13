@@ -4,12 +4,13 @@
   const database = window.ANI_PATHOLOGY_DATABASE;
   if (!database || !Array.isArray(database.diseases)) return;
 
-  const VERSION = "2026-07-18-wave29-pathology-nursing-a-1";
+  const VERSION = "2026-08-12-wave29-pathology-nursing-a-3";
   const sources = [
     { id: "acc-ccd-2023", label: "ACC/AHA, 2023 Chronic Coronary Disease Guideline", url: "https://www.acc.org/Guidelines/Guidelines/2023/07/20/12/34/Chronic-Coronary-Disease", note: "Supports recognition and treatment of vasospastic angina, symptom-pattern assessment, antianginal therapy, risk-factor care, and urgent evaluation when ischemic symptoms become unstable." },
     { id: "aha-hbp-2025", label: "AHA/ACC, 2025 High Blood Pressure Guideline", url: "https://professional.heart.org/en/science-news/2025-high-blood-pressure-guideline/top-things-to-know", note: "Supports repeat accurate blood-pressure measurement, assessment for acute target-organ injury, avoidance of aggressive short-term lowering when injury is absent, and reliable outpatient follow-up." },
     { id: "acc-valve-2020", label: "ACC/AHA, 2020 Valvular Heart Disease Guideline", url: "https://www.acc.org/Guidelines/Guidelines/2020/12/17/14/24/Valvular-Heart-Disease", note: "Supports echocardiographic surveillance, symptom and ventricular-function assessment, anticoagulation safety for prosthetic valves, and timely valve-team referral for severe regurgitation or prosthetic complications." },
-    { id: "aha-oh-2024", label: "American Heart Association, Orthostatic Hypotension in Adults With Hypertension", url: "https://professional.heart.org/en/science-news/orthostatic-hypotension-in-adults-with-hypertension", note: "Supports standardized supine-to-standing assessment, identification of medications and autonomic or volume contributors, individualized blood-pressure care, fall prevention, and symptom-guided escalation." },
+    { id: "aha-oh-2024", label: "American Heart Association, Orthostatic Hypotension in Adults With Hypertension", url: "https://professional.heart.org/en/science-news/orthostatic-hypotension-in-adults-with-hypertension", note: "Supports the classic objective definition (a sustained systolic decrease of at least 20 mm Hg or diastolic decrease of at least 10 mm Hg within 3 minutes of standing), plus standardized supine-to-standing assessment, cause review, individualized blood-pressure care, and fall prevention." },
+    { id: "jch-oh-pathophysiology-2019", label: "Journal of Clinical Hypertension, Orthostatic Hypotension: From Pathophysiology to Clinical Applications and Therapeutic Considerations (2019)", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8030387/", note: "Supports the physiology of approximately 300-800 mL of lower-extremity and abdominal-organ blood pooling after standing and the resulting compensatory pressure response." },
     { id: "acc-pad-2024", label: "ACC/AHA Multisociety, 2024 Lower-Extremity Peripheral Artery Disease Guideline", url: "https://www.acc.org/Guidelines/Hubs/Lower-Extremity-Peripheral-Artery-Disease", note: "Supports pulse and limb assessment, foot care, exercise and risk-factor therapy, antithrombotic safety, and urgent recognition of acute or chronic limb-threatening ischemia." },
     { id: "aha-endocarditis", label: "American Heart Association, Infective Endocarditis in Adults Scientific Statement", url: "https://professional.heart.org/en/science-news/infective-endocarditis-in-adults-diagnosis-antimicrobial-therapy-and-management-of-complications", note: "Supports blood cultures, echocardiography, antimicrobial care, embolic and valve-complication surveillance, and multidisciplinary management of prosthetic-valve infection." },
     { id: "esc-cardiomyopathy-2023", label: "European Society of Cardiology, 2023 Cardiomyopathy Guideline", url: "https://www.escardio.org/guidelines/clinical-practice-guidelines/all-esc-practice-guidelines/cardiomyopathy/", note: "Supports phenotype-based restrictive-cardiomyopathy evaluation, congestion and rhythm surveillance, genetic and family assessment, and specialist management of progressive heart failure." },
@@ -24,11 +25,11 @@
     { id: "wses-thoracic-2025", label: "WSES-AAST, 2025 Thoracic Trauma Guideline", url: "https://link.springer.com/article/10.1186/s13017-025-00651-1", note: "Supports trauma resuscitation, pleural decompression and drainage, chest-tube surveillance, hemorrhage assessment, and prevention of retained hemothorax and empyema." },
     { id: "cdc-tb-2025", label: "CDC, Tuberculosis Clinical Guidance and Treatment", url: "https://www.cdc.gov/tb/hcp/clinical-guidance/index.html", note: "Supports airborne precautions, diagnostic specimen collection, public-health coordination, directly observed therapy, toxicity monitoring, and drug-susceptibility-guided tuberculosis care." },
     { id: "wms-heat-2024", label: "Wilderness Medical Society, 2024 Heat Illness Guideline", url: "https://journals.sagepub.com/doi/full/10.1177/10806032241227924", note: "Supports immediate active cooling for heat stroke, airway and circulation support, core-temperature and organ surveillance, and prevention counseling for exertional and environmental heat illness." },
-    { id: "wms-hypothermia-2019", label: "Wilderness Medical Society, Accidental Hypothermia Guideline", url: "https://journals.sagepub.com/doi/10.1016/j.wem.2019.10.002", note: "Supports gentle handling, core-temperature and rhythm assessment, staged rewarming, hypoglycemia and trauma evaluation, and transport for advanced rewarming when circulation is unstable." },
+    { id: "wms-hypothermia-2019", label: "Wilderness Medical Society, Accidental Hypothermia Guideline", url: "https://journals.sagepub.com/doi/10.1016/j.wem.2019.10.002", note: "Supports defining accidental hypothermia as core temperature at or below 35\u00B0C, common mild 35-32\u00B0C, moderate below 32-28\u00B0C, and severe below 28\u00B0C bands, while using consciousness, shivering, cardiovascular stability, measurement limitations, and the full clinical picture to guide care." },
     { id: "aast-rhabdo", label: "AAST, Rhabdomyolysis Clinical Consensus", url: "https://tsaco.bmj.com/content/7/1/e000836", note: "Supports early recognition after crush injury, serial creatine kinase and electrolyte assessment, goal-directed fluid therapy, urine-output monitoring, and surveillance for kidney, rhythm, and compartment complications." },
     { id: "wms-frostbite-2019", label: "Wilderness Medical Society, Frostbite Guideline", url: "https://journals.sagepub.com/doi/full/10.1016/j.wem.2019.05.002", note: "Supports protection from refreezing and trauma, controlled rapid rewarming when safe, analgesia and wound care, thrombolysis evaluation in severe injury, and delayed tissue-demarcation decisions." },
     { id: "ada-standards-2026", label: "American Diabetes Association, Standards of Care in Diabetes - 2026", url: "https://diabetes.org/newsroom/press-releases/american-diabetes-association-releases-standards-care-diabetes-2026", note: "Supports individualized glucose monitoring, insulin and medication safety, hypoglycemia prevention, cardiovascular and kidney risk reduction, complication screening, education, and technology use in type 1 and type 2 diabetes." },
-    { id: "ada-crises-2024", label: "ADA/EASD/JBDS/AACE/DTS, 2024 Hyperglycemic Crises Consensus", url: "https://diabetesjournals.org/care/article/47/8/1257/156808/Hyperglycemic-Crises-in-Adults-With-Diabetes-A", note: "Supports fluid-first treatment, serial glucose, osmolality, electrolyte and neurologic monitoring, careful insulin and potassium use, precipitant treatment, and resolution criteria for HHS and mixed crises." },
+    { id: "ada-crises-2024", label: "ADA/EASD/JBDS/AACE/DTS, 2024 Hyperglycemic Crises Consensus", url: "https://diabetesjournals.org/care/article/47/8/1257/156808/Hyperglycemic-Crises-in-Adults-With-Diabetes-A", note: "Supports fluid-first treatment of adult DKA and HHS with isotonic saline or balanced crystalloids such as lactated Ringer solution or Plasma-Lyte 148; the 500-1,000 mL/h initial range when cardiac and renal function permit; smaller 250 mL boluses with frequent hemodynamic reassessment in older adults and people with heart failure or end-stage kidney disease on dialysis; serial glucose, osmolality, electrolyte and neurologic monitoring; careful insulin and potassium use; precipitant treatment; and resolution criteria." },
     { id: "nhs-hypernatremia-2026", label: "NHS Ayrshire & Arran, 2026 Adult Hypernatraemia Guidance", url: "https://aaamedicines.org.uk/guidelines/electrolyte-disturbances/management-of-hypernatraemia/", note: "Supports volume and cause assessment, paired serum and urine studies, individualized free-water replacement, repeated sodium and neurologic checks, and prevention of overly rapid correction." },
     { id: "sfe-hypocalcemia", label: "Society for Endocrinology, Acute Hypocalcaemia Emergency Guidance", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5314808/", note: "Supports symptom and electrocardiographic assessment, calcium, magnesium, phosphate, vitamin D and parathyroid testing, monitored calcium replacement, and urgent treatment of tetany, seizure, laryngospasm, or arrhythmia." },
     { id: "rcpa-hypomagnesemia", label: "Royal College of Pathologists of Australasia, Hypomagnesaemia", url: "https://www.rcpa.edu.au/Manuals/RCPA-Manual/Clinical-Presentations-and-Diagnoses/H/Hypomagnesaemia", note: "Supports recognizing refractory hypokalemia or hypocalcemia as a clue, investigating gastrointestinal, renal and medication causes, and monitoring magnesium-related neuromuscular and cardiac complications." },
@@ -57,8 +58,16 @@
     { id: "ash-vwd", label: "ASH/ISTH/NHF/WFH, 2021 von Willebrand Disease Guidelines", url: "https://www.hematology.org/education/clinicians/guidelines-and-quality-care/clinical-practice-guidelines/von-willebrand-disease-guidelines", note: "Supports individualized desmopressin, factor and antifibrinolytic use, laboratory and response assessment, and procedure, menstrual, pregnancy, postpartum, and major-bleeding planning." }
   ];
 
-  function card(name, sourceIds, nursingPriorities, redFlags, patientEducation) {
-    return { name, sourceIds, nursingPriorities, redFlags, patientEducation };
+  function card(name, sourceIds, nursingPriorities, redFlags, patientEducation, options = {}) {
+    return {
+      name,
+      sourceIds,
+      nursingPriorities,
+      redFlags,
+      patientEducation,
+      contentPatch: options.contentPatch && typeof options.contentPatch === "object" ? { ...options.contentPatch } : {},
+      bindSourceKeys: options.bindSourceKeys === true
+    };
   }
 
   const cards = [
@@ -107,8 +116,8 @@
       "Teach daily weight and symptom tracking because a rising weight, new orthopnea, or declining walking tolerance may reveal congestion before severe distress develops.",
       "Explain why scheduled echocardiograms matter even when symptoms are mild: the ventricle can compensate for leakage until structural damage is harder to reverse."
     ]),
-    card("Orthostatic hypotension", ["aha-oh-2024"], [
-      "Measure blood pressure and pulse after supine rest and again during supported standing while recording symptoms because the timing and heart-rate response help separate volume loss, medication effect, and autonomic failure.",
+    card("Orthostatic hypotension", ["aha-oh-2024", "jch-oh-pathophysiology-2019"], [
+      "Measure blood pressure and pulse after supine rest and again during supported standing, including a reading within 3 minutes, while recording symptoms because the classic objective definition is a sustained systolic decrease of at least 20 mm Hg or diastolic decrease of at least 10 mm Hg within 3 minutes and the heart-rate response helps separate volume loss, medication effect, and autonomic failure.",
       "Assess recent fluid loss, bleeding, infection, prolonged bed rest, neuropathy, parkinsonism, adrenal symptoms, and medication timing because treating the driver prevents recurrent cerebral hypoperfusion more effectively than treating one reading.",
       "Institute assisted position changes, nonslip footwear, a clear call-before-standing plan, and supervised toileting because most immediate harm comes from syncope and falls during transfers.",
       "Administer prescribed fluids or cause-directed therapy and trend intake, output, weight, supine pressure, standing symptoms, electrolytes, and heart rate because both undertreatment and excessive volume or vasopressor therapy can cause harm.",
@@ -121,7 +130,65 @@
     ], [
       "Teach the patient to sit at the bedside, move the ankles, stand with support, and pause before walking so venous return can adjust before balance is challenged.",
       "Review hydration and medication timing with the care team rather than stopping medicines independently, because the safest plan must balance standing symptoms against supine hypertension or heart disease."
-    ]),
+    ], {
+      bindSourceKeys: true,
+      contentPatch: {
+        definition: "Orthostatic hypotension is a sustained blood-pressure drop after standing. The classic adult definition is a systolic decrease of at least 20 mm Hg or a diastolic decrease of at least 10 mm Hg within 3 minutes of standing. Some experts use a systolic decrease of at least 30 mm Hg in patients with hypertension to reduce high-baseline threshold effects, but that alternative reduces sensitivity and does not replace symptom and clinical-context assessment. Dizziness, dimming vision, weakness, syncope, and falls can reflect impaired brain perfusion; symptoms may occur without the classic threshold, and measured orthostatic hypotension may occur without symptoms. Initial or delayed orthostatic syndromes use different timing, so one 3-minute protocol does not classify every orthostatic symptom pattern.",
+        pathology: "Standing shifts about 300-800 mL of blood toward the legs and abdominal-organ circulation. Healthy pressure sensors trigger sympathetic vasoconstriction, a heart-rate response, and increased venous return; orthostatic hypotension occurs when those compensations cannot preserve upright blood pressure.",
+        pathophysiology: "Autonomic impairment exists on a continuum. In many patients it combines with volume depletion, anemia, medication effects, or deconditioning, so upright pressure falls and brain perfusion may decrease. Supine or seated hypertension complicates interpretation and treatment because raising standing pressure can worsen pressure while lying down.",
+        etiology: "Causes include neurogenic autonomic failure, aging or diabetes-related autonomic impairment, volume depletion, anemia, medication effects, and hypertension-related pressure dysregulation. The pattern, timing, triggers, heart-rate response, and reproducibility help identify the dominant cause.",
+        riskFactors: [
+          "Older age, frailty, diabetes, heart failure, chronic kidney disease, or autonomic neuropathy",
+          "Parkinson disease or another neurodegenerative autonomic disorder",
+          "Volume depletion, blood loss, anemia, infection, prolonged bed rest, or deconditioning",
+          "Contributing medicines such as amitriptyline, trazodone, dopaminergic drugs, tizanidine, tamsulosin, beta blockers, alpha blockers, or centrally acting sympatholytic agents",
+          "Hypertension, supine hypertension, or marked blood-pressure variability"
+        ],
+        signsSymptoms: [
+          "Lightheadedness, dimming or blurred vision, weakness, or unsteadiness after standing",
+          "Presyncope, syncope, falls, or injury during transfers",
+          "Low standing pressure with little heart-rate compensation when neurogenic impairment is prominent",
+          "No perceived symptoms despite a reproducible objective pressure fall"
+        ],
+        diagnostics: [
+          "Measure blood pressure and pulse after supine rest and during supported standing, including a reading within 3 minutes; document symptoms and the exact time of each reading.",
+          "The classic adult threshold is a sustained systolic fall of at least 20 mm Hg or diastolic fall of at least 10 mm Hg within 3 minutes. A 30 mm Hg systolic threshold is a context-specific alternative proposed for some patients with hypertension, not a universal replacement.",
+          "Repeat measurements when timing, meals, exercise, alcohol, medicines, morning symptoms, or measurement error could change the result; active standing and tilt testing are not physiologically identical.",
+          "Review volume status, bleeding or anemia, infection, neurologic disease, recent bed rest, and every prescription and nonprescription medicine. Ambulatory blood-pressure monitoring can characterize intermittent hypotension, nocturnal hypertension, and pressure lability."
+        ],
+        labs: [
+          "No laboratory value diagnoses orthostatic hypotension. Use cause-directed testing for suspected anemia, blood loss, volume depletion, electrolyte disturbance, kidney disease, infection, or endocrine disease.",
+          "Interpret laboratory results with supine and standing pressures, heart rate, symptoms, medication timing, intake and output, and the trend."
+        ],
+        treatments: [
+          "Characterize the pattern and cause, remove or reduce aggravating factors when safe, and address anemia or volume depletion; nonpharmacologic measures are first-line.",
+          "Use assisted gradual position changes and individualized counterpressure or compression strategies; an abdominal binder may improve upright pressure without the same supine effect as systemic pressor therapy.",
+          "Individualize fluid and sodium plans because they may help selected patients but can worsen supine hypertension or fluid-sensitive heart and kidney disease.",
+          "Do not automatically stop first-line antihypertensive therapy. Optimize contributing medicines with the prescriber and monitor closely after changes because symptoms and falls can increase during the transition.",
+          "For persistent symptomatic neurogenic orthostatic hypotension after conservative measures, cause-specific pressor medicines include midodrine and droxidopa; both require upright and supine pressure monitoring and individualized specialist oversight."
+        ],
+        complications: [
+          "Syncope, falls, fractures, and traumatic injury",
+          "Cerebral hypoperfusion with functional or cognitive consequences",
+          "Supine hypertension or wide blood-pressure variability during treatment",
+          "Higher cardiovascular morbidity and mortality associations, without assuming that one orthostatic reading proves causation"
+        ],
+        contraindications: [
+          "Do not treat one pressure change without confirming technique, timing, symptoms, reproducibility, and the likely cause.",
+          "Do not automatically stop antihypertensive medicines; abrupt or indiscriminate changes can worsen both hypertension and orthostatic risk.",
+          "Do not prescribe unrestricted sodium, fluid, compression, or pressor therapy without considering heart failure, kidney disease, supine hypertension, swallowing safety, and mobility.",
+          "Do not use a 30 mm Hg systolic threshold for every patient; it is a context-specific proposal for hypertension and trades sensitivity for specificity."
+        ],
+        nclexTraps: [
+          "The classic definition is the sustained change from baseline, not an isolated low standing number.",
+          "Symptoms can occur without meeting the classic threshold, and an objective pressure fall can be asymptomatic.",
+          "Heart-rate response helps identify mechanism but is not part of the classic 20/10 mm Hg definition.",
+          "Postural tachycardia syndrome causes orthostatic symptoms and excessive heart-rate rise without the blood-pressure fall that defines orthostatic hypotension.",
+          "A finding of orthostatic hypotension is a cue to identify the cause, not an instruction to stop every blood-pressure medicine."
+        ],
+        whyItMatters: "Orthostatic hypotension matters because a measurable pressure fall can reveal volume loss, medication effect, or autonomic failure and can cause syncope, falls, injury, and cerebral hypoperfusion."
+      }
+    }),
     card("Peripheral vascular disease", ["acc-pad-2024"], [
       "Clarify whether findings are arterial, venous, or mixed by assessing pulses, temperature, color, capillary refill, edema, skin change, wound location, and pain pattern because compression and positioning that help venous disease can harm severe arterial ischemia.",
       "Inspect both feet and between the toes each shift, document wound dimensions and drainage, and protect heels because sensory loss and low perfusion allow small injuries to become infected or necrotic without intense pain.",
@@ -348,7 +415,7 @@
       "Explain that confusion, collapse, unusual behavior, or loss of coordination in the heat is an emergency that requires immediate cooling and emergency services, not observation in a parked vehicle."
     ]),
     card("Hypothermia", ["wms-hypothermia-2019"], [
-      "Measure core temperature with an appropriate device and assess consciousness, shivering, breathing, pulse, glucose, trauma, exposure, infection, endocrine disease, and intoxicants because severity and a secondary cause may be missed by cool skin alone.",
+      "Measure core temperature with an appropriate low-reading device and assess consciousness, shivering, breathing, pulse, glucose, trauma, exposure, infection, endocrine disease, and intoxicants because accidental hypothermia is a core temperature at or below 35\u00B0C (95\u00B0F), yet severity and a secondary cause may be missed by cool skin or one unreliable reading alone.",
       "Handle gently, keep the patient horizontal when feasible, remove wet clothing, insulate from the ground and wind, and apply staged rewarming because a cold myocardium is irritable and rough movement or further heat loss can worsen instability.",
       "Provide warmed oxygen, warmed fluids, and active external or internal rewarming as ordered while protecting numb skin from burns because impaired sensation and circulation make direct high heat dangerous.",
       "Monitor rhythm continuously and trend core temperature, glucose, pressure, oxygenation, electrolytes, acid-base status, urine output, and neurologic response because arrhythmia, hypoglycemia, shock, and afterdrop can occur during rescue and rewarming.",
@@ -361,7 +428,13 @@
     ], [
       "Teach layered dry clothing, wind and moisture protection, food and hydration, a buddy system, and early response to clumsiness or confusion because judgment deteriorates as cooling advances.",
       "Explain that rubbing cold limbs, walking an unstable patient, or applying intense direct heat can injure tissue or stress the heart; controlled rewarming is safer."
-    ]),
+    ], {
+      bindSourceKeys: true,
+      contentPatch: {
+        definition: "Hypothermia is an unintentional core temperature at or below 35\u00B0C (95\u00B0F). Common temperature bands preserve the broad severity language: mild is 35-32\u00B0C (95-89.6\u00B0F), moderate is below 32\u00B0C to 28\u00B0C (below 89.6\u00B0F to 82.4\u00B0F), and severe is below 28\u00B0C (82.4\u00B0F). These bands are useful anchors, not absolute bedside stages: consciousness, shivering, physical performance, blood pressure, rhythm, exposure, associated illness or trauma, device accuracy, and response to rewarming guide treatment because clinical signs and true core temperature can overlap.",
+        whyItMatters: "Hypothermia matters because progressive cooling slows metabolism, impairs coagulation and neurologic function, and makes the myocardium increasingly irritable; below 28\u00B0C, ventricular fibrillation and asystole risk is especially high."
+      }
+    }),
     card("Crush syndrome", ["aast-rhabdo"], [
       "Assess compression duration, muscle mass involved, trauma, swelling, distal neurovascular status, urine color and output, pressure, and rhythm because necrotic muscle releases potassium and myoglobin while sequestering circulating volume.",
       "Establish monitoring and vascular access and begin prescribed isotonic fluid resuscitation as early as safely possible because supporting renal perfusion before and after release reduces pigment-associated kidney injury.",
@@ -496,7 +569,17 @@
     ], [
       "Explain that HHS often develops over days as high glucose pulls water into the urine, so rising thirst, urination, weakness, and confusion during illness need early glucose and hydration review.",
       "Before discharge, build a practical sick-day, medication, hydration, glucose, supply, and follow-up plan around the actual precipitant so recurrence prevention is more than a generic handout."
-    ]),
+    ], {
+      bindSourceKeys: true,
+      contentPatch: {
+        treatments: [
+          "Begin IV fluid resuscitation with isotonic saline (0.9% sodium chloride) or a balanced crystalloid, such as lactated Ringer solution or Plasma-Lyte 148. In adults without cardiac or renal compromise, the 2024 consensus recommends 500-1,000 mL/h for the first 2-4 hours; older adults and people with heart failure or end-stage kidney disease on dialysis require cautious smaller boluses, such as 250 mL, with frequent hemodynamic reassessment.",
+          "Adjust subsequent fluid type and rate to blood pressure, heart rate, intake and output, sodium, glucose, and osmolality rather than continuing one fixed protocol through changing physiology.",
+          "Give insulin only after initial fluid and potassium assessment, replace electrolytes according to the monitored protocol, and avoid a rapid fall in glucose or osmolality.",
+          "Identify and treat the precipitating cause, such as infection, myocardial infarction, stroke, medication interruption, or limited access to fluids."
+        ]
+      }
+    }),
     card("Diabetes insipidus", ["sfe-di", "nhs-hypernatremia-2026"], [
       "Measure urine volume, thirst, water access, weight, mental status, volume signs, serum sodium and osmolality, and urine concentration because excessive dilute urine can rapidly create hypernatremic dehydration when drinking is impaired.",
       "Verify the diagnosis, usual desmopressin formulation and schedule, recent doses, pituitary or kidney history, medications, and ability to self-administer because omitted or duplicated desmopressin can cause opposite life-threatening water disorders.",
@@ -837,12 +920,33 @@
       return;
     }
     Object.assign(matches[0], {
+      ...patch.contentPatch,
       nursingPriorities: patch.nursingPriorities.slice(),
       redFlags: patch.redFlags.slice(),
       patientEducation: patch.patientEducation.slice()
     });
+    if (patch.bindSourceKeys) {
+      matches[0].sourceKeys = Array.from(new Set([
+        ...(Array.isArray(matches[0].sourceKeys) ? matches[0].sourceKeys : []),
+        ...patch.sourceIds
+      ]));
+    }
     appliedNames.push(patch.name);
   });
+
+  const boundSourceIds = new Set(cards.filter((patch) => patch.bindSourceKeys).flatMap((patch) => patch.sourceIds));
+  const referenceMap = new Map((Array.isArray(database.sourceReferences) ? database.sourceReferences : [])
+    .map((reference) => [String(reference && (reference.key || reference.id) || "").trim(), reference])
+    .filter(([key]) => key));
+  sources.filter((source) => boundSourceIds.has(source.id)).forEach((source) => {
+    referenceMap.set(source.id, {
+      key: source.id,
+      label: source.label,
+      url: source.url,
+      note: source.note
+    });
+  });
+  database.sourceReferences = Array.from(referenceMap.values());
 
   const names = cards.map((entry) => entry.name);
   window.ANI_PATHOLOGY_NURSING_WAVE29_A = {
