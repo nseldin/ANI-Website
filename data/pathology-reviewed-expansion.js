@@ -4,8 +4,8 @@
   const payload = {
   "schemaVersion": "ani-pathology-reviewed-runtime-v1",
   "builderVersion": "ani-pathology-builder-2026-08-02.2",
-  "domainVersion": "2026-08-14.11",
-  "sourceSha256": "34f6f1cb3effd3d5ac34dd2e481a274266b16dfc6c597f59b6e240e485adb26a",
+  "domainVersion": "2026-08-14.12",
+  "sourceSha256": "dbe951484f89b08e0a300171fd4707a6d5fc8fa6f77e36c4ffd69c34ed45f36f",
   "sourceReferences": [
     {
       "key": "ninds-migraine",
@@ -829,11 +829,16 @@
       "authority": "American Psychiatric Association",
       "url": "https://doi.org/10.1176/appi.books.9780890425787",
       "fieldsSupported": [
+        "identity",
         "classification",
         "DSM diagnostic requirements",
         "developmental boundary",
+        "duration",
         "duration specifier",
+        "functional impairment",
         "differential",
+        "mood-psychosis timing",
+        "course specifiers",
         "insufficient-care requirement"
       ]
     },
@@ -1179,6 +1184,85 @@
         "triage",
         "documentation"
       ]
+    },
+    {
+      "key": "va-dod-schizophrenia-cpg-2023",
+      "label": "VA/DoD Clinical Practice Guideline for Management of First-Episode Psychosis and Schizophrenia",
+      "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+      "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/scz/VA-DoD-CPG-Schizophrenia-CPG_Finalv231924.pdf",
+      "fieldsSupported": [
+        "assessment",
+        "medical substance and delirium differential",
+        "urgent specialty referral",
+        "first-episode psychosis",
+        "antipsychotic examples",
+        "individualized medication selection",
+        "adverse-effect monitoring",
+        "long-acting injectables",
+        "clozapine treatment-resistance boundary",
+        "psychotherapy and psychosocial care",
+        "family intervention",
+        "coordinated specialty care",
+        "catatonia escalation",
+        "neuroleptic malignant syndrome recognition",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "nice-ng10-violence-aggression",
+      "label": "Violence and aggression: short-term management in mental health, health and community settings",
+      "authority": "National Institute for Health and Care Excellence",
+      "url": "https://www.nice.org.uk/guidance/NG10/chapter/recommendations",
+      "fieldsSupported": [
+        "violence and aggression risk assessment",
+        "de-escalation",
+        "observation",
+        "least-restrictive interventions",
+        "restrictive-intervention limits",
+        "patient dignity",
+        "documentation"
+      ]
+    },
+    {
+      "key": "dailymed-clozapine-current",
+      "label": "Clozapine Tablets Prescribing Information",
+      "authority": "U.S. National Library of Medicine DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=883b5d43-0339-7dc1-f775-93791fb9b978",
+      "fieldsSupported": [
+        "indications",
+        "treatment-resistant schizophrenia",
+        "recurrent suicidal behavior",
+        "ANC monitoring",
+        "boxed warnings",
+        "severe neutropenia",
+        "orthostatic hypotension",
+        "seizure risk",
+        "myocarditis and cardiomyopathy",
+        "gastrointestinal hypomotility",
+        "contraindications",
+        "drug interactions",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "dailymed-paliperidone-er-current",
+      "label": "Paliperidone Extended-Release Tablets Prescribing Information",
+      "authority": "U.S. National Library of Medicine DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0dc3a9b2-2edf-4fa2-a949-459b4218e763",
+      "fieldsSupported": [
+        "indications",
+        "schizophrenia treatment",
+        "schizoaffective treatment",
+        "monotherapy and adjunctive use",
+        "contraindications",
+        "neuroleptic malignant syndrome",
+        "QT prolongation",
+        "metabolic monitoring",
+        "extrapyramidal symptoms",
+        "hyperprolactinemia",
+        "renal dosing boundary",
+        "patientEducation"
+      ]
     }
   ],
   "cards": [
@@ -1345,7 +1429,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.obesity-hypoventilation-syndrome",
@@ -1492,7 +1576,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.immunoglobulin-a-nephropathy",
@@ -1645,7 +1729,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.acute-promyelocytic-leukemia",
@@ -1799,7 +1883,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.antiphospholipid-syndrome",
@@ -1961,7 +2045,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.autoimmune-encephalitis",
@@ -2117,7 +2201,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.microscopic-colitis",
@@ -2264,7 +2348,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.common-variable-immunodeficiency",
@@ -2428,7 +2512,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.cluster-headache",
@@ -2573,7 +2657,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.focal-segmental-glomerulosclerosis",
@@ -2723,7 +2807,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.pituitary-apoplexy",
@@ -2875,7 +2959,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.meningococcemia",
@@ -3030,7 +3114,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.diffuse-large-b-cell-lymphoma",
@@ -3197,7 +3281,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.burkitt-lymphoma",
@@ -3351,7 +3435,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.babesiosis",
@@ -3503,7 +3587,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.pemphigus-vulgaris",
@@ -3655,7 +3739,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.alport-syndrome",
@@ -3810,7 +3894,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.primary-ciliary-dyskinesia",
@@ -3963,7 +4047,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.autoimmune-hepatitis",
@@ -4118,7 +4202,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.primary-sclerosing-cholangitis",
@@ -4273,7 +4357,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.ergotism",
@@ -4451,7 +4535,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.venous-thromboembolism",
@@ -4633,7 +4717,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.chronic-traumatic-encephalopathy",
@@ -4810,7 +4894,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.social-anxiety-disorder",
@@ -4995,7 +5079,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.persistent-depressive-disorder",
@@ -5181,7 +5265,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.cyclothymic-disorder",
@@ -5365,7 +5449,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.oppositional-defiant-disorder",
@@ -5558,7 +5642,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.conduct-disorder",
@@ -5750,7 +5834,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.personality-disorders-overview",
@@ -5955,7 +6039,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.obsessive-compulsive-personality-disorder",
@@ -6177,7 +6261,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.borderline-personality-disorder",
@@ -6399,7 +6483,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.somatic-symptom-disorder",
@@ -6584,7 +6668,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.illness-anxiety-disorder",
@@ -6770,7 +6854,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.functional-neurological-symptom-disorder",
@@ -6976,7 +7060,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.narcissistic-personality-disorder",
@@ -7208,7 +7292,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.dependent-personality-disorder",
@@ -7439,7 +7523,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.histrionic-personality-disorder",
@@ -7670,7 +7754,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.ptsd",
@@ -7910,7 +7994,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.acute-stress-disorder",
@@ -8147,7 +8231,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.adjustment-disorder",
@@ -8382,7 +8466,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.prolonged-grief-disorder",
@@ -8595,7 +8679,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.complex-ptsd",
@@ -8846,7 +8930,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.reactive-attachment-disorder",
@@ -9128,7 +9212,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
     },
     {
       "id": "disease.disinhibited-social-engagement-disorder",
@@ -9420,7 +9504,1077 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.11"
+      "pathologyDomainVersion": "2026-08-14.12"
+    },
+    {
+      "id": "disease.schizophrenia",
+      "name": "Schizophrenia",
+      "displayName": "Schizophrenia",
+      "category": "Mental health",
+      "aliases": [
+        "schizophrenia (psychotic disorder)"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-14",
+      "plainLanguage": "Schizophrenia is a long-term psychotic disorder that can change how a person interprets reality, organizes thoughts, expresses emotion, makes decisions, and manages daily life; psychosis is a symptom syndrome and is not automatically schizophrenia.",
+      "whyItMatters": "Early recognition, a careful medical and substance evaluation, suicide and violence-risk assessment, antipsychotic monitoring, and coordinated recovery care can reduce crisis risk, relapse, disability, treatment harm, and preventable medical complications.",
+      "plainLanguageGlosses": [
+        {
+          "term": "positive symptoms",
+          "plainLanguage": "experiences added to usual functioning, such as delusions, hallucinations, or disorganized speech",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "apa-dsm5tr-2022"
+          ]
+        },
+        {
+          "term": "negative symptoms",
+          "plainLanguage": "reductions in motivation, emotional expression, speech, pleasure, or social engagement",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "apa-dsm5tr-2022"
+          ]
+        },
+        {
+          "term": "psychosis",
+          "plainLanguage": "a syndrome involving impaired reality testing, such as delusions, hallucinations, or severely disorganized thinking; it has many possible causes",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "va-dod-schizophrenia-cpg-2023"
+          ]
+        },
+        {
+          "term": "catatonia",
+          "plainLanguage": "a potentially urgent syndrome of markedly reduced, abnormal, or purposeless movement and responsiveness",
+          "sourceKeys": [
+            "va-dod-schizophrenia-cpg-2023"
+          ]
+        }
+      ],
+      "definition": "Schizophrenia is a primary psychotic disorder with characteristic delusions, hallucinations, disorganized thinking or behavior, negative symptoms, and associated cognitive or functional difficulty. DSM-5-TR and ICD-11 use different duration and symptom rules, so ANI labels each system rather than teaching one universal cutoff. The diagnosis requires a longitudinal pattern and exclusion of mood, substance, medication, delirium, neurologic, and other medical explanations.",
+      "pathology": "Schizophrenia reflects altered function across distributed brain and neurodevelopmental systems rather than one visible lesion or one neurotransmitter abnormality. Genetic susceptibility and developmental and environmental exposures interact, while dopamine, glutamate, stress, cognition, and social context are relevant but do not provide a diagnostic biomarker. Symptoms and disability vary widely, and the diagnosis cannot be made from unusual beliefs, a single hallucination, violence, social withdrawal, or a laboratory result alone.",
+      "pathophysiology": [
+        "Dysregulated salience and information processing can make internally generated thoughts or neutral events feel unusually important, helping explain some delusions and hallucinations without implying that the person chose them.",
+        "Negative and cognitive symptoms involve motivation, attention, working memory, planning, and social cognition and may contribute more to long-term function than positive symptoms.",
+        "No dopamine level, scan, genetic test, or neuropsychological score confirms schizophrenia in an individual; proposed mechanisms guide research and treatment but are not bedside diagnostic tests."
+      ],
+      "etiology": "Etiology is multifactorial. Family history and polygenic susceptibility, prenatal or developmental adversity, obstetric complications, social stress, trauma, and cannabis or other substance exposure may change risk, but none alone is necessary or sufficient. New or atypical psychosis still requires assessment for medications, intoxication or withdrawal, delirium, seizures, autoimmune or other neurologic disease, endocrine or metabolic illness, infection, and mood disorders.",
+      "riskFactors": [
+        "Family history of schizophrenia-spectrum or other psychotic illness and broader genetic vulnerability",
+        "Neurodevelopmental difficulty, cognitive or functional decline, and prior attenuated or first-episode psychotic symptoms",
+        "Cannabis and stimulant exposure, especially frequent or high-potency use, may increase or worsen psychosis risk in susceptible people",
+        "Trauma, migration stress, social isolation, poverty, discrimination, sleep disruption, and unstable housing can affect risk, access, relapse, and recovery but are not diagnostic",
+        "Medication nonadherence, abrupt treatment interruption, substance use, severe stress, and loss of sleep may precede relapse"
+      ],
+      "signsSymptoms": [
+        "Positive symptoms: delusions, hallucinations, and disorganized speech or thought; behavior may be markedly disorganized or catatonic",
+        "Negative symptoms: reduced emotional expression, avolition or low goal-directed activity, reduced speech, anhedonia, and social withdrawal",
+        "Cognitive changes in attention, processing speed, working memory, planning, insight, or judgment that affect learning and function",
+        "Decline or difficulty in work, school, relationships, self-care, housing, nutrition, medication management, or other daily function",
+        "Mood, anxiety, trauma, sleep, and substance-use symptoms may coexist and must be assessed rather than assumed to be part of schizophrenia"
+      ],
+      "diagnostics": [
+        "DSM-5-TR requires at least two characteristic symptoms during a significant portion of 1 month, with at least one being delusions, hallucinations, or disorganized speech; continuous signs persist for at least 6 months, including at least 1 month of active-phase symptoms unless successfully treated, and functioning is impaired.",
+        "ICD-11 uses a different schizophrenia requirement: characteristic symptoms are present most of the time for at least 1 month, including at least one core psychotic symptom. ICD-11 does not require DSM's 6-month continuous duration, so the diagnostic systems are not interchangeable.",
+        "Build a longitudinal timeline from the patient, collateral sources with consent or lawful authority, records, functioning, mood episodes, substance and medication exposures, sleep, and treatment response.",
+        "No blood, laboratory, imaging, genetic, or rating-scale test diagnoses schizophrenia. Tests are targeted to the presentation and suspected mimics.",
+        "Assess positive, negative, disorganized, cognitive, catatonic, mood, trauma, and functional patterns without using cultural or spiritual difference alone as evidence of illness."
+      ],
+      "labs": [
+        "Check vital signs, oxygenation, point-of-care glucose, consciousness and attention, neurologic findings, pregnancy possibility, medication exposure, intoxication or withdrawal, and medical instability when psychosis is new, acute, or changing.",
+        "Use CBC, metabolic testing, thyroid studies, toxicology, infection testing, ECG, imaging, EEG, lumbar puncture, or autoimmune evaluation only when history, examination, age, tempo, medication choice, or local protocol supports them; normal tests do not prove schizophrenia.",
+        "Before and during antipsychotic therapy, monitor weight or BMI, waist when used, blood pressure and orthostasis, glucose or HbA1c, lipids, movement symptoms, sedation and falls; obtain ECG when cardiac history, QT risk, interacting medicines, or product guidance indicates.",
+        "For clozapine, follow the current product label and local system for ANC monitoring and assess infection, severe constipation or ileus, myocarditis or cardiomyopathy symptoms, seizures, orthostasis, metabolic effects, sedation, and sialorrhea."
+      ],
+      "assessment": "Begin with immediate medical stability and a direct, private safety assessment. Ask about suicidal or self-harm thoughts, intent, plan, preparations, past attempts, lethal means, homicidal thoughts, a named target, weapons, command hallucinations, ability to resist, persecutory fear, agitation, insomnia, intoxication or withdrawal, self-care, food and fluid intake, shelter, dependents, vulnerability, and ability to accept help. Document the patient's words and observable behavior. Establish the longitudinal symptom, mood, function, medication, substance, culture, and collateral timeline; diagnosis alone does not predict violence, and most people with schizophrenia are not violent and may be especially vulnerable to victimization.",
+      "differential": [
+        "Schizophreniform disorder when the DSM schizophrenia-like pattern has lasted at least 1 month but less than 6 months",
+        "Brief psychotic disorder when the DSM episode lasts at least 1 day but less than 1 month with eventual full return to previous functioning",
+        "Schizoaffective disorder or bipolar or major depressive disorder with psychotic features, distinguished by the longitudinal relationship between mood episodes and psychosis",
+        "Delirium, dementia, seizure, autoimmune encephalitis, endocrine or metabolic illness, infection, structural neurologic disease, medication effect, intoxication, or withdrawal",
+        "Trauma-related, obsessive-compulsive, autism-spectrum, intellectual, personality, sleep, and culturally sanctioned experiences that may resemble one feature but require their own full pattern",
+        "Delusional disorder when delusions predominate without the broader schizophrenia pattern and function is relatively preserved outside their consequences"
+      ],
+      "treatments": [
+        "Use shared decision making to select an antipsychotic based on prior response, patient preference, adverse-effect profile, medical risk, interactions, formulation, access, and adherence barriers. Risperidone, aripiprazole, and olanzapine are representative examples, not a universal ranking.",
+        "Continue an effective medicine with regular benefit, adverse-effect, adherence, and physical-health review. Long-acting injectable options may help when preferred or when adherence is uncertain; loading and oral-overlap instructions are product-specific.",
+        "Clozapine is a monitored option for treatment-resistant schizophrenia and has a labeled role in reducing recurrent suicidal behavior in schizophrenia or schizoaffective disorder; it is not routine first-line treatment.",
+        "Combine medication with cognitive behavioral therapy for psychosis, family intervention, coordinated specialty care for early psychosis, supported education or employment, skills and rehabilitation services, substance-use care, physical-health care, housing support, and a relapse plan.",
+        "Treat catatonia, delirium, intoxication or withdrawal, mood episodes, medical illness, and serious adverse drug reactions as their own urgent conditions rather than simply increasing an antipsychotic dose."
+      ],
+      "contraindications": [
+        "Do not diagnose schizophrenia from one hallucination, unusual belief, social withdrawal, appearance, cultural difference, substance history, or aggressive act without the complete longitudinal assessment.",
+        "Do not confront, ridicule, validate, or reinforce delusions; acknowledge emotion and present reality briefly without arguing.",
+        "Do not use seclusion or restraint as punishment or treatment for psychosis. Use de-escalation and the least-restrictive response; restrictive measures require immediate danger, lawful orders and policy, monitoring, documentation, and debriefing.",
+        "Do not reflexively escalate dopamine-blocking medication when catatonia or NMS is suspected; obtain urgent medical and psychiatric review.",
+        "Do not assume one antipsychotic, dose, LAI schedule, ECG rule, metabolic interval, or observation interval applies to every patient or product."
+      ],
+      "safetyConsiderations": [
+        "Use one calm speaker, personal space, short concrete sentences, a quiet low-stimulation setting, and simple choices with clear consistent limits. Avoid whispering nearby, jokes about symptoms, sudden touch, crowding, false reassurance, or promises of secrecy.",
+        "Acknowledge fear or distress without endorsing a delusion or hallucination, present reality in a neutral way, and ask directly what voices say, whether commands are present, and whether the person intends or is able to resist them.",
+        "Choose observation according to current assessed risk, orders, and local policy; psychosis alone does not dictate a universal interval. Preserve dignity, explanation, consent and refusal rights, confidentiality, food, fluids, toileting, circulation, airway, and other basic needs.",
+        "Monitor acute dystonia, akathisia that can resemble agitation, drug-induced parkinsonism, tardive dyskinesia with a structured tool such as AIMS, NMS, metabolic effects, QT risk, orthostasis, sedation, falls, prolactin effects, and constipation. With clozapine, also monitor ANC, infection, myocarditis or cardiomyopathy symptoms, seizures, and severe constipation or ileus.",
+        "NMS signs after dopamine blockade or dopamine-agonist withdrawal include fever, severe rigidity, altered consciousness, and autonomic instability; stop the suspected agent per emergency protocol and escalate urgently."
+      ],
+      "nursingPriorities": [
+        "Stabilize airway, breathing, circulation, glucose, oxygenation, temperature, hydration, nutrition, sleep, and acute medical or neurologic threats before attributing a presentation to chronic psychiatric illness.",
+        "Assess suicide, violence, command hallucinations, access to weapons or lethal means, self-neglect, exploitation, elopement, dependents, medication access and adherence, and substance exposure; replace a no-harm contract with actual assessment and safety planning.",
+        "Communicate calmly and reality based: validate the emotion, not the belief; do not argue; reduce stimulation; offer clear choices and boundaries; tell the person what will happen next.",
+        "Record baseline and serial symptoms, function, weight or BMI, blood pressure, glucose or HbA1c, lipids, EPS or AIMS findings, QT or ECG risk, orthostasis, sedation, prolactin effects, bowel function, and medication response as applicable.",
+        "Coordinate family or caregiver teaching with consent, early-intervention and outpatient follow-up, CBT, housing and rehabilitation supports, substance care, physical-health screening, and a written relapse and crisis plan."
+      ],
+      "redFlags": [
+        "Current suicidal or homicidal intent, plan, preparation, lethal means, weapon access, dangerous command hallucinations, escalating violence, or inability to maintain immediate safety",
+        "New or rapidly changing psychosis with fluctuating attention, fever, hypoxia, hypoglycemia, focal neurologic deficit, seizure, severe headache, pregnancy or postpartum onset, intoxication or withdrawal, or atypical age of onset",
+        "Inability to eat, drink, shelter, communicate basic needs, protect dependents, or perform essential self-care; severe dehydration, malnutrition, exposure, exploitation, or victimization",
+        "Catatonic stupor, mutism, posturing, negativism, refusal, purposeless excitement, or echophenomena, especially with dehydration, aspiration, pressure injury, VTE, urinary retention, fever, or autonomic instability",
+        "Possible NMS, acute dystonia affecting airway, severe akathisia with suicidality, syncope or dangerous arrhythmia, myocarditis symptoms, agranulocytosis or infection, seizure, or severe constipation or ileus"
+      ],
+      "complications": [
+        "Relapse, hospitalization, treatment interruption, homelessness, unemployment, disrupted education or relationships, self-neglect, suicide, victimization, and reduced quality of life",
+        "Cardiometabolic disease, tobacco-related disease, infection, poor dental health, reduced preventive care, and medication adverse effects can contribute to excess morbidity and mortality",
+        "Tardive dyskinesia, NMS, severe metabolic effects, orthostasis, QT-related risk, hyperprolactinemia, constipation, and clozapine-specific complications when medicines are not adequately monitored",
+        "Stigma, coercion, fragmented care, diagnostic overshadowing, and failure to recognize a medical cause can produce preventable harm"
+      ],
+      "prognosis": "Course is heterogeneous. Some people recover well after one or several episodes, while others need sustained treatment and functional support. Earlier coordinated care, an effective acceptable treatment plan, family and social support, stable housing, physical-health care, substance-risk reduction, and relapse recognition can improve outcomes. Negative and cognitive symptoms may persist even when hallucinations or delusions improve, and a diagnosis never defines a person's abilities or future.",
+      "prevention": [
+        "Recognize and refer first-episode psychosis early while urgently excluding medical, neurologic, medication, and substance causes.",
+        "Build a collaborative relapse plan using the person's early signs such as sleep change, withdrawal, suspiciousness, voices, disorganization, mood shift, missed medication, or substance use.",
+        "Reduce cannabis, stimulant, tobacco, alcohol, and other substance harms; protect sleep and continuity of care without blaming the patient.",
+        "Monitor cardiometabolic health, movement symptoms, bowel function, sexual or prolactin effects, dental health, vaccinations, and preventive care alongside psychiatric recovery."
+      ],
+      "patientEducation": [
+        "Psychosis has many causes and schizophrenia is diagnosed from the full pattern over time; it is not split personality and does not mean a person is violent.",
+        "Learn personal relapse signs and whom to call. Seek urgent help for dangerous commands, suicidal or homicidal intent, inability to eat or drink, severe confusion, catatonia, fever with rigidity, fainting, seizure, or a serious medication reaction.",
+        "Use shared decision making. Ask why a medicine was chosen, what benefit to track, how weight, glucose, lipids, movement symptoms, ECG risk, prolactin effects, constipation, and other adverse effects will be monitored, and what not to stop abruptly.",
+        "Family or supporters can respond calmly, acknowledge distress without agreeing with the belief, avoid arguing, reduce stimulation, support sleep and appointments, and follow the crisis and lethal-means safety plan.",
+        "Clozapine requires current-label ANC and serious-adverse-effect monitoring; report fever or infection, chest pain or breathlessness, seizure, fainting, or severe constipation promptly."
+      ],
+      "specialPopulations": [
+        "Children, adolescents, older adults, pregnant or postpartum patients, and people with a first or atypical late onset require especially careful medical, neurologic, developmental, medication, and substance evaluation.",
+        "Pregnancy and lactation decisions require individualized comparison of relapse risk, medicine exposure, maternal health, fetal or infant factors, and product-specific guidance; do not stop treatment abruptly without the prescriber.",
+        "Older adults have higher sensitivity to orthostasis, falls, anticholinergic effects, QT risk, stroke risk in dementia-related psychosis, and medical causes of new psychosis.",
+        "Cultural, religious, language, sensory, autism-spectrum, intellectual, and trauma contexts shape expression and interpretation; culturally shared experiences alone do not establish schizophrenia.",
+        "People with unstable housing, justice involvement, limited access, or prior coercion need practical engagement, continuity, rights protection, and recovery goals rather than lower expectations."
+      ],
+      "nclexTraps": [
+        "Psychosis is a syndrome, not a synonym for schizophrenia; assess delirium, substances, medications, mood episodes, neurologic and medical causes, and the longitudinal timeline.",
+        "DSM-5-TR schizophrenia uses at least 6 months of continuous signs with an active-phase period; ICD-11 uses a different at-least-1-month requirement. Do not teach one cutoff as universal.",
+        "Validate the patient's distress without validating the delusion. Do not argue; present reality briefly, use low stimulation, and assess command content and safety directly.",
+        "Akathisia may look like worsening agitation; NMS with fever, severe rigidity, altered mental state, and autonomic instability is an emergency; tardive dyskinesia requires structured monitoring such as AIMS.",
+        "Observation and restrictive measures are risk based and least restrictive, not automatic because of psychosis; a no-suicide or no-harm contract never replaces assessment and safety planning."
+      ],
+      "relatedTopics": [
+        "Schizophreniform disorder",
+        "Brief psychotic disorder",
+        "Schizoaffective disorder",
+        "Delusional disorder",
+        "Bipolar disorder",
+        "Major depressive disorder",
+        "Delirium",
+        "Autoimmune encephalitis",
+        "Antipsychotic medications",
+        "Tardive dyskinesia",
+        "Suicidal ideation"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "apa-dsm5tr-2022",
+        "va-dod-schizophrenia-cpg-2023",
+        "dailymed-clozapine-current",
+        "nice-ng10-violence-aggression",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. WHO ICD-11 and DSM-5-TR classification rules are labeled separately. VA/DoD supports assessment, first-episode and schizophrenia treatment, monitoring, psychosocial recovery, catatonia and NMS recognition; its obsolete clozapine REMS logistics are not used. The current DailyMed label controls clozapine indications and monitoring. NICE NG10 supports de-escalation and least-restrictive safety principles, not universal law, and SAFE-T supports suicide assessment and triage.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024, Schizophrenia 6A20; accessed 2026-08-14",
+          "fieldsSupported": [
+            "identity",
+            "ICD classification",
+            "symptom pattern",
+            "duration",
+            "exclusions",
+            "course qualifiers"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022, Schizophrenia; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "DSM classification",
+            "active-phase symptoms",
+            "continuous duration",
+            "functional impairment",
+            "differential"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/scz/VA-DoD-CPG-Schizophrenia-CPG_Finalv231924.pdf",
+          "documentVersion": "VA/DoD schizophrenia and first-episode psychosis CPG 2023; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "assessment",
+            "medical and substance differential",
+            "antipsychotic treatment",
+            "long-acting injectables",
+            "clozapine boundary",
+            "monitoring",
+            "psychosocial care",
+            "catatonia and NMS escalation"
+          ]
+        },
+        {
+          "authority": "U.S. National Library of Medicine DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=883b5d43-0339-7dc1-f775-93791fb9b978",
+          "documentVersion": "Clozapine tablets prescribing information current on DailyMed; accessed 2026-08-14",
+          "fieldsSupported": [
+            "treatment-resistant schizophrenia",
+            "recurrent suicidal behavior",
+            "ANC monitoring",
+            "boxed warnings",
+            "myocarditis",
+            "seizures",
+            "gastrointestinal hypomotility",
+            "patient education"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/NG10/chapter/recommendations",
+          "documentVersion": "NICE NG10 recommendations; accessed 2026-08-14",
+          "fieldsSupported": [
+            "violence risk assessment",
+            "de-escalation",
+            "observation",
+            "least-restrictive care",
+            "restrictive-intervention limits",
+            "dignity",
+            "documentation"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; accessed 2026-08-14",
+          "fieldsSupported": [
+            "suicide inquiry",
+            "risk factors",
+            "protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.schizophrenia",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.12"
+    },
+    {
+      "id": "disease.schizophreniform-disorder",
+      "name": "Schizophreniform disorder",
+      "displayName": "Schizophreniform disorder",
+      "category": "Mental health",
+      "aliases": [
+        "schizophreniform"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-14",
+      "plainLanguage": "Schizophreniform disorder is a DSM diagnosis for a schizophrenia-like psychotic episode lasting at least 1 month but less than 6 months; the final diagnosis may change as recovery and the longer course become clear.",
+      "whyItMatters": "The 1-to-6-month window is a high-yield diagnostic boundary, but immediate safety and medical causes come before labeling. Close follow-up can reduce suicide risk, treatment harm, lost function, and missed progression or recovery.",
+      "plainLanguageGlosses": [
+        {
+          "term": "provisional diagnosis",
+          "plainLanguage": "a working diagnosis used while the final duration or recovery pattern is not yet known",
+          "sourceKeys": [
+            "apa-dsm5tr-2022"
+          ]
+        },
+        {
+          "term": "active psychotic symptoms",
+          "plainLanguage": "delusions, hallucinations, disorganized speech, markedly disorganized behavior, catatonia, or negative symptoms during the episode",
+          "sourceKeys": [
+            "apa-dsm5tr-2022"
+          ]
+        },
+        {
+          "term": "longitudinal assessment",
+          "plainLanguage": "following symptoms, mood, function, exposures, and recovery over time instead of diagnosing from one snapshot",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "va-dod-schizophrenia-cpg-2023"
+          ]
+        },
+        {
+          "term": "catatonia",
+          "plainLanguage": "a potentially urgent syndrome of markedly reduced, abnormal, or purposeless movement and responsiveness",
+          "sourceKeys": [
+            "va-dod-schizophrenia-cpg-2023"
+          ]
+        }
+      ],
+      "definition": "Schizophreniform disorder is a DSM-5-TR schizophrenia-spectrum diagnosis with the characteristic schizophrenia symptom pattern lasting at least 1 month but less than 6 months. Decline in social or occupational function is not required, although it may occur. ICD-11 has no directly equivalent category under this name; it uses different schizophrenia and acute-and-transient-psychotic-disorder rules, so the labels cannot be automatically exchanged.",
+      "pathology": "The syndrome is defined by symptoms and course, not a distinct laboratory lesion or a proven separate mechanism from schizophrenia. Genetic, neurodevelopmental, stress, substance, and social factors may contribute, but none confirms the disorder. Because the duration window is still unfolding, repeated assessment is essential: the episode may resolve, continue to meet DSM schizophrenia duration, prove mood-related, or be explained by a substance, medication, delirium, neurologic disease, or another medical condition.",
+      "pathophysiology": [
+        "Psychotic symptoms may reflect disrupted salience, perception, thought organization, cognition, and stress regulation, but these models are not diagnostic tests.",
+        "Positive, negative, disorganized, cognitive, and catatonic features can resemble schizophrenia; the DSM distinction is primarily duration and course.",
+        "One scan, dopamine measure, genetic result, rating score, or apparent medication response cannot distinguish schizophreniform disorder from other psychoses."
+      ],
+      "etiology": "Etiology is multifactorial and often uncertain at first presentation. Family susceptibility, developmental vulnerability, trauma or major stress, sleep disruption, cannabis or stimulant exposure, medications, and medical or neurologic illness all require context. The diagnosis is not established until delirium, substance or medication effects, and other causes are reasonably excluded and the longitudinal DSM duration pattern is known.",
+      "riskFactors": [
+        "Family or personal vulnerability to schizophrenia-spectrum, bipolar, depressive, or other psychotic disorders",
+        "Prior attenuated psychotic symptoms, cognitive or functional change, or a recent first episode of psychosis",
+        "Cannabis, stimulant, hallucinogen, medication, intoxication, or withdrawal exposure that can cause or worsen symptoms and must be differentiated",
+        "Severe stress, trauma, sleep loss, isolation, unstable housing, and disrupted care can influence presentation and recovery but do not diagnose the disorder",
+        "Suicide risk may be elevated during a frightening first episode, after insight returns, or when depression, substance use, akathisia, loss, or hopelessness coexist"
+      ],
+      "signsSymptoms": [
+        "Delusions, hallucinations, or disorganized speech, with at least one of these core features in the DSM pattern",
+        "Markedly disorganized or catatonic behavior may occur",
+        "Negative symptoms such as reduced emotional expression or avolition may occur",
+        "Cognitive, sleep, self-care, relationship, school, work, or other functional change may occur, but functional decline is not required for the DSM diagnosis",
+        "Mood, anxiety, trauma, substance-use, and medical symptoms must be actively sought rather than folded into the psychotic label"
+      ],
+      "diagnostics": [
+        "DSM-5-TR uses the schizophrenia symptom pattern for at least 1 month but less than 6 months. If the episode is still within that window and recovery is unknown, the diagnosis may be provisional.",
+        "Unlike DSM schizophrenia, social or occupational functional decline is not required for schizophreniform disorder, although impairment commonly occurs.",
+        "ICD-11 does not contain a schizophreniform category under this name. ICD schizophrenia can use an at-least-1-month symptom duration, while acute and transient psychotic disorder has a different acute-onset pattern; classification systems differ and are not interchangeable.",
+        "Obtain the symptom, mood, function, sleep, substance, medication, medical, cultural, and collateral timeline and reassess as the 6-month boundary or recovery becomes clear.",
+        "No blood, laboratory, imaging, genetic, or rating-scale test diagnoses schizophreniform disorder; testing is targeted to suspected mimics and treatment safety."
+      ],
+      "labs": [
+        "For new or changing psychosis, assess vital signs, glucose, oxygenation, consciousness and attention, neurologic findings, fever, pregnancy possibility, medication changes, intoxication, and withdrawal.",
+        "Select CBC, metabolic and thyroid testing, toxicology, infection studies, ECG, imaging, EEG, lumbar puncture, or autoimmune evaluation only when history, examination, tempo, age, or treatment choice supports them.",
+        "Before and during antipsychotic use, monitor weight or BMI, waist when used, blood pressure and orthostasis, glucose or HbA1c, lipids, movement symptoms, sedation and falls; use ECG when QT or cardiac risk and product guidance indicate.",
+        "Normal medical tests do not prove a primary psychotic disorder, and an abnormal result must be interpreted for causal relevance rather than assumed to explain every symptom."
+      ],
+      "assessment": "Stabilize medical needs, then ask directly about suicide, self-harm, homicidal thoughts, a target, weapons or lethal means, command hallucinations and ability to resist, agitation, insomnia, intoxication or withdrawal, self-care, food and fluids, shelter, vulnerability, dependents, and ability to accept help. Use collateral history with consent or lawful authority to construct the exact onset and duration, premorbid function, mood-psychosis relationship, medication and substance exposures, culture, and recovery. Diagnosis alone does not predict violence.",
+      "differential": [
+        "Brief psychotic disorder: at least 1 day but less than 1 month with eventual full return to previous functioning",
+        "Schizophrenia: DSM continuous signs reach at least 6 months with functional impairment; ICD-11 uses a different at-least-1-month framework",
+        "Schizoaffective disorder and bipolar or major depressive disorder with psychotic features, distinguished by the longitudinal timing and proportion of mood episodes",
+        "Substance- or medication-induced psychosis, intoxication or withdrawal, delirium, seizure, autoimmune encephalitis, endocrine or metabolic illness, infection, or structural neurologic disease",
+        "Delusional disorder, trauma-related symptoms, obsessive-compulsive phenomena, autism-spectrum communication differences, intellectual disability, sleep disorders, and culturally sanctioned experiences",
+        "Acute and transient psychotic disorder is an ICD-11 category with acute onset and other requirements; it is not an automatic synonym for DSM schizophreniform disorder"
+      ],
+      "treatments": [
+        "Treat as first-episode psychosis while diagnosis and course are reassessed. Shared decision making may select an antipsychotic such as risperidone or aripiprazole based on response, adverse effects, medical risk, access, and patient preference; there is no one fixed schizophreniform regimen.",
+        "Use cognitive behavioral therapy for psychosis, family or caregiver intervention with consent, coordinated early-intervention care, supported education or work, sleep and substance care, physical-health follow-up, and a relapse and crisis plan.",
+        "Reassess benefit, adverse effects, adherence, diagnosis, and recovery frequently. Do not invent a universal maintenance duration; the plan changes with course, risk, recurrence, and evolving diagnosis.",
+        "Address medical illness, delirium, intoxication or withdrawal, mood episodes, catatonia, and medication adverse effects directly rather than treating every change as worsening psychosis."
+      ],
+      "contraindications": [
+        "Do not wait for the 1-month boundary before treating an emergency or excluding delirium, intoxication, withdrawal, neurologic disease, or another medical cause.",
+        "Do not assume progression to schizophrenia is inevitable or tell a patient that a provisional diagnosis fixes the lifelong outcome.",
+        "Do not argue with, mock, endorse, or reinforce delusions or hallucinations; acknowledge emotion and present reality without confrontation.",
+        "Do not use psychosis alone to justify seclusion, restraint, a universal observation interval, or involuntary care; use individualized risk, law, orders, and least-restrictive policy.",
+        "Do not reflexively increase dopamine blockade when catatonia or NMS is possible, and do not apply one LAI initiation or oral-overlap schedule to every product."
+      ],
+      "safetyConsiderations": [
+        "Use one calm speaker, short concrete statements, personal space, a quiet low-stimulation environment, and clear simple choices and consistent boundaries.",
+        "Acknowledge fear or distress without endorsing the belief; do not argue. Present reality briefly and ask what voices say, whether commands are present, and whether the person plans or feels able to resist them.",
+        "Use verbal de-escalation and voluntary engagement first. Observation follows current assessed risk and local policy; restraint or seclusion is only for immediate danger with lawful oversight, physiologic monitoring, documentation, and debriefing.",
+        "Monitor acute dystonia, akathisia, parkinsonism, tardive dyskinesia or AIMS findings, weight or BMI, glucose or HbA1c, lipids, QT or ECG risk, orthostasis, sedation, prolactin effects, constipation, and NMS.",
+        "Fever, severe rigidity, altered consciousness, and autonomic instability after dopamine blockade suggest NMS and require emergency escalation."
+      ],
+      "nursingPriorities": [
+        "Assess airway, breathing, circulation, vital signs, glucose, oxygenation, temperature, attention, neurologic findings, hydration, nutrition, sleep, medication exposure, and substance use before assuming a primary psychiatric cause.",
+        "Assess suicide or self-harm, violence or homicidal intent, command hallucinations, weapons or lethal means, self-care, exploitation, elopement, dependents, and ability to collaborate; a no-harm contract is not a substitute.",
+        "Use reality-based nonconfrontational communication: validate distress without validating the belief, do not argue, reduce stimulation, and give clear choices, limits, and next steps.",
+        "Track onset and duration precisely and obtain collateral history; reassess diagnosis and function as the episode approaches recovery or the 6-month DSM boundary.",
+        "Coordinate shared medication decisions, CBT, family support, early-intervention follow-up, physical-health monitoring, substance care, supported education or employment, and relapse planning."
+      ],
+      "redFlags": [
+        "Suicidal or homicidal intent, plan, preparation, dangerous commands, weapon or lethal-means access, escalating violence, or inability to maintain immediate safety",
+        "Fluctuating attention, fever, hypoxia, hypoglycemia, focal neurologic deficit, seizure, severe headache, toxic exposure, intoxication or withdrawal, pregnancy or postpartum onset, or rapid cognitive decline",
+        "Inability to eat, drink, shelter, perform essential self-care, or protect dependents; severe dehydration, malnutrition, exposure, exploitation, or victimization",
+        "Catatonic stupor, mutism, posturing, negativism, refusal, purposeless excitement, or echophenomena, especially with fever, autonomic instability, aspiration, immobility, or dehydration",
+        "NMS, airway-threatening dystonia, severe akathisia with suicidality, syncope, dangerous QT-related symptoms, seizure, or another serious medication reaction"
+      ],
+      "complications": [
+        "Progression to another psychotic or mood diagnosis, recurrence, hospitalization, disrupted education or work, relationship loss, or reduced independence",
+        "Suicide, self-neglect, victimization, homelessness, substance harm, or delayed treatment of a medical cause",
+        "Metabolic, movement, cardiovascular, prolactin, sedation, fall, constipation, and other antipsychotic adverse effects",
+        "Stigma, coercion, diagnostic overshadowing, fragmented follow-up, and loss of hope from treating a provisional course as inevitable"
+      ],
+      "prognosis": "Many people recover fully or substantially, while some later meet criteria for schizophrenia, schizoaffective disorder, or a mood disorder. Favorable-course features are not guarantees, and progression is not inevitable. Close longitudinal follow-up is essential because the diagnosis depends on whether symptoms resolve before 6 months, recur, or persist and how mood and function change over time.",
+      "prevention": [
+        "Recognize first-episode psychosis early, assess medical and substance causes, and connect the person with coordinated specialty care.",
+        "Protect sleep, reduce cannabis and stimulant exposure, address medication access and adherence barriers, and maintain scheduled follow-up through the evolving duration window.",
+        "Create a personalized relapse plan covering sleep change, withdrawal, suspiciousness, voices, disorganization, mood shift, medication interruption, and crisis contacts.",
+        "Monitor physical health and treatment adverse effects so preventable harm does not undermine engagement or recovery."
+      ],
+      "patientEducation": [
+        "Schizophreniform disorder is a time-and-course diagnosis, not a prediction that schizophrenia is inevitable; clinicians follow recovery and symptoms as the 6-month boundary approaches.",
+        "Seek urgent help for dangerous commands, suicidal or homicidal intent, inability to eat or drink, severe confusion, seizure, catatonia, fever with rigidity, fainting, or a serious medicine reaction.",
+        "Ask why a medicine was chosen, what benefit to track, how weight, glucose, lipids, movement symptoms, QT or ECG risk, orthostasis, prolactin effects, and constipation will be monitored, and when the diagnosis and plan will be reassessed.",
+        "Family or supporters can stay calm, acknowledge distress without endorsing the belief, avoid arguing, reduce stimulation, support sleep and appointments, and use the agreed crisis and lethal-means safety plan.",
+        "CBT, family support, early-intervention care, housing, school or work help, substance-risk reduction, and physical-health care are parts of treatment, not optional extras."
+      ],
+      "specialPopulations": [
+        "Children, adolescents, older adults, pregnancy or postpartum patients, and atypical age of onset require especially careful developmental, obstetric, neurologic, medication, and medical assessment.",
+        "Pregnancy and lactation treatment decisions are individualized; weigh relapse and exposure risks with product-specific guidance and do not stop medication abruptly without the prescriber.",
+        "Cultural, spiritual, language, sensory, autism-spectrum, intellectual, and trauma contexts can shape expression; culturally shared experiences alone do not establish psychosis.",
+        "People with unstable housing, poor access, justice involvement, intellectual or sensory disability, or prior coercion need practical continuity and rights protection to make longitudinal diagnosis possible.",
+        "Postpartum psychosis is an emergency syndrome and is not a safe global alias for brief psychotic disorder even when a DSM postpartum specifier may apply."
+      ],
+      "nclexTraps": [
+        "DSM schizophreniform disorder lasts at least 1 month but less than 6 months; functional decline is not required. Do not substitute ICD-11's different framework.",
+        "Brief psychotic disorder is under 1 month with eventual full return; DSM schizophrenia reaches at least 6 months. A single snapshot cannot establish the final duration diagnosis.",
+        "Validate distress without validating the delusion, do not argue, use low stimulation and clear choices, and ask directly about commands and safety.",
+        "Akathisia can mimic agitation; catatonia and NMS require urgent review rather than an automatic antipsychotic increase.",
+        "Observation and restriction are risk based and least restrictive; a no-suicide or no-harm contract never replaces direct assessment, lethal-means safety, and follow-up."
+      ],
+      "relatedTopics": [
+        "Schizophrenia",
+        "Brief psychotic disorder",
+        "Schizoaffective disorder",
+        "Delusional disorder",
+        "Bipolar disorder",
+        "Major depressive disorder",
+        "Delirium",
+        "Autoimmune encephalitis",
+        "Substance use disorders",
+        "Antipsychotic medications"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "apa-dsm5tr-2022",
+        "va-dod-schizophrenia-cpg-2023",
+        "nice-ng10-violence-aggression",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. DSM-5-TR supports the named schizophreniform duration and functional boundary. WHO ICD-11 is used to explain that no directly equivalent category exists and that its schizophrenia and acute-transient framework differs. VA/DoD supports first-episode assessment, illustrative treatment, monitoring, psychosocial care, catatonia and NMS recognition without supplying a disorder-specific approval or universal maintenance duration. NICE NG10 and SAFE-T support individualized safety care.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024, schizophrenia and acute and transient psychotic disorder sections; accessed 2026-08-14",
+          "fieldsSupported": [
+            "ICD classification",
+            "absence of direct schizophreniform category",
+            "schizophrenia duration",
+            "acute-transient boundary",
+            "differential"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022, Schizophreniform Disorder; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "identity",
+            "DSM symptom requirements",
+            "duration",
+            "functional boundary",
+            "provisional diagnosis",
+            "differential"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/scz/VA-DoD-CPG-Schizophrenia-CPG_Finalv231924.pdf",
+          "documentVersion": "VA/DoD schizophrenia and first-episode psychosis CPG 2023; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "first-episode assessment",
+            "medical and substance differential",
+            "illustrative antipsychotic selection",
+            "monitoring",
+            "psychosocial care",
+            "catatonia and NMS escalation"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/NG10/chapter/recommendations",
+          "documentVersion": "NICE NG10 recommendations; accessed 2026-08-14",
+          "fieldsSupported": [
+            "violence risk assessment",
+            "de-escalation",
+            "observation",
+            "least-restrictive care",
+            "restrictive-intervention limits",
+            "dignity",
+            "documentation"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; accessed 2026-08-14",
+          "fieldsSupported": [
+            "suicide inquiry",
+            "risk factors",
+            "protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.schizophreniform-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.12"
+    },
+    {
+      "id": "disease.brief-psychotic-disorder",
+      "name": "Brief psychotic disorder",
+      "displayName": "Brief psychotic disorder",
+      "category": "Mental health",
+      "aliases": [
+        "brief reactive psychosis",
+        "acute brief psychosis"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-14",
+      "plainLanguage": "Brief psychotic disorder is a sudden DSM psychotic episode lasting at least 1 day but less than 1 month, followed by eventual full return to the person's previous level of functioning.",
+      "whyItMatters": "A short duration does not make the episode harmless. New psychosis can signal suicide risk, dangerous commands, inability to meet basic needs, postpartum illness, intoxication or withdrawal, delirium, neurologic disease, or another urgent medical cause.",
+      "plainLanguageGlosses": [
+        {
+          "term": "brief psychosis",
+          "plainLanguage": "a short episode of impaired reality testing; this broad phrase does not by itself establish the DSM diagnosis",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "va-dod-schizophrenia-cpg-2023"
+          ]
+        },
+        {
+          "term": "premorbid functioning",
+          "plainLanguage": "the person's usual work, school, relationship, self-care, and daily functioning before the episode",
+          "sourceKeys": [
+            "apa-dsm5tr-2022"
+          ]
+        },
+        {
+          "term": "acute and transient psychotic disorder",
+          "plainLanguage": "a separate ICD-11 category with its own acute-onset, symptom, and duration rules, not an exact synonym for DSM brief psychotic disorder",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "catatonia",
+          "plainLanguage": "a potentially urgent syndrome of markedly reduced, abnormal, or purposeless movement and responsiveness",
+          "sourceKeys": [
+            "va-dod-schizophrenia-cpg-2023"
+          ]
+        }
+      ],
+      "definition": "Brief psychotic disorder is a DSM-5-TR diagnosis involving one or more sudden psychotic symptoms, with at least one being delusions, hallucinations, or disorganized speech; markedly disorganized or catatonic behavior may also occur. The episode lasts at least 1 day but less than 1 month with eventual full return to premorbid functioning. ICD-11 acute and transient psychotic disorder is related but not equivalent and must not be silently substituted.",
+      "pathology": "The disorder is defined by its clinical pattern, exclusions, duration, and recovery rather than a unique lesion, blood test, or neurotransmitter measure. Acute stress, biological vulnerability, sleep disruption, pregnancy or postpartum physiology, medications, substances, and medical or neurologic illness may shape presentation, but a stressor is not required and does not prove the diagnosis. Because early schizophrenia-spectrum, mood, substance, delirium, and medical psychoses can look identical at first, repeated assessment is essential.",
+      "pathophysiology": [
+        "Rapid disruption of perception, salience, thought organization, arousal, and stress regulation may produce a sudden psychotic syndrome, but no single mechanism is diagnostic.",
+        "Symptoms can include delusions, hallucinations, disorganized speech, markedly disorganized behavior, or catatonia; negative symptoms are not the defining core of DSM brief psychotic disorder.",
+        "Return to previous functioning is part of the eventual DSM course determination, so the final diagnosis often cannot be confirmed at the first encounter."
+      ],
+      "etiology": "Etiology may remain uncertain. An episode can occur with or without a marked stressor and may have a peripartum onset specifier, but trauma or stress is not required. Clinicians must exclude delirium, medication effects, intoxication or withdrawal, seizures, autoimmune or other neurologic disease, endocrine or metabolic illness, infection, mood episodes, and longer schizophrenia-spectrum disorders before attributing psychosis to this diagnosis.",
+      "riskFactors": [
+        "Personal or family vulnerability to psychotic, bipolar, depressive, or other serious mental illness",
+        "Severe acute stress, trauma, bereavement, migration, sleep deprivation, isolation, or major life disruption may precede some episodes but are not diagnostic",
+        "Pregnancy and the postpartum period require urgent assessment because postpartum psychosis is a psychiatric emergency syndrome, not a safe global synonym",
+        "Cannabis, stimulants, hallucinogens, prescribed medicines, intoxication, and withdrawal may produce similar symptoms and must be evaluated",
+        "Suicide, self-neglect, victimization, or violence risk may rise with fear, commands, persecutory beliefs, agitation, insomnia, depression, or substance use"
+      ],
+      "signsSymptoms": [
+        "Sudden or acute onset of delusions, hallucinations, or disorganized speech",
+        "Markedly disorganized behavior or catatonic behavior may occur",
+        "Fear, confusion, agitation, insomnia, impaired judgment, withdrawal, or inability to organize basic self-care may accompany the psychosis",
+        "Mood, trauma, substance, medication, neurologic, autonomic, fever, and cognitive symptoms help identify competing explanations or emergencies",
+        "The eventual course includes full return to premorbid or previous functioning within the DSM duration boundary; failure to recover requires diagnostic reassessment"
+      ],
+      "diagnostics": [
+        "DSM-5-TR requires at least one core symptom of delusions, hallucinations, or disorganized speech; markedly disorganized or catatonic behavior can also count. Duration is at least 1 day but less than 1 month with eventual full return to previous or premorbid functioning.",
+        "Specify with marked stressor, without marked stressor, or with postpartum onset only when the full DSM requirements are met; a stressor or postpartum timing alone does not establish the diagnosis.",
+        "ICD-11 acute and transient psychotic disorder requires acute development from nonpsychotic to clearly psychotic within 2 weeks, rapidly changing symptoms, no negative symptoms during the episode, and duration no more than 3 months, usually days to 1 month. This classification differs from DSM brief psychotic disorder.",
+        "Build the exact onset, daily course, mood, sleep, function, medication, substance, medical, cultural, and collateral timeline and continue follow-up until recovery and duration are known.",
+        "No blood, laboratory, imaging, genetic, or rating-scale test diagnoses brief psychotic disorder; tests target possible medical, neurologic, toxic, and treatment-related causes."
+      ],
+      "labs": [
+        "Immediately assess vital signs, glucose, oxygenation, temperature, consciousness and attention, neurologic findings, hydration, nutrition, pregnancy or postpartum status, medication changes, intoxication, and withdrawal.",
+        "Use CBC, metabolic and thyroid tests, toxicology, infection studies, ECG, imaging, EEG, lumbar puncture, or autoimmune evaluation when the history, examination, age, tempo, exposure, or treatment decision supports them.",
+        "If an antipsychotic is used, obtain and follow weight or BMI, blood pressure and orthostasis, glucose or HbA1c, lipids, movement symptoms, sedation, falls, prolactin effects, constipation, and QT or ECG risk as applicable.",
+        "Normal tests do not confirm a primary psychiatric diagnosis; fluctuating attention or consciousness remains a delirium warning even when hallucinations are prominent."
+      ],
+      "assessment": "Treat first-presentation psychosis as a medical and psychiatric assessment problem. Ask directly about suicide, self-harm, homicidal thoughts, a target, weapons or lethal means, command hallucinations, intent and ability to resist, agitation, sleep loss, intoxication or withdrawal, self-care, food and fluids, shelter, dependents, vulnerability, and ability to accept help. Obtain collateral onset and baseline-function information with consent or lawful authority. Record exact words and behavior, and assess culture without pathologizing a shared belief. Diagnosis alone does not predict violence.",
+      "differential": [
+        "Schizophreniform disorder when the DSM psychotic pattern lasts at least 1 month but less than 6 months",
+        "Schizophrenia when the DSM continuous pattern reaches at least 6 months; ICD-11 uses a different at-least-1-month schizophrenia framework",
+        "Schizoaffective disorder, bipolar disorder, major depressive disorder with psychotic features, and postpartum mood or psychotic syndromes, distinguished by mood and psychosis timing",
+        "Delirium, seizure, autoimmune encephalitis, endocrine or metabolic illness, infection, structural neurologic disease, medication effect, intoxication, or withdrawal",
+        "Delusional disorder, trauma-related dissociation or flashbacks, obsessive-compulsive phenomena, sleep deprivation, autism-spectrum or intellectual differences, and culturally sanctioned experiences",
+        "ICD-11 acute and transient psychotic disorder, which is not an exact synonym and has different onset, symptom, and maximum-duration rules"
+      ],
+      "treatments": [
+        "Prioritize medical stabilization, a safe environment, sleep, hydration and nutrition, removal of intoxicants or offending medicines when clinically directed, and treatment of delirium, withdrawal, neurologic disease, or another identified cause.",
+        "When symptoms are severe, dangerous, or disabling, shared decision making may support a short-term clinician-selected antipsychotic such as risperidone or olanzapine. Medication is not automatic, and no universal drug or duration fits every episode.",
+        "Provide cognitive behavioral therapy or supportive psychotherapy, family or caregiver education with consent, coordinated early-intervention follow-up, substance care, practical support, and a relapse and crisis plan.",
+        "Reassess frequently for recovery, mood episodes, adverse effects, catatonia, NMS, emerging medical evidence, and a longer-duration diagnosis; do not discharge solely because agitation has decreased."
+      ],
+      "contraindications": [
+        "Do not assume a short psychiatric diagnosis before excluding delirium, intoxication or withdrawal, medication effects, seizure, neurologic disease, infection, endocrine or metabolic illness, and postpartum emergency.",
+        "Do not call acute psychosis, first-episode psychosis, postpartum psychosis, steroid psychosis, or ICD-11 acute and transient psychotic disorder exact aliases for brief psychotic disorder.",
+        "Do not argue with, ridicule, endorse, or reinforce a delusion or hallucination; acknowledge emotion and present reality without confrontation.",
+        "Do not use a diagnosis alone to set a universal observation interval or justify involuntary care, seclusion, or restraint; use individualized risk, law, orders, and least-restrictive policy.",
+        "Do not reflexively increase dopamine blockade when catatonia or NMS is possible, and do not continue an antipsychotic without reassessing benefit, adverse effects, diagnosis, and recovery."
+      ],
+      "safetyConsiderations": [
+        "Use one calm speaker, personal space, short concrete statements, a quiet low-stimulation environment, clear simple choices, and consistent limits.",
+        "Acknowledge fear or distress without endorsing the belief; avoid arguing, whispering, sudden touch, crowding, false reassurance, or secrecy promises. Present reality briefly and assess command hallucinations directly.",
+        "Use voluntary engagement and verbal de-escalation first. Observation is based on current risk and local policy; restrictive intervention is limited to immediate danger with lawful oversight, physiologic monitoring, documentation, and debriefing.",
+        "Monitor acute dystonia, akathisia, parkinsonism, tardive dyskinesia or AIMS findings, weight or BMI, glucose or HbA1c, lipids, QT or ECG risk, orthostasis, sedation, prolactin effects, constipation, and NMS when medicine is used.",
+        "NMS signs include fever, severe rigidity, altered consciousness, and autonomic instability after dopamine blockade; stop the suspected medicine per emergency protocol and escalate urgently."
+      ],
+      "nursingPriorities": [
+        "Stabilize airway, breathing, circulation, vital signs, glucose, oxygenation, temperature, attention, neurologic status, hydration, nutrition, sleep, pregnancy or postpartum concerns, and toxic exposure.",
+        "Assess suicide or self-harm, violence or homicidal intent, command hallucinations, weapons or lethal means, self-care, elopement, exploitation, dependents, and ability to collaborate; a no-harm contract is not a substitute.",
+        "Use calm reality-based communication: validate distress without validating the belief, do not argue, reduce stimulation, and offer clear choices, limits, and next steps.",
+        "Track onset, daily course, baseline function, mood, sleep, medication and substance exposure, and recovery with collateral information; classification depends on time and follow-up.",
+        "Coordinate shared treatment decisions, CBT or supportive therapy, family teaching, early-intervention follow-up, physical monitoring, substance care, practical support, and a written crisis and relapse plan."
+      ],
+      "redFlags": [
+        "Suicidal or homicidal intent, plan, preparation, dangerous command hallucinations, weapon or lethal-means access, escalating violence, or inability to maintain safety",
+        "Fluctuating attention or consciousness, fever, hypoxia, hypoglycemia, focal neurologic deficit, seizure, severe headache, toxic exposure, intoxication or withdrawal, or rapid cognitive decline",
+        "Pregnancy or postpartum onset with severe insomnia, mood change, confusion, psychosis, or unsafe thoughts; obtain emergency perinatal psychiatric assessment",
+        "Inability to eat, drink, shelter, perform essential self-care, or protect dependents; severe dehydration, malnutrition, exposure, exploitation, or victimization",
+        "Catatonia, NMS, airway-threatening dystonia, severe akathisia with suicidality, syncope, dangerous arrhythmia symptoms, seizure, or another serious medication reaction"
+      ],
+      "complications": [
+        "Suicide, accidental injury, violence in a specific high-risk situation, self-neglect, victimization, exploitation, dehydration, malnutrition, or loss of housing or custody",
+        "Recurrence or evolution into schizophreniform, schizophrenia, schizoaffective, bipolar, depressive, substance-induced, or another diagnosis",
+        "Delayed recognition of delirium, seizure, autoimmune encephalitis, intoxication or withdrawal, postpartum emergency, or another medical cause",
+        "Metabolic, movement, cardiovascular, prolactin, sedation, fall, constipation, and other treatment adverse effects",
+        "Stigma, coercion, fragmented follow-up, and loss of trust after a frightening first episode"
+      ],
+      "prognosis": "By definition, DSM brief psychotic disorder has eventual full return to previous functioning within the under-1-month episode boundary, but recurrence or a later schizophrenia-spectrum or mood diagnosis can occur. Follow-up remains necessary after apparent recovery to reassess function, mood, substances, medical findings, treatment effects, trauma, sleep, and relapse warning signs; do not automatically assume either chronic illness or permanent cure from one episode.",
+      "prevention": [
+        "Recognize sudden psychosis early and evaluate medical, neurologic, medication, substance, sleep, and postpartum causes immediately.",
+        "Protect sleep, reduce cannabis and stimulant exposure, maintain follow-up, and address access, housing, trauma, and adherence barriers without blame.",
+        "Create a relapse plan for sleep loss, suspiciousness, voices, disorganization, mood change, substance use, missed care, and crisis contacts.",
+        "Monitor treatment adverse effects and physical health even when medication is intended to be short term."
+      ],
+      "patientEducation": [
+        "A short psychotic episode still needs urgent medical and safety assessment. The final diagnosis depends on duration, recovery, mood timing, and exclusion of substances, medicines, delirium, neurologic disease, and other causes.",
+        "Seek emergency help for dangerous commands, suicidal or homicidal intent, inability to eat or drink, severe confusion, seizure, postpartum rapid change, catatonia, fever with rigidity, fainting, or a serious medicine reaction.",
+        "If medication is used, ask what symptom it targets, how long and when it will be reassessed, and how weight, glucose, lipids, movement symptoms, QT or ECG risk, orthostasis, prolactin effects, and constipation will be monitored.",
+        "Family or supporters can stay calm, acknowledge distress without agreeing with the belief, avoid arguing, reduce stimulation, support sleep and appointments, and use the agreed crisis and lethal-means safety plan.",
+        "Follow-up matters even after full recovery because recurrence or a different mood or psychotic disorder may become clear over time."
+      ],
+      "specialPopulations": [
+        "Pregnancy and postpartum onset require emergency perinatal assessment; postpartum psychosis is not a global alias and carries major suicide and infant-safety risk.",
+        "Children, adolescents, older adults, and atypical late onset require especially careful developmental, medication, cognitive, neurologic, and medical evaluation.",
+        "Pregnancy and lactation medication decisions require individualized benefit-risk review and product-specific guidance; do not stop treatment abruptly without the prescriber.",
+        "Cultural, spiritual, language, sensory, autism-spectrum, intellectual, and trauma contexts shape expression; a culturally shared experience alone does not establish psychosis.",
+        "Refugees, migrants, people with unstable housing, limited access, or prior coercion need trauma-informed interpretation, practical continuity, and rights protection."
+      ],
+      "nclexTraps": [
+        "DSM brief psychotic disorder lasts at least 1 day but less than 1 month and has eventual full return to baseline or premorbid function; duration is not the only assessment priority.",
+        "ICD-11 acute and transient psychotic disorder is not interchangeable with DSM brief psychotic disorder; the onset, symptom, and maximum-duration rules differ.",
+        "Validate distress without validating the delusion, do not argue, use low stimulation and clear choices, and assess command content and safety directly.",
+        "Medication is individualized and not automatically required or continued for a universal duration; reassess diagnosis, recovery, benefit, and adverse effects.",
+        "Catatonia and NMS need urgent review; observation and restriction are individualized and least restrictive, and a no-harm contract never replaces direct assessment."
+      ],
+      "relatedTopics": [
+        "Schizophreniform disorder",
+        "Schizophrenia",
+        "Schizoaffective disorder",
+        "Delusional disorder",
+        "Bipolar disorder",
+        "Major depressive disorder",
+        "Postpartum psychosis",
+        "Delirium",
+        "Autoimmune encephalitis",
+        "Substance use disorders",
+        "Antipsychotic medications",
+        "Suicidal ideation"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "apa-dsm5tr-2022",
+        "va-dod-schizophrenia-cpg-2023",
+        "nice-ng10-violence-aggression",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. DSM-5-TR controls the named brief-psychotic duration and recovery requirements. WHO ICD-11 is used to describe acute and transient psychotic disorder and its non-equivalence. VA/DoD supports first-presentation assessment, illustrative treatment and monitoring without implying a fixed brief-disorder medicine course. NICE NG10 and SAFE-T support individualized de-escalation, violence-risk, suicide, observation, and least-restrictive safety care.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024, Acute and transient psychotic disorder 6A23; accessed 2026-08-14",
+          "fieldsSupported": [
+            "ICD classification",
+            "acute-onset requirement",
+            "rapidly changing symptoms",
+            "negative-symptom boundary",
+            "duration",
+            "DSM non-equivalence"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022, Brief Psychotic Disorder; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "identity",
+            "DSM symptoms",
+            "duration",
+            "full-return requirement",
+            "specifiers",
+            "exclusions"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/scz/VA-DoD-CPG-Schizophrenia-CPG_Finalv231924.pdf",
+          "documentVersion": "VA/DoD schizophrenia and first-episode psychosis CPG 2023; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "first-presentation assessment",
+            "medical and substance differential",
+            "urgent referral",
+            "illustrative antipsychotic selection",
+            "monitoring",
+            "psychosocial care",
+            "catatonia and NMS escalation"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/NG10/chapter/recommendations",
+          "documentVersion": "NICE NG10 recommendations; accessed 2026-08-14",
+          "fieldsSupported": [
+            "violence risk assessment",
+            "de-escalation",
+            "observation",
+            "least-restrictive care",
+            "restrictive-intervention limits",
+            "dignity",
+            "documentation"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; accessed 2026-08-14",
+          "fieldsSupported": [
+            "suicide inquiry",
+            "risk factors",
+            "protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.brief-psychotic-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.12"
+    },
+    {
+      "id": "disease.schizoaffective-disorder",
+      "name": "Schizoaffective disorder",
+      "displayName": "Schizoaffective disorder",
+      "category": "Mental health",
+      "aliases": [
+        "schizoaffective",
+        "schizo-affective disorder",
+        "schizoaffective disorder, bipolar type",
+        "schizoaffective disorder, depressive type"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-14",
+      "plainLanguage": "Schizoaffective disorder combines a schizophrenia-pattern psychosis with major mood episodes, but the diagnosis depends on how psychosis and mood episodes relate across the whole illness—not simply on having both at one visit.",
+      "whyItMatters": "Confusing schizoaffective disorder with schizophrenia or a mood disorder with psychotic features can change treatment and monitoring. Longitudinal assessment also matters for suicide risk, mania, depression, self-care, medication harm, and relapse outcomes.",
+      "plainLanguageGlosses": [
+        {
+          "term": "longitudinal course",
+          "plainLanguage": "the sequence and proportion of psychotic and mood symptoms across months or years, not just today's snapshot",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "major mood episode",
+          "plainLanguage": "a full manic or major depressive episode meeting its own symptom and duration requirements",
+          "sourceKeys": [
+            "apa-dsm5tr-2022"
+          ]
+        },
+        {
+          "term": "bipolar type",
+          "plainLanguage": "schizoaffective disorder that includes a manic episode; major depressive episodes may also occur",
+          "sourceKeys": [
+            "apa-dsm5tr-2022"
+          ]
+        },
+        {
+          "term": "depressive type",
+          "plainLanguage": "schizoaffective disorder in which the major mood episodes are depressive and no manic episode has occurred",
+          "sourceKeys": [
+            "apa-dsm5tr-2022"
+          ]
+        }
+      ],
+      "definition": "Schizoaffective disorder is a psychotic and mood-spectrum diagnosis defined by the longitudinal relationship between a schizophrenia-pattern illness and major mood episodes. In DSM-5-TR, major mood episodes occur during most of the total illness and there are at least 2 weeks of delusions or hallucinations without a major mood episode. ICD-11 uses a different concurrent-episode rule, so its framework must be labeled separately rather than merged with DSM criteria.",
+      "pathology": "The disorder is not diagnosed by a blood test, scan, medication response, or the mere coexistence of psychosis and mood symptoms. Its defining pathology is a sustained clinical course in which psychotic and major mood syndromes meet classification-specific requirements. Neurobiological vulnerability overlaps schizophrenia and bipolar or depressive disorders, but no single mechanism distinguishes schizoaffective disorder. Accurate diagnosis therefore depends on collateral history, records, functional course, and repeated assessment.",
+      "pathophysiology": [
+        "Psychotic symptoms involve altered salience, perception, and thought organization, while manic or depressive episodes involve sustained changes in mood, energy, activity, sleep, cognition, and function.",
+        "Overlapping genetic and neurodevelopmental susceptibility is described across psychotic and mood disorders, but these overlaps do not provide an individual diagnostic biomarker.",
+        "The clinically decisive feature is timing and course: symptom coexistence at one encounter cannot establish the required longitudinal relationship."
+      ],
+      "etiology": "Etiology is multifactorial. Family vulnerability to schizophrenia-spectrum or mood disorders, developmental factors, trauma and social stress, sleep loss, and substance exposure may influence risk or relapse, but none alone diagnoses the condition. Delirium, medication effects, intoxication or withdrawal, seizure, autoimmune or other neurologic disease, endocrine or metabolic illness, infection, and primary bipolar or depressive illness must be considered.",
+      "riskFactors": [
+        "Family or personal history of psychotic, bipolar, depressive, or schizoaffective illness",
+        "Prior psychosis, mania, major depression, suicide attempt, severe insomnia, hospitalization, or functional decline",
+        "Cannabis, stimulant, hallucinogen, alcohol, medication, intoxication, or withdrawal exposure that can trigger or mimic symptoms",
+        "Treatment interruption, adverse effects, access barriers, housing instability, trauma, social isolation, and disrupted sleep can contribute to relapse",
+        "Suicide risk rises with depression, mixed or manic symptoms, commands, hopelessness, akathisia, substance use, access to lethal means, and prior attempts"
+      ],
+      "signsSymptoms": [
+        "Psychosis such as delusions, hallucinations, disorganized speech or behavior, and negative or cognitive symptoms",
+        "Bipolar type includes a manic episode with elevated or irritable mood plus increased energy or activity; major depressive episodes may also occur",
+        "Depressive type includes major depressive episodes and no history of mania",
+        "Periods of delusions or hallucinations outside a major mood episode are required by the DSM longitudinal pattern",
+        "Sleep, energy, activity, speech, judgment, suicidality, self-care, work, school, relationships, and other function change across the course"
+      ],
+      "diagnostics": [
+        "DSM-5-TR requires a major mood episode concurrent with schizophrenia symptoms, plus at least 2 weeks of delusions or hallucinations without a major mood episode; major mood episodes are present for the majority of the total duration of the active and residual illness.",
+        "DSM bipolar type includes a manic episode; depressive type includes only major depressive episodes. Diagnose from the lifetime longitudinal course, not one cross-sectional visit.",
+        "ICD-11 uses a different rule: full schizophrenia and a qualifying moderate or severe depressive, manic, or mixed episode occur concurrently, begin simultaneously or within a few days, and both psychotic and mood requirements last at least 1 month. ICD-11 does not use DSM's 2-week psychosis-without-mood rule.",
+        "If psychosis occurs only during mood episodes, a bipolar or major depressive disorder with psychotic features is favored in the DSM framework; if major mood episodes occupy only a minority of a chronic psychotic illness, schizophrenia is favored.",
+        "No blood, laboratory, imaging, genetic, or rating-scale test diagnoses schizoaffective disorder; obtain collateral records and target testing to medical, neurologic, toxic, medication, and treatment-safety questions."
+      ],
+      "labs": [
+        "For new, acute, or changing psychosis or mood symptoms, assess vital signs, glucose, oxygenation, temperature, consciousness and attention, neurologic findings, pregnancy or postpartum status, medication exposure, intoxication, and withdrawal.",
+        "Select CBC, metabolic and thyroid tests, toxicology, pregnancy testing, infection studies, ECG, imaging, EEG, lumbar puncture, or autoimmune evaluation when the history, examination, tempo, age, or treatment decision supports them.",
+        "Before and during antipsychotic treatment, monitor weight or BMI, waist when used, blood pressure and orthostasis, glucose or HbA1c, lipids, movement symptoms, sedation, falls, prolactin effects, constipation, and QT or ECG risk as applicable.",
+        "Paliperidone renal dosing and adverse-effect monitoring are product specific. If clozapine is used for its labeled recurrent-suicidality indication, follow current-label ANC and major adverse-effect monitoring."
+      ],
+      "assessment": "Establish medical stability and assess the entire longitudinal course. Ask directly about suicide, self-harm, homicidal thoughts, a target, weapons or lethal means, command hallucinations, intent and ability to resist, agitation, insomnia, impulsivity, spending or sexual risk, intoxication or withdrawal, food and fluids, self-care, shelter, dependents, exploitation, and ability to accept help. With consent or lawful authority, obtain collateral records that separate periods of psychosis without a major mood episode, mood episodes, residual symptoms, function, medication response, culture, and substances. Diagnosis alone does not predict violence.",
+      "differential": [
+        "Bipolar disorder or major depressive disorder with psychotic features when psychosis occurs only during mood episodes",
+        "Schizophrenia when major mood episodes are absent or occupy only a minority of the total psychotic illness",
+        "Schizophreniform disorder or brief psychotic disorder when the duration and recovery pattern are shorter and the schizoaffective longitudinal hinge is not met",
+        "Substance- or medication-induced psychosis or mood syndrome, intoxication or withdrawal, delirium, seizure, autoimmune encephalitis, endocrine or metabolic illness, infection, or structural neurologic disease",
+        "Delusional disorder, PTSD or dissociation, obsessive-compulsive phenomena, personality patterns, sleep disorders, and culturally sanctioned experiences",
+        "ICD-11 schizoaffective disorder, which uses concurrent schizophrenia and mood-episode requirements rather than DSM's longitudinal 2-week and mood-majority rules"
+      ],
+      "treatments": [
+        "Use shared decision making to choose an antipsychotic based on prior response, current psychosis, mood polarity, adverse effects, medical risk, interactions, formulation, access, adherence, and patient preference.",
+        "Paliperidone extended-release is specifically labeled for adult schizoaffective disorder as monotherapy or as an adjunct to mood stabilizers or antidepressants; do not generalize its dosing or renal instructions to every formulation.",
+        "Lithium or valproate may be used when a bipolar or manic component warrants a mood stabilizer. Antidepressants belong only in a confirmed depressive treatment plan after bipolar and activation risk assessment, with monitoring for mania or worsening agitation.",
+        "Clozapine has a labeled role in reducing recurrent suicidal behavior in schizophrenia or schizoaffective disorder; the label does not create a general treatment-resistant-schizoaffective indication.",
+        "Combine medication with cognitive behavioral therapy for psychosis or mood symptoms, family intervention, coordinated early-intervention or community care, sleep and substance care, supported education or employment, physical-health care, and a relapse and crisis plan."
+      ],
+      "contraindications": [
+        "Do not diagnose schizoaffective disorder simply because psychosis and mood symptoms coexist at one visit; reconstruct the full course and classification-specific timing.",
+        "Do not use antidepressant monotherapy or add an antidepressant without assessing bipolarity, mania, activation, suicidality, interactions, and the current treatment plan.",
+        "Do not argue with, ridicule, endorse, or reinforce delusions or hallucinations; acknowledge emotion and present reality without confrontation.",
+        "Do not use diagnosis alone to set a universal observation interval or justify involuntary care, seclusion, or restraint; use individualized risk, law, orders, and least-restrictive policy.",
+        "Do not reflexively escalate dopamine blockade when catatonia or NMS is suspected, and do not apply paliperidone ER instructions to an LAI or another formulation."
+      ],
+      "safetyConsiderations": [
+        "Use one calm speaker, personal space, short concrete statements, a quiet low-stimulation environment, clear choices, and consistent boundaries.",
+        "Acknowledge emotion or distress without endorsing the belief; do not argue. Present reality briefly and ask directly about command content, intent, past obedience, ability to resist, a target, and access to means.",
+        "Use voluntary engagement and de-escalation first. Observation is based on current risk and local policy; restrictive intervention is only for immediate danger with lawful oversight, physiologic monitoring, documentation, and debriefing.",
+        "Monitor acute dystonia, akathisia that may resemble agitation or worsen suicidality, parkinsonism, tardive dyskinesia or AIMS findings, weight or BMI, glucose or HbA1c, lipids, QT or ECG risk, orthostasis, sedation, prolactin effects, constipation, and NMS.",
+        "For clozapine, monitor current-label ANC, infection, severe constipation or ileus, myocarditis or cardiomyopathy symptoms, seizures, orthostasis, metabolic effects, sedation, and sialorrhea."
+      ],
+      "nursingPriorities": [
+        "Stabilize airway, breathing, circulation, vital signs, glucose, oxygenation, temperature, attention, neurologic status, hydration, nutrition, sleep, pregnancy or postpartum concerns, medication exposure, intoxication, and withdrawal.",
+        "Assess suicide or self-harm, violence or homicidal intent, command hallucinations, weapons or lethal means, mania and impulsivity, self-care, elopement, exploitation, dependents, and ability to collaborate; a no-harm contract is not a substitute.",
+        "Use calm reality-based communication: validate distress without validating the belief, do not argue, reduce stimulation, and provide clear choices, limits, and next steps.",
+        "Track the lifetime mood-psychosis timeline, function, sleep, adherence, substances, benefit, and adverse effects; screen metabolic risk, EPS or AIMS, QT or ECG risk, orthostasis, prolactin effects, and bowel function as applicable.",
+        "Coordinate CBT, family or caregiver education with consent, mood and psychosis follow-up, early-intervention or community care, substance treatment, physical-health care, practical supports, and a written crisis and relapse plan."
+      ],
+      "redFlags": [
+        "Suicidal or homicidal intent, plan, preparation, dangerous command hallucinations, weapon or lethal-means access, escalating violence, severe mania, or inability to maintain safety",
+        "Fluctuating attention, fever, hypoxia, hypoglycemia, focal neurologic deficit, seizure, severe headache, toxic exposure, intoxication or withdrawal, pregnancy or postpartum onset, or rapid cognitive decline",
+        "Inability to eat, drink, shelter, perform essential self-care, protect dependents, or sleep for a dangerous period; severe dehydration, malnutrition, exposure, exploitation, or victimization",
+        "Catatonic stupor, mutism, posturing, negativism, refusal, purposeless excitement, or echophenomena, especially with fever, autonomic instability, aspiration, immobility, or dehydration",
+        "NMS, airway-threatening dystonia, severe akathisia with suicidality, syncope, dangerous arrhythmia symptoms, myocarditis symptoms, seizure, infection with neutropenia concern, or severe constipation or ileus"
+      ],
+      "complications": [
+        "Suicide, relapse, hospitalization, severe mania or depression, self-neglect, victimization, disrupted relationships, loss of housing or employment, and reduced quality of life",
+        "Substance harm, sleep disruption, impulsive financial or sexual behavior, legal consequences, or harm to dependents during a high-risk mood or psychotic episode",
+        "Metabolic, movement, cardiovascular, prolactin, sedation, fall, constipation, renal-dose, and other medication complications, including clozapine-specific risks when applicable",
+        "Delayed recognition of delirium, neurologic or medical illness, intoxication or withdrawal, postpartum emergency, catatonia, or NMS",
+        "Stigma, coercion, fragmented care, and treatment mismatch when a cross-sectional symptom list replaces longitudinal diagnosis"
+      ],
+      "prognosis": "Course varies, with recurrent or persistent psychotic and mood symptoms possible. Outcomes improve when the diagnosis and treatment plan are repeatedly checked against the longitudinal course, effective medicines are tolerable and monitored, mood polarity is treated accurately, suicide and substance risks are addressed, and psychotherapy, family support, housing, work or school, and physical-health care are coordinated. Symptom recurrence does not erase prior recovery or personal goals.",
+      "prevention": [
+        "Track personal relapse signs across both mood and psychosis, including sleep loss, elevated activity, depression, withdrawal, suspiciousness, voices, disorganization, missed medication, or substance use.",
+        "Maintain collaborative follow-up and address adverse effects, cost, formulation, transportation, housing, and other adherence barriers before they trigger treatment interruption.",
+        "Reduce cannabis, stimulant, alcohol, tobacco, and other substance harms and protect sleep without blaming the patient.",
+        "Monitor metabolic, cardiovascular, movement, sexual or prolactin, bowel, dental, and preventive health alongside psychiatric recovery."
+      ],
+      "patientEducation": [
+        "Schizoaffective disorder is diagnosed from the pattern over time. In DSM, psychosis also occurs outside a major mood episode and mood episodes occupy most of the illness; psychosis only during mood episodes suggests a mood disorder with psychotic features.",
+        "Seek emergency help for dangerous commands, suicidal or homicidal intent, inability to eat or drink, severe mania, confusion, seizure, postpartum rapid change, catatonia, fever with rigidity, fainting, or a serious medicine reaction.",
+        "Ask why each medicine is used: antipsychotic, mood stabilizer, or antidepressant. Report activation or mania after an antidepressant, and review weight, glucose, lipids, movement symptoms, QT or ECG risk, orthostasis, prolactin effects, and constipation.",
+        "Paliperidone ER has a specific adult schizoaffective indication, but formulation, renal, and dosing rules are product specific. Clozapine requires current-label ANC and serious-adverse-effect monitoring when used for its labeled role.",
+        "Family or supporters can acknowledge distress without agreeing with a belief, avoid arguing, support sleep and treatment, learn mood and psychosis relapse signs, and follow the crisis and lethal-means safety plan."
+      ],
+      "specialPopulations": [
+        "Pregnancy and postpartum onset require urgent obstetric and psychiatric assessment; treatment choices require individualized maternal, fetal or infant, relapse, and product-specific review.",
+        "Children, adolescents, older adults, and atypical late onset require careful developmental, cognitive, neurologic, medication, and medical assessment before accepting a primary schizoaffective diagnosis.",
+        "Older adults have greater sensitivity to orthostasis, falls, anticholinergic effects, QT risk, renal dosing, and medical or neurocognitive causes of new psychosis or mood change.",
+        "Cultural, spiritual, language, sensory, autism-spectrum, intellectual, and trauma contexts shape expression; culturally shared experiences alone do not establish psychosis or mania.",
+        "People with unstable housing, poor access, justice involvement, intellectual or sensory disability, or prior coercion need practical continuity, rights protection, and recovery-oriented goals."
+      ],
+      "nclexTraps": [
+        "DSM schizoaffective disorder requires at least 2 weeks of delusions or hallucinations without a major mood episode and major mood episodes for most of the illness; one mixed snapshot is insufficient.",
+        "Psychosis only during mood episodes favors bipolar or major depressive disorder with psychotic features; mood episodes present for only a minority of chronic psychosis favor schizophrenia.",
+        "ICD-11 uses a different concurrent schizophrenia-and-mood-episode rule. Do not combine DSM and ICD criteria into one universal checklist.",
+        "Validate distress without validating the belief, do not argue, use low stimulation, and assess commands, suicide, violence, weapons, self-care, and basic needs directly.",
+        "Antidepressants require bipolar and activation assessment; catatonia and NMS need urgent review; observation and restriction are individualized and least restrictive."
+      ],
+      "relatedTopics": [
+        "Schizophrenia",
+        "Schizophreniform disorder",
+        "Brief psychotic disorder",
+        "Bipolar disorder",
+        "Bipolar II disorder",
+        "Major depressive disorder",
+        "Mania",
+        "Delusional disorder",
+        "Substance use disorders",
+        "Antipsychotic medications",
+        "Tardive dyskinesia",
+        "Suicidal ideation"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "apa-dsm5tr-2022",
+        "va-dod-schizophrenia-cpg-2023",
+        "dailymed-paliperidone-er-current",
+        "dailymed-clozapine-current",
+        "nice-ng10-violence-aggression",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. DSM-5-TR and WHO ICD-11 schizoaffective requirements are labeled separately. VA/DoD supports general psychosis assessment, monitoring, and psychosocial care but is not used as a schizoaffective mood-treatment guideline. Current DailyMed labels control paliperidone ER and clozapine claims; paliperidone ER evidence is not generalized to every formulation, and clozapine's recurrent-suicidality indication is not presented as a general treatment-resistant-schizoaffective indication. NICE NG10 and SAFE-T support individualized safety care.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024, Schizoaffective disorder 6A21; accessed 2026-08-14",
+          "fieldsSupported": [
+            "identity",
+            "ICD classification",
+            "concurrent psychosis and mood episode",
+            "onset relationship",
+            "duration",
+            "DSM distinction"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022, Schizoaffective Disorder; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "DSM classification",
+            "psychosis-without-mood duration",
+            "mood-majority requirement",
+            "bipolar type",
+            "depressive type",
+            "differential"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/scz/VA-DoD-CPG-Schizophrenia-CPG_Finalv231924.pdf",
+          "documentVersion": "VA/DoD schizophrenia and first-episode psychosis CPG 2023; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "general psychosis assessment",
+            "medical and substance differential",
+            "antipsychotic monitoring",
+            "psychosocial care",
+            "catatonia and NMS escalation"
+          ]
+        },
+        {
+          "authority": "U.S. National Library of Medicine DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0dc3a9b2-2edf-4fa2-a949-459b4218e763",
+          "documentVersion": "Paliperidone extended-release tablets prescribing information current on DailyMed; accessed 2026-08-14",
+          "fieldsSupported": [
+            "adult schizoaffective indication",
+            "monotherapy",
+            "adjunctive use",
+            "renal boundary",
+            "NMS",
+            "QT",
+            "metabolic and movement effects",
+            "prolactin"
+          ]
+        },
+        {
+          "authority": "U.S. National Library of Medicine DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=883b5d43-0339-7dc1-f775-93791fb9b978",
+          "documentVersion": "Clozapine tablets prescribing information current on DailyMed; accessed 2026-08-14",
+          "fieldsSupported": [
+            "recurrent suicidal behavior indication",
+            "ANC monitoring",
+            "boxed warnings",
+            "myocarditis",
+            "seizures",
+            "gastrointestinal hypomotility",
+            "patient education"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/NG10/chapter/recommendations",
+          "documentVersion": "NICE NG10 recommendations; accessed 2026-08-14",
+          "fieldsSupported": [
+            "violence risk assessment",
+            "de-escalation",
+            "observation",
+            "least-restrictive care",
+            "restrictive-intervention limits",
+            "dignity",
+            "documentation"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; accessed 2026-08-14",
+          "fieldsSupported": [
+            "suicide inquiry",
+            "risk factors",
+            "protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.schizoaffective-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.12"
     }
   ]
 };
@@ -9441,7 +10595,7 @@
     else { db.sourceReferences.push({ ...reference }); referenceByKey.set(key, db.sourceReferences[db.sourceReferences.length - 1]); }
   });
   db.reviewedExpansion = { schemaVersion: payload.schemaVersion, builderVersion: payload.builderVersion, domainVersion: payload.domainVersion, sourceSha256: payload.sourceSha256, cardCount: payload.cards.length };
-  db.version = [db.version, "reviewed-pathology-2026-08-14.11"].filter(Boolean).join("+");
+  db.version = [db.version, "reviewed-pathology-2026-08-14.12"].filter(Boolean).join("+");
   window.ANI_PATHOLOGY_DATABASE = db;
   window.ANI_PATHOLOGY_REVIEWED_EXPANSION = payload;
 }());

@@ -44636,6 +44636,28 @@ function isDegenerateOfflineLookupInput(input = "") {
   return highestRepeat >= 8 && uniqueShare <= 0.25;
 }
 
+function fastReviewedInformationalIdentityCore(input = "") {
+  const normalized = normalizePharmText(applyClinicalSpeechFixups(input) || input);
+  if (!normalized || normalized.split(" ").length > 16) return "";
+  // A personal/current clinical narrative must continue through the clinical
+  // answer and safety paths. This helper owns only a bounded encyclopedia
+  // question wrapped around one exact reviewed identity.
+  if (/\b(?:i|my|mine|we|our|ours|patient|client)\b/.test(normalized)) return "";
+
+  const informationalShells = [
+    /^(?:what\s+(?:does|do)\s+|tell\s+me\s+what\s+)(?:(?:a|an|the)\s+)?(.+?)\s+(?:consist(?:s)?\s+of|include(?:s)?|contain(?:s)?|involve(?:s)?)$/,
+    /^(?:(?:a|an|the)\s+)?(.+?)(?:\s+and)?\s+what\s+(?:does\s+)?(?:it|that)\s+(?:consist(?:s)?\s+of|include(?:s)?|contain(?:s)?|involve(?:s)?)$/,
+    /^what\s+is\s+in\s+(?:(?:a|an|the)\s+)?(.+?)$/,
+    /^(?:(?:a|an|the)\s+)?(.+?)(?:\s+and)?\s+what\s+is\s+in\s+(?:it|that)$/
+  ];
+  for (const shell of informationalShells) {
+    const match = normalized.match(shell);
+    const core = normalizePharmText(match?.[1] || "");
+    if (core && core !== normalized) return core;
+  }
+  return "";
+}
+
 function fastReviewedSearchRouteCore(input = "") {
   return normalizePharmText(applyClinicalSpeechFixups(input) || input)
     .replace(/\b(?:ani|annie|please|what|is|are|the|a|an|define|definition|explain|describe|tell|me|about|show|open|find|search|look|up|lookup|encyclopedia|database|reference|disease|condition|class|classes|drug|drugs|med|meds|medicine|medicines|medication|medications)\b/g, " ")
@@ -44780,7 +44802,27 @@ function fastReviewedSearchResolution(input = "") {
   const contextual = fastReviewedContextualIdentityResolution(input)
     || fastReviewedSearchSafetySuggestion(input);
   if (contextual) return contextual;
-  const sharedIdentity = resolveEncyclopediaIdentity(input, { mode: "navigate", limit: 8 });
+  const informationalCore = fastReviewedInformationalIdentityCore(input);
+  const informationalIdentity = informationalCore
+    ? resolveEncyclopediaIdentity(informationalCore, { mode: "navigate", limit: 8 })
+    : null;
+  const informationalIdentityOwnsRequest = Boolean(informationalIdentity && (
+    ((informationalIdentity.suppressUnrelatedMatches === true
+        || /ambiguity|unresolved-reviewed-abbreviation/.test(informationalIdentity.matchKind))
+      && (informationalIdentity.candidates.length > 0
+        || informationalIdentity.recognizedAbbreviation === true))
+    || (informationalIdentity.mayAutoOpen === true
+      && informationalIdentity.preferred
+      && [
+        "exact-identity",
+        "exact-canonical",
+        "reviewed-preferred-abbreviation",
+        "reviewed-abbreviation-expansion"
+      ].includes(informationalIdentity.matchKind))
+  ));
+  const sharedIdentity = informationalIdentityOwnsRequest
+    ? informationalIdentity
+    : resolveEncyclopediaIdentity(input, { mode: "navigate", limit: 8 });
   if ((sharedIdentity.suppressUnrelatedMatches === true
       || /ambiguity|unresolved-reviewed-abbreviation/.test(sharedIdentity.matchKind))
     && (sharedIdentity.candidates.length > 0 || sharedIdentity.recognizedAbbreviation === true)) {
@@ -44801,7 +44843,9 @@ function fastReviewedSearchResolution(input = "") {
     reviewedPrefixIdentity: sharedIdentity.matchKind === "reviewed-prefix",
     reviewedAbbreviationIdentity: sharedIdentity.recognizedAbbreviation === true,
     nearIdentity: false,
-    sharedIdentityResolution: true
+    sharedIdentityResolution: true,
+    informationalIdentityResolution: informationalIdentityOwnsRequest,
+    informationalIdentityCore: informationalIdentityOwnsRequest ? informationalCore : ""
   };
 }
 
