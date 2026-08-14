@@ -1780,9 +1780,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-14T05:49:46.099Z",
+  "generatedAt": "2026-08-14T15:11:00.663Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "drug-approval",
+      "contentHash": "f949f5f49a82b038875f6c41bf664b62117d65deeaee145161751a48d5c7628f",
+      "description": "This listing includes accelerated approvals (AAs) for malignant hematology and oncology indications that have been subsequently withdrawn, and are therefore, no longer FDA-approved.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/resources-information-approved-drugs/withdrawn-cancer-accelerated-approvals",
+      "id": "medical-update:fda-drugs:a8b2629a62b6fa26a95f2b70",
+      "publishedAt": "2026-08-14T14:32:33.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-14T15:11:00.663Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Withdrawn | Cancer Accelerated Approvals",
+      "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/withdrawn-cancer-accelerated-approvals"
+    },
     {
       "category": "drug-approval",
       "contentHash": "3e7b41d9151a8eef3c4ee7bd0609cea3b0a9059c24627d4a84cf5089e10e8212",
@@ -3462,7 +3478,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 5,
-      "retrievedAt": "2026-08-14T05:49:46.099Z",
+      "retrievedAt": "2026-08-14T15:11:00.663Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3473,18 +3489,18 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 5,
-      "retrievedAt": "2026-08-14T05:49:46.099Z",
+      "retrievedAt": "2026-08-14T15:11:00.663Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 2,
+      "itemCount": 3,
       "rawItemCount": 20,
-      "rejectedItemCount": 18,
+      "rejectedItemCount": 17,
       "retainedItemCount": 8,
-      "retrievedAt": "2026-08-14T05:49:46.099Z",
+      "retrievedAt": "2026-08-14T15:11:00.663Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -3495,7 +3511,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-08-14T05:49:46.099Z",
+      "retrievedAt": "2026-08-14T15:11:00.663Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -3506,7 +3522,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-14T05:49:46.099Z",
+      "retrievedAt": "2026-08-14T15:11:00.663Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -3517,7 +3533,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-14T05:49:46.099Z",
+      "retrievedAt": "2026-08-14T15:11:00.663Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -3528,7 +3544,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-08-14T05:49:46.099Z",
+      "retrievedAt": "2026-08-14T15:11:00.663Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -3539,7 +3555,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-14T05:49:46.099Z",
+      "retrievedAt": "2026-08-14T15:11:00.663Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -3550,7 +3566,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-14T05:49:46.099Z",
+      "retrievedAt": "2026-08-14T15:11:00.663Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
