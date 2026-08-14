@@ -1777,7 +1777,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-13T20:06:19.857Z",
+  "generatedAt": "2026-08-14T05:49:46.099Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -1868,6 +1868,22 @@
     },
     {
       "category": "recall",
+      "contentHash": "4547d4a5075d90594b3173cd91872431413a5a594bc549ff66a1ef130bf43771",
+      "description": "Baxter administration sets may have air bubbles in the drip chamber and tubing, which may result in air being delivered through the IV line to the patient.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/intravascular-administration-set-recall-baxter-removes-duo-vent-solution-sets",
+      "id": "medical-update:fda-medwatch:66f2a743e470830723b9ab82",
+      "publishedAt": "2026-08-13T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-14T05:49:46.099Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Intravascular Administration Set Recall: Baxter Removes Duo-Vent Solution Sets",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/intravascular-administration-set-recall-baxter-removes-duo-vent-solution-sets"
+    },
+    {
+      "category": "recall",
       "contentHash": "300d0a213d3f0603f1fae308f2dffb56a59e42972abf8586c084083dca7161e8",
       "description": "Oma's Pride of Avon, Connecticut, is voluntarily recalling one lot of Woof Complete Canine Chicken Recipe, 6 lb bag (Lot BB012729) because it is contaminated with Salmonella.",
       "descriptionOrigin": "source-provided",
@@ -1881,6 +1897,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "title": "Oma's Pride Voluntarily Recalls One Lot of Woof Complete Canine Chicken Recipe (6 Lb Bag) Because of Possible Salmonella Health Risk",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/omas-pride-voluntarily-recalls-one-lot-woof-complete-canine-chicken-recipe-6-lb-bag-because-possible"
+    },
+    {
+      "category": "recall",
+      "contentHash": "81c8513c396a56f6d0fdabce779095cd74bf8a503a693936ecb9ab9dc8f97265",
+      "description": "Kettle Cuisine LLC of Savage, MD is recalling Marketside Tomato Bisque Soup Kit – 14oz (397g) because the product has the potential to be contaminated with Listeria monocytogenes, an organism that can cause serious and sometimes fatal infections in young children, frail or elderly people, and others",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/kettle-cuisine-recalls-marketside-tomato-bisque-soup-kit-sold-exclusively-walmart-stores-because",
+      "id": "medical-update:fda-recalls:d1ca3d0ecdfbdf4677005447",
+      "publishedAt": "2026-08-12T20:43:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-14T05:49:46.099Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Kettle Cuisine Recalls Marketside Tomato Bisque Soup Kit – Sold Exclusively at Walmart Stores Because of Possible Health Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/kettle-cuisine-recalls-marketside-tomato-bisque-soup-kit-sold-exclusively-walmart-stores-because"
     },
     {
       "category": "recall",
@@ -3426,8 +3458,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 4,
-      "retrievedAt": "2026-08-13T20:06:19.857Z",
+      "retainedItemCount": 5,
+      "retrievedAt": "2026-08-14T05:49:46.099Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3437,8 +3469,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 4,
-      "retrievedAt": "2026-08-13T20:06:19.857Z",
+      "retainedItemCount": 5,
+      "retrievedAt": "2026-08-14T05:49:46.099Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -3449,7 +3481,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 8,
-      "retrievedAt": "2026-08-13T20:06:19.857Z",
+      "retrievedAt": "2026-08-14T05:49:46.099Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -3460,7 +3492,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-08-13T20:06:19.857Z",
+      "retrievedAt": "2026-08-14T05:49:46.099Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -3471,7 +3503,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-13T20:06:19.857Z",
+      "retrievedAt": "2026-08-14T05:49:46.099Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -3482,7 +3514,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-13T20:06:19.857Z",
+      "retrievedAt": "2026-08-14T05:49:46.099Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -3493,7 +3525,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-08-13T20:06:19.857Z",
+      "retrievedAt": "2026-08-14T05:49:46.099Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -3504,7 +3536,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-13T20:06:19.857Z",
+      "retrievedAt": "2026-08-14T05:49:46.099Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -3515,7 +3547,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-13T20:06:19.857Z",
+      "retrievedAt": "2026-08-14T05:49:46.099Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
