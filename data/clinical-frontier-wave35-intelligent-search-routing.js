@@ -3,7 +3,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "2026-08-12-wave35-intelligent-search-routing-32";
+  const VERSION = "2026-08-14-wave35-intelligent-search-routing-33";
   if (window.ANI_WAVE35_INTELLIGENT_SEARCH_ROUTING
     && window.ANI_WAVE35_INTELLIGENT_SEARCH_ROUTING.version === VERSION) return;
 
@@ -22,9 +22,14 @@
   const baseSearchPathologyEntries = typeof searchPathologyEntries === "function"
     ? searchPathologyEntries : null;
 
-  const priorRoutingObjects = Object.keys(window)
+  const priorRoutingEntries = Object.keys(window)
     .filter((key) => /ROUTING/i.test(key) && window[key] && typeof window[key] === "object")
-    .map((key) => window[key]);
+    .map((key, loaderIndex) => Object.freeze({
+      key,
+      loaderIndex,
+      routing: window[key]
+    }));
+  const priorRoutingObjects = priorRoutingEntries.map((entry) => entry.routing);
 
   const normalize = (value) => String(value || "")
     .normalize("NFD")
@@ -111,6 +116,35 @@
     return candidate;
   };
 
+  /*
+   * Earlier reviewed routing waves predate ANI's shared topic-request facade.
+   * Bind their pure canonicalTarget decisions back to one installed primary
+   * card identity so autocomplete, global search, lecture, offline/chat, and
+   * voice can see the same reviewed route. This is deliberately not an alias
+   * registration: a target must be an exact canonical/display title, resolve
+   * uniquely through the shared identity layer, and remain a live runtime
+   * object. Ambiguous or stale targets fail closed.
+   */
+  const exactCandidateForPriorCanonicalTitle = (title) => {
+    const wanted = normalize(title);
+    if (!wanted || typeof resolveEncyclopediaIdentity !== "function") return null;
+    let identity = null;
+    try {
+      identity = resolveEncyclopediaIdentity(title, { mode: "suggest", limit: 12 });
+    } catch (_error) {
+      return null;
+    }
+    const candidate = identity && identity.unique === true
+      && identity.suppressUnrelatedMatches !== true
+      && identity.matchKind === "exact-identity"
+      && identity.preferred && identity.preferred.item
+      ? identity.preferred : null;
+    if (!candidate) return null;
+    return exactIdentityTerms(candidate.type, candidate.item).map(normalize).includes(wanted)
+      ? { type: candidate.type, item: candidate.item }
+      : null;
+  };
+
   const TARGETS = Object.freeze({
     ibuprofen: Object.freeze({ type: "drug", names: ["Ibuprofen"] }),
     diphenhydramine: Object.freeze({ type: "drug", names: ["Diphenhydramine"] }),
@@ -163,6 +197,25 @@
 
   const exactRouteIndex = new Map();
   EXACT_ROUTES.forEach((route) => route.aliases.forEach((alias) => exactRouteIndex.set(normalize(alias), route)));
+
+  /*
+   * Legacy route-shaped inputs are backward-compatibility destinations, not
+   * aliases or fuzzy medical identities. Each reviewed literal is matched
+   * exactly, then bound to one exact installed canonical card. Missing,
+   * ambiguous, or merely similar route-shaped inputs fail closed.
+   */
+  const REVIEWED_LEGACY_ROUTES = Object.freeze([
+    Object.freeze({
+      id: "reviewed-legacy-hemochromatosis-route",
+      input: "old/topic/hemochromatosis-card-v0",
+      target: Object.freeze({ type: "pathology", names: Object.freeze(["Hemochromatosis"]) })
+    })
+  ]);
+  const reviewedLegacyRouteIndex = new Map(REVIEWED_LEGACY_ROUTES
+    .map((route) => [route.input, route]));
+  const legacyRouteShapedInput = (input) => /^old topic\b/.test(normalize(input));
+  const unreviewedLegacyRouteShapedInput = (input) => legacyRouteShapedInput(input)
+    && !reviewedLegacyRouteIndex.has(String(input || ""));
 
   const toxicityContext = (text) => /\b(overdose|overdosed|toxicity|toxic|poison(?:ed|ing)?|too much|ingest(?:ed|ion)?|swallow(?:ed)?|anticholinergic delirium|physostigmine)\b/i.test(text);
   const explicitDomainIntent = (text) => {
@@ -271,6 +324,47 @@
      * descriptions such as "burning when I pee" and "my chest pressure...".
      */
     return /\b(i|im|i am|ive|i have|my|me|we|our|friend|mother|mom|father|dad|child|baby|toddler|patient|someone|he|she)\b/i.test(text);
+  };
+
+  const reviewedRoutePersonalClinicalNarrative = (input) => {
+    if (typeof isPersonalClinicalNarrative === "function") {
+      return isPersonalClinicalNarrative(input);
+    }
+    const text = String(input || "");
+    return /\b(?:i|i'm|im|i've|ive|my|me|we|we're|our)\b/i.test(text)
+      || /\b(?:my|our|this|the)\s+(?:patient|client|child|baby|toddler)\b/i.test(text)
+      || /\b(?:patient|client|child|baby|toddler)\s+(?:has|have|is|are|was|were|feels?|reports?|developed?|started?|cannot|can't)\b/i.test(text);
+  };
+
+  const priorReviewedRouteResolutions = (input) => {
+    if (!normalize(input) || priorActiveEmergency(input)) return [];
+    const personalClinicalNarrative = reviewedRoutePersonalClinicalNarrative(input);
+    /* Later loader waves currently wrap earlier waves, so route resolution is
+     * evaluated from newest to oldest. Safety predicates above intentionally
+     * remain cumulative in original loader order. */
+    const routeEntries = priorRoutingEntries.slice().reverse();
+    for (const entry of routeEntries) {
+      const routing = entry.routing;
+      if (!routing || typeof routing.canonicalTarget !== "function") continue;
+      let target = "";
+      try {
+        target = routing.canonicalTarget.call(routing, input);
+      } catch (_error) {
+        continue;
+      }
+      if (typeof target !== "string" || !target.trim()
+        || !priorCanonicalTargetIsSupported(input, target)) continue;
+      const candidate = exactCandidateForPriorCanonicalTitle(target.trim());
+      if (!candidate) continue;
+      return [{
+        candidate,
+        routeId: `${entry.key}:${normalize(target)}`,
+        score: 7600 + entry.loaderIndex,
+        activeCurrent: false,
+        mayAutoOpen: !personalClinicalNarrative
+      }];
+    }
+    return [];
   };
 
   const directExplanationIntent = (input) => {
@@ -669,6 +763,24 @@
     };
   };
 
+  const reviewedLegacyResolution = (input) => {
+    const route = reviewedLegacyRouteIndex.get(String(input || ""));
+    if (!route) return null;
+    const candidate = exactCandidateForTarget(route.target);
+    if (!candidate) return null;
+    return {
+      kind: "exact",
+      routeId: route.id,
+      target: route.id,
+      candidate,
+      cueHits: [],
+      score: 9100,
+      activeCurrent: false,
+      educational: true,
+      reviewedLegacyRoute: true
+    };
+  };
+
   const namedTenResolution = (input) => {
     if (tenCollisionGuard(input)) return null;
     const raw = String(input || "");
@@ -737,6 +849,8 @@
 
   const resolveUncached = (input) => {
     if (!normalize(input) || priorActiveEmergency(input)) return null;
+    const reviewedLegacy = reviewedLegacyResolution(input);
+    if (reviewedLegacy) return reviewedLegacy;
     const exact = exactResolution(input);
     if (exact) return exact;
     const namedTen = namedTenResolution(input);
@@ -775,6 +889,7 @@
   const resolutionCache = new Map();
   const resolutionCacheKey = (input) => {
     const raw = String(input || "");
+    if (legacyRouteShapedInput(raw)) return `legacy\u0000${raw}`;
     return `${normalize(raw)}\u0000${uppercaseTenIdentity(raw) ? "TEN" : "ten"}\u0000${/\bTENS\b/.test(raw) ? "TENS" : "tens"}`;
   };
   const cloneResolution = (resolved) => resolved ? {
@@ -863,6 +978,10 @@
       query: label,
       detailType: resolved.candidate.type,
       openDetail: true,
+      targetCandidate: {
+        type: resolved.candidate.type,
+        item: resolved.candidate.item
+      },
       highlightQuery: String(input || ""),
       preface,
       originalQuery: String(input || ""),
@@ -910,6 +1029,7 @@
       if (tenCollisionResponse(input)) return [];
       if (typeof isDegenerateOfflineLookupInput === "function"
         && isDegenerateOfflineLookupInput(input)) return [];
+      if (unreviewedLegacyRouteShapedInput(input)) return [];
       const reviewedSearchSafetyOwner = reviewedSearchResolutionFor(input);
       if (reviewedSearchSafetyOwner?.ambiguousIdentity === true) {
         return safeArray(reviewedSearchSafetyOwner.ambiguityCandidates)
@@ -982,6 +1102,28 @@
       if (directCollisionResponse) return directCollisionResponse;
       if (typeof isDegenerateOfflineLookupInput === "function"
           && isDegenerateOfflineLookupInput(input)) return "";
+      if (unreviewedLegacyRouteShapedInput(input)) return "";
+      const sharedTopicRequest = typeof resolveTopicRequest === "function"
+        ? resolveTopicRequest(input, { mode: "navigate", limit: 8 })
+        : null;
+      if (sharedTopicRequest?.resolutionKind === "ambiguous-reviewed-route") {
+        pendingOfflineLookupSuggestions = safeArray(sharedTopicRequest.candidates)
+          .map((candidate) => ({ ...candidate, ambiguousIdentity: true }));
+        return typeof makeOfflineAmbiguityPrompt === "function"
+          ? makeOfflineAmbiguityPrompt(pendingOfflineLookupSuggestions)
+          : "I found more than one reviewed encyclopedia destination. Add one more specific word so I do not open the wrong card.";
+      }
+      if (sharedTopicRequest?.resolutionKind === "reviewed-route"
+        && sharedTopicRequest.preferred?.item) {
+        pendingOfflineLookupSuggestions = [];
+        if (sharedTopicRequest.personalClinicalNarrative === true
+          || sharedTopicRequest.mayAutoOpen !== true) {
+          return safetyResponse({ candidate: sharedTopicRequest.preferred });
+        }
+        if (typeof offlineLookupDatabaseRedirect === "function") {
+          return offlineLookupDatabaseRedirect(sharedTopicRequest.preferred, input);
+        }
+      }
       const reviewedSearchSafetyOwner = reviewedSearchResolutionFor(input);
       if (directExplanationIntent(input)
         && !currentPersonalSymptoms(input)) {
@@ -1060,6 +1202,36 @@
     makeModelEnhancedResponse = function (input) {
       const args = Array.prototype.slice.call(arguments, 1);
       if (priorActiveEmergency(input)) return baseMakeModelEnhancedResponse.apply(this, [input, ...args]);
+      if (unreviewedLegacyRouteShapedInput(input)) return "";
+      const sharedTopicRequest = typeof resolveTopicRequest === "function"
+        ? resolveTopicRequest(input, { mode: "navigate", limit: 8 })
+        : null;
+      if (sharedTopicRequest?.resolutionKind === "ambiguous-reviewed-route") {
+        return typeof makeOfflineAmbiguityPrompt === "function"
+          ? makeOfflineAmbiguityPrompt(sharedTopicRequest.candidates)
+          : "I found more than one reviewed encyclopedia destination. Add one more specific word so I do not open the wrong card.";
+      }
+      // Preserve the reviewed bedside answer layer ahead of identity/card
+      // routing, while keeping ambiguity fail-closed. A named medication
+      // inside a clinical question (for example, calcium gluconate in severe
+      // hyperkalemia) is evidence for the focused answer, not permission to
+      // replace it with a medication-card redirect.
+      const focusedPreRuntimeAnswer = typeof makeOfflinePreRuntimeFocusedAnswer === "function"
+        ? makeOfflinePreRuntimeFocusedAnswer(input)
+        : "";
+      if (typeof focusedPreRuntimeAnswer === "string" && focusedPreRuntimeAnswer.trim()) {
+        return focusedPreRuntimeAnswer;
+      }
+      if (sharedTopicRequest?.resolutionKind === "reviewed-route"
+        && sharedTopicRequest.preferred?.item) {
+        if (sharedTopicRequest.personalClinicalNarrative === true
+          || sharedTopicRequest.mayAutoOpen !== true) {
+          return safetyResponse({ candidate: sharedTopicRequest.preferred });
+        }
+        if (typeof offlineLookupDatabaseRedirect === "function") {
+          return offlineLookupDatabaseRedirect(sharedTopicRequest.preferred, input);
+        }
+      }
       const reviewedFamilyCandidates = typeof responsiveEncyclopediaFamilyCandidates === "function"
         ? responsiveEncyclopediaFamilyCandidates(input)
         : [];
@@ -1155,6 +1327,20 @@
         && commonWordAbbreviationNeedsExplicitContext(input, normalize(input))) return null;
       if (typeof isDegenerateOfflineLookupInput === "function"
         && isDegenerateOfflineLookupInput(input)) return null;
+      if (unreviewedLegacyRouteShapedInput(input)) return null;
+      const sharedIdentity = typeof resolveEncyclopediaIdentity === "function"
+        ? resolveEncyclopediaIdentity(input, { mode: "navigate", limit: 8 })
+        : null;
+      const sharedReviewedRoute = typeof resolveReviewedTopicRequest === "function"
+        ? resolveReviewedTopicRequest(input, { mode: "navigate", limit: 8 })
+        : null;
+      if (!sharedIdentity?.preferred && sharedReviewedRoute?.candidates?.length) {
+        // Older route wrappers may recognize an educational intent or symptom
+        // pattern, but that is not exact identity authority. The central
+        // navigation policy may still open the bound reviewed destination;
+        // direct/link callers must receive null here.
+        return null;
+      }
       if (preferredType === "procedures") {
         const procedureOwner = baseExactPharmDetailCandidate.apply(this, [input, preferredType, ...args]);
         if (procedureOwner?.type === "reference"
@@ -1213,7 +1399,12 @@
       }
       const resolved = resolve(input);
       const normalizedPreferred = preferredType === "procedures" ? "reference" : String(preferredType || "");
-      if (resolved && !resolved.activeCurrent && (!normalizedPreferred || normalizedPreferred === resolved.candidate.type)) {
+      // Exact-detail ownership is an identity operation. Reviewed symptom
+      // signatures, contextual intents, and ambiguity helpers may guide the
+      // central navigation policy, but must never masquerade as an exact
+      // identity for links or direct-opening callers.
+      if (resolved && resolved.kind === "exact" && !resolved.activeCurrent
+        && (!normalizedPreferred || normalizedPreferred === resolved.candidate.type)) {
         return { type: resolved.candidate.type, item: resolved.candidate.item };
       }
       const base = baseExactPharmDetailCandidate.apply(this, [input, preferredType, ...args]);
@@ -1236,6 +1427,32 @@
     };
     window.highYieldDrugClueMatch = highYieldDrugClueMatch;
   }
+
+  const sharedPriorTopicResolversRegistered = typeof window.ANI_REGISTER_REVIEWED_TOPIC_REQUEST_RESOLVER === "function"
+    ? window.ANI_REGISTER_REVIEWED_TOPIC_REQUEST_RESOLVER({
+      id: "reviewed-post-main-routing-registry",
+      version: `${VERSION}-prior-routes-v1`,
+      resolve: priorReviewedRouteResolutions
+    })
+    : false;
+
+  const sharedTopicResolverRegistered = typeof window.ANI_REGISTER_REVIEWED_TOPIC_REQUEST_RESOLVER === "function"
+    ? window.ANI_REGISTER_REVIEWED_TOPIC_REQUEST_RESOLVER({
+      id: "wave35-intelligent-search-routing",
+      version: VERSION,
+      resolve(input) {
+        const resolved = resolve(input);
+        if (!resolved?.candidate?.item) return null;
+        return {
+          candidate: resolved.candidate,
+          routeId: resolved.routeId,
+          score: resolved.score,
+          activeCurrent: resolved.activeCurrent === true,
+          mayAutoOpen: resolved.activeCurrent !== true
+        };
+      }
+    })
+    : false;
 
   const allConfiguredTargetKeys = Array.from(new Set([
     ...EXACT_ROUTES.map((route) => route.target),
@@ -1276,6 +1493,7 @@
     version: VERSION,
     TARGETS,
     EXACT_ROUTES,
+    REVIEWED_LEGACY_ROUTES,
     SIGNATURES,
     EXACT_CASES,
     POSITIVE_CASES,
@@ -1289,10 +1507,15 @@
     routingContract: COUNTS,
     targetAvailability: Object.freeze(targetAvailability),
     routingTargets: Object.freeze(routingTargets),
+    sharedPriorTopicResolversRegistered,
+    sharedTopicResolverRegistered,
     normalize,
     compactLookupFrame,
     candidateLabel,
     exactCandidateForTarget,
+    reviewedLegacyResolution,
+    legacyRouteShapedInput,
+    unreviewedLegacyRouteShapedInput,
     exactResolution,
     namedTenResolution,
     tenCollisionGuard,
@@ -1306,6 +1529,7 @@
     routeQuery,
     priorActiveEmergency,
     priorCanonicalTarget,
+    priorReviewedRouteResolutions,
     priorCanonicalTargetIsSupported,
     priorSpecificMedicationClue,
     directExplanationIntent,

@@ -4,8 +4,8 @@
   const payload = {
   "schemaVersion": "ani-pharmacy-reviewed-runtime-v1",
   "builderVersion": "ani-pharmacy-builder-2026-08-08.2",
-  "domainVersion": "2026-08-11.1",
-  "sourceSha256": "b402f46cf4ab596ceb420204ef61e3005327eab0f2c6c49c31f1187b8893072a",
+  "domainVersion": "2026-08-13.2",
+  "sourceSha256": "3217e17eb5de108ee65bbe1f3e3e0628069a4eac2281b1a2451151cfe06b989d",
   "subsections": [
     {
       "id": "peptides-peptide-based-therapies",
@@ -469,7 +469,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.cobicistat",
@@ -575,7 +575,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.collagenase-santyl",
@@ -678,7 +678,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.collagenase-xiaflex",
@@ -785,7 +785,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.cromolyn-sodium",
@@ -923,7 +923,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.efgartigimod-alfa-fcab",
@@ -1025,7 +1025,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.avacopan",
@@ -1126,7 +1126,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.belzutifan",
@@ -1231,7 +1231,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.elacestrant",
@@ -1332,7 +1332,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.capivasertib",
@@ -1438,7 +1438,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.guanfacine",
@@ -1586,7 +1586,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.povidone-iodine",
@@ -1712,7 +1712,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.bulevirtide-gmod",
@@ -1884,7 +1884,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.dasiglucagon",
@@ -2045,7 +2045,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.terlipressin",
@@ -2208,7 +2208,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.ziconotide",
@@ -2374,7 +2374,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.retatrutide",
@@ -2551,7 +2551,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.cagrilintide",
@@ -2730,7 +2730,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.liraglutide",
@@ -2924,7 +2924,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.dulaglutide",
@@ -3097,7 +3097,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.insulin-glargine",
@@ -3274,7 +3274,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.insulin-lispro",
@@ -3452,7 +3452,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.glucagon",
@@ -3655,7 +3655,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.oxytocin",
@@ -3846,7 +3846,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
     },
     {
       "id": "medication.abaloparatide",
@@ -4052,7 +4052,859 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pharmacyDomainVersion": "2026-08-11.1"
+      "pharmacyDomainVersion": "2026-08-13.2"
+    },
+    {
+      "id": "medication.heparin",
+      "name": "Heparin",
+      "displayName": "Heparin (unfractionated heparin)",
+      "generic": "heparin",
+      "aliases": [
+        "unfractionated heparin",
+        "UFH",
+        "heparin sodium"
+      ],
+      "brandExamples": [],
+      "class": "Parenteral anticoagulant that accelerates antithrombin inhibition of thrombin and factor Xa",
+      "plainLanguage": "Heparin is a fast-acting injectable blood thinner. It helps prevent a clot from growing or a new clot from forming, but it does not directly dissolve a clot that is already present.",
+      "whyItMatters": "Heparin can cause fatal bleeding, heparin-induced thrombocytopenia with new thrombosis, and concentration-selection errors. Safe therapy depends on the exact product and concentration, protocol-directed coagulation monitoring, platelet and bleeding surveillance, and prompt action when toxicity or HIT is suspected.",
+      "description": "Heparin is unfractionated heparin, a mixture of sulfated polysaccharide chains used for rapid parenteral anticoagulation. It is used to prevent or treat venous and arterial thromboembolism and to prevent clotting in selected procedures and extracorporeal circuits. This card covers systemic unfractionated-heparin anticoagulation; it does not make a therapeutic infusion interchangeable with a catheter-flush product or with enoxaparin and other low-molecular-weight heparins.",
+      "mechanism": "Heparin binds antithrombin and changes its shape so antithrombin inactivates clotting enzymes much faster, especially thrombin, also called factor IIa, and factor Xa. Longer unfractionated-heparin chains can bridge antithrombin to thrombin, while Xa inhibition does not require that bridge. This reduces fibrin formation and clot propagation. Variable protein binding and illness-related heparin resistance help explain why full-dose therapy is adjusted to a validated local coagulation assay rather than a universal dose or target.",
+      "usedToTreat": "FDA-labeled uses include prophylaxis and treatment of venous thrombosis and pulmonary embolism; prevention and treatment of selected thromboembolic complications associated with atrial fibrillation; treatment of acute and chronic consumptive coagulopathies; prevention of clotting in arterial and cardiac surgery; prevention and treatment of peripheral arterial embolism; and anticoagulant use in blood transfusion, extracorporeal circulation, and dialysis procedures.",
+      "boxedWarning": "The reviewed U.S. labels do not contain a boxed warning. They do contain major warnings for fatal concentration-selection medication errors, fatal hemorrhage, heparin-induced thrombocytopenia with or without thrombosis, thrombocytopenia, heparin resistance, hypersensitivity, and hyperkalemia. Absence of a box does not make heparin a low-risk medication.",
+      "contraindications": [
+        "History of heparin-induced thrombocytopenia, with or without thrombosis.",
+        "Known hypersensitivity to heparin or pork products.",
+        "An uncontrollable active bleeding state, except when the bleeding state is caused by disseminated intravascular coagulation being treated with heparin.",
+        "For full-dose therapy, inability to perform suitable blood-coagulation testing at appropriate intervals."
+      ],
+      "adverseEffects": [
+        "Bleeding or occult blood loss, including gastrointestinal, urinary, retroperitoneal, intracranial, surgical-site, or line-site hemorrhage.",
+        "Thrombocytopenia and heparin-induced thrombocytopenia, an immune reaction in which falling platelets can occur together with dangerous new arterial or venous thrombosis.",
+        "Injection-site irritation, hypersensitivity reactions, and serum aminotransferase elevation.",
+        "Hyperkalemia from reduced aldosterone activity, especially with diabetes, renal failure, metabolic acidosis, elevated baseline potassium, potassium-sparing therapy, or longer exposure."
+      ],
+      "seriousAdverseReactions": [
+        "Fatal or life-threatening hemorrhage.",
+        "Heparin-induced thrombocytopenia with thrombosis, which can cause limb ischemia, stroke, myocardial infarction, pulmonary embolism, or death.",
+        "Severe hypersensitivity or clinically important hyperkalemia."
+      ],
+      "interactions": [
+        "Aspirin, ibuprofen, indomethacin, dipyridamole, and other drugs that impair platelet function can add bleeding risk because platelet aggregation is an important remaining defense during heparin therapy.",
+        "Warfarin and other anticoagulants add bleeding risk. Heparin can also prolong prothrombin time, so transition-related laboratory timing must follow the product label and local protocol.",
+        "Intravenous nitroglycerin can reduce the measured anticoagulant response in some patients and a rebound can occur after it is stopped; follow the prescribed coagulation-monitoring plan rather than assuming a stable heparin requirement."
+      ],
+      "nursingEssentials": [
+        "Verify the exact heparin product, concentration, route, indication, weight-based or protocol inputs, pump settings, and independent-check requirements before administration. Systemic infusion bags and concentrated vials must never be selected as though they were catheter-flush products.",
+        "For therapeutic dosing, trend the protocol-selected assay, commonly aPTT or an institution-validated anti-factor Xa assay, together with the patient's bleeding and thrombotic response. Do not invent one universal target because reagents, assays, indications, and protocols differ.",
+        "Trend platelet count and assess for both bleeding and new thrombosis. A platelet fall, skin necrosis at an injection site, new limb ischemia, chest pain, dyspnea, or neurologic change can signal HIT even when the platelet count is not profoundly low; stop and escalate according to the suspected-HIT pathway rather than giving more heparin.",
+        "Assess potassium risk and trend potassium when the label or clinical context calls for it, particularly with therapy beyond several days or in diabetes, kidney disease, metabolic acidosis, elevated baseline potassium, or potassium-sparing medicines."
+      ],
+      "keyLabs": [
+        "Protocol-selected coagulation testing for full-dose therapy, commonly aPTT or an institution-validated heparin anti-factor Xa assay; interpret the result with dose timing, assay, indication, and clinical response.",
+        "Platelet count and hematocrit during therapy, plus hemoglobin and assessment for occult or visible bleeding as clinically indicated.",
+        "Serum potassium before and during therapy when risk factors or treatment duration make hyperkalemia clinically relevant.",
+        "Clinical assessment for recurrent or progressive thrombosis when heparin resistance, HIT, or inadequate anticoagulation is suspected."
+      ],
+      "administration": [
+        "Administer only by the route and formulation in the exact order and current product label. Systemic unfractionated heparin may be given intravenously or subcutaneously; never transfer a concentration, rate, or instruction from a flush, lock, premixed infusion, or another heparin product.",
+        "Measure heparin in USP units, not milligrams. Confirm the vial or bag concentration and infusion-pump library entry because heparin is supplied in multiple concentrations and fatal selection errors have occurred.",
+        "Use the facility's indication-specific dosing and monitoring protocol. Dose changes require the current result, collection time, infusion history, bleeding assessment, and protocol rather than an isolated number."
+      ],
+      "patientEducation": [
+        "Explain that heparin prevents clot extension and new clot formation; it does not instantly dissolve an existing clot. Report severe headache, new weakness, black or bloody stool, blood in urine, uncontrolled bleeding, faintness, chest pain, shortness of breath, or a painful pale or swollen limb immediately.",
+        "Tell every clinician and dentist about heparin before a procedure or new medicine. Do not add aspirin, ibuprofen, another NSAID, antiplatelet drug, anticoagulant, or supplement that may affect bleeding unless the care team has reviewed it.",
+        "Explain that a low platelet count during heparin can represent HIT, which is dangerous because it can cause clotting as well as thrombocytopenia."
+      ],
+      "antidote": "Protamine sulfate can neutralize clinically important unfractionated-heparin effect, but the amount depends on the heparin dose and time since exposure and protamine itself can cause severe hypotension or anaphylactoid reactions.",
+      "toxicityManagement": [
+        "For serious bleeding or suspected overdose, stop heparin, stabilize airway, breathing, circulation, and the bleeding source, obtain urgent coagulation and blood-count assessment, and activate the institution's hemorrhage or anticoagulant-reversal protocol.",
+        "Protamine sulfate may be given by slow intravenous administration when reversal is clinically required. Calculate it from the heparin exposure and elapsed time under the current label and protocol; monitor closely because excessive or rapid protamine can cause anticoagulant effects, severe hypotension, pulmonary reactions, or anaphylactoid shock.",
+        "Protamine does not replace hemorrhage control, transfusion support when indicated, repeated clinical reassessment, or evaluation for HIT when thrombocytopenia or new thrombosis is present."
+      ],
+      "specialPopulations": [
+        "Use preservative-free heparin when required for neonates and infants; benzyl-alcohol-containing multidose products can cause serious toxicity in this population.",
+        "Older adults, particularly women older than 60 years in the reviewed labels, have had more bleeding and require careful dose and clinical monitoring.",
+        "Pregnancy and lactation decisions are indication and product specific. Review preservative exposure, maternal bleeding risk, and the need for anticoagulation rather than assuming every heparin formulation is interchangeable."
+      ],
+      "nclexTraps": [
+        "HIT is a clotting emergency despite the low platelet count; do not respond by giving more heparin.",
+        "Heparin is measured in units and comes in multiple concentrations. A correct drug name with the wrong concentration can still be fatal.",
+        "Protamine is not a harmless automatic antidote. Its dose is exposure- and time-dependent, and rapid or excessive administration can cause severe reactions.",
+        "A therapeutic heparin infusion, a catheter-flush product, and enoxaparin are not unit-for-unit substitutes."
+      ],
+      "routes": [
+        "Intravenous injection or infusion for label- and protocol-specific uses",
+        "Subcutaneous injection for label- and protocol-specific uses"
+      ],
+      "relatedTopics": [
+        "Protamine sulfate",
+        "Anticoagulant reversal mechanism comparison"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "sourceNote": "Original ANI synthesis from current DailyMed heparin sodium injection and premixed-infusion prescribing information: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?audience=professional&setid=56dc3074-f1c5-45a3-b923-f1d14858e06d and https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=0413f511-6b34-4c15-e48b-3fad08baacbe.",
+      "provenance": [
+        {
+          "key": "dailymed-heparin-injection-label",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?audience=professional&setid=56dc3074-f1c5-45a3-b923-f1d14858e06d",
+          "documentVersion": "Heparin Sodium Injection; DailyMed updated 2025-10-03; checked 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "mechanism",
+            "indications",
+            "routes and administration",
+            "contraindications",
+            "warnings and precautions",
+            "adverse reactions",
+            "interactions",
+            "laboratory monitoring",
+            "patient counseling",
+            "special populations",
+            "overdosage and protamine reversal"
+          ]
+        },
+        {
+          "key": "dailymed-heparin-premix-label",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=0413f511-6b34-4c15-e48b-3fad08baacbe",
+          "documentVersion": "Heparin Sodium in Sodium Chloride Injection; DailyMed updated 2026-05-12; PI revised 11/2025; checked 2026-08-13",
+          "fieldsSupported": [
+            "current systemic-infusion indications",
+            "fatal concentration-selection warning",
+            "HIT and thrombocytopenia",
+            "coagulation and platelet monitoring",
+            "hyperkalemia risk",
+            "interaction examples",
+            "protamine reversal limits and risks"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-13.2"
+    },
+    {
+      "id": "medication.warfarin",
+      "name": "Warfarin",
+      "displayName": "Warfarin (Jantoven)",
+      "generic": "warfarin",
+      "aliases": [
+        "warfarin sodium",
+        "Jantoven",
+        "Coumadin"
+      ],
+      "brandExamples": [
+        "Jantoven"
+      ],
+      "class": "Oral vitamin K antagonist anticoagulant that inhibits vitamin K epoxide reductase",
+      "plainLanguage": "Warfarin is an oral blood thinner whose dose is adjusted using the INR blood test. It slows the liver's production of several clotting proteins, so its effect changes gradually and can be altered by illness, medicines, and major changes in vitamin K intake.",
+      "whyItMatters": "Warfarin can prevent stroke and recurrent venous clots, but too much effect can cause fatal bleeding and too little can leave the patient unprotected from thrombosis. Safe care requires an indication-specific INR goal, repeat testing after relevant changes, consistent medication and diet habits, and rapid evaluation of bleeding, skin injury, pregnancy exposure, or suspected overdose.",
+      "description": "Warfarin is a long-acting oral anticoagulant used for selected venous thromboembolism, atrial-fibrillation, cardiac-valve, and post-myocardial-infarction indications. It reduces new clot formation and extension but has no direct effect on an established thrombus and does not reverse ischemic tissue injury. Because clotting factors turn over at different rates and warfarin response varies widely, the prescribed dose is individualized to the clinical indication and INR trend rather than chosen from one universal regimen.",
+      "mechanism": "Warfarin inhibits the C1 subunit of vitamin K epoxide reductase, or VKORC1, reducing regeneration of active vitamin K. The liver then produces less functional factors II, VII, IX, and X and less of the natural anticoagulant proteins C and S. Protein C falls relatively early, which can create a short initial prothrombotic imbalance and helps explain why selected acute indications require overlap with a faster anticoagulant. Existing functional factors must clear before the full effect appears, so INR response and clinical protection lag behind a dose change.",
+      "usedToTreat": "FDA-labeled uses include prophylaxis and treatment of venous thrombosis and its extension and pulmonary embolism; prevention and treatment of thromboembolic complications associated with atrial fibrillation and cardiac-valve replacement; and reduction of death, recurrent myocardial infarction, and thromboembolic events after myocardial infarction in selected patients.",
+      "boxedWarning": "BOXED WARNING: Warfarin can cause major or fatal bleeding. All treated patients require regular INR monitoring. Medicines, dietary changes, illness, and other factors can change the INR, and patients must be taught bleeding-prevention measures and when to report bleeding.",
+      "contraindications": [
+        "Pregnancy, except in the narrow specialist-managed circumstance of a pregnant patient with a mechanical heart valve for whom the maternal benefit may outweigh fetal risk.",
+        "Hemorrhagic tendencies or blood dyscrasias and other conditions with an unacceptably high risk of uncontrolled bleeding.",
+        "Recent or contemplated surgery of the central nervous system or eye, traumatic surgery with large open surfaces, or another procedure in which bleeding cannot be controlled, as specified in the current label.",
+        "Malignant hypertension, major regional or lumbar-block anesthesia, or inability to maintain the clinical and laboratory supervision required for safe therapy.",
+        "Hypersensitivity to warfarin or a product component."
+      ],
+      "adverseEffects": [
+        "Bleeding from any tissue or organ, including gastrointestinal, urinary, intracranial, retroperitoneal, pulmonary, menstrual, wound, or mucosal bleeding.",
+        "Nausea, vomiting, diarrhea, abdominal pain, rash, dermatitis, alopecia, fever, or hypersensitivity reactions.",
+        "Purple-toe syndrome or other cholesterol microembolization findings."
+      ],
+      "seriousAdverseReactions": [
+        "Major or fatal hemorrhage.",
+        "Skin or other tissue necrosis and gangrene, which can require debridement or amputation.",
+        "Systemic atheroembolism or cholesterol microembolism that can progress to tissue necrosis, organ ischemia, or death."
+      ],
+      "interactions": [
+        "CYP inhibitors such as amiodarone, cotrimoxazole, fluconazole, and metronidazole can increase warfarin response in some patients, while inducers such as rifampin, carbamazepine, phenobarbital, and phenytoin can reduce it. Recheck INR when a clinically relevant medicine is started, stopped, or changed.",
+        "Aspirin, clopidogrel, NSAIDs such as ibuprofen, other anticoagulants, thrombolytics, and selected serotonergic medicines can increase bleeding even when the INR is not dramatically changed.",
+        "Large or abrupt changes in vitamin K intake, diarrhea, poor nutrition, liver disease, fever, and some herbal products can change INR response; teach consistency and monitoring rather than avoidance of every vitamin K-containing food."
+      ],
+      "nursingEssentials": [
+        "Confirm the indication, prescribed INR goal, current dose schedule, recent INR trend, bleeding and clotting symptoms, diet pattern, adherence, alcohol use, pregnancy status when relevant, and every prescription, over-the-counter, and herbal product. Do not substitute a memorized universal INR target for the ordered indication-specific range.",
+        "Increase INR surveillance after initiation, dose change, acute illness, major diet change, adherence problem, or a relevant interacting medicine. Interpret an out-of-range value with bleeding, thrombosis, dose history, and timing before applying the current protocol.",
+        "Inspect and escalate new painful skin discoloration, necrosis, cool purple toes, hematuria, severe headache, neurologic change, hypotension, or falling hemoglobin. These can represent serious toxicity rather than an expected nuisance effect.",
+        "Do not initiate warfarin as the only anticoagulant during acute HIT. The current label warns that starting it before platelet recovery has caused limb gangrene, amputation, and death."
+      ],
+      "keyLabs": [
+        "INR using the indication-specific prescribed target. The reviewed label calls for daily INR during initiation until stable and then generally every 1 to 4 weeks, with more frequent checks when the clinical situation, medicines, diet, illness, or product interchange changes.",
+        "CBC, hemoglobin or hematocrit, and clinical assessment for visible or occult blood loss when indicated.",
+        "Renal and hepatic function and urinalysis when illness, hematuria, excessive anticoagulation, or organ dysfunction could change safety or response.",
+        "Pregnancy testing and counseling when clinically relevant because warfarin crosses the placenta and can cause fetal harm."
+      ],
+      "administration": [
+        "Administer the exact individualized oral dose on the prescribed schedule. Tablet strengths are color coded but color is not a sufficient medication check; verify the name and milligram strength.",
+        "Do not double a missed dose or self-adjust after an out-of-range INR. Follow the prescriber or anticoagulation service's same-day missed-dose and follow-up instructions.",
+        "Transitions to or from heparin, low-molecular-weight heparin, or a direct oral anticoagulant require the current product label and protocol because onset, offset, and laboratory interference differ."
+      ],
+      "patientEducation": [
+        "Keep vitamin K intake reasonably consistent rather than eliminating green vegetables. Report major diet changes, vomiting or diarrhea, poor intake, fever, new medicines, antibiotics, supplements, and changes in alcohol use because each can change INR response.",
+        "Use bleeding precautions and seek urgent help for severe headache, new weakness, coughing or vomiting blood, black or bloody stool, red urine, uncontrolled bleeding, a serious fall or head injury, faintness, or pregnancy exposure.",
+        "Tell clinicians, dentists, and pharmacists about warfarin before procedures or new medicines. Carry anticoagulant identification and keep every INR appointment.",
+        "Do not stop warfarin or change the dose without direction; inadequate anticoagulation can allow stroke, valve thrombosis, pulmonary embolism, or recurrent venous thrombosis."
+      ],
+      "antidote": "Vitamin K1, also called phytonadione, reverses warfarin's vitamin K antagonism; urgent life-threatening bleeding may also require four-factor prothrombin complex concentrate with vitamin K under an emergency protocol.",
+      "toxicityManagement": [
+        "Manage excessive anticoagulation according to the INR, presence and site of bleeding, timing and dose history, thrombotic indication, and the current emergency or anticoagulation protocol. Hold further warfarin when directed, control the bleeding source, and provide resuscitation and blood-product support when indicated.",
+        "Vitamin K1 can reverse warfarin. Urgent life-threatening bleeding may require four-factor prothrombin complex concentrate with vitamin K; the exact route and dose are clinical-context and protocol dependent and should not be inferred from this card.",
+        "Rapid reversal can restore thrombotic risk. Plan repeat INR assessment and clinician-directed re-anticoagulation rather than treating one improved number as the end of care."
+      ],
+      "specialPopulations": [
+        "Warfarin is contraindicated in pregnancy except for a narrow mechanical-heart-valve circumstance managed by specialists because fetal exposure can cause malformations, bleeding, pregnancy loss, and central nervous system injury.",
+        "Older adults often need lower doses and closer monitoring because bleeding risk, interacting medicines, illness, falls, and nutritional variability are more common.",
+        "Renal clearance is a minor determinant of warfarin response and the reviewed label does not require a dose adjustment solely for renal impairment, although renal impairment is a bleeding risk factor. Hepatic disease can increase INR response by reducing clotting-factor synthesis and metabolism.",
+        "Pediatric requirements vary with age, nutrition, illness, and concurrent therapy and require specialist dosing and more frequent INR assessment."
+      ],
+      "nclexTraps": [
+        "Teach consistent vitamin K intake, not avoidance of all green vegetables.",
+        "INR is the warfarin monitoring test, but the target is indication specific; one memorized number is not safe for every patient.",
+        "Warfarin reduces formation of new functional clotting factors. It does not directly dissolve a clot or immediately reverse ischemic injury.",
+        "Do not start warfarin alone in acute HIT before platelet recovery, and do not confuse vitamin K's slower factor-restoration effect with immediate factor replacement during life-threatening bleeding."
+      ],
+      "routes": [
+        "Oral tablet"
+      ],
+      "relatedTopics": [
+        "Phytonadione",
+        "Four factor prothrombin complex concentrate",
+        "Warfarin INR monitoring"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "sourceNote": "Original ANI synthesis from current DailyMed warfarin sodium prescribing information: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=4f276251-49b7-438f-9c47-f1cdfc47e519.",
+      "provenance": [
+        {
+          "key": "dailymed-warfarin-label-2026",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=4f276251-49b7-438f-9c47-f1cdfc47e519",
+          "documentVersion": "Warfarin Sodium Tablets; DailyMed updated 2026-01-22; checked 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "mechanism",
+            "indications and limitation of use",
+            "boxed warning",
+            "contraindications",
+            "warnings and precautions",
+            "adverse reactions",
+            "CYP and bleeding interaction examples",
+            "INR monitoring",
+            "diet and patient counseling",
+            "pregnancy and special populations",
+            "overdosage",
+            "vitamin K and urgent factor-replacement reversal"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-13.2"
+    },
+    {
+      "id": "medication.apixaban",
+      "name": "Apixaban",
+      "displayName": "Apixaban (Eliquis)",
+      "generic": "apixaban",
+      "aliases": [
+        "Eliquis"
+      ],
+      "brandExamples": [
+        "Eliquis"
+      ],
+      "class": "Direct oral anticoagulant that selectively inhibits factor Xa",
+      "plainLanguage": "Apixaban is an oral blood thinner that blocks factor Xa, a clotting enzyme needed to generate thrombin. It reduces clot formation without routine INR dose adjustment, but it can still cause serious bleeding and missed or abruptly stopped doses can leave the patient at risk for thrombosis.",
+      "whyItMatters": "Apixaban safety depends on the exact indication, dose, formulation, kidney and liver context, interacting medicines, adherence, and procedure timing. The former specific reversal product Andexxa had its U.S. approval withdrawn on December 23, 2025, so ANI must not teach andexanet alfa as a currently approved or marketed U.S. antidote despite older or not-yet-conforming label language.",
+      "description": "Apixaban is a direct oral factor Xa inhibitor used to reduce stroke and systemic embolism in nonvalvular atrial fibrillation, prevent venous thrombosis after selected joint-replacement surgery, treat deep-vein thrombosis and pulmonary embolism, and reduce recurrence after initial treatment. Current U.S. labeling also includes pediatric venous-thromboembolism treatment after an initial anticoagulant phase. It does not require routine INR titration, but that convenience does not remove bleeding, adherence, interaction, renal, hepatic, or neuraxial-procedure risks.",
+      "mechanism": "Apixaban directly and reversibly inhibits free and clot-bound factor Xa and prothrombinase activity. With less factor Xa activity, less prothrombin is converted to thrombin, so fibrin formation and thrombin-driven platelet activation fall. Apixaban does not require antithrombin and has no direct effect on an established clot. It is transported by P-glycoprotein and metabolized partly through CYP3A4, which explains clinically important exposure changes with strong combined inhibitors or inducers.",
+      "usedToTreat": "FDA-labeled uses include reduction of stroke and systemic embolism risk in adults with nonvalvular atrial fibrillation; prevention of deep-vein thrombosis after adult hip or knee replacement; treatment of adult deep-vein thrombosis and pulmonary embolism; reduction of recurrent deep-vein thrombosis and pulmonary embolism after initial therapy; and treatment and recurrence-risk reduction for venous thromboembolism in pediatric patients from birth after at least 5 days of initial anticoagulant treatment.",
+      "boxedWarning": "BOXED WARNINGS: Premature discontinuation of apixaban increases thrombotic risk unless anticoagulation is no longer needed or adequate alternative coverage is provided. Epidural or spinal hematoma can occur with neuraxial anesthesia or spinal puncture and can cause long-term or permanent paralysis; timing and neurologic surveillance must follow the current label and procedure protocol.",
+      "contraindications": [
+        "Active pathological bleeding.",
+        "Severe hypersensitivity to apixaban, including anaphylactic reactions."
+      ],
+      "adverseEffects": [
+        "Bleeding and bruising, including epistaxis, gum bleeding, gastrointestinal or urinary bleeding, heavier menstrual bleeding, wound bleeding, anemia, or procedure-related blood loss.",
+        "Nausea and hypersensitivity reactions can occur; adverse-reaction patterns vary by indication, age, and trial population."
+      ],
+      "seriousAdverseReactions": [
+        "Major or fatal hemorrhage, including intracranial, gastrointestinal, retroperitoneal, or other critical-site bleeding.",
+        "Epidural or spinal hematoma with possible long-term or permanent paralysis.",
+        "Anaphylaxis or another severe hypersensitivity reaction.",
+        "Stroke, systemic embolism, deep-vein thrombosis, pulmonary embolism, or another thrombotic event after premature interruption without adequate alternative anticoagulation."
+      ],
+      "interactions": [
+        "Combined P-glycoprotein and strong CYP3A4 inhibitors such as ketoconazole, itraconazole, and ritonavir can increase apixaban exposure and bleeding risk; the current label uses dose- and patient-specific reduction or avoidance rules.",
+        "Combined P-glycoprotein and strong CYP3A4 inducers such as rifampin, carbamazepine, phenytoin, and St. John's wort can lower exposure and increase stroke or thromboembolism risk and should be avoided under the current label.",
+        "Aspirin, clopidogrel, heparin, warfarin, thrombolytics, chronic NSAIDs, SSRIs, SNRIs, and other medicines that affect hemostasis can add bleeding risk even though INR is not used to titrate apixaban."
+      ],
+      "nursingEssentials": [
+        "Verify the indication, age, weight, renal and hepatic context, exact product and formulation, dose history, adherence, last dose time, interacting medicines, and upcoming procedures. Dose-selection criteria are indication and population specific and must not be collapsed into one universal renal rule.",
+        "Assess for visible and occult bleeding, falling hemoglobin, hypotension, severe headache, new neurologic deficit, abdominal or back pain, hematuria, melena, or prolonged bleeding. Record the last dose and escalate immediately for suspected major bleeding.",
+        "Before neuraxial anesthesia, lumbar puncture, catheter removal, surgery, or an invasive procedure, follow the current product label and local protocol. New leg weakness or numbness, bowel or bladder dysfunction, or severe back pain after a spinal procedure requires urgent evaluation for spinal hematoma.",
+        "Do not use routine PT, INR, or aPTT results to titrate apixaban. These tests can change but do not provide a validated universal measure of therapeutic effect; specialized testing, when needed, is assay- and institution-specific."
+      ],
+      "keyLabs": [
+        "Baseline and periodic CBC, hemoglobin or hematocrit, renal function, hepatic assessment, and clinical bleeding review at an interval matched to age, illness, comorbidity, and local practice.",
+        "PT, INR, and aPTT are not routine apixaban dose-monitoring tests and must not be interpreted as though they were a warfarin INR.",
+        "If drug-level information is needed for an emergency, use only an institution-validated apixaban-calibrated strategy with specialist or laboratory guidance; a generic anti-factor Xa result is not a universal concentration or reversal target.",
+        "Trend hemoglobin, hemodynamics, neurologic status, renal function, bleeding source, and time since the last dose during suspected major hemorrhage."
+      ],
+      "administration": [
+        "Administer orally on the exact indication-, age-, weight-, formulation-, renal-, interaction-, and treatment-phase schedule in the current order. Do not transfer an adult tablet regimen to pediatric oral suspension or sprinkle products.",
+        "Do not stop apixaban abruptly for convenience or self-adjust after a missed dose. Follow the current label and prescriber instructions for missed doses and transitions because interruption can quickly reduce anticoagulant protection.",
+        "Coordinate temporary interruption and restart around procedures with the prescribing and procedural teams. Timing depends on bleeding risk, kidney and liver context, last dose, procedure type, and whether alternative anticoagulation is needed."
+      ],
+      "patientEducation": [
+        "Take every dose exactly as prescribed and do not stop on your own. Tell clinicians, dentists, and pharmacists about apixaban before a procedure or new medicine and carry anticoagulant identification.",
+        "Seek urgent help for severe headache, new weakness or numbness, a serious fall or head injury, coughing or vomiting blood, black or bloody stool, red or brown urine, uncontrolled bleeding, faintness, severe back pain, or new bowel or bladder dysfunction after a spinal procedure.",
+        "Ask before using aspirin, ibuprofen or another NSAID, clopidogrel, an SSRI or SNRI, an herbal product, or another anticoagulant because additive bleeding or exposure-changing interactions may occur.",
+        "Explain that routine INR testing is not used to adjust apixaban, but scheduled blood counts, kidney and liver review, adherence checks, and clinical monitoring still matter."
+      ],
+      "reversalStrategy": [
+        "As of December 23, 2025, FDA records show the accelerated U.S. approval for Andexxa was withdrawn, and FDA reported that U.S. commercial sales ended after December 22, 2025. Do not teach andexanet alfa as a currently approved or marketed U.S. apixaban antidote.",
+        "Major bleeding requires immediate protocol-based supportive and source-control care. The current Eliquis label says prothrombin complex concentrate may be considered but also states that it was not evaluated in clinical studies for this use; treatment therefore requires current institutional and specialist guidance."
+      ],
+      "toxicityManagement": [
+        "For active major bleeding, stop further apixaban, stabilize airway, breathing, circulation, and the bleeding source, document the dose and time of last exposure, obtain urgent laboratory and imaging assessment as indicated, and activate the institution's anticoagulant-bleeding pathway.",
+        "Do not present andexanet alfa as a current U.S. FDA-approved or marketed reversal option. FDA determined that Andexxa's serious thromboembolic risks outweighed its benefits, the manufacturer ended U.S. sales after December 22, 2025, and the accelerated approval was withdrawn December 23, 2025.",
+        "Four-factor prothrombin complex concentrate may be considered under a current institutional protocol, but the Eliquis label states that PCC was not evaluated in clinical studies for this use. Vitamin K and protamine do not reverse apixaban, and hemodialysis does not substantially remove it.",
+        "Activated charcoal may reduce absorption after a recent ingestion, but timing and appropriateness require poison-control, toxicology, or emergency guidance and do not replace hemorrhage control and supportive care."
+      ],
+      "specialPopulations": [
+        "The current label's dose and formulation rules differ across adult atrial-fibrillation, adult venous-thromboembolism, post-orthopedic-surgery, and pediatric treatment settings. Use the exact population and indication rather than applying one criterion to all patients.",
+        "Apixaban is not recommended for patients with prosthetic heart valves or triple-positive antiphospholipid syndrome under the current label; these are warnings and limitations, not the two formal contraindications.",
+        "Pregnancy and delivery increase both thrombotic and bleeding complexity, and neuraxial anesthesia adds spinal-hematoma risk. Use specialist planning rather than assuming a routine adult regimen applies.",
+        "Severe hepatic impairment was not studied in the reviewed label, and renal impairment affects indication-specific decisions; assess both before prescribing or continuing therapy."
+      ],
+      "nclexTraps": [
+        "No routine INR titration does not mean no monitoring. Bleeding assessment, CBC, kidney and liver context, adherence, interactions, and procedure planning remain essential.",
+        "Active pathological bleeding and severe hypersensitivity are formal contraindications. Prosthetic valves and triple-positive antiphospholipid syndrome are label-based not-recommended settings, not extra invented contraindications.",
+        "Andexxa is no longer a current U.S. approved or marketed reversal product: its accelerated approval was withdrawn December 23, 2025.",
+        "Premature discontinuation can cause thrombosis; a bleeding hold and a convenience stop are not the same clinical decision."
+      ],
+      "routes": [
+        "Oral tablet",
+        "Oral suspension or sprinkle formulation under product- and population-specific instructions"
+      ],
+      "relatedTopics": [
+        "Anticoagulant-associated life-threatening bleeding reversal decision map",
+        "Andexanet alfa"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "sourceNote": "Original ANI synthesis from current DailyMed Eliquis prescribing information plus FDA's later Andexxa safety and withdrawal records: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=a454cd24-0c6d-46e8-b1e4-197388606175, https://www.fda.gov/vaccines-blood-biologics/safety-availability-biologics/update-safety-andexxa, and https://www.fda.gov/drugs/accelerated-approval-program/withdrawn-non-malignant-hematological-neurological-and-other-disorder-indications-accelerated.",
+      "provenance": [
+        {
+          "key": "dailymed-eliquis-label-2026",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=a454cd24-0c6d-46e8-b1e4-197388606175",
+          "documentVersion": "Eliquis SPL version 38; DailyMed updated 2026-04-24; checked 2026-08-13",
+          "fieldsSupported": [
+            "identity and formulations",
+            "mechanism",
+            "adult and pediatric indications",
+            "boxed warnings",
+            "contraindications",
+            "warnings and precautions",
+            "adverse reactions",
+            "CYP3A4 and P-gp interaction examples",
+            "administration",
+            "laboratory-test limitations",
+            "patient counseling",
+            "special populations",
+            "supportive overdosage options and limitations"
+          ]
+        },
+        {
+          "key": "fda-andexxa-safety-2025-12",
+          "authority": "FDA",
+          "url": "https://www.fda.gov/vaccines-blood-biologics/safety-availability-biologics/update-safety-andexxa",
+          "documentVersion": "FDA Safety Communication dated 2025-12-18; checked 2026-08-13",
+          "fieldsSupported": [
+            "Andexxa thromboembolic safety signal",
+            "FDA benefit-risk conclusion",
+            "manufacturer end of U.S. commercial sales after 2025-12-22",
+            "current U.S. reversal availability boundary"
+          ]
+        },
+        {
+          "key": "fda-andexxa-withdrawal-record",
+          "authority": "FDA",
+          "url": "https://www.fda.gov/drugs/accelerated-approval-program/withdrawn-non-malignant-hematological-neurological-and-other-disorder-indications-accelerated",
+          "documentVersion": "FDA withdrawn accelerated-approval table; Andexxa withdrawal date 2025-12-23; checked 2026-08-13",
+          "fieldsSupported": [
+            "withdrawn accelerated approval",
+            "withdrawal date",
+            "former apixaban and rivaroxaban reversal indication"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-13.2"
+    },
+    {
+      "id": "medication.enoxaparin",
+      "name": "Enoxaparin",
+      "generic": "Enoxaparin",
+      "displayName": "Enoxaparin",
+      "aliases": [
+        "enoxaparin sodium",
+        "Lovenox"
+      ],
+      "brandExamples": [
+        "Lovenox"
+      ],
+      "combinationProduct": false,
+      "class": "Low-molecular-weight heparin anticoagulant with antithrombin-mediated anti-factor Xa activity",
+      "plainLanguage": "Enoxaparin is an injectable blood-clot prevention and treatment medicine whose effect lasts longer and is more predictable than unfractionated heparin, but kidney function, body size, bleeding, platelet changes, and spinal procedures can substantially change its safety.",
+      "whyItMatters": "A wrong enoxaparin indication, dose, concentration, route, kidney assessment, or neuraxial-procedure interval can cause major bleeding, spinal hematoma with paralysis, recurrent thrombosis, or heparin-induced thrombocytopenia. Its partial protamine reversal is not equivalent to full unfractionated-heparin reversal.",
+      "description": "Enoxaparin is a low-molecular-weight heparin supplied as enoxaparin sodium injection. It is used for selected venous-thromboembolism prevention and treatment and for labeled acute-coronary-syndrome settings. This card covers systemic enoxaparin, not unfractionated heparin, a catheter-flush product, or another low-molecular-weight heparin; the products are not interchangeable unit for unit or instruction for instruction.",
+      "mechanism": "Enoxaparin binds antithrombin and accelerates inhibition of activated factor Xa more strongly than inhibition of thrombin, also called factor IIa. Less factor Xa activity means less thrombin generation and fibrin clot propagation. Reduced renal clearance can prolong anti-Xa exposure, while protamine neutralizes the anti-IIa component more completely than the anti-Xa component, explaining both renal accumulation and incomplete reversal.",
+      "usedToTreat": "Labeled uses include DVT prophylaxis in selected abdominal-surgery, hip- or knee-replacement, and acutely ill patients with severely restricted mobility; inpatient acute DVT with or without pulmonary embolism and outpatient acute DVT without pulmonary embolism in the label-specified oral-anticoagulant transition; ischemic-complication prophylaxis in unstable angina or non-Q-wave myocardial infarction with aspirin; and acute STEMI treatment with aspirin in the labeled medical or PCI pathway.",
+      "boxedWarning": "BOXED WARNING: Epidural or spinal hematoma can occur when a patient receiving enoxaparin undergoes neuraxial anesthesia or spinal puncture, and the result can be long-term or permanent paralysis. Catheters, other hemostasis-affecting drugs, traumatic or repeated puncture, spinal deformity or surgery, dose intensity, and prolonged elimination increase risk. Use the current Lovenox label and procedural protocol for the exact dose-, renal-, route-, and procedure-specific timing; no single interval is safe for every patient.",
+      "contraindications": [
+        "Active major bleeding.",
+        "History of heparin-induced thrombocytopenia within the past 100 days or in the presence of circulating HIT antibodies.",
+        "Hypersensitivity to enoxaparin sodium.",
+        "Hypersensitivity to heparin or pork products.",
+        "Hypersensitivity to benzyl alcohol when the multiple-dose formulation is being considered."
+      ],
+      "adverseEffects": [
+        "Bleeding, anemia, bruising or ecchymosis, injection-site pain, and thrombocytopenia.",
+        "Nausea, diarrhea, fever, edema, dyspnea, confusion, or elevated serum aminotransferases can occur in labeled clinical settings.",
+        "Local irritation, hematoma, or skin injury can occur at an injection site."
+      ],
+      "seriousAdverseReactions": [
+        "Major, occult, intracranial, retroperitoneal, gastrointestinal, or fatal hemorrhage.",
+        "Heparin-induced thrombocytopenia with or without thrombosis, including new limb, organ, pulmonary, cardiac, or cerebral ischemia.",
+        "Spinal or epidural hematoma with neurologic injury or paralysis.",
+        "Severe hypersensitivity or anaphylactoid reaction, skin necrosis, or severe thrombocytopenia."
+      ],
+      "interactions": [
+        "Aspirin, other platelet inhibitors, NSAIDs, other anticoagulants, and thrombolytics can add hemorrhage risk. Discontinue a nonessential interacting agent before enoxaparin when the label and clinical plan allow, or use close clinical and laboratory monitoring.",
+        "Concurrent neuraxial catheters or spinal puncture plus another drug that affects hemostasis increases spinal-hematoma risk and requires coordinated anticoagulant and procedural planning.",
+        "Do not exchange enoxaparin with unfractionated heparin or another low-molecular-weight heparin because manufacture, molecular distribution, anti-Xa and anti-IIa activity, dosing, and monitoring differ."
+      ],
+      "nursingEssentials": [
+        "Verify the indication, patient weight when the order is weight based, age, current creatinine clearance, platelet history, bleeding assessment, exact concentration, syringe or vial, route, dose, last administration time, and planned procedures before giving enoxaparin. The marketed 100 mg/mL and 150 mg/mL concentrations are not selection shortcuts.",
+        "During therapy assess visible and occult bleeding and trend CBC, hemoglobin or hematocrit, and platelet count. New thrombocytopenia or thrombosis requires prompt evaluation for HIT rather than an automatic assumption that enoxaparin is simply underdosed.",
+        "For a neuraxial catheter, the current Lovenox label describes at least 12 hours after specified lower-dose regimens and at least 24 hours after specified higher-dose regimens before placement or removal; with creatinine clearance below 30 mL/min it says to consider at least 24 and 48 hours respectively. These are label minimums tied to listed doses and renal function, anti-Xa activity can remain, and the intervals do not guarantee safety; use the exact current label and procedural protocol.",
+        "After neuraxial anesthesia or puncture, monitor frequently for new back pain, leg weakness or numbness, sensory change, and bowel or bladder dysfunction. Neurologic compromise requires urgent evaluation and treatment."
+      ],
+      "keyLabs": [
+        "CBC including platelet count, hemoglobin and hematocrit, plus stool occult blood and clinical bleeding assessment during therapy as indicated by the current label and patient context.",
+        "Serum creatinine and calculated creatinine clearance before and during therapy when illness, age, or changing renal function can alter exposure; a label-based adjustment is required for severe renal impairment with creatinine clearance below 30 mL/min.",
+        "Anti-factor Xa levels may be used in renal impairment or when abnormal coagulation findings or bleeding occur, but the target and collection time are indication-, dose-, assay-, population-, and protocol-specific and are not a universal enoxaparin range.",
+        "Clinical assessment for new or progressive thrombosis when HIT, inadequate anticoagulation, or an interrupted regimen is suspected."
+      ],
+      "administration": [
+        "Administer only by the route in the exact order and current label. Most labeled regimens use deep subcutaneous injection; intravenous administration belongs only to specified acute-STEMI or PCI contexts. Never administer enoxaparin intramuscularly.",
+        "For a Lovenox prefilled syringe, do not expel the air bubble before injection because drug can be lost. Use the label-specified abdominal sites and technique, alternate sides, avoid bruised or scarred skin, and do not rub the site after injection. A vial or another product requires its own preparation instructions.",
+        "Confirm whether the product is 100 mg/mL or 150 mg/mL and use an appropriate measuring device for a multiple-dose vial. Do not copy a volume, dose, syringe technique, or renal adjustment from another concentration or heparin product.",
+        "Coordinate interruption, neuraxial catheter placement or removal, surgery, restart, and transition to another anticoagulant with the prescribing and procedural teams. Timing depends on the actual dose and route, last dose, renal clearance, bleeding risk, and current protocol."
+      ],
+      "patientEducation": [
+        "Explain that enoxaparin prevents clot formation or extension but can cause hidden or visible bleeding. Seek urgent help for severe headache, new weakness, a serious fall or head injury, vomiting or coughing blood, black or bloody stool, red urine, uncontrolled bleeding, faintness, chest pain, shortness of breath, or a painful swollen or pale limb.",
+        "Report new back pain, leg weakness or numbness, or bowel or bladder dysfunction immediately after a spinal or epidural procedure because these can signal a compressive hematoma.",
+        "Do not add aspirin, ibuprofen or another NSAID, an antiplatelet medicine, anticoagulant, or bleeding-affecting supplement without review. Tell every clinician and dentist about enoxaparin before a procedure.",
+        "When self-injecting a prefilled Lovenox syringe, follow the demonstrated product-specific technique: verify the dose, retain the air bubble, rotate abdominal sites, do not rub afterward, and place the used syringe directly into an approved sharps container."
+      ],
+      "antidote": "Protamine sulfate can partially neutralize enoxaparin after clinically important bleeding or overdose, but the amount depends on the enoxaparin dose and time since exposure. The Lovenox label states that anti-factor Xa activity is never completely neutralized and that maximum neutralization is about 60%; protamine can itself cause severe hypotension or anaphylactoid reactions.",
+      "toxicityManagement": [
+        "For major bleeding or overdose, stop further enoxaparin, stabilize airway, breathing, circulation, and the bleeding source, document the exact dose and time, obtain CBC, renal and coagulation assessment as indicated, and activate the institutional anticoagulant-bleeding pathway.",
+        "Use protamine only through the current Lovenox label and institutional protocol because the calculation changes with elapsed time and repeat-dose circumstances. Administer it with monitoring and resuscitation capability; rapid or excessive protamine can cause hypotension, anaphylactoid collapse, or additional anticoagulant effects.",
+        "Do not treat an improved aPTT as proof of complete reversal. Residual anti-Xa activity can persist, and source control, blood support when indicated, serial hemostasis, renal assessment, and evaluation for HIT remain necessary."
+      ],
+      "specialPopulations": [
+        "The current label requires adjusted regimens for creatinine clearance below 30 mL/min and frequent bleeding observation even at higher creatinine clearances when renal function is reduced. Apply the indication-specific table rather than one universal renal dose.",
+        "Older adults, low-weight women below 45 kg, and low-weight men below 57 kg can have greater bleeding or exposure concerns with non-weight-adjusted dosing; assess rather than assuming a standard prophylaxis regimen fits every patient.",
+        "Pregnant patients with mechanical prosthetic heart valves can remain at high risk of valve thrombosis and maternal or fetal harm despite enoxaparin. This requires specialist monitoring and individualized dosing rather than routine substitution for another anticoagulant.",
+        "The multiple-dose vial contains benzyl alcohol and has population-specific safety restrictions. Verify the exact formulation in neonates, infants, and pregnancy rather than transferring instructions from a preservative-free prefilled syringe."
+      ],
+      "nclexTraps": [
+        "Enoxaparin is not a clot-dissolving antidote and is not interchangeable with unfractionated heparin or another LMWH.",
+        "The prefilled-syringe air bubble is retained to avoid losing medicine; do not generalize that technique to every injectable product.",
+        "Protamine reverses enoxaparin only partially. Residual anti-Xa activity and bleeding can remain after treatment.",
+        "A neuraxial interval is not one universal number: it changes with the label-listed dose intensity, renal clearance, catheter or puncture event, and procedural protocol."
+      ],
+      "routes": [
+        "Subcutaneous injection",
+        "Intravenous injection only in label-specified acute-STEMI or PCI contexts"
+      ],
+      "relatedTopics": [
+        "Protamine sulfate",
+        "Anticoagulant-associated life-threatening bleeding reversal decision map",
+        "Heparin-induced thrombocytopenia"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "sourceNote": "Original ANI synthesis from the current DailyMed Lovenox prescribing information: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5017a927-2a24-4f27-89f9-27c805bf7d59.",
+      "provenance": [
+        {
+          "key": "dailymed-lovenox-label-2026",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5017a927-2a24-4f27-89f9-27c805bf7d59",
+          "documentVersion": "Lovenox NDA label; DailyMed updated 2026-05-28; checked 2026-08-13",
+          "fieldsSupported": [
+            "identity and concentrations",
+            "mechanism",
+            "labeled indications and routes",
+            "boxed neuraxial warning",
+            "dose-specific and renal-specific neuraxial timing",
+            "contraindications",
+            "warnings and adverse reactions",
+            "HIT and platelet monitoring",
+            "renal impairment",
+            "anti-factor Xa monitoring context",
+            "prefilled-syringe technique",
+            "interactions",
+            "patient counseling",
+            "overdosage and partial protamine reversal"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-13.2"
+    },
+    {
+      "id": "medication.rivaroxaban",
+      "name": "Rivaroxaban",
+      "generic": "Rivaroxaban",
+      "displayName": "Rivaroxaban",
+      "aliases": [
+        "Xarelto"
+      ],
+      "brandExamples": [
+        "Xarelto"
+      ],
+      "combinationProduct": false,
+      "class": "Direct oral anticoagulant that selectively inhibits factor Xa",
+      "plainLanguage": "Rivaroxaban is an oral blood thinner that blocks factor Xa, a key step in making thrombin and fibrin. Its schedule, food requirement, renal limits, formulation, and interruption plan depend on the exact indication and patient.",
+      "whyItMatters": "Rivaroxaban can prevent stroke or venous and arterial thrombotic events, but missed or prematurely stopped doses can quickly reduce protection and excess exposure can cause fatal bleeding. Food, kidney function, drug interactions, spinal procedures, and the loss of a current U.S. specific reversal product directly change nursing decisions.",
+      "description": "Rivaroxaban is a direct factor Xa inhibitor available as Xarelto tablets and oral suspension. Labeled uses span nonvalvular atrial fibrillation, venous-thromboembolism treatment and prevention, selected surgical or medical prophylaxis, selected coronary or peripheral artery disease regimens with aspirin, and pediatric VTE care. These indications use different dose phases, renal criteria, food rules, ages, weights, and formulations, so they must not be collapsed into one generic schedule.",
+      "mechanism": "Rivaroxaban directly inhibits free and clot-bound factor Xa and prothrombinase activity, reducing conversion of prothrombin to thrombin and limiting fibrin clot propagation without requiring antithrombin. Because it is highly protein bound, dialysis does not meaningfully remove it; exposure instead depends on absorption, renal and hepatic handling, P-glycoprotein and CYP3A interactions, dose timing, and the treatment phase.",
+      "usedToTreat": "Labeled contexts include reduction of stroke and systemic embolism risk in nonvalvular atrial fibrillation; adult DVT or PE treatment and recurrence-risk reduction; DVT prophylaxis after hip or knee replacement; VTE prophylaxis in selected acutely ill adults; reduction of major cardiovascular or limb events in selected CAD or PAD regimens with aspirin; and pediatric VTE treatment and recurrence-risk reduction after initial parenteral anticoagulation. It is not a general mechanical-valve anticoagulant or a universal acute-coronary-syndrome medicine.",
+      "boxedWarning": "BOXED WARNINGS: Premature discontinuation of rivaroxaban increases thrombotic risk unless anticoagulation is no longer needed or adequate alternative coverage is provided. Epidural or spinal hematoma can occur with neuraxial anesthesia or spinal puncture and can cause long-term or permanent paralysis. Procedure timing and neurologic surveillance must follow the current Xarelto label and the exact age-, dose-, renal-, catheter-, route-, and protocol-specific plan.",
+      "contraindications": [
+        "Active pathological bleeding.",
+        "Severe hypersensitivity reaction to rivaroxaban, including anaphylactic reactions."
+      ],
+      "adverseEffects": [
+        "Bleeding such as bruising, epistaxis, gastrointestinal bleeding, genitourinary bleeding, prolonged wound bleeding, or anemia.",
+        "Nausea, abdominal or gastrointestinal symptoms, dizziness, headache, or rash can occur in treated populations.",
+        "Pediatric adverse-effect patterns and oral-suspension administration concerns differ from adult tablet experience."
+      ],
+      "seriousAdverseReactions": [
+        "Major, intracranial, gastrointestinal, retroperitoneal, organ-threatening, or fatal hemorrhage.",
+        "Spinal or epidural hematoma with neurologic deficit or paralysis.",
+        "Stroke, systemic embolism, recurrent DVT or PE, or another thrombotic event after premature discontinuation or inadequate exposure.",
+        "Severe hypersensitivity, including anaphylaxis or angioedema."
+      ],
+      "interactions": [
+        "Avoid combined P-glycoprotein and strong CYP3A inhibitors such as ketoconazole or ritonavir because they increase rivaroxaban exposure and bleeding risk. The current label separately addresses moderate inhibitors in renal impairment, so one class rule does not fit every combination.",
+        "Avoid combined P-glycoprotein and strong CYP3A inducers such as carbamazepine, phenytoin, rifampin, or St. John's wort because reduced exposure can increase thromboembolic risk.",
+        "Other anticoagulants, aspirin, clopidogrel, chronic NSAIDs, and other drugs that impair hemostasis can add bleeding risk. Aspirin is part of specific labeled CAD or PAD regimens, not permission to combine it routinely for every rivaroxaban indication."
+      ],
+      "nursingEssentials": [
+        "Verify the indication, treatment phase, age, actual weight when used for creatinine-clearance calculation, pediatric weight when relevant, current renal and hepatic function, exact tablet or suspension, prescribed strength, food requirement, last dose, adherence, interacting medicines, and upcoming procedures.",
+        "Assess for overt or occult bleeding, falling hemoglobin, hypotension, severe headache, new neurologic deficit, abdominal or back pain, hematuria, melena, and prolonged wound bleeding. Record the last dose and escalate immediately for suspected major hemorrhage.",
+        "For the adult neuraxial situations described in the current Xarelto label, an indwelling epidural or intrathecal catheter should not be removed before at least two half-lives have elapsed after the last dose: the label gives 18 hours for ages 20 to 45 and 26 hours for ages 60 to 76. It also says the next dose should be no earlier than 6 hours after removal and to delay 24 hours after traumatic puncture. These label examples are not universal hold intervals; apply the exact patient, renal, dose, route, and procedural protocol.",
+        "Do not use PT, INR, aPTT, or anti-factor Xa activity as routine rivaroxaban dose-monitoring tests. Clinical bleeding and thrombosis assessment, adherence, renal and hepatic review, and procedure planning remain essential even without INR titration."
+      ],
+      "keyLabs": [
+        "CBC, hemoglobin or hematocrit, and clinical assessment for visible or occult blood loss at baseline and when symptoms, illness, procedures, or treatment duration make reassessment necessary.",
+        "Serum creatinine and creatinine clearance calculated with actual weight for adult label decisions, plus indication-appropriate pediatric renal assessment. Thresholds and actions differ by indication and population and must not be presented as one universal renal rule.",
+        "Hepatic assessment because the current label avoids use in Child-Pugh B or C hepatic impairment or hepatic disease associated with coagulopathy.",
+        "The Xarelto label does not recommend PT, INR, aPTT, or anti-factor Xa activity for monitoring rivaroxaban's anticoagulant effect. Emergency interpretation, if attempted locally, requires an institution-validated drug-specific strategy and cannot be treated as a universal therapeutic range."
+      ],
+      "administration": [
+        "Administer the exact indication-, treatment-phase-, age-, weight-, renal-, and formulation-specific order. Do not transfer an atrial-fibrillation, VTE, CAD or PAD, postoperative, acutely ill, or pediatric schedule to another context.",
+        "Xarelto 15 mg and 20 mg tablets must be taken with food because food improves absorption. The 2.5 mg and 10 mg tablets may be taken with or without food. Apply these product-label rules only to the prescribed strength and formulation.",
+        "Tablets, crushed-tablet administration, gastric-tube administration, and oral suspension each have label-specific preparation and feeding instructions. Verify tube location and formulation rather than assuming every enteral route has equivalent absorption.",
+        "Coordinate temporary interruption, neuraxial catheter removal, surgery, and restart with the prescribing and procedural teams. Timing depends on the procedure, dose, age, renal and hepatic context, last administration, bleeding risk, and whether alternative anticoagulation is required."
+      ],
+      "patientEducation": [
+        "Take rivaroxaban exactly as prescribed and do not stop when the supply runs low or for convenience. Premature discontinuation can permit stroke, DVT, PE, or another thrombotic event; refill early and obtain a clinician-directed interruption plan.",
+        "Take a 15 mg or 20 mg Xarelto tablet with food; do not assume the same food rule applies to every strength or formulation. Measure oral suspension only with the supplied device and follow its exact instructions.",
+        "Seek urgent help for severe headache, new weakness, a serious fall or head injury, vomiting or coughing blood, black or bloody stool, red urine, uncontrolled bleeding, faintness, severe back pain, or new leg weakness, numbness, or bowel or bladder dysfunction after a spinal procedure.",
+        "Tell clinicians, dentists, and pharmacists about rivaroxaban before procedures or new medicines. Ask before using aspirin, ibuprofen or another NSAID, clopidogrel, another anticoagulant, ketoconazole, ritonavir, rifampin, seizure medicine, or St. John's wort."
+      ],
+      "reversalStrategy": [
+        "The current Xarelto label states that a specific agent to reverse rivaroxaban's anti-factor Xa activity is not available. FDA's later records show that the former Andexxa indication for rivaroxaban and apixaban was withdrawn December 23, 2025 after U.S. commercial sales ended after December 22, 2025.",
+        "PCC, activated PCC, or recombinant factor VIIa may be considered under a current institutional protocol, but the Xarelto label states that these approaches have not been evaluated in clinical efficacy and safety studies for this use. They do not directly remove rivaroxaban."
+      ],
+      "toxicityManagement": [
+        "For active major bleeding, stop further rivaroxaban, stabilize airway, breathing, circulation, and the bleeding source, document the dose and time of last exposure, obtain urgent laboratory and imaging assessment as indicated, and activate the institution's anticoagulant-bleeding pathway.",
+        "Do not present andexanet alfa as a currently approved or marketed U.S. reversal option. Follow the active institutional hematology protocol for source control, blood support, and any off-label PCC or activated-PCC decision, including thrombosis-risk reassessment.",
+        "Rivaroxaban is not dialyzable because of high protein binding, and vitamin K and protamine are not expected to reverse its anticoagulant activity. Activated charcoal may be considered after a recent overdose under toxicology or emergency guidance, but it does not replace hemorrhage control."
+      ],
+      "specialPopulations": [
+        "Adult renal decisions use creatinine clearance calculated from actual weight, but thresholds and actions vary among atrial-fibrillation, VTE, orthopedic, medical-illness, CAD or PAD, and pediatric contexts. Reassess therapy when renal function declines or acute renal failure occurs.",
+        "Avoid use in Child-Pugh B or C hepatic impairment or hepatic disease associated with coagulopathy under the current label.",
+        "Xarelto is not recommended for prosthetic heart valves or triple-positive antiphospholipid syndrome. These are important warnings and limitations, not additions to the two formal contraindications.",
+        "Pediatric oral suspension and weight-based treatment have separate renal, age, feeding, preparation, and growth-related instructions. Pregnancy and delivery require coordinated anticoagulant and neuraxial planning because both hemorrhage and thrombosis can harm the patient or fetus."
+      ],
+      "nclexTraps": [
+        "Rivaroxaban is not labeled as routine anticoagulation for a prosthetic heart valve; the current label says use is not recommended.",
+        "A normal or abnormal INR does not provide a warfarin-like rivaroxaban dose target, and the label does not recommend routine PT, INR, aPTT, or anti-Xa monitoring of effect.",
+        "The 15 mg and 20 mg tablets require food; the 2.5 mg and 10 mg tablets do not share that requirement.",
+        "Andexxa is no longer a current U.S. reversal answer. Rivaroxaban is not dialyzable, and current major-bleeding care follows the active institutional pathway."
+      ],
+      "routes": [
+        "Oral tablet",
+        "Oral suspension under formulation- and population-specific instructions"
+      ],
+      "relatedTopics": [
+        "Anticoagulant-associated life-threatening bleeding reversal decision map",
+        "Andexanet alfa",
+        "Four factor prothrombin complex concentrate"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "sourceNote": "Original ANI synthesis from current DailyMed Xarelto prescribing information plus FDA's later Andexxa safety and withdrawal records: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=10db92f9-2300-4a80-836b-673e1ae91610, https://www.fda.gov/vaccines-blood-biologics/safety-availability-biologics/update-safety-andexxa, and https://www.fda.gov/drugs/accelerated-approval-program/withdrawn-non-malignant-hematological-neurological-and-other-disorder-indications-accelerated.",
+      "provenance": [
+        {
+          "key": "dailymed-xarelto-label-2026",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=10db92f9-2300-4a80-836b-673e1ae91610",
+          "documentVersion": "Xarelto NDA label; DailyMed updated 2026-01-16; checked 2026-08-13",
+          "fieldsSupported": [
+            "identity and formulations",
+            "mechanism",
+            "adult and pediatric indications",
+            "boxed warnings",
+            "formal contraindications",
+            "prosthetic-valve and antiphospholipid warnings",
+            "renal and hepatic boundaries",
+            "food and administration rules",
+            "neuraxial timing examples",
+            "P-gp and CYP3A interaction examples",
+            "laboratory-monitoring limitation",
+            "patient counseling",
+            "overdosage",
+            "non-dialyzability",
+            "PCC evidence limitation"
+          ]
+        },
+        {
+          "key": "fda-andexxa-safety-2025-12",
+          "authority": "FDA",
+          "url": "https://www.fda.gov/vaccines-blood-biologics/safety-availability-biologics/update-safety-andexxa",
+          "documentVersion": "FDA Safety Communication dated 2025-12-18; checked 2026-08-13",
+          "fieldsSupported": [
+            "Andexxa thromboembolic safety signal",
+            "FDA benefit-risk conclusion",
+            "manufacturer end of U.S. commercial sales after 2025-12-22",
+            "current U.S. reversal availability boundary"
+          ]
+        },
+        {
+          "key": "fda-andexxa-withdrawal-record",
+          "authority": "FDA",
+          "url": "https://www.fda.gov/drugs/accelerated-approval-program/withdrawn-non-malignant-hematological-neurological-and-other-disorder-indications-accelerated",
+          "documentVersion": "FDA withdrawn accelerated-approval table; Andexxa withdrawal date 2025-12-23; checked 2026-08-13",
+          "fieldsSupported": [
+            "withdrawn accelerated approval",
+            "withdrawal date",
+            "former rivaroxaban and apixaban reversal indication"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-13.2"
+    },
+    {
+      "id": "medication.dabigatran",
+      "name": "Dabigatran",
+      "generic": "Dabigatran",
+      "displayName": "Dabigatran",
+      "aliases": [
+        "dabigatran etexilate",
+        "dabigatran etexilate mesylate",
+        "Pradaxa"
+      ],
+      "brandExamples": [
+        "Pradaxa"
+      ],
+      "combinationProduct": false,
+      "class": "Direct oral thrombin inhibitor anticoagulant administered as the prodrug dabigatran etexilate",
+      "plainLanguage": "Dabigatran is an oral blood thinner. The swallowed medicine is dabigatran etexilate, a prodrug that the body converts to active dabigatran, which blocks thrombin and therefore reduces fibrin clot formation.",
+      "whyItMatters": "Dabigatran exposure rises when kidney clearance falls and can rise further with selected P-glycoprotein inhibitors. Wrong formulation handling, missed doses, inappropriate use with a mechanical valve, or delayed renal and bleeding assessment can cause thrombosis or fatal hemorrhage; unlike factor Xa inhibitors, dabigatran has the current specific reversal agent idarucizumab for defined adult emergencies.",
+      "description": "Dabigatran is the active direct thrombin inhibitor formed from orally administered dabigatran etexilate, including Pradaxa. Labeled capsule uses include selected adult atrial-fibrillation, venous-thromboembolism, recurrence-prevention, and post-hip-replacement contexts, plus selected pediatric VTE care. Renal function, indication, age, weight, formulation, P-glycoprotein interactions, and treatment phase determine the regimen, so capsules and other dabigatran etexilate dosage forms are not milligram-for-milligram substitutes.",
+      "mechanism": "After absorption, esterases convert dabigatran etexilate to dabigatran. Dabigatran directly and reversibly inhibits free and clot-bound thrombin, also called factor IIa, reducing conversion of fibrinogen to fibrin and thrombin-driven platelet activation. The active drug is cleared primarily by the kidneys and has relatively low protein binding, explaining both renal accumulation and why dialysis can remove some drug while the specific antibody fragment idarucizumab can bind and neutralize it.",
+      "usedToTreat": "Labeled capsule contexts include reduction of stroke and systemic embolism risk in adults with nonvalvular atrial fibrillation; adult DVT and PE treatment after 5 to 10 days of parenteral anticoagulation and recurrence-risk reduction; adult DVT and PE prophylaxis after hip replacement; and treatment or recurrence-risk reduction of VTE in selected pediatric patients who can swallow capsules after the required initial anticoagulant phase. Dabigatran is not indicated for mechanical prosthetic heart-valve anticoagulation.",
+      "boxedWarning": "BOXED WARNINGS: Premature discontinuation of dabigatran increases thrombotic risk unless anticoagulation is no longer needed or adequate alternative coverage is provided. Epidural or spinal hematoma can occur with neuraxial anesthesia or spinal puncture and can cause long-term or permanent paralysis. Interruption and procedure timing must follow the current Pradaxa capsule label and the exact renal-, indication-, age-, formulation-, catheter-, and protocol-specific plan.",
+      "contraindications": [
+        "Active pathological bleeding.",
+        "History of a serious hypersensitivity reaction to dabigatran, dabigatran etexilate, or a product excipient, including anaphylaxis or anaphylactic shock.",
+        "Mechanical prosthetic heart valve."
+      ],
+      "adverseEffects": [
+        "Bleeding, bruising, epistaxis, gastrointestinal bleeding, genitourinary bleeding, or anemia.",
+        "Dyspepsia, upper abdominal pain, abdominal discomfort, gastritis-like symptoms, nausea, vomiting, or diarrhea can occur, with age- and population-specific patterns.",
+        "Capsule swallowing difficulty or incorrect storage can compromise safe administration and exposure even though it is not a pharmacologic adverse reaction."
+      ],
+      "seriousAdverseReactions": [
+        "Major, intracranial, gastrointestinal, retroperitoneal, organ-threatening, or fatal hemorrhage.",
+        "Spinal or epidural hematoma with neurologic deficit or paralysis.",
+        "Valve thrombosis, stroke, transient ischemic attack, myocardial infarction, or major bleeding in patients with mechanical prosthetic heart valves.",
+        "Severe hypersensitivity, including anaphylaxis, anaphylactic shock, angioedema, or bronchospasm."
+      ],
+      "interactions": [
+        "P-glycoprotein inhibition and impaired renal function are independent drivers of higher dabigatran exposure. The current capsule label uses indication- and creatinine-clearance-specific rules for dronedarone, systemic ketoconazole, and other P-glycoprotein inhibitors; do not apply one adjustment to every indication.",
+        "Avoid P-glycoprotein inducers such as rifampin because reduced dabigatran exposure can increase thromboembolic risk.",
+        "Aspirin, other antiplatelet medicines, heparin, fibrinolytics, chronic NSAIDs, and other anticoagulants can add bleeding risk. A necessary transition requires the exact label timing rather than routine overlap."
+      ],
+      "nursingEssentials": [
+        "Verify the indication, treatment phase, age, actual weight when relevant, current creatinine clearance or pediatric eGFR, exact capsule or other formulation, ability to swallow the capsule whole, last dose, adherence, interacting medicines, bleeding assessment, and upcoming procedures.",
+        "Assess renal function before therapy and periodically as clinically indicated, more often during illness or another situation that can reduce renal function. The current label says to discontinue Pradaxa in acute renal failure and consider an alternative anticoagulant.",
+        "Routine anticoagulant-effect testing is generally unnecessary. When assessment is necessary in an adult, the capsule label directs clinicians to aPTT or ecarin clotting time, not INR; interpret any result with last-dose time, renal function, assay behavior, bleeding, and the local laboratory.",
+        "Mechanical prosthetic heart valve is a formal contraindication, not merely a caution. The RE-ALIGN experience showed more thromboembolic events and major bleeding than warfarin, so do not treat dabigatran as a convenient mechanical-valve substitute."
+      ],
+      "keyLabs": [
+        "Serum creatinine and calculated adult creatinine clearance or the label-specified pediatric eGFR before treatment and periodically when clinical status can change renal clearance.",
+        "CBC, hemoglobin or hematocrit, and assessment for visible or occult bleeding when starting therapy and when symptoms, illness, procedures, or treatment duration warrant reassessment.",
+        "When adult anticoagulant activity must be assessed, use aPTT or ecarin clotting time under a validated laboratory pathway; INR is not the recommended dabigatran activity test and anti-factor Xa testing measures a different drug class.",
+        "During major bleeding, trend hemodynamics, hemoglobin, renal function, clinical hemostasis, last-dose timing, and recurrence of coagulation effect after reversal."
+      ],
+      "administration": [
+        "Administer the exact indication-, age-, weight-, renal-, interaction-, formulation-, and treatment-phase order. Do not transfer an atrial-fibrillation, acute-VTE, recurrence, hip-replacement, or pediatric schedule to another context.",
+        "Swallow Pradaxa capsules whole with a full glass of water. Do not break, chew, or empty the capsule because opening it can alter exposure. A patient who cannot swallow a capsule whole requires the appropriate separately labeled formulation rather than improvised manipulation.",
+        "Keep capsules in the original bottle or blister package to protect them from moisture, not in a pill organizer. The current Pradaxa capsule label says to use an opened bottle within 4 months and close it tightly after each dose.",
+        "For adult surgery or invasive procedures, the capsule label describes stopping 1 to 2 days beforehand when creatinine clearance is at least 50 mL/min and 3 to 5 days beforehand when it is below 50 mL/min, with longer times considered for major surgery, spinal puncture, or spinal or epidural catheter placement. These are product-label starting points, not universal hold intervals; procedure, bleeding, renal, indication, and protocol context govern the plan."
+      ],
+      "patientEducation": [
+        "Take dabigatran exactly as prescribed and refill before running out. Do not stop on your own because inadequate anticoagulation can allow stroke, DVT, PE, or recurrent thrombosis.",
+        "Swallow each capsule whole with water, keep it in the original moisture-protective container, and never move a supply into a pill organizer. Tell the care team promptly if swallowing the capsule whole is not possible.",
+        "Seek urgent help for severe headache, new weakness, a serious fall or head injury, coughing or vomiting blood, black or bloody stool, red urine, uncontrolled bleeding, faintness, severe back pain, or new leg weakness, numbness, or bowel or bladder dysfunction after a spinal procedure.",
+        "Tell clinicians, dentists, and pharmacists about dabigatran before procedures or new medicines. Ask before using aspirin, ibuprofen or another NSAID, an antiplatelet medicine, another anticoagulant, dronedarone, systemic ketoconazole, rifampin, or an herbal product."
+      ],
+      "antidote": "Idarucizumab, brand Praxbind, is a specific dabigatran reversal agent for adults when reversal is needed for emergency surgery or an urgent procedure or for life-threatening or uncontrolled bleeding. The labeled 5 g course is supplied as two 2.5 g/50 mL vials; pediatric efficacy and safety are not established, and reversal does not repair the bleeding source or eliminate the underlying thrombotic risk.",
+      "reversalStrategy": [
+        "Use idarucizumab for the label-defined adult emergency indications through the current Praxbind and institutional protocol. Re-elevation of coagulation parameters and recurrent clinically relevant bleeding can occur; an additional course has limited supporting data and requires specialist reassessment rather than automatic repetition.",
+        "Dabigatran's relatively low protein binding permits some dialysis removal, but the Pradaxa label says clinical experience for bleeding is limited. Dialysis access, time, instability, and bleeding urgency make this an expert emergency decision rather than a routine substitute for idarucizumab."
+      ],
+      "toxicityManagement": [
+        "For active major bleeding, stop further dabigatran, stabilize airway, breathing, circulation, and the bleeding source, document the exact formulation, dose, and last-dose time, obtain urgent CBC, renal and coagulation assessment as indicated, and activate the institutional anticoagulant-bleeding pathway.",
+        "For a label-defined adult emergency, administer the complete Praxbind course under the current label and protocol while continuing source control, blood support when indicated, neurologic or procedural care, and surveillance for thrombosis and recurrent anticoagulant effect.",
+        "The Pradaxa label reports that high-flux hemodialysis removed about 49% of total dabigatran from plasma over 4 hours in a studied setting, but clinical bleeding experience is limited. PCC or recombinant factor VIIa may be considered but were not evaluated in clinical trials for this use; vitamin K and protamine do not reverse dabigatran."
+      ],
+      "specialPopulations": [
+        "Dabigatran is primarily eliminated by the kidneys. Adult creatinine-clearance thresholds and P-glycoprotein rules differ by indication, and pediatric renal assessment uses a separate eGFR approach; declining renal function can rapidly change exposure and procedure timing.",
+        "Pradaxa capsules are for pediatric patients aged 8 to less than 18 years only when they can swallow the capsule whole; younger patients and those unable to swallow require an age-appropriate separately labeled formulation. Dosage forms are not milligram-for-milligram interchangeable.",
+        "Mechanical prosthetic heart valve is contraindicated. Pregnancy, delivery, lactation, and neuraxial anesthesia require specialist benefit-risk and timing plans rather than automatic continuation or substitution.",
+        "Older adults can have greater bleeding risk because renal function, comorbidity, interacting drugs, and fall or procedure risk often change together; assess current function rather than relying on age alone."
+      ],
+      "nclexTraps": [
+        "Dabigatran etexilate is the swallowed prodrug; it is converted to active dabigatran. Both exact terms lead to this medication card, but the distinction explains formulation and absorption teaching.",
+        "Mechanical prosthetic heart valve is a formal contraindication, not a labeled indication.",
+        "When adult drug activity must be assessed, the label uses aPTT or ecarin clotting time rather than INR; anti-factor Xa testing belongs to a different mechanism.",
+        "Praxbind is specific for dabigatran. Capsules must remain whole and moisture protected, and any procedure hold is renal- and procedure-specific rather than one memorized interval."
+      ],
+      "routes": [
+        "Oral capsule",
+        "Other oral dabigatran etexilate formulations only under their separate product-specific instructions"
+      ],
+      "relatedTopics": [
+        "Idarucizumab",
+        "Anticoagulant-associated life-threatening bleeding reversal decision map",
+        "Mechanical prosthetic heart valve anticoagulation"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "sourceNote": "Original ANI synthesis from current DailyMed Pradaxa capsule and Praxbind prescribing information: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ba74e3cd-b06f-4145-b284-5fd6b84ff3c9 and https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c7400f8a-dcf4-a6df-6d07-983081b1bf34.",
+      "provenance": [
+        {
+          "key": "dailymed-pradaxa-capsule-label",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ba74e3cd-b06f-4145-b284-5fd6b84ff3c9",
+          "documentVersion": "Pradaxa capsule NDA label; DailyMed updated 2025-06-25; checked current 2026-08-13",
+          "fieldsSupported": [
+            "dabigatran and dabigatran etexilate identity",
+            "capsule formulations",
+            "adult and pediatric indications",
+            "boxed warnings",
+            "formal contraindications",
+            "mechanical-valve harm",
+            "renal assessment and procedure timing",
+            "P-gp interactions",
+            "aPTT and ECT monitoring boundary",
+            "capsule and storage instructions",
+            "patient counseling",
+            "idarucizumab use",
+            "dialysis evidence and other reversal limitations"
+          ]
+        },
+        {
+          "key": "dailymed-praxbind-label",
+          "authority": "DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c7400f8a-dcf4-a6df-6d07-983081b1bf34",
+          "documentVersion": "Praxbind BLA label; DailyMed updated 2024-01-23, current version 8; checked 2026-08-13",
+          "fieldsSupported": [
+            "current U.S. idarucizumab identity and availability",
+            "adult dabigatran reversal indications",
+            "two-vial 5 g course",
+            "limited repeat-course evidence",
+            "re-elevation of coagulation parameters",
+            "thrombotic risk",
+            "hypersensitivity and sorbitol warning"
+          ]
+        }
+      ],
+      "entryType": "drug",
+      "classCard": false,
+      "isDrugClassCard": false,
+      "curatedStandaloneCard": true,
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pharmacyDomainVersion": "2026-08-13.2"
     }
   ]
 };
@@ -4062,7 +4914,7 @@
   const retained = (Array.isArray(db.drugs) ? db.drugs : []).filter((card) => !replacementByKey.has(normalize(card && (card.generic || card.name || card.displayName))));
   db.drugs = retained.concat(payload.cards);
   db.reviewedExpansion = { schemaVersion: payload.schemaVersion, builderVersion: payload.builderVersion, domainVersion: payload.domainVersion, sourceSha256: payload.sourceSha256, cardCount: payload.cards.length };
-  db.version = [db.version, "reviewed-pharmacy-2026-08-11.1"].filter(Boolean).join("+");
+  db.version = [db.version, "reviewed-pharmacy-2026-08-13.2"].filter(Boolean).join("+");
   window.ANI_PHARM_DATABASE = db;
   window.ANI_PHARMACY_REVIEWED_EXPANSION = payload;
 }());

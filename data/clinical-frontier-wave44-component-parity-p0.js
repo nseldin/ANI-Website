@@ -10,7 +10,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "2026-08-12-wave44-component-parity-p0-4";
+  const VERSION = "2026-08-13-wave44-component-parity-p0-11";
   const GENERATED_AT = "2026-08-12";
   const GLOBAL_NAME = "ANI_CLINICAL_FRONTIER_WAVE44_COMPONENT_PARITY_P0";
   if (window[GLOBAL_NAME] && window[GLOBAL_NAME].version === VERSION) return;
@@ -53,20 +53,70 @@
       label: "2026 AHA/ASA Guideline for Early Management of Acute Ischemic Stroke",
       url: "https://professional.heart.org/en/science-news/2026-guideline-for-the-early-management-of-patients-with-acute-ischemic-stroke/top-things-to-know"
     },
+    "asa-be-fast-stroke-symptoms": {
+      key: "asa-be-fast-stroke-symptoms",
+      label: "American Stroke Association: Stroke Symptoms and B.E. F.A.S.T. Warning Signs",
+      url: "https://www.stroke.org/en/about-stroke/stroke-symptoms",
+      note: "Explicitly supports sudden Balance loss, Eye or vision change, Face drooping, Arm weakness, Speech difficulty, and Time to call 911 immediately; it also supports urgent action because earlier treatment improves survival and reduces disability."
+    },
+    "fda-poc-blood-glucose-2020": {
+      key: "fda-poc-blood-glucose-2020",
+      label: "FDA: Blood Glucose Monitoring Test Systems for Prescription Point-of-Care Use (2020)",
+      url: "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/blood-glucose-monitoring-test-systems-prescription-point-care-use",
+      note: "Supports capillary-sample validation and device-specific limitations involving hematocrit, skin contamination, drugs or other interferents, and potentially inaccurate results during severe hypotension, dehydration, shock, or a hyperglycemic-hyperosmolar state."
+    },
+    "ada-hospital-care-2026": {
+      key: "ada-hospital-care-2026",
+      label: "American Diabetes Association: Standards of Care in Diabetes - 2026, Diabetes Care in the Hospital",
+      url: "https://diabetesjournals.org/care/article/49/Supplement_1/S339/163925/16-Diabetes-Care-in-the-Hospital-Standards-of-Care",
+      note: "Supports immediate bedside utility with lower accuracy and precision than laboratory glucose analysis, error from perfusion abnormalities, edema, hematocrit-related conditions and medications, repeat then laboratory confirmation of clinically discordant results, and protocol-directed immediate hypoglycemia treatment."
+    },
+    "acr-cerebrovascular-disease-2026": {
+      key: "acr-cerebrovascular-disease-2026",
+      label: "American College of Radiology Appropriateness Criteria: Cerebrovascular Disease (2026)",
+      url: "https://acsearch.acr.org/docs/69478/Narrative/",
+      note: "Supports urgent multimodal CT and MRI evaluation of suspected stroke, including noncontrast CT, CTA, CTP, DWI, ADC, and the need to interpret complementary sequences and vascular findings together."
+    },
     "ajkd-mixed-acid-base-2025": {
       key: "ajkd-mixed-acid-base-2025",
       label: "Mixed Acid-Base Disorders: Core Curriculum 2025",
       url: "https://pubmed.ncbi.nlm.nih.gov/40728495/"
     },
+    "ani-lab-medlineplus-troponin": {
+      key: "ani-lab-medlineplus-troponin",
+      label: "NIH MedlinePlus: Troponin Test",
+      url: "https://medlineplus.gov/lab-tests/troponin-test/",
+      note: "Supports troponin as a myocardial-injury marker, serial testing, and non-infarction causes of elevation."
+    },
+    "ani-lab-acc-aha-chest-pain-2021": {
+      key: "ani-lab-acc-aha-chest-pain-2021",
+      label: "AHA/ACC Multisociety Guideline for the Evaluation and Diagnosis of Chest Pain (2021)",
+      url: "https://www.ahajournals.org/doi/10.1161/CIR.0000000000001029",
+      note: "Supports high-sensitivity cardiac troponin, assay-specific 99th-percentile limits, serial change, and the principle that troponin is organ-specific but not disease-specific."
+    },
+    "ani-lab-universal-mi-2018": {
+      key: "ani-lab-universal-mi-2018",
+      label: "Fourth Universal Definition of Myocardial Infarction (2018)",
+      url: "https://academic.oup.com/eurheartj/article/40/3/237/5079081",
+      note: "Supports distinguishing myocardial injury from myocardial infarction using serial troponin change plus clinical evidence of ischemia."
+    },
     "fena-meta-analysis": {
       key: "fena-meta-analysis",
       label: "Diagnostic Performance of Fractional Excretion of Sodium for AKI Differentiation: Systematic Review and Meta-analysis",
-      url: "https://pubmed.ncbi.nlm.nih.gov/35545442/"
+      url: "https://pubmed.ncbi.nlm.nih.gov/35545442/",
+      note: "Supports FeNa as a contextual aid for distinguishing AKI physiology, the commonly studied 1% threshold, reduced accuracy with CKD or diuretic exposure, and greatest diagnostic value in selected oliguric patients without those confounders."
+    },
+    "feurea-meta-analysis-2024": {
+      key: "feurea-meta-analysis-2024",
+      label: "Utility of Fractional Excretion of Urea in Acute Kidney Injury: Systematic Review and Meta-analysis (2024)",
+      url: "https://pubmed.ncbi.nlm.nih.gov/38768779/",
+      note: "Supports the commonly studied 35% FeUrea threshold and the conclusion that FeUrea has limited diagnostic utility and is not a consistently superior alternative to FeNa, including in patients receiving diuretics."
     },
     "kdigo-aki-2012": {
       key: "kdigo-aki-2012",
       label: "KDIGO 2012 Clinical Practice Guideline for Acute Kidney Injury (final guideline)",
-      url: "https://kdigo.org/guidelines/acute-kidney-injury/kdigo-2012-aki-guideline-english/"
+      url: "https://kdigo.org/guidelines/acute-kidney-injury/kdigo-2012-aki-guideline-english/",
+      note: "Supports contextual AKI evaluation using urine microscopy, urine sediment patterns, FeNa, and FeUrea while emphasizing that classic urinary indices do not reliably separate every AKI cause."
     },
     medlineplus: {
       key: "medlineplus",
@@ -119,11 +169,65 @@
       label: "NINDS Stroke Assessment and Treatment",
       url: "https://www.ninds.nih.gov/health-information/stroke/assess-and-treat"
     },
+    "pubmed-dwi-stroke-pitfalls-2021": {
+      key: "pubmed-dwi-stroke-pitfalls-2021",
+      label: "Diffusion-weighted imaging in acute ischemic stroke: interpretation pitfalls and advanced applications (2021 review)",
+      url: "https://pubmed.ncbi.nlm.nih.gov/33836457/",
+      note: "Supports early DWI detection of ischemia, DWI-negative stroke, nonvascular restricted-diffusion mimics, and the limitation that a DWI lesion does not invariably equal irreversible infarct core."
+    },
     "w37-ada-diabetes-2026": {
       key: "w37-ada-diabetes-2026",
       label: "American Diabetes Association: Standards of Care in Diabetes - 2026, Diagnosis and Classification",
       url: "https://diabetesjournals.org/care/article/49/Supplement_1/S27/163926/2-Diagnosis-and-Classification-of-Diabetes",
       note: "Supports current diabetes classification, diagnostic criteria, confirmation rules, specimen requirements, and important limits of glucose, A1C, and oral-glucose-tolerance testing."
+    },
+    "endocrine-society-adult-hypoglycemia-2009": {
+      key: "endocrine-society-adult-hypoglycemia-2009",
+      label: "Endocrine Society: Evaluation and Management of Adult Hypoglycemic Disorders (2009)",
+      url: "https://academic.oup.com/jcem/article/94/3/709/2596247",
+      note: "Adult-only guidance supporting evaluation after documented Whipple triad; paired plasma glucose, insulin, C-peptide, proinsulin, beta-hydroxybutyrate, oral-hypoglycemic-agent screening, and insulin antibodies during hypoglycemia; and a supervised fast or mixed-meal test when a spontaneous episode cannot be captured. Its numeric criteria are adult protocol criteria, not universal ranges."
+    },
+    "pes-persistent-hypoglycemia-2015": {
+      key: "pes-persistent-hypoglycemia-2015",
+      label: "Pediatric Endocrine Society: Recommendations for Evaluation and Management of Persistent Hypoglycemia in Neonates, Infants, and Children (2015)",
+      url: "https://pedsendo.org/wp-content/uploads/2020/06/PES_recommendation_hypoglycemia.pdf",
+      note: "Pediatric, non-diabetes guidance supporting a spontaneous pretreatment critical sample when feasible; initial plasma glucose, bicarbonate, beta-hydroxybutyrate, and lactate with reserve plasma for insulin, free fatty acids, and C-peptide; monitored diagnosis-tailored fasting when no critical sample exists; and the warning that routine reference ranges may be inappropriate during childhood hypoglycemia."
+    },
+    "girft-insulin-c-peptide-hypoglycemia-2025": {
+      key: "girft-insulin-c-peptide-hypoglycemia-2025",
+      label: "GIRFT/NHS England: Laboratory Handling of Insulin Requests in the Investigation of Hypoglycaemia (October 2025)",
+      url: "https://gettingitrightfirsttime.co.uk/wp-content/uploads/2026/07/Laboratory-handling-of-insulin-requests-in-the-investigation-of-hypoglycaemia-guidelines-FINAL-November-2025.pdf",
+      note: "Adults-and-children laboratory guidance supporting documented clinical context and urgency, corresponding laboratory glucose and same-time C-peptide with insulin, local assay method and insulin-analogue detection review, non-use of routine reference intervals during hypoglycaemia, and urgent communication of unexplained results, especially hypoglycaemia with elevated insulin and low C-peptide as a red flag rather than a diagnosis."
+    },
+    "mayo-insulin-serum-8664": {
+      key: "mayo-insulin-serum-8664",
+      label: "Mayo Clinic Laboratories: Insulin, Serum (INS; Test ID 8664)",
+      url: "https://www.mayocliniclabs.com/test-catalog/overview/8664",
+      note: "Method-specific ECLIA catalog guidance supporting time-labeled, nonhemolyzed serum collection; anti-insulin and other immunoassay interferences; and this platform's detection of recombinant human insulin but nonrecognition of listed insulin analogs. Those cross-reactivity and reference-value statements are assay-specific, not universal."
+    },
+    "mayo-c-peptide-serum-8804": {
+      key: "mayo-c-peptide-serum-8804",
+      label: "Mayo Clinic Laboratories: C-Peptide, Serum (CPR; Test ID 8804)",
+      url: "https://www.mayocliniclabs.com/test-catalog/overview/8804",
+      note: "Method-specific ECLIA catalog guidance supporting C-peptide as a marker of endogenous insulin secretion; kidney clearance and possible elevation in kidney failure; paired insulin/C-peptide interpretation including exogenous-insulin discordance; fasting-only context for its catalog interval; and hemolysis, proinsulin cross-reactivity, hook-effect, and antibody-interference limitations. It is not a universal interval or standalone diagnosis."
+    },
+    "dailymed-gentamicin-injection-2023": {
+      key: "dailymed-gentamicin-injection-2023",
+      label: "DailyMed: Gentamicin Injection, USP prescribing information (updated October 20, 2023)",
+      url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a73a5453-c091-43fd-aae2-d992152363b1",
+      note: "Supports the boxed potential for nephrotoxicity and vestibular or auditory ototoxicity, renal and eighth-cranial-nerve monitoring, and label-specific conventional adult monitoring: a 4-6 mcg/mL example peak 30-60 minutes after intramuscular injection, avoidance of prolonged peak levels above 12 mcg/mL, and avoidance of trough levels above 2 mcg/mL just before the next dose. These are prescribing-label contexts, not universal TDM targets."
+    },
+    "idsa-amr-gentamicin-supplement-2024": {
+      key: "idsa-amr-gentamicin-supplement-2024",
+      label: "IDSA 2024 AMR Guidance: Gentamicin Supplemental Material",
+      url: "https://www.idsociety.org/globalassets/idsa/practice-guidelines/amr-guidance/4.0/amr-guidance-v4.0-supplemental-material.pdf",
+      note: "Adult AMR supplemental guidance limited to pyelonephritis or complicated urinary tract infection supports timely TDM, an AUC0-24/MIC ratio of 80-100, a less-preferred peak/MIC ratio of 8-10 or a nomogram using an organism-specific MIC, and an alternative trough-focused toxicity strategy with a suggested trough below 1 mg/L. These targets must not be applied to other indications as universal gentamicin goals."
+    },
+    "icu-antimicrobial-tdm-position-2020": {
+      key: "icu-antimicrobial-tdm-position-2020",
+      label: "ESICM/ESCMID/IATDMCT/ISAC: Antimicrobial TDM in Critically Ill Adults Position Paper (2020)",
+      url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7223855/",
+      note: "The multi-society ICU position paper supports routine aminoglycoside TDM in critically ill adults, accounting for altered volume of distribution and renal clearance, repeating TDM after important pharmacokinetic or renal-function change, and using strategy-specific timed sampling. For AUC estimation it describes two samples, 30 minutes after infusion and 6-22 hours later, or one sample with Bayesian adaptation; its ICU suggestions are not universal targets."
     },
     "w37-aha-hf-2022": {
       key: "w37-aha-hf-2022",
@@ -319,7 +423,7 @@
       tags: unique(["wave44", "standalone component", "diagnostics", ...(spec.tags || [])]),
       sourceKeys: unique(spec.sourceKeys || []),
       sourceNote: spec.sourceNote || "Educational synthesis from the source set already registered on the related ANI comparison card. Interpret results with the patient, specimen, timing, assay, and current local protocol.",
-      evidenceLastReviewed: GENERATED_AT,
+      evidenceLastReviewed: spec.evidenceLastReviewed || GENERATED_AT,
       educationalArticle: true,
       nclexEssential: true,
       hidden: false,
@@ -421,6 +525,7 @@
       abbreviations: ["TCO2", "CO2"],
       commonMisspellings: ["serum total c02", "total carbon dioxde"],
       definition: "Serum total carbon dioxide is the carbon-dioxide content measured on a chemistry specimen. Most of that content is bicarbonate, with smaller amounts of dissolved carbon dioxide and carbonic species. It is therefore a practical estimate of the metabolic bicarbonate pool, but it is not analytically identical to the bicarbonate calculated from pH and PCO2 on a blood gas.",
+      quickAnswer: "Serum total carbon dioxide (total CO2) is mostly bicarbonate, so a low value commonly suggests metabolic acidosis or kidney compensation for respiratory alkalosis, while a high value commonly suggests metabolic alkalosis or compensation for chronic respiratory acidosis. It does not identify the primary disorder or cause by itself. The nurse should assess breathing, mental status, perfusion, gastrointestinal losses, medications, kidney function, potassium, chloride, and the anion gap; diagnostic evaluation may include a blood gas when the patient is ill or the chemistry pattern is discordant. Escalate respiratory distress, shock, dysrhythmia, dangerous potassium change, suspected poisoning, or a rapidly worsening acid-base pattern.",
       method: "A venous serum or plasma sample is analyzed on the chemistry platform, commonly as part of a basic or comprehensive metabolic panel. No arterial puncture is required. Collection time, tube handling, exposure to air, and delay before analysis matter because carbon dioxide can escape from the specimen.",
       interpretation: "A low result can reflect metabolic acidosis, renal bicarbonate loss, gastrointestinal bicarbonate loss, ketoacidosis, lactic acidosis, toxin-related acid accumulation, or renal failure; respiratory alkalosis can also lower bicarbonate through compensation. A high result can reflect metabolic alkalosis or compensation for chronic respiratory acidosis. Interpret it with sodium, chloride, albumin, anion gap, potassium, kidney function, pH, PCO2, losses, medications, and the clinical timeline.",
       limitations: "The number does not identify the cause of an acid-base disorder and cannot distinguish a primary metabolic process from renal compensation without pH and respiratory context. Chemistry total CO2 and blood-gas calculated HCO3 may differ because they use different specimens, methods, timing, and assumptions. A discordant or implausible result should be checked rather than averaged mentally.",
@@ -439,6 +544,7 @@
       aliases: ["noncontrast CT head", "unenhanced head CT", "plain head CT", "stroke CT", "NCCT brain"],
       abbreviations: ["NCCT", "NCHCT"],
       definition: "Noncontrast head CT is a rapid x-ray-based scan performed without intravenous contrast. In acute neurologic emergencies its first job is usually to identify intracranial hemorrhage, a large established infarct, mass effect, hydrocephalus, or another structural emergency; a normal early scan does not exclude acute ischemic stroke.",
+      quickAnswer: "A noncontrast head CT result can immediately change emergency stroke management: visible acute hemorrhage indicates intracranial bleeding and redirects care, while no hemorrhage supports continued reperfusion evaluation. A normal early result does not rule out acute ischemic stroke. The nurse should urgently reassess neurologic status, glucose, last-known-well time, anticoagulant exposure, and airway or monitoring needs; the stroke team correlates the image with the examination and may obtain CTA, CTP, or MRI when indicated.",
       method: "The patient lies on the CT table while thin axial images are acquired within seconds. Metal and motion can degrade the study. Stroke teams obtain the scan urgently because treatment decisions depend on excluding blood and estimating the amount of already injured tissue, not because CT must show every early ischemic lesion.",
       interpretation: "Acute blood is usually hyperdense. Early ischemic clues include loss of gray-white differentiation, sulcal effacement, insular ribbon loss, and a hyperdense artery, but these may be subtle or absent. The scan must be integrated with examination, last-known-well time, glucose, and vascular imaging when a large-vessel occlusion is possible.",
       limitations: "Sensitivity for small, very early, brainstem, or posterior-fossa ischemia is limited. A negative scan is not a 'no stroke' result. Beam-hardening, motion, old infarct, tumor, infection, or calcification can complicate interpretation. CT shows anatomy; it does not directly measure arterial lumen or tissue perfusion.",
@@ -447,7 +553,7 @@
       urgent: "Immediately escalate new hemorrhage, mass effect, herniation signs, rapidly declining consciousness, seizure, unequal pupils, worsening deficit, or imaging delay in a potentially treatable stroke. Treatment eligibility remains a stroke-team decision based on the entire patient.",
       resultMeanings: [["No acute hemorrhage", "Removes one major contraindication to selected reperfusion pathways but does not prove that no ischemic stroke exists."], ["Acute hemorrhage", "Activates hemorrhage, blood-pressure, reversal, and neurosurgical pathways."], ["Large established infarct or mass effect", "Signals greater edema and hemorrhagic-transformation risk and changes reperfusion and critical-care decisions."]],
       relatedTopics: ["CT angiography", "CT perfusion", "Diffusion-weighted imaging", "Acute ischemic stroke", "Intracerebral hemorrhage"],
-      sourceKeys: ["aha-asa-ais-2026", "ninds-stroke-assess"]
+      sourceKeys: ["aha-asa-ais-2026", "ninds-stroke-assess", "acr-cerebrovascular-disease-2026"]
     }),
     diagnosticCard({
       name: "CT angiography",
@@ -457,6 +563,7 @@
       aliases: ["CTA", "CT angiogram", "head and neck CTA", "stroke vessel imaging", "computed tomographic angiography"],
       abbreviations: ["CTA"],
       definition: "CT angiography is contrast-enhanced CT timed to display the arterial lumen. In acute stroke it can identify a large-vessel occlusion, severe stenosis, dissection, aneurysm, or other vascular lesion and show the arterial route that may be relevant to thrombectomy.",
+      quickAnswer: "A CT angiography result showing an abrupt arterial cutoff suggests large-vessel occlusion and can guide urgent thrombectomy evaluation; the study can also identify stenosis, dissection, or aneurysm. CTA does not diagnose the cause of a neurologic deficit or prove treatment eligibility by itself. The nurse should urgently reassess neurologic findings and monitor for an IV-site problem or contrast reaction; the stroke team correlates CTA with noncontrast CT, examination, timing, and perfusion imaging or MRI when indicated.",
       method: "Iodinated contrast is injected rapidly through a suitable IV while images are acquired at the arterial phase. Head and neck coverage is common in stroke pathways. Accurate bolus timing, adequate IV flow, still positioning, and appropriate reconstruction are necessary for a diagnostic study.",
       interpretation: "A missing or abruptly cut-off arterial column suggests occlusion; narrowed, irregular, dissected, or aneurysmal vessels require context and specialist interpretation. Collateral filling can influence tissue survival but does not replace perfusion or clinical assessment. CTA answers where blood can flow, not how much tissue is already irreversibly injured.",
       limitations: "Poor bolus timing, motion, low cardiac output, venous contamination, heavy calcification, and very distal lesions can mislead. A normal CTA does not exclude small-vessel stroke. Apparent stenosis may be artifact, and an anatomic lesion is not automatically the cause of the current symptoms.",
@@ -465,7 +572,7 @@
       urgent: "Escalate large-vessel occlusion, dissection, ruptured or symptomatic aneurysm, contrast reaction, extravasation threatening tissue, or clinical deterioration. CTA findings should route immediately to the appropriate stroke, vascular, neurosurgical, or emergency team.",
       resultMeanings: [["Large-vessel occlusion", "May identify a thrombectomy target when clinical, time, and imaging criteria align."], ["Stenosis or dissection", "May explain ischemia and changes antithrombotic or procedural planning."], ["No proximal occlusion", "Does not exclude small-vessel, distal, transient, or already reperfused ischemia."]],
       relatedTopics: ["Noncontrast head CT", "CT perfusion", "Large-vessel occlusion stroke", "Aortic dissection", "Intracranial aneurysm"],
-      sourceKeys: ["aha-asa-ais-2026", "ninds-stroke-assess"]
+      sourceKeys: ["aha-asa-ais-2026", "ninds-stroke-assess", "acr-cerebrovascular-disease-2026"]
     }),
     diagnosticCard({
       name: "CT perfusion",
@@ -475,6 +582,7 @@
       aliases: ["CTP", "brain perfusion CT", "stroke perfusion CT", "perfusion map CT"],
       abbreviations: ["CTP"],
       definition: "CT perfusion repeatedly images the passage of iodinated contrast through brain tissue to estimate blood flow, blood volume, and contrast-arrival timing. Software uses these measurements to estimate severely injured core and hypoperfused tissue that may still be salvageable; the maps are probabilistic models, not photographs of dead and living brain.",
+      quickAnswer: "A CT perfusion result showing a perfusion-core mismatch suggests hypoperfused tissue may remain outside the estimated ischemic core and can guide selected late- or unknown-window stroke evaluation. A modeled map does not diagnose whether tissue is dead or salvageable and does not establish treatment eligibility by itself. The nurse should urgently reassess neurologic findings, confirm last-known-well time and IV or contrast safety, and report deterioration; the stroke team evaluates CTP with noncontrast computed tomography, CT angiography, examination, timing, and current protocol.",
       method: "A rapid contrast bolus is followed by serial CT acquisitions over a selected brain volume. Motion correction, arterial and venous input selection, acquisition duration, and vendor-specific processing generate maps such as cerebral blood flow, cerebral blood volume, mean transit time, and Tmax.",
       interpretation: "A region with critically reduced flow may be labeled core, while a larger delayed-perfusion region may represent tissue at risk. The difference is called mismatch. Decisions use validated thresholds and the clinical syndrome, noncontrast CT, CTA, time, and local protocol rather than visual color alone.",
       limitations: "Motion, poor cardiac output, delayed bolus, carotid disease, chronic infarct, seizure, migraine, small lesions, posterior-fossa coverage, and software thresholds can over- or underestimate core. Very early severe hypoperfusion can look irreversible even when tissue later recovers, and late spontaneous reperfusion can obscure the original deficit.",
@@ -483,7 +591,7 @@
       urgent: "Escalate a favorable mismatch in a potentially eligible patient, extensive estimated core, worsening examination, contrast reaction, or a map that conflicts with the vascular lesion and symptoms. Expert image review is required before high-stakes treatment decisions.",
       resultMeanings: [["Core estimate", "Tissue with severe modeled flow reduction and a higher likelihood of irreversible injury."], ["Hypoperfused region", "Tissue receiving delayed or reduced blood flow; not all of it will infarct."], ["Mismatch", "The modeled difference between hypoperfused tissue and core, used in selected late- or unknown-window pathways."]],
       relatedTopics: ["Ischemic core", "Ischemic penumbra", "CT angiography", "Wake-up stroke", "Mechanical thrombectomy"],
-      sourceKeys: ["aha-asa-ais-2026", "ninds-stroke-assess"]
+      sourceKeys: ["aha-asa-ais-2026", "ninds-stroke-assess", "acr-cerebrovascular-disease-2026"]
     }),
     diagnosticCard({
       name: "Diffusion-weighted imaging",
@@ -493,6 +601,7 @@
       aliases: ["DWI MRI", "diffusion MRI", "MRI diffusion", "stroke DWI"],
       abbreviations: ["DWI"],
       definition: "Diffusion-weighted imaging is an MRI sequence sensitive to the microscopic movement of water. Acute cellular energy failure causes cytotoxic edema and restricts water motion, often making an ischemic lesion bright on DWI within minutes; true restriction is confirmed by a low apparent diffusion coefficient.",
+      quickAnswer: "A diffusion-weighted imaging result that is bright with a matching low ADC suggests acute restricted diffusion, commonly from acute ischemic infarction, and can guide stroke evaluation. DWI does not diagnose stroke by itself: seizure, abscess, hypoglycemia, and other processes can restrict diffusion, and a negative early result does not rule out a small or posterior-circulation stroke. The nurse should urgently reassess neurologic status, glucose, last-known-well time, and MRI safety; the stroke team compares DWI with ADC, FLAIR, vascular imaging, and the clinical examination.",
       method: "MRI gradients encode water motion in several directions and produce diffusion-weighted images with corresponding ADC maps. The patient must pass MRI safety screening and remain sufficiently still. Acquisition is fast, but total MRI access and setup may be slower than CT in an emergency.",
       interpretation: "DWI brightness with low ADC supports acute restricted diffusion, commonly acute infarction. Distribution helps identify vascular territory, embolic pattern, small lacunar lesions, or another process. DWI-FLAIR mismatch may support selected unknown-onset treatment pathways under protocol.",
       limitations: "Early small posterior-circulation, brainstem, or transient lesions can be DWI-negative. Seizure, abscess, hypoglycemia, encephalitis, highly cellular tumor, and other disorders can restrict diffusion. T2 shine-through can look bright on DWI without low ADC, so DWI must be read with ADC and other sequences.",
@@ -501,7 +610,7 @@
       urgent: "Escalate acute restricted diffusion matching a disabling deficit, posterior-circulation findings, seizure or deterioration in the scanner, or any MRI safety event. A negative DWI must not overrule a convincing evolving stroke syndrome.",
       resultMeanings: [["Bright DWI plus low ADC", "Supports true restricted diffusion, often acute infarction in the correct pattern."], ["Bright DWI without low ADC", "May represent T2 shine-through rather than true restriction."], ["Negative DWI", "Reduces but does not eliminate the possibility of acute ischemic stroke, especially early or in small posterior lesions."]],
       relatedTopics: ["Apparent diffusion coefficient map", "MRI", "Acute ischemic stroke", "Wake-up stroke", "Posterior circulation stroke"],
-      sourceKeys: ["aha-asa-ais-2026", "ninds-stroke-assess"]
+      sourceKeys: ["aha-asa-ais-2026", "ninds-stroke-assess", "acr-cerebrovascular-disease-2026", "pubmed-dwi-stroke-pitfalls-2021"]
     }),
     diagnosticCard({
       name: "Apparent diffusion coefficient map",
@@ -511,6 +620,7 @@
       aliases: ["ADC map", "apparent diffusion coefficient", "MRI ADC", "diffusion coefficient map"],
       abbreviations: ["ADC"],
       definition: "An apparent diffusion coefficient map is the quantitative companion to diffusion-weighted MRI. It estimates the magnitude of water diffusion in each voxel; truly restricted diffusion usually appears dark because the ADC is reduced, helping separate acute cytotoxic edema from simple DWI brightness caused by T2 shine-through.",
+      quickAnswer: "An apparent diffusion coefficient map result that is dark where DWI is bright suggests true restricted diffusion and supports acute ischemic injury in the correct vascular and clinical pattern; it helps separate restriction from T2 shine-through. ADC does not diagnose infarction by itself, and a normal map does not rule out a very early, tiny, or technically missed stroke. The nurse should urgently reassess any acute neurologic change and document MRI timing and safety; the stroke team evaluates ADC with DWI, FLAIR, other MRI sequences, vascular imaging, and the examination.",
       method: "Software calculates ADC from images acquired with different diffusion weightings. The map is generated automatically with DWI and must be reviewed in anatomic alignment with DWI, FLAIR, other MRI sequences, and the clinical syndrome.",
       interpretation: "Low ADC within a DWI-bright vascular lesion supports acute restricted diffusion. ADC changes over time and may pseudonormalize in the subacute phase before becoming elevated with chronic tissue loss. Values vary by scanner, sequence, region, and pathology, so there is no universal single-number stroke cutoff for bedside use.",
       limitations: "Noise, susceptibility, motion, partial volume, hemorrhage, calcification, and misregistration can distort the map. Abscess, seizure-related change, hypoglycemia, and selected tumors can also lower ADC. A normal ADC does not exclude a very early, tiny, or technically missed infarct.",
@@ -519,7 +629,7 @@
       urgent: "Escalate a new restricted-diffusion pattern that matches an acute deficit, discordant imaging with worsening symptoms, or a scanner safety event. Reperfusion decisions remain time-, patient-, and protocol-specific.",
       resultMeanings: [["Low ADC", "Supports restricted diffusion in the correct DWI and clinical pattern."], ["Normal or high ADC with DWI brightness", "Raises T2 shine-through or nonacute tissue change."], ["Pseudonormal ADC", "Can occur subacutely, so timing and other sequences are essential."]],
       relatedTopics: ["Diffusion-weighted imaging", "MRI", "Ischemic core", "Acute ischemic stroke"],
-      sourceKeys: ["aha-asa-ais-2026", "ninds-stroke-assess"]
+      sourceKeys: ["aha-asa-ais-2026", "ninds-stroke-assess", "acr-cerebrovascular-disease-2026", "pubmed-dwi-stroke-pitfalls-2021"]
     }),
     diagnosticCard({
       name: "Urine sediment examination",
@@ -529,6 +639,7 @@
       aliases: ["urine microscopy", "urinary sediment", "urine sediment analysis", "microscopic urinalysis"],
       abbreviations: ["urine micro"],
       definition: "Urine sediment examination is microscopic evaluation of cells, casts, crystals, organisms, and debris after urine is concentrated. The pattern can localize kidney injury: casts form within renal tubules, so cellular or granular casts provide information that a dipstick alone cannot.",
+      quickAnswer: "A urine sediment pattern can help localize acute kidney injury: muddy brown granular casts or renal tubular epithelial cells support acute tubular injury, red-cell casts raise concern for a glomerular or vascular cause, and white-cell casts suggest pyelonephritis or interstitial nephritis. No pattern diagnoses the cause by itself. The nurse should correlate urine microscopy with creatinine and urine-output trends, dipstick and protein findings, culture when infection is suspected, and the patient's hemodynamic and respiratory status.",
       method: "A fresh, properly collected urine specimen is centrifuged or analyzed by a validated automated/manual method, and the concentrated sediment is examined. Timing and collection quality matter because cells and casts deteriorate, crystals can form after cooling, and contamination can add epithelial cells or organisms.",
       interpretation: "Muddy brown granular casts and tubular epithelial cells support acute tubular injury; red-cell casts or dysmorphic red cells suggest glomerular bleeding; white-cell casts can occur with interstitial inflammation or pyelonephritis; hyaline casts may be nonspecific. Crystals require urine pH, medication, diet, kidney function, and clinical context.",
       limitations: "Absence of a classic cast does not exclude kidney disease, and observer skill affects sensitivity. Menstrual, skin, catheter, and collection contamination can mimic disease. Automated systems may miss or misclassify important elements, and delayed analysis changes morphology.",
@@ -537,7 +648,7 @@
       urgent: "Escalate red-cell casts with rapidly rising creatinine, oliguria, pulmonary hemorrhage, severe hypertension, pregnancy danger signs, suspected pyelonephritis with sepsis, or muddy casts with worsening AKI and electrolyte instability.",
       resultMeanings: [["Muddy brown granular casts", "Support acute tubular injury in the correct setting."], ["Red-cell casts", "Strongly suggest glomerular bleeding and require prompt renal evaluation."], ["White-cell casts", "Suggest inflammation within the kidney rather than uncomplicated lower urinary contamination."], ["Hyaline casts", "Can occur with concentrated urine, exercise, fever, or low-flow states and are not diagnostic alone."]],
       relatedTopics: ["Acute kidney injury", "Acute tubular necrosis", "Glomerulonephritis", "Urinalysis", "Urine culture"],
-      sourceKeys: ["fena-meta-analysis", "kdigo-aki-2012"]
+      sourceKeys: ["kdigo-aki-2012"]
     }),
     diagnosticCard({
       name: "Fractional excretion of sodium",
@@ -547,6 +658,7 @@
       aliases: ["FeNa", "fractional sodium excretion", "urine sodium fraction"],
       abbreviations: ["FeNa", "FENa"],
       definition: "Fractional excretion of sodium estimates the percentage of filtered sodium that appears in urine. It is calculated from paired urine and plasma sodium and creatinine values. A low result suggests avid tubular sodium retention, but FeNa is a physiologic clue rather than a binary test for 'prerenal' versus 'intrinsic' AKI.",
+      quickAnswer: "A low FeNa result suggests sodium-avid physiology, often from reduced effective arterial volume, while a higher result can support impaired tubular sodium reabsorption. FeNa does not prove prerenal AKI or acute tubular necrosis, and its diagnostic performance is strongest in selected oliguric patients without chronic kidney disease or diuretic exposure. The nurse should verify paired specimen timing and evaluate the result with urine output, creatinine trend, urine microscopy, medications, perfusion, congestion, and possible urinary obstruction rather than using it alone to choose fluid therapy.",
       method: "Use samples obtained close together and calculate (urine sodium x plasma creatinine) / (plasma sodium x urine creatinine) x 100. Interpret the timing relative to fluids, diuretics, vasopressors, contrast, obstruction relief, and changing kidney function.",
       interpretation: "A FeNa below about 1% often accompanies sodium-avid states such as reduced effective arterial volume. Higher values can accompany tubular injury. Important exceptions include early glomerulonephritis, pigment injury, contrast-associated injury, sepsis, CKD, and obstruction; values change along a continuum rather than at a biologic wall.",
       limitations: "Loop and thiazide diuretics raise urine sodium and can make FeNa falsely high. CKD changes baseline sodium handling. Nonsteady creatinine, recent fluids, osmotic diuresis, and mixed AKI weaken the calculation. Meta-analytic performance is best in selected oliguric patients without CKD or diuretics, not every hospitalized patient.",
@@ -565,6 +677,7 @@
       aliases: ["FeUrea", "fractional urea excretion", "fractional excretion of urea nitrogen"],
       abbreviations: ["FeUrea", "FEUrea"],
       definition: "Fractional excretion of urea estimates the percentage of filtered urea excreted in urine. It is sometimes used when diuretics make urine sodium and FeNa harder to interpret, but urea handling is also affected by hormones, catabolism, sepsis, nutrition, and kidney disease, so FeUrea is not a definitive volume-status test.",
+      quickAnswer: "A low FeUrea result, commonly assessed around 35%, suggests reduced-perfusion physiology in acute kidney injury, including when diuretics complicate FeNa interpretation. FeUrea does not prove prerenal AKI, and systematic-review evidence shows limited accuracy rather than a consistently superior alternative to FeNa. The nurse should verify paired sample timing and matching urea units, then evaluate FeUrea with urine output, creatinine trend, urine microscopy, perfusion, congestion, medications, sepsis, and possible urinary obstruction.",
       method: "Use paired urine and plasma urea plus creatinine: (urine urea x plasma creatinine) / (plasma urea x urine creatinine) x 100. The laboratory may report urea nitrogen rather than urea; numerator and denominator must use matching forms and units.",
       interpretation: "A value below roughly 35% is often taught as supporting sodium- and urea-avid reduced-perfusion physiology, while a higher value can occur with tubular injury. These anchors are aids, not diagnostic criteria, and performance varies across patient groups.",
       limitations: "Sepsis, catabolic state, high protein intake, corticosteroids, cirrhosis, heart failure, CKD, osmotic diuresis, changing renal function, and mixed injury alter urea production or handling. Diuretics may affect FeUrea less than FeNa but do not make it infallible.",
@@ -573,7 +686,7 @@
       urgent: "Escalate severe AKI complications, shock, respiratory distress, obstruction, or rapidly changing output regardless of FeUrea. Treat the unstable physiology rather than waiting for a calculated fraction.",
       resultMeanings: [["Low FeUrea", "Can support reduced-perfusion physiology, including in selected diuretic-exposed patients, but is not proof."], ["Higher FeUrea", "Can occur with tubular injury but has multiple confounders."], ["Uncertain", "Mixed disease, CKD, sepsis, catabolism, and nonsteady sampling may make the value nonactionable."]],
       relatedTopics: ["Fractional excretion of sodium", "Acute kidney injury", "Heart failure", "Cirrhosis", "Urine sediment examination"],
-      sourceKeys: ["fena-meta-analysis", "kdigo-aki-2012"]
+      sourceKeys: ["kdigo-aki-2012", "feurea-meta-analysis-2024"]
     }),
     diagnosticCard({
       name: "BE-FAST stroke screen",
@@ -582,7 +695,7 @@
       category: "Clinical Assessment / Neurology / Stroke Recognition",
       aliases: ["BE FAST", "BEFAST", "FAST stroke screen", "stroke warning signs", "balance eyes face arm speech time"],
       abbreviations: ["BE-FAST", "FAST"],
-      definition: "BE-FAST is a rapid stroke-recognition screen: sudden Balance difficulty, Eye or vision change, Face droop, Arm weakness, or Speech change means Time to activate emergency stroke care. It broadens FAST toward posterior-circulation clues but remains a screen, not a neurologic examination or a rule-out test.",
+      definition: "A positive BE-FAST stroke screen can signal an acute stroke: sudden Balance loss, Eye or vision change, Face droop, Arm weakness, or Speech difficulty means Time to call 911 in the community or activate the emergency stroke pathway immediately, because earlier treatment can reduce disability and death. The nurse should document symptom onset and last-known-well, check glucose, perform a focused neurologic assessment, and prepare the patient for an emergency noncontrast head CT scan or other protocol-selected brain imaging. BE-FAST does not diagnose stroke, distinguish ischemia from hemorrhage or a mimic, or rule stroke out when the screen is negative; other sudden neurologic symptoms still require urgent evaluation.",
       method: "Ask about sudden onset, assess gait or balance only when safe, check for new visual loss or diplopia, compare facial movement and arm drift, listen for aphasia or dysarthria, and record the exact time the patient was last known at baseline. Activate the local stroke pathway for any compatible sudden deficit.",
       interpretation: "One positive item can be enough to suspect stroke. The pattern helps recognition but does not distinguish ischemic from hemorrhagic stroke or from a mimic. Negative BE-FAST cannot exclude isolated numbness, leg weakness, severe headache, neglect, confusion, subtle aphasia, or other atypical presentations.",
       limitations: "Posterior stroke can present with vertigo, ataxia, vomiting, diplopia, dysphagia, or altered consciousness and may still be missed. Baseline disability, intoxication, language, sedation, vision loss, and poor cooperation affect the screen. Do not ask an unstable or unsafe patient to walk.",
@@ -591,7 +704,7 @@
       urgent: "Any sudden focal deficit, severe unexplained imbalance or visual change, decreasing consciousness, seizure, severe headache, or rapidly changing examination requires immediate emergency stroke activation.",
       resultMeanings: [["Positive item", "Treat as possible stroke and activate emergency evaluation."], ["Negative screen", "Does not exclude stroke; use the entire neurologic presentation."], ["Unsafe balance test", "Skip walking, protect the patient, and use history and supported examination."]],
       relatedTopics: ["Last-known-well time", "Wake-up stroke", "Stroke mimics", "NIH Stroke Scale", "Bedside capillary glucose testing"],
-      sourceKeys: ["aha-asa-ais-2026", "ninds-stroke-assess", "ninds-nihss"]
+      sourceKeys: ["asa-be-fast-stroke-symptoms", "aha-asa-ais-2026", "ninds-stroke-assess", "ninds-nihss"]
     }),
     diagnosticCard({
       name: "Bedside capillary glucose testing",
@@ -600,7 +713,7 @@
       category: "Diagnostics and Tests / Point-of-Care Testing / Glucose",
       aliases: ["finger-stick glucose", "fingerstick blood sugar", "bedside glucose", "capillary glucose", "POC glucose", "glucometer test"],
       abbreviations: ["POC glucose", "CBG", "FSBG", "BG"],
-      definition: "Bedside capillary glucose testing uses a portable meter and a small capillary blood sample to obtain a rapid glucose estimate. It is essential for immediate detection and treatment of hypo- or hyperglycemia, including reversible neurologic deficits, but it is not interchangeable with a laboratory venous-plasma result for formal diabetes diagnosis.",
+      definition: "A bedside capillary glucose result can signal urgent dysglycemia: a low result may explain confusion, seizure, coma, or a stroke-like deficit, while a high result with dehydration, ketones, acidosis, altered mental status, or shock raises concern for diabetic ketoacidosis (DKA) or hyperosmolar hyperglycemic state (HHS). Critical illness with poor peripheral perfusion—especially severe hypotension, shock, dehydration, or a hyperosmolar state—plus edema, hematocrit extremes, skin contamination, and device-specific drug or substance interference can make a capillary result inaccurate. The nurse should assess symptoms and perfusion, verify the sample, strip, meter, and device range, start protocol-directed hypoglycemia treatment immediately when a low result accompanies hypoglycemic symptoms or an unstable presentation, and repeat an unexpected or discordant test followed by laboratory testing for confirmation when feasible without delaying emergency care. Bedside capillary glucose testing does not diagnose diabetes, DKA, HHS, stroke, or the cause of symptoms by itself; critical-result limits and recheck timing depend on the patient, device instructions, and institutional protocol.",
       method: "Identify the patient, verify meter quality control and unexpired compatible strips, clean and dry the site, obtain an adequate lateral fingertip sample without excessive squeezing, apply it as the device requires, and document the value, units, time, symptoms, food, insulin, and treatment.",
       interpretation: "Treat low or critically high values according to the patient's symptoms and protocol. In suspected stroke, a low glucose can mimic focal deficit and must be corrected, but normalization does not automatically end the stroke evaluation if deficits persist. Trends and treatment timing are often more useful than one isolated value.",
       limitations: "Poor peripheral perfusion, shock, edema, hypothermia, contamination with glucose-containing fluid or food, hematocrit extremes, altitude, oxygen conditions, drugs, strip storage, and device range can distort results. An unexpected, extreme, or clinically discordant value needs prompt repeat and laboratory confirmation when feasible, without delaying emergency treatment.",
@@ -609,7 +722,7 @@
       urgent: "Treat symptomatic hypoglycemia, inability to swallow, seizure, coma, suspected DKA/HHS, shock, or an out-of-range meter result immediately. Use IV or glucagon rescue when oral treatment is unsafe and activate emergency support as indicated.",
       resultMeanings: [["Low", "May cause confusion, seizure, coma, or a stroke-like deficit and requires immediate treatment."], ["High", "Requires context; severe symptoms, ketones, acidosis, or hyperosmolality suggest emergency physiology."], ["Unexpected or out of range", "Repeat promptly and obtain laboratory confirmation while treating a dangerous presentation."]],
       relatedTopics: ["Hypoglycemia", "Dysglycemia", "Diabetic ketoacidosis", "Hyperosmolar hyperglycemic state", "Stroke mimics"],
-      sourceKeys: ["w37-ada-diabetes-2026", "w37-niddk-diabetes-testing"]
+      sourceKeys: ["fda-poc-blood-glucose-2020", "ada-hospital-care-2026", "w37-ada-diabetes-2026", "w37-niddk-diabetes-testing"]
     }),
     diagnosticCard({
       name: "BNP",
@@ -620,6 +733,7 @@
       abbreviations: ["BNP"],
       commonMisspellings: ["BPN", "brain naturetic peptide", "b type natruiretic peptide"],
       definition: "BNP is the biologically active natriuretic peptide released after cardiac muscle increases production and cleavage of proBNP, commonly in response to ventricular wall stress from pressure or volume load. It promotes natriuresis and vasodilation, so an elevated BNP is a compensatory distress signal rather than the cause of congestion. The test helps estimate whether cardiac stress contributes to dyspnea and helps describe risk, but it cannot diagnose heart failure or measure ejection fraction by itself.",
+      quickAnswer: "In a patient with dyspnea, a low BNP result in a validated clinical pathway makes heart failure less likely, while an elevated result supports increased cardiac wall stress and should raise concern for heart failure or another cardiac, pulmonary, renal, or critical-illness cause. BNP does not diagnose heart failure, prove congestion, or measure ejection fraction by itself. The nurse should assess oxygenation, work of breathing, perfusion, rhythm, weight and edema, kidney function, and sacubitril/valsartan treatment; evaluation commonly includes an ECG, chest x-ray, and echocardiography when heart failure is suspected.",
       method: "Measure BNP in the specimen and assay specified by the local laboratory, then document the analyte, units, collection time, clinical setting, kidney function, rhythm, body size, and treatment. Compare serial values only when the assay and clinical context are sufficiently similar. BNP is a separate analyte from NT-proBNP; their numerical values and decision limits are not interchangeable.",
       interpretation: "A low BNP in a validated acute-dyspnea pathway can make heart failure less likely. A high or rising value supports greater myocardial wall stress but can reflect left- or right-sided heart failure, atrial fibrillation, kidney dysfunction, acute coronary or valve disease, pulmonary hypertension or embolism, myocarditis, sepsis, or other critical illness. Use the current assay-specific pathway rather than one memorized universal cutoff.",
       limitations: "Older age, kidney disease, atrial fibrillation, and right-heart strain can raise BNP without proving left-sided congestion. Obesity, very early presentation, and effective treatment can suppress the result. Sacubitril inhibits neprilysin, which participates in BNP degradation, so BNP may rise or become harder to trend after sacubitril/valsartan begins even while wall stress improves. Assay interference and cross-platform differences can also create discordant results.",
@@ -639,6 +753,7 @@
       abbreviations: ["NT-proBNP", "NT proBNP"],
       commonMisspellings: ["ntprobnp", "nt pro bnp", "pro bnp", "NT-proBPN"],
       definition: "NT-proBNP is the inactive N-terminal fragment released when cardiomyocytes cleave proBNP into NT-proBNP and active BNP. Increased production commonly reflects myocardial wall stress. Because NT-proBNP has different clearance and kinetics from BNP, it is a distinct laboratory test with its own validated thresholds; it supports heart-failure probability and risk assessment but does not prove congestion or identify the cause of cardiac stress.",
+      quickAnswer: "In a patient with dyspnea, a low NT-proBNP result in a validated clinical pathway makes heart failure less likely, while an elevated result supports increased cardiac wall stress and should raise concern for heart failure or another cardiac, pulmonary, renal, or critical-illness cause. NT-proBNP does not diagnose heart failure, prove congestion, identify ejection fraction, or share interchangeable values with BNP. The nurse should assess oxygenation, work of breathing, perfusion, rhythm, weight and edema, kidney function, and treatment changes; evaluation commonly includes an ECG, chest x-ray, and echocardiography when heart failure is suspected.",
       method: "Use the local NT-proBNP assay, units, age- and setting-appropriate pathway, and specimen instructions. Record timing, symptoms, renal function, rhythm, treatment, and prior values. Trend NT-proBNP against NT-proBNP rather than comparing it numerically with BNP.",
       interpretation: "A sufficiently low NT-proBNP in a validated acute evaluation can reduce the likelihood of heart failure. Higher values support increased cardiac wall stress and often greater risk, but acute versus ambulatory pathways use different decision limits and acute rule-in strategies may be age stratified. Integrate examination, ECG, chest imaging, echocardiography, renal function, rhythm, and alternative pulmonary or systemic causes.",
       limitations: "Kidney dysfunction and older age often raise NT-proBNP because production, comorbidity, and renal clearance change. Atrial fibrillation, pulmonary vascular stress, sepsis, ischemia, valve disease, and myocarditis also elevate it. Obesity and early or treated disease can lower it relative to the severity of heart failure. Small serial changes can reflect biological or analytical variation.",
@@ -658,6 +773,7 @@
       abbreviations: ["UBT", "13C-UBT"],
       commonMisspellings: ["h pilori breath test", "h pylorie breath test", "urea breathe test"],
       definition: "The H. pylori urea breath test detects active gastric Helicobacter pylori infection by giving labeled urea and measuring labeled carbon dioxide in exhaled breath. H. pylori urease splits urea into ammonia and carbon dioxide; the labeled carbon reaches the lungs only when sufficient active urease-producing organisms are present. This mechanism makes the test useful for initial diagnosis and confirmation of eradication.",
+      quickAnswer: "A positive H. pylori urea breath test supports active Helicobacter pylori infection; a correctly prepared negative result makes active infection less likely but does not exclude it. Proton-pump inhibitors (PPIs), potassium-competitive acid blockers (PCABs), bismuth, antibiotics, recent treatment, or collection errors can cause a false negative. The nurse should verify fasting, medication-hold, specimen, and test-of-cure timing and arrange repeat testing when the treating plan requires it. This test does not show ulcer complications, gastric cancer, or antibiotic susceptibility; gastrointestinal bleeding or other alarm features require prompt clinician assessment and may require upper endoscopy regardless of the breath-test result.",
       method: "Follow the laboratory's fasting and collection instructions, obtain the baseline breath sample when required, administer the labeled urea preparation, and collect the timed post-dose sample without substituting another protocol. Review proton-pump inhibitors, PCABs, bismuth, antibiotics, and recent treatment before testing; do not stop prescribed medicine independently, but clarify the ordered hold plan.",
       interpretation: "A positive result supports active H. pylori infection. A negative result is most reliable when preparation, medication holds, timing, and sample collection were correct. For test of cure, testing is generally performed at least four weeks after eradication therapy; common guidance also withholds PPIs or PCABs for about two weeks and bismuth or antibiotics for about four weeks under the treating plan.",
       limitations: "Acid suppression, bismuth, antibiotics, recent upper-GI bleeding, partial treatment, low organism burden, or incorrect collection can suppress urease activity and cause a false negative. The test does not show ulcer depth, bleeding, cancer, or antibiotic susceptibility. Carbon-13 testing is nonradioactive; carbon-14 uses a small radioactive label and requires population- and facility-specific precautions.",
@@ -677,6 +793,7 @@
       abbreviations: ["HpSA", "H. pylori SAT"],
       commonMisspellings: ["h pilori stool test", "h pylorie antigen", "h pylori stoole test"],
       definition: "The H. pylori stool antigen test detects H. pylori antigens shed into feces, so it evaluates active infection rather than remote antibody exposure. A validated monoclonal assay can be used for initial diagnosis and for test of cure when collected at the correct interval and after the prescribed medication holds.",
+      quickAnswer: "A positive H. pylori stool antigen result supports active Helicobacter pylori infection. A correctly timed negative result makes infection less likely, but proton-pump inhibitors (PPIs), potassium-competitive acid blockers (PCABs), bismuth, antibiotics, recent treatment, watery or contaminated stool, and collection or transport problems can cause false reassurance. The nurse should verify clean collection, medication timing, recent eradication therapy, and the planned test of cure. This result does not evaluate ulcer complications, gastric cancer, or antibiotic susceptibility; bleeding or other alarm features need prompt clinician assessment and may require upper endoscopy even when the stool result is negative.",
       method: "Collect stool in the approved clean container without urine, toilet water, or cleaning-agent contamination; label and refrigerate or transport exactly as the laboratory requires. Review PPIs, PCABs, bismuth, antibiotics, recent treatment, and GI bleeding. Do not stop therapy on your own; obtain the prescriber's testing plan.",
       interpretation: "A positive result supports active H. pylori infection. A negative result is meaningful only if organism-suppressing medicines and recent therapy have not reduced antigen below detection. For eradication confirmation, common guidance waits at least four weeks after treatment and uses planned holds of about two weeks for PPIs/PCABs and four weeks for bismuth/antibiotics.",
       limitations: "Suppressive medicine, recent antibiotics or treatment, watery or contaminated specimens, collection or transport errors, and some episodes of GI bleeding can reduce sensitivity. Assays differ, and serology is not an interchangeable substitute because antibodies can persist after infection clears. The result does not evaluate ulcer complications or antibiotic resistance.",
@@ -695,7 +812,7 @@
       aliases: ["serum insulin", "plasma insulin", "fasting insulin", "insulin blood test", "insulin concentration", "immunoreactive insulin"],
       abbreviations: ["IRI"],
       commonMisspellings: ["insuline level", "inslin blood test", "fastin insulin"],
-      definition: "An insulin level measures insulin detected by a specific blood immunoassay. It is most clinically useful when interpreted with a simultaneously low or high glucose and with C-peptide, proinsulin, beta-hydroxybutyrate, medications, and timing. Insulin suppresses hepatic glucose output, lipolysis, and ketone production; therefore an insulin value that is not appropriately suppressed during true hypoglycemia can reveal insulin-mediated physiology.",
+      definition: "An insulin level result obtained during documented hypoglycemia can signal insulin-mediated physiology when insulin is not appropriately suppressed as laboratory glucose falls, but it must be interpreted with same-time C-peptide, proinsulin, beta-hydroxybutyrate (a blood ketone), and a sulfonylurea or meglitinide screen for medicines that prompt insulin release. For adults, use the episode-based Endocrine Society pathway and, when needed, its supervised-fast or mixed-meal protocol; for neonates, infants, and children, use the Pediatric Endocrine Society critical-sample and diagnosis-tailored fasting pathway because pediatric physiology, reference behavior, and safety limits differ. The nurse should document symptoms, laboratory glucose, specimen and treatment timing, insulin products and doses, oral medicines or possible exposures, food, kidney and liver function, and whether dextrose or glucagon came first. Formal evaluation may include laboratory testing, local assay review, and endocrinology or toxicology assessment when results are discordant. Immediately treat seizure, coma, or inability to swallow; obtain a critical sample before rescue only when it is immediately feasible and safe, and do not delay treatment. One insulin result or a routine fasting reference interval does not diagnose insulinoma, exogenous insulin exposure, insulin resistance, or diabetes type by itself.",
       method: "Collect the ordered fasting, random, post-stimulation, or critical hypoglycemia sample at the specified time and pair it with laboratory glucose. Document exogenous insulin type and time, sulfonylureas or meglitinides, food, dextrose, glucagon, kidney and liver function, and whether treatment occurred before collection. Assays differ in their detection of insulin analogs.",
       interpretation: "During documented hypoglycemia, insulin should normally be very low. Inappropriately detectable or high insulin with suppressed beta-hydroxybutyrate suggests insulin effect; high C-peptide supports endogenous secretion, whereas low C-peptide suggests exogenous insulin, subject to assay limitations. Outside a structured evaluation, a high fasting insulin may accompany insulin resistance but does not by itself diagnose it or define diabetes type.",
       limitations: "Reference intervals depend on fasting status, glucose, assay, units, body physiology, and recent treatment. Some immunoassays under-detect or over-detect insulin analogs. Hemolysis and anti-insulin antibodies can interfere, while reduced renal or hepatic clearance changes concentrations. A normal insulin sampled after glucose treatment cannot reconstruct the untreated event.",
@@ -704,7 +821,7 @@
       urgent: "Seizure, coma, inability to swallow, recurrent neuroglycopenia, or persistent low glucose requires immediate treatment and emergency evaluation regardless of the insulin result.",
       resultMeanings: [["Not suppressed during true hypoglycemia", "Supports insulin-mediated hypoglycemia and requires paired C-peptide, ketones, drug screen, and clinical context."], ["High with high glucose", "Can reflect insulin resistance, recent food, therapy, or other physiology; it is not a stand-alone diagnosis."], ["Low", "May be appropriate during fasting or may reflect beta-cell failure depending on simultaneous glucose and stimulation context."]],
       relatedTopics: ["C-peptide test", "Insulin/C-peptide levels", "Hypoglycemia", "Insulinoma", "Exogenous insulin", "Insulin resistance"],
-      sourceKeys: ["w37-ada-diabetes-2026", "w37-niddk-diabetes-testing"]
+      sourceKeys: ["endocrine-society-adult-hypoglycemia-2009", "pes-persistent-hypoglycemia-2015", "girft-insulin-c-peptide-hypoglycemia-2025", "mayo-insulin-serum-8664", "w37-ada-diabetes-2026"]
     }),
     diagnosticCard({
       name: "C-peptide test",
@@ -714,7 +831,7 @@
       aliases: ["C-peptide level", "C peptide blood test", "connecting peptide", "fasting C-peptide", "stimulated C-peptide", "endogenous insulin production test"],
       abbreviations: ["C-peptide"],
       commonMisspellings: ["c peptid", "see peptide", "c-peptied"],
-      definition: "C-peptide is released in roughly equimolar amounts when pancreatic beta cells split proinsulin into endogenous insulin and connecting peptide. Injected insulin contains no C-peptide, so a blood or urine C-peptide result helps estimate the body's own insulin secretion. It must be interpreted with the simultaneous glucose, kidney function, timing, and whether the sample was fasting or stimulated.",
+      definition: "A C-peptide test result collected with laboratory glucose during hypoglycemia can signal whether the pancreas is secreting insulin: C-peptide that is not appropriately suppressed with insulin supports endogenous secretion, whereas suppressed C-peptide with insulin effect raises concern for exogenous insulin, but medicine screening, specimen timing, and insulin-assay behavior are required to interpret the pattern. For adults, use the episode-based Endocrine Society pathway and, when needed, its supervised-fast or mixed-meal protocol; for neonates, infants, and children, use the Pediatric Endocrine Society critical-sample and diagnosis-tailored fasting pathway because pediatric physiology, reference behavior, and safety limits differ. The nurse should document symptoms, same-time glucose and insulin, specimen and treatment timing, insulin products, sulfonylureas or meglitinides, food, kidney function, and rescue treatment. Formal evaluation may include laboratory testing for proinsulin, beta-hydroxybutyrate (a blood ketone), medicines or exposures, plus local assay and specialist review. Immediately treat seizure, coma, or inability to swallow; obtain a critical sample before rescue only when it is immediately feasible and safe, and do not delay treatment. Kidney dysfunction can raise C-peptide, and fasting or stimulated intervals are method- and context-specific. One C-peptide result does not diagnose insulinoma, exogenous insulin exposure, insulin resistance, beta-cell failure, or diabetes type by itself.",
       method: "Collect the ordered fasting, random, meal-stimulated, glucagon-stimulated, or timed urine specimen according to protocol. Pair blood C-peptide with glucose and document insulin, sulfonylurea or meglitinide use, food, treatment, kidney function, and timing. Use the laboratory's units and reference interval because methods differ.",
       interpretation: "A preserved or high C-peptide during hyperglycemia shows ongoing endogenous insulin secretion, often with insulin resistance. A low value during meaningful hyperglycemia supports severe beta-cell failure. During true hypoglycemia, high insulin plus high C-peptide suggests endogenous insulin secretion or an insulin secretagogue; high insulin plus suppressed C-peptide supports exogenous insulin exposure, although insulin-assay detection and timing must be checked.",
       limitations: "Kidneys clear C-peptide, so kidney dysfunction can raise blood concentrations and complicate thresholds. A low glucose suppresses normal secretion; therefore a low C-peptide without adequate glucose stimulation does not prove beta-cell failure. Exogenous insulin, recent treatment, secretagogues, assay variation, and evolving diabetes all change interpretation. C-peptide does not identify a MODY gene or autoimmune antibody by itself.",
@@ -723,7 +840,7 @@
       urgent: "Treat severe hypoglycemia, ketosis, DKA, or HHS immediately. Escalate recurrent unexplained hypoglycemia, rapid insulin dependence, or discordant insulin/C-peptide patterns for specialist evaluation.",
       resultMeanings: [["Low with significant hyperglycemia", "Supports limited endogenous beta-cell reserve."], ["Preserved or high with hyperglycemia", "Shows endogenous insulin secretion and may accompany insulin resistance."], ["High during hypoglycemia", "Interpret with insulin, secretagogue screen, ketones, and kidney function to evaluate endogenous hyperinsulinism."]],
       relatedTopics: ["Insulin level", "Insulin/C-peptide levels", "Type 1 diabetes mellitus", "Type 2 diabetes mellitus", "LADA", "MODY", "Hypoglycemia"],
-      sourceKeys: ["w37-ada-diabetes-2026", "w37-niddk-diabetes-testing"]
+      sourceKeys: ["endocrine-society-adult-hypoglycemia-2009", "pes-persistent-hypoglycemia-2015", "girft-insulin-c-peptide-hypoglycemia-2025", "mayo-c-peptide-serum-8804", "w37-ada-diabetes-2026"]
     }),
     diagnosticCard({
       name: "Troponin I",
@@ -732,7 +849,7 @@
       category: "Diagnostics and Tests / Cardiovascular Biomarkers / Myocardial Injury",
       aliases: ["cardiac troponin I", "cTnI", "high-sensitivity troponin I", "hs-cTnI", "troponin I blood test"],
       abbreviations: ["cTnI", "hs-cTnI"],
-      definition: "Troponin I is a cardiac contractile-regulatory protein released into blood when cardiomyocytes are injured. A value above the assay's 99th-percentile upper reference limit establishes myocardial injury, not its cause. Acute myocardial infarction requires an appropriate rise or fall plus clinical evidence of ischemia such as symptoms, ECG change, imaging, or coronary findings.",
+      definition: "Cardiac troponin I is a heart-muscle regulatory protein that enters blood when heart muscle cells are injured. A result above this laboratory assay's 99th-percentile upper reference limit indicates myocardial injury; a rise or fall on protocol-timed serial samples raises concern for acute injury, whereas a stable elevation may reflect chronic injury. The result does not diagnose myocardial infarction or identify the cause by itself: myocardial infarction requires acute injury plus clinical evidence of ischemia from symptoms, an ECG, imaging, or coronary findings. The nurse should promptly assess chest pain or equivalent symptoms, vital signs, rhythm, perfusion, heart-failure findings, symptom onset, kidney function, and prior results; obtain serial troponin I samples and ECGs through the assay-specific clinical pathway; and immediately escalate ongoing chest pain, dynamic ECG change, shock, syncope, a malignant rhythm, or acute heart failure. Do not compare troponin I numerically with troponin T or another manufacturer's assay, and do not use one early normal result to rule out acute coronary syndrome.",
       method: "Use the laboratory's specific contemporary or high-sensitivity cardiac troponin I assay and timed serial pathway. Record symptom onset, collection times, units, sex-specific limits when the assay uses them, kidney function, ECG findings, and interventions. Never transfer a cutoff from troponin T or another manufacturer's assay.",
       interpretation: "A rising or falling pattern suggests acute injury; a stable elevation more often reflects chronic injury. Ischemic plaque rupture is one cause, but demand ischemia, heart failure, tachyarrhythmia, myocarditis, pulmonary embolism, sepsis, renal disease, trauma, and procedures can elevate troponin I. The mechanism and patient determine treatment.",
       limitations: "A single early normal result may precede detectable release, while chronic elevation reduces specificity. Assay interference, skeletal-muscle cross-reactivity in selected platforms, hemolysis, and cross-laboratory differences require laboratory review when the result is implausible.",
@@ -741,7 +858,7 @@
       urgent: "Escalate ongoing chest pressure, dynamic ECG change, syncope, pulmonary edema, malignant rhythm, hypotension, or poor perfusion immediately.",
       resultMeanings: [["Below assay limit at the correct serial time", "Acute injury is less likely within that validated pathway."], ["Rise or fall above the 99th percentile", "Acute myocardial injury is present; determine whether ischemia or another cause explains it."], ["Stable elevation", "Consider chronic myocardial injury and compare with baseline and clinical change."]],
       relatedTopics: ["Troponin T", "Troponin I/T", "Acute coronary syndrome", "Myocardial infarction", "Myocarditis", "Chronic kidney disease"],
-      sourceKeys: ["medlineplus"]
+      sourceKeys: ["ani-lab-medlineplus-troponin", "ani-lab-acc-aha-chest-pain-2021", "ani-lab-universal-mi-2018"]
     }),
     diagnosticCard({
       name: "Troponin T",
@@ -750,7 +867,7 @@
       category: "Diagnostics and Tests / Cardiovascular Biomarkers / Myocardial Injury",
       aliases: ["cardiac troponin T", "cTnT", "high-sensitivity troponin T", "hs-cTnT", "troponin T blood test"],
       abbreviations: ["cTnT", "hs-cTnT"],
-      definition: "Troponin T is a cardiac regulatory protein measured as a biomarker of cardiomyocyte injury. An assay result above its 99th-percentile limit means myocardial injury; it does not automatically mean coronary thrombosis. Acute infarction requires a dynamic pattern and evidence that ischemia caused the injury.",
+      definition: "Cardiac troponin T is a heart-muscle regulatory protein measured in blood when heart muscle cells are injured. A result above this laboratory assay's 99th-percentile upper reference limit indicates myocardial injury; a rise or fall on protocol-timed serial samples raises concern for acute injury, whereas a stable elevation may reflect chronic injury. The result does not diagnose myocardial infarction or identify the cause by itself: myocardial infarction requires acute injury plus clinical evidence of ischemia from symptoms, an ECG, imaging, or coronary findings. The nurse should promptly assess chest pain or equivalent symptoms, vital signs, rhythm, perfusion, heart-failure findings, symptom onset, kidney function, and prior results; obtain serial troponin T samples and ECGs through the assay-specific clinical pathway; and immediately escalate ongoing chest pain, dynamic ECG change, shock, syncope, a malignant rhythm, or acute heart failure. Do not compare troponin T numerically with troponin I or another manufacturer's assay, and do not use one early normal result to rule out acute coronary syndrome.",
       method: "Follow the laboratory's troponin T assay and serial timing pathway, documenting symptom onset, ECG timing, units, assay limit, kidney function, and prior baseline. Troponin T and troponin I have different assays and numerical ranges and must not be trended as though they are the same analyte.",
       interpretation: "A meaningful rise or fall supports acute injury. Causes include acute coronary ischemia, supply-demand mismatch, heart failure, myocarditis, pulmonary embolism, sepsis, tachyarrhythmia, cardiac procedures, and other myocardial stress. Persistent elevation is common in advanced kidney disease and structural heart disease but still carries prognostic meaning.",
       limitations: "Early sampling can be falsely reassuring. Chronic kidney disease, chronic structural injury, and some skeletal-muscle disorders complicate specificity. Platform interference or a result that conflicts sharply with the patient should prompt laboratory consultation rather than a forced diagnosis.",
@@ -759,7 +876,7 @@
       urgent: "Escalate ischemic symptoms, dynamic ECG change, ventricular dysrhythmia, syncope, shock, acute heart failure, or rapidly worsening clinical status without waiting for a later sample.",
       resultMeanings: [["Low in a completed validated pathway", "Acute myocardial injury is less likely."], ["Dynamic elevation", "Acute myocardial injury is present; classify the mechanism with ischemic evidence and the differential."], ["Chronic stable elevation", "Consider chronic myocardial injury, especially with kidney or structural heart disease."]],
       relatedTopics: ["Troponin I", "Troponin I/T", "Acute coronary syndrome", "Type 2 myocardial infarction", "Chronic kidney disease"],
-      sourceKeys: ["medlineplus"]
+      sourceKeys: ["ani-lab-medlineplus-troponin", "ani-lab-acc-aha-chest-pain-2021", "ani-lab-universal-mi-2018"]
     }),
     diagnosticCard({
       name: "Gentamicin peak level",
@@ -767,16 +884,18 @@
       diagnosticKind: "therapeutic-drug-monitoring",
       category: "Diagnostics and Tests / Therapeutic Drug Monitoring / Aminoglycosides",
       aliases: ["gentamicin peak", "peak gentamicin concentration", "aminoglycoside peak level"],
-      definition: "A gentamicin peak level estimates the highest serum concentration after a dose. For conventional multiple-daily dosing it helps show whether exposure is high enough for concentration-dependent bacterial killing; the desired target depends on infection, dose strategy, specimen timing, organism, and local protocol.",
-      method: "Record the exact dose, route, infusion start and stop, and draw time. Conventional peak samples are obtained at a protocol-defined time after distribution begins; extended-interval dosing often uses a different single-level nomogram rather than a traditional peak. A mistimed sample cannot be repaired by applying the usual target.",
-      interpretation: "A low apparent peak may reflect underdosing, expanded volume of distribution, rapid clearance, or an early/late timing error. A high peak may be intentional for selected infections or may reflect overdosing or incorrect timing. Interpret with organism susceptibility, clinical response, kidney function, and trough or AUC strategy.",
-      limitations: "Targets vary by infection and dosing method. Dialysis, pregnancy, burns, cystic fibrosis, obesity, edema, critical illness, and changing kidney function alter distribution and clearance. Do not compare extended-interval, synergy, and conventional targets as if they were one regimen.",
-      safety: "Do not change a dose from an undocumented or mistimed peak. Verify timing first and evaluate renal function, urine output, hearing, balance, neuromuscular weakness, and other nephrotoxic or ototoxic drugs.",
-      nursing: "Document times precisely, coordinate the laboratory draw with pharmacy, avoid sampling from the infusion line, and report timing errors. Monitor infection response, creatinine trend, urine output, tinnitus, hearing change, vertigo, and weakness.",
-      urgent: "Escalate rapidly worsening kidney function, oliguria, severe vestibular or hearing symptoms, neuromuscular blockade, or a dangerously high confirmed exposure.",
-      resultMeanings: [["Below target", "May indicate inadequate exposure or wrong timing."], ["Within regimen target", "Supports the prescribed exposure goal when timing is valid."], ["Above target", "Recheck timing and assess dose, distribution, kidney clearance, and toxicity risk."]],
+      definition: "A gentamicin peak level result estimates the highest serum concentration after a dose and can signal whether a conventional multiple-daily regimen reached its infection- and organism-specific exposure goal; inadequate exposure may contribute to treatment failure, while excessive or prolonged exposure raises concern for kidney and auditory or vestibular injury. Before interpreting it, the nurse should verify the exact dose, route, infusion start and stop, sample time, regimen, indication, organism and minimum inhibitory concentration (MIC), kidney-function trend, urine output, clinical response, and whether the result uses the ordered assay and units. For an intravenous dose, use the ordered protocol's post-infusion distribution timing; DailyMed's 30-60-minute, 4-6 mcg/mL example is for its conventional adult intramuscular label regimen, not a universal peak. Extended-interval care may instead use a timed random-level nomogram or area under the concentration-time curve (AUC) model. IDSA's AUC0-24/MIC 80-100 and less-preferred peak/MIC 8-10 or nomogram suggestions apply to pyelonephritis or complicated urinary tract infection in its specified adult context, not every indication. If timing or the result is discordant, obtain pharmacy and cause-directed laboratory evaluation, verify the assay, and repeat or model the sample as the protocol directs. One peak level does not diagnose efficacy, toxicity, or dose adequacy by itself. Promptly escalate severe vertigo, new hearing loss, oliguria, or rapidly worsening kidney function; immediately escalate respiratory weakness or hemodynamic instability.",
+      method: "Identify the prescribed strategy before scheduling the sample. DailyMed's conventional adult label describes a peak 30-60 minutes after intramuscular injection. For critically ill adults, the multi-society ICU position paper describes a concentration sample 30 minutes after the end of infusion; its AUC strategy uses that sample plus one 6-22 hours later, or one sample with Bayesian model adaptation. Record the dose, route, infusion start and stop, collection time, assay and units, and avoid drawing from a line contaminated by the infusion. Follow the exact local protocol because infusion duration, distribution time, and model inputs differ.",
+      interpretation: "First decide whether the value is a conventional peak, a timed extended-interval random concentration, or one input to an AUC model. In DailyMed's conventional adult label context, 4-6 mcg/mL is an example peak after intramuscular dosing and prolonged peak levels above 12 mcg/mL should be avoided; neither value is a universal target. In the IDSA adult pyelonephritis or complicated-UTI context, AUC0-24/MIC 80-100 is suggested, with peak/MIC 8-10 or a nomogram as less-preferred alternatives when the organism-specific MIC is available. A low apparent peak can reflect inadequate exposure, expanded distribution volume, rapid clearance, or timing error; a high result can reflect the intended strategy, excessive exposure, or sampling before distribution. Interpret only with the matching regimen, indication, organism, MIC, clinical response, renal trend, and toxicity assessment.",
+      limitations: "Conventional peak, extended-interval random-level nomogram, AUC, and peak/MIC methods answer different questions and their values are not interchangeable. The IDSA ratios are specific to its adult pyelonephritis or complicated-UTI context and must not be transferred to other infections. Critical illness, changing renal function, dialysis or other kidney support, pregnancy, burns, cystic fibrosis, obesity, edema, and fluid resuscitation can alter distribution or clearance. A mistimed or line-contaminated sample can be misleading, and one concentration cannot establish microbial response or organ toxicity.",
+      safety: "Gentamicin has boxed nephrotoxicity and auditory or vestibular ototoxicity risks; hearing injury can be irreversible. Do not change a dose from an undocumented or mistimed result. Verify the timeline and prescribed model first, then assess creatinine and renal-function trend, urine output, hydration, tinnitus, hearing change, dizziness or vertigo, gait or balance, weakness, and concurrent nephrotoxic, ototoxic, anesthetic, or neuromuscular-blocking exposure.",
+      nursing: "Document the indication, regimen, exact dose and times, infusion duration, sample source and time, assay and units, renal trend, urine output, organism and MIC, clinical response, and other toxic exposures. Coordinate the draw and interpretation with pharmacy and the laboratory. If the timing, assay, units, or clinical fit is uncertain, label the problem clearly and obtain a protocol-directed repeat or pharmacokinetic-model evaluation rather than forcing the value into a conventional target.",
+      urgent: "Promptly notify the treating team of a confirmed unexpected exposure with oliguria, a rapid renal-function decline, tinnitus, new hearing loss, or severe dizziness or vertigo. Immediately escalate respiratory weakness, suspected neuromuscular blockade, syncope, or hemodynamic instability; stabilize the patient while pharmacy and cause-directed evaluation proceed.",
+      resultMeanings: [["Below the matching strategy's goal", "May indicate inadequate exposure, expanded distribution, rapid clearance, or wrong sampling time; verify the regimen, MIC, and timeline before changing the dose."], ["Within the matching strategy's goal", "Supports that strategy's exposure objective when timing, assay, indication, organism, renal trend, and clinical response agree; it does not prove efficacy or safety."], ["Above the matching strategy's goal", "May reflect intended regimen design, excessive exposure, or early/contaminated sampling; reconstruct timing and assess renal, auditory, and vestibular toxicity risk."]],
       relatedTopics: ["Gentamicin trough level", "Gentamicin peak/trough", "Gentamicin", "Therapeutic drug monitoring", "Acute kidney injury"],
-      sourceKeys: ["medlineplus"]
+      sourceKeys: ["dailymed-gentamicin-injection-2023", "idsa-amr-gentamicin-supplement-2024", "icu-antimicrobial-tdm-position-2020"],
+      sourceNote: "Source boundaries are explicit: DailyMed supplies boxed safety and conventional-label examples; IDSA supplies adult pyelonephritis/cUTI AUC/MIC, peak/MIC, and nomogram context; the multi-society ICU paper supplies critical-illness sampling and model strategy. No value is presented as a universal target.",
+      evidenceLastReviewed: "2026-08-13"
     }),
     diagnosticCard({
       name: "Gentamicin trough level",
@@ -784,16 +903,18 @@
       diagnosticKind: "therapeutic-drug-monitoring",
       category: "Diagnostics and Tests / Therapeutic Drug Monitoring / Aminoglycosides",
       aliases: ["gentamicin trough", "pre-dose gentamicin level", "aminoglycoside trough level"],
-      definition: "A gentamicin trough level measures residual drug near the end of a dosing interval. Excess residual exposure signals incomplete clearance and raises nephrotoxicity and ototoxicity concern. The safe target depends on conventional, synergy, extended-interval, dialysis, and institution-specific dosing strategies.",
-      method: "Draw immediately before the next scheduled dose at the protocol-defined steady-state or reassessment point, and record the exact prior dose and collection times. A sample drawn hours early can look falsely high for a trough; a sample after the next dose is not a trough.",
-      interpretation: "A low trough usually shows adequate clearance before redosing; a high confirmed trough suggests accumulation from reduced or changing renal clearance, an overly short interval, excessive dosing, or special-population kinetics. The response may be to hold, extend the interval, recalculate, or use model-based dosing under the treating team.",
-      limitations: "Kidney function can change faster than serum creatinine, especially in critical illness. Dialysis timing, fluid shifts, age, obesity, burns, pregnancy, and interacting nephrotoxins change kinetics. Extended-interval regimens may not use a conventional trough target.",
-      safety: "Do not administer the next dose blindly when a required trough is dangerously high or kidney function has acutely worsened; follow the medication and pharmacy protocol. Do not call a mistimed value therapeutic or toxic without reconstructing the timeline.",
-      nursing: "Coordinate pre-dose collection, hold only under protocol or order, document every time, trend creatinine and urine output, and assess tinnitus, hearing loss, vertigo, and weakness. Communicate concurrent vancomycin, contrast, diuretics, or other nephrotoxic/ototoxic exposure.",
-      urgent: "Escalate oliguria, rapid creatinine rise, severe vestibular symptoms, new hearing loss, neuromuscular weakness, or a confirmed markedly elevated trough before redosing.",
-      resultMeanings: [["Low/appropriately cleared", "Residual exposure is limited for that regimen."], ["High", "Accumulation and toxicity risk are increased; verify timing and reassess dosing and renal function."], ["Mistimed", "Do not apply a trough target; recalculate or repeat under protocol."]],
+      definition: "A gentamicin trough level result estimates residual drug near the end of a dosing interval and can signal delayed clearance or accumulation, which raises concern for nephrotoxicity and auditory or vestibular ototoxicity; an apparently high or low value may instead reflect wrong sampling time. Before interpreting it, the nurse should verify the exact prior and planned doses, route, infusion times, sample time, regimen, indication, kidney-function trend, urine output, dialysis or other kidney support, concurrent toxic exposures, and the ordered assay and units. In DailyMed's conventional adult label context, the trough is drawn just before the next dose and levels above 2 mcg/mL should be avoided. IDSA's suggestion to keep the trough below 1 mg/L as a reduced-toxicity strategy applies to its specified adult pyelonephritis or complicated-UTI context; it is not the same as a conventional-label target or a universal toxicity cutoff. Extended-interval regimens may use a timed random-level nomogram or AUC model instead of a conventional trough. If timing, renal trajectory, assay, or clinical findings are discordant, obtain pharmacy and cause-directed laboratory evaluation and repeat or model the sample as the protocol directs. One trough level does not diagnose accumulation, nephrotoxicity, ototoxicity, efficacy, or dose safety by itself. Promptly escalate oliguria, rapidly worsening kidney function, severe vertigo, or new hearing loss; immediately escalate respiratory weakness or hemodynamic instability.",
+      method: "For a conventional trough, collect just before the next scheduled dose at the ordered reassessment point and document the exact previous dose, infusion, collection, and planned next-dose times. A sample drawn early is not a true trough and a sample collected after redosing cannot be interpreted as one. Extended-interval and AUC strategies use different timed samples and models. In critically ill adults, repeat TDM when renal function or other pharmacokinetics change; the multi-society ICU paper describes strategy-specific sampling and Bayesian adaptation rather than treating every late sample as a trough.",
+      interpretation: "A high confirmed conventional trough can signal accumulation from reduced or changing renal clearance, an overly short interval, excessive dosing, or special-population pharmacokinetics. DailyMed's conventional adult label says levels above 2 mcg/mL should be avoided. IDSA separately suggests a trough below 1 mg/L as associated with reduced toxicity when its adult pyelonephritis or complicated-UTI strategy is used. These values do not replace an extended-interval nomogram or AUC model and do not diagnose organ injury. A low trough can show little residual drug for the matching regimen, but it does not prove adequate peak, AUC, microbial response, or safety.",
+      limitations: "Conventional trough, extended-interval timed random concentration, and AUC estimate are not interchangeable. IDSA's less-than-1 mg/L suggestion is limited to its adult pyelonephritis or complicated-UTI context, while DailyMed's above-2 mcg/mL statement belongs to its conventional label. Kidney function can change before serum creatinine fully reflects it, especially in critical illness. Dialysis timing, fluid shifts, age, pregnancy, obesity, burns, cystic fibrosis, and other nephrotoxic or ototoxic exposure alter risk and pharmacokinetics. The assay, units, exact timeline, and serial clinical course constrain every interpretation.",
+      safety: "Gentamicin has boxed nephrotoxicity and auditory or vestibular ototoxicity risks; auditory injury may be irreversible. Do not call one trough therapeutic or toxic and do not hold or administer the next dose solely from a mistimed value. Follow the medication and pharmacy protocol while assessing creatinine and renal trend, urine output, hydration, tinnitus, hearing change, dizziness or vertigo, gait or balance, weakness, and other nephrotoxic, ototoxic, anesthetic, or neuromuscular-blocking exposure.",
+      nursing: "Coordinate the pre-dose draw and any protocol-directed dose pause with pharmacy and the treating team. Record the indication, regimen, exact prior and planned dose times, infusion duration, sample source and time, assay and units, renal trend, urine output, dialysis or kidney-support timing, organism and MIC when relevant, clinical response, and auditory or vestibular symptoms. For an unexpected result, verify timing and assay with the laboratory and obtain a cause-directed repeat or pharmacokinetic-model evaluation.",
+      urgent: "Promptly notify the treating team before redosing when a confirmed unexpected trough accompanies oliguria, rapid renal-function decline, tinnitus, new hearing loss, or severe dizziness or vertigo. Immediately escalate respiratory weakness, suspected neuromuscular blockade, syncope, or hemodynamic instability; stabilize the patient while cause-directed evaluation proceeds.",
+      resultMeanings: [["Low for the matching conventional strategy", "May reflect adequate end-interval clearance, a long interval, increased clearance, or early/late timing; it does not prove adequate efficacy or total exposure."], ["High for the matching conventional strategy", "May signal accumulation and greater toxicity risk; verify the exact timeline, renal trend, regimen, and assay before a protocol-directed dose decision."], ["Not a true trough", "Do not apply a trough threshold to an early, post-dose, line-contaminated, extended-interval nomogram, or AUC sample; repeat or model it under the prescribed strategy."]],
       relatedTopics: ["Gentamicin peak level", "Gentamicin peak/trough", "Gentamicin", "Nephrotoxicity", "Ototoxicity"],
-      sourceKeys: ["medlineplus"]
+      sourceKeys: ["dailymed-gentamicin-injection-2023", "idsa-amr-gentamicin-supplement-2024", "icu-antimicrobial-tdm-position-2020"],
+      sourceNote: "Source boundaries are explicit: DailyMed supplies boxed safety and its conventional-label trough context; IDSA supplies an adult pyelonephritis/cUTI toxicity-monitoring strategy; the multi-society ICU paper supplies critical-illness repeat-TDM and model strategy. No single value is treated as a universal toxicity diagnosis.",
+      evidenceLastReviewed: "2026-08-13"
     }),
     diagnosticCard({
       name: "Central venous oxygen saturation",
@@ -803,6 +924,7 @@
       aliases: ["ScvO2", "central venous O2 saturation", "superior vena cava oxygen saturation", "central line venous saturation"],
       abbreviations: ["ScvO2"],
       definition: "Central venous oxygen saturation (ScvO2) is the percentage of hemoglobin carrying oxygen in blood sampled from the superior vena cava or right atrial region through an appropriately positioned central line. A falling or contextually low ScvO2 can signal that upper-body oxygen delivery is inadequate relative to tissue extraction and metabolic demand, so serial change can affect perfusion monitoring. No universal standalone normal, emergency, or treatment target applies across shock types, sampling sites, and stages of illness; it is a trend, not a direct cardiac-output measurement.",
+      quickAnswer: "Central venous oxygen saturation (ScvO2) is a trend in the balance between oxygen delivery and tissue demand. A falling or contextually low value can signal low cardiac output, anemia, hypoxemia, or increased demand such as fever, shivering, pain, or seizure. The nurse should verify the central-line sampling site and assess blood pressure, mental status, capillary refill, urine output, hemoglobin, arterial oxygenation, lactate, and response to treatment; evaluation may include echocardiography or other cause-directed hemodynamic assessment. A normal or high value does not prove adequate perfusion, ScvO2 is not interchangeable with mixed venous SvO2, and one result does not diagnose shock or prescribe a resuscitation target.",
       method: "Confirm line identity and position, discard or clear dead-space blood according to policy, avoid contamination by infused fluid, and analyze the sample promptly or use a calibrated continuous sensor. Record oxygen therapy, hemoglobin, arterial saturation, temperature, sedation, vasoactive support, and collection site.",
       interpretation: "In many critically ill adults, about 70-80% is a common contextual ScvO2 interpretation band, while a value roughly below 70% can suggest oxygen delivery-demand imbalance. These anchors depend on diagnosis, sampling site, intervention, and trend; they are not a universal normal range, treatment target, or automatic trigger. Low ScvO2 can result from low cardiac output, anemia, hypoxemia, or increased demand such as fever, shivering, pain, or seizures. Historical 2012 Surviving Sepsis Campaign early septic-shock protocols used ScvO2 at or above 70% as a resuscitation goal; that historical protocol value is not a modern universal target, normal range, or automatic treatment trigger. A normal or high value can falsely reassure and does not prove adequate perfusion because extraction failure, shunting, sedation, hypothermia, or very low demand can elevate it despite serious illness.",
       limitations: "ScvO2 is not numerically interchangeable with mixed venous SvO2 because it omits much lower-body and coronary venous blood, and the usual relationship can reverse during critical illness. A 2024 ICU meta-analysis found moderate agreement but a pooled mean difference of 2.98 percentage points toward ScvO2, with variability by sampling site and sepsis; site, infusate contamination, rapidly changing physiology, and calibration also affect the result.",
@@ -821,6 +943,7 @@
       aliases: ["SvO2", "mixed venous O2 saturation", "pulmonary artery oxygen saturation", "true mixed venous saturation"],
       abbreviations: ["SvO2"],
       definition: "Mixed venous oxygen saturation (SvO2) is the percentage of hemoglobin carrying oxygen in pulmonary-artery blood after venous return from the superior vena cava, inferior vena cava, and coronary sinus has mixed. A falling or contextually low SvO2 can signal that whole-body oxygen delivery is inadequate relative to oxygen consumption, so serial change can affect perfusion and hemodynamic monitoring. No universal standalone normal, emergency, or treatment target applies across shock types and stages of illness.",
+      quickAnswer: "Mixed venous oxygen saturation (SvO2) reflects the balance between whole-body oxygen delivery and consumption in pulmonary-artery blood. A falling or contextually low value can signal low cardiac output, anemia, hypoxemia, bleeding, or increased metabolic demand. The nurse should verify the catheter and sampling site and assess arterial oxygenation, hemoglobin, cardiac output, blood pressure, lactate, mental status, urine output, and the response to treatment; evaluation may include echocardiography or other cause-directed hemodynamic assessment. A normal or high value can mask impaired oxygen extraction or low demand, cannot exclude regional ischemia, and is not interchangeable with ScvO2; one result does not diagnose the cause or mandate fluid, transfusion, or inotrope therapy.",
       method: "Obtain from a correctly positioned pulmonary artery catheter distal lumen or a validated continuous oximetry system. Confirm waveform/position, avoid wedged sampling or infusate contamination, record ventilatory and hemodynamic conditions, and analyze promptly.",
       interpretation: "In many adult critical-care settings, about 60-80% is a common contextual SvO2 interpretation band, while a value roughly below 60-65% can suggest oxygen delivery-demand imbalance. These anchors depend on diagnosis, pulmonary-artery sampling, intervention, and trend; they are not a universal normal range, treatment target, or automatic trigger. Low SvO2 can result from low cardiac output, hypoxemia, anemia, or increased metabolic use. Historical 2012 Surviving Sepsis Campaign early septic-shock protocols used SvO2 at or above 65% as a resuscitation goal; that historical protocol value is not a modern universal target, normal range, or automatic treatment trigger. A normal or high SvO2 can falsely reassure and can occur with high delivery or impaired extraction, shunting, sedation, hypothermia, mitochondrial dysfunction, or low demand, so direction and response to treatment are often more useful than one value.",
       limitations: "Pulmonary artery catheters carry procedural risk and are not justified merely to obtain SvO2. The value is global and can miss regional ischemia. Catheter position, calibration, timing, and changing oxygen consumption affect interpretation; a 2024 ICU meta-analysis found only moderate, variable agreement with ScvO2, so the two measurements are related but not numerically interchangeable.",

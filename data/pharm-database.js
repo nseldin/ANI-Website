@@ -1,6 +1,794 @@
 window.ANI_PHARM_DATABASE = {
   version: "2026.06-starter",
   sourceNote: "NCLEX-focused study reference. Drug labels and lab policies can change; verify facility policy and current prescribing information for clinical decisions.",
+  sourceReferences: [
+    {
+      key: "ani-lab-medlineplus-sodium",
+      label: "NIH MedlinePlus: Sodium Blood Test",
+      url: "https://medlineplus.gov/lab-tests/sodium-blood-test/",
+      note: "Supports sodium's relationship to fluid balance, neuromuscular function, neurologic symptoms, and common evaluation context."
+    },
+    {
+      key: "ani-lab-mayo-sodium-serum",
+      label: "Mayo Clinic Laboratories: Sodium, Serum",
+      url: "https://www.mayocliniclabs.com/test-catalog/overview/602353",
+      note: "Supports one current laboratory's serum sodium interval of 135-145 mmol/L from age 1 year and demonstrates that the reported interval is method- and laboratory-specific."
+    },
+    {
+      key: "ani-lab-endotext-hyponatremia",
+      label: "NIH NCBI Bookshelf Endotext: Hyponatremia",
+      url: "https://www.ncbi.nlm.nih.gov/books/NBK279136/",
+      note: "Supports adult hyponatremia assessment with serum osmolality, urine osmolality, and urine sodium, SIAD evaluation, and the risk of osmotic demyelination with over-rapid correction."
+    },
+    {
+      key: "ani-lab-merck-hypernatremia",
+      label: "Merck Manual Professional Edition: Hypernatremia",
+      url: "https://www.merckmanuals.com/professional/nephrology/electrolyte-disorders/hypernatremia",
+      note: "Supports adult hypernatremia assessment with volume status and urine concentration and the cerebral-edema risk of overly rapid lowering when hypernatremia is chronic or of unknown duration."
+    },
+    {
+      key: "ani-lab-rch-pediatric-hyponatremia",
+      label: "Royal Children's Hospital Melbourne: Hyponatraemia Clinical Practice Guideline",
+      url: "https://www.rch.org.au/clinicalguide/guideline_index/hyponatraemia/",
+      note: "Supports pediatric neurologic and fluid-status assessment, paired serum and urine osmolality with urine sodium when indicated, emergency escalation for seizures, and prevention of over-rapid correction."
+    },
+    {
+      key: "ani-lab-rch-pediatric-hypernatremia",
+      label: "Royal Children's Hospital Melbourne: Hypernatraemia Clinical Practice Guideline",
+      url: "https://www.rch.org.au/clinicalguide/guideline_index/Hypernatraemia/",
+      note: "Supports pediatric hydration and neurologic assessment, paired serum and urine studies when indicated, and controlled correction to avoid cerebral edema and neurologic injury."
+    },
+    {
+      key: "ani-lab-medlineplus-potassium",
+      label: "NIH MedlinePlus: Potassium Blood Test",
+      url: "https://medlineplus.gov/lab-tests/potassium-blood-test/",
+      note: "Supports potassium's cardiac, muscle, nerve, kidney, medication, symptom, and specimen-collection interpretation."
+    },
+    {
+      key: "ani-lab-ahrq-pseudohyperkalemia",
+      label: "AHRQ PSNet: A Fatal Twist in Pseudohyperkalemia",
+      url: "https://psnet.ahrq.gov/web-mm/fatal-twist-pseudohyperkalemia",
+      note: "Supports correlating an unexpected potassium result with the ECG and clinical picture and repeating hemolyzed or discordant specimens without dismissing genuine danger."
+    },
+    {
+      key: "ani-lab-ukka-hyperkalemia-2023",
+      label: "UK Kidney Association: Clinical Practice Guideline for Acute Hyperkalaemia in Adults (2023)",
+      url: "https://www.ukkidney.org/health-professionals/guidelines/treatment-acute-hyperkalaemia-adults-0",
+      note: "Supports adult hyperkalemia assessment, ECG monitoring, pseudohyperkalemia evaluation, and context-dependent urgency."
+    },
+    {
+      key: "ani-lab-medlineplus-lactate",
+      label: "NIH MedlinePlus: Lactate Test",
+      url: "https://medlineplus.gov/lab-tests/lactate-test/",
+      note: "Supports lactate production and clearance, broad causes of elevation, repeated testing, and the limitation that the result does not identify its cause."
+    },
+    {
+      key: "ani-lab-sccm-sepsis-2021",
+      label: "Society of Critical Care Medicine: Surviving Sepsis Campaign Guidelines 2021",
+      url: "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-guidelines-2021",
+      note: "Supports lactate measurement and trending in sepsis while requiring interpretation with clinical context and other causes of elevation."
+    },
+    {
+      key: "ani-lab-mayo-lactate-plasma",
+      label: "Mayo Clinic Laboratories: Lactate, Plasma",
+      url: "https://www.mayocliniclabs.com/test-catalog/overview/601685",
+      note: "Supports one current laboratory's adult plasma lactate interval of 0.5-2.0 mmol/L, specimen-processing cautions, and the limitation that no single lactate concentration diagnoses lactic acidosis or sepsis."
+    },
+    {
+      key: "ani-lab-merck-lactic-acidosis",
+      label: "Merck Manual Professional Edition: Lactic Acidosis",
+      url: "https://www.merckmanuals.com/professional/nephrology/acid-base-regulation-and-disorders/lactic-acidosis",
+      note: "Supports hypovolemic, cardiogenic, and septic shock, primary hypoxia, seizure or vigorous muscle use, hepatic insufficiency, thiamine deficiency, and selected drug or toxin causes of elevated lactate."
+    },
+    {
+      key: "ani-lab-medlineplus-creatinine",
+      label: "NIH MedlinePlus: Creatinine Test",
+      url: "https://medlineplus.gov/lab-tests/creatinine-test/",
+      note: "Supports creatinine physiology, kidney-disease associations, nonrenal influences, repeat or complementary testing, and the limitation of a single result."
+    },
+    {
+      key: "ani-lab-niddk-kidney-evaluation",
+      label: "NIDDK: Laboratory Evaluation of Kidney Disease",
+      url: "https://www.niddk.nih.gov/health-information/professionals/clinical-tools-patient-management/kidney-disease/laboratory-evaluation",
+      note: "Supports interpreting serum creatinine with estimated GFR and urine albumin when appropriate rather than as a stand-alone kidney assessment."
+    },
+    {
+      key: "ani-lab-niddk-egfr-accuracy",
+      label: "NIDDK: Clinical Measurements and eGFR Accuracy",
+      url: "https://www.niddk.nih.gov/research-funding/research-programs/kidney-clinical-research-epidemiology/laboratory/factors-affecting-egfr-accuracy/clinical-measurements",
+      note: "Supports the physiologic limitations of creatinine and the reduced reliability of creatinine-based eGFR when creatinine is unstable, including during acute kidney injury and pregnancy."
+    },
+    {
+      key: "ani-lab-uiowa-pediatric-ranges",
+      label: "University of Iowa Health Care: Pediatric Reference Ranges",
+      url: "https://www.healthcare.uiowa.edu/path_handbook/Appendix/Heme/PEDIATRIC_NORMALS.html",
+      note: "Supports one laboratory's age-specific pediatric sodium, potassium, and creatinine reference examples; values remain method- and laboratory-specific."
+    },
+    {
+      key: "ani-lab-mayo-pediatric-bmp",
+      label: "Mayo Clinic Laboratories Pediatric Catalog: Basic Metabolic Panel, Serum",
+      url: "https://pediatric.testcatalog.org/show/BMAMA",
+      note: "Supports a second laboratory's pediatric sodium, potassium, and creatinine intervals and demonstrates laboratory-to-laboratory differences."
+    },
+    {
+      key: "ani-lab-pregnancy-creatinine-review",
+      label: "Kidney International Reports: Serum Creatinine in Pregnancy—A Systematic Review",
+      url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6409397/",
+      note: "Supports lower serum creatinine during healthy pregnancy, trimester-relative upper-limit interpretation, and assay/reference-population limitations."
+    },
+    {
+      key: "ani-lab-acog-preeclampsia",
+      label: "ACOG: Gestational Hypertension and Preeclampsia",
+      url: "https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2020/06/gestational-hypertension-and-preeclampsia",
+      note: "Supports the renal-insufficiency severe-feature criterion only in the appropriate hypertensive-pregnancy diagnostic context."
+    },
+    {
+      key: "ani-lab-medlineplus-troponin",
+      label: "NIH MedlinePlus: Troponin Test",
+      url: "https://medlineplus.gov/lab-tests/troponin-test/",
+      note: "Supports troponin as a myocardial-injury marker, serial testing, and non-infarction causes of elevation."
+    },
+    {
+      key: "ani-lab-acc-aha-chest-pain-2021",
+      label: "AHA/ACC Multisociety Guideline for the Evaluation and Diagnosis of Chest Pain (2021)",
+      url: "https://www.ahajournals.org/doi/10.1161/CIR.0000000000001029",
+      note: "Supports high-sensitivity cardiac troponin, assay-specific 99th-percentile limits, serial change, and the principle that troponin is organ-specific but not disease-specific."
+    },
+    {
+      key: "ani-lab-universal-mi-2018",
+      label: "Fourth Universal Definition of Myocardial Infarction (2018)",
+      url: "https://academic.oup.com/eurheartj/article/40/3/237/5079081",
+      note: "Supports distinguishing myocardial injury from myocardial infarction using serial troponin change plus clinical evidence of ischemia."
+    },
+    {
+      key: "ani-lab-poison-help-hrsa-emergency",
+      label: "HRSA Poison Help: What You Can Do",
+      url: "https://poisonhelp.hrsa.gov/what-you-can-do",
+      note: "Supports immediate Poison Help consultation for a possible poisoning without waiting for symptoms and emergency response when breathing, consciousness, or seizure concerns are present."
+    },
+    {
+      key: "ani-lab-acmt-acetaminophen-consensus-2023",
+      label: "ACMT/America's Poison Centers/AACT/CAPCC: Management of Acetaminophen Poisoning in the US and Canada (2023 consensus statement)",
+      url: "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2808062",
+      note: "Supports history and formulation assessment, the revised Rumack-Matthew nomogram only for appropriate acute ingestions, the limitation of samples drawn before 4 hours, repeated-ingestion and delayed-absorption pathways, acetylcysteine timing, monitoring, and toxicology consultation."
+    },
+    {
+      key: "ani-lab-dailymed-acetylcysteine-label",
+      label: "DailyMed: Acetylcysteine Injection Prescribing Information",
+      url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5ae53725-1abb-4122-9c85-f26c2c31566c",
+      note: "Supports acetaminophen-assay timing, revised nomogram use, extended-release and repeated supratherapeutic ingestion limitations, follow-up hepatic and renal laboratory monitoring, and label-directed acetylcysteine treatment."
+    },
+    {
+      key: "ani-lab-extrip-acetaminophen",
+      label: "EXTRIP Workgroup: Acetaminophen (Paracetamol) Recommendations",
+      url: "https://www.extrip-workgroup.org/acetaminophen",
+      note: "Supports reserving extracorporeal treatment for selected severe acetaminophen poisonings and not using a reported dose or acetaminophen concentration alone as a dialysis indication when acetylcysteine is being administered."
+    },
+    {
+      key: "ani-lab-acmt-salicylate-priorities",
+      label: "American College of Medical Toxicology: Management Priorities in Salicylate Toxicity",
+      url: "https://www.acmt.net/wp-content/uploads/2022/06/PRS_130313_Management-Priorities-in-Salicylate-Toxicity.pdf",
+      note: "Supports serial salicylate concentrations, explicit unit checks, acute-versus-chronic and formulation context, blood-pH and clinical-status interpretation, the unreliability of the Done nomogram, acid-base and electrolyte monitoring, airway risk, and early dialysis planning for severe toxicity."
+    },
+    {
+      key: "ani-lab-dailymed-salsalate-label",
+      label: "DailyMed: Salsalate Tablets Prescribing Information",
+      url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=213f0930-4a4a-4894-90b9-70c12daaa093",
+      note: "Supports the product-specific monitored salicylate range during anti-inflammatory therapy and toxicity manifestations including tinnitus, hyperventilation, acid-base disturbance, hyperthermia, dehydration, and neurologic change."
+    },
+    {
+      key: "ani-lab-extrip-salicylates",
+      label: "EXTRIP Workgroup: Salicylate Recommendations",
+      url: "https://www.extrip-workgroup.org/salicylates",
+      note: "Supports hemodialysis for severe salicylate poisoning based on the combined concentration, kidney function, mental status, oxygenation, systemic pH, and response to standard therapy rather than one universal number alone."
+    },
+    {
+      key: "ani-lab-aha-qtc-standardization-2009",
+      label: "AHA/ACCF/HRS: ECG Standardization and Interpretation, Part IV - QT Interval",
+      url: "https://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.108.191096",
+      note: "Supports visual validation of automated QT measurement, identification of the heart-rate correction method, limitations of Bazett correction, sex-specific adult reference conventions, and caution when T-wave endpoints or RR intervals are unreliable."
+    },
+    {
+      key: "ani-lab-aha-torsade-hospital-2010",
+      label: "AHA/ACCF: Prevention of Torsade de Pointes in Hospital Settings",
+      url: "https://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.109.192704",
+      note: "Supports QTc monitoring, the highly abnormal greater-than-500-ms risk marker, and combined torsade risk from QT-prolonging drugs, electrolyte depletion, bradycardia, heart disease, kidney or liver dysfunction, and multiple risk factors."
+    },
+    {
+      key: "ani-lab-aha-drug-induced-arrhythmias-2020",
+      label: "American Heart Association: Drug-Induced Arrhythmias Scientific Statement",
+      url: "https://professional.heart.org/en/science-news/drug-induced-arrhythmias/top-things-to-know",
+      note: "Supports medication-induced QT prolongation and torsade de pointes, medication review, correction of modifiable electrolyte risk, and ECG monitoring in patients with additional risk factors."
+    },
+    {
+      key: "ani-lab-esc-vascd-2022",
+      label: "European Society of Cardiology: 2022 Ventricular Arrhythmias and Sudden Cardiac Death Guideline",
+      url: "https://academic.oup.com/eurheartj/article/43/40/3997/6675633",
+      note: "Supports repeated 12-lead ECG and clinical-context interpretation for long-QT syndrome, avoidance of QT-prolonging drugs and electrolyte abnormalities, and ventricular-arrhythmia and sudden-death risk assessment."
+    },
+    {
+      key: "ani-lab-mayo-pt-inr",
+      label: "Mayo Clinic Laboratories: Prothrombin Time (PT), Plasma",
+      url: "https://www.mayocliniclabs.com/test-catalog/overview/602171",
+      note: "Supports PT/INR physiology, one laboratory's method-specific reference interval and warfarin ranges, acquired and congenital causes of prolongation, mixing-study interpretation, and the need for additional cause-directed coagulation testing."
+    },
+    {
+      key: "ani-lab-mayo-aptt",
+      label: "Mayo Clinic Laboratories: Activated Partial Thromboplastin Time (APTT), Plasma",
+      url: "https://www.mayocliniclabs.com/test-catalog/overview/602172",
+      note: "Supports aPTT physiology, one laboratory's method-specific interval, reagent-dependent unfractionated-heparin monitoring, factor-deficiency and inhibitor associations, shortened-result cautions, mixing studies, and the limits of a normal aPTT."
+    },
+    {
+      key: "ani-lab-mayo-fibrinogen",
+      label: "Mayo Clinic Laboratories: Fibrinogen, Plasma",
+      url: "https://www.mayocliniclabs.com/test-catalog/overview/40937",
+      note: "Supports fibrinogen's clot-forming role, one laboratory's method-specific interval, decreased and increased associations, DIC monitoring context, specimen requirements, assay interference, and functional-versus-antigenic follow-up."
+    },
+    {
+      key: "ani-lab-mayo-d-dimer",
+      label: "Mayo Clinic Laboratories: D-Dimer, Plasma",
+      url: "https://www.mayocliniclabs.com/test-catalog/overview/602174",
+      note: "Supports D-dimer as a cross-linked-fibrin turnover marker, one assay's FEU cutoff, use with pretest probability, common nonspecific causes of elevation, DIC context, and the limitation that elevation magnitude does not establish disease severity."
+    },
+    {
+      key: "ani-lab-arup-prolonged-clotting-time",
+      label: "ARUP Consult: Prolonged Clotting Time Evaluation",
+      url: "https://arupconsult.com/content/prolonged-clotting-time-evaluation",
+      note: "Supports clinical-context interpretation of prolonged PT and aPTT, medication and specimen checks, and cause-directed evaluation with mixing studies, lupus-anticoagulant testing, fibrinogen, D-dimer, factor assays, and other tests selected for the presentation."
+    },
+    {
+      key: "ani-lab-arup-dic-pattern",
+      label: "ARUP Consult: Thrombocytopenic Disorders",
+      url: "https://www.arupconsult.com/content/thrombocytopenic-disorders",
+      note: "Supports the typical DIC pattern of thrombocytopenia, prolonged clotting times, decreased fibrinogen, and markedly elevated D-dimer while requiring clinical and laboratory correlation."
+    },
+    {
+      key: "ani-lab-ash-vte-diagnosis-2018",
+      label: "American Society of Hematology: VTE Diagnosis Guideline",
+      url: "https://www.hematology.org/education/clinicians/guidelines-and-quality-care/clinical-practice-guidelines/venous-thromboembolism-guidelines/diagnosis",
+      note: "Supports selecting a VTE diagnostic pathway from pretest probability, using a negative D-dimer to exclude VTE in appropriate low-probability pathways, and proceeding to imaging rather than treating a positive result as diagnostic."
+    },
+    {
+      key: "ani-lab-acc-aha-valve-inr-2020",
+      label: "ACC/AHA: 2020 Heart Valve Disease Guideline - Prosthetic Valve Antithrombotic Therapy",
+      url: "https://www.acc.org/latest-in-cardiology/ten-points-to-remember/2020/12/16/22/01/2020-acc-aha-vhd-gl-pt-3-gl-vhd",
+      note: "Supports that prescribed INR goals for mechanical valves vary with valve type, valve characteristics, and patient thromboembolic risk rather than following one universal target."
+    },
+    {
+      key: "ani-lab-medlineplus-blood-glucose",
+      label: "NIH MedlinePlus: Blood Glucose Test",
+      url: "https://medlineplus.gov/lab-tests/blood-glucose-test/",
+      note: "Supports glucose physiology, fasting-versus-random testing context, common high and low associations, medication effects, severe hypoglycemia consequences, and the need to interpret a result with the test type, other tests, and medical history."
+    },
+    {
+      key: "ani-lab-medlineplus-blood-ketones",
+      label: "NIH MedlinePlus: Ketones in Blood",
+      url: "https://medlineplus.gov/lab-tests/ketones-in-blood/",
+      note: "Supports ketone physiology, DKA and other ketoacidosis associations, symptom and urgency context, and the distinction between nonacidotic ketosis and ketoacidosis."
+    },
+    {
+      key: "ani-lab-medlineplus-anion-gap",
+      label: "NIH MedlinePlus: Anion Gap Blood Test",
+      url: "https://medlineplus.gov/lab-tests/anion-gap-blood-test/",
+      note: "Supports the electrolyte-based anion-gap calculation, acid-base interpretation, important high and low associations, laboratory-range variability, and the need for history and additional testing before diagnosis."
+    },
+    {
+      key: "ani-lab-ada-standards-2026-glycemic-goals",
+      label: "American Diabetes Association: Glycemic Goals, Hypoglycemia, and Hyperglycemic Crises - Standards of Care in Diabetes 2026",
+      url: "https://diabetesjournals.org/care/article/49/Supplement_1/S132/163927/6-Glycemic-Goals-Hypoglycemia-and-Hyperglycemic",
+      note: "Supports current hypoglycemia levels and response, individualized outpatient glycemic goals, and the principle that population and treatment context determine glucose targets."
+    },
+    {
+      key: "ani-lab-ada-standards-2026-hospital-care",
+      label: "American Diabetes Association: Diabetes Care in the Hospital - Standards of Care in Diabetes 2026",
+      url: "https://diabetesjournals.org/care/article/49/Supplement_1/S339/163925/16-Diabetes-Care-in-the-Hospital-Standards-of-Care",
+      note: "Supports hospital hyperglycemia and hypoglycemia definitions, persistent-hyperglycemia treatment thresholds, setting-specific inpatient targets, structured protocols, glucose monitoring, and individualized interpretation with illness, nutrition, and medication context."
+    },
+    {
+      key: "ani-lab-hyperglycemic-crises-consensus-2024",
+      label: "ADA/EASD/JBDS/AACE/DTS: Hyperglycemic Crises in Adults With Diabetes Consensus Report (2024)",
+      url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11272983/",
+      note: "Supports adult DKA and HHS criteria, direct beta-hydroxybutyrate measurement, euglycemic DKA context, paired glucose/electrolyte/pH monitoring, and the limitation that anion gap and urine ketones should not substitute for direct ketone criteria when assessing DKA resolution."
+    },
+    {
+      key: "ani-lab-medlineplus-hemoglobin",
+      label: "NIH MedlinePlus: Hemoglobin Test",
+      url: "https://medlineplus.gov/lab-tests/hemoglobin-test/",
+      note: "Supports hemoglobin's oxygen-carrying role, common low and high associations, reference-range variability, and the limitation that the result does not identify the cause of an abnormal level."
+    },
+    {
+      key: "ani-lab-nhlbi-anemia-diagnosis",
+      label: "NHLBI: Anemia Diagnosis",
+      url: "https://www.nhlbi.nih.gov/health/anemia/diagnosis",
+      note: "Supports symptom and history assessment, CBC and red-cell-index interpretation, reticulocyte and blood-smear evaluation, and cause-directed testing for anemia and occult blood loss."
+    },
+    {
+      key: "ani-lab-aabb-rbc-transfusion-2023",
+      label: "AABB International Guidelines: Red Blood Cell Transfusion (2023)",
+      url: "https://doi.org/10.1001/jama.2023.12914",
+      note: "Supports restrictive transfusion strategies for specified hemodynamically stable adult and pediatric populations while emphasizing symptoms, clinical context, alternative therapies, and population-specific exceptions rather than one automatic hemoglobin trigger."
+    },
+    {
+      key: "ani-lab-medlineplus-platelets",
+      label: "NIH MedlinePlus: Platelet Tests",
+      url: "https://medlineplus.gov/lab-tests/platelet-tests/",
+      note: "Supports platelet count versus function, bleeding and clotting implications, common low and high associations, symptom assessment, and interpretation with history and other blood tests."
+    },
+    {
+      key: "ani-lab-nhlbi-platelet-disorders-diagnosis",
+      label: "NHLBI: Platelet Disorders Diagnosis",
+      url: "https://www.nhlbi.nih.gov/health/platelet-disorders/diagnosis",
+      note: "Supports platelet-count interpretation, bleeding and thrombotic assessment, repeat CBC and blood-smear evaluation, and additional cause-directed testing rather than diagnosis from one count."
+    },
+    {
+      key: "ani-lab-ash-hit-2018",
+      label: "American Society of Hematology: Heparin-Induced Thrombocytopenia Guideline",
+      url: "https://www.hematology.org/education/clinicians/guidelines-and-quality-care/clinical-practice-guidelines/venous-thromboembolism-guidelines/heparin-induced-thrombocytopenia",
+      note: "Supports HIT as a prothrombotic adverse drug reaction, limb- or life-threatening thrombosis risk, and structured diagnostic and initial-management pathways for suspected HIT."
+    },
+    {
+      key: "ani-lab-nci-anc",
+      label: "National Cancer Institute Dictionary of Cancer Terms: ANC",
+      url: "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/anc",
+      note: "Supports ANC as the circulating neutrophil count, its relationship to infection defense, increasing infection risk as ANC falls, and high infection risk below 500 cells per microliter."
+    },
+    {
+      key: "ani-lab-asco-idsa-cancer-immunosuppression-2018",
+      label: "ASCO/IDSA: Antimicrobial Prophylaxis for Adult Patients With Cancer-Related Immunosuppression",
+      url: "https://www.idsociety.org/globalassets/idsa/practice-guidelines/jco.18.00374.pdf",
+      note: "Supports population-specific fever and neutropenia definitions and the importance of neutropenia depth and duration in adults receiving cancer treatment."
+    },
+    {
+      key: "ani-lab-asco-idsa-febrile-neutropenia-2018",
+      label: "ASCO/IDSA: Outpatient Management of Fever and Neutropenia in Adults Treated for Malignancy",
+      url: "https://www.idsociety.org/practice-guideline/fever-and-neutropenia-in-adults-with-cancer/",
+      note: "Supports prompt risk assessment and initial empirical antibacterial therapy within one hour of triage for adults with cancer-related febrile neutropenia, with outpatient care limited to appropriately selected and monitored patients."
+    },
+    {
+      key: "ani-lab-medlineplus-osmolality-tests",
+      label: "NIH MedlinePlus: Osmolality Tests",
+      url: "https://medlineplus.gov/lab-tests/osmolality-tests/",
+      note: "Supports osmolality as dissolved-particle concentration, serum and urine testing for water balance, important dehydration, overhydration, poisoning, and diabetes-insipidus associations, paired-test context, symptom assessment, and interpretation with history and other laboratory results."
+    },
+    {
+      key: "ani-lab-medlineplus-urine-specific-gravity",
+      label: "NIH MedlinePlus: Urine Specific Gravity Test",
+      url: "https://medlineplus.gov/ency/article/003587.htm",
+      note: "Supports urine specific gravity as a concentration estimate, the general 1.005 to 1.030 example with laboratory variation, rough dipstick versus more precise testing, important high and low associations, and medication or contrast interference."
+    },
+    {
+      key: "ani-lab-mayo-serum-osmolality",
+      label: "Mayo Clinic Laboratories: Osmolality, Serum",
+      url: "https://www.mayocliniclabs.com/test-catalog/overview/614057",
+      note: "Supports one laboratory's 275 to 295 mOsm/kg serum interval, freezing-point measurement, comparison of measured with calculated osmolality, and toxic-alcohol associations of an increased measured-calculated difference."
+    },
+    {
+      key: "ani-lab-extrip-ethylene-glycol",
+      label: "EXTRIP Workgroup: Ethylene Glycol Recommendations",
+      url: "https://www.extrip-workgroup.org/ethylene-glycol",
+      note: "Supports defining the osmol gap as measured osmolality minus calculated osmolarity in SI units with ethanol adjustment, using it only in exposure context, severe ethylene-glycol features, and treatment thresholds that depend on antidote and clinical context."
+    },
+    {
+      key: "ani-lab-extrip-methanol",
+      label: "EXTRIP Workgroup: Methanol Recommendations",
+      url: "https://www.extrip-workgroup.org/methanol",
+      note: "Supports urgent severe-methanol features including coma, seizure, new vision deficit, and severe or persistent acidosis, plus the limited informative role of an osmol gap when a methanol concentration is unavailable."
+    },
+    {
+      key: "ani-lab-society-endocrinology-avp-deficiency",
+      label: "Society for Endocrinology: Arginine Vasopressin Deficiency (Diabetes Insipidus) Inpatient Guidance",
+      url: "https://www.endocrinology.org/clinical-practice/clinical-guidance/arginine-vasopressin-deficiency-diabetes-insipidus/",
+      note: "Supports AVP deficiency as uncontrolled water loss, fluid-status and intake-output assessment, serum sodium, potassium, and renal monitoring, vulnerability when thirst or water access is impaired, and emergency escalation for serious decompensation."
+    },
+    {
+      key: "ani-lab-society-endocrinology-symptomatic-hyponatremia-2022",
+      label: "Society for Endocrinology: Emergency Management of Symptomatic Hyponatraemia (2022)",
+      url: "https://www.endocrinology.org/media/xhrhxhxm/emergency-management-of-severe-and-moderately-severely-symptomatic-hyponatraemia-in-adult-patients-2022.pdf",
+      note: "Supports symptom-led urgency in adult hyponatremia, severe neurologic and cardiorespiratory warning signs, careful sodium and urine-output monitoring, avoidance of over-rapid correction, and urine osmolality and sodium in cause-directed evaluation."
+    },
+    {
+      key: "ani-lab-medlineplus-calcium",
+      label: "NIH MedlinePlus: Calcium Blood Test",
+      url: "https://medlineplus.gov/lab-tests/calcium-blood-test/",
+      note: "Supports total-versus-ionized calcium meaning, neuromuscular and cardiac symptoms, major high and low associations, complementary evaluation, and the limitation that an abnormal blood calcium result does not by itself identify the cause or bone calcium content."
+    },
+    {
+      key: "ani-lab-mayo-total-calcium",
+      label: "Mayo Clinic Laboratories: Calcium, Total, Serum",
+      url: "https://www.mayocliniclabs.com/test-catalog/overview/601514",
+      note: "Supports one laboratory's age-specific total-calcium intervals, calcium physiology, parathyroid, kidney, vitamin-D, protein, malignancy, neuromuscular, and rhythm associations, and laboratory-specific critical interpretation."
+    },
+    {
+      key: "ani-lab-mayo-ionized-calcium",
+      label: "Mayo Clinic Laboratories: Calcium, Ionized, Serum",
+      url: "https://www.mayocliniclabs.com/test-catalog/overview/8378",
+      note: "Supports ionized calcium as the active free fraction, one laboratory's age-specific interval, and the limitation that calculated ionized calcium from total calcium, albumin, and pH can disagree with direct measurement."
+    },
+    {
+      key: "ani-lab-medlineplus-magnesium",
+      label: "NIH MedlinePlus: Magnesium Blood Test",
+      url: "https://medlineplus.gov/lab-tests/magnesium-blood-test/",
+      note: "Supports magnesium's muscle, nerve, cardiac, kidney, gastrointestinal, medication, calcium, potassium, phosphorus, nutrition, and symptom associations and the limitation that a normal serum result can coexist with depleted body stores."
+    },
+    {
+      key: "ani-lab-mayo-serum-magnesium",
+      label: "Mayo Clinic Laboratories: Magnesium, Serum",
+      url: "https://www.mayocliniclabs.com/test-catalog/overview/8448",
+      note: "Supports one laboratory's age-specific serum-magnesium intervals, severe low and high safety context, and the limitation that serum magnesium only approximates tissue magnesium status."
+    },
+    {
+      key: "ani-lab-dailymed-magnesium-sulfate",
+      label: "DailyMed: Magnesium Sulfate Injection Prescribing Information",
+      url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c255b8a9-68da-49c1-897b-bc18b731e459",
+      note: "Supports renal elimination, clinical and serum monitoring during parenteral magnesium therapy, patellar-reflex and respiratory-depression surveillance, withholding further dosing when reflexes are absent, and immediate availability of an injectable calcium salt for intoxication."
+    },
+    {
+      key: "ani-lab-medlineplus-phosphate",
+      label: "NIH MedlinePlus: Phosphate in Blood",
+      url: "https://medlineplus.gov/lab-tests/phosphate-in-blood/",
+      note: "Supports phosphate's cellular-energy, neuromuscular, bone, kidney, calcium, vitamin-D, parathyroid, malnutrition, and medication context; life-threatening severe-low symptoms; paired testing; and the limitation of a stand-alone result."
+    },
+    {
+      key: "ani-lab-mayo-serum-phosphorus",
+      label: "Mayo Clinic Laboratories: Phosphorus (Inorganic), Serum",
+      url: "https://www.mayocliniclabs.com/test-catalog/overview/8408",
+      note: "Supports one laboratory's adult and age-specific phosphorus intervals, daily variation, kidney-excretion and tissue-breakdown associations, severe hypophosphatemia consequences, and hyperphosphatemia-related hypocalcemia and calcification risk."
+    },
+    {
+      key: "ani-lab-aspen-refeeding-2020",
+      label: "ASPEN: Consensus Recommendations for Refeeding Syndrome (2020)",
+      url: "https://doi.org/10.1002/ncp.10474",
+      note: "Supports risk assessment and the refeeding framework based on a new decline in phosphorus, potassium, or magnesium during the first five days after substantially increased energy intake, with severity informed by the size of change and organ dysfunction."
+    },
+    {
+      key: "ani-lab-nice-cg32-refeeding",
+      label: "NICE CG32: Nutrition Support for Adults",
+      url: "https://www.nice.org.uk/guidance/cg32/chapter/Recommendations",
+      note: "Supports identifying adults at refeeding risk, skilled nutrition support, cautious ordered advancement, and baseline and serial phosphorus, magnesium, potassium, glucose, fluid, and clinical monitoring according to risk and stability."
+    },
+    {
+      key: "ani-lab-aarc-blood-gas-analysis-2013",
+      label: "AARC Clinical Practice Guideline: Blood Gas Analysis and Hemoximetry (2013)",
+      url: "https://www.aarc.org/wp-content/uploads/2025/03/davis-et-al-2013-aarc-clinical-practice-guideline-blood-gas-analysis-and-hemoximetry-2013.pdf",
+      note: "Supports using blood-gas analysis to evaluate ventilation, acid-base status, oxygenation, response to treatment, and disease progression; measured versus derived analytes; documenting oxygen and ventilator context; limits of venous oxygen values; and preanalytic risks from air, anticoagulant, contamination, delay, temperature, and specimen source."
+    },
+    {
+      key: "ani-lab-ncbi-arterial-blood-gas-2026",
+      label: "NCBI Bookshelf: Arterial Blood Gas Analysis: Fundamentals, Interpretation, and Clinical Utility",
+      url: "https://www.ncbi.nlm.nih.gov/books/NBK536919/",
+      note: "Supports common adult ABG teaching intervals with laboratory and age variation, systematic pH-PaCO2-bicarbonate-PaO2 interpretation, respiratory and metabolic associations, inspired-oxygen context, and the limitation that a normal PaO2 on supplemental oxygen does not exclude ventilatory failure."
+    },
+    {
+      key: "ani-lab-uiowa-arterial-blood-gas",
+      label: "University of Iowa Health Care: Blood Gases (Arterial)",
+      url: "https://www.healthcare.uiowa.edu/path_handbook/handbook/test303.html",
+      note: "Supports one laboratory's adult and pediatric ABG reference examples and its specimen requirements for a heparinized whole-blood syringe, removal of air bubbles, immediate delivery, and temperature documentation."
+    },
+    {
+      key: "ani-lab-fda-pulse-oximeters",
+      label: "FDA: Pulse Oximeters",
+      url: "https://www.fda.gov/medical-devices/products-and-medical-procedures/pulse-oximeters",
+      note: "Supports pulse oximetry as an estimate of blood oxygen saturation and pulse rate, the instruction not to rely on a reading alone, and accuracy limitations related to poor circulation, skin pigmentation, skin thickness, skin temperature, tobacco use, and fingernail polish."
+    },
+    {
+      key: "ani-lab-aarc-adult-oxygen-2022",
+      label: "AARC Clinical Practice Guideline: Management of Adult Patients With Oxygen in the Acute Care Setting (2022)",
+      url: "https://www.aarc.org/wp-content/uploads/2022/10/cpg-clinical-mangement-adult-o2-acute-settings.pdf",
+      note: "Supports context-specific SpO2 targets of 94-98% for most hospitalized adults requiring supplemental oxygen and 88-92% for adults with COPD requiring supplemental oxygen, including the guideline's adult acute-care scope and evidence-level qualifications."
+    },
+    {
+      key: "ani-lab-aarc-capnography-2011",
+      label: "AARC Clinical Practice Guideline: Capnography/Capnometry During Mechanical Ventilation (2011)",
+      url: "https://www.aarc.org/wp-content/uploads/2014/08/04.11.0503.pdf",
+      note: "Supports capnography for ventilation, perfusion, airway-placement, disconnection, mechanical-ventilation, and trend monitoring; patient, ventilatory, and hemodynamic assessment; limitations from leaks, secretions, condensate, sampling, breathing pattern, cardiac output, dead space, and ventilation-perfusion relationships; and the rule that EtCO2 is not a substitute for PaCO2."
+    },
+    {
+      key: "ani-lab-aha-adult-als-2025",
+      label: "American Heart Association: 2025 Adult Advanced Life Support Guidelines",
+      url: "https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/adult-advanced-life-support/",
+      note: "Supports using an abrupt EtCO2 rise as one clue to return of spontaneous circulation, using EtCO2 when feasible to monitor and optimize CPR quality, and never using EtCO2 in isolation to terminate resuscitative efforts."
+    },
+    {
+      key: "ani-lab-ncbi-capnography",
+      label: "NCBI Bookshelf: Capnography",
+      url: "https://www.ncbi.nlm.nih.gov/books/NBK539754/",
+      note: "Supports the common adult EtCO2 teaching anchor of 35-45 mm Hg, the end-expiratory waveform definition, ventilation and perfusion physiology, high and low pattern associations, and the distinction between oxygenation measured by pulse oximetry and ventilation monitored with capnography."
+    },
+    {
+      key: "ani-repro-medlineplus-pregnancy-test",
+      label: "NIH MedlinePlus: Pregnancy Test",
+      url: "https://medlineplus.gov/lab-tests/pregnancy-test/",
+      note: "Supports urine and blood hCG testing, qualitative versus quantitative results, pregnancy-related evaluation, early false-negative results, urine dilution, and interference from hCG-containing fertility medicines."
+    },
+    {
+      key: "ani-repro-acog-ectopic-pregnancy",
+      label: "ACOG: Ectopic Pregnancy",
+      url: "https://www.acog.org/womens-health/faqs/ectopic-pregnancy",
+      note: "Supports symptom and risk assessment, hCG testing with ultrasound for suspected ectopic pregnancy, and emergency escalation for severe pelvic or abdominal pain, shoulder pain, weakness, dizziness, or fainting because rupture can cause life-threatening internal bleeding."
+    },
+    {
+      key: "ani-repro-acog-early-pregnancy-loss",
+      label: "ACOG Practice Bulletin: Early Pregnancy Loss",
+      url: "https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2018/11/early-pregnancy-loss",
+      note: "Supports interpreting serum beta-hCG with history and ultrasonography, the limitation that one serum result or ultrasound may be insufficient to confirm early pregnancy loss, and serial hCG and ultrasound follow-up when pregnancy location is uncertain."
+    },
+    {
+      key: "ani-repro-nci-beta-hcg-tumor-marker",
+      label: "National Cancer Institute: Tumor Marker Tests in Common Use",
+      url: "https://www.cancer.gov/about-cancer/diagnosis-staging/diagnosis/tumor-markers-list",
+      note: "Supports beta-hCG measurement in urine or blood as a tumor marker for choriocarcinoma and germ-cell tumors and its use to assess stage, prognosis, and response to treatment."
+    },
+    {
+      key: "ani-repro-asrm-ovarian-reserve-2020",
+      label: "ASRM: Testing and Interpreting Measures of Ovarian Reserve (2020)",
+      url: "https://www.asrm.org/practice-guidance/practice-committee-documents/testing-and-interpreting-measures-of-ovarian-reserve-a-committee-opinion-2020/",
+      note: "Supports AMH as a small-follicle marker of ovarian reserve and expected ovarian-stimulation response, cycle-independent measurement with hormonal-contraception caution, and its poor independent prediction of reproductive potential, oocyte quality, pregnancy, or live birth."
+    },
+    {
+      key: "ani-repro-asrm-fertility-evaluation-2021",
+      label: "ASRM: Fertility Evaluation of Infertile Women (2021)",
+      url: "https://www.asrm.org/practice-guidance/practice-committee-documents/fertility-evaluation-of-infertile-women-a-committee-opinion-2021/",
+      note: "Supports using AMH to augment age- and diagnosis-based counseling and evaluating ovulation, ovarian reserve, uterine and tubal factors, and semen when applicable rather than treating ovarian reserve as a stand-alone fertility verdict."
+    },
+    {
+      key: "ani-repro-acog-amh-2019",
+      label: "ACOG: The Use of Antimullerian Hormone in Women Not Seeking Fertility Care",
+      url: "https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2019/04/the-use-of-antimullerian-hormone-in-women-not-seeking-fertility-care",
+      note: "Supports AMH physiology, assay and reference-range variability without an international assay standard, ovarian-response use in infertility care, and limitations for predicting natural fertility, pregnancy loss, or exact menopause timing and for stand-alone PCOS counseling."
+    },
+    {
+      key: "ani-repro-pcos-guideline-2023",
+      label: "2023 International Evidence-based Guideline for PCOS (peer-reviewed full text)",
+      url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10477934/",
+      note: "Supports using AMH only within the adult PCOS diagnostic algorithm, never as a single diagnostic test, and using population- and assay-specific cutoffs while considering age, combined oral contraception, ovarian surgery, and menstrual-cycle effects."
+    },
+    {
+      key: "ani-repro-asrm-poi-2025",
+      label: "ASRM: Evidence-based Guideline on Premature Ovarian Insufficiency (2025)",
+      url: "https://www.asrm.org/practice-guidance/practice-committee-documents/evidence-based-guideline-premature-ovarian-insufficiency--2024/",
+      note: "Supports that AMH is not the primary diagnostic test for premature ovarian insufficiency, may assist only when FSH results are inconclusive, and must be interpreted in clinical context, including before gonadotoxic medical or surgical treatment."
+    },
+    {
+      key: "ani-cardio-medlineplus-triglycerides",
+      label: "NIH MedlinePlus: Triglycerides Test",
+      url: "https://medlineplus.gov/lab-tests/triglycerides-test/",
+      note: "Supports adult triglyceride teaching categories, optional rather than universal fasting preparation, cardiovascular and pancreatitis associations, common secondary causes, treatment monitoring, and the need to interpret the result with the lipid profile and clinical context."
+    },
+    {
+      key: "ani-cardio-aha-dyslipidemia-2026",
+      label: "AHA/ACC Multisociety Guideline on the Management of Dyslipidemia (2026): Top Things to Know",
+      url: "https://professional.heart.org/en/science-news/2026-guideline-on-the-management-of-dyslipidemia/top-things-to-know",
+      note: "Supports overall ASCVD-risk assessment, selective ApoB testing with elevated triglycerides, at-least-once adult Lp(a) measurement, Lp(a) risk-enhancing thresholds, intensive management of modifiable risk, statins as the foundation for persistent triglyceride-related ASCVD risk, and pancreatitis-prevention therapy especially at triglycerides of at least 1000 mg/dL."
+    },
+    {
+      key: "ani-cardio-endocrine-lipid-management-2020",
+      label: "Endocrine Society: Lipid Management Guideline",
+      url: "https://www.endocrine.org/clinical-practice-guidelines/lipid-management-guideline",
+      note: "Supports repeating a fasting lipid panel when triglycerides are elevated or genetic dyslipidemia is suspected and the adult recommendation for pharmacologic treatment as an adjunct to diet and exercise when fasting triglycerides exceed 500 mg/dL to prevent pancreatitis, with additional context above 1000 mg/dL."
+    },
+    {
+      key: "ani-cardio-niddk-pancreatitis",
+      label: "NIH NIDDK: Symptoms and Causes of Pancreatitis",
+      url: "https://www.niddk.nih.gov/health-information/digestive-diseases/pancreatitis/symptoms-causes",
+      note: "Supports urgent evaluation of severe or worsening upper-abdominal pain, nausea or vomiting, fever, tachycardia, dyspnea, jaundice, or a seriously ill appearance when acute pancreatitis is possible."
+    },
+    {
+      key: "ani-cardio-medlineplus-lipoprotein-a",
+      label: "NIH MedlinePlus: Lipoprotein(a) Blood Test",
+      url: "https://medlineplus.gov/lab-tests/lipoprotein-a-blood-test/",
+      note: "Supports Lp(a) as a largely inherited LDL-like particle associated with cardiovascular risk that may remain high despite an otherwise reassuring lipid profile, test-preparation dependence on laboratory instructions, and management of overall modifiable cardiovascular risk."
+    },
+    {
+      key: "ani-cardio-nla-lipoprotein-a-2024",
+      label: "National Lipid Association: Focused Update on Use of Lipoprotein(a) in Clinical Practice (2024)",
+      url: "https://www.lipid.org/sites/default/files/files/PIIS1933287424000333.pdf",
+      note: "Supports at-least-once measurement in every adult, the low/intermediate/high risk categories reported separately in nmol/L and mg/dL, continuous rather than binary risk, no fixed conversion between units, causal ASCVD and calcific aortic-valve-stenosis associations, family cascade screening, and intensified management of other risk factors."
+    },
+    {
+      key: "ani-cardio-aha-lipoprotein-a-2022",
+      label: "American Heart Association Scientific Statement: Lipoprotein(a) and ASCVD (2022)",
+      url: "https://www.ahajournals.org/doi/10.1161/ATV.0000000000000147",
+      note: "Supports the inherited biology of Lp(a), its independent causal association with atherosclerotic cardiovascular disease, and its association with aortic-valve calcification while distinguishing risk-marker interpretation from a diagnosis of an acute event."
+    },
+    {
+      key: "ani-cardio-medlineplus-homocysteine",
+      label: "NIH MedlinePlus: Homocysteine Test",
+      url: "https://medlineplus.gov/lab-tests/homocysteine-test/",
+      note: "Supports homocysteine metabolism through vitamin B12, vitamin B6, and folate; selected testing for vitamin deficiency and homocystinuria; possible fasting and medicine/supplement preparation; confounding by age, sex, smoking, kidney and thyroid disease; and the limits of routine cardiovascular screening or homocysteine lowering."
+    },
+    {
+      key: "ani-cardio-nice-b12-2024",
+      label: "NICE NG239: Vitamin B12 Deficiency in Over 16s",
+      url: "https://www.nice.org.uk/guidance/ng239/chapter/recommendations",
+      note: "Supports use of the performing laboratory's homocysteine reference range, attention to folate and other causes of elevation, methylmalonic-acid evaluation for indeterminate B12 results, and not delaying clinician-directed B12 replacement when suspected megaloblastic anemia and neurologic symptoms could deteriorate rapidly."
+    },
+    {
+      key: "ani-cardio-ncbi-homocystinuria-2025",
+      label: "NCBI Bookshelf GeneReviews: Homocystinuria Due to Cystathionine Beta-Synthase Deficiency",
+      url: "https://www.ncbi.nlm.nih.gov/books/NBK1524/",
+      note: "Supports the thromboembolic, ocular, skeletal, and neurologic pattern of classic homocystinuria; plasma amino-acid and molecular confirmation; specialist evaluation; and urgent management of an acute vascular event rather than diagnosis from one homocysteine result."
+    },
+    {
+      key: "ani-cardio-b12-delphi-consensus-2024",
+      label: "Peer-reviewed Delphi Expert Consensus: Diagnosis and Management of Vitamin B12 Deficiency in Adults (2024)",
+      url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11050313/",
+      note: "Supports weighting clinical symptoms heavily, using methylmalonic acid or homocysteine as supportive metabolic markers rather than stand-alone diagnoses, and the limitation that biomarker normalization does not always equal clinical improvement."
+    },
+    {
+      key: "ani-autoimmune-medlineplus-hla-b27",
+      label: "NIH MedlinePlus Medical Encyclopedia: HLA-B27 Antigen",
+      url: "https://medlineplus.gov/ency/article/003551.htm",
+      note: "Supports qualitative HLA-B27 reporting, its association with spondyloarthritis and uveitis, interpretation with symptoms and other tests, and the limitation that healthy people may be positive."
+    },
+    {
+      key: "ani-autoimmune-niams-ankylosing-spondylitis-diagnosis",
+      label: "NIAMS: Ankylosing Spondylitis Diagnosis, Treatment, and Steps to Take",
+      url: "https://www.niams.nih.gov/health-topics/ankylosing-spondylitis/diagnosis-treatment-and-steps-to-take",
+      note: "Supports history, examination, imaging, and HLA-B27 as complementary evidence; no single test diagnoses ankylosing spondylitis, and a person may carry HLA-B27 without developing disease."
+    },
+    {
+      key: "ani-autoimmune-nei-uveitis",
+      label: "National Eye Institute: Uveitis",
+      url: "https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/uveitis",
+      note: "Supports eye pain, redness, photophobia, blurred vision, floaters, and vision loss as uveitis findings and prompt eye evaluation because untreated disease can impair vision."
+    },
+    {
+      key: "ani-autoimmune-medlineplus-ccp",
+      label: "NIH MedlinePlus: CCP Antibody Test",
+      url: "https://medlineplus.gov/lab-tests/ccp-antibody-test/",
+      note: "Supports anti-CCP as an autoantibody associated with rheumatoid arthritis, interpretation with symptoms, examination and rheumatoid factor, possible positivity in other conditions, and the limitation of positive and negative results."
+    },
+    {
+      key: "ani-autoimmune-acr-eular-ra-classification-2010",
+      label: "ACR/EULAR: 2010 Rheumatoid Arthritis Classification Criteria",
+      url: "https://ard.bmj.com/content/69/9/1580",
+      note: "Supports applying RF or ACPA serology only after clinical synovitis is established and not better explained by another diagnosis, with joint assessment, symptom duration, and an acute-phase reactant in the classification framework."
+    },
+    {
+      key: "ani-autoimmune-ncbi-septic-arthritis",
+      label: "NCBI Bookshelf: Septic Arthritis",
+      url: "https://www.ncbi.nlm.nih.gov/books/NBK538176/",
+      note: "Supports urgent evaluation of an acutely painful, hot or swollen joint, especially with fever or immune compromise, and synovial-fluid analysis because septic arthritis can rapidly damage a joint."
+    },
+    {
+      key: "ani-autoimmune-niams-lupus-diagnosis",
+      label: "NIAMS: Lupus Diagnosis, Treatment, and Steps to Take",
+      url: "https://www.niams.nih.gov/health-topics/lupus/diagnosis-treatment-and-steps-to-take",
+      note: "Supports anti-Smith testing after a positive ANA as one part of lupus evaluation and the use of CBC, kidney-function testing, urinalysis, urine protein assessment, and biopsy when organ findings warrant it."
+    },
+    {
+      key: "ani-autoimmune-acr-eular-sle-classification-2019",
+      label: "EULAR/ACR: 2019 Classification Criteria for Systemic Lupus Erythematosus",
+      url: "https://acrjournals.onlinelibrary.wiley.com/doi/10.1002/art.40930",
+      note: "Supports anti-Smith as an SLE-specific-antibody classification criterion used only after the ANA entry requirement and together with weighted clinical and immunologic domains, not as a stand-alone diagnostic rule."
+    },
+    {
+      key: "ani-autoimmune-acr-lupus-nephritis-guideline",
+      label: "American College of Rheumatology: Lupus Nephritis Guideline",
+      url: "https://rheumatology.org/lupus-guideline",
+      note: "Supports screening and evaluation for kidney involvement in SLE and clinician-directed kidney biopsy when proteinuria or otherwise unexplained impaired kidney function raises concern for lupus nephritis."
+    },
+    {
+      key: "ani-autoimmune-ncbi-lupus-nephritis",
+      label: "NCBI Bookshelf: Lupus Nephritis",
+      url: "https://www.ncbi.nlm.nih.gov/books/NBK499817/",
+      note: "Supports monitoring blood pressure, edema, serum creatinine, urinalysis, urine protein, hematuria, and active urinary sediment because kidney involvement may initially be clinically silent and delayed recognition can worsen renal outcomes."
+    },
+    {
+      key: "ani-nutrition-medlineplus-pth",
+      label: "NIH MedlinePlus: Parathyroid Hormone (PTH) Test",
+      url: "https://medlineplus.gov/lab-tests/parathyroid-hormone-pth-test/",
+      note: "Supports PTH physiology, paired calcium interpretation, primary and secondary hyperparathyroid patterns, low-PTH causes, symptom assessment, preparation variability, and the need for other tests rather than interpreting PTH alone."
+    },
+    {
+      key: "ani-nutrition-niddk-primary-hyperparathyroidism",
+      label: "NIH NIDDK: Primary Hyperparathyroidism",
+      url: "https://www.niddk.nih.gov/health-information/endocrine-diseases/primary-hyperparathyroidism",
+      note: "Supports the relationship among PTH, calcium, bone loss, and kidney stones; biochemical diagnosis using calcium with elevated or inappropriately normal PTH; urine, kidney, bone, and vitamin-D evaluation; and the distinction from kidney-related secondary disease."
+    },
+    {
+      key: "ani-nutrition-kdigo-ckd-mbd-2017",
+      label: "KDIGO: 2017 CKD-Mineral and Bone Disorder Guideline Update",
+      url: "https://kdigo.org/wp-content/uploads/2018/04/2017-KDIGO-CKD-MBD-GL-Update.pdf",
+      note: "Supports serial calcium, phosphate, and PTH interpretation in CKD; the absence of a known optimal PTH level in CKD G3a-G5 not receiving dialysis; evaluation of progressively rising or persistently assay-high PTH for modifiable factors; and avoiding treatment decisions from one elevated value."
+    },
+    {
+      key: "ani-nutrition-primary-hyperparathyroidism-workshop-2022",
+      label: "Fifth International Workshop: Evaluation and Management of Primary Hyperparathyroidism (2022)",
+      url: "https://onlinelibrary.wiley.com/doi/10.1002/jbmr.4677",
+      note: "Supports repeated concurrent calcium-PTH biochemical diagnosis, exclusion of secondary causes before normocalcemic primary hyperparathyroidism, assay context, and cause-directed calcium, phosphorus, vitamin-D, kidney, urine-calcium, skeletal, and renal evaluation rather than diagnosis from PTH alone."
+    },
+    {
+      key: "ani-nutrition-medlineplus-mma",
+      label: "NIH MedlinePlus: Methylmalonic Acid (MMA) Test",
+      url: "https://medlineplus.gov/lab-tests/methylmalonic-acid-mma-test/",
+      note: "Supports blood or urine MMA physiology, its association with vitamin B12-dependent metabolism, symptom and risk-factor assessment, comparison with vitamin and homocysteine testing, and the limitation that an abnormal result does not quantify deficiency."
+    },
+    {
+      key: "ani-nutrition-nih-ods-vitamin-b12",
+      label: "NIH Office of Dietary Supplements: Vitamin B12 Health Professional Fact Sheet",
+      url: "https://ods.od.nih.gov/factsheets/VitaminB12-HealthProfessional/",
+      note: "Supports MMA as a sensitive B12-associated metabolic marker, one explicitly nonuniversal serum example, confirmatory use with an indeterminate B12 result, and confounding from renal insufficiency and older age."
+    },
+    {
+      key: "ani-nutrition-medlineplus-iron-tests",
+      label: "NIH MedlinePlus: Iron Tests",
+      url: "https://medlineplus.gov/lab-tests/iron-tests/",
+      note: "Supports interpreting serum iron, transferrin, TIBC, and ferritin together; low- and high-iron associations; symptom and history assessment; possible morning or fasting collection; diurnal and medicine effects; and the limitation that an abnormal iron study does not necessarily establish a condition requiring treatment."
+    },
+    {
+      key: "ani-nutrition-medlineplus-tibc",
+      label: "NIH MedlinePlus Medical Encyclopedia: Total Iron-Binding Capacity",
+      url: "https://medlineplus.gov/ency/article/003489.htm",
+      note: "Supports transferrin-bound iron physiology, calculation and adult examples for iron saturation, and the requirement to use the performing laboratory's method and interval because reported ranges vary."
+    },
+    {
+      key: "ani-nutrition-kdigo-anemia-ckd-2026",
+      label: "KDIGO: 2026 Anemia in CKD Guideline",
+      url: "https://kdigo.org/wp-content/uploads/2026/01/KDIGO-2026-Anemia-in-CKD-Guideline.pdf",
+      note: "Supports TSAT as a measure of circulating iron availability, paired TSAT-ferritin interpretation, systemic iron deficiency versus inflammation-related iron-restricted erythropoiesis, setting-specific CKD treatment pathways, and the drawbacks of using TSAT as an isolated marker."
+    },
+    {
+      key: "ani-nutrition-easl-hemochromatosis-2022",
+      label: "EASL: Clinical Practice Guidelines on Haemochromatosis (2022)",
+      url: "https://easl.eu/wp-content/uploads/2022/06/PIIS01688278220021121.pdf",
+      note: "Supports paired persistent TSAT and ferritin patterns for hemochromatosis evaluation, sex- and genotype-specific diagnostic pathways, HFE testing and selective hepatic iron confirmation, and assessment for liver and other end-organ complications rather than diagnosis or treatment from TSAT alone."
+    },
+    {
+      key: "ani-nutrition-bsg-iron-deficiency-anemia-2021",
+      label: "British Society of Gastroenterology: Iron Deficiency Anaemia in Adults Guideline (2021)",
+      url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8515119/",
+      note: "Supports ferritin as the most useful simple iron-deficiency marker, TSAT as complementary evidence when ferritin may be falsely normal, laboratory- and population-specific anemia interpretation, and cause-directed evaluation for otherwise unexplained adult iron-deficiency anemia."
+    },
+    {
+      key: "ani-protein-medlineplus-spep-ife",
+      label: "NIH MedlinePlus: Protein Electrophoresis by Immunofixation Blood Test",
+      url: "https://medlineplus.gov/lab-tests/protein-electrophoresis-by-immunofixation-blood-test/",
+      note: "Supports separating albumin and globulin fractions, monoclonal and nonmonoclonal clinical contexts, possible symptoms and accompanying laboratory findings, inflammation, liver disease, kidney disease, malnutrition or protein-loss patterns, and interpretation with the history and other tests rather than from one electrophoresis result."
+    },
+    {
+      key: "ani-protein-cap-monoclonal-gammopathy-2020",
+      label: "CAP/AACC/ASCP: Laboratory Detection and Initial Diagnosis of Monoclonal Gammopathies Guideline",
+      url: "https://documents.cap.org/documents/monoclonal-gammopathies-summary-recommendations.pdf",
+      note: "Supports ordering serum protein electrophoresis with serum free light chains for initial monoclonal-protein detection, confirming an SPEP abnormality suspicious for an M-protein with serum immunofixation or a similarly sensitive method, and using urine immunofixation when AL amyloidosis is suspected."
+    },
+    {
+      key: "ani-protein-imwg-myeloma-criteria-2014",
+      label: "International Myeloma Working Group: Updated Diagnostic Criteria for Multiple Myeloma",
+      url: "https://pubmed.ncbi.nlm.nih.gov/25439696/",
+      note: "Supports the requirement to integrate histologic, monoclonal-protein, organ-damage, imaging, and validated biomarker evidence for a multiple-myeloma diagnosis rather than diagnosing myeloma from an M-spike or SPEP pattern alone."
+    },
+    {
+      key: "ani-protein-nci-plasma-cell-neoplasms",
+      label: "National Cancer Institute: Plasma Cell Neoplasms Treatment (Health Professional)",
+      url: "https://www.cancer.gov/types/myeloma/hp/myeloma-treatment-pdq",
+      note: "Supports distinguishing MGUS, smoldering myeloma, plasmacytoma, and multiple myeloma; evaluating a monoclonal protein with immunofixation, serum free light chains, urine studies, CBC, calcium, kidney function, imaging, and bone marrow when indicated; and symptom-led urgency for organ complications rather than an SPEP-only emergency threshold."
+    },
+    {
+      key: "ani-copper-medlineplus-ceruloplasmin",
+      label: "NIH MedlinePlus: Ceruloplasmin Test",
+      url: "https://medlineplus.gov/lab-tests/ceruloplasmin-test/",
+      note: "Supports ceruloplasmin physiology; Wilson disease, severe liver disease, kidney disease, malnutrition, malabsorption, copper deficiency and excess zinc as low-result contexts; inflammation, infection, injury, pregnancy and estrogen exposure as high-result contexts; and the limitation that ceruloplasmin alone cannot diagnose a condition."
+    },
+    {
+      key: "ani-copper-niddk-wilson-diagnosis",
+      label: "NIH NIDDK: Diagnosis of Wilson Disease",
+      url: "https://www.niddk.nih.gov/health-information/liver-disease/wilson-disease/diagnosis",
+      note: "Supports evaluating possible Wilson disease with personal and family history, liver and neurologic examination, slit-lamp eye examination, ceruloplasmin, copper, liver tests, CBC, 24-hour urinary copper, and selective ATP7B testing, liver copper measurement, or brain imaging; low ceruloplasmin is common but not universal."
+    },
+    {
+      key: "ani-copper-aasld-wilson-guidance-2022",
+      label: "AASLD: 2022 Practice Guidance on Wilson Disease",
+      url: "https://aasldpubs.onlinelibrary.wiley.com/doi/epdf/10.1002/hep.32801",
+      note: "Supports the multidisciplinary Wilson-disease evaluation pathway, the stronger but still non-diagnostic meaning of an extremely low ceruloplasmin result, the fact that normal ceruloplasmin does not exclude Wilson disease, and integration with liver tests, CBC/INR, basal 24-hour urinary copper, eye and neurologic examination, and ATP7B testing."
+    },
+    {
+      key: "ani-copper-easl-ern-wilson-2025",
+      label: "EASL-ERN: Clinical Practice Guidelines on Wilson Disease (2025)",
+      url: "https://easlcampus.eu/sites/default/files/2025-03/EASL-ERN_CPG_on_Wilson%27s_Disease.pdf",
+      note: "Supports assay-aware ceruloplasmin interpretation, possible normal ceruloplasmin in Wilson disease, abnormal results with decompensated liver function, malnutrition or protein loss, integration with 24-hour urinary copper, eye and neurologic findings, genetic or liver-copper testing, and the principle that no individual parameter is diagnostic by itself."
+    }
+  ],
   labRanges: [
     { name: "Sodium", range: "135-145 mEq/L", why: "Neuro status, seizures, fluid balance, SIADH/DI clues." },
     { name: "Potassium", range: "3.5-5.0 mEq/L", why: "Arrhythmia risk; watch with digoxin, insulin, diuretics, ACE inhibitors, ARBs, spironolactone." },
@@ -31,10 +819,28 @@ window.ANI_PHARM_DATABASE = {
         { name: "Hematocrit", range: "0-1 mo 42-64%; 1-5 yr 31-44%; 5-11 yr 35-44%; 11-18 yr female 34-44%, male 37-48%", why: "Age and puberty matter. Trend with symptoms, bleeding, hydration, and oxygenation." },
         { name: "WBC", range: "0-1 mo 9,000-30,000/mm3; 1-3 mo 5,000-19,500; 1-2 yr 6,000-17,000; 2-4 yr 5,500-15,500; 5-11 yr 5,000-14,500", why: "Younger children can run higher WBC ranges; pair with low-grade fever or higher fever, appearance, perfusion, and source." },
         { name: "Platelets", range: "Infants/children usually 150,000-450,000/mm3; age 5 commonly uses the child/adult-style safety anchor of about 150,000-400,000/mm3 depending facility", why: "Platelets are interpreted with bleeding, petechiae, infection, immune thrombocytopenia, chemotherapy, and sepsis cues." },
-        { name: "Creatinine", range: "Neonate 0.2-0.9 mg/dL; 2-12 mo 0.2-0.4; 1-2 yr 0.2-0.5; 3-6 yr 0.3-0.7; 7-12 yr 0.4-0.8; 13-15 yr 0.4-0.9", why: "Lower muscle mass means lower expected creatinine. A 'small' rise can matter." },
+        {
+          name: "Creatinine",
+          range: "Pediatric creatinine intervals are method- and laboratory-specific. University of Iowa examples are: neonate 0.2-0.9 mg/dL; 2-12 months 0.2-0.4; 1-2 years 0.2-0.5; 3-6 years 0.3-0.7; 7-8 years 0.2-0.6; 9-10 years 0.3-0.7; 11-12 years 0.3-0.9; and 13-15 years 0.4-0.9. Mayo Clinic Laboratories publishes different assay intervals: 0-11 months 0.17-0.42; 1-5 years 0.19-0.49; 6-10 years 0.26-0.61; and 11-14/15 years 0.35-0.86 mg/dL before sex-specific older-teen limits. Always use the child's age, sex when applicable, assay, baseline, and printed laboratory range.",
+          why: "In a child, an increased or rising creatinine result signals reduced filtration or altered creatinine handling and raises concern for acute kidney injury, chronic kidney disease, dehydration or poor perfusion, urinary obstruction, or medication effect; a small absolute rise can matter because baseline creatinine is lower with smaller muscle mass. Promptly assess weight-based urine output, hydration and perfusion, edema and lung sounds, blood pressure, medications and contrast exposure, electrolytes, and obstruction clues; cause-directed evaluation can include repeat laboratory testing, a validated pediatric eGFR equation when appropriate, urinalysis or other urine tests, and ultrasound as ordered. Escalate immediately for rapid deterioration with oliguria or anuria, hyperkalemia or ECG changes, respiratory distress from fluid overload, altered consciousness, or uremic symptoms. A single creatinine value does not diagnose the cause or prove normal kidney function; interpret the age-, sex-, method-, and laboratory-specific range, baseline and trend, muscle mass, urine findings, and clinical context.",
+          sourceKeys: ["ani-lab-medlineplus-creatinine", "ani-lab-niddk-kidney-evaluation", "ani-lab-uiowa-pediatric-ranges", "ani-lab-mayo-pediatric-bmp"],
+          clinicalInterpretationRevision: "2026-08-13-lab-clinical-significance-1"
+        },
         { name: "BUN", range: "Children often about 5-18 mg/dL; age 5 generally follows the child range and must be trended with hydration and creatinine", why: "BUN rises with dehydration, renal perfusion problems, GI bleeding, and protein load; do not read it alone." },
-        { name: "Sodium", range: "Children generally 135-145 mEq/L", why: "Hyponatremia can cause headache, confusion, seizures, and safety changes; hypernatremia often points toward water loss/dehydration." },
-        { name: "Potassium", range: "<10 days 3.5-6.0 mEq/L; >10 days 3.5-5.0", why: "Neonates tolerate a slightly higher listed range, but dysrhythmia risk still matters." },
+        {
+          name: "Sodium",
+          range: "Pediatric serum sodium intervals depend on age, gestation, method, and laboratory. Mayo Clinic Laboratories lists 135-145 mmol/L from age 1 year and does not establish an interval below 1 year for this panel; University of Iowa separately lists 130-140 mEq/L for premature infants. Use the child's printed range rather than treating either example as universal.",
+          why: "In a child, an abnormal sodium result signals a water-to-sodium imbalance and raises concern for dehydration, free-water loss, or diabetes insipidus when high, and SIADH, medication effect, adrenal insufficiency, or excess hypotonic water when low. Infants and children can deteriorate neurologically, so promptly assess mental status, irritability or lethargy, headache, vomiting, seizure activity, hydration and weight, intake and output, glucose, administered fluids, and medications, with caregiver input about intake and losses. Cause-directed evaluation can include repeat laboratory testing plus serum osmolality and urine tests for osmolality and sodium as ordered. Escalate immediately for seizure, acute neurologic change, altered consciousness, or rapid deterioration and follow pediatric cause- and symptom-specific correction orders. A single sodium value does not diagnose the cause; interpret the age- and gestation-specific range, trend, glucose and tonicity, volume status, and rate of change.",
+          sourceKeys: ["ani-lab-medlineplus-sodium", "ani-lab-uiowa-pediatric-ranges", "ani-lab-mayo-pediatric-bmp", "ani-lab-rch-pediatric-hyponatremia", "ani-lab-rch-pediatric-hypernatremia"],
+          clinicalInterpretationRevision: "2026-08-13-lab-clinical-significance-1"
+        },
+        {
+          name: "Potassium",
+          range: "Pediatric serum potassium intervals depend on age, gestation, specimen, method, and laboratory. University of Iowa examples are 3.5-6.0 mEq/L before 10 days and 3.5-5.0 after 10 days; Mayo Clinic Laboratories lists 3.6-5.2 mmol/L from age 1 year and does not establish an interval below 1 year for this panel. A higher neonatal reference limit is not a blanket statement that a high result is safe; use the child's printed range and clinical context.",
+          why: "In a neonate or child, an abnormal potassium result signals altered cardiac and neuromuscular electrical excitability and raises concern for dysrhythmia, kidney dysfunction, gastrointestinal losses, medication or IV-fluid effects, acid-base or insulin shifts, tissue injury, or specimen hemolysis. Promptly assess ECG and rhythm, weakness, hydration, kidney function and urine output, glucose and acid-base status, IV fluids or nutrition, and weight-based therapies; cause-directed evaluation includes repeat laboratory testing and an ECG when the result is abnormal, unexpected, or symptomatic. Recollect a hemolyzed or discordant result per protocol when the child is stable, but escalate immediately for ECG changes, paralysis, shock or hemodynamic instability, chest pain, or rapid deterioration. A single potassium value does not diagnose the cause or total-body stores; interpret the age-specific range, specimen quality, trend, clinical state, and local critical-value policy.",
+          sourceKeys: ["ani-lab-medlineplus-potassium", "ani-lab-ahrq-pseudohyperkalemia", "ani-lab-uiowa-pediatric-ranges", "ani-lab-mayo-pediatric-bmp"],
+          clinicalInterpretationRevision: "2026-08-13-lab-clinical-significance-1"
+        },
         { name: "Glucose", range: "0-30 days 40-99 mg/dL; >1 month often 65-99 fasting/reference dependent", why: "Infants and young children have less reserve. Poor feeding, jitteriness, lethargy, diaphoresis, or seizures are safety cues." },
         { name: "Calcium", range: "Children generally about 8.8-10.8 mg/dL, facility dependent", why: "Low calcium can cause tetany, seizure risk, laryngospasm, and prolonged QT; high calcium can cause weakness, constipation, dehydration, and rhythm concerns." }
       ]
@@ -45,7 +851,13 @@ window.ANI_PHARM_DATABASE = {
       ranges: [
         { name: "Hemoglobin", range: "Adult female about 12-16 g/dL; pregnant female anemia thresholds: <11 g/dL in 1st trimester, <10.5 g/dL in 2nd trimester, <11 g/dL in 3rd trimester", why: "Pregnancy hemodilution lowers hemoglobin. Example: Hgb 10.8 g/dL may be mild/expected in 2nd trimester, but Hgb 9.5 g/dL with dyspnea, tachycardia, bleeding, or poor fetal tolerance is not a shrug-off finding." },
         { name: "Hematocrit", range: "Adult female about 36-46%; pregnant female reference anchors: 1st trimester 31-41%, 2nd trimester 30-39%, 3rd trimester 28-40%", why: "Plasma volume expansion lowers Hct, but numbers matter. Example: Hct 33% can fit pregnancy physiology; Hct 26% with dizziness, tachycardia, bleeding, or low Hgb needs anemia/bleeding thinking." },
-        { name: "Creatinine", range: "Adult female often 0.5-1.0 mg/dL; pregnant female reference anchors: 1st trimester 0.4-0.7, 2nd trimester 0.4-0.8, 3rd trimester 0.4-0.9 mg/dL; creatinine >=1.0 mg/dL is often abnormal in pregnancy; >1.1 mg/dL or >=2x baseline is a preeclampsia severe-feature threshold", why: "A creatinine that looks 'normal adult' can be concerning in pregnancy because GFR rises. Example: 1.0 mg/dL may be borderline in a nonpregnant adult but deserves attention in pregnancy, especially with hypertension or proteinuria." },
+        {
+          name: "Creatinine",
+          range: "Healthy pregnancy usually lowers serum creatinine as filtration rises, but exact intervals depend on assay, laboratory, population, and gestational age. A systematic review found trimester upper limits near 0.86, 0.81, and 0.87 mg/dL when derived from a nonpregnant upper limit of 1.02 mg/dL; these relative estimates are not universal cutoffs. In a patient with gestational hypertension, ACOG identifies serum creatinine greater than 1.1 mg/dL or doubling of creatinine in the absence of other renal disease as a renal-insufficiency severe feature; that criterion is not a general pregnancy reference interval or a stand-alone diagnosis.",
+          why: "In pregnancy, a failure of creatinine to fall as expected or a rise signals reduced filtration relative to gestational physiology and raises concern for preeclampsia-related renal involvement, hypovolemia or hemorrhage, sepsis, urinary obstruction, medication effect, acute kidney injury, or pre-existing kidney disease. Promptly assess blood pressure, headache, vision change, right-upper-quadrant or epigastric pain, edema and weight, urine output, fluid and perfusion status, bleeding or infection clues, maternal-fetal status appropriate to the setting, and nephrotoxic medicines; cause-directed evaluation can include repeat laboratory testing, urinalysis and urine protein tests, platelet and liver or hemolysis studies, and ultrasound as ordered. Escalate immediately for severe hypertension with acute neurologic change or seizure, oliguria or anuria, respiratory distress or pulmonary edema, shock, major bleeding, or rapid deterioration. A single creatinine value does not diagnose preeclampsia or kidney injury; creatinine-based eGFR equations are not validated for routine pregnancy interpretation, and the local assay range, prepregnancy baseline, trend, gestational age, urine findings, and full clinical criteria matter.",
+          sourceKeys: ["ani-lab-medlineplus-creatinine", "ani-lab-niddk-kidney-evaluation", "ani-lab-pregnancy-creatinine-review", "ani-lab-acog-preeclampsia"],
+          clinicalInterpretationRevision: "2026-08-13-lab-clinical-significance-1"
+        },
         { name: "Platelets", range: "Adult female 150,000-400,000/mm3; pregnant female usually remains >=150,000/mm3, but mild gestational thrombocytopenia is usually 100,000-149,000/mm3 and often asymptomatic; <100,000/mm3 is not typical benign gestational thrombocytopenia and is a preeclampsia severe-feature threshold when paired with hypertension; HELLP platelet classes: 100,000-150,000 class III, 50,000-100,000 class II, <50,000 class I", why: "Use numbers to separate benign from dangerous. Example: 132,000/mm3 with normal BP/LFTs may fit mild gestational thrombocytopenia; 92,000/mm3 plus BP 160/110, RUQ pain, headache, or AST/ALT elevation points toward preeclampsia/HELLP." },
         { name: "Urine protein", aliases: ["pregnancy urine protein", "urine protein in pregnancy"], range: "Adult female negative/trace expected; pregnant female should also be negative/trace unless preeclampsia-level proteinuria appears: >=300 mg/24 hr, protein/creatinine ratio >=0.3, or dipstick 1+ only if quantitative testing is unavailable", why: "NCLEX loves headache, vision changes, RUQ pain, hyperreflexia, edema, and proteinuria as a dangerous cluster. Proteinuria supports preeclampsia, but severe features can diagnose preeclampsia even without proteinuria." },
         { name: "Rh/antibody screen", range: "Rh negative status and positive antibody screen need maternity follow-up", why: "Not a 'range,' but a high-yield maternity lab safety concept." }
@@ -56,8 +868,20 @@ window.ANI_PHARM_DATABASE = {
       note: "Many lab reference ranges are technically adult ranges, but aging changes reserve, medication clearance, hydration, and symptom presentation.",
       ranges: [
         { name: "Creatinine/eGFR", range: "Creatinine may appear normal despite low renal reserve; trend eGFR and urine output", why: "Low muscle mass can hide kidney decline. This matters for metformin, vancomycin, aminoglycosides, lithium, digoxin, DOACs, and contrast." },
-        { name: "Sodium", range: "135-145 mEq/L, but older adults are high-risk for symptomatic hyponatremia", why: "SSRIs, thiazides, poor intake, heart failure, and SIADH can cause confusion, falls, seizures." },
-        { name: "Potassium", range: "3.5-5.0 mEq/L; risk rises with renal decline and interacting drugs", why: "ACE inhibitors, ARBs, spironolactone, TMP-SMX, and kidney disease make hyperkalemia a classic medication trap." },
+        {
+          name: "Sodium",
+          range: "A common adult serum reference interval is 135-145 mEq/L (the same numeric values as mmol/L), including for many older adults, but the reporting laboratory's interval and critical-value policy govern interpretation; age alone does not create a universal geriatric range.",
+          why: "In an older adult, an abnormal sodium result signals a water-to-sodium imbalance and raises concern for thiazide or SSRI effect, SIADH, adrenal insufficiency, low-solute intake, or heart, kidney, or liver disease with water excess when low, and free-water deficit, limited access to water, fever, gastrointestinal or renal losses, or diabetes insipidus when high. New confusion, delirium, gait change, or a fall may be the presenting clue, so promptly assess baseline cognition and neurologic status, seizure activity, volume and orthostatic findings, oral intake and access to water, intake and output, weight, glucose, and medicines. Cause-directed evaluation can include repeat laboratory testing plus serum osmolality and urine tests for osmolality and sodium as ordered. Escalate immediately for seizure, acute neurologic change, altered consciousness, or rapid deterioration and follow ordered cause- and symptom-specific correction plans. A single sodium value does not diagnose the cause; interpret the trend, timing, glucose and tonicity, volume status, medicines, and local range together.",
+          sourceKeys: ["ani-lab-medlineplus-sodium", "ani-lab-mayo-sodium-serum", "ani-lab-endotext-hyponatremia", "ani-lab-merck-hypernatremia"],
+          clinicalInterpretationRevision: "2026-08-13-lab-clinical-significance-1"
+        },
+        {
+          name: "Potassium",
+          range: "A common adult serum reference interval is about 3.5-5.0 mEq/L (the same numeric values as mmol/L), including for many older adults, but the reporting laboratory's interval and critical-value policy govern interpretation; kidney reserve, comorbidities, and polypharmacy change risk rather than creating one universal geriatric range.",
+          why: "In an older adult, an abnormal potassium result signals altered cardiac and neuromuscular electrical excitability and raises concern for declining kidney function, potassium-raising medicines such as ACE inhibitors, ARBs, mineralocorticoid antagonists, or trimethoprim, gastrointestinal or diuretic losses, acid-base or insulin shifts, tissue injury, or specimen hemolysis. Promptly assess ECG and rhythm, weakness, kidney function and urine output, hydration, constipation and gastrointestinal losses, glucose and acid-base status, medicines, supplements, and salt substitutes; cause-directed evaluation includes repeat laboratory testing and an ECG when the result is abnormal, unexpected, or symptomatic. Recollect a hemolyzed or discordant result per protocol when the patient is stable, but escalate immediately for ECG changes, paralysis, chest pain, shock or hemodynamic instability, syncope, or rapid deterioration. A single potassium value does not diagnose the cause or total-body stores; interpret specimen quality, trend, symptoms, ECG, medicines, kidney function, and local critical-value policy.",
+          sourceKeys: ["ani-lab-medlineplus-potassium", "ani-lab-ahrq-pseudohyperkalemia", "ani-lab-ukka-hyperkalemia-2023"],
+          clinicalInterpretationRevision: "2026-08-13-lab-clinical-significance-1"
+        },
         { name: "Albumin", range: "About 3.5-5.0 g/dL, but low albumin is common in frailty/inflammation", why: "Low albumin can increase free drug effect for highly protein-bound meds and signals poor nutrition/inflammation." },
         { name: "WBC", range: "4,500-11,000/mm3, but infection may present without dramatic leukocytosis or obvious fever", why: "New confusion, weakness, falls, anorexia, functional decline, or even low-grade fever can be the infection presentation." },
         { name: "Hemoglobin", range: "Use adult sex-based ranges; anemia is common but not automatically 'normal aging'", why: "Assess bleeding, kidney disease, nutrition, malignancy, and medication effects." }

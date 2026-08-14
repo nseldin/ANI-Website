@@ -783,7 +783,11 @@
     const primary = entry ? entityKindForEntry(entry) : normalizeWhitespace(value);
     const kind = entry ? entryKindForRecord(entry) : "";
     const classification = entry ? classificationForEntry(entry) : {};
-    const lineage = new Set([primary]);
+    // Every registered destination kind is a descendant of canonical-topic.
+    // The approved `related-topic` rule depends on that universal ancestor;
+    // without it the rule is structurally registered but cannot validate any
+    // disease, organism, method, or infection-prevention destination.
+    const lineage = new Set([primary, "canonical-topic"]);
     if (entry) {
       lineage.add(kind);
       lineage.add("microbiology-topic");

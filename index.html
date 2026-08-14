@@ -13,7 +13,7 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" type="image/png" href="./assets/ani-avatar.png">
   <link rel="apple-touch-icon" href="./assets/ani-avatar.png">
-  <link rel="stylesheet" href="./styles.css?v=ani354">
+  <link rel="stylesheet" href="./styles.css?v=ani362">
   <link rel="stylesheet" href="./web/ani-website-responsive.css?v=1e74625a9add" data-ani-website-only="responsive">
 </head>
 <body class="app-booting">
@@ -625,7 +625,7 @@
         <div>
           <span>Medical reference</span>
           <strong>ANI MEDICAL ENCYCLOPEDIA</strong>
-          <p>Search medications, medical updates, labs, diseases, microbiology, anatomy, physiology, diagnostics, and holistic safety using exact terms, abbreviations, everyday language, or typo-close spellings.</p>
+          <p>Search medications, medical updates, labs, diseases, microbiology, anatomy, physiology, diagnostics, nutrition, swallowing care, and holistic topics using exact terms, abbreviations, everyday language, or typo-close spellings.</p>
         </div>
         <button id="closePharmDatabaseButton" type="button">Close</button>
       </header>
@@ -716,6 +716,16 @@
           </select>
           <span id="foundationBrowseCount" aria-live="polite"></span>
         </div>
+        <div id="holisticBrowseControls" class="clinical-sign-browse-controls" hidden>
+          <label for="holisticSubcategorySelect">Browse Holistic by subcategory</label>
+          <select id="holisticSubcategorySelect" aria-describedby="holisticBrowseCount">
+            <option value="all">All Holistic topics</option>
+            <option value="therapeutic-diets-nutrition">Therapeutic Diets &amp; Nutrition</option>
+            <option value="swallowing-diet-consistency">Swallowing &amp; Diet Consistency</option>
+            <option value="herbal-supplement-safety">Herbal &amp; Supplement Safety</option>
+          </select>
+          <span id="holisticBrowseCount" aria-live="polite"></span>
+        </div>
         <div id="procedureBrowseControls" class="clinical-sign-browse-controls" hidden>
           <label for="procedureSpecialtySelect">Browse Surgeries &amp; Procedures by specialty</label>
           <select id="procedureSpecialtySelect" aria-describedby="procedureBrowseCount">
@@ -750,7 +760,7 @@
   </section>
 
   <script src="./app-config.js?v=ani318"></script>
-  <script src="./data/pharm-database.js?v=ani335"></script>
+  <script src="./data/pharm-database.js?v=ani358"></script>
   <script src="./data/pharm-expansion.js?v=ani261"></script>
   <script src="./data/pharm-drug-bible-supplement.js?v=ani04"></script>
   <script src="./data/pharm-auto-standalone-cards.js?v=ani01"></script>
@@ -765,8 +775,8 @@
   <script src="./data/pathology-bible-supplement.js?v=ani302"></script>
   <script src="./data/pathology-medication-treatment-supplement.js?v=ani01"></script>
   <script src="./data/holistic-database.js?v=ani272"></script>
-  <script src="./data/diagnostic-database.js?v=ani353"></script>
-  <script src="./data/encyclopedia-quality-patch.js?v=ani351"></script>
+  <script src="./data/diagnostic-database.js?v=ani358"></script>
+  <script src="./data/encyclopedia-quality-patch.js?v=ani358"></script>
   <script src="./data/first-sentence-crash-course-patch.js?v=ani351"></script>
   <script src="./data/pharm-frontier-wave4-anesthesia-eye-patch.js?v=ani01"></script>
   <script src="./data/pharm-frontier-wave4-gi-hepatology-patch.js?v=ani01"></script>
@@ -792,7 +802,7 @@
   <script src="./data/pharm-frontier-wave20-sglt2-causal-patch.js?v=ani01"></script>
   <script src="./data/pharm-frontier-wave21-antiseizure-causal-patch.js?v=ani02"></script>
   <script src="./data/pharm-frontier-wave22-parkinson-causal-patch.js?v=ani01"></script>
-  <script src="./data/clinical-frontier-wave23-stroke-causal-patch.js?v=ani01"></script>
+  <script src="./data/clinical-frontier-wave23-stroke-causal-patch.js?v=ani357"></script>
   <script src="./data/pharm-frontier-wave24-opioid-causal-patch.js?v=ani01"></script>
   <script src="./data/clinical-frontier-wave25-renal-causal-patch.js?v=ani221"></script>
   <script src="./data/clinical-frontier-wave25-acidbase-causal-patch.js?v=ani221"></script>
@@ -814,7 +824,7 @@
   <script src="./data/clinical-frontier-wave29-pathology-nursing-cohort-b.js?v=ani221"></script>
   <script src="./data/clinical-frontier-wave30-pathology-nursing-cohort-a.js?v=ani221"></script>
   <script src="./data/clinical-frontier-wave30-pathology-nursing-cohort-b.js?v=ani221"></script>
-  <script src="./data/clinical-frontier-wave31-pathology-nursing-cohort-a.js?v=ani221"></script>
+  <script src="./data/clinical-frontier-wave31-pathology-nursing-cohort-a.js?v=ani357"></script>
   <script src="./data/clinical-frontier-wave31-pathology-nursing-cohort-b.js?v=ani221"></script>
   <script src="./data/clinical-frontier-wave32-pathology-nursing-cohort-a.js?v=ani221"></script>
   <script src="./data/clinical-frontier-wave32-pathology-nursing-cohort-b.js?v=ani351"></script>
@@ -829,40 +839,42 @@
   <script src="./data/clinical-frontier-wave35-foundations-b.js?v=ani282"></script>
   <script src="./data/clinical-frontier-wave35-ten.js?v=ani224"></script>
   <script src="./data/clinical-frontier-wave36-pathology-a.js?v=ani242"></script>
-  <script src="./data/clinical-frontier-wave36-diagnostics-b.js?v=ani242"></script>
+  <script src="./data/clinical-frontier-wave36-diagnostics-b.js?v=ani357"></script>
   <script src="./data/clinical-frontier-wave36-pharm-c.js?v=ani242"></script>
   <script src="./data/clinical-frontier-wave37-neuro-a.js?v=ani261"></script>
-  <script src="./data/clinical-frontier-wave37-diagnostics-b.js?v=ani243"></script>
+  <script src="./data/clinical-frontier-wave37-diagnostics-b.js?v=ani358"></script>
   <script src="./data/clinical-frontier-wave37-clinical-c.js?v=ani243"></script>
   <script src="./data/clinical-frontier-wave38-critical-links.js?v=ani261"></script>
-  <script src="./data/clinical-frontier-wave38-clinical-signs.js?v=ani352"></script>
+  <script src="./data/clinical-frontier-wave38-clinical-signs.js?v=ani358"></script>
   <script src="./data/clinical-frontier-wave38-vaccination.js?v=ani316"></script>
   <script src="./data/clinical-frontier-wave41-diabetes-core.js?v=ani261"></script>
   <script src="./data/clinical-frontier-wave41-diabetes-secondary.js?v=ani261"></script>
   <script src="./data/clinical-frontier-wave41-diabetes-monogenic.js?v=ani261"></script>
   <script src="./data/clinical-frontier-wave42-diseases.js?v=ani261"></script>
-  <script src="./data/clinical-frontier-wave42-foundations-diagnostics.js?v=ani354"></script>
-  <script src="./data/clinical-frontier-wave42-critical-care.js?v=ani261"></script>
+  <script src="./data/clinical-frontier-wave42-foundations-diagnostics.js?v=ani357"></script>
+  <script src="./data/clinical-frontier-wave42-critical-care.js?v=ani358"></script>
   <script src="./data/pharm-frontier-wave42-procaine.js?v=ani261"></script>
   <script src="./data/clinical-frontier-wave44-heme-integrity.js?v=ani263"></script>
   <script src="./data/clinical-frontier-wave44-treatment-integrity.js?v=ani263"></script>
-  <script src="./data/clinical-frontier-wave44-component-parity-p0.js?v=ani354"></script>
+  <script src="./data/clinical-frontier-wave44-component-parity-p0.js?v=ani358"></script>
   <script src="./data/clinical-frontier-wave44-component-parity-p1.js?v=ani263"></script>
   <script src="./data/clinical-frontier-wave44-component-parity-p2.js?v=ani263"></script>
   <script src="./data/clinical-frontier-wave44-pharmacy-component-parity.js?v=ani263"></script>
-  <script src="./data/pathology-reviewed-expansion.js?v=ani318"></script>
+  <script src="./data/pathology-reviewed-expansion.js?v=ani362"></script>
+  <script src="./data/clinical-frontier-wave45-therapeutic-nutrition-swallowing.js?v=ani362"></script>
+  <script src="./data/clinical-frontier-wave46-transmission-precaution-links.js?v=ani357"></script>
   <script src="./data/high-yield-image-library.js?v=ani01"></script>
   <script src="./data/pharm-runtime-parity.js?v=ani261"></script>
-  <script src="./data/pharm-reviewed-expansion.js?v=ani339"></script>
+  <script src="./data/pharm-reviewed-expansion.js?v=ani358"></script>
   <script src="./src/lane4/runtime-efficiency.js?v=ani287"></script>
-  <script src="./src/microbiology/domain-core.js?v=ani290"></script>
-  <script src="./data/microbiology-database.js?v=ani326"></script>
+  <script src="./src/microbiology/domain-core.js?v=ani357"></script>
+  <script src="./data/microbiology-database.js?v=ani357"></script>
   <script src="./src/surgery-procedures/domain-core.js?v=ani318"></script>
   <script src="./data/surgery-procedure-database.js?v=ani318"></script>
   <script src="./data/mnemonic-library.js?v=ani318"></script>
-  <script src="./data/learner-language-standard.js?v=ani354"></script>
+  <script src="./data/learner-language-standard.js?v=ani358"></script>
   <script src="./data/medical-updates.js?v=ani332"></script>
-  <script src="./main.js?v=ani354"></script>
+  <script src="./main.js?v=ani362"></script>
   <script src="./data/pharm-frontier-wave21-antiseizure-routing.js?v=ani02"></script>
   <script src="./data/pharm-frontier-wave22-parkinson-routing.js?v=ani01"></script>
   <script src="./data/pharm-frontier-wave24-opioid-routing.js?v=ani01"></script>
@@ -876,6 +888,6 @@
   <script src="./data/pharm-frontier-wave33-antidote-routing.js?v=ani221"></script>
   <script src="./data/pharm-frontier-wave34-antidote-routing.js?v=ani221"></script>
   <script src="./data/clinical-frontier-wave23-stroke-routing.js?v=ani01"></script>
-  <script src="./data/clinical-frontier-wave35-intelligent-search-routing.js?v=ani354"></script>
+  <script src="./data/clinical-frontier-wave35-intelligent-search-routing.js?v=ani358"></script>
 </body>
 </html>

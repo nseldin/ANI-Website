@@ -7,7 +7,7 @@
 })(typeof window !== "undefined" ? window : (typeof globalThis !== "undefined" ? globalThis : null), function () {
   "use strict";
 
-  const VERSION = "2026-08-12.5";
+  const VERSION = "2026-08-13.2";
   const SCHEMA_VERSION = 1;
   const CLINICAL_REFERENCE_OPENING_STANDARD = Object.freeze({
     schemaVersion: "ani-clinical-reference-opening-v1",
@@ -66,6 +66,50 @@
     preserveUnknownScalarLeaves: true,
     urgentFieldCardinality: "exactly-one-nonempty-scalar",
     unknownShapesBlockPublication: true
+  });
+  const LAB_STRUCTURED_SECTION_FIELDS = Object.freeze([
+    Object.freeze({
+      key: "highCauses",
+      label: "High-result causes and associations",
+      safetyVisible: false
+    }),
+    Object.freeze({
+      key: "lowCauses",
+      label: "Low-result causes and associations",
+      safetyVisible: false
+    }),
+    Object.freeze({
+      key: "criticalConcerns",
+      label: "Critical concerns and safety limits",
+      safetyVisible: true
+    }),
+    Object.freeze({
+      key: "nursingConsiderations",
+      label: "Nursing assessment and actions",
+      safetyVisible: false
+    }),
+    Object.freeze({
+      key: "nclexTraps",
+      label: "NCLEX traps and interpretation limits",
+      safetyVisible: false
+    })
+  ]);
+  const LAB_STRUCTURED_SECTION_STANDARD = Object.freeze({
+    schemaVersion: "ani-lab-structured-sections-v1",
+    runtimeCollection: "pharmSearchableLabRanges",
+    fields: LAB_STRUCTURED_SECTION_FIELDS,
+    recognizedFieldKeys: Object.freeze(LAB_STRUCTURED_SECTION_FIELDS.map((field) => field.key)),
+    valueShape: "ordered-array-of-nonempty-strings",
+    rootPathPolicy: "exact-authored-field-key",
+    leafPathPolicy: "exact-authored-field-key-dot-zero-based-index",
+    suppressGeneratedTeachingWhenRecognized: true,
+    suppressGeneratedTeachingWhenMalformed: true,
+    preserveArrayOrder: true,
+    omitEmptyArrays: true,
+    malformedFieldPolicy: "fail-closed-report-no-generic-fallback",
+    populationSiblingInheritanceAllowed: false,
+    automaticRewriteAllowed: false,
+    mutationTargetAuthorized: false
   });
   const VISIBLE_LEARNER_SUPPORT_STANDARD = Object.freeze({
     schemaVersion: "ani-visible-learner-support-v1",
@@ -137,6 +181,63 @@
       universalCutoffInferred: false,
       criterionExpectationInferred: false,
       runtimeScannerEnabled: false
+    })
+  });
+  const CLINICAL_SIGNIFICANCE_INTERPRETATION_REVIEW_STANDARD = Object.freeze({
+    schemaVersion: "ani-clinical-significance-interpretation-review-standard-v1",
+    evidenceSchemaVersion: "ani-clinical-significance-interpretation-review-evidence-v1",
+    reviewStage: "bounded-visible-clinical-interpretation",
+    clinicalApplicabilityStatus: "NOT_ASSESSED",
+    dimensions: Object.freeze([
+      "early-direct-clinical-meaning",
+      "named-association-evidence",
+      "nursing-next-assessment-or-action",
+      "evaluation-path",
+      "urgency-context",
+      "not-diagnostic-limitation",
+      "generic-template-repetition"
+    ]),
+    evidenceStatuses: Object.freeze([
+      "PRESENT_SPECIFIC",
+      "PRESENT_GENERIC_TEMPLATE_ONLY",
+      "BURIED_AFTER_OPENING",
+      "VAGUE_ONLY",
+      "MISSING",
+      "NO_REPEATED_TEMPLATE_OBSERVED",
+      "NOT_APPLICABLE_BY_DETERMINISTIC_SCOPE"
+    ]),
+    openingWindow: Object.freeze({
+      maximumVisibleBlocks: 2,
+      maximumWords: 180,
+      maximumSentences: 6
+    }),
+    reviewDispositions: Object.freeze([
+      "AUTHOR_EARLY_DIRECT_CLINICAL_MEANING",
+      "NAME_SUPPORTED_ASSOCIATION_OR_CONSEQUENCE",
+      "AUTHOR_NURSING_NEXT_ASSESSMENT_OR_ACTION",
+      "AUTHOR_EVALUATION_PATH",
+      "AUTHOR_URGENCY_OR_RED_FLAG_CONTEXT",
+      "AUTHOR_NOT_DIAGNOSTIC_LIMITATION",
+      "REPLACE_GENERIC_TEMPLATE_WITH_TOPIC_SPECIFIC_TEACHING",
+      "EVIDENCE_ALREADY_PRESENT",
+      "NO_DISTINCT_URGENCY_APPLIES",
+      "NOT_DIAGNOSTIC_LIMITATION_NOT_APPLICABLE",
+      "NOT_APPLICABLE",
+      "NEEDS_AUTHORITATIVE_SOURCE_REVIEW"
+    ]),
+    policy: Object.freeze({
+      signalOnly: true,
+      automaticRewrite: false,
+      medicalReviewRequired: true,
+      clinicalApplicabilityInferred: false,
+      namedAssociationInferred: false,
+      medicalRelationshipInferenceAllowed: false,
+      aliasOrFuzzyIdentityActivationAllowed: false,
+      runtimeScannerEnabled: false,
+      mutationTargetAuthorized: false,
+      severity: "Warning",
+      blocking: false,
+      zeroAi: true
     })
   });
   const BROAD_TO_SPECIFIC_EDUCATION_STANDARD = Object.freeze({
@@ -545,6 +646,112 @@
 
   function structuredSectionItems(value, path) {
     return Object.freeze(clinicalReferenceStructuredScalarLeaves(value, path || [], [], new Set()));
+  }
+
+  function labStructuredValueType(value) {
+    if (Array.isArray(value)) return "array";
+    if (value === null) return "null";
+    return typeof value;
+  }
+
+  function labStructuredSectionProjection(lab) {
+    const source = lab && typeof lab === "object" ? lab : {};
+    const recognizedFields = [];
+    const validFields = [];
+    const emptyFields = [];
+    const malformedFields = [];
+    const sections = [];
+    let sourceItemCount = 0;
+
+    LAB_STRUCTURED_SECTION_FIELDS.forEach((field, fieldIndex) => {
+      if (!Object.prototype.hasOwnProperty.call(source, field.key)) return;
+      recognizedFields.push(field.key);
+      const value = source[field.key];
+      if (!Array.isArray(value)) {
+        malformedFields.push(Object.freeze({
+          field: field.key,
+          path: field.key,
+          reason: "recognized-field-must-be-an-array",
+          actualType: labStructuredValueType(value),
+          invalidItems: Object.freeze([])
+        }));
+        return;
+      }
+
+      sourceItemCount += value.length;
+      const invalidItems = [];
+      value.forEach((item, itemIndex) => {
+        if (typeof item !== "string") {
+          invalidItems.push(Object.freeze({
+            path: `${field.key}.${itemIndex}`,
+            index: itemIndex,
+            reason: "array-item-must-be-a-string",
+            actualType: labStructuredValueType(item)
+          }));
+        } else if (!cleanText(item)) {
+          invalidItems.push(Object.freeze({
+            path: `${field.key}.${itemIndex}`,
+            index: itemIndex,
+            reason: "array-item-must-be-nonempty",
+            actualType: "string"
+          }));
+        }
+      });
+      if (invalidItems.length) {
+        malformedFields.push(Object.freeze({
+          field: field.key,
+          path: field.key,
+          reason: "recognized-field-has-invalid-array-items",
+          actualType: "array",
+          invalidItems: Object.freeze(invalidItems)
+        }));
+        return;
+      }
+
+      validFields.push(field.key);
+      if (!value.length) {
+        emptyFields.push(field.key);
+        return;
+      }
+      const items = Object.freeze(value.map((item, itemIndex) => Object.freeze({
+        field: field.key,
+        fieldPath: field.key,
+        path: `${field.key}.${itemIndex}`,
+        index: itemIndex,
+        text: cleanText(item)
+      })));
+      sections.push(Object.freeze({
+        key: field.key,
+        label: field.label,
+        path: field.key,
+        sourceIndex: fieldIndex,
+        safetyVisible: field.safetyVisible === true,
+        items,
+        value: Object.freeze(items.map((item) => item.text)),
+        text: items.map((item) => item.text).join(" "),
+        learnerText: items.map((item) => item.text).join(" ")
+      }));
+    });
+
+    const recognized = recognizedFields.length > 0;
+    const projectedLeafCount = sections.reduce((sum, section) => sum + section.items.length, 0);
+    return Object.freeze({
+      schemaVersion: LAB_STRUCTURED_SECTION_STANDARD.schemaVersion,
+      recognized,
+      hasValidAuthoredSections: sections.length > 0,
+      suppressGeneratedTeaching: recognized && LAB_STRUCTURED_SECTION_STANDARD.suppressGeneratedTeachingWhenRecognized,
+      coverageComplete: malformedFields.length === 0,
+      recognizedFields: Object.freeze(recognizedFields),
+      validFields: Object.freeze(validFields),
+      emptyFields: Object.freeze(emptyFields),
+      malformedFields: Object.freeze(malformedFields),
+      sections: Object.freeze(sections),
+      sourceItemCount,
+      projectedLeafCount,
+      automaticRewritePerformed: false,
+      populationSiblingInheritancePerformed: false,
+      mutationTargetAuthorized: false
+    });
   }
 
   function clinicalReferenceStructuredValueProjection(value, options) {
@@ -1191,8 +1398,10 @@
     presentationStandard: PRESENTATION_STANDARD,
     clinicalReferenceOpeningStandard: CLINICAL_REFERENCE_OPENING_STANDARD,
     clinicalReferenceStructuredSectionStandard: CLINICAL_REFERENCE_STRUCTURED_SECTION_STANDARD,
+    labStructuredSectionStandard: LAB_STRUCTURED_SECTION_STANDARD,
     visibleLearnerSupportStandard: VISIBLE_LEARNER_SUPPORT_STANDARD,
     clinicalMeasurabilityReviewStandard: CLINICAL_MEASURABILITY_REVIEW_STANDARD,
+    clinicalSignificanceInterpretationReviewStandard: CLINICAL_SIGNIFICANCE_INTERPRETATION_REVIEW_STANDARD,
     broadToSpecificEducationStandard: BROAD_TO_SPECIFIC_EDUCATION_STANDARD,
     routineNursingTerms: ROUTINE_NURSING_TERMS,
     glossary,
@@ -1211,6 +1420,7 @@
     clinicalReferenceStructuredScalarLeaves,
     clinicalReferenceStructuredValueProjection,
     clinicalReferenceStructuredSectionProjection,
+    labStructuredSectionProjection,
     clinicalReferenceOpeningProjection,
     openingOwnershipComparable,
     supportForItem,

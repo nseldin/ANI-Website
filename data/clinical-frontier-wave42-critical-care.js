@@ -78,6 +78,18 @@
       label: "PROPPR Randomized Clinical Trial: 1:1:1 versus 1:1:2 plasma, platelets, and red cells in severe trauma",
       url: "https://pubmed.ncbi.nlm.nih.gov/25647203/",
       note: "Primary trial supporting a balanced interpretation of component ratios: no significant overall 24-hour or 30-day mortality difference, with more hemostasis and fewer exsanguination deaths in the 1:1:1 group."
+    }),
+    Object.freeze({
+      key: "ani-procedure-aarc-artificial-airway-suctioning-2022",
+      label: "AARC Clinical Practice Guideline: Artificial Airway Suctioning (2022)",
+      url: "https://www.aarc.org/wp-content/uploads/2022/10/cpg-artificial-airway-suctioning.pdf",
+      note: "Supports assessment-driven rather than scheduled artificial-airway suctioning, preoxygenation, sterile open suctioning, avoidance of routine saline instillation, catheter-size and pressure limits, brief suction duration, shallow-before-deep technique, and recognition of complications."
+    }),
+    Object.freeze({
+      key: "ani-procedure-bts-pleural-procedures-2023",
+      label: "British Thoracic Society Clinical Statement on Pleural Procedures (2023)",
+      url: "https://www.brit-thoracic.org.uk/clinical-resources/clinical-statements/pleural-procedures/",
+      note: "Supports safe adult chest-drain setup, underwater-seal and drainage-system assessment, patient-centered troubleshooting, complication recognition, and protocol-directed drain manipulation and removal."
     })
   ]);
   const sourceByKey = new Map(sourceReferences.map((source) => [source.key, source]));
@@ -116,6 +128,10 @@
     "w42-acs-trauma-best-practices",
     "w42-jts-damage-control-resuscitation",
     "w42-proppr-rct-2015"
+  ];
+  const procedureSafetySourceKeys = [
+    "ani-procedure-aarc-artificial-airway-suctioning-2022",
+    "ani-procedure-bts-pleural-procedures-2023"
   ];
 
   const pseudocholinesteraseDeficiencyCard = {
@@ -584,7 +600,7 @@
   try {
     application.sourceReferencesAddedOrUpdated += installSources(
       foundationDatabase,
-      unique([...mtpSourceKeys, ...transfusionSourceKeys])
+      unique([...mtpSourceKeys, ...transfusionSourceKeys, ...procedureSafetySourceKeys])
     );
 
     const genericBloodTitle = normalize("Blood transfusion");
@@ -702,5 +718,587 @@
     sourceCount: unique([...pseudoSourceKeys, ...mtpSourceKeys, ...transfusionSourceKeys]).length,
     sourceKeys: Object.freeze(unique([...pseudoSourceKeys, ...mtpSourceKeys, ...transfusionSourceKeys])),
     application
+  });
+}());
+
+/*
+ * Reviewed source registry for the exact main.js Pediatric vital signs and
+ * Pediatric growth percentiles owners. This IIFE is independently versioned
+ * so it registers even when an older Wave 42 component sentinel has already
+ * returned. Exact-key duplicates are accepted only when every reviewed field
+ * matches; conflicting or pre-existing duplicate keys fail closed.
+ */
+(function () {
+  "use strict";
+
+  const SCHEMA_VERSION = "ani-clinical-significance-source-registry-v1";
+  const VERSION = "2026-08-13-pediatric-measurement-sources-1";
+  const GLOBAL_NAME = "ANI_CLINICAL_SIGNIFICANCE_PEDIATRIC_MEASUREMENT_SOURCES";
+  if (window[GLOBAL_NAME] && window[GLOBAL_NAME].version === VERSION) return;
+
+  const sourceReferences = Object.freeze([
+    Object.freeze({
+      key: "ani-pediatric-aha-pals-2025",
+      label: "American Heart Association: 2025 Pediatric Advanced Life Support Guidelines",
+      url: "https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/pediatric-advanced-life-support",
+      note: "Supports whole-child assessment of pediatric respiratory and circulatory compromise, the emergency meaning of bradycardia with cardiopulmonary compromise, correction of hypoxia and other reversible causes, and immediate resuscitation rather than reliance on an isolated vital-sign value."
+    }),
+    Object.freeze({
+      key: "ani-pediatric-aap-bp-cpg-2017",
+      label: "American Academy of Pediatrics: Clinical Practice Guideline for Screening and Management of High Blood Pressure in Children and Adolescents (2017)",
+      url: "https://publications.aap.org/pediatrics/article/140/3/e20171904/38358/Clinical-Practice-Guideline-for-Screening-and",
+      note: "Supports standardized pediatric blood-pressure positioning, arm-circumference-based cuff dimensions, pediatric-validated devices, repeat and auscultatory confirmation of elevated oscillometric readings, and age-, sex-, and height-dependent interpretation in younger children."
+    }),
+    Object.freeze({
+      key: "ani-pediatric-who-imci-handbook",
+      label: "World Health Organization: Integrated Management of Childhood Illness Handbook",
+      url: "https://iris.who.int/bitstream/handle/10665/42939/9241546441.pdf",
+      note: "Supports observing and counting respirations for one full minute while a young child is quiet or calm, repeating an uncertain count, and interpreting respiratory rate together with clinical breathing findings rather than from a brief distressed measurement alone."
+    }),
+    Object.freeze({
+      key: "ani-pediatric-fleming-vitals-2011",
+      label: "Fleming et al.: Normal ranges of heart rate and respiratory rate in children from birth to 18 years (Lancet, 2011)",
+      url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3789232/",
+      note: "Supports strong age dependence and serial trend assessment for pediatric heart and respiratory rates, documents disagreement among published reference ranges, and describes effects of setting, awake state, and measurement method that limit one universal normal table."
+    }),
+    Object.freeze({
+      key: "ani-pediatric-fda-pulse-oximeters",
+      label: "U.S. Food and Drug Administration: Pulse Oximeters",
+      url: "https://www.fda.gov/medical-devices/products-and-medical-procedures/pulse-oximeters",
+      note: "Supports interpreting pulse-oximeter readings with symptoms and trends, checking sensor application and signal quality, and recognizing limitations from poor circulation, skin pigmentation, skin temperature, movement, nail products, and device performance."
+    }),
+    Object.freeze({
+      key: "ani-pediatric-aap-febrile-infants-2021",
+      label: "American Academy of Pediatrics: Evaluation and Management of Well-Appearing Febrile Infants 8 to 60 Days Old (2021)",
+      url: "https://publications.aap.org/pediatrics/article/148/2/e2021052228/179783/Evaluation-and-Management-of-Well-Appearing",
+      note: "Supports the specific rectal-temperature eligibility threshold and exact age, appearance, gestational-age, and population boundaries of the AAP febrile-infant pathway; it does not establish a universal fever definition for all children or measurement routes."
+    }),
+    Object.freeze({
+      key: "ani-pediatric-cdc-growth-recommendations-2025",
+      label: "Centers for Disease Control and Prevention: What Growth Charts Are Recommended? (2025)",
+      url: "https://www.cdc.gov/growth-chart-training/hcp/overview/recommended.html",
+      note: "Supports use of WHO growth standards from birth to 2 years and CDC growth charts from age 2 onward in U.S. clinical practice, including extended CDC BMI-for-age charts for children and adolescents with very high BMI."
+    }),
+    Object.freeze({
+      key: "ani-pediatric-cdc-who-growth-use-2024",
+      label: "Centers for Disease Control and Prevention: Using WHO Growth Standard Charts (2024)",
+      url: "https://www.cdc.gov/growth-chart-training/hcp/using-growth-charts/who-using.html",
+      note: "Supports birth-to-2-year WHO chart indicators, avoidance of BMI-for-age under 2 years, the transition to CDC charts at 24 months, and caution when recumbent length changes to standing height and weight-for-length changes to BMI-for-age."
+    }),
+    Object.freeze({
+      key: "ani-pediatric-cdc-growthcharts-overview",
+      label: "Centers for Disease Control and Prevention: Growth Charts",
+      url: "https://www.cdc.gov/growthcharts/",
+      note: "Supports growth charts as percentile curves used to track serial pediatric measurements and explicitly states that a growth chart contributes to the overall health picture rather than serving as a sole diagnostic instrument."
+    }),
+    Object.freeze({
+      key: "ani-pediatric-aap-anthropometry",
+      label: "American Academy of Pediatrics: Anthropometric Measurements",
+      url: "https://www.aap.org/en/patient-care/newborn-infant-and-early-childhood-nutrition/newborn-and-infant-nutrition-assessment-tools/anthropometric-measurements/",
+      note: "Supports standardized accurate pediatric weight, recumbent length, standing height, and head-circumference measurement as the prerequisite for interpreting growth and nutrition."
+    }),
+    Object.freeze({
+      key: "ani-pediatric-aap-naspghan-faltering-weight-2026",
+      label: "AAP/NASPGHAN: Clinical Practice Guideline for Diagnosis and Management of Faltering Weight (2026)",
+      url: "https://publications.aap.org/pediatrics/article/157/4/e2025075764/206901/Clinical-Practice-Guideline-for-Diagnosis-and",
+      note: "Supports accurate anthropometry, source-defined z-score and trajectory criteria for faltering weight, focused history and examination, targeted rather than routine broad diagnostic testing, and the limitation that percentile position alone is not a causal diagnosis."
+    }),
+    Object.freeze({
+      key: "ani-pediatric-who-child-growth-standards",
+      label: "World Health Organization: Child Growth Standards",
+      url: "https://www.who.int/tools/child-growth-standards/standards",
+      note: "Supports the WHO child-growth indicators for length or height, weight, weight-for-length or height, BMI, head circumference, and growth velocity, with standards derived from the WHO Multicentre Growth Reference Study."
+    })
+  ]);
+
+  const clean = (value) => String(value == null ? "" : value).trim();
+  const comparable = (source) => JSON.stringify({
+    key: clean(source && (source.key || source.id)),
+    label: clean(source && source.label),
+    url: clean(source && source.url),
+    note: clean(source && source.note)
+  });
+  const database = window.ANI_FOUNDATIONS_DATABASE && typeof window.ANI_FOUNDATIONS_DATABASE === "object"
+    ? window.ANI_FOUNDATIONS_DATABASE
+    : { entries: [], sourceReferences: [] };
+  if (!Array.isArray(database.entries)) database.entries = [];
+  if (!Array.isArray(database.sourceReferences)) database.sourceReferences = [];
+
+  const existingByKey = new Map();
+  database.sourceReferences.forEach((source, index) => {
+    const key = clean(source && (source.key || source.id));
+    if (!key) return;
+    if (existingByKey.has(key)) {
+      throw new Error("Duplicate foundation source key before pediatric measurement registration: " + key);
+    }
+    existingByKey.set(key, { source, index });
+  });
+  sourceReferences.forEach((source) => {
+    const existing = existingByKey.get(source.key);
+    if (existing) {
+      if (comparable(existing.source) !== comparable(source)) {
+        throw new Error("Conflicting foundation source registration for pediatric measurement key: " + source.key);
+      }
+      return;
+    }
+    const registered = { ...source, id: source.key };
+    database.sourceReferences.push(registered);
+    existingByKey.set(source.key, { source: registered, index: database.sourceReferences.length - 1 });
+  });
+  sourceReferences.forEach((source) => {
+    const matches = database.sourceReferences.filter((candidate) => clean(candidate && (candidate.key || candidate.id)) === source.key);
+    if (matches.length !== 1) {
+      throw new Error("Pediatric measurement source key must resolve exactly once: " + source.key);
+    }
+  });
+  database.componentVersions = {
+    ...(database.componentVersions || {}),
+    pediatricMeasurementSources: VERSION
+  };
+  window.ANI_FOUNDATIONS_DATABASE = database;
+  window[GLOBAL_NAME] = Object.freeze({
+    schemaVersion: SCHEMA_VERSION,
+    version: VERSION,
+    registryKind: "exact-key-foundation-source-registry",
+    conflictPolicy: "reject-mismatched-existing-exact-key",
+    canonicalCardNames: Object.freeze(["Pediatric vital signs", "Pediatric growth percentiles"]),
+    sourceCount: sourceReferences.length,
+    newSourceCount: sourceReferences.length,
+    sourceKeys: Object.freeze(sourceReferences.map((source) => source.key))
+  });
+}());
+
+/*
+ * Reviewed source registry for the exact main.js Urinalysis clean-catch
+ * collection owner. This IIFE is independently versioned so it registers
+ * even when an older Wave 42 component sentinel has already returned. It
+ * reuses the exact adult-sepsis source row and rejects conflicting key data.
+ */
+(function () {
+  "use strict";
+
+  const SCHEMA_VERSION = "ani-clinical-significance-source-registry-v1";
+  const VERSION = "2026-08-13-urinalysis-clean-catch-sources-1";
+  const GLOBAL_NAME = "ANI_CLINICAL_SIGNIFICANCE_URINALYSIS_CLEAN_CATCH_SOURCES";
+  if (window[GLOBAL_NAME] && window[GLOBAL_NAME].version === VERSION) return;
+
+  const sourceReferences = Object.freeze([
+    Object.freeze({
+      key: "ani-urine-medlineplus-clean-catch-2024",
+      label: "MedlinePlus Medical Encyclopedia: Clean catch urine sample (reviewed July 2024)",
+      url: "https://medlineplus.gov/ency/article/007487.htm",
+      note: "Supports the purpose of clean-catch collection, anatomy-appropriate cleansing, beginning the void before collecting the midstream specimen, avoiding contact with the inside of the cup or lid, securing the lid, and prompt return or refrigeration under supplied instructions."
+    }),
+    Object.freeze({
+      key: "ani-urine-cdc-culture-stewardship-2024",
+      label: "CDC: Indwelling Urinary Catheter Culture Stewardship - Overview (2024)",
+      url: "https://www.cdc.gov/uti/hcp/clinical-guidance/index.html",
+      note: "Supports urine-culture stewardship for patients with and without indwelling catheters, including appropriate indications, collection and handling that minimize contamination, and prevention of false-positive interpretation, asymptomatic-bacteriuria overtreatment, unnecessary antibiotics, and patient harm."
+    }),
+    Object.freeze({
+      key: "ani-urine-idsa-asm-lab-diagnosis-2024",
+      label: "IDSA/ASM Guide to Utilization of the Microbiology Laboratory for Diagnosis of Infectious Diseases (2024)",
+      url: "https://www.idsociety.org/practice-guideline/laboratory-diagnosis-of-infectious-diseases/",
+      note: "Supports midstream urine as a preferred noninvasive culture specimen, collection and transport practices that preserve interpretability, and interpretation that depends on specimen method, patient population, laboratory method, symptoms, and clinical context rather than one universal colony-count threshold."
+    }),
+    Object.freeze({
+      key: "ani-core-sccm-sepsis-2026",
+      label: "Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock (2026)",
+      url: "https://www.sccm.org/survivingsepsiscampaign/guidelines-and-resources/surviving-sepsis-campaign-adult-guidelines",
+      note: "Supports collecting adult blood cultures as soon as possible and ideally before antimicrobial therapy, together with timely infection treatment and resuscitation; its recommendations are adult sepsis guidance, not a universal collection protocol for every patient."
+    })
+  ]);
+
+  const clean = (value) => String(value == null ? "" : value).trim();
+  const comparable = (source) => JSON.stringify({
+    key: clean(source && (source.key || source.id)),
+    label: clean(source && source.label),
+    url: clean(source && source.url),
+    note: clean(source && source.note)
+  });
+  const database = window.ANI_FOUNDATIONS_DATABASE && typeof window.ANI_FOUNDATIONS_DATABASE === "object"
+    ? window.ANI_FOUNDATIONS_DATABASE
+    : { entries: [], sourceReferences: [] };
+  if (!Array.isArray(database.entries)) database.entries = [];
+  if (!Array.isArray(database.sourceReferences)) database.sourceReferences = [];
+
+  const existingByKey = new Map();
+  database.sourceReferences.forEach((source, index) => {
+    const key = clean(source && (source.key || source.id));
+    if (!key) return;
+    const existing = existingByKey.get(key);
+    if (existing) {
+      throw new Error("Duplicate foundation source key before urinalysis clean-catch registration: " + key);
+    }
+    existingByKey.set(key, { source, index });
+  });
+  sourceReferences.forEach((source) => {
+    const existing = existingByKey.get(source.key);
+    if (existing) {
+      if (comparable(existing.source) !== comparable(source)) {
+        throw new Error("Conflicting foundation source registration for urinalysis clean-catch key: " + source.key);
+      }
+      return;
+    }
+    const registered = { ...source, id: source.key };
+    database.sourceReferences.push(registered);
+    existingByKey.set(source.key, { source: registered, index: database.sourceReferences.length - 1 });
+  });
+  sourceReferences.forEach((source) => {
+    const matches = database.sourceReferences.filter((candidate) => clean(candidate && (candidate.key || candidate.id)) === source.key);
+    if (matches.length !== 1) {
+      throw new Error("Urinalysis clean-catch source key must resolve exactly once: " + source.key);
+    }
+  });
+  database.componentVersions = {
+    ...(database.componentVersions || {}),
+    urinalysisCleanCatchSources: VERSION
+  };
+  window.ANI_FOUNDATIONS_DATABASE = database;
+  window[GLOBAL_NAME] = Object.freeze({
+    schemaVersion: SCHEMA_VERSION,
+    version: VERSION,
+    registryKind: "exact-key-foundation-source-registry",
+    conflictPolicy: "reject-mismatched-existing-exact-key",
+    canonicalCardName: "Urinalysis clean-catch collection",
+    sourceCount: sourceReferences.length,
+    newSourceCount: 3,
+    sourceKeys: Object.freeze(sourceReferences.map((source) => source.key))
+  });
+}());
+
+/*
+ * Reviewed source registry for the exact main.js Nasogastric tube placement
+ * verification, Tuberculin skin test, and Peak flow measurement owners. This
+ * IIFE is independently versioned so it still registers after an earlier
+ * Wave 42 component sentinel has already returned.
+ */
+(function () {
+  "use strict";
+
+  const SCHEMA_VERSION = "ani-clinical-significance-source-registry-v1";
+  const VERSION = "2026-08-13-bedside-diagnostic-procedure-sources-1";
+  const GLOBAL_NAME = "ANI_CLINICAL_SIGNIFICANCE_BEDSIDE_DIAGNOSTIC_SOURCES";
+  if (window[GLOBAL_NAME] && window[GLOBAL_NAME].version === VERSION) return;
+
+  const sourceReferences = Object.freeze([
+    Object.freeze({
+      key: "ani-bedside-aacn-feeding-tube-placement-2016",
+      label: "AACN Practice Alert: Initial and Ongoing Verification of Feeding Tube Placement in Adults (2016)",
+      url: "https://www.aacn.org/newsroom/feeding-tube-placement",
+      note: "Supports adult acute-care radiographic confirmation after blind insertion before initial feeding or medication, bedside findings that help determine when radiography is needed, external-length documentation and ongoing reassessment, and rejection of air-bolus auscultation or water bubbling as placement-verification methods."
+    }),
+    Object.freeze({
+      key: "ani-bedside-nhs-ng-tube-placement-safety",
+      label: "NHS England Enduring Patient-Safety Standards: Nasogastric Tube Placement",
+      url: "https://www.england.nhs.uk/patient-safety/patient-safety-insight/patient-safety-alerts/enduring-standards/standards-that-remain-valid/medical-device-safety/",
+      note: "Supports a protocol-governed pH-or-radiography initial-placement pathway, withholding all tube use until placement is confirmed, pH limitations and radiograph interpretation safeguards, and the warning that auscultation, bubbling, aspirate appearance, or absence of respiratory distress cannot prove safe placement."
+    }),
+    Object.freeze({
+      key: "ani-bedside-rcr-ng-tube-pathway-2026",
+      label: "Royal College of Radiologists: Nasogastric Tubes Pathway (2026)",
+      url: "https://www.rcr.ac.uk/our-services/all-our-publications/clinical-radiology-publications/ng-tubes-pathway/",
+      note: "Supports structured radiographic review of the full tube course before use, immediate escalation of an unclear or misplaced tube, and the clinical consequence that NG-tube misplacement can cause pneumonia or death."
+    }),
+    Object.freeze({
+      key: "ani-bedside-cdc-tst-clinical-testing-2025",
+      label: "CDC: Clinical Testing Guidance for Tuberculosis—Tuberculin Skin Test (2025)",
+      url: "https://www.cdc.gov/tb/hcp/testing-diagnosis/tuberculin-skin-test.html",
+      note: "Supports trained-personnel intradermal administration and validity checks, reading transverse induration at 48-72 hours, risk-based 5-, 10-, and 15-mm interpretation, BCG and false-negative limitations, selected two-step baseline testing, and chest-radiograph and sputum evaluation after a positive result or when TB symptoms are present."
+    }),
+    Object.freeze({
+      key: "ani-bedside-nhlbi-asthma-diagnosis-2024",
+      label: "NHLBI: Asthma Diagnosis (updated 2024)",
+      url: "https://www.nhlbi.nih.gov/health/asthma/diagnosis",
+      note: "Supports interpreting maximum-effort expiratory measurements within the clinical history and clinician-selected lung-function testing rather than using one peak-flow value as a stand-alone diagnosis or exclusion of asthma."
+    }),
+    Object.freeze({
+      key: "ani-bedside-gina-strategy-report-2026",
+      label: "GINA Strategy Report: Global Strategy for Asthma Management and Prevention (2026)",
+      url: "https://ginasthma.org/2026-gina-strategy-report/",
+      note: "Supports symptom assessment, lung-function trends, personalized written asthma action plans, use of personal-best peak flow in PEF-based plans, technique review, and urgent response to severe symptoms or poor treatment response rather than judging control from a reassuring PEF value alone."
+    })
+  ]);
+
+  const clean = (value) => String(value == null ? "" : value).trim();
+  const comparable = (source) => JSON.stringify({
+    key: clean(source && (source.key || source.id)),
+    label: clean(source && source.label),
+    url: clean(source && source.url),
+    note: clean(source && source.note)
+  });
+  const database = window.ANI_FOUNDATIONS_DATABASE && typeof window.ANI_FOUNDATIONS_DATABASE === "object"
+    ? window.ANI_FOUNDATIONS_DATABASE
+    : { entries: [], sourceReferences: [] };
+  if (!Array.isArray(database.entries)) database.entries = [];
+  if (!Array.isArray(database.sourceReferences)) database.sourceReferences = [];
+
+  const existingByKey = new Map();
+  database.sourceReferences.forEach((source, index) => {
+    const key = clean(source && (source.key || source.id));
+    if (!key) return;
+    const existing = existingByKey.get(key);
+    if (existing && comparable(existing.source) !== comparable(source)) {
+      throw new Error("Conflicting existing foundation source records for bedside diagnostic key: " + key);
+    }
+    if (!existing) existingByKey.set(key, { source, index });
+  });
+  sourceReferences.forEach((source) => {
+    const existing = existingByKey.get(source.key);
+    if (existing) {
+      if (comparable(existing.source) !== comparable(source)) {
+        throw new Error("Conflicting foundation source registration for bedside diagnostic key: " + source.key);
+      }
+      return;
+    }
+    const registered = { ...source, id: source.key };
+    database.sourceReferences.push(registered);
+    existingByKey.set(source.key, { source: registered, index: database.sourceReferences.length - 1 });
+  });
+  database.componentVersions = {
+    ...(database.componentVersions || {}),
+    bedsideDiagnosticProcedureSources: VERSION
+  };
+  window.ANI_FOUNDATIONS_DATABASE = database;
+  window[GLOBAL_NAME] = Object.freeze({
+    schemaVersion: SCHEMA_VERSION,
+    version: VERSION,
+    registryKind: "exact-key-foundation-source-registry",
+    conflictPolicy: "reject-mismatched-existing-exact-key",
+    sourceCount: sourceReferences.length,
+    sourceKeys: Object.freeze(sourceReferences.map((source) => source.key))
+  });
+}());
+
+/*
+ * Reviewed source registry for the exact main.js Nonstress test,
+ * Biophysical profile, Amniocentesis, and Chorionic villus sampling owners.
+ * This obstetric registry is intentionally independent of both Wave 42 and
+ * the core-diagnostic registry so each sentinel and version remains exact.
+ * It remains loader-safe whether positioned before or after the core IIFE.
+ */
+(function () {
+  "use strict";
+
+  const VERSION = "2026-08-13-obstetric-diagnostic-sources-1";
+  const SCHEMA_VERSION = 1;
+  const GLOBAL_NAME = "ANI_CLINICAL_SIGNIFICANCE_OBSTETRIC_DIAGNOSTIC_SOURCES";
+  if (window[GLOBAL_NAME] && window[GLOBAL_NAME].version === VERSION) return;
+
+  const clean = (value) => String(value == null ? "" : value).trim();
+  const sourceReferences = Object.freeze([
+    Object.freeze({
+      key: "ani-ob-acog-antenatal-surveillance-co828",
+      label: "ACOG/SMFM Committee Opinion No. 828: Indications for Outpatient Antenatal Fetal Surveillance (2021)",
+      url: "https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2021/06/indications-for-outpatient-antenatal-fetal-surveillance",
+      note: "Supports risk-based NST and BPP use to reduce stillbirth risk, individualized indications, gestational timing and frequency, shared decision-making, and the limitation that suggested surveillance schedules are not mandates and have not improved outcomes for every condition."
+    }),
+    Object.freeze({
+      key: "ani-ob-acog-fetal-wellbeing-faq098",
+      label: "ACOG FAQ098: Special Tests for Monitoring Fetal Well-Being (reviewed January 2026)",
+      url: "https://www.acog.org/womens-health/faqs/special-tests-for-monitoring-fetal-well-being",
+      note: "Supports NST purpose and reactive or nonreactive result meanings, sleep and medication limitations, full-BPP components and scoring, explicitly context-dependent follow-up for equivocal or low scores, and the independent importance of low amniotic fluid."
+    }),
+    Object.freeze({
+      key: "ani-ob-nhs-fetal-movement-urgent",
+      label: "NHS: Your baby's movements",
+      url: "https://www.nhs.uk/pregnancy/keeping-well/your-babys-movements/",
+      note: "Supports immediate maternity assessment for reduced, absent, or changed usual fetal movement, the absence of one universal daily movement count, and the warning that hearing a heartbeat alone does not establish fetal well-being."
+    }),
+    Object.freeze({
+      key: "ani-ob-acog-prenatal-genetic-diagnostic-tests",
+      label: "ACOG: Prenatal Genetic Diagnostic Tests (reviewed April 2026)",
+      url: "https://www.acog.org/womens-health/faqs/prenatal-genetic-diagnostic-tests",
+      note: "Supports offering prenatal screening and diagnostic options to all pregnant patients, usual ACOG timing for amniocentesis and CVS, indication-specific laboratory methods, counseling, and the limitation that diagnostic certainty applies to the chromosome or gene disorder actually tested."
+    }),
+    Object.freeze({
+      key: "ani-ob-acog-amniocentesis-faq",
+      label: "ACOG: Amniocentesis (reviewed September 2025)",
+      url: "https://www.acog.org/womens-health/faqs/amniocentesis",
+      note: "Supports ultrasound-guided amniotic-fluid sampling for selected genetic, infection, and lung-development questions, individualized counseling and timing, result limits, and small procedure risks including pregnancy loss, fluid leakage, bleeding, infection, and blood-borne infection transmission."
+    }),
+    Object.freeze({
+      key: "ani-ob-acog-rh-factor-faq",
+      label: "ACOG: The Rh Factor—How It Can Affect Your Pregnancy",
+      url: "https://www.acog.org/womens-health/faqs/the-rh-factor-how-it-can-affect-your-pregnancy",
+      note: "Supports blood-group and antibody assessment and Rh immune globulin after amniocentesis or CVS for eligible Rh-negative patients who have not already formed Rh antibodies; Rh immune globulin does not treat established sensitization."
+    }),
+    Object.freeze({
+      key: "ani-ob-rcog-amniocentesis-cvs-gtg8",
+      label: "RCOG Green-top Guideline No. 8: Amniocentesis and Chorionic Villus Sampling (2021; reviewed December 2024)",
+      url: "https://www.rcog.org.uk/guidance/browse-all-guidance/green-top-guidelines/amniocentesis-and-chorionic-villus-sampling-green-top-guideline-no-8/",
+      note: "Supports indications, specialist counseling, pregnancy mapping, RCOG gestational boundaries, review of maternal blood-borne infection results, and operator-, singleton- or multiple-pregnancy-, and context-dependent procedure-loss counseling rather than one universal risk estimate."
+    }),
+    Object.freeze({
+      key: "ani-ob-rcog-amniocentesis-consent-6a-2026",
+      label: "RCOG Consent Advice No. 6a: Amniocentesis for Prenatal Diagnosis (2026)",
+      url: "https://www.rcog.org.uk/guidance/browse-all-guidance/consent-advice/amniocentesis-for-prenatal-diagnosis-consent-advice-no-6a/",
+      note: "Supports balanced individualized consent for amniocentesis and explains that CVS placental tissue can show confined placental mosaicism, in which case amniocentesis may be recommended to determine whether the fetus has the same genetic finding."
+    }),
+    Object.freeze({
+      key: "ani-ob-rcog-cvs-consent-6b-2026",
+      label: "RCOG Consent Advice No. 6b: Chorionic Villus Sampling (2026)",
+      url: "https://www.rcog.org.uk/guidance/browse-all-guidance/consent-advice/chorionic-villus-sampling-consent-advice-no-6b/",
+      note: "Supports balanced, individualized counseling about CVS benefits, risks, alternatives, and potential follow-up as part of informed decision-making and consent."
+    }),
+    Object.freeze({
+      key: "ani-ob-nhs-amniocentesis-aftercare",
+      label: "NHS: Amniocentesis",
+      url: "https://www.nhs.uk/tests-and-treatments/amniocentesis/",
+      note: "Supports urgent post-amniocentesis assessment for persistent pain, vaginal fluid leakage, fever or chills, bleeding, or contractions and distinguishes these warning symptoms from expected short-lived discomfort."
+    }),
+    Object.freeze({
+      key: "ani-ob-nhs-cvs-aftercare",
+      label: "NHS: Chorionic villus sampling—What happens",
+      url: "https://www.nhs.uk/tests-and-treatments/chorionic-villus-sampling-cvs/what-happens/",
+      note: "Supports ultrasound-guided transabdominal or transcervical CVS and urgent postprocedure assessment for persistent or severe pain, fever or chills, heavy bleeding, clear vaginal fluid, or contractions."
+    })
+  ]);
+
+  const database = window.ANI_FOUNDATIONS_DATABASE && typeof window.ANI_FOUNDATIONS_DATABASE === "object"
+    ? window.ANI_FOUNDATIONS_DATABASE
+    : { entries: [], sourceReferences: [] };
+  if (!Array.isArray(database.entries)) database.entries = [];
+  if (!Array.isArray(database.sourceReferences)) database.sourceReferences = [];
+
+  const existingByKey = new Map();
+  database.sourceReferences.forEach((source, index) => {
+    const key = clean(source && (source.key || source.id));
+    if (!key) return;
+    if (existingByKey.has(key)) {
+      throw new Error("Duplicate foundation source key before obstetric diagnostic registration: " + key);
+    }
+    existingByKey.set(key, { source, index });
+  });
+  const comparable = (source) => JSON.stringify({
+    key: clean(source && (source.key || source.id)),
+    label: clean(source && source.label),
+    url: clean(source && source.url),
+    note: clean(source && source.note)
+  });
+  sourceReferences.forEach((source) => {
+    const existing = existingByKey.get(source.key);
+    if (existing) {
+      if (comparable(existing.source) !== comparable(source)) {
+        throw new Error("Conflicting foundation source registration for obstetric diagnostic key: " + source.key);
+      }
+      return;
+    }
+    const registered = { ...source, id: source.key };
+    database.sourceReferences.push(registered);
+    existingByKey.set(source.key, { source: registered, index: database.sourceReferences.length - 1 });
+  });
+  database.componentVersions = {
+    ...(database.componentVersions || {}),
+    obstetricDiagnosticSources: VERSION
+  };
+  window.ANI_FOUNDATIONS_DATABASE = database;
+  window[GLOBAL_NAME] = Object.freeze({
+    schemaVersion: SCHEMA_VERSION,
+    version: VERSION,
+    registryKind: "exact-key-foundation-source-registry",
+    conflictPolicy: "reject-mismatched-existing-exact-key",
+    sourceCount: sourceReferences.length,
+    sourceKeys: Object.freeze(sourceReferences.map((source) => source.key))
+  });
+}());
+
+/*
+ * Reviewed source registry for the exact main.js Electrocardiogram,
+ * Blood culture collection, and Lumbar puncture owners. This IIFE is
+ * intentionally separate from the older Wave 42 sentinel above: its sources
+ * still register when that cohort was already initialized in the same page.
+ */
+(function () {
+  "use strict";
+
+  const VERSION = "2026-08-13-core-diagnostic-procedure-sources-1";
+  const GLOBAL_NAME = "ANI_CLINICAL_SIGNIFICANCE_CORE_DIAGNOSTIC_SOURCES";
+  if (window[GLOBAL_NAME] && window[GLOBAL_NAME].version === VERSION) return;
+
+  const sourceReferences = Object.freeze([
+    Object.freeze({
+      key: "ani-core-aha-acc-ecg-standardization-2007",
+      label: "AHA/ACCF/HRS Recommendations for the Standardization and Interpretation of the Electrocardiogram, Part I (2007)",
+      url: "https://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.106.180200",
+      note: "Supports the 12-lead ECG as a surface recording of cardiac electrical activity; its clinical uses for rhythm, conduction, acute coronary syndrome, electrolyte and medication-effect evaluation; correct lead placement and recording; and clinician confirmation of automated interpretations."
+    }),
+    Object.freeze({
+      key: "ani-core-aha-acc-chest-pain-2021",
+      label: "AHA/ACC Multisociety Guideline for the Evaluation and Diagnosis of Chest Pain (2021)",
+      url: "https://professional.heart.org/en/guidelines-statements/2021-ahaaccasechestsaemscctscmr-guideline-for-the-evaluation-and-diagnosis-ofcir0000000000001029",
+      note: "Supports prompt ECG acquisition for acute chest pain, serial ECGs when the initial tracing is nondiagnostic and suspicion or symptoms persist, urgent acute-coronary-syndrome pathways for compatible findings, and integration with serial cardiac troponin and the clinical presentation."
+    }),
+    Object.freeze({
+      key: "ani-core-acc-ed-chest-pain-2022",
+      label: "ACC Expert Consensus Decision Pathway on Acute Chest Pain in the Emergency Department (2022)",
+      url: "https://www.acc.org/Guidelines/Guidelines/2022/10/11/10/47/Acute-Chest-Pain-in-the-Emergency-Department",
+      note: "Supports ECG as the rapid initial chest-pain test, serial ECGs for high suspicion, echocardiography when suspected acute coronary syndrome has a nondiagnostic ECG, and high-sensitivity troponin clinical decision pathways rather than overreading one tracing."
+    }),
+    Object.freeze({
+      key: "ani-core-cdc-blood-culture-contamination-2026",
+      label: "CDC: Prevent Adult Blood Culture Contamination (2026)",
+      url: "https://www.cdc.gov/lab-quality/php/prevent-adult-blood-culture-contamination/index.html",
+      note: "Supports proper adult blood-culture collection, adequate volume, contamination monitoring, and the patient consequences of false-negative and false-positive cultures, while directing laboratories to incorporate CLSI and IDSA best practices into local procedures."
+    }),
+    Object.freeze({
+      key: "ani-core-clsi-m47-blood-cultures-2022",
+      label: "CLSI M47: Principles and Procedures for Blood Cultures, Second Edition (2022)",
+      url: "https://clsi.org/shop/standards/m47/",
+      note: "Supports blood-culture collection, transport, processing, result interpretation, and protocol differences for pediatric patients, catheter-related infection, endocarditis, prior antimicrobial therapy, and laboratory systems."
+    }),
+    Object.freeze({
+      key: "ani-core-idsa-asm-lab-diagnosis-2024",
+      label: "IDSA/ASM Guide to Utilization of the Microbiology Laboratory for Diagnosis of Infectious Diseases (2024)",
+      url: "https://www.idsociety.org/practice-guideline/laboratory-diagnosis-of-infectious-diseases/",
+      note: "Supports multiple adult blood cultures with volume as a major determinant of yield, weight-based pediatric collection, prompt transport, and context-specific bloodstream-infection methods; it also supports immediate, protocol-directed handling and prioritization of cerebrospinal-fluid microbiology specimens."
+    }),
+    Object.freeze({
+      key: "ani-core-sccm-sepsis-2026",
+      label: "Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock (2026)",
+      url: "https://www.sccm.org/survivingsepsiscampaign/guidelines-and-resources/surviving-sepsis-campaign-adult-guidelines",
+      note: "Supports collecting adult blood cultures as soon as possible and ideally before antimicrobial therapy, together with timely infection treatment and resuscitation; its recommendations are adult sepsis guidance, not a universal collection protocol for every patient."
+    }),
+    Object.freeze({
+      key: "ani-core-who-meningitis-2025",
+      label: "WHO Guidelines on Meningitis Diagnosis, Treatment and Care (2025)",
+      url: "https://www.who.int/publications/i/item/9789240108042",
+      note: "Supports lumbar puncture and cerebrospinal-fluid studies in suspected meningitis when safe, selective rather than routine cranial imaging before lumbar puncture, deferral for specified neurologic or physiologic risks, and never delaying empiric treatment for imaging or a deferred procedure."
+    }),
+    Object.freeze({
+      key: "ani-core-lumbar-puncture-consensus-2017",
+      label: "Consensus Guidelines for Lumbar Puncture in Patients With Neurological Diseases (2017)",
+      url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5454085/",
+      note: "Supports preprocedure contraindication and risk assessment, aseptic technique, selective imaging for mass-effect or herniation risk, lateral-recumbent positioning for cerebrospinal-fluid pressure measurement, and recognition and mitigation of post-lumbar-puncture complications."
+    })
+  ]);
+
+  const database = window.ANI_FOUNDATIONS_DATABASE && typeof window.ANI_FOUNDATIONS_DATABASE === "object"
+    ? window.ANI_FOUNDATIONS_DATABASE
+    : { entries: [], sourceReferences: [] };
+  if (!Array.isArray(database.entries)) database.entries = [];
+  if (!Array.isArray(database.sourceReferences)) database.sourceReferences = [];
+
+  const sourceIndex = new Map(database.sourceReferences
+    .map((source, index) => [String(source && (source.key || source.id) || "").trim(), index])
+    .filter(([key]) => key));
+  sourceReferences.forEach((source) => {
+    const existingIndex = sourceIndex.get(source.key);
+    const registered = { ...source, id: source.key };
+    if (Number.isInteger(existingIndex)) database.sourceReferences[existingIndex] = registered;
+    else {
+      sourceIndex.set(source.key, database.sourceReferences.length);
+      database.sourceReferences.push(registered);
+    }
+  });
+  database.componentVersions = {
+    ...(database.componentVersions || {}),
+    coreDiagnosticProcedureSources: VERSION
+  };
+  window.ANI_FOUNDATIONS_DATABASE = database;
+  window[GLOBAL_NAME] = Object.freeze({
+    version: VERSION,
+    sourceCount: sourceReferences.length,
+    sourceKeys: Object.freeze(sourceReferences.map((source) => source.key))
   });
 }());

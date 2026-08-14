@@ -12,14 +12,14 @@
     taxonomyVersion: core.TAXONOMY_VERSION,
     relationshipSchemaVersion: core.RELATIONSHIP_SCHEMA_VERSION,
     generatorVersion: core.GENERATOR_VERSION,
-    catalogVersion: "ani-microbiology-catalog-content-v4.5.0",
+    catalogVersion: "ani-microbiology-catalog-content-v4.6.1",
     architectureSha256,
     architectureStatus: "APPROVED",
     massExpansionEnabled: true,
     status: {
       architectureStatus: "APPROVED",
       massExpansionEnabled: true,
-      sourceEntryCount: 223,
+      sourceEntryCount: 228,
       membershipCount: 0
     },
     architecture,
@@ -41,7 +41,27 @@
         "canonicalName": "Airborne transmission",
         "category": "Microbiology / Host interaction, tropism, and transmission",
         "commonMisspellings": [],
-        "crossLinkRecords": [],
+        "crossLinkRecords": [
+          {
+            "id": "microbiology:concept:airborne-transmission::related-topic::9972f428869021f0f7fe87322bc1d7d93a3b5c0914167d4a91d9cc3c845b4bc7",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "9972f428869021f0f7fe87322bc1d7d93a3b5c0914167d4a91d9cc3c845b4bc7",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:concept:airborne-transmission",
+            "sourceKind": "host-interaction-transmission",
+            "targetCollection": "",
+            "targetId": "microbiology:infection-prevention:airborne-precaution-diseases",
+            "targetKey": "id:microbiology:infection-prevention:airborne-precaution-diseases",
+            "targetKind": "infection-prevention-concept",
+            "targetName": "Airborne Precaution Diseases"
+          }
+        ],
         "definition": "Airborne transmission occurs when infectious particles remain suspended and can be inhaled over time or distance under conditions that support airborne spread.",
         "directTargetId": "microbiology:concept:airborne-transmission",
         "encyclopediaDomains": [
@@ -64,7 +84,7 @@
           "reviewedAt": "2026-08-01",
           "runtimeCollection": "clinicalReferenceEntries",
           "schemaVersion": "ani-microbiology-catalog-v4",
-          "sourceEntrySha256": "4476d73fe759a0d4d85e2077a9b97016db04b7bd3d1ce857a741cfbf1451ef3b",
+          "sourceEntrySha256": "fb06b8575ae1d345ed492c03aec1bbf124ee2cc81336858f87e915e767df77ee",
           "sourceKeys": [
             "cdc-isolation-appendix-a",
             "cdc-transmission-scientific-review"
@@ -72,7 +92,21 @@
           "taxonomyVersion": "ani-microbiology-taxonomy-v4"
         },
         "microbiologyKind": "microbiology-concept",
-        "microbiologyRelationships": [],
+        "microbiologyRelationships": [
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-tb-infection-control"
+            ],
+            "target": {
+              "canonicalTitle": "Airborne Precaution Diseases",
+              "targetId": "microbiology:infection-prevention:airborne-precaution-diseases",
+              "targetKind": "infection-prevention-concept",
+              "targetName": "Airborne Precaution Diseases"
+            },
+            "type": "related-topic"
+          }
+        ],
         "name": "Airborne transmission",
         "primaryDomain": "Microbiology",
         "searchTerms": [
@@ -3285,6 +3319,944 @@
       {
         "abbreviations": [],
         "aliases": [
+          "Airborne and contact diseases",
+          "Airborne contact isolation examples",
+          "Airborne plus contact diseases",
+          "Combined airborne contact precautions",
+          "Diseases requiring airborne and contact precautions"
+        ],
+        "browse": {
+          "branchId": "infection-prevention-control/transmission-based-precautions",
+          "label": "Transmission-based precautions",
+          "path": [
+            "infection-prevention-control",
+            "transmission-based-precautions"
+          ],
+          "pillarId": "infection-prevention-control"
+        },
+        "canonicalName": "Airborne + Contact Precaution Diseases",
+        "category": "Microbiology / Transmission-based precautions",
+        "commonMisspellings": [],
+        "crossLinkRecords": [
+          {
+            "id": "microbiology:infection-prevention:airborne-contact-precaution-diseases::related-topic::59a9eecca32ed4884caa7c1ec2f255cc4c4d8e12db8eef19830fd77d75ab90aa",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "59a9eecca32ed4884caa7c1ec2f255cc4c4d8e12db8eef19830fd77d75ab90aa",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:varicella",
+            "targetKind": "disease",
+            "targetName": "Varicella"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-contact-precaution-diseases::related-topic::70869e846abb042924196639986739903ae5bd99d3fc54d65284f877d7b84fa6",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "70869e846abb042924196639986739903ae5bd99d3fc54d65284f877d7b84fa6",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:variola-virus",
+            "targetKey": "id:microbiology:organism:variola-virus",
+            "targetKind": "organism",
+            "targetName": "Variola virus"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-contact-precaution-diseases::related-topic::91af156dc4e19b07ad1d356bfec640b6411bfa45acdf65d74ef140368e3170d2",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "91af156dc4e19b07ad1d356bfec640b6411bfa45acdf65d74ef140368e3170d2",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:infection-prevention:contact-precautions",
+            "targetKey": "id:microbiology:infection-prevention:contact-precautions",
+            "targetKind": "precaution",
+            "targetName": "Contact precautions"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-contact-precaution-diseases::related-topic::9b511f75030cf9a504883b551ff79d87fbabd05098a5b2c18d7b41e82d4d793f",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "9b511f75030cf9a504883b551ff79d87fbabd05098a5b2c18d7b41e82d4d793f",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:tuberculosis",
+            "targetKind": "disease",
+            "targetName": "Tuberculosis"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-contact-precaution-diseases::related-topic::9e72fd5ec33f6818a7a9b5a37717b64eb305dad73ca0ca69386a6f97cbd86e29",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "9e72fd5ec33f6818a7a9b5a37717b64eb305dad73ca0ca69386a6f97cbd86e29",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:mycobacterium-tuberculosis",
+            "targetKey": "id:microbiology:organism:mycobacterium-tuberculosis",
+            "targetKind": "organism",
+            "targetName": "Mycobacterium tuberculosis"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-contact-precaution-diseases::related-topic::b22b1c2eab3bc440149dcb5e0e45d05c29854e1db53fa1a83f6ef23d5dcc2a5b",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "b22b1c2eab3bc440149dcb5e0e45d05c29854e1db53fa1a83f6ef23d5dcc2a5b",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:infection-prevention:airborne-precautions",
+            "targetKey": "id:microbiology:infection-prevention:airborne-precautions",
+            "targetKind": "precaution",
+            "targetName": "Airborne precautions"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-contact-precaution-diseases::related-topic::c8e92a25b9c06467e37453b9e080bb8734a83cb1158384a4e55af1f41e63c4dd",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "c8e92a25b9c06467e37453b9e080bb8734a83cb1158384a4e55af1f41e63c4dd",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:shingles",
+            "targetKind": "disease",
+            "targetName": "Shingles"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-contact-precaution-diseases::related-topic::fbcdea8135607a77d89bf811aae2d578f198088fc206fdb4270e72ef830b03e2",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "fbcdea8135607a77d89bf811aae2d578f198088fc206fdb4270e72ef830b03e2",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:varicella-zoster-virus",
+            "targetKey": "id:microbiology:organism:varicella-zoster-virus",
+            "targetKind": "organism",
+            "targetName": "Varicella-zoster virus"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-contact-precaution-diseases::related-topic::fd9c80091fd4529e0b11822a53211ed3696fd373b4bb0b72776bb1e6cecc5023",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "fd9c80091fd4529e0b11822a53211ed3696fd373b4bb0b72776bb1e6cecc5023",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:smallpox",
+            "targetKind": "disease",
+            "targetName": "Smallpox"
+          }
+        ],
+        "definition": "Quick answer: some conditions require both Airborne and Contact Precautions in addition to Standard Precautions. The combined label matters because room airflow and respiratory protection do not replace gown, glove, equipment, and environmental controls.",
+        "directTargetId": "microbiology:infection-prevention:airborne-contact-precaution-diseases",
+        "encyclopediaDomains": [
+          "microbiology"
+        ],
+        "encyclopediaSection": "microbiology",
+        "hidden": false,
+        "id": "microbiology:infection-prevention:airborne-contact-precaution-diseases",
+        "microbiology": {
+          "architectureVersion": "ani-microbiology-domain-v4",
+          "browsePath": "infection-prevention-control/transmission-based-precautions",
+          "canonicalOwner": "Microbiology",
+          "classification": {
+            "ipcClass": "transmission-based-precaution"
+          },
+          "entryKind": "infection-prevention-concept",
+          "generatorVersion": "ani-microbiology-generator-v4",
+          "relationshipSchemaVersion": "ani-microbiology-relationships-v3",
+          "reviewStatus": "REVIEWED",
+          "reviewedAt": "2026-08-13",
+          "runtimeCollection": "clinicalReferenceEntries",
+          "schemaVersion": "ani-microbiology-catalog-v4",
+          "sourceEntrySha256": "c524d05f66fefa6051751f81479c8b757c96ff21cf57730d52555b2054a80aa0",
+          "sourceKeys": [
+            "cdc-isolation-appendix-a",
+            "cdc-isolation-precautions",
+            "cdc-tb-infection-control"
+          ],
+          "taxonomyVersion": "ani-microbiology-taxonomy-v4"
+        },
+        "microbiologyKind": "infection-prevention-concept",
+        "microbiologyRelationships": [
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-shingles-about"
+            ],
+            "target": {
+              "canonicalTitle": "Shingles",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Shingles"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-smallpox-about"
+            ],
+            "target": {
+              "canonicalTitle": "Smallpox",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Smallpox"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-tb-infection-control"
+            ],
+            "target": {
+              "canonicalTitle": "Tuberculosis",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Tuberculosis"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-chickenpox-about",
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Varicella",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Varicella"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-precautions"
+            ],
+            "target": {
+              "canonicalTitle": "Airborne precautions",
+              "targetId": "microbiology:infection-prevention:airborne-precautions",
+              "targetKind": "precaution",
+              "targetName": "Airborne precautions"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-precautions"
+            ],
+            "target": {
+              "canonicalTitle": "Contact precautions",
+              "targetId": "microbiology:infection-prevention:contact-precautions",
+              "targetKind": "precaution",
+              "targetName": "Contact precautions"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-tb-infection-control"
+            ],
+            "target": {
+              "canonicalTitle": "Mycobacterium tuberculosis",
+              "targetId": "microbiology:organism:mycobacterium-tuberculosis",
+              "targetKind": "organism",
+              "targetName": "Mycobacterium tuberculosis"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-chickenpox-about",
+              "cdc-isolation-appendix-a",
+              "cdc-shingles-about"
+            ],
+            "target": {
+              "canonicalTitle": "Varicella-zoster virus",
+              "targetId": "microbiology:organism:varicella-zoster-virus",
+              "targetKind": "organism",
+              "targetName": "Varicella-zoster virus"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-smallpox-about"
+            ],
+            "target": {
+              "canonicalTitle": "Variola virus",
+              "targetId": "microbiology:organism:variola-virus",
+              "targetKind": "organism",
+              "targetName": "Variola virus"
+            },
+            "type": "related-topic"
+          }
+        ],
+        "name": "Airborne + Contact Precaution Diseases",
+        "primaryDomain": "Microbiology",
+        "searchTerms": [
+          "Airborne + Contact Precaution Diseases",
+          "Airborne and contact diseases",
+          "Airborne contact isolation examples",
+          "Airborne plus contact diseases",
+          "Combined airborne contact precautions",
+          "Diseases requiring airborne and contact precautions"
+        ],
+        "sections": [
+          {
+            "content": "Quick answer: some conditions require both Airborne and Contact Precautions in addition to Standard Precautions. The combined label matters because room airflow and respiratory protection do not replace gown, glove, equipment, and environmental controls.",
+            "id": "scope",
+            "title": "Scope"
+          },
+          {
+            "content": "Classic high-yield examples are varicella (chickenpox); disseminated herpes zoster in any patient; localized herpes zoster in an immunocompromised patient until dissemination is excluded; and smallpox. Each requires the complete disease-specific combined plan.",
+            "id": "indications",
+            "title": "Indications"
+          },
+          {
+            "content": "A draining extrapulmonary tuberculosis lesion also requires Airborne plus Contact Precautions while the drainage remains infectious under the current criteria; concurrent pulmonary disease must be evaluated. Extrapulmonary tuberculosis without a draining lesion and without pulmonary disease is not placed in this category automatically.",
+            "id": "mechanism",
+            "title": "Mechanism"
+          },
+          {
+            "content": "Use an airborne infection-isolation room and indicated respiratory protection, plus gown and gloves under the contact plan. Cover or contain lesions or drainage when possible, dedicate or disinfect equipment, limit transport, use patient source control during necessary transport, and follow organism-specific cleaning and exposure-management guidance.",
+            "id": "procedure",
+            "title": "Procedure"
+          },
+          {
+            "content": "Do not apply this label to every case of shingles or tuberculosis. Localized zoster in an immunocompetent patient with lesions that can be covered uses Standard Precautions under CDC Appendix A; tuberculosis site, drainage, pulmonary involvement, and infectivity determine the added precautions.",
+            "id": "limitations",
+            "title": "Limitations"
+          },
+          {
+            "content": "NCLEX pattern: chickenpox and disseminated shingles require both an airborne infection-isolation room with indicated respirator use and contact PPE. Protect susceptible staff according to immunity and occupational-health guidance, preserve urgent care and monitoring, and use disease-specific discontinuation criteria.",
+            "id": "precautions",
+            "title": "Precautions"
+          },
+          {
+            "content": "Reviewed against the current CDC Appendix A condition-specific precaution table and CDC tuberculosis healthcare infection-control guidance.",
+            "id": "sources",
+            "title": "Sources"
+          }
+        ],
+        "studentFacing": true,
+        "summary": "Quick answer: some conditions require both Airborne and Contact Precautions in addition to Standard Precautions. The combined label matters because room airflow and respiratory protection do not replace gown, glove, equipment, and environmental controls.",
+        "type": "microbiology",
+        "typedAliases": [
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Airborne and contact diseases"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Airborne contact isolation examples"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Airborne plus contact diseases"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Combined airborne contact precautions"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Diseases requiring airborne and contact precautions"
+          }
+        ]
+      },
+      {
+        "abbreviations": [],
+        "aliases": [
+          "Airborne diseases",
+          "Airborne examples",
+          "Airborne infections",
+          "Airborne isolation diseases",
+          "Airborne precaution examples",
+          "Airborne precautions diseases",
+          "Diseases requiring airborne precautions",
+          "N95 diseases",
+          "Negative pressure room diseases"
+        ],
+        "browse": {
+          "branchId": "infection-prevention-control/transmission-based-precautions",
+          "label": "Transmission-based precautions",
+          "path": [
+            "infection-prevention-control",
+            "transmission-based-precautions"
+          ],
+          "pillarId": "infection-prevention-control"
+        },
+        "canonicalName": "Airborne Precaution Diseases",
+        "category": "Microbiology / Transmission-based precautions",
+        "commonMisspellings": [],
+        "crossLinkRecords": [
+          {
+            "id": "microbiology:infection-prevention:airborne-precaution-diseases::related-topic::59a9eecca32ed4884caa7c1ec2f255cc4c4d8e12db8eef19830fd77d75ab90aa",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "59a9eecca32ed4884caa7c1ec2f255cc4c4d8e12db8eef19830fd77d75ab90aa",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:varicella",
+            "targetKind": "disease",
+            "targetName": "Varicella"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-precaution-diseases::related-topic::70869e846abb042924196639986739903ae5bd99d3fc54d65284f877d7b84fa6",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "70869e846abb042924196639986739903ae5bd99d3fc54d65284f877d7b84fa6",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:variola-virus",
+            "targetKey": "id:microbiology:organism:variola-virus",
+            "targetKind": "organism",
+            "targetName": "Variola virus"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-precaution-diseases::related-topic::99f88ffada0f8f3a457ac68f23247d1df342137590b889146e240984aa59a7d6",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "99f88ffada0f8f3a457ac68f23247d1df342137590b889146e240984aa59a7d6",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:infection-prevention:airborne-contact-precaution-diseases",
+            "targetKey": "id:microbiology:infection-prevention:airborne-contact-precaution-diseases",
+            "targetKind": "infection-prevention-concept",
+            "targetName": "Airborne + Contact Precaution Diseases"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-precaution-diseases::related-topic::9b511f75030cf9a504883b551ff79d87fbabd05098a5b2c18d7b41e82d4d793f",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "9b511f75030cf9a504883b551ff79d87fbabd05098a5b2c18d7b41e82d4d793f",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:tuberculosis",
+            "targetKind": "disease",
+            "targetName": "Tuberculosis"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-precaution-diseases::related-topic::9e72fd5ec33f6818a7a9b5a37717b64eb305dad73ca0ca69386a6f97cbd86e29",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "9e72fd5ec33f6818a7a9b5a37717b64eb305dad73ca0ca69386a6f97cbd86e29",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:mycobacterium-tuberculosis",
+            "targetKey": "id:microbiology:organism:mycobacterium-tuberculosis",
+            "targetKind": "organism",
+            "targetName": "Mycobacterium tuberculosis"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-precaution-diseases::related-topic::a2157bc2fe9393505ef3b173feae3269993095f2a6b27bf4490047368316ec19",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "a2157bc2fe9393505ef3b173feae3269993095f2a6b27bf4490047368316ec19",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:measles-virus",
+            "targetKey": "id:microbiology:organism:measles-virus",
+            "targetKind": "organism",
+            "targetName": "Measles virus"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-precaution-diseases::related-topic::b22b1c2eab3bc440149dcb5e0e45d05c29854e1db53fa1a83f6ef23d5dcc2a5b",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "b22b1c2eab3bc440149dcb5e0e45d05c29854e1db53fa1a83f6ef23d5dcc2a5b",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:infection-prevention:airborne-precautions",
+            "targetKey": "id:microbiology:infection-prevention:airborne-precautions",
+            "targetKind": "precaution",
+            "targetName": "Airborne precautions"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-precaution-diseases::related-topic::c62aa929c76008d3fa4408ad74fe2f95c2e9c81d5db6bcc99c2b86347754f79b",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "c62aa929c76008d3fa4408ad74fe2f95c2e9c81d5db6bcc99c2b86347754f79b",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:measles",
+            "targetKind": "disease",
+            "targetName": "Measles"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-precaution-diseases::related-topic::c8e92a25b9c06467e37453b9e080bb8734a83cb1158384a4e55af1f41e63c4dd",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "c8e92a25b9c06467e37453b9e080bb8734a83cb1158384a4e55af1f41e63c4dd",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:shingles",
+            "targetKind": "disease",
+            "targetName": "Shingles"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-precaution-diseases::related-topic::fbcdea8135607a77d89bf811aae2d578f198088fc206fdb4270e72ef830b03e2",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "fbcdea8135607a77d89bf811aae2d578f198088fc206fdb4270e72ef830b03e2",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:varicella-zoster-virus",
+            "targetKey": "id:microbiology:organism:varicella-zoster-virus",
+            "targetKind": "organism",
+            "targetName": "Varicella-zoster virus"
+          },
+          {
+            "id": "microbiology:infection-prevention:airborne-precaution-diseases::related-topic::fd9c80091fd4529e0b11822a53211ed3696fd373b4bb0b72776bb1e6cecc5023",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "fd9c80091fd4529e0b11822a53211ed3696fd373b4bb0b72776bb1e6cecc5023",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:smallpox",
+            "targetKind": "disease",
+            "targetName": "Smallpox"
+          }
+        ],
+        "definition": "Quick answer: this card lists conditions associated with Airborne Precautions in healthcare infection-control practice. It is not a scientific list of every infection that can spread through aerosols. Airborne Precautions are added to Standard Precautions when the current syndrome-specific guidance requires them.",
+        "directTargetId": "microbiology:infection-prevention:airborne-precaution-diseases",
+        "encyclopediaDomains": [
+          "microbiology"
+        ],
+        "encyclopediaSection": "microbiology",
+        "hidden": false,
+        "id": "microbiology:infection-prevention:airborne-precaution-diseases",
+        "microbiology": {
+          "architectureVersion": "ani-microbiology-domain-v4",
+          "browsePath": "infection-prevention-control/transmission-based-precautions",
+          "canonicalOwner": "Microbiology",
+          "classification": {
+            "ipcClass": "transmission-based-precaution"
+          },
+          "entryKind": "infection-prevention-concept",
+          "generatorVersion": "ani-microbiology-generator-v4",
+          "relationshipSchemaVersion": "ani-microbiology-relationships-v3",
+          "reviewStatus": "REVIEWED",
+          "reviewedAt": "2026-08-13",
+          "runtimeCollection": "clinicalReferenceEntries",
+          "schemaVersion": "ani-microbiology-catalog-v4",
+          "sourceEntrySha256": "db4b8618e1ec575fbfd1414096bd854317a99da27807e24136051943004a35f5",
+          "sourceKeys": [
+            "cdc-chickenpox-about",
+            "cdc-isolation-appendix-a",
+            "cdc-isolation-precautions",
+            "cdc-measles-about",
+            "cdc-shingles-about",
+            "cdc-smallpox-about",
+            "cdc-tb-infection-control"
+          ],
+          "taxonomyVersion": "ani-microbiology-taxonomy-v4"
+        },
+        "microbiologyKind": "infection-prevention-concept",
+        "microbiologyRelationships": [
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-measles-about"
+            ],
+            "target": {
+              "canonicalTitle": "Measles",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Measles"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-shingles-about"
+            ],
+            "target": {
+              "canonicalTitle": "Shingles",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Shingles"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-smallpox-about"
+            ],
+            "target": {
+              "canonicalTitle": "Smallpox",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Smallpox"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-tb-infection-control"
+            ],
+            "target": {
+              "canonicalTitle": "Tuberculosis",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Tuberculosis"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-chickenpox-about",
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Varicella",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Varicella"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Airborne + Contact Precaution Diseases",
+              "targetId": "microbiology:infection-prevention:airborne-contact-precaution-diseases",
+              "targetKind": "infection-prevention-concept",
+              "targetName": "Airborne + Contact Precaution Diseases"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-precautions"
+            ],
+            "target": {
+              "canonicalTitle": "Airborne precautions",
+              "targetId": "microbiology:infection-prevention:airborne-precautions",
+              "targetKind": "precaution",
+              "targetName": "Airborne precautions"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-measles-about"
+            ],
+            "target": {
+              "canonicalTitle": "Measles virus",
+              "targetId": "microbiology:organism:measles-virus",
+              "targetKind": "organism",
+              "targetName": "Measles virus"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-tb-infection-control"
+            ],
+            "target": {
+              "canonicalTitle": "Mycobacterium tuberculosis",
+              "targetId": "microbiology:organism:mycobacterium-tuberculosis",
+              "targetKind": "organism",
+              "targetName": "Mycobacterium tuberculosis"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-chickenpox-about",
+              "cdc-isolation-appendix-a",
+              "cdc-shingles-about"
+            ],
+            "target": {
+              "canonicalTitle": "Varicella-zoster virus",
+              "targetId": "microbiology:organism:varicella-zoster-virus",
+              "targetKind": "organism",
+              "targetName": "Varicella-zoster virus"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-smallpox-about"
+            ],
+            "target": {
+              "canonicalTitle": "Variola virus",
+              "targetId": "microbiology:organism:variola-virus",
+              "targetKind": "organism",
+              "targetName": "Variola virus"
+            },
+            "type": "related-topic"
+          }
+        ],
+        "name": "Airborne Precaution Diseases",
+        "primaryDomain": "Microbiology",
+        "searchTerms": [
+          "Airborne diseases",
+          "Airborne examples",
+          "Airborne infections",
+          "Airborne isolation diseases",
+          "Airborne Precaution Diseases",
+          "Airborne precaution examples",
+          "Airborne precautions diseases",
+          "Diseases requiring airborne precautions",
+          "N95 diseases",
+          "Negative pressure room diseases"
+        ],
+        "sections": [
+          {
+            "content": "Quick answer: this card lists conditions associated with Airborne Precautions in healthcare infection-control practice. It is not a scientific list of every infection that can spread through aerosols. Airborne Precautions are added to Standard Precautions when the current syndrome-specific guidance requires them.",
+            "id": "scope",
+            "title": "Scope"
+          },
+          {
+            "content": "Classic high-yield examples are suspected or confirmed measles; varicella (chickenpox); and suspected or confirmed infectious pulmonary or laryngeal tuberculosis. Varicella requires Airborne plus Contact Precautions. Latent tuberculosis infection without active disease does not require Airborne Precautions.",
+            "id": "indications",
+            "title": "Indications"
+          },
+          {
+            "content": "Other important situations include disseminated herpes zoster in any patient, localized herpes zoster in an immunocompromised patient until dissemination is excluded, and smallpox. These conditions require more than one transmission-based precaution; use the combined-precaution plan rather than forcing them into an airborne-only bucket.",
+            "id": "mechanism",
+            "title": "Mechanism"
+          },
+          {
+            "content": "Initiate the indicated precautions from clinical suspicion when delay could expose others. Use an airborne infection-isolation room when required, apply the facility respiratory-protection program and a fit-tested N95 or more protective respirator for staff when indicated, limit transport, and place source control on the patient during necessary transport. Emergency stabilization is never delayed for routine room setup.",
+            "id": "procedure",
+            "title": "Procedure"
+          },
+          {
+            "content": "Disease location, dissemination, immune status, syndrome, procedure, and public-health guidance matter. Extrapulmonary tuberculosis without a draining lesion is generally managed with Standard Precautions after concurrent pulmonary disease is evaluated; a draining extrapulmonary lesion can require Airborne plus Contact. Localized zoster in an immunocompetent patient whose lesions are covered is managed differently from disseminated disease.",
+            "id": "limitations",
+            "title": "Limitations"
+          },
+          {
+            "content": "NCLEX pattern: suspected measles, infectious pulmonary or laryngeal TB, and varicella should trigger immediate recognition of airborne controls. A surgical mask on staff does not replace a required respirator. Keep monitoring, communication, medications, and urgent care reliable while isolation is in place, and discontinue only by disease-specific criteria and current policy.",
+            "id": "precautions",
+            "title": "Precautions"
+          },
+          {
+            "content": "Reviewed against the current CDC Appendix A table for selected infections and conditions, CDC Transmission-Based Precautions guidance, CDC measles healthcare guidance, and CDC tuberculosis healthcare infection-control guidance.",
+            "id": "sources",
+            "title": "Sources"
+          }
+        ],
+        "studentFacing": true,
+        "summary": "Quick answer: this card lists conditions associated with Airborne Precautions in healthcare infection-control practice. It is not a scientific list of every infection that can spread through aerosols. Airborne Precautions are added to Standard Precautions when the current syndrome-specific guidance requires them.",
+        "type": "microbiology",
+        "typedAliases": [
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Airborne diseases"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Airborne examples"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Airborne infections"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Airborne isolation diseases"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Airborne precaution examples"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Airborne precautions diseases"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Diseases requiring airborne precautions"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "N95 diseases"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Negative pressure room diseases"
+          }
+        ]
+      },
+      {
+        "abbreviations": [],
+        "aliases": [
           "Airborne isolation"
         ],
         "browse": {
@@ -3299,7 +4271,27 @@
         "canonicalName": "Airborne precautions",
         "category": "Microbiology / Transmission-based precautions",
         "commonMisspellings": [],
-        "crossLinkRecords": [],
+        "crossLinkRecords": [
+          {
+            "id": "microbiology:infection-prevention:airborne-precautions::related-topic::9972f428869021f0f7fe87322bc1d7d93a3b5c0914167d4a91d9cc3c845b4bc7",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "9972f428869021f0f7fe87322bc1d7d93a3b5c0914167d4a91d9cc3c845b4bc7",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:airborne-precautions",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:infection-prevention:airborne-precaution-diseases",
+            "targetKey": "id:microbiology:infection-prevention:airborne-precaution-diseases",
+            "targetKind": "infection-prevention-concept",
+            "targetName": "Airborne Precaution Diseases"
+          }
+        ],
         "definition": "Airborne Precautions are transmission-based measures added to Standard Precautions for infectious agents that remain infectious while suspended in air and can be inhaled beyond immediate face-to-face droplet range.",
         "directTargetId": "microbiology:infection-prevention:airborne-precautions",
         "encyclopediaDomains": [
@@ -3322,7 +4314,7 @@
           "reviewedAt": "2026-08-01",
           "runtimeCollection": "clinicalReferenceEntries",
           "schemaVersion": "ani-microbiology-catalog-v4",
-          "sourceEntrySha256": "f1664f44ae037b56c81077e6d576fe22b0874791c10c45b52d59490b0b61fa9e",
+          "sourceEntrySha256": "bb365f19f4f74136a194e0bb39d206a6e7d1a3c066e6bafee8ecc4b525e21369",
           "sourceKeys": [
             "cdc-isolation-precautions",
             "cdc-tb-infection-control"
@@ -3330,7 +4322,21 @@
           "taxonomyVersion": "ani-microbiology-taxonomy-v4"
         },
         "microbiologyKind": "infection-prevention-concept",
-        "microbiologyRelationships": [],
+        "microbiologyRelationships": [
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-tb-infection-control"
+            ],
+            "target": {
+              "canonicalTitle": "Airborne Precaution Diseases",
+              "targetId": "microbiology:infection-prevention:airborne-precaution-diseases",
+              "targetKind": "infection-prevention-concept",
+              "targetName": "Airborne Precaution Diseases"
+            },
+            "type": "related-topic"
+          }
+        ],
         "name": "Airborne precautions",
         "primaryDomain": "Microbiology",
         "searchTerms": [
@@ -3606,6 +4612,705 @@
       {
         "abbreviations": [],
         "aliases": [
+          "Contact diseases",
+          "Contact examples",
+          "Contact infections",
+          "Contact isolation diseases",
+          "Contact precaution examples",
+          "Contact precautions diseases",
+          "Diseases requiring contact precautions",
+          "Gown and glove diseases"
+        ],
+        "browse": {
+          "branchId": "infection-prevention-control/transmission-based-precautions",
+          "label": "Transmission-based precautions",
+          "path": [
+            "infection-prevention-control",
+            "transmission-based-precautions"
+          ],
+          "pillarId": "infection-prevention-control"
+        },
+        "canonicalName": "Contact Precaution Diseases",
+        "category": "Microbiology / Transmission-based precautions",
+        "commonMisspellings": [],
+        "crossLinkRecords": [
+          {
+            "id": "microbiology:infection-prevention:contact-precaution-diseases::related-topic::0eeb0aa158508163d047bc9c93057bdffb1c9ce8eb08da1d8bef1d535d15c373",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "0eeb0aa158508163d047bc9c93057bdffb1c9ce8eb08da1d8bef1d535d15c373",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:impetigo",
+            "targetKind": "disease",
+            "targetName": "Impetigo"
+          },
+          {
+            "id": "microbiology:infection-prevention:contact-precaution-diseases::related-topic::1ef5780944987c331cf4826fdea79f9dcb5cde4ec885d08af638a69668631581",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "1ef5780944987c331cf4826fdea79f9dcb5cde4ec885d08af638a69668631581",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:rsv infection",
+            "targetKind": "disease",
+            "targetName": "RSV infection"
+          },
+          {
+            "id": "microbiology:infection-prevention:contact-precaution-diseases::related-topic::363d41ca021d8511103179e7558f52b63ba38020419153ec34d59ba29d1e67aa",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "363d41ca021d8511103179e7558f52b63ba38020419153ec34d59ba29d1e67aa",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:concept:antimicrobial-resistance-phenotypes",
+            "targetKey": "id:microbiology:concept:antimicrobial-resistance-phenotypes",
+            "targetKind": "microbiology-concept",
+            "targetName": "Antimicrobial resistance phenotypes"
+          },
+          {
+            "id": "microbiology:infection-prevention:contact-precaution-diseases::related-topic::46c87587db40584886a966897b985838daea1a613e4947e07a2fca78b4a4c73e",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "46c87587db40584886a966897b985838daea1a613e4947e07a2fca78b4a4c73e",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:c. difficile infection",
+            "targetKind": "disease",
+            "targetName": "C. difficile infection"
+          },
+          {
+            "id": "microbiology:infection-prevention:contact-precaution-diseases::related-topic::4dae55838922d3628e41e5b0ab3b7a9d6af7792d9278a4ccfb1020046e2ff760",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "4dae55838922d3628e41e5b0ab3b7a9d6af7792d9278a4ccfb1020046e2ff760",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:scabies",
+            "targetKind": "disease",
+            "targetName": "Scabies"
+          },
+          {
+            "id": "microbiology:infection-prevention:contact-precaution-diseases::related-topic::67cbcf226d9f2487bf49493877469d414c8a3391c14f4bac2276ed4bc5462bbf",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "67cbcf226d9f2487bf49493877469d414c8a3391c14f4bac2276ed4bc5462bbf",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:mrsa",
+            "targetKind": "disease",
+            "targetName": "MRSA"
+          },
+          {
+            "id": "microbiology:infection-prevention:contact-precaution-diseases::related-topic::7fb8a735bc008d44e1ccf4d1bcc305c62c68b53742ae85a2e3fe47bb9276a487",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "7fb8a735bc008d44e1ccf4d1bcc305c62c68b53742ae85a2e3fe47bb9276a487",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:clostridioides-difficile",
+            "targetKey": "id:microbiology:organism:clostridioides-difficile",
+            "targetKind": "organism",
+            "targetName": "Clostridioides difficile"
+          },
+          {
+            "id": "microbiology:infection-prevention:contact-precaution-diseases::related-topic::91af156dc4e19b07ad1d356bfec640b6411bfa45acdf65d74ef140368e3170d2",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "91af156dc4e19b07ad1d356bfec640b6411bfa45acdf65d74ef140368e3170d2",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:infection-prevention:contact-precautions",
+            "targetKey": "id:microbiology:infection-prevention:contact-precautions",
+            "targetKind": "precaution",
+            "targetName": "Contact precautions"
+          },
+          {
+            "id": "microbiology:infection-prevention:contact-precaution-diseases::related-topic::9f8c76fd78a14dad981eff145e172de3ea3f511dc35f3911eb4644d983728f29",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "9f8c76fd78a14dad981eff145e172de3ea3f511dc35f3911eb4644d983728f29",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:respiratory-syncytial-virus",
+            "targetKey": "id:microbiology:organism:respiratory-syncytial-virus",
+            "targetKind": "organism",
+            "targetName": "Respiratory syncytial virus"
+          },
+          {
+            "id": "microbiology:infection-prevention:contact-precaution-diseases::related-topic::a0ac4ad9a3513a5f794a29871974beeccfd455e3e15443d8e46a8011634f69e7",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "a0ac4ad9a3513a5f794a29871974beeccfd455e3e15443d8e46a8011634f69e7",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:rotavirus-a",
+            "targetKey": "id:microbiology:organism:rotavirus-a",
+            "targetKind": "organism",
+            "targetName": "Rotavirus A"
+          },
+          {
+            "id": "microbiology:infection-prevention:contact-precaution-diseases::related-topic::a26f46ba39cd21a00d5ce6555342ade47d58f39fd33fcfd60d2e8127e42293be",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "a26f46ba39cd21a00d5ce6555342ade47d58f39fd33fcfd60d2e8127e42293be",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:infection-prevention:droplet-contact-precaution-diseases",
+            "targetKey": "id:microbiology:infection-prevention:droplet-contact-precaution-diseases",
+            "targetKind": "infection-prevention-concept",
+            "targetName": "Droplet + Contact Precaution Diseases"
+          },
+          {
+            "id": "microbiology:infection-prevention:contact-precaution-diseases::related-topic::a7324f3d31c85e1e76a344fa859916f0dc3aa8593bf4a5cf5ffedf2b6751988c",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "a7324f3d31c85e1e76a344fa859916f0dc3aa8593bf4a5cf5ffedf2b6751988c",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:diphtheria",
+            "targetKind": "disease",
+            "targetName": "Diphtheria"
+          },
+          {
+            "id": "microbiology:infection-prevention:contact-precaution-diseases::related-topic::c4b88f422d84e0e2c314fdd6043cd0db768848d0745bc08a1593f2bd7d3de5ca",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "c4b88f422d84e0e2c314fdd6043cd0db768848d0745bc08a1593f2bd7d3de5ca",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:human-adenovirus",
+            "targetKey": "id:microbiology:organism:human-adenovirus",
+            "targetKind": "organism",
+            "targetName": "Human adenovirus"
+          },
+          {
+            "id": "microbiology:infection-prevention:contact-precaution-diseases::related-topic::d21c4a37a61dd0b3ad187fc10d898e038895b43c64ecdca0ef723cfbd49f2d9f",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "d21c4a37a61dd0b3ad187fc10d898e038895b43c64ecdca0ef723cfbd49f2d9f",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:vancomycin-resistant enterococcus",
+            "targetKind": "disease",
+            "targetName": "Vancomycin-resistant Enterococcus"
+          },
+          {
+            "id": "microbiology:infection-prevention:contact-precaution-diseases::related-topic::dcefc50127b87e281acaee9ebb297064579af15f7f0a32bb0f93ea9e28500f8b",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "dcefc50127b87e281acaee9ebb297064579af15f7f0a32bb0f93ea9e28500f8b",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:sarcoptes-scabiei",
+            "targetKey": "id:microbiology:organism:sarcoptes-scabiei",
+            "targetKind": "organism",
+            "targetName": "Sarcoptes scabiei"
+          },
+          {
+            "id": "microbiology:infection-prevention:contact-precaution-diseases::related-topic::eb4dc0c7d3a1d474ce0ffae0c1dbac7b66a57a3dda39f0d0e034b2d9e5499315",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "eb4dc0c7d3a1d474ce0ffae0c1dbac7b66a57a3dda39f0d0e034b2d9e5499315",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:norovirus",
+            "targetKey": "id:microbiology:organism:norovirus",
+            "targetKind": "organism",
+            "targetName": "Norovirus"
+          },
+          {
+            "id": "microbiology:infection-prevention:contact-precaution-diseases::related-topic::f61c0ae8b12d24ee830c6e80ad274e6f5cc5ea1522948e8d4fb0c4b356f30968",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "f61c0ae8b12d24ee830c6e80ad274e6f5cc5ea1522948e8d4fb0c4b356f30968",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:rubella",
+            "targetKind": "disease",
+            "targetName": "Rubella"
+          }
+        ],
+        "definition": "Quick answer: this card lists infections, organisms, and clinical situations associated with Contact Precautions in healthcare practice. Contact Precautions are added to Standard Precautions when direct or indirect contact creates transmission risk that baseline practices alone do not adequately control.",
+        "directTargetId": "microbiology:infection-prevention:contact-precaution-diseases",
+        "encyclopediaDomains": [
+          "microbiology"
+        ],
+        "encyclopediaSection": "microbiology",
+        "hidden": false,
+        "id": "microbiology:infection-prevention:contact-precaution-diseases",
+        "microbiology": {
+          "architectureVersion": "ani-microbiology-domain-v4",
+          "browsePath": "infection-prevention-control/transmission-based-precautions",
+          "canonicalOwner": "Microbiology",
+          "classification": {
+            "ipcClass": "transmission-based-precaution"
+          },
+          "entryKind": "infection-prevention-concept",
+          "generatorVersion": "ani-microbiology-generator-v4",
+          "relationshipSchemaVersion": "ani-microbiology-relationships-v3",
+          "reviewStatus": "REVIEWED",
+          "reviewedAt": "2026-08-13",
+          "runtimeCollection": "clinicalReferenceEntries",
+          "schemaVersion": "ani-microbiology-catalog-v4",
+          "sourceEntrySha256": "1e7bfcd61512a57dbee57505a203c87c1e7b68d5d4a06ca4013eb6f22bfec431",
+          "sourceKeys": [
+            "cdc-cdiff-prevention",
+            "cdc-isolation-appendix-a",
+            "cdc-isolation-precautions",
+            "cdc-mrsa-infection-control",
+            "cdc-norovirus-about",
+            "cdc-rotavirus-about",
+            "cdc-rsv-about",
+            "cdc-scabies"
+          ],
+          "taxonomyVersion": "ani-microbiology-taxonomy-v4"
+        },
+        "microbiologyKind": "infection-prevention-concept",
+        "microbiologyRelationships": [
+          {
+            "sourceKeys": [
+              "cdc-cdiff-prevention",
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "C. difficile infection",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "C. difficile infection"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-diphtheria",
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Diphtheria",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Diphtheria"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Impetigo",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Impetigo"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-mrsa-infection-control"
+            ],
+            "target": {
+              "canonicalTitle": "MRSA",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "MRSA"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-rsv-about"
+            ],
+            "target": {
+              "canonicalTitle": "RSV infection",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "RSV infection"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-rubella-about"
+            ],
+            "target": {
+              "canonicalTitle": "Rubella",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Rubella"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-scabies"
+            ],
+            "target": {
+              "canonicalTitle": "Scabies",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Scabies"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Vancomycin-resistant Enterococcus",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Vancomycin-resistant Enterococcus"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-isolation-precautions"
+            ],
+            "target": {
+              "canonicalTitle": "Antimicrobial resistance phenotypes",
+              "targetId": "microbiology:concept:antimicrobial-resistance-phenotypes",
+              "targetKind": "microbiology-concept",
+              "targetName": "Antimicrobial resistance phenotypes"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-precautions"
+            ],
+            "target": {
+              "canonicalTitle": "Contact precautions",
+              "targetId": "microbiology:infection-prevention:contact-precautions",
+              "targetKind": "precaution",
+              "targetName": "Contact precautions"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Droplet + Contact Precaution Diseases",
+              "targetId": "microbiology:infection-prevention:droplet-contact-precaution-diseases",
+              "targetKind": "infection-prevention-concept",
+              "targetName": "Droplet + Contact Precaution Diseases"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-cdiff-prevention",
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Clostridioides difficile",
+              "targetId": "microbiology:organism:clostridioides-difficile",
+              "targetKind": "organism",
+              "targetName": "Clostridioides difficile"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Human adenovirus",
+              "targetId": "microbiology:organism:human-adenovirus",
+              "targetKind": "organism",
+              "targetName": "Human adenovirus"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-norovirus-about"
+            ],
+            "target": {
+              "canonicalTitle": "Norovirus",
+              "targetId": "microbiology:organism:norovirus",
+              "targetKind": "organism",
+              "targetName": "Norovirus"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-rsv-about"
+            ],
+            "target": {
+              "canonicalTitle": "Respiratory syncytial virus",
+              "targetId": "microbiology:organism:respiratory-syncytial-virus",
+              "targetKind": "organism",
+              "targetName": "Respiratory syncytial virus"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-rotavirus-about"
+            ],
+            "target": {
+              "canonicalTitle": "Rotavirus A",
+              "targetId": "microbiology:organism:rotavirus-a",
+              "targetKind": "organism",
+              "targetName": "Rotavirus A"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-scabies"
+            ],
+            "target": {
+              "canonicalTitle": "Sarcoptes scabiei",
+              "targetId": "microbiology:organism:sarcoptes-scabiei",
+              "targetKind": "organism",
+              "targetName": "Sarcoptes scabiei"
+            },
+            "type": "related-topic"
+          }
+        ],
+        "name": "Contact Precaution Diseases",
+        "primaryDomain": "Microbiology",
+        "searchTerms": [
+          "Contact diseases",
+          "Contact examples",
+          "Contact infections",
+          "Contact isolation diseases",
+          "Contact Precaution Diseases",
+          "Contact precaution examples",
+          "Contact precautions diseases",
+          "Diseases requiring contact precautions",
+          "Gown and glove diseases"
+        ],
+        "sections": [
+          {
+            "content": "Quick answer: this card lists infections, organisms, and clinical situations associated with Contact Precautions in healthcare practice. Contact Precautions are added to Standard Precautions when direct or indirect contact creates transmission risk that baseline practices alone do not adequately control.",
+            "id": "scope",
+            "title": "Scope"
+          },
+          {
+            "content": "Classic high-yield examples include symptomatic Clostridioides difficile infection, scabies, impetigo, rotavirus gastroenteritis, norovirus gastroenteritis, and respiratory syncytial virus infection in infants, young children, and immunocompromised adults. Use the disease- and setting-specific duration rather than one universal stop date.",
+            "id": "indications",
+            "title": "Indications"
+          },
+          {
+            "content": "Additional situations include major draining wounds or abscesses until drainage stops or can be contained; congenital rubella; cutaneous diphtheria; and adenovirus pneumonia or major group A streptococcal skin, wound, or burn infection as part of a combined precaution plan. CDC currently recommends Contact Precautions for MRSA-colonized or infected patients, including in inpatient acute care; other MDRO decisions remain organism-, setting-, and policy-specific.",
+            "id": "mechanism",
+            "title": "Mechanism"
+          },
+          {
+            "content": "Use gown and gloves according to the current contact plan, perform hand hygiene, dedicate or disinfect equipment, contain drainage and secretions, limit transport to necessary care, and use organism-specific environmental cleaning. For C. difficile, follow the facility's soap-and-water and sporicidal-cleaning protocol; gloves and environmental control are central even when alcohol hand rub remains part of routine hand-hygiene programs.",
+            "id": "procedure",
+            "title": "Procedure"
+          },
+          {
+            "content": "Contact is a route and precaution category, not one permanent label for every positive culture. MDRO decisions vary with organism, infection or colonization, drainage, outbreak status, care setting, and policy. RSV is listed by CDC Appendix A as Contact plus Standard in the specified populations; do not automatically recategorize every RSV patient as Droplet plus Contact without current local guidance.",
+            "id": "limitations",
+            "title": "Limitations"
+          },
+          {
+            "content": "NCLEX pattern: C. difficile calls for gown and gloves, strong environmental control, and organism-specific hand hygiene; scabies requires Contact Precautions through the indicated treatment interval; uncontrolled drainage changes the precaution need. Do not let isolation reduce mobility, assessment frequency, communication, or timely treatment.",
+            "id": "precautions",
+            "title": "Precautions"
+          },
+          {
+            "content": "Reviewed against the current CDC Appendix A condition-specific table, CDC C. difficile prevention guidance, CDC MRSA infection-control guidance, and CDC Transmission-Based Precautions guidance.",
+            "id": "sources",
+            "title": "Sources"
+          }
+        ],
+        "studentFacing": true,
+        "summary": "Quick answer: this card lists infections, organisms, and clinical situations associated with Contact Precautions in healthcare practice. Contact Precautions are added to Standard Precautions when direct or indirect contact creates transmission risk that baseline practices alone do not adequately control.",
+        "type": "microbiology",
+        "typedAliases": [
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Contact diseases"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Contact examples"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Contact infections"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Contact isolation diseases"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Contact precaution examples"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Contact precautions diseases"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Diseases requiring contact precautions"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Gown and glove diseases"
+          }
+        ]
+      },
+      {
+        "abbreviations": [],
+        "aliases": [
           "Contact isolation"
         ],
         "browse": {
@@ -3620,7 +5325,27 @@
         "canonicalName": "Contact precautions",
         "category": "Microbiology / Transmission-based precautions",
         "commonMisspellings": [],
-        "crossLinkRecords": [],
+        "crossLinkRecords": [
+          {
+            "id": "microbiology:infection-prevention:contact-precautions::related-topic::7920d7f68e70e6f8ee1cc52052508649082f6c30e106ca344801bb4390238810",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "7920d7f68e70e6f8ee1cc52052508649082f6c30e106ca344801bb4390238810",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:contact-precautions",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:infection-prevention:contact-precaution-diseases",
+            "targetKey": "id:microbiology:infection-prevention:contact-precaution-diseases",
+            "targetKind": "infection-prevention-concept",
+            "targetName": "Contact Precaution Diseases"
+          }
+        ],
         "definition": "Contact Precautions are transmission-based measures added to Standard Precautions when direct or indirect contact is an important route and baseline measures alone are not sufficient for the organism, syndrome, or care setting.",
         "directTargetId": "microbiology:infection-prevention:contact-precautions",
         "encyclopediaDomains": [
@@ -3643,16 +5368,30 @@
           "reviewedAt": "2026-08-01",
           "runtimeCollection": "clinicalReferenceEntries",
           "schemaVersion": "ani-microbiology-catalog-v4",
-          "sourceEntrySha256": "62001ed651102781b878e562a4707e9405ba26b708bca86507458c277ce8ca56",
+          "sourceEntrySha256": "7a98549a0cc58f21974d62400004f89366f85ff3b36061cea80e4190acf532c5",
           "sourceKeys": [
             "cdc-cdiff-prevention",
             "cdc-isolation-precautions",
-            "cdc-mrsa-clinical"
+            "cdc-mrsa-infection-control"
           ],
           "taxonomyVersion": "ani-microbiology-taxonomy-v4"
         },
         "microbiologyKind": "infection-prevention-concept",
-        "microbiologyRelationships": [],
+        "microbiologyRelationships": [
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-isolation-precautions"
+            ],
+            "target": {
+              "canonicalTitle": "Contact Precaution Diseases",
+              "targetId": "microbiology:infection-prevention:contact-precaution-diseases",
+              "targetKind": "infection-prevention-concept",
+              "targetName": "Contact Precaution Diseases"
+            },
+            "type": "related-topic"
+          }
+        ],
         "name": "Contact precautions",
         "primaryDomain": "Microbiology",
         "searchTerms": [
@@ -3670,7 +5409,7 @@
             "title": "Scope"
           },
           {
-            "content": "Indications include selected multidrug-resistant organisms, uncontrolled draining wounds, C. difficile infection, and other conditions specified by current public-health or facility guidance. A laboratory label alone is not always enough; syndrome, drainage control, location, outbreak status, and policy influence the decision.",
+            "content": "Indications include C. difficile infection, uncontrolled draining wounds, and conditions specified by current public-health or facility guidance. CDC currently recommends Contact Precautions for patients colonized or infected with MRSA, including in inpatient acute care. Other multidrug-resistant-organism decisions still depend on the organism, syndrome, drainage control, care setting, outbreak status, and current policy.",
             "id": "indications",
             "title": "Indications"
           },
@@ -3695,7 +5434,7 @@
             "title": "Precautions"
           },
           {
-            "content": "Reviewed against CDC isolation-precautions, C. difficile acute-care prevention, and MRSA clinical guidance.",
+            "content": "Reviewed against CDC isolation-precautions, C. difficile acute-care prevention, and current MRSA infection-control guidance.",
             "id": "sources",
             "title": "Sources"
           }
@@ -3819,6 +5558,1032 @@
       {
         "abbreviations": [],
         "aliases": [
+          "Combined droplet contact precautions",
+          "Diseases requiring droplet and contact precautions",
+          "Droplet and contact diseases",
+          "Droplet contact isolation examples",
+          "Droplet plus contact diseases"
+        ],
+        "browse": {
+          "branchId": "infection-prevention-control/transmission-based-precautions",
+          "label": "Transmission-based precautions",
+          "path": [
+            "infection-prevention-control",
+            "transmission-based-precautions"
+          ],
+          "pillarId": "infection-prevention-control"
+        },
+        "canonicalName": "Droplet + Contact Precaution Diseases",
+        "category": "Microbiology / Transmission-based precautions",
+        "commonMisspellings": [],
+        "crossLinkRecords": [
+          {
+            "id": "microbiology:infection-prevention:droplet-contact-precaution-diseases::related-topic::5e3121f063b16f7f677249e41dd9c5f3b8872d7a07b462a14a455e1649191893",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "5e3121f063b16f7f677249e41dd9c5f3b8872d7a07b462a14a455e1649191893",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:infection-prevention:droplet-precautions",
+            "targetKey": "id:microbiology:infection-prevention:droplet-precautions",
+            "targetKind": "precaution",
+            "targetName": "Droplet precautions"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-contact-precaution-diseases::related-topic::91af156dc4e19b07ad1d356bfec640b6411bfa45acdf65d74ef140368e3170d2",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "91af156dc4e19b07ad1d356bfec640b6411bfa45acdf65d74ef140368e3170d2",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:infection-prevention:contact-precautions",
+            "targetKey": "id:microbiology:infection-prevention:contact-precautions",
+            "targetKind": "precaution",
+            "targetName": "Contact precautions"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-contact-precaution-diseases::related-topic::9308a56927999219028fa76ae8ed01be3c802fa2441fe2909899ab69f38ce73a",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "9308a56927999219028fa76ae8ed01be3c802fa2441fe2909899ab69f38ce73a",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:streptococcus-pyogenes",
+            "targetKey": "id:microbiology:organism:streptococcus-pyogenes",
+            "targetKind": "organism",
+            "targetName": "Streptococcus pyogenes"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-contact-precaution-diseases::related-topic::c4b88f422d84e0e2c314fdd6043cd0db768848d0745bc08a1593f2bd7d3de5ca",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "c4b88f422d84e0e2c314fdd6043cd0db768848d0745bc08a1593f2bd7d3de5ca",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-contact-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:human-adenovirus",
+            "targetKey": "id:microbiology:organism:human-adenovirus",
+            "targetKind": "organism",
+            "targetName": "Human adenovirus"
+          }
+        ],
+        "definition": "Quick answer: some infections require both Droplet and Contact Precautions in addition to Standard Precautions. The combined label means respiratory-source controls and contact or environmental controls are both necessary.",
+        "directTargetId": "microbiology:infection-prevention:droplet-contact-precaution-diseases",
+        "encyclopediaDomains": [
+          "microbiology"
+        ],
+        "encyclopediaSection": "microbiology",
+        "hidden": false,
+        "id": "microbiology:infection-prevention:droplet-contact-precaution-diseases",
+        "microbiology": {
+          "architectureVersion": "ani-microbiology-domain-v4",
+          "browsePath": "infection-prevention-control/transmission-based-precautions",
+          "canonicalOwner": "Microbiology",
+          "classification": {
+            "ipcClass": "transmission-based-precaution"
+          },
+          "entryKind": "infection-prevention-concept",
+          "generatorVersion": "ani-microbiology-generator-v4",
+          "relationshipSchemaVersion": "ani-microbiology-relationships-v3",
+          "reviewStatus": "REVIEWED",
+          "reviewedAt": "2026-08-13",
+          "runtimeCollection": "clinicalReferenceEntries",
+          "schemaVersion": "ani-microbiology-catalog-v4",
+          "sourceEntrySha256": "2afc7aea4b6a230a7378b00a58cf36803bcfe991a92c98836df43ed7e22db3c0",
+          "sourceKeys": [
+            "cdc-isolation-appendix-a",
+            "cdc-isolation-precautions"
+          ],
+          "taxonomyVersion": "ani-microbiology-taxonomy-v4"
+        },
+        "microbiologyKind": "infection-prevention-concept",
+        "microbiologyRelationships": [
+          {
+            "sourceKeys": [
+              "cdc-isolation-precautions"
+            ],
+            "target": {
+              "canonicalTitle": "Contact precautions",
+              "targetId": "microbiology:infection-prevention:contact-precautions",
+              "targetKind": "precaution",
+              "targetName": "Contact precautions"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-precautions"
+            ],
+            "target": {
+              "canonicalTitle": "Droplet precautions",
+              "targetId": "microbiology:infection-prevention:droplet-precautions",
+              "targetKind": "precaution",
+              "targetName": "Droplet precautions"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Human adenovirus",
+              "targetId": "microbiology:organism:human-adenovirus",
+              "targetKind": "organism",
+              "targetName": "Human adenovirus"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Streptococcus pyogenes",
+              "targetId": "microbiology:organism:streptococcus-pyogenes",
+              "targetKind": "organism",
+              "targetName": "Streptococcus pyogenes"
+            },
+            "type": "related-topic"
+          }
+        ],
+        "name": "Droplet + Contact Precaution Diseases",
+        "primaryDomain": "Microbiology",
+        "searchTerms": [
+          "Combined droplet contact precautions",
+          "Diseases requiring droplet and contact precautions",
+          "Droplet + Contact Precaution Diseases",
+          "Droplet and contact diseases",
+          "Droplet contact isolation examples",
+          "Droplet plus contact diseases"
+        ],
+        "sections": [
+          {
+            "content": "Quick answer: some infections require both Droplet and Contact Precautions in addition to Standard Precautions. The combined label means respiratory-source controls and contact or environmental controls are both necessary.",
+            "id": "scope",
+            "title": "Scope"
+          },
+          {
+            "content": "Adenovirus pneumonia is a clear CDC Appendix A example of Droplet plus Contact Precautions for the duration of illness; prolonged shedding can extend precautions in immunocompromised patients. Major group A Streptococcus skin, wound, or burn infection is another clear example: use Droplet plus Contact with Standard Precautions through at least 24 hours after effective therapy begins and until drainage stops or can be contained. Acute respiratory infection syndromes in infants and young children may also warrant empiric Droplet plus Contact while the cause is being determined under current policy.",
+            "id": "indications",
+            "title": "Indications"
+          },
+          {
+            "content": "Adenovirus can spread through respiratory secretions, hands, contaminated equipment, and surfaces. Major group A streptococcal skin or wound disease adds respiratory and draining-lesion risk. A medical mask and patient source control address close-range respiratory exposure, while gown, gloves, hand hygiene, drainage containment, equipment management, and environmental cleaning address contact spread.",
+            "id": "mechanism",
+            "title": "Mechanism"
+          },
+          {
+            "content": "Apply both component plans: use the indicated mask and source control, gown and gloves, appropriate placement or cohorting, dedicated or disinfected equipment, hand hygiene, environmental cleaning, and limited necessary transport. Reassess the exact syndrome and organism result rather than leaving an empiric label in place indefinitely.",
+            "id": "procedure",
+            "title": "Procedure"
+          },
+          {
+            "content": "Do not use this card to force every respiratory virus into one category. CDC Appendix A lists RSV in specified populations under Contact plus Standard, while adenovirus pneumonia and major group A streptococcal skin, wound, or burn infection are specifically combined examples. Minor or contained group A streptococcal skin lesions do not automatically use the major-wound plan.",
+            "id": "limitations",
+            "title": "Limitations"
+          },
+          {
+            "content": "NCLEX pattern: combined precautions mean all named components apply; one does not replace the other. Continue airway assessment and timely treatment, use the syndrome-specific duration, and escalate clusters or prolonged shedding concerns to infection prevention.",
+            "id": "precautions",
+            "title": "Precautions"
+          },
+          {
+            "content": "Reviewed against the current CDC Appendix A condition-specific and empiric-precaution tables.",
+            "id": "sources",
+            "title": "Sources"
+          }
+        ],
+        "studentFacing": true,
+        "summary": "Quick answer: some infections require both Droplet and Contact Precautions in addition to Standard Precautions. The combined label means respiratory-source controls and contact or environmental controls are both necessary.",
+        "type": "microbiology",
+        "typedAliases": [
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Combined droplet contact precautions"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Diseases requiring droplet and contact precautions"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Droplet and contact diseases"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Droplet contact isolation examples"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Droplet plus contact diseases"
+          }
+        ]
+      },
+      {
+        "abbreviations": [],
+        "aliases": [
+          "Diseases requiring droplet precautions",
+          "Droplet diseases",
+          "Droplet examples",
+          "Droplet infections",
+          "Droplet isolation diseases",
+          "Droplet precaution examples",
+          "Droplet precautions diseases",
+          "Surgical mask isolation diseases"
+        ],
+        "browse": {
+          "branchId": "infection-prevention-control/transmission-based-precautions",
+          "label": "Transmission-based precautions",
+          "path": [
+            "infection-prevention-control",
+            "transmission-based-precautions"
+          ],
+          "pillarId": "infection-prevention-control"
+        },
+        "canonicalName": "Droplet Precaution Diseases",
+        "category": "Microbiology / Transmission-based precautions",
+        "commonMisspellings": [],
+        "crossLinkRecords": [
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::2c5fc06f404236e536ac277cb775985511dadecbadf569e4c4c24cecd0f12622",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "2c5fc06f404236e536ac277cb775985511dadecbadf569e4c4c24cecd0f12622",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:yersinia-pestis",
+            "targetKey": "id:microbiology:organism:yersinia-pestis",
+            "targetKind": "organism",
+            "targetName": "Yersinia pestis"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::48f32bc6eaff13c2c53f339754fa7ae1833dea138317c8494971137c4930e306",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "48f32bc6eaff13c2c53f339754fa7ae1833dea138317c8494971137c4930e306",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:influenza",
+            "targetKind": "disease",
+            "targetName": "Influenza"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::53638cfe471f90b4847a89a5a04f7d798a1c3243ad4c21e8bdf0d54c403f2da5",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "53638cfe471f90b4847a89a5a04f7d798a1c3243ad4c21e8bdf0d54c403f2da5",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:influenza-b-virus",
+            "targetKey": "id:microbiology:organism:influenza-b-virus",
+            "targetKind": "organism",
+            "targetName": "Influenza B virus"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::54054348b2692612cf91270d25c304485df8cd498d8a61060285227ea418671b",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "54054348b2692612cf91270d25c304485df8cd498d8a61060285227ea418671b",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:meningitis",
+            "targetKind": "disease",
+            "targetName": "Meningitis"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::5e3121f063b16f7f677249e41dd9c5f3b8872d7a07b462a14a455e1649191893",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "5e3121f063b16f7f677249e41dd9c5f3b8872d7a07b462a14a455e1649191893",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:infection-prevention:droplet-precautions",
+            "targetKey": "id:microbiology:infection-prevention:droplet-precautions",
+            "targetKind": "precaution",
+            "targetName": "Droplet precautions"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::6fefe29e789a72d78898ebb8d2426c701a5cb071199dfd81f9227d28abbf95dd",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "6fefe29e789a72d78898ebb8d2426c701a5cb071199dfd81f9227d28abbf95dd",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:pertussis",
+            "targetKind": "disease",
+            "targetName": "Pertussis"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::78ab164995f2e18093cae9e19ced23a853e38574828cb859d61bfc12d734aaed",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "78ab164995f2e18093cae9e19ced23a853e38574828cb859d61bfc12d734aaed",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:rubella-virus",
+            "targetKey": "id:microbiology:organism:rubella-virus",
+            "targetKind": "organism",
+            "targetName": "Rubella virus"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::85e5bc3a2c1a6f301f9f87a64c733e796532b9427fcdb076b56096cd808b87af",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "85e5bc3a2c1a6f301f9f87a64c733e796532b9427fcdb076b56096cd808b87af",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:meningococcemia",
+            "targetKind": "disease",
+            "targetName": "Meningococcemia"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::8bea074936fb0dadc742bdaa4f7caf0d07c2d4303dc5ef16208793715ccc8721",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "8bea074936fb0dadc742bdaa4f7caf0d07c2d4303dc5ef16208793715ccc8721",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:neisseria-meningitidis",
+            "targetKey": "id:microbiology:organism:neisseria-meningitidis",
+            "targetKind": "organism",
+            "targetName": "Neisseria meningitidis"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::8fdad494f6ebc734f2eb05bb74ba92f5b82bbd78f051500e03d7dd408b78b8d5",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "8fdad494f6ebc734f2eb05bb74ba92f5b82bbd78f051500e03d7dd408b78b8d5",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:mycoplasma-pneumoniae",
+            "targetKey": "id:microbiology:organism:mycoplasma-pneumoniae",
+            "targetKind": "organism",
+            "targetName": "Mycoplasma pneumoniae"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::92a049287b20e6a5feb7f6a3b52cbaa93d2d74709cb971babf722a3ef789e7fb",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "92a049287b20e6a5feb7f6a3b52cbaa93d2d74709cb971babf722a3ef789e7fb",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:haemophilus-influenzae",
+            "targetKey": "id:microbiology:organism:haemophilus-influenzae",
+            "targetKind": "organism",
+            "targetName": "Haemophilus influenzae"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::9b16f0c0f225bc673fa3ae5f9dfe554a0fb4f888023f7edb3839a77b5f5da4bc",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "9b16f0c0f225bc673fa3ae5f9dfe554a0fb4f888023f7edb3839a77b5f5da4bc",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:epiglottitis",
+            "targetKind": "disease",
+            "targetName": "Epiglottitis"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::a7324f3d31c85e1e76a344fa859916f0dc3aa8593bf4a5cf5ffedf2b6751988c",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "a7324f3d31c85e1e76a344fa859916f0dc3aa8593bf4a5cf5ffedf2b6751988c",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:diphtheria",
+            "targetKind": "disease",
+            "targetName": "Diphtheria"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::cc02ad87f126b33171d05da110532ecd53e1fba2445af32168a1312473e4cd9e",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "cc02ad87f126b33171d05da110532ecd53e1fba2445af32168a1312473e4cd9e",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:bordetella-pertussis",
+            "targetKey": "id:microbiology:organism:bordetella-pertussis",
+            "targetKind": "organism",
+            "targetName": "Bordetella pertussis"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::ddf3fb6c8678c4e3b703ecb088fc238748b982048d7c8f48df0b828ce64c3726",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "ddf3fb6c8678c4e3b703ecb088fc238748b982048d7c8f48df0b828ce64c3726",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:mumps-virus",
+            "targetKey": "id:microbiology:organism:mumps-virus",
+            "targetKind": "organism",
+            "targetName": "Mumps virus"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::e9ac32de2c0d24cd6539f275b277ae85d73e237ed38bd3bd2128551fd7a91b07",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "e9ac32de2c0d24cd6539f275b277ae85d73e237ed38bd3bd2128551fd7a91b07",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:corynebacterium-diphtheriae",
+            "targetKey": "id:microbiology:organism:corynebacterium-diphtheriae",
+            "targetKind": "organism",
+            "targetName": "Corynebacterium diphtheriae"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::f61c0ae8b12d24ee830c6e80ad274e6f5cc5ea1522948e8d4fb0c4b356f30968",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "f61c0ae8b12d24ee830c6e80ad274e6f5cc5ea1522948e8d4fb0c4b356f30968",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:rubella",
+            "targetKind": "disease",
+            "targetName": "Rubella"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::fc9da21dd1bc4b5e1fde2c1a862e0f3afd35766845231a248deebc6d02498b03",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "fc9da21dd1bc4b5e1fde2c1a862e0f3afd35766845231a248deebc6d02498b03",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:organism:influenza-a-virus",
+            "targetKey": "id:microbiology:organism:influenza-a-virus",
+            "targetKind": "organism",
+            "targetName": "Influenza A virus"
+          },
+          {
+            "id": "microbiology:infection-prevention:droplet-precaution-diseases::related-topic::ff5dc01e83942853dc586a2296df41eec7208ba95739c1c469d02fa81a712874",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "ff5dc01e83942853dc586a2296df41eec7208ba95739c1c469d02fa81a712874",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "No exact canonical destination exists.",
+              "resolutionStrategy": "exact-collection-title",
+              "status": "unresolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "pathologyDiseases",
+            "targetId": "",
+            "targetKey": "collection:pathologyDiseases::title:mumps",
+            "targetKind": "disease",
+            "targetName": "Mumps"
+          }
+        ],
+        "definition": "Quick answer: this card lists conditions associated with Droplet Precautions in healthcare infection-control practice. Droplet Precautions are added to Standard Precautions when close-range respiratory exposure is important and current condition-specific guidance calls for a medical mask and the accompanying source-control and placement measures.",
+        "directTargetId": "microbiology:infection-prevention:droplet-precaution-diseases",
+        "encyclopediaDomains": [
+          "microbiology"
+        ],
+        "encyclopediaSection": "microbiology",
+        "hidden": false,
+        "id": "microbiology:infection-prevention:droplet-precaution-diseases",
+        "microbiology": {
+          "architectureVersion": "ani-microbiology-domain-v4",
+          "browsePath": "infection-prevention-control/transmission-based-precautions",
+          "canonicalOwner": "Microbiology",
+          "classification": {
+            "ipcClass": "transmission-based-precaution"
+          },
+          "entryKind": "infection-prevention-concept",
+          "generatorVersion": "ani-microbiology-generator-v4",
+          "relationshipSchemaVersion": "ani-microbiology-relationships-v3",
+          "reviewStatus": "REVIEWED",
+          "reviewedAt": "2026-08-13",
+          "runtimeCollection": "clinicalReferenceEntries",
+          "schemaVersion": "ani-microbiology-catalog-v4",
+          "sourceEntrySha256": "893da16c96eb159b2492b22b2e721d59736a1707b117dc19f5c656ecc2f0a390",
+          "sourceKeys": [
+            "cdc-diphtheria",
+            "cdc-flu-clinical",
+            "cdc-isolation-appendix-a",
+            "cdc-isolation-precautions",
+            "cdc-meningococcal-infection-control",
+            "cdc-mumps-about",
+            "cdc-mycoplasma",
+            "cdc-pertussis",
+            "cdc-plague",
+            "cdc-rubella-about"
+          ],
+          "taxonomyVersion": "ani-microbiology-taxonomy-v4"
+        },
+        "microbiologyKind": "infection-prevention-concept",
+        "microbiologyRelationships": [
+          {
+            "sourceKeys": [
+              "cdc-diphtheria",
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Diphtheria",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Diphtheria"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-hi-disease",
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Epiglottitis",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Epiglottitis"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-flu-clinical",
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Influenza",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Influenza"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-meningococcal-infection-control"
+            ],
+            "target": {
+              "canonicalTitle": "Meningitis",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Meningitis"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-meningococcal-infection-control"
+            ],
+            "target": {
+              "canonicalTitle": "Meningococcemia",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Meningococcemia"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-mumps-about"
+            ],
+            "target": {
+              "canonicalTitle": "Mumps",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Mumps"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-pertussis"
+            ],
+            "target": {
+              "canonicalTitle": "Pertussis",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Pertussis"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-rubella-about"
+            ],
+            "target": {
+              "canonicalTitle": "Rubella",
+              "targetCollection": "pathologyDiseases",
+              "targetKind": "disease",
+              "targetName": "Rubella"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-precautions"
+            ],
+            "target": {
+              "canonicalTitle": "Droplet precautions",
+              "targetId": "microbiology:infection-prevention:droplet-precautions",
+              "targetKind": "precaution",
+              "targetName": "Droplet precautions"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-pertussis"
+            ],
+            "target": {
+              "canonicalTitle": "Bordetella pertussis",
+              "targetId": "microbiology:organism:bordetella-pertussis",
+              "targetKind": "organism",
+              "targetName": "Bordetella pertussis"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-diphtheria",
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Corynebacterium diphtheriae",
+              "targetId": "microbiology:organism:corynebacterium-diphtheriae",
+              "targetKind": "organism",
+              "targetName": "Corynebacterium diphtheriae"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-hi-disease",
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Haemophilus influenzae",
+              "targetId": "microbiology:organism:haemophilus-influenzae",
+              "targetKind": "organism",
+              "targetName": "Haemophilus influenzae"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-flu-clinical",
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Influenza A virus",
+              "targetId": "microbiology:organism:influenza-a-virus",
+              "targetKind": "organism",
+              "targetName": "Influenza A virus"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-flu-clinical",
+              "cdc-isolation-appendix-a"
+            ],
+            "target": {
+              "canonicalTitle": "Influenza B virus",
+              "targetId": "microbiology:organism:influenza-b-virus",
+              "targetKind": "organism",
+              "targetName": "Influenza B virus"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-mumps-about"
+            ],
+            "target": {
+              "canonicalTitle": "Mumps virus",
+              "targetId": "microbiology:organism:mumps-virus",
+              "targetKind": "organism",
+              "targetName": "Mumps virus"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-mycoplasma"
+            ],
+            "target": {
+              "canonicalTitle": "Mycoplasma pneumoniae",
+              "targetId": "microbiology:organism:mycoplasma-pneumoniae",
+              "targetKind": "organism",
+              "targetName": "Mycoplasma pneumoniae"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-meningococcal-infection-control"
+            ],
+            "target": {
+              "canonicalTitle": "Neisseria meningitidis",
+              "targetId": "microbiology:organism:neisseria-meningitidis",
+              "targetKind": "organism",
+              "targetName": "Neisseria meningitidis"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-rubella-about"
+            ],
+            "target": {
+              "canonicalTitle": "Rubella virus",
+              "targetId": "microbiology:organism:rubella-virus",
+              "targetKind": "organism",
+              "targetName": "Rubella virus"
+            },
+            "type": "related-topic"
+          },
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-plague"
+            ],
+            "target": {
+              "canonicalTitle": "Yersinia pestis",
+              "targetId": "microbiology:organism:yersinia-pestis",
+              "targetKind": "organism",
+              "targetName": "Yersinia pestis"
+            },
+            "type": "related-topic"
+          }
+        ],
+        "name": "Droplet Precaution Diseases",
+        "primaryDomain": "Microbiology",
+        "searchTerms": [
+          "Diseases requiring droplet precautions",
+          "Droplet diseases",
+          "Droplet examples",
+          "Droplet infections",
+          "Droplet isolation diseases",
+          "Droplet Precaution Diseases",
+          "Droplet precaution examples",
+          "Droplet precautions diseases",
+          "Surgical mask isolation diseases"
+        ],
+        "sections": [
+          {
+            "content": "Quick answer: this card lists conditions associated with Droplet Precautions in healthcare infection-control practice. Droplet Precautions are added to Standard Precautions when close-range respiratory exposure is important and current condition-specific guidance calls for a medical mask and the accompanying source-control and placement measures.",
+            "id": "scope",
+            "title": "Scope"
+          },
+          {
+            "content": "Classic high-yield examples include seasonal influenza, pertussis (whooping cough), invasive meningococcal disease such as meningococcemia or meningitis, mumps, and rubella. Start the indicated precautions from the suspected syndrome when waiting for confirmation could expose others.",
+            "id": "indications",
+            "title": "Indications"
+          },
+          {
+            "content": "Other CDC Appendix A examples include pharyngeal diphtheria, Mycoplasma pneumonia, pneumonic plague, and Haemophilus influenzae type b epiglottitis. Disease subtype matters: cutaneous diphtheria uses Contact rather than Droplet Precautions, and bubonic plague uses Standard rather than the pneumonic-plague plan.",
+            "id": "mechanism",
+            "title": "Mechanism"
+          },
+          {
+            "content": "Use a medical mask on room entry under the current plan, add eye or face protection when Standard Precautions call for splash or spray protection, use patient source control during necessary transport, perform hand hygiene, manage respiratory equipment safely, and follow exposure-management guidance when prophylaxis may be needed. Never delay airway support, antibiotics, or resuscitation for routine isolation setup.",
+            "id": "procedure",
+            "title": "Procedure"
+          },
+          {
+            "content": "Droplet Precautions do not replace disease-specific airborne controls, and a surgical mask is not a substitute for a respirator when Airborne Precautions are required. Duration differs by condition and treatment; for example, meningococcal disease is generally covered through the first 24 hours of effective therapy, pertussis through 5 days of effective antibiotics, and mumps through 5 days after swelling begins under CDC Appendix A.",
+            "id": "limitations",
+            "title": "Limitations"
+          },
+          {
+            "content": "NCLEX pattern: influenza, pertussis, meningococcal disease, mumps, and rubella point toward Droplet Precautions. Assess the syndrome, initiate source control promptly, protect close contacts under current guidance, and use the condition-specific discontinuation rule instead of a single memorized duration for all droplet diseases.",
+            "id": "precautions",
+            "title": "Precautions"
+          },
+          {
+            "content": "Reviewed against the current CDC Appendix A condition-specific precaution table, CDC seasonal influenza healthcare guidance, CDC meningococcal infection-control guidance, and CDC Transmission-Based Precautions guidance.",
+            "id": "sources",
+            "title": "Sources"
+          }
+        ],
+        "studentFacing": true,
+        "summary": "Quick answer: this card lists conditions associated with Droplet Precautions in healthcare infection-control practice. Droplet Precautions are added to Standard Precautions when close-range respiratory exposure is important and current condition-specific guidance calls for a medical mask and the accompanying source-control and placement measures.",
+        "type": "microbiology",
+        "typedAliases": [
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Diseases requiring droplet precautions"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Droplet diseases"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Droplet examples"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Droplet infections"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Droplet isolation diseases"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Droplet precaution examples"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Droplet precautions diseases"
+          },
+          {
+            "identity": true,
+            "kind": "common-name",
+            "value": "Surgical mask isolation diseases"
+          }
+        ]
+      },
+      {
+        "abbreviations": [],
+        "aliases": [
           "Droplet isolation"
         ],
         "browse": {
@@ -3833,7 +6598,27 @@
         "canonicalName": "Droplet precautions",
         "category": "Microbiology / Transmission-based precautions",
         "commonMisspellings": [],
-        "crossLinkRecords": [],
+        "crossLinkRecords": [
+          {
+            "id": "microbiology:infection-prevention:droplet-precautions::related-topic::ea62af24d4b92a66a8cf51f8184a9f5e012ab334c0d827ff7a7e7e8d5e15944b",
+            "inverseIndex": "related-from-microbiology",
+            "relationshipGroup": "education-exam",
+            "relationshipIdentitySha256": "ea62af24d4b92a66a8cf51f8184a9f5e012ab334c0d827ff7a7e7e8d5e15944b",
+            "relationshipType": "related-topic",
+            "resolution": {
+              "reason": "Resolved by exact canonical identity.",
+              "resolutionStrategy": "stable-id",
+              "status": "resolved"
+            },
+            "sourceId": "microbiology:infection-prevention:droplet-precautions",
+            "sourceKind": "transmission-based-precaution",
+            "targetCollection": "",
+            "targetId": "microbiology:infection-prevention:droplet-precaution-diseases",
+            "targetKey": "id:microbiology:infection-prevention:droplet-precaution-diseases",
+            "targetKind": "infection-prevention-concept",
+            "targetName": "Droplet Precaution Diseases"
+          }
+        ],
         "definition": "Droplet Precautions are transmission-based measures added to Standard Precautions when respiratory secretions carried over short-range respiratory exposure are an important route and baseline practices alone are insufficient.",
         "directTargetId": "microbiology:infection-prevention:droplet-precautions",
         "encyclopediaDomains": [
@@ -3856,7 +6641,7 @@
           "reviewedAt": "2026-08-01",
           "runtimeCollection": "clinicalReferenceEntries",
           "schemaVersion": "ani-microbiology-catalog-v4",
-          "sourceEntrySha256": "a1b7756f9a7ffa68e43a064439d6fbfc06c8007949837ae098397effb9cd6af5",
+          "sourceEntrySha256": "3d837346b18d617f13921a49416908f6748010901d6dc4b5b520ca4a62934ea7",
           "sourceKeys": [
             "cdc-isolation-precautions",
             "cdc-standard-precautions"
@@ -3864,7 +6649,21 @@
           "taxonomyVersion": "ani-microbiology-taxonomy-v4"
         },
         "microbiologyKind": "infection-prevention-concept",
-        "microbiologyRelationships": [],
+        "microbiologyRelationships": [
+          {
+            "sourceKeys": [
+              "cdc-isolation-appendix-a",
+              "cdc-isolation-precautions"
+            ],
+            "target": {
+              "canonicalTitle": "Droplet Precaution Diseases",
+              "targetId": "microbiology:infection-prevention:droplet-precaution-diseases",
+              "targetKind": "infection-prevention-concept",
+              "targetName": "Droplet Precaution Diseases"
+            },
+            "type": "related-topic"
+          }
+        ],
         "name": "Droplet precautions",
         "primaryDomain": "Microbiology",
         "searchTerms": [
@@ -66856,6 +69655,11 @@
         "key": "cdc-mrsa-clinical",
         "title": "CDC: Clinical Overview of Methicillin-resistant Staphylococcus aureus",
         "url": "https://www.cdc.gov/mrsa/hcp/clinical-overview/index.html"
+      },
+      {
+        "key": "cdc-mrsa-infection-control",
+        "title": "CDC: Infection Control Guidance for MRSA in Healthcare Facilities",
+        "url": "https://www.cdc.gov/mrsa/hcp/infection-control/index.html"
       },
       {
         "key": "cdc-mucormycosis",

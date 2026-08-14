@@ -2014,6 +2014,21 @@ body.lecture-mode-active .voice-status {
   color: var(--pharm-foundation-dark);
 }
 
+#holisticBrowseControls {
+  border-color: color-mix(in srgb, var(--pharm-holistic) 30%, white);
+  background: var(--pharm-holistic-soft);
+}
+
+#holisticBrowseControls label,
+#holisticBrowseControls span {
+  color: var(--pharm-holistic-dark);
+}
+
+#holisticBrowseControls select {
+  border-color: color-mix(in srgb, var(--pharm-holistic) 36%, white);
+  color: var(--pharm-holistic-dark);
+}
+
 #procedureBrowseControls {
   border-color: color-mix(in srgb, var(--pharm-surgery) 30%, white);
   background: var(--pharm-surgery-soft);
@@ -10345,6 +10360,36 @@ body.lane2-experience-open {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
+
+/*
+ * Reader controls share one toolbar across encyclopedia and chat-opened cards.
+ * The encyclopedia's three-column detail pane can be narrower than the viewport,
+ * so respond to the card itself instead of only to viewport/device breakpoints.
+ */
+@container ani-detail-card (max-width: 720px) {
+  .pharm-detail-toolbar {
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  .pharm-detail-toolbar .pharm-voice-controls,
+  .pharm-database-screen.pharm-detail-open .pharm-detail-toolbar .pharm-voice-controls,
+  html[data-device-mode="phone"] .pharm-database-screen.pharm-detail-open .pharm-detail-toolbar .pharm-voice-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .pharm-detail-toolbar .pharm-voice-button {
+    min-width: 0;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+}
+
 [data-ani-feature][hidden] {
   display: none !important;
 }

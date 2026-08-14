@@ -3,7 +3,7 @@
 (function () {
   "use strict";
 
-  const VERSION = "2026-08-12-wave38-clinical-signs-13";
+  const VERSION = "2026-08-13-wave38-clinical-signs-18";
   const GLOBAL_NAME = "ANI_CLINICAL_FRONTIER_WAVE38_CLINICAL_SIGNS";
   if (window[GLOBAL_NAME] && window[GLOBAL_NAME].version === VERSION) return;
 
@@ -128,8 +128,10 @@
     { key: "w38-ncbi-trismus", label: "NCBI Bookshelf/StatPearls: Trismus", url: "https://www.ncbi.nlm.nih.gov/books/NBK493203/", note: "Defines restricted mouth opening and supports infectious, traumatic, joint, medication, radiation, neurologic, tetanus, and malignancy causes; assessment limitations; aspiration; and difficult-airway implications." },
     { key: "w38-merck-dental-evaluation", label: "Merck Manual Professional: Evaluation of the Dental Patient", url: "https://www.merckmanuals.com/professional/dental-disorders/approach-to-the-dental-patient/evaluation-of-the-dental-patient", note: "Supports clinical recognition of trismus and its temporomandibular, pericoronal, inflammatory, ankylotic, tetanus, and peritonsillar causes." },
     { key: "w38-ncbi-deep-neck-infections", label: "NCBI Bookshelf/StatPearls: Deep Neck Infections", url: "https://www.ncbi.nlm.nih.gov/books/NBK513262/", note: "Supports inflammatory involvement of the muscles of mastication, trismus with deep-neck infection, drooling and voice changes, airway compromise, and spread into the mediastinum." },
-    { key: "w38-ncbi-lung-sounds", label: "NCBI Bookshelf/StatPearls: Lung Sounds", url: "https://www.ncbi.nlm.nih.gov/books/NBK537253/", note: "Supports breath-sound intensity, stridor, rhonchi, wheezes, crackles, pleural rubs, acoustic distinctions, mechanisms, and the limits of isolated auscultatory findings." },
+    { key: "w38-ncbi-lung-sounds", label: "NCBI Bookshelf/StatPearls: Lung Sounds", url: "https://www.ncbi.nlm.nih.gov/books/NBK537253/", note: "Supports breath-sound intensity; bronchophony and other vocal-resonance findings; increased sound transmission through dense or consolidated lung, including lobar pneumonia; paired-site comparison; acoustic distinctions; and the limits of isolated auscultatory findings." },
+    { key: "w38-ncbi-egophony-voice-sounds", label: "NCBI Bookshelf/StatPearls: Egophony", url: "https://www.ncbi.nlm.nih.gov/books/NBK518991/", note: "Current professional review that explicitly defines bronchophony as abnormally loud, clear undistorted speech through the chest and supports dense lung, pulmonary consolidation, pneumonia, and a pulmonary mass over a patent bronchus as the clinically relevant interpretation, with whole-examination and imaging correlation." },
     { key: "w38-ncbi-lung-exam", label: "NCBI Bookshelf/StatPearls: Lung Exam", url: "https://www.ncbi.nlm.nih.gov/books/NBK459253/", note: "Supports assessment of absent or diminished breath sounds, stridor timing and localization, rhonchi, pleural rubs, voice-transmission maneuvers, and cause-directed respiratory evaluation." },
+    { key: "w38-ncbi-tension-pneumothorax", label: "NCBI Bookshelf/StatPearls: Tension Pneumothorax", url: "https://www.ncbi.nlm.nih.gov/books/NBK559090/", note: "Supports acute unilateral absent breath sounds with severe respiratory distress, hypotension, cyanosis, jugular venous distention, or ventilator-associated deterioration as a tension-pneumothorax emergency pattern whose treatment must not be delayed for imaging when the patient is unstable." },
     { key: "w38-ncbi-pulmonary-overview", label: "NCBI Bookshelf: An Overview of the Pulmonary System", url: "https://www.ncbi.nlm.nih.gov/books/NBK356/", note: "Supports respiratory examination sequence and the clinical descriptions of rhonchi, stridor, pleural rubs, crackles, wheezes, transmitted voice sounds, and reduced breath-sound intensity." },
     { key: "w38-ncbi-pleural-friction-rub", label: "NCBI Bookshelf/StatPearls: Pleural Friction Rub", url: "https://www.ncbi.nlm.nih.gov/books/NBK537118/", note: "Supports localized biphasic grating pleural sounds, inflamed pleural-surface mechanism, associated conditions, differentiation from crackles, rhonchi, and pericardial rub, and cause-directed imaging and evaluation." },
     { key: "w38-ncbi-vital-sign-assessment", label: "NCBI Bookshelf/StatPearls: Vital Sign Assessment", url: "https://www.ncbi.nlm.nih.gov/books/NBK553213/", note: "Supports age- and context-aware respiratory-rate assessment; definitions and interpretation of tachypnea, bradypnea, apnea, Kussmaul breathing, Cheyne-Stokes respiration, Biot respiration, and orthopnea; and respiratory-rate change as an early deterioration clue." },
@@ -138,7 +140,7 @@
     { key: "w38-ncbi-respiratory-nursing", label: "NCBI Bookshelf/Open RN: Respiratory Assessment", url: "https://www.ncbi.nlm.nih.gov/books/NBK593192/", note: "Supports full-minute respiratory-rate measurement, age and baseline context, focused nursing assessment, and recognition of accessory-muscle use, nasal flaring, retractions, and altered effort as respiratory-difficulty findings." },
     { key: "w38-ncbi-tachypnea", label: "NCBI Bookshelf/StatPearls: Tachypnea", url: "https://www.ncbi.nlm.nih.gov/books/NBK541062/", note: "Supports tachypnea identity, adult and pediatric context, physiologic and pathologic causes, distinction from hyperventilation, associated accessory-muscle use, and cause-directed evaluation." },
     { key: "w38-ncbi-orthopnea", label: "NCBI Bookshelf: Dyspnea, Orthopnea, and Paroxysmal Nocturnal Dyspnea", url: "https://www.ncbi.nlm.nih.gov/books/NBK213/", note: "Defines orthopnea, explains recumbent central-volume redistribution and pulmonary congestion, distinguishes related positional symptoms, and supports cardiac and noncardiac differential assessment." },
-    { key: "w38-merck-pulmonary-evaluation", label: "Merck Manual Professional: Evaluation of the Patient With Pulmonary Issues", url: "https://www.merckmanuals.com/professional/pulmonary-disorders/approach-to-the-pulmonary-patient/evaluation-of-the-patient-with-pulmonary-issues", note: "Supports inspection for tachypnea, abnormal breathing patterns, cyanosis, accessory respiratory-muscle use, retractions, and other signs of respiratory difficulty." },
+    { key: "w38-merck-pulmonary-evaluation", label: "Merck Manual Professional: Evaluation of the Patient With Pulmonary Issues", url: "https://www.merckmanuals.com/professional/pulmonary-disorders/approach-to-the-pulmonary-patient/evaluation-of-the-patient-with-pulmonary-issues", note: "Supports respiratory-difficulty assessment and the interpretation of bronchophony or clearly transmitted voice sounds as evidence of alveolar consolidation, classically from pneumonia, within the complete pulmonary evaluation." },
     { key: "w38-merck-respiratory-arrest", label: "Merck Manual Professional: Overview of Respiratory Arrest", url: "https://www.merckmanuals.com/professional/critical-care-medicine/respiratory-arrest/overview-of-respiratory-arrest", note: "Supports recognition of impending respiratory arrest, tachypnea or bradypnea, accessory-muscle use, tripod positioning, fatigue, altered consciousness, medication-related respiratory depression, and urgent airway and ventilation assessment." },
     { key: "w38-aha-adult-bls", label: "American Heart Association: Adult Basic Life Support", url: "https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/adult-basic-life-support", note: "Supports emergency recognition of unresponsiveness with absent or abnormal gasping breathing, rapid emergency-response activation, pulse assessment by healthcare professionals, and protocol-directed resuscitation." },
     { key: "w38-ncbi-pulse", label: "NCBI Bookshelf: Clinical Methods - Pulse", url: "https://www.ncbi.nlm.nih.gov/books/NBK278/", note: "Supports pulse-amplitude and contour physiology, low- and high-amplitude patterns, water-hammer distinction, and pulsus-alternans technique and interpretation." },
@@ -154,6 +156,8 @@
     { key: "w38-ncbi-pericardial-friction-rub", label: "NCBI Bookshelf/StatPearls: Pericardial Friction Rub", url: "https://www.ncbi.nlm.nih.gov/books/NBK542284/", note: "Defines the high-frequency scratchy pericardial rub, left-sternal and leaning-forward assessment, variable one-to-three-component pattern, intermittent detection, pericarditis association, and important mechanism limitations." },
     { key: "w38-ncbi-pericarditis", label: "NCBI Bookshelf/StatPearls: Pericarditis", url: "https://www.ncbi.nlm.nih.gov/books/NBK431080/", note: "Supports acute-pericarditis presentation, triphasic rub timing, major etiologic contexts, ECG and imaging evaluation, and differentiation from other dangerous chest-pain causes." },
     { key: "w38-merck-pericarditis", label: "Merck Manual Professional: Pericarditis", url: "https://www.merckmanuals.com/professional/cardiovascular-disorders/myocarditis-and-pericarditis/pericarditis", note: "Supports the pericardial rub as an examination criterion integrated with chest pain, ECG, inflammatory markers, and effusion or pericardial imaging rather than used alone." },
+    { key: "w38-ncbi-electrical-alternans", label: "NCBI Bookshelf/StatPearls: Electrical Alternans", url: "https://www.ncbi.nlm.nih.gov/books/NBK534229/", note: "Defines beat-to-beat ECG variation in QRS amplitude, axis, or morphology; supports large pericardial effusion and cardiac tamponade as classic associations, important alternative causes, echocardiographic evaluation, and the limitation that electrical alternans is not independently diagnostic." },
+    { key: "w38-ncbi-cardiac-tamponade", label: "NCBI Bookshelf/StatPearls: Cardiac Tamponade", url: "https://www.ncbi.nlm.nih.gov/books/NBK431090/", note: "Supports obstructive-shock physiology, hypotension with elevated jugular venous pressure and other clinical clues, electrical alternans as a classic but uncommon ECG pattern, echocardiography as preferred bedside imaging, and urgent stabilization and drainage when tamponade is present." },
     { key: "w38-ncbi-petechiae", label: "NCBI Bookshelf/StatPearls: Petechiae", url: "https://www.ncbi.nlm.nih.gov/books/NBK482331/", note: "Supports petechial morphology, mechanisms involving platelets, coagulation, and vascular integrity, and urgent evaluation of rapidly spreading febrile presentations." },
     { key: "w38-ncbi-coagulation-tests", label: "NCBI Bookshelf: Clinical Methods - Coagulation Tests", url: "https://www.ncbi.nlm.nih.gov/books/NBK265/", note: "Connects petechiae, purpura, ecchymoses, and mucosal bleeding to vascular-platelet hemostatic disorders while requiring laboratory confirmation." },
     { key: "w38-ncbi-anemia", label: "NCBI Bookshelf: Clinical Methods - Anemia", url: "https://www.ncbi.nlm.nih.gov/books/NBK254/", note: "Supports careful inspection for pallor and integration with the complete hematologic and systemic examination rather than visual diagnosis alone." },
@@ -321,10 +325,11 @@
     "Halitosis": ["w38-merck-halitosis", "w38-nidcr-dry-mouth", "w38-nursing-assessment"],
     "Drooling": ["w38-ncbi-salivation", "w38-merck-dysphagia", "w38-ncbi-ludwig-angina", "w38-nursing-assessment"],
     "Trismus": ["w38-ncbi-trismus", "w38-merck-dental-evaluation", "w38-ncbi-deep-neck-infections", "w38-nursing-assessment"],
+    "Bronchophony": ["w38-ncbi-lung-sounds", "w38-ncbi-egophony-voice-sounds", "w38-merck-pulmonary-evaluation", "w38-respiratory-exam", "w38-ncbi-physical-exam", "w38-nursing-assessment"],
     "Stridor": ["w38-ncbi-lung-sounds", "w38-ncbi-lung-exam", "w38-ncbi-pulmonary-overview", "w38-nursing-assessment"],
     "Rhonchi": ["w38-ncbi-lung-sounds", "w38-ncbi-lung-exam", "w38-ncbi-pulmonary-overview", "w38-nursing-assessment"],
     "Diminished breath sounds": ["w38-ncbi-lung-sounds", "w38-ncbi-lung-exam", "w38-respiratory-exam", "w38-nursing-assessment"],
-    "Absent breath sounds": ["w38-ncbi-lung-sounds", "w38-ncbi-lung-exam", "w38-respiratory-exam", "w38-nursing-assessment"],
+    "Absent breath sounds": ["w38-ncbi-lung-sounds", "w38-ncbi-lung-exam", "w38-ncbi-tension-pneumothorax", "w38-respiratory-exam", "w38-nursing-assessment"],
     "Pleural friction rub": ["w38-ncbi-pleural-friction-rub", "w38-ncbi-lung-exam", "w38-respiratory-exam", "w38-nursing-assessment"],
     "Apnea": ["w38-ncbi-vital-sign-assessment", "w38-merck-respiratory-arrest", "w38-aha-adult-bls", "w38-ncbi-respiratory-nursing", "w38-nursing-assessment"],
     "Tachypnea": ["w38-ncbi-tachypnea", "w38-ncbi-vital-sign-assessment", "w38-ncbi-respiratory-nursing", "w38-merck-pulmonary-evaluation", "w38-nursing-assessment"],
@@ -344,7 +349,8 @@
     "Cool extremities": ["w38-ncbi-cardiovascular-assessment", "w38-merck-shock", "w38-pmc-peripheral-perfusion", "w38-nursing-assessment"],
     "Heart murmur": ["w38-ncbi-systolic-murmurs", "w38-ncbi-diastolic-murmurs", "w38-merck-cardiac-auscultation", "w38-cardiovascular-exam", "w38-nursing-assessment"],
     "Pericardial friction rub": ["w38-ncbi-pericardial-friction-rub", "w38-ncbi-pericarditis", "w38-merck-pericarditis", "w38-cardiovascular-exam", "w38-nursing-assessment"],
-    "Jugular venous distention": ["w38-ncbi-jvd", "w38-cardiovascular-exam", "w38-merck-evaluation", "w38-nursing-assessment"],
+    "Jugular venous distention": ["w38-ncbi-jvd", "w38-ncbi-cardiac-tamponade", "w38-ncbi-tension-pneumothorax", "w38-cardiovascular-exam", "w38-merck-evaluation", "w38-nursing-assessment"],
+    "Electrical alternans": ["w38-ncbi-electrical-alternans", "w38-ncbi-cardiac-tamponade", "w38-cardiovascular-exam", "w38-nursing-assessment"],
     "Peripheral edema": ["w38-ncbi-edema", "w38-cardiovascular-exam", "w38-merck-evaluation", "w38-nursing-assessment"],
     "Melena": ["w38-ncbi-gi-bleeding", "w38-abdominal-exam", "w38-merck-evaluation", "w38-nursing-assessment"],
     "Hematemesis": ["w38-ncbi-gi-bleeding", "w38-abdominal-exam", "w38-merck-evaluation", "w38-nursing-assessment"],
@@ -631,7 +637,7 @@ Grocco triangle|percussion sign|large unilateral pleural effusion|Percuss the pa
 Ellis-Damoiseau line|percussion sign|free-flowing pleural effusion|Map the upper boundary of percussion dullness with the patient upright|The dullness forms a curved line highest laterally|Pleural pressure and lung recoil distribute free fluid in a meniscus rather than a horizontal bedside boundary|Historical adjunct; imaging is more accurate|Damoiseau-Ellis line;pleural effusion meniscus line|pleural effusion;loculated fluid;hemothorax|Loculation, adhesions, posture, and obesity distort the curve|diaphragmatic elevation;consolidation;mass|Do not use percussion mapping to choose a thoracentesis site without ultrasound
 Traube space dullness|percussion sign|left pleural effusion or splenic enlargement|Percuss the left lower anterior chest over the normal gastric bubble region|Normally tympanitic Traube space becomes dull|Fluid, enlarged spleen, or adjacent solid tissue replaces or displaces the underlying gastric air resonance|Limited adjunct with multiple causes|obliterated Traube space;Traube semilunar space dullness|left pleural effusion;splenomegaly;full stomach|Recent food, obesity, and gastric position cause false positives|splenomegaly;cardiomegaly;gastric distention|Do not confuse this with cardiovascular Traube pistol-shot sound
 Whispered pectoriloquy|auscultatory voice sign|lung consolidation|Ask the patient to whisper a phrase while auscultating symmetric lung fields|Whispered words become unusually clear and distinct|Consolidated lung transmits high-frequency voice vibrations better than normally aerated lung|Current adjunct; imaging confirms cause|whispering pectoriloquy;clear whispered voice sounds|pneumonia;lung compression;cavity|Quiet environment, voice strength, and chest thickness affect detection|atelectasis;fibrosis;thin chest wall|Compare symmetric sites and do not diagnose bacterial pneumonia from voice transmission alone
-Bronchophony|auscultatory voice sign|increased sound transmission through consolidated lung|Ask the patient to repeat a phrase while comparing lung fields|Spoken words sound louder and clearer over one area|Airless dense lung conducts vocal vibrations more efficiently from bronchus to chest wall|Current adjunct|bronchophonic voice sounds;increased vocal resonance|pneumonia;atelectasis;pulmonary fibrosis|It is nonspecific and examiner agreement is imperfect|thin chest wall;cavity;compression|Use the same phrase and volume at paired locations
+Bronchophony|auscultatory voice sign|focal pulmonary consolidation, classically from pneumonia|Ask the patient to repeat the same phrase at a consistent volume while comparing matched lung fields|Spoken words sound unusually loud and clear over one focal area|Normally aerated lung muffles spoken sound, whereas denser consolidated lung transmits vocal vibrations more efficiently from a patent bronchus to the chest wall|Current bedside adjunct; interpret with the complete respiratory assessment and cause-directed testing|bronchophonic voice sounds;increased vocal resonance|Pneumonia;Egophony;Whispered pectoriloquy|The finding is nonspecific, may be absent despite disease, and examiner agreement is imperfect|normal regional voice transmission;thin chest wall;inconsistent voice volume or stethoscope placement|Use the same phrase and volume at paired locations; do not diagnose pneumonia or exclude serious respiratory disease from bronchophony alone
 Egophony|auscultatory voice sign|compressed or consolidated lung, often above pleural fluid|Ask the patient to say “ee” while auscultating|The sound is heard as a nasal “ay”|A thin layer of compressed lung preferentially transmits higher harmonics and filters lower frequencies|Current adjunct|E-to-A change;goat bleat sign|pleural effusion;pneumonia;fibrosis|Technique, accent, and hearing affect interpretation|bronchophony;nasal speech;thin chest wall|Map the change against other findings and ultrasound rather than treating it as a fluid level
 Tactile fremitus increase|palpation sign|lung consolidation connected to a patent bronchus|Place ulnar hands symmetrically on the chest while the patient repeats a low-pitched phrase|Vibration is stronger over a focal region|Dense lung transmits low-frequency vocal vibration better than air-filled alveoli when the airway remains open|Current adjunct|increased vocal fremitus;palpable bronchophony|pneumonia;fibrosis;large superficial mass|Voice pitch, obesity, and hand pressure affect comparison|thin chest wall;atelectasis with patent airway;cavity|Compare matching levels; absolute vibration without symmetry is unreliable
 Tactile fremitus decrease|palpation sign|air or fluid separating lung from chest wall or airway obstruction|Compare vocal vibrations over symmetric lung fields|Vibration is reduced or absent over one region|Pleural air or fluid blocks transmission, while an obstructed bronchus prevents vibration reaching distal lung|Current adjunct|decreased vocal fremitus;absent fremitus|pleural effusion;pneumothorax;obstructive atelectasis|Obesity and weak voice cause diffuse reduction|thick chest wall;poor effort;mainstem obstruction|Combine with percussion and breath sounds to distinguish air from fluid
@@ -647,11 +653,11 @@ Accessory muscle use|observed respiratory-effort sign|increased work of breathin
 Apneustic breathing|observed respiratory pattern|pontine dysfunction|Observe inspiratory and expiratory timing in a neurologically ill patient|Prolonged inspiratory pauses occur before inadequate expiration|Pontine injury disrupts the inspiratory off-switch that normally terminates inhalation|Current grave localization clue but uncommon|apneusis;inspiratory hold breathing|pontine stroke;hypoxic brain injury;drug effect|Ventilator settings and airway obstruction can mimic prolonged inspiration|agonal breathing;breath holding;ventilator dyssynchrony|Treat airway and ventilation first; do not wait for localization
 Paradoxical abdominal breathing|observed breathing sign|diaphragmatic weakness or fatigue|Observe chest and abdominal movement supine and upright|The abdomen moves inward during inspiration instead of outward|Negative intrathoracic pressure pulls a flaccid diaphragm cranially and draws the abdominal wall inward|Current high-priority sign|abdominal paradox;paradoxical diaphragm motion|bilateral diaphragm paralysis;neuromuscular weakness;respiratory fatigue|Obesity, postoperative splinting, and chest-abdominal asynchrony can confuse it|flail chest;upper-airway obstruction;normal infant pattern|Escalate new paradox with dyspnea or falling vital capacity
 See-saw breathing|observed breathing sign|severe airway obstruction or respiratory muscle dysfunction|Observe simultaneous chest and abdominal motion|Chest and abdomen move in opposite directions|Marked negative pressure and uncoordinated muscle recruitment cause thoracoabdominal asynchrony|Current respiratory-distress sign|seesaw respirations;thoracoabdominal paradox|upper-airway obstruction;neuromuscular failure;fatigue|Normal infants can show mild asynchrony and agitation exaggerates it|paradoxical abdominal breathing;flail chest;retractions|Treat airway compromise; do not spend time naming the pattern during deterioration
-Three-point tripod sign|observed posture sign|increased work of breathing|Observe a seated patient who leans forward with hands braced on knees or a surface|The patient fixes the shoulder girdle and cannot comfortably recline|Bracing lets accessory muscles elevate the rib cage more effectively and may improve diaphragmatic mechanics|Current distress clue; nonspecific|tripod position;tripoding|COPD exacerbation;severe asthma;upper-airway obstruction|Pain and fatigue can produce a similar posture|pericarditis posture;abdominal pain;back pain|Do not force the patient supine; assess airway, speech, oxygenation, and fatigue
+Three-point tripod sign|observed posture sign|increased work of breathing|Observe a seated patient who leans forward with hands braced on knees or a surface|The patient fixes the shoulder girdle and cannot comfortably recline|Bracing lets accessory muscles elevate the rib cage more effectively and may improve diaphragmatic mechanics|Current distress clue; nonspecific|tripod position;tripoding|COPD exacerbation;severe asthma;upper-airway obstruction|Pain and fatigue can produce a similar posture|pericarditis posture;abdominal pain;back pain|Do not force the patient supine; assess airway, speech, oxygenation, and fatigue. Promptly escalate spontaneous tripod positioning when it accompanies respiratory distress, stridor, reduced air movement, hypoxemia, altered consciousness, or worsening fatigue because these can signal respiratory decompensation
 Pursed-lip breathing sign|observed breathing behavior|expiratory flow limitation|Observe exhalation during rest or exertion|The patient exhales slowly through narrowed lips|Mild expiratory back-pressure splints small airways open and slows dynamic collapse|Current adaptive finding|pursed lip respiration;PLB|COPD;emphysema;dyspnea|It can be taught voluntarily and is not diagnostic of COPD|anxiety breathing;learned breathing exercise;heart failure|Document whether it is spontaneous and whether distress is worsening despite it
 Intercostal retraction|observed respiratory sign|marked negative intrathoracic pressure from airway obstruction or low compliance|Inspect intercostal spaces during quiet breathing|Soft tissue pulls inward between ribs on inspiration|High inspiratory pressure is transmitted to compliant chest-wall tissues when airflow or lung expansion is impaired|Current respiratory-distress sign|intercostal indrawing;chest retractions|croup;asthma;bronchiolitis|Thin children show motion more easily; severe fatigue may make retractions disappear|pectus deformity;paradoxical motion;normal infant breathing|Loss of retractions with declining effort can signal exhaustion rather than improvement
 Suprasternal retraction|observed respiratory sign|upper-airway obstruction or severe inspiratory effort|Inspect the suprasternal notch during breathing|The notch retracts inward on inspiration|Large negative inspiratory pressure pulls compliant tissue inward above the sternum|Current urgent distress sign|suprasternal tugging;tracheal tug retraction|croup;foreign body;severe asthma|Neck anatomy and crying affect appearance|tracheomalacia;normal infant soft tissue;Campbell sign|Assess stridor and airway immediately; do not confuse retraction with pulse-synchronous tracheal tug
-Nasal flaring|observed respiratory sign|increased work of breathing, especially in infants|Observe nostril movement during inspiration|The nares widen repeatedly with breathing|Dilating the nasal valves reduces upper-airway resistance during high ventilatory demand|Current early distress sign|nasal flare;flaring nostrils|bronchiolitis;pneumonia;neonatal respiratory distress|Crying and agitation can cause transient flaring|nasal obstruction;normal crying;fever tachypnea|Trend with feeding, grunting, retractions, oxygenation, and fatigue
+Nasal flaring|observed respiratory sign|increased work of breathing, especially in infants|Observe nostril movement during inspiration|The nares widen repeatedly with breathing|Dilating the nasal valves reduces upper-airway resistance during high ventilatory demand|Current early distress sign|nasal flare;flaring nostrils|bronchiolitis;pneumonia;neonatal respiratory distress|Crying and agitation can cause transient flaring|nasal obstruction;normal crying;fever tachypnea|Trend with feeding, grunting, retractions, oxygenation, and fatigue. Promptly notify the responsible clinician when persistent nasal flaring accompanies respiratory distress, worsening dyspnea, hypoxemia, reduced alertness, or fatigue
 Expiratory grunting|observed and audible respiratory sign|alveolar collapse risk in infants or severe pulmonary edema|Listen for a short low sound at end-expiration|The patient partially closes the glottis and produces a grunt|Glottic braking raises end-expiratory pressure to preserve functional residual capacity and keep alveoli open|Current high-priority distress sign|grunting respirations;expiratory grunt|neonatal respiratory distress;pneumonia;pulmonary edema|Pain and vocalization can mimic grunting|breath holding;moaning;upper-airway sound|In infants, persistent grunting needs prompt respiratory evaluation
   `);
 
@@ -1192,12 +1198,12 @@ Nocturia|patient-reported nighttime voiding symptom|nocturnal or global excess u
   const statusExplanation = (spec) => {
     const status = clean(spec.status).toLowerCase();
     if (/historical|outdated|obsolete|unreliable/.test(status)) {
-      return `${spec.status}. This finding is retained because learners still encounter its name, but it must not confirm or exclude ${spec.associated}. Use contemporary history, examination, and objective testing instead.`;
+      return `${spec.status}. ${spec.name} remains searchable because learners still encounter the term, but it cannot confirm or exclude ${spec.associated}. Apply the reviewed limitation for ${spec.name}: ${sentence(spec.limitations)}`;
     }
     if (/limited|adjunct/.test(status)) {
-      return `${spec.status}. It can change pretest probability or localization when performed correctly, but it is not a stand-alone diagnosis and does not replace definitive testing when stakes are high.`;
+      return `${spec.status}. When performed as described, ${spec.name} can adjust concern for ${spec.associated}, but it is not a stand-alone diagnosis. Apply the reviewed limitation for ${spec.name}: ${sentence(spec.limitations)}`;
     }
-    return `${spec.status || "Current adjunctive finding"}. Interpret it as one part of a complete assessment, because technique, timing, disease stage, and patient factors affect reproducibility.`;
+    return `${spec.status || "Current adjunctive finding"}. Interpret ${spec.name} in the assessment context defined for this card because its reviewed limitation is topic-specific: ${sentence(spec.limitations)}`;
   };
 
   const typeForKind = (kindValue) => {
@@ -1445,6 +1451,70 @@ Nocturia|patient-reported nighttime voiding symptom|nocturnal or global excess u
         Object.freeze({ term: "cardiac tamponade", plainLanguage: "dangerous pressure around the heart that prevents normal filling and lowers blood flow", sourceKeys: ["w38-ncbi-pericarditis", "w38-merck-pericarditis"] })
       ])
     }),
+    "jugular venous distention": Object.freeze({
+      definition: "Jugular venous distention (JVD) is visible elevation of the internal jugular venous column when the patient is positioned so the top of the waveform can be assessed. It reflects elevated right-atrial or central venous pressure rather than a diagnosis by itself.",
+      plainLanguage: "The neck veins look abnormally full because pressure is backing up on the right side of the heart.",
+      whyItMatters: "The JVD finding indicates elevated right-sided filling pressure. Heart failure or other venous congestion is common, but cardiac tamponade, tension pneumothorax, massive pulmonary embolism, pulmonary hypertension, or another right-heart problem may produce the same sign. JVD does not prove simple fluid overload, so the surrounding cardiopulmonary and perfusion pattern determines urgency.",
+      associatedConditions: Object.freeze(["Right-sided heart failure", "Heart failure", "Cardiac tamponade", "Tension pneumothorax", "Pulmonary embolism"]),
+      clinicalInterpretation: "JVD supports elevated right-atrial pressure. JVD with edema, weight gain, orthopnea, crackles, or ascites strengthens concern for systemic or cardiac congestion; JVD with hypotension, severe dyspnea, chest pain, muffled heart sounds, unilateral absent breath sounds, or shock raises concern for obstructive physiology and requires emergency assessment.",
+      diagnosticUsefulness: "The evaluating clinician commonly integrates the finding with electrocardiography, echocardiography, chest imaging, and cause-directed laboratory testing. The nurse supports ordered evaluation while trending hemodynamics, oxygenation, perfusion, urine output, weight, and intake and output; no single JVD observation identifies the cause or determines a fluid plan.",
+      evidenceLimitations: "Body position, positive-pressure ventilation, obesity, a short neck, low circulating volume, superior vena cava obstruction, and confusion with the carotid or external jugular vein can distort interpretation. JVD estimates right-sided pressure and does not directly measure total-body fluid, left-sided filling pressure, or cardiac output; its absence does not exclude heart failure, tamponade, pulmonary embolism, or shock.",
+      falsePositiveSituations: "The external jugular vein, carotid pulsation, neck muscle or tendon, patient rotation, and a position that is too flat can look like JVD. Confirm the internal-jugular venous waveform and reassess at an appropriate angle rather than labeling every prominent neck vessel as elevated pressure.",
+      falseNegativeSituations: "Poor lighting, obesity, a short neck, an angle that is too upright, hypovolemia, or an obscured waveform can hide elevated right-sided pressure. A normal-appearing neck examination must not override shock, respiratory distress, or other strong evidence of decompensation.",
+      safetyPrecautions: "Position the patient only as breathing and hemodynamic status allow, avoid compressing both sides of the neck, and do not delay stabilization to obtain a perfect waveform measurement. JVD with shock or respiratory compromise requires immediate focused assessment rather than repeated neck-vein examination.",
+      nursingRelevance: "Confirm position and the internal-jugular waveform, then assess blood pressure, heart rate and rhythm, respiratory rate and effort, oxygen saturation, chest pain, heart and lung sounds, peripheral edema, weight and fluid-balance trend, skin perfusion, mental status, and urine output. Compare with baseline, document the observed height or degree in the actual position, and promptly communicate a new or worsening pattern.",
+      documentationGuidance: "Document patient angle and position, the vein and side observed, the highest visible venous pulsation or a clear descriptive finding, respiratory phase, related heart and lung findings, edema, oxygenation, blood pressure, perfusion, symptoms, fluid trend, and change from baseline. Do not chart only 'JVD positive.'",
+      urgentEscalation: "Activate urgent or emergency response when new marked JVD accompanies hypotension, severe dyspnea, hypoxemia, chest pain, syncope, altered mental status, cool poor perfusion, unilateral absent breath sounds, muffled heart sounds, or other shock findings. Stabilization and cause-directed evaluation take priority over proving one diagnosis at the bedside.",
+      commonPitfalls: "Do not equate JVD with total-body fluid overload, assume a flat neck vein excludes dangerous disease, confuse the carotid pulse with a venous waveform, or use JVD alone to choose fluids or diuresis. Interpret right-sided pressure together with perfusion, lung findings, the clinical setting, and ordered testing.",
+      plainLanguageGlosses: Object.freeze([
+        Object.freeze({ term: "right-atrial pressure", plainLanguage: "pressure in the heart chamber that receives blood returning from the body", sourceKeys: ["w38-ncbi-jvd"] }),
+        Object.freeze({ term: "central venous pressure", plainLanguage: "pressure in the large veins near the right side of the heart", sourceKeys: ["w38-ncbi-jvd"] }),
+        Object.freeze({ term: "obstructive physiology", plainLanguage: "a pattern in which pressure or blockage prevents the heart from filling or moving blood normally", sourceKeys: ["w38-ncbi-cardiac-tamponade", "w38-ncbi-tension-pneumothorax"] })
+      ]),
+      sections: Object.freeze([
+        Object.freeze({ label: "Definition", text: "Jugular venous distention is visible elevation of the internal jugular venous column in an appropriate position. It reflects elevated right-atrial or central venous pressure." }),
+        Object.freeze({ label: "What it means clinically", text: "Think elevated right-sided filling pressure. Heart failure and systemic venous congestion are common explanations, but tamponade, tension pneumothorax, massive pulmonary embolism, pulmonary hypertension, and other right-heart problems are important alternatives. JVD is not synonymous with simple fluid overload." }),
+        Object.freeze({ label: "Pattern recognition", text: "JVD plus edema, weight gain, orthopnea, crackles, or ascites strengthens concern for congestion. JVD plus hypotension, severe dyspnea, chest pain, muffled heart sounds, unilateral absent breath sounds, syncope, or poor perfusion raises concern for obstructive shock and changes the urgency." }),
+        Object.freeze({ label: "Nursing assessment and next steps", text: "Verify position and a venous rather than carotid waveform. Assess blood pressure, rhythm, breathing, oxygenation, chest pain, heart and lung sounds, edema, weight and fluid-balance trend, perfusion, mental status, and urine output. Document the actual observation and promptly communicate a new or worsening pattern." }),
+        Object.freeze({ label: "Likely diagnostic evaluation", text: "Cause-directed evaluation may include electrocardiography, echocardiography, chest imaging, and selected laboratory testing. The nurse supports ordered testing while continuing cardiopulmonary and perfusion reassessment; JVD alone does not choose a diagnosis, fluid bolus, or diuretic plan." }),
+        Object.freeze({ label: "Red flags and escalation", text: "Marked JVD with hypotension, severe dyspnea, hypoxemia, chest pain, syncope, altered mental status, cool poor perfusion, unilateral absent breath sounds, muffled heart sounds, or other shock findings requires urgent or emergency escalation." }),
+        Object.freeze({ label: "Mechanism: why it happens", text: "The internal jugular vein communicates closely with the right atrium. When right-atrial pressure rises, that pressure is transmitted backward into the jugular venous column, making it visible higher in the neck." }),
+        Object.freeze({ label: "Limits: what JVD does not prove", text: "JVD does not prove total-body fluid excess, left-sided heart failure, or one obstructive cause. Position, ventilation, body habitus, venous obstruction, and examination technique affect the finding, and absence does not rule out serious disease." }),
+        Object.freeze({ label: "Documentation", text: "Record patient angle, vein and side, highest visible pulsation or descriptive degree, respiratory phase, related vital signs and examination findings, fluid trend, symptoms, and change from baseline rather than only 'JVD positive.'" })
+      ])
+    }),
+    "electrical alternans": Object.freeze({
+      definition: "Electrical alternans is an electrocardiographic pattern in which the amplitude, axis, or shape of the QRS complex changes from beat to beat; P- or T-wave alternation may also occur. It is an ECG finding, not a diagnosis.",
+      plainLanguage: "The ECG complexes repeatedly switch between two sizes, directions, or shapes from one heartbeat to the next.",
+      whyItMatters: "Electrical alternans is classically associated with a large pericardial effusion that lets the heart swing within the fluid-filled sac, and it can appear with cardiac tamponade. The pattern is uncommon and nonspecific: arrhythmias, ischemia, advanced heart failure, respiratory variation, or artifact can also cause alternation, so the patient and tracing require prompt evaluation rather than an automatic tamponade label.",
+      associatedConditions: Object.freeze(["Pericardial effusion", "Cardiac tamponade", "Supraventricular tachycardia"]),
+      clinicalInterpretation: "Electrical alternans plus dyspnea, tachycardia, hypotension, elevated jugular venous pressure, muffled heart sounds, pulsus paradoxus, low-voltage QRS complexes, syncope, or poor perfusion strengthens concern for a hemodynamically important pericardial effusion or tamponade. A stable patient without that pattern still needs tracing verification and cause-directed evaluation.",
+      diagnosticUsefulness: "First verify a technically adequate 12-lead ECG and compare sequential complexes across multiple leads. When pericardial effusion or tamponade is suspected, echocardiography is the preferred bedside imaging evaluation; rhythm analysis, prior tracings, clinical examination, and other testing help identify alternative causes.",
+      evidenceLimitations: "Electrical alternans is neither sensitive nor diagnostic for pericardial effusion or tamponade and may be absent even in severe disease. Loose electrodes, motion, respiratory variation, ectopy, bigeminy, and tachyarrhythmia-related alternation can mimic the pattern, while a short tracing can miss intermittent alternation.",
+      falsePositiveSituations: "Loose or poorly placed electrodes, motion artifact, alternating premature beats, bigeminy, marked respiratory variation, and some supraventricular or ventricular tachyarrhythmias can produce pseudoalternans. Confirm repeatable beat-to-beat change in more than one appropriate lead and correlate it with rhythm and patient movement.",
+      falseNegativeSituations: "Alternation can be subtle, intermittent, limited to selected leads, or absent despite a large effusion or tamponade. A nondiagnostic ECG must not override hypotension, jugular venous distention, dyspnea, pulsus paradoxus, or other evidence of obstructive shock.",
+      safetyPrecautions: "Obtain and verify the ECG without delaying airway, breathing, or circulation support. Keep an unstable patient on continuous monitoring, minimize unnecessary exertion, and escalate suspected tamponade or malignant dysrhythmia immediately rather than waiting for a textbook alternans pattern.",
+      nursingRelevance: "Assess blood pressure, heart rate and rhythm, oxygen saturation, respiratory effort, chest discomfort, jugular venous pressure, heart sounds, mental status, skin perfusion, and urine output. Verify lead contact and tracing quality, compare prior ECGs when available, preserve the rhythm strip, maintain monitoring, and notify the responsible clinician promptly.",
+      documentationGuidance: "Document the leads and complexes showing alternation, rhythm and rate, tracing quality, associated low voltage or ectopy, symptoms, vital signs, perfusion, jugular venous and heart-sound findings, comparison with prior ECGs, notifications, and the patient's subsequent evaluation and response.",
+      urgentEscalation: "Treat electrical alternans with hypotension, severe dyspnea, syncope, altered mental status, chest pain, marked jugular venous distention, muffled heart sounds, rapidly worsening perfusion, or unstable dysrhythmia as an emergency pattern. Activate the appropriate response and support circulation while urgent echocardiographic and cause-directed evaluation proceeds.",
+      commonPitfalls: "Do not confuse electrical alternans with pulsus alternans, which is alternating mechanical pulse strength, or with bigeminy and artifact. Do not diagnose tamponade from one ECG feature or wait for electrical alternans before escalating a clinically unstable suspected tamponade.",
+      plainLanguageGlosses: Object.freeze([
+        Object.freeze({ term: "pericardial effusion", plainLanguage: "fluid collecting in the sac around the heart", sourceKeys: ["w38-ncbi-electrical-alternans", "w38-ncbi-cardiac-tamponade"] }),
+        Object.freeze({ term: "cardiac tamponade", plainLanguage: "pressure from fluid around the heart that prevents normal filling and lowers blood flow", sourceKeys: ["w38-ncbi-electrical-alternans", "w38-ncbi-cardiac-tamponade"] }),
+        Object.freeze({ term: "pseudoalternans", plainLanguage: "an alternating-looking ECG pattern caused by artifact, ectopy, or another mimic rather than the classic swinging-heart mechanism", sourceKeys: ["w38-ncbi-electrical-alternans"] })
+      ]),
+      sections: Object.freeze([
+        Object.freeze({ label: "Definition", text: "Electrical alternans is beat-to-beat change in the amplitude, axis, or shape of ECG complexes, most often the QRS complex. It is an ECG pattern, not a diagnosis." }),
+        Object.freeze({ label: "What it means clinically", text: "A large pericardial effusion with a swinging heart is the classic association, and tamponade must be considered. Electrical alternans is uncommon and nonspecific, so arrhythmia, ischemia, advanced heart failure, respiratory variation, and artifact remain alternatives." }),
+        Object.freeze({ label: "Pattern recognition", text: "Electrical alternans together with dyspnea, tachycardia, hypotension, jugular venous distention, muffled heart sounds, pulsus paradoxus, low-voltage QRS complexes, syncope, or poor perfusion makes hemodynamically important effusion or tamponade more concerning." }),
+        Object.freeze({ label: "Nursing assessment and next steps", text: "Assess hemodynamics, rhythm, breathing, oxygenation, chest symptoms, jugular venous pressure, heart sounds, mental status, perfusion, and urine output. Verify electrode contact and tracing quality, preserve the strip, maintain monitoring, compare prior ECGs when available, and promptly notify the responsible clinician." }),
+        Object.freeze({ label: "Likely diagnostic evaluation", text: "Confirm the pattern on a technically adequate 12-lead ECG across multiple leads. Echocardiography is the preferred bedside imaging test when pericardial effusion or tamponade is suspected; rhythm analysis and cause-directed evaluation identify alternative explanations." }),
+        Object.freeze({ label: "Red flags and escalation", text: "Hypotension, severe dyspnea, syncope, altered mental status, chest pain, marked jugular venous distention, muffled heart sounds, rapidly worsening perfusion, or an unstable dysrhythmia requires emergency escalation and stabilization while urgent evaluation proceeds." }),
+        Object.freeze({ label: "Mechanism: why it happens", text: "In a large effusion, the heart can swing within the fluid-filled pericardial sac. Its changing position relative to the ECG electrodes changes the recorded electrical vector from beat to beat." }),
+        Object.freeze({ label: "Limits: what electrical alternans does not prove", text: "The finding does not diagnose pericardial effusion or tamponade and its absence does not exclude either. Artifact, ectopy, bigeminy, respiratory variation, and tachyarrhythmias can mimic it; the patient, tracing, and echocardiographic findings must agree." }),
+        Object.freeze({ label: "Key distinction", text: "Electrical alternans is beat-to-beat change on the ECG. Pulsus alternans is alternating strong and weak mechanical pulse amplitude and more often points toward severe ventricular dysfunction." })
+      ])
+    }),
     "apnea": Object.freeze({
       definition: "Apnea is an observed respiratory-cessation sign in which effective airflow stops. Chest movement may also stop, or obstructed effort may continue without moving air.",
       plainLanguage: "Apnea means effective breathing has stopped.",
@@ -1533,6 +1603,42 @@ Nocturia|patient-reported nighttime voiding symptom|nocturnal or global excess u
         Object.freeze({ term: "nares", plainLanguage: "the nostril openings", sourceKeys: ["w38-ncbi-respiratory-nursing"] })
       ])
     }),
+    "bronchophony": Object.freeze({
+      definition: "Bronchophony is an abnormal vocal-resonance finding heard with a stethoscope: while the patient speaks normally, the words sound unusually loud and clear over one focal chest area compared with the matching area on the other side.",
+      plainLanguage: "With bronchophony, spoken words sound much clearer and louder through one part of the chest than through the matching area on the other side.",
+      whyItMatters: "Bronchophony suggests that normally air-filled lung has become denser, which raises concern for focal pulmonary consolidation. Pneumonia is a major classic cause, but bronchophony supports suspicion rather than proving the diagnosis.",
+      plainLanguageGlosses: Object.freeze([
+        Object.freeze({ term: "vocal resonance", plainLanguage: "how a patient's spoken voice travels through the lungs to the stethoscope", sourceKeys: ["w38-ncbi-lung-sounds", "w38-ncbi-egophony-voice-sounds", "w38-merck-pulmonary-evaluation"] }),
+        Object.freeze({ term: "pulmonary consolidation", plainLanguage: "a lung region made denser when its air spaces fill with material such as inflammatory fluid", sourceKeys: ["w38-ncbi-lung-sounds", "w38-ncbi-egophony-voice-sounds", "w38-merck-pulmonary-evaluation"] })
+      ]),
+      associatedConditions: Object.freeze(["Pulmonary consolidation", "Pneumonia", "Pulmonary mass over a patent bronchus"]),
+      clinicalInterpretation: "Bronchophony raises concern for focal pulmonary consolidation because denser lung transmits spoken sound better than normally aerated lung. Pneumonia is the major classic association. A pulmonary mass over a patent bronchus is another documented cause of increased transmission. The finding is not diagnostic by itself.",
+      diagnosticUsefulness: "Suspicion for pneumonia or another consolidative process becomes stronger when bronchophony is focal and occurs with fever, cough, sputum, dyspnea, hypoxemia, focal crackles or bronchial breath sounds, increased tactile fremitus, and dullness to percussion. The nurse should compare matched lung fields and assess the whole respiratory pattern; diagnostic evaluation commonly includes chest imaging and cause-directed testing selected by the responsible clinician.",
+      evidenceLimitations: "Bronchophony has variable sensitivity and examiner agreement. Voice strength, background noise, stethoscope position, body habitus, lesion depth, airway patency, and pleural fluid can change what is heard. Its presence does not prove pneumonia, and its absence does not exclude pneumonia, pulmonary consolidation, or respiratory deterioration.",
+      differentialDiagnoses: Object.freeze(["Pneumonia-related pulmonary consolidation", "Pulmonary mass over a patent bronchus"]),
+      falsePositiveSituations: "Normal regional voice transmission, a thin chest wall, inconsistent phrase volume, background noise, or unmatched stethoscope placement can make one site seem abnormally loud. Repeat the same phrase at paired locations and interpret the result with the rest of the examination.",
+      falseNegativeSituations: "A weak voice, noisy setting, thick chest wall, a small or deep lesion, an obstructed bronchus, or intervening pleural fluid can obscure abnormal transmission. Absent bronchophony must not be used to rule out pneumonia or consolidation.",
+      safetyPrecautions: "Bronchophony assessment is noninvasive. Position the patient as respiratory status allows, compare matched sites using the same phrase and volume, and stop unnecessary testing if speaking or repositioning worsens dyspnea, hypoxemia, pain, fatigue, or instability. Immediate respiratory support takes priority over completing the maneuver.",
+      nursingRelevance: "Assess respiratory rate and pattern, work of breathing, oxygen saturation, temperature, hemodynamic status, mental status, cough and sputum, and other focal chest findings. Compare both sides, document the exact location and associated findings, trend change from baseline, and notify the responsible clinician when bronchophony is new or supports a concerning respiratory pattern.",
+      documentationGuidance: "Document the phrase used, patient position, exact chest location, side-to-side comparison, whether words were unusually loud and clear, breath sounds, percussion or fremitus findings when assessed, respiratory rate and effort, oxygenation, temperature, symptoms, and change from baseline. Do not chart only 'bronchophony positive.'",
+      urgentEscalation: "Escalate promptly when bronchophony accompanies fever with clinical deterioration, new or worsening hypoxemia, severe dyspnea, marked work of breathing, cyanosis, inability to speak normally, altered mental status, hypotension, or other instability. Activate the appropriate emergency response for respiratory failure or shock rather than waiting for chest imaging or a repeat voice-sound examination.",
+      commonPitfalls: "Do not equate bronchophony with pneumonia, assume every louder voice sound is pathologic, or use an absent finding to exclude disease. Keep bronchophony distinct from egophony, in which an 'ee' sound changes toward 'ay,' and whispered pectoriloquy, in which whispered words become abnormally clear.",
+      sections: Object.freeze([
+        Object.freeze({ label: "Definition", text: "Bronchophony is an abnormal vocal-resonance finding: spoken words sound unusually loud and clear over one focal lung region compared with the matching site on the other side." }),
+        Object.freeze({ label: "What it means clinically", text: "Bronchophony suggests increased sound transmission through denser lung and should prompt concern for focal pulmonary consolidation. Pneumonia is the major classic cause, but the finding supports a clinical suspicion and does not establish a diagnosis." }),
+        Object.freeze({ label: "Major causes and pattern recognition", text: "Pneumonia becomes more concerning when focal bronchophony occurs with fever, cough, sputum, dyspnea, hypoxemia, focal crackles or bronchial breath sounds, increased tactile fremitus, and dullness to percussion. A pulmonary mass over a patent bronchus is another documented cause of increased voice transmission; the cause depends on the complete clinical context." }),
+        Object.freeze({ label: "How to assess it", text: "Ask the patient to repeat the same phrase at a consistent volume while auscultating matched lung fields from side to side. A focal area where the words become distinctly louder and clearer is the positive finding; note the exact location rather than recording only 'positive.'" }),
+        Object.freeze({ label: "Nursing assessment and next steps", text: "Assess respiratory rate and pattern, work of breathing, oxygen saturation, temperature, hemodynamic status, mental status, cough and sputum, breath sounds, and other focal chest findings. Compare both sides, trend the finding, document the pattern, and communicate a new or concerning change to the responsible clinician." }),
+        Object.freeze({ label: "Likely diagnostic evaluation", text: "The evaluating clinician commonly correlates the finding with chest imaging and cause-directed testing, such as infection evaluation when pneumonia is suspected. The nurse prepares for and supports ordered testing while continuing respiratory reassessment; bronchophony does not independently determine the cause or the treatment." }),
+        Object.freeze({ label: "Red flags and escalation", text: "New or worsening hypoxemia, severe dyspnea, marked work of breathing, cyanosis, inability to speak normally, altered mental status, hypotension, or other instability requires urgent escalation. Activate emergency response for respiratory failure or shock instead of delaying care to repeat the maneuver or await imaging." }),
+        Object.freeze({ label: "Mechanism: why it happens", text: "Normally aerated lung muffles spoken sounds. When air spaces become filled and the lung becomes denser, vocal vibrations can travel more efficiently from a patent bronchus to the chest wall, so words sound unusually loud and clear." }),
+        Object.freeze({ label: "Limits: what bronchophony does not prove", text: "Bronchophony is not diagnostic of pneumonia or any single disease. Examiner agreement and sensitivity vary, and the finding may be absent despite consolidation. Interpret it with symptoms, vital signs, the rest of the respiratory examination, and cause-directed testing." }),
+        Object.freeze({ label: "False-positive and false-negative situations", text: "Normal regional variation, thin chest wall, inconsistent voice volume, noise, or unmatched stethoscope placement can mimic increased transmission. Weak voice, thick chest wall, a small or deep lesion, blocked bronchus, or pleural fluid can hide it. Repeat paired comparisons when safe, but never use one result to rule disease in or out." }),
+        Object.freeze({ label: "Documentation", text: "Record the phrase, patient position, exact location, side-to-side comparison, word clarity and loudness, associated breath sounds and respiratory findings, oxygenation, symptoms, and change from baseline." }),
+        Object.freeze({ label: "Related findings", text: "Correlate bronchophony with tactile fremitus, percussion tone, bronchial breath sounds, crackles, egophony, whispered pectoriloquy, and chest imaging rather than treating it as an isolated diagnosis." }),
+        Object.freeze({ label: "Alternative names and distinctions", text: "Search terms include bronchophonic voice sounds and increased vocal resonance. Bronchophony is louder, clearer normal speech; egophony is an 'ee'-to-'ay' quality change; whispered pectoriloquy is unusually clear whispered speech." })
+      ])
+    }),
     "stridor": Object.freeze({
       definition: "Stridor is a harsh, usually high-pitched breathing sound produced when air passes through a narrowed upper airway, most often the larynx or upper trachea.",
       plainLanguage: "Stridor is a loud harsh sound from the throat or upper airway, usually heard while breathing in.",
@@ -1561,9 +1667,33 @@ Nocturia|patient-reported nighttime voiding symptom|nocturnal or global excess u
     "absent breath sounds": Object.freeze({
       definition: "Absent breath sounds means no respiratory sound can be heard over a chest region after adequate breathing effort, correct stethoscope placement, and equipment function have been confirmed.",
       plainLanguage: "No air movement can be heard in part of the chest even after the examiner checks the technique.",
-      whyItMatters: "New unilateral absent breath sounds can signal a collapsed lung, tension pneumothorax, major airway blockage, large pleural effusion, or misplaced airway device. When accompanied by hypoxemia or shock, assessment and treatment cannot wait.",
+      whyItMatters: "The finding of new unilateral absent breath sounds raises concern for loss of airflow or sound transmission in one lung region. Tension pneumothorax, major airway obstruction, mainstem intubation or another airway-device problem, lung collapse, and a large pleural effusion are important causes. When the finding occurs with hypoxemia, hypotension, sudden chest pain, rising ventilator pressure, or rapid deterioration, emergency assessment and treatment cannot wait for imaging.",
+      associatedConditions: Object.freeze(["Tension pneumothorax", "Pneumothorax", "Airway obstruction", "Atelectasis", "Pleural effusion"]),
+      clinicalInterpretation: "A new one-sided absence is more concerning than a chronic diffuse reduction. Unilateral absent sounds with sudden dyspnea, hypotension, severe hypoxemia, asymmetric expansion, hyperresonance, tracheal shift, subcutaneous air, or a sudden rise in ventilator pressure supports tension pneumothorax; a recent airway procedure or unequal expansion should also prompt immediate assessment of airway-device position and obstruction.",
+      diagnosticUsefulness: "Rapid bedside assessment must first identify instability and reversible airway or equipment problems. In a stable patient, cause-directed evaluation may include bedside lung ultrasound, chest imaging, and review of airway-device depth or bronchoscopy when ordered. Suspected tension pneumothorax in an unstable patient is treated clinically and must not be delayed for imaging.",
+      evidenceLimitations: "Auscultation alone cannot determine whether pleural air, pleural fluid, collapse, obstruction, device position, very shallow breathing, body habitus, noise, or equipment caused the quiet region. Severe obstructive disease can also produce a dangerously quiet chest without one completely silent side, so an apparently normal or equivocal comparison does not exclude respiratory failure.",
+      falsePositiveSituations: "Poor stethoscope contact, listening over clothing, a faulty or obstructed stethoscope, loud surroundings, very shallow effort, obesity, and an incorrect comparison site can create a false impression of absent air entry. Verify technique and equipment quickly, but do not repeatedly recheck while the patient deteriorates.",
+      falseNegativeSituations: "Transmitted sounds from the opposite lung, noisy ventilation, a partial rather than complete loss of airflow, or a small/deep abnormal region can obscure asymmetry. A weakly audible sound does not make severe pneumothorax, obstruction, atelectasis, or effusion safe when the rest of the pattern is concerning.",
+      safetyPrecautions: "Keep the patient in the safest breathing position, support airway and oxygenation according to protocol, and immediately assess recent thoracic procedures, airway-device depth and patency, ventilator connections and pressures, and chest-tube function when relevant. Do not clamp or manipulate a chest tube, advance or withdraw an airway device, or delay emergency decompression outside authorized orders and protocol.",
+      nursingRelevance: "Verify stethoscope function and patient effort once, compare paired lung fields, and immediately assess airway patency, respiratory rate and effort, oxygen saturation, blood pressure, mental status, chest expansion, tracheal position, percussion when safe, recent procedures, airway-device depth, ventilator pressures and alarms, and chest-tube status. Call for urgent help when the finding is new or the patient is unstable and continue focused reassessment during treatment.",
+      documentationGuidance: "Document the exact side and region, whether sounds were truly absent or markedly diminished, the comparison site, patient position and effort, equipment verification, respiratory rate and work, oxygenation, blood pressure, chest expansion, tracheal position, ventilator or airway-device findings, recent procedures, interventions, notifications, and response.",
+      urgentEscalation: "Activate emergency response for acute unilateral absent breath sounds with severe dyspnea, hypoxemia, hypotension, sudden chest pain, altered mental status, tracheal shift, subcutaneous emphysema, rising ventilator pressure, or deterioration after positive-pressure ventilation or a thoracic procedure. Support airway, breathing, and circulation while the responsible team evaluates tension pneumothorax, airway obstruction, and device complications; do not wait for imaging when unstable tension physiology is suspected.",
+      commonPitfalls: "Do not assume absent sounds always mean pneumothorax, call merely faint sounds absent without checking technique, overlook mainstem intubation or mucus obstruction, or repeat auscultation while shock worsens. The finding narrows the emergency differential but does not identify one cause by itself.",
       plainLanguageGlosses: Object.freeze([
-        Object.freeze({ term: "hemithorax", plainLanguage: "one side of the chest", sourceKeys: ["w38-ncbi-lung-exam"] })
+        Object.freeze({ term: "hemithorax", plainLanguage: "one side of the chest", sourceKeys: ["w38-ncbi-lung-exam"] }),
+        Object.freeze({ term: "mainstem intubation", plainLanguage: "an airway tube positioned too far so it ventilates one main bronchus more than the other", sourceKeys: ["w38-ncbi-lung-exam"] }),
+        Object.freeze({ term: "tension physiology", plainLanguage: "pressure inside the chest that collapses a lung and impairs blood return to the heart", sourceKeys: ["w38-ncbi-tension-pneumothorax"] })
+      ]),
+      sections: Object.freeze([
+        Object.freeze({ label: "Definition", text: "Absent breath sounds means no respiratory sound is heard over a chest region after adequate effort, correct placement, and working equipment have been confirmed." }),
+        Object.freeze({ label: "What it means clinically", text: "Little or no air is moving through that region, or pleural air, fluid, collapsed lung, obstruction, or another barrier is blocking sound transmission. A new unilateral finding is a high-priority clue to tension pneumothorax, major airway obstruction, mainstem intubation, atelectasis, or a large pleural effusion." }),
+        Object.freeze({ label: "Pattern recognition", text: "Unilateral absent sounds plus sudden dyspnea, hypoxemia, hypotension, asymmetric expansion, hyperresonance, tracheal shift, subcutaneous air, rising ventilator pressure, or deterioration after ventilation or a thoracic procedure makes tension pneumothorax more concerning. A recent airway procedure also raises concern for device depth or obstruction." }),
+        Object.freeze({ label: "Nursing assessment and next steps", text: "Verify the stethoscope and effort once, then assess airway patency, breathing effort, oxygenation, blood pressure, mental status, chest expansion, tracheal position, recent procedures, airway-device depth, ventilator pressures and alarms, and chest-tube status. Call for urgent help when new or unstable and continue reassessment during treatment." }),
+        Object.freeze({ label: "Likely diagnostic evaluation", text: "Stable patients may undergo bedside lung ultrasound, chest imaging, and cause-directed airway evaluation. Unstable suspected tension pneumothorax is a clinical emergency; treatment must not wait for imaging." }),
+        Object.freeze({ label: "Red flags and escalation", text: "Severe dyspnea, hypoxemia, hypotension, sudden chest pain, altered mental status, tracheal shift, subcutaneous emphysema, rising ventilator pressure, or abrupt deterioration with unilateral absent sounds requires emergency response and airway-breathing-circulation support." }),
+        Object.freeze({ label: "Mechanism: why it happens", text: "Breath sounds require moving air and a path that transmits vibration to the chest wall. Airway blockage or collapse stops local airflow; pleural air or fluid and intervening tissue can prevent sound from reaching the stethoscope." }),
+        Object.freeze({ label: "Limits: what absent sounds do not prove", text: "The finding does not diagnose pneumothorax or any single cause. Technique, equipment, effort, body habitus, airway devices, pleural fluid, collapse, obstruction, and severe hyperinflation can produce similar findings, so interpret the complete cardiopulmonary pattern." }),
+        Object.freeze({ label: "Documentation", text: "Record side and region, absent versus markedly diminished intensity, comparison, patient effort and position, equipment verification, vital signs, work of breathing, expansion, airway or ventilator findings, recent procedures, interventions, notifications, and response." })
       ])
     }),
     "pleural friction rub": Object.freeze({
@@ -2253,18 +2383,38 @@ Nocturia|patient-reported nighttime voiding symptom|nocturnal or global excess u
       "electrodiagnostic-sign": "an electrodiagnostic pattern interpreted from a technically adequate tracing; it is not a bedside physical sign"
     };
     const classificationDescription = classificationDescriptions[entryType] || classificationDescriptions["clinical-sign"];
-    const actionPhrase = entryType === "provoked-symptom"
-      ? "A positive response"
-      : (/imaging|laboratory|electrodiagnostic/.test(entryType) ? "The identified pattern" : "A correctly assessed finding");
+    const interpretationSubjects = {
+      "clinical-sign": `The observed ${spec.name} finding`,
+      "bedside-examination-maneuver": `A positive ${spec.name} response`,
+      "provoked-symptom": `The provoked ${spec.name} symptom`,
+      "clinical-constellation": `The ${spec.name} pattern`,
+      "named-clinical-test": `A positive ${spec.name} result`,
+      "imaging-sign": `The ${spec.name} imaging pattern`,
+      "laboratory-sign": `The ${spec.name} laboratory finding`,
+      "electrodiagnostic-sign": `The ${spec.name} electrodiagnostic pattern`
+    };
+    const interpretationSubject = interpretationSubjects[entryType] || interpretationSubjects["clinical-sign"];
     const definition = clean(learnerOverride.definition)
       || `${spec.name} is ${articleFor(spec.kind)} ${spec.kind}. It is a clue to ${spec.associated}. A positive finding means ${lowerFirst(positiveClause)}.`;
     const plainLanguage = clean(learnerOverride.plainLanguage)
       || `In plain language, a positive ${spec.name} means ${lowerFirst(positiveClause)}.`;
     const whyItMatters = clean(learnerOverride.whyItMatters)
-      || `${spec.name} is important because ${lowerFirst(actionPhrase)} can signal ${spec.associated}. ${sentence(spec.mechanism)} This connection can change the urgency of assessment or testing, but the finding does not diagnose the condition by itself.`;
-    const diagnosticLimits = `${sentence(spec.limitations)} Accuracy varies with technique, timing, disease stage, and the population studied. Do not use this finding alone to confirm or exclude ${spec.associated}.`;
-    const differentialText = unique(spec.differentials).join(", ");
-    const differential = `Important alternatives for this specific finding include ${differentialText}. Distinguish them using timing, distribution, associated findings, and cause-directed testing rather than the eponym alone.`;
+      || `${interpretationSubject} can signal ${spec.associated}. ${sentence(spec.mechanism)} ${spec.name} cannot confirm that association by itself; assess it using the method and limits defined for this finding.`;
+    const associatedConditions = Array.isArray(learnerOverride.associatedConditions)
+      ? unique(learnerOverride.associatedConditions)
+      : [spec.associated];
+    const diagnosticLimits = clean(learnerOverride.evidenceLimitations)
+      || `${sentence(spec.limitations)} Therefore, ${spec.name} cannot confirm or exclude ${spec.associated} by itself; interpret the result in the population and clinical setting where it was assessed.`;
+    const differentialDiagnoses = Array.isArray(learnerOverride.differentialDiagnoses)
+      ? unique(learnerOverride.differentialDiagnoses)
+      : unique(spec.differentials);
+    const differentialText = differentialDiagnoses.join(", ");
+    const repeatSensitiveAssessment = ["bedside-examination-maneuver", "named-clinical-test", "provoked-symptom"]
+      .includes(entryType);
+    const differentialSafety = repeatSensitiveAssessment
+      ? ` Do not repeat or extend ${spec.name} when the maneuver or test is painful, obsolete, or contraindicated solely to settle the differential.`
+      : "";
+    const differential = `${spec.name} can overlap with ${differentialText}. For ${spec.name}, distinguish these alternatives using the existing history, associated findings, technically adequate observations or studies, and cause-directed evaluation selected by the responsible clinician.${differentialSafety}`;
     const falsePositiveByType = {
       "imaging-sign": `A false-positive interpretation can result from acquisition artifact, an inappropriate imaging phase or plane, or overlap with ${differentialText}.`,
       "laboratory-sign": `A false-positive interpretation can result from specimen quality, preparation or staining artifact, and morphologic overlap with ${differentialText}.`,
@@ -2276,43 +2426,55 @@ Nocturia|patient-reported nighttime voiding symptom|nocturnal or global excess u
       "clinical-sign": `A false-positive observation can result from lighting, baseline anatomy, transient physiology, or a mimic such as ${differentialText}.`
     };
     const falseNegativeByType = {
-      "imaging-sign": "A false negative can occur when disease is early or subtle, the relevant region is not included, or acquisition timing and resolution are inadequate.",
-      "laboratory-sign": "A false negative can occur when the specimen is delayed, diluted, poorly prepared, altered by treatment or transfusion, or the abnormal cells or material are sparse.",
-      "electrodiagnostic-sign": "A false negative can occur when the pattern is intermittent, the tracing is too brief, leads are poorly placed, or treatment has modified it.",
-      "clinical-constellation": "A false negative can occur because the complete named pattern is often absent even when the underlying disorder is present.",
-      "provoked-symptom": "A false negative can occur when the trigger is incomplete, symptoms are intermittent, treatment has reduced the response, or communication is limited.",
-      "bedside-examination-maneuver": "A false negative can occur with incomplete technique, guarding, early or partial disease, limited cooperation, or a finding too subtle for the examiner.",
-      "named-clinical-test": "A false negative can occur when technique, timing, cooperation, or disease stage prevents the defined response.",
-      "clinical-sign": "A false negative can occur when the finding is intermittent, subtle, concealed by skin or body habitus, or absent at the observed disease stage."
+      "imaging-sign": `${spec.name} may be missed when the associated process is early or subtle, the relevant region is not included, or acquisition timing and resolution are inadequate.`,
+      "laboratory-sign": `${spec.name} may be missed when the specimen is delayed, diluted, poorly prepared, altered by treatment or transfusion, or the abnormal cells or material are sparse.`,
+      "electrodiagnostic-sign": `${spec.name} may be missed when the pattern is intermittent, the tracing is too brief, leads are poorly placed, or treatment has modified it.`,
+      "clinical-constellation": `${spec.name} may be absent even when ${spec.associated} is present because the complete named pattern need not occur.`,
+      "provoked-symptom": `${spec.name} may not reproduce when the trigger is incomplete, symptoms are intermittent, treatment has reduced the response, or communication is limited.`,
+      "bedside-examination-maneuver": `${spec.name} may be missed with incomplete technique, guarding, early or partial disease, limited cooperation, or a response too subtle for the examiner.`,
+      "named-clinical-test": `${spec.name} may be missed when technique, timing, cooperation, or disease stage prevents the defined response.`,
+      "clinical-sign": `${spec.name} may be missed when it is intermittent, subtle, concealed by skin or body habitus, or absent at the observed stage of ${spec.associated}.`
     };
-    const falsePositive = falsePositiveByType[entryType] || falsePositiveByType["clinical-sign"];
-    const falseNegative = falseNegativeByType[entryType] || falseNegativeByType["clinical-sign"];
+    const falsePositive = clean(learnerOverride.falsePositiveSituations)
+      || falsePositiveByType[entryType]
+      || falsePositiveByType["clinical-sign"];
+    const falseNegative = clean(learnerOverride.falseNegativeSituations)
+      || falseNegativeByType[entryType]
+      || falseNegativeByType["clinical-sign"];
     const falseFindings = `False positives: ${falsePositive} False negatives: ${falseNegative}`;
-    const maneuverSafety = `Explain the assessment, obtain consent, preserve privacy, and stop for unexpected severe pain, neurologic change, respiratory distress, syncope, bleeding, or instability. Follow the entry-specific precaution: ${sentence(spec.pitfalls)} Do not force, repeatedly provoke, or exceed training and scope.`;
-    const observationSafety = `Use consent, privacy, adequate lighting, and the least manipulation needed to characterize the finding. Follow the entry-specific precaution: ${sentence(spec.pitfalls)} Protect painful, fragile, infected, ischemic, or injured tissue from avoidable trauma.`;
+    const maneuverSafety = `Before assessing ${spec.name}, explain the method, obtain consent, preserve privacy, and use only the technique described here: ${sentence(spec.assessment)} Stop if that technique becomes unsafe. The reviewed precaution for this maneuver is: ${sentence(spec.pitfalls)}`;
+    const observationSafety = `Observe ${spec.name} with consent, privacy, adequate exposure, and only the manipulation required by this assessment: ${sentence(spec.assessment)} The reviewed precaution for this finding is: ${sentence(spec.pitfalls)}`;
     const diagnosticSafety = entryType === "laboratory-sign"
-      ? `Use the correct patient, specimen, collection, handling, preparation, and laboratory method. Follow the entry-specific precaution: ${sentence(spec.pitfalls)} Do not physically provoke a laboratory sign or act on an unconfirmed artifact when delay is safe.`
-      : `Confirm patient identity, indication, acquisition quality, timing, plane or leads, and the complete study or tracing. Follow the entry-specific precaution: ${sentence(spec.pitfalls)} Do not physically provoke a diagnostic image or tracing sign, and follow modality-specific radiation, contrast, electrical, and infection-control safeguards.`;
-    const safety = /imaging|laboratory|electrodiagnostic/.test(entryType)
+      ? `For ${spec.name}, verify the correct patient and the specimen, collection, handling, preparation, and laboratory method used to identify this finding. The reviewed precaution is: ${sentence(spec.pitfalls)}`
+      : `For ${spec.name}, verify patient identity, the indication, acquisition quality, timing, and the relevant imaging plane or electrodiagnostic leads. Apply the reviewed precaution for this pattern: ${sentence(spec.pitfalls)}`;
+    const safety = clean(learnerOverride.safetyPrecautions) || (/imaging|laboratory|electrodiagnostic/.test(entryType)
       ? diagnosticSafety
-      : (entryType === "clinical-sign" || entryType === "clinical-constellation" ? observationSafety : maneuverSafety);
+      : (entryType === "clinical-sign" || entryType === "clinical-constellation" ? observationSafety : maneuverSafety));
     const nursingByType = /imaging|laboratory|electrodiagnostic/.test(entryType)
-      ? `Verify preparation, specimen or study timing, the patient's condition at acquisition, the exact reported pattern, and whether the result fits the bedside picture. Document and escalate discordance, critical results, and deterioration rather than copying only "positive."`
+      ? `Verify how and when ${spec.name} was acquired, record the exact reported pattern, and compare it with the patient's condition and the positive criteria: ${sentence(spec.positive)}`
       : (entryType === "clinical-constellation"
-        ? `Document each constellation component that is present or absent, its timing and trend, vital signs, symptoms, and change from baseline. Escalate a concerning pattern without waiting for every named component.`
+        ? `For ${spec.name}, document which defined components are present or absent, their timing and trend, and whether the positive pattern is met: ${sentence(spec.positive)}`
         : (entryType === "provoked-symptom"
-          ? `Document the patient's own description, exact trigger, distribution, duration, associated objective findings, vital signs, and change from baseline. Stop unsafe provocation and communicate the symptom in context.`
-          : `Identify the exact finding, side, timing, technique, patient response, associated vital signs, pain, function, and change from baseline. Use objective words rather than writing only "positive," and repeat the assessment only when it is safe and clinically useful.`));
-    const nursing = `For ${spec.name}, document whether ${lowerFirst(positiveClause)}. ${nursingByType} Include the exact method, side or distribution, timing, associated symptoms, vital signs, patient response, and change from baseline. Reassess only when it is safe and clinically useful. Communicate a new, worsening, or clinically important change together with the suspected association: ${spec.associated}.`;
-    const nursingSection = `${nursingByType} Record whether ${lowerFirst(positiveClause)} and communicate a new, worsening, or clinically important change.`;
-    const urgencyContext = normalize([spec.status, spec.associated, spec.positive, spec.pitfalls].join(" "));
-    const highUrgency = /urgent|emergency|shock|airway|respiratory failure|stroke|vision|limb ischem|hemorrhage|bleed|sepsis|ruptur|torsion|tamponade|herniation|open globe|meningitis|cholangitis|pneumothorax|toxicity|poison|anaphyl|compartment syndrome|ectopic pregnancy|aortic dissection/.test(urgencyContext);
-    const urgencyOpening = highUrgency
-      ? `Promptly notify the responsible clinician when ${lowerFirst(positiveClause)} because this pattern can signal ${spec.associated}.`
-      : `Notify the responsible clinician when the finding is new, unexplained, persistent, worsening, or accompanied by concerning changes related to ${spec.associated}.`;
-    const urgency = `For ${spec.name}, ${lowerFirst(urgencyOpening)} This matters because the finding may change the urgency of evaluation for ${spec.associated}. Activate emergency response for airway or breathing compromise, shock, acute neurologic change, major bleeding, altered consciousness, or any abrupt instability. Stabilize the immediate threat while cause-directed evaluation proceeds, continue focused reassessment, and document who was notified, when, and what changed.`;
-    const urgencySection = `${urgencyOpening} If the patient is unstable, activate emergency response and stabilize the immediate threat while cause-directed evaluation proceeds.`;
-    const pitfalls = `${sentence(spec.pitfalls)} Do not treat the named finding as a patient-reported symptom, the associated disease itself, or a definitive diagnostic result.`;
+          ? `Record the patient's description of ${spec.name}, the exact trigger, distribution, duration, and associated objective findings; the reviewed positive response is: ${sentence(spec.positive)}`
+          : `Record the exact ${spec.name} observation, side or distribution, timing, technique, patient response, and change from baseline; the reviewed positive finding is: ${sentence(spec.positive)}`));
+    const nursing = clean(learnerOverride.nursingRelevance)
+      || `${nursingByType} Continue the focused evaluation by following the reviewed method and its limits: ${sentence(spec.assessment)} Communicate the finding with its suspected association, ${spec.associated}, when it is new, worsening, or clinically important.`;
+    const nursingSection = `${nursingByType} For the next focused check, follow the reviewed assessment and its limits: ${sentence(spec.assessment)} Then communicate a new, worsening, or clinically important ${spec.name} finding in context.`;
+    const urgency = clean(learnerOverride.urgentEscalation)
+      || `For ${spec.name}, apply this exact authored caution when deciding whom to notify and how quickly: ${sentence(spec.pitfalls)} Base escalation for ${spec.name} on the patient's current condition, associated findings, and the cause under evaluation; this card does not assign a universal urgency level.`;
+    const urgencySection = clean(learnerOverride.urgentEscalation)
+      || `For ${spec.name}, use the authored caution to guide communication and escalation: ${sentence(spec.pitfalls)} Assess the patient's current condition and associated findings rather than assigning urgency from the ${spec.name} name alone.`;
+    const pitfalls = clean(learnerOverride.commonPitfalls)
+      || `${sentence(spec.pitfalls)} ${spec.name} does not prove ${spec.associated}, and it must retain its defined classification as ${articleFor(spec.kind)} ${spec.kind}.`;
+    const assessmentMethod = clean(learnerOverride.assessmentMethod) || sentence(spec.assessment);
+    const positiveFinding = clean(learnerOverride.positiveFinding) || sentence(spec.positive);
+    const mechanism = clean(learnerOverride.mechanism) || sentence(spec.mechanism);
+    const clinicalInterpretation = clean(learnerOverride.clinicalInterpretation)
+      || `${interpretationSubject} raises concern for ${spec.associated} because ${lowerFirst(mechanismClause)}. Compare the response with the reviewed assessment and differentials; ${spec.name} does not establish the diagnosis alone.`;
+    const diagnosticUsefulness = clean(learnerOverride.diagnosticUsefulness)
+      || `Use ${spec.name} to focus evaluation of ${spec.associated} and the reviewed alternatives: ${differentialText}. Follow this card's assessment method and limits: ${sentence(spec.assessment)} Then anticipate or support cause-directed testing selected by the responsible clinician for the suspected condition rather than treating ${spec.name} as a diagnosis.`;
+    const documentationGuidance = clean(learnerOverride.documentationGuidance)
+      || "Document the exact finding, assessment method, side or distribution, timing, patient response, associated symptoms and vital signs, and change from baseline. Record the observed result instead of writing only \"positive\" or \"negative.\"";
     return {
       name: spec.name,
       displayName: spec.name,
@@ -2339,20 +2501,20 @@ Nocturia|patient-reported nighttime voiding symptom|nocturnal or global excess u
       plainLanguageGlosses: Array.isArray(learnerOverride.plainLanguageGlosses)
         ? learnerOverride.plainLanguageGlosses.map((gloss) => ({ ...gloss, sourceKeys: unique(gloss.sourceKeys) }))
         : [],
-      associatedConditions: [spec.associated],
-      assessmentMethod: sentence(spec.assessment),
-      positiveFinding: sentence(spec.positive),
-      mechanism: sentence(spec.mechanism),
-      clinicalInterpretation: `${actionPhrase} increases concern for ${spec.associated}. Interpret it with the mechanism, the complete assessment, and confirmatory testing; it does not establish the diagnosis alone.`,
-      diagnosticUsefulness: `Use the finding to focus the differential, decide what to reassess, and select confirmatory testing or escalation. Its value is highest when the technique is correct and related findings point in the same direction.`,
+      associatedConditions,
+      assessmentMethod,
+      positiveFinding,
+      mechanism,
+      clinicalInterpretation,
+      diagnosticUsefulness,
       evidenceLimitations: diagnosticLimits,
-      differentialDiagnoses: unique(spec.differentials),
+      differentialDiagnoses,
       falsePositiveSituations: falsePositive,
       falseNegativeSituations: falseNegative,
       modernStatus: statusText,
       safetyPrecautions: safety,
       nursingRelevance: nursing,
-      documentationGuidance: `Document the exact finding, assessment method, side or distribution, timing, patient response, associated symptoms and vital signs, and change from baseline. Record the observed result instead of writing only "positive" or "negative."`,
+      documentationGuidance,
       urgentEscalation: urgency,
       relatedTopics: unique(spec.related),
       crossLinks: unique(spec.related),
@@ -2366,28 +2528,32 @@ Nocturia|patient-reported nighttime voiding symptom|nocturnal or global excess u
         ? "curated-secondary-source-reviewed; additional primary-source verification recommended before quoting diagnostic performance"
         : "curated-secondary-source-reviewed; no unsupported numeric accuracy claim",
       summary: whyItMatters,
-      quickAnswer: `${plainLanguage} ${whyItMatters}`,
-      sections: [
+      quickAnswer: `${plainLanguage} ${clinicalInterpretation}`,
+      sections: Array.isArray(learnerOverride.sections) && learnerOverride.sections.length
+        ? learnerOverride.sections
+          .map((section) => ({ label: clean(section && section.label), text: clean(section && section.text) }))
+          .filter((section) => section.label && section.text)
+        : [
+        { label: "Definition", text: definition },
+        { label: "What it means clinically", text: clinicalInterpretation },
+        { label: "Nursing assessment and next steps", text: nursingSection },
+        { label: "Evaluation path", text: diagnosticUsefulness },
+        { label: "When to communicate or escalate", text: urgencySection },
+        { label: `What ${spec.name} does not prove`, text: diagnosticLimits },
         { label: "Official name and alternative names", text: `${spec.name} is the canonical title. Also search for ${unique(spec.aliases).join(", ") || "the canonical spelling"}.` },
         { label: "Finding classification", text: `${spec.name} is ${articleFor(spec.kind)} ${spec.kind}: ${classificationDescription}.` },
-        { label: "Definition", text: definition },
-        { label: "Associated disease or abnormality", text: `The main association is ${spec.associated}. The finding raises concern for that condition but does not confirm it.` },
+        { label: "Associated disease or abnormality", text: `${interpretationSubject} raises concern for ${spec.associated}, but ${spec.name} does not confirm that association.` },
         { label: "How to assess or elicit it", text: sentence(spec.assessment) },
         { label: "What counts as positive", text: sentence(spec.positive) },
         { label: "Mechanism: why it occurs", text: sentence(spec.mechanism) },
-        { label: "Clinical interpretation", text: `${actionPhrase} increases concern for ${spec.associated}. Interpret the complete pattern, not the eponym alone.` },
-        { label: "Diagnostic usefulness", text: `Use it to focus the differential, decide what to reassess, and choose confirmatory testing or escalation. Correct technique and supporting findings make it more useful.` },
-        { label: "Sensitivity, specificity, and predictive limits", text: diagnosticLimits },
         { label: "Important differential diagnoses", text: differential },
         { label: "False positives and false negatives", text: falseFindings },
         { label: "Current status and reliability", text: statusText },
         { label: "Safety precautions and contraindications", text: safety },
-        { label: "Nursing assessment and action", text: nursingSection },
-        { label: "Urgent notification and emergency care", text: urgencySection },
         { label: "Related signs, tests, anatomy, and physiology", text: `Related topics: ${relatedText}.` },
         { label: "Common misconceptions and examination pitfalls", text: pitfalls },
         { label: "Synonyms and search terms", text: `Searchable names include ${unique([spec.name, ...spec.aliases, ...makeMisspellings(spec)]).join(", ")}.` }
-      ],
+        ],
       tags: unique(["wave38", "clinical sign", spec.kind, spec.specialty, spec.bodySystem, ...searchTerms])
     };
   };

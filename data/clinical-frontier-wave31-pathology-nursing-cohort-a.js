@@ -749,13 +749,13 @@
       "Explain that fever during immunosuppression may be infection rather than vasculitis, so the clinical team should evaluate it before the patient changes steroid dosing."
     ]),
     card("Heart blocks", ["acc-bradycardia-2018", "aha-bradycardia-2025"], [
-      "Identify first-degree, Mobitz I, Mobitz II, high-grade, or complete block on electrocardiography and assess syncope, chest pain, dyspnea, weakness, perfusion, ischemia, infection, and baseline conduction because block level and symptoms determine instability and pacing need.",
+      "Identify first-degree, Mobitz I, Mobitz II, high-grade, or third-degree (complete) AV block on electrocardiography and assess syncope, chest pain, dyspnea, weakness, perfusion, ischemia, infection, and baseline conduction because block level and symptoms determine instability and pacing need.",
       "Place symptomatic or high-risk patients on continuous telemetry, obtain vital signs and twelve-lead tracing, establish intravenous access, apply pacing pads, and trend mental status, urine output, electrolytes, and troponin because deterioration can be abrupt and escape rhythms unreliable.",
       "Review beta blockers, calcium-channel blockers, digoxin, antiarrhythmics, ischemia, thyroid disease, potassium, Lyme exposure, and recent cardiac procedures with the team because correcting a reversible cause may restore conduction and prevents repeated block.",
-      "Obtain urgent pacing-capable cardiology evaluation for new acquired Mobitz II, high-grade, or complete atrioventricular block even when currently stable, and prepare prescribed transcutaneous or transvenous pacing while monitoring capture, perfusion, pain, sedation, and skin because these blocks can deteriorate and electrical rate is useful only when each paced beat circulates blood.",
+      "Obtain urgent pacing-capable cardiology evaluation for new acquired Mobitz II, high-grade, or third-degree (complete) atrioventricular block even when currently stable, and prepare prescribed transcutaneous or transvenous pacing while monitoring capture, perfusion, pain, sedation, and skin because these blocks can deteriorate and electrical rate is useful only when each paced beat circulates blood.",
       "Activate emergency response for hypotension, acutely altered consciousness, shock, ischemic chest pain, acute pulmonary edema, recurrent syncope, severe bradycardia with poor perfusion, impending arrest, or loss of pacemaker capture because instability or ineffective pacing—not a stable block label alone—requires immediate resuscitation."
     ], [
-      "Mobitz II, high-grade, or complete AV block with a slow escape rhythm",
+      "Mobitz II, high-grade, or third-degree (complete) AV block with a slow escape rhythm",
       "Hypotension, altered consciousness, cool mottled skin, or rapidly falling urine output",
       "Ischemic chest pain, dynamic ST change, ventricular dysrhythmia, or pulmonary edema",
       "Recurrent syncope, asystolic pause, loss of pacing capture, or impending cardiac arrest"

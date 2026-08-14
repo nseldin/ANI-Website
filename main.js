@@ -49,6 +49,9 @@ const medicalUpdatesBrowseCount = document.querySelector("#medicalUpdatesBrowseC
 const foundationBrowseControls = document.querySelector("#foundationBrowseControls");
 const foundationDomainSelect = document.querySelector("#foundationDomainSelect");
 const foundationBrowseCount = document.querySelector("#foundationBrowseCount");
+const holisticBrowseControls = document.querySelector("#holisticBrowseControls");
+const holisticSubcategorySelect = document.querySelector("#holisticSubcategorySelect");
+const holisticBrowseCount = document.querySelector("#holisticBrowseCount");
 const procedureBrowseControls = document.querySelector("#procedureBrowseControls");
 const procedureSpecialtySelect = document.querySelector("#procedureSpecialtySelect");
 const procedureBrowseCount = document.querySelector("#procedureBrowseCount");
@@ -529,10 +532,21 @@ const MEDICAL_UPDATES_REMOTE_MAX_BYTES = 1200000;
 const MEDICAL_UPDATES_MAX_CURRENT = 240;
 const MEDICAL_UPDATES_MAX_ARCHIVE = 520;
 const FOUNDATION_BROWSE_DOMAIN_KEY = "ani-foundation-browse-domain-v1";
+const HOLISTIC_BROWSE_SUBCATEGORY_KEY = "ani-holistic-browse-subcategory-v1";
 const SURGERY_PROCEDURE_BROWSE_SPECIALTY_KEY = "ani-surgery-procedure-browse-specialty-v1";
 const PHARM_AUTO_READ_MUTED_KEY = "ani-pharm-auto-read-muted-v1";
 const PHARM_FAVORITES_KEY = "ani-pharm-favorites-v1";
 const PHARM_INDEX_MODES = ["all", "favorites", "updates", "labs", "drugs", "diseases", "microbiology", "foundations", "surgeries", "procedures", "clinical-signs", "holistic"];
+const HOLISTIC_BROWSE_SUBCATEGORIES = Object.freeze([
+  Object.freeze({ id: "all", label: "All Holistic topics" }),
+  Object.freeze({ id: "therapeutic-diets-nutrition", label: "Therapeutic Diets & Nutrition" }),
+  Object.freeze({ id: "swallowing-diet-consistency", label: "Swallowing & Diet Consistency" }),
+  Object.freeze({ id: "herbal-supplement-safety", label: "Herbal & Supplement Safety" })
+]);
+const HOLISTIC_FEDERATED_SUBCATEGORY_IDS = new Set([
+  "therapeutic-diets-nutrition",
+  "swallowing-diet-consistency"
+]);
 const NURSING_FACT_STATE_KEY = "ani-nursing-fact-state-v1";
 const NURSING_FACT_INTERVAL_MS = 3 * 60 * 60 * 1000;
 const MAX_CHAT_SESSIONS = 36;
@@ -2740,6 +2754,18 @@ function medicationClassSegmentLabel(segment = "") {
     .trim();
 }
 
+const PHARM_MEDICATION_CLASS_GROUP_EQUIVALENTS = new Map([
+  [
+    "direct oral factor xa inhibitor anticoagulant",
+    "Direct oral anticoagulant that selectively inhibits factor Xa"
+  ]
+]);
+
+function medicationClassGroupingSegment(segment = "") {
+  const label = medicationClassSegmentLabel(segment);
+  return PHARM_MEDICATION_CLASS_GROUP_EQUIVALENTS.get(normalizePharmText(label)) || label;
+}
+
 function isMedicationClassCardCombinationCandidate(drug = {}) {
   const text = normalizePharmText([
     drug.name,
@@ -2764,6 +2790,7 @@ function medicationClassSegmentsForDrug(drug = {}) {
   return raw
     .split(/\s*;\s*/)
     .map(medicationClassSegmentLabel)
+    .map(medicationClassGroupingSegment)
     .filter((segment) => {
       const key = normalizePharmText(segment);
       return segment
@@ -4988,17 +5015,27 @@ const baseClinicalReferenceEntries = [
       "fever in infant",
       "temperature in infant"
     ],
-    summary: "Pediatric vital signs are age-specific. A normal adult heart rate, respiratory rate, or blood pressure can be abnormal in a newborn, infant, toddler, preschooler, or school-age child.",
-    quickAnswer: "Use age bands. Newborn heart rate (HR) is often 100-160/min and respiratory rate (RR) 30-50/min. Preschool age 3-5 years is often HR 80-120/min, RR 20-25/min, and blood pressure (BP) around 95-107/60-71 mm Hg as a study anchor. For infants under 3 months, a rectal temperature of 38.0 C / 100.4 F or higher is a high-priority fever cue.",
+    summary: "Pediatric vital signs must be interpreted with the child's exact age, measurement technique, clinical state, baseline, and trend. Published heart-rate and respiratory-rate ranges differ, and emergency thresholds are not wellness definitions.",
+    quickAnswer: "An age- and context-adjusted **pediatric vital-sign pattern** can signal respiratory failure, shock, arrhythmia, fever-related illness, or a measurement problem. Verify the technique and trend, then assess the whole child; one abnormal heart rate, respiratory rate, blood pressure, temperature, or oxygen-saturation reading does not diagnose the cause by itself.",
+    whyItMatters: "Repeat and trend an unexpected value with an age-appropriate method while assessing appearance, airway, work of breathing, breath sounds, pulses, perfusion, skin color, mental status, hydration and urine output, pain, temperature, activity or crying, sleep, medications, and the child's usual baseline. Use the current age-specific reference and local pediatric response pathway for the setting rather than one universal normal table. Cause-directed evaluation may include bedside glucose, an electrocardiogram, blood testing, imaging, or other tests selected from the presentation. Escalate immediately for apnea, central cyanosis, severe or exhausting respiratory distress, altered consciousness, seizure, shock, or rapid deterioration; do not delay stabilization merely to repeat a number.",
     sections: [
-      ["Newborn / neonate", "Study anchors: HR about 100-160/min, RR about 30-50/min, BP is lower and varies by hours/days of life. Bradycardia, apnea, poor perfusion, cyanosis, temperature instability, or poor feeding changes urgency."],
-      ["Infant", "Study anchors: HR about 100-160/min early infancy, RR about 30-55/min, systolic BP often around 80-100 mm Hg after the newborn period. Fever in infants under 3 months is high priority."],
-      ["Toddler / preschool", "Toddler HR often about 90-140/min and RR 20-30/min. Preschool age 3-5 often HR 80-120/min, RR 20-25/min, BP around 95-107/60-71 mm Hg as a study anchor."],
-      ["School-age / adolescent", "School-age children trend toward HR 70-110/min, RR 14-22/min, and BP roughly 95-119/60-76 mm Hg. Adolescents approach adult ranges."],
-      ["Nursing interpretation", "Repeat abnormal values with the right cuff size and context. Compare to age, baseline, fever/pain/anxiety, hydration, perfusion, work of breathing, mental status, urine output, and medication effects."],
-      ["NCLEX trap", "Do not apply adult ranges to children. A number can be normal for one pediatric age band and dangerous for another."]
+      ["Reference ranges and trends", "Heart rate and respiratory rate generally fall as children grow, but published reference limits differ by source, age bands, setting, awake or asleep state, illness, and measurement method. Record the exact age and state, compare with the reference used by the current setting, and review serial change rather than labeling one value normal or abnormal from memory."],
+      ["Heart rate and respirations", "When safe, let the child settle and repeat a value distorted by crying, movement, pain, fever, exertion, or anxiety. Count respirations for a full minute while a young child is quiet or calm, and note rhythm, depth, retractions, grunting, apnea, breath sounds, color, and fatigue. In the 2025 AHA pediatric arrest pathway, a heart rate below 60/min becomes a CPR trigger only when an infant or child has cardiopulmonary compromise despite effective ventilation with oxygen; it is not a universal definition of pediatric bradycardia."],
+      ["Blood pressure technique", "Use a pediatric-validated device and select the cuff from measured arm circumference: AAP guidance specifies a bladder width at least 40% and length 80%-100% of arm circumference. With the child quiet when feasible, support the right arm at heart level and repeat an elevated oscillometric reading by the guideline's confirmation method. Interpretation in younger children depends on age, sex, height, repeated measurements, and the applicable guideline rather than one adult cutoff."],
+      ["Temperature and oxygenation", "Document the temperature value, site, device, time, and recent antipyretic use because routes and devices are not interchangeable. The AAP febrile-infant guideline applies a documented rectal temperature of at least 38.0 C / 100.4 F to well-appearing, term infants 8-60 days old who meet its inclusion criteria; other ages and populations require their own pathway. For pulse oximetry, confirm a reliable signal and probe fit, and interpret the trend with breathing and perfusion because motion, poor perfusion, probe position, skin pigmentation, nail products, and device limitations can affect readings."],
+      ["Nursing reassessment and evaluation", "Recheck the complete pediatric assessment after positioning, calming, oxygen or ventilation support, fluids, antipyretic comfort measures, or other ordered intervention. Document the technique, value, time, patient state, associated findings, intervention, and response. When the measurement remains abnormal or conflicts with the bedside picture, escalate for formal pediatric evaluation and clinician-selected testing rather than guessing the diagnosis."],
+      ["Urgency and interpretation limits", "Clinical compromise outranks a reassuring number. Activate the local pediatric emergency or rapid-response pathway for severe breathing difficulty, cyanosis, apnea, weak pulses or poor perfusion, hypotension with shock findings, new altered responsiveness, seizure, or rapid decline. Pediatric vital signs help detect deterioration, but no single reading independently diagnoses infection, shock, respiratory disease, arrhythmia, or another condition."]
     ],
-    tags: ["pediatric", "peds", "vital signs", "heart rate", "respiratory rate", "blood pressure", "temperature", "fever", "newborn", "infant", "child", "preschool"]
+    tags: ["pediatric", "peds", "vital signs", "heart rate", "respiratory rate", "blood pressure", "temperature", "fever", "newborn", "infant", "child", "preschool"],
+    sourceKeys: [
+      "ani-pediatric-aha-pals-2025",
+      "ani-pediatric-aap-bp-cpg-2017",
+      "ani-pediatric-who-imci-handbook",
+      "ani-pediatric-fleming-vitals-2011",
+      "ani-pediatric-fda-pulse-oximeters",
+      "ani-pediatric-aap-febrile-infants-2021"
+    ],
+    clinicalInterpretationRevision: "2026-08-13-pediatric-measurement-clinical-significance-1"
   },
   {
     name: "Pediatric growth percentiles",
@@ -5035,13 +5072,14 @@ const baseClinicalReferenceEntries = [
       "BMI percentile",
       "body mass index percentile"
     ],
-    summary: "Use sex-specific CDC-style growth charts by exact age in months. A single height or weight number is a screening anchor; the curve trend, crossing percentiles, nutrition, chronic illness, puberty timing, and family pattern matter.",
-    quickAnswer: "For a **6-year-old**, a rough 50th-percentile study anchor is about **45.5 in / 116 cm** for height. Typical mid-range values cluster around **42.5-48.8 in** depending on sex and exact age in months. Weight is roughly **44-46 lb** at the 50th percentile, with a broad normal range. Use sex-specific percentile charts for exact interpretation.",
+    summary: "A pediatric growth percentile shows where an accurate measurement falls within the selected age- and sex-specific reference population. Serial trajectory and the child's clinical context matter more than one plotted point.",
+    quickAnswer: "A **growth percentile** is a relative position on the selected age- and sex-specific chart, not a percent of ideal growth. In U.S. practice, use WHO growth standards from birth to under 2 years and CDC charts from age 2 through 20; other countries or specialty populations may use different references. A sustained downward trajectory or discordant weight, length or height, head circumference, or BMI pattern can signal nutrition, feeding, chronic-disease, or endocrine concerns, but one percentile does not diagnose any of them by itself.",
+    whyItMatters: "Verify exact age, chart, metric, units, and technique; remeasure an implausible point; and compare serial measurements before interpreting a change. Assess feeding and intake, vomiting or diarrhea, urine and stool output, hydration, illness, medications, development, puberty timing, family growth pattern, gestational age or prematurity when appropriate, and barriers to nutrition or care. Persistent or substantial trajectory change needs focused pediatric evaluation; clinician-selected laboratory testing or imaging follows the history and examination rather than a percentile alone. Escalate promptly for acute weight loss with dehydration, inability to feed, altered consciousness, shock, severe illness, or another unstable finding.",
     visuals: [
       {
         type: "percentile-curves",
         title: "Height-for-age percentile curve anchors",
-        subtitle: "Approximate CDC-style NCLEX study anchors, ages 2-12 years",
+        subtitle: "Approximate visual examples only; use the current sex-specific CDC chart by exact age for clinical interpretation",
         xLabel: "Age in years",
         yLabel: "Height in inches",
         yMin: 30,
@@ -5060,7 +5098,7 @@ const baseClinicalReferenceEntries = [
       {
         type: "percentile-curves",
         title: "Weight-for-age percentile curve anchors",
-        subtitle: "Approximate CDC-style NCLEX study anchors, ages 2-12 years",
+        subtitle: "Approximate visual examples only; use the current sex-specific CDC chart by exact age for clinical interpretation",
         xLabel: "Age in years",
         yLabel: "Weight in pounds",
         yMin: 20,
@@ -5078,14 +5116,23 @@ const baseClinicalReferenceEntries = [
       }
     ],
     sections: [
-      ["Age 6 quick anchor", "**Height:** about **45.5 in / 116 cm** at the 50th percentile for both boys and girls, with a broad expected band around **42.5-48.8 in**. **Weight:** about **44-46 lb / 20-21 kg** at the 50th percentile. Exact percentile depends on sex and age in months."],
-      ["How nurses interpret it", "Do not decide normal from one number alone. Compare the child with a **sex-specific growth chart**, exact age in months, prior curve, nutrition, chronic disease history, endocrine symptoms, puberty timing, and family height pattern."],
-      ["Approximate 50th-percentile anchors by age", "Age 2: boys 34 in/28 lb, girls 34 in/27 lb. Age 4: boys 40 in/35 lb, girls 40 in/34 lb. Age 6: boys 45.5 in/45.5 lb, girls 45.5 in/44.5 lb. Age 8: boys 50.5 in/56.5 lb, girls 50.5 in/56.5 lb. Age 10: boys 54.5 in/70.5 lb, girls 55 in/72.5 lb. Age 12: boys 58.5 in/88 lb, girls 60 in/92 lb. These are study anchors, not diagnostic cutoffs."],
-      ["Red flags", "Crossing major percentile lines, weight loss or failure to gain, height velocity slowing, very early or delayed puberty, chronic diarrhea, cardiac/renal disease, endocrine symptoms, neglect/food insecurity, or disproportionate weight-for-height deserves follow-up."],
-      ["NCLEX trap", "The trap is applying adult memory or one average number. Pediatric growth is about **trend + percentile + developmental context**."]
+      ["Choose the chart and measurement", "In U.S. clinical care, WHO charts from birth to under 2 years use length-for-age, weight-for-age, weight-for-length, and head-circumference-for-age; BMI-for-age is not recommended under 2. At age 2, transition to CDC charts and standing height plus BMI-for-age. The chart and technique change can shift the plotted percentile without a true biologic change, so document the transition and compare carefully."],
+      ["What a percentile means", "The percentile compares the child's measurement with the selected reference population at the same age and sex; it is not a target and does not mean the child has achieved that percent of healthy growth. At chart extremes, z scores describe distance from the reference median more precisely than percentiles. Accurate calibrated measurements and exact age are required before either value is useful."],
+      ["Nursing measurement and reassessment", "Confirm units and data entry, weigh with a calibrated scale, measure recumbent length before age 2 and standing height from age 2 using standardized technique, and measure head circumference when age-appropriate. Recheck an unexpected point, plot it on the correct chart, compare prior measurements and growth velocity, and document the method, patient cooperation, and any condition that could distort weight such as edema or dehydration."],
+      ["When a trend needs evaluation", "A persistent decline in weight or growth velocity, poor linear growth, disproportion among weight, length or height, head circumference, and BMI, or change with feeding, gastrointestinal, endocrine, developmental, cardiac, renal, or other chronic-disease findings warrants focused pediatric assessment. The 2026 AAP/NASPGHAN faltering-weight guideline uses several source-defined criteria, including a decline of at least 1 z score in weight, weight-for-length, or BMI; apply the correct age and measure rather than turning that criterion into a universal growth diagnosis."],
+      ["Urgency and interpretation limits", "Growth concerns are usually evaluated through accurate serial measurements, history, examination, and targeted follow-up. Promptly escalate acute weight loss with inability to drink or feed, dehydration, lethargy or altered consciousness, shock, or another serious symptom. One low, high, or changing percentile does not by itself diagnose malnutrition, obesity, endocrine disease, neglect, or abnormal development, and routine broad testing is not justified by one point alone."]
     ],
     tags: ["peds", "pediatric", "growth", "height", "weight", "development", "percentile", "age 6", "CDC growth charts"],
-    sourceNote: "CDC clinical growth chart method: sex-specific percentile charts by age."
+    sourceNote: "U.S. chart selection uses WHO growth standards from birth to under 2 years and CDC growth charts from age 2 through 20; interpretation requires accurate serial measurements and clinical context.",
+    sourceKeys: [
+      "ani-pediatric-cdc-growth-recommendations-2025",
+      "ani-pediatric-cdc-who-growth-use-2024",
+      "ani-pediatric-cdc-growthcharts-overview",
+      "ani-pediatric-aap-anthropometry",
+      "ani-pediatric-aap-naspghan-faltering-weight-2026",
+      "ani-pediatric-who-child-growth-standards"
+    ],
+    clinicalInterpretationRevision: "2026-08-13-pediatric-measurement-clinical-significance-1"
   },
   {
     name: "Pregnancy trimester expectations",
@@ -5157,7 +5204,15 @@ const baseClinicalReferenceEntries = [
       "eyes closed balance test"
     ],
     summary: "The Romberg test is a neurologic balance assessment that removes visual compensation to screen for sensory/proprioceptive or vestibular contribution to ataxia.",
-    quickAnswer: "A **positive Romberg test** means the client becomes markedly unsteady or falls when the eyes are closed after standing with eyes open. It points toward sensory/proprioceptive or vestibular balance dysfunction, not simply weak legs and not a primary cerebellar test.",
+    quickAnswer: "A **positive Romberg test** means the client becomes markedly unsteady or falls when the eyes are closed after standing with eyes open. The test suggests sensory/proprioceptive or vestibular balance dysfunction, not simply weak legs and not a primary cerebellar disorder.",
+    whyItMatters: "A positive Romberg test raises concern for sensory ataxia from impaired position sense or vestibular input and identifies an immediate fall risk. It helps localize the imbalance but does not diagnose its cause; instability with eyes open suggests a different or additional problem, including cerebellar dysfunction.",
+    associatedConditions: ["Sensory ataxia", "Posterior column dysfunction", "Large-fiber peripheral neuropathy", "Vitamin B12 deficiency", "Vestibular dysfunction"],
+    clinicalInterpretation: "Worsening only after eye closure supports loss of visual compensation for impaired proprioceptive or vestibular input. Sudden imbalance with facial or limb weakness, speech or vision change, severe headache, or new inability to walk raises concern for stroke or another acute neurologic process rather than an isolated balance-test result.",
+    diagnosticUsefulness: "The responsible clinician may use a focused neurologic examination, gait and fall-risk assessment, medication and substance review, position and vibration testing, and cause-directed laboratory testing such as a vitamin B12 blood test when indicated; vestibular testing or neuroimaging depends on the presentation.",
+    nursingRelevance: "Guard within arm's reach, stop the maneuver when balance is lost, document performance with eyes open versus closed, and assess gait, falls, sensory symptoms, vertigo, medications, and associated neurologic findings.",
+    urgentEscalation: "Activate emergency evaluation for a possible stroke when sudden imbalance occurs with focal weakness, facial droop, speech or vision change, severe headache, altered consciousness, or inability to stand or walk safely. A chronic isolated positive test has no universal emergency trigger but still needs cause-directed follow-up.",
+    evidenceLimitations: "The Romberg test does not diagnose a specific disease, and a negative test does not exclude neurologic or vestibular disease. Baseline weakness, pain, orthostatic symptoms, sedating drugs, comprehension, footwear, and unsafe technique can alter performance.",
+    sourceNote: "Reviewed against NCBI Bookshelf/StatPearls: Romberg Test (https://www.ncbi.nlm.nih.gov/books/NBK563187/), NCBI Bookshelf/StatPearls: Cerebellar Dysfunction (https://www.ncbi.nlm.nih.gov/books/NBK562317/), and NIH/NINDS stroke signs (https://www.ninds.nih.gov/health-information/stroke/signs-and-symptoms).",
     sections: [
       ["What it is", "The client stands with feet together, first with eyes open and then with eyes closed while the examiner guards closely. Closing the eyes removes visual compensation, so balance depends more heavily on proprioception and vestibular input."],
       ["Positive result", "Marked worsening of balance, stepping, or falling after eye closure is positive. Mild sway alone is less specific; the key is loss of stability when vision is removed."],
@@ -5191,7 +5246,15 @@ const baseClinicalReferenceEntries = [
     nclexEssential: true,
     aliases: ["Rovsing", "positive Rovsing", "Rovsing's sign", "Rovsing test"],
     summary: "Rovsing sign is right-lower-quadrant pain triggered by palpating the left lower quadrant; it suggests peritoneal irritation classically from appendicitis.",
-    quickAnswer: "A **positive Rovsing sign** means LLQ palpation produces RLQ pain. The mechanism is referred/peritoneal irritation, so it supports appendicitis thinking but must be interpreted with the full abdominal exam.",
+    quickAnswer: "A **positive Rovsing sign** means left-lower-quadrant palpation produces right-lower-quadrant pain. The sign suggests right-lower-quadrant peritoneal irritation and supports concern for appendicitis, but it is not diagnostic and a negative result does not rule appendicitis out.",
+    whyItMatters: "Rovsing sign raises concern for acute appendicitis when it accompanies migrating right-lower-quadrant pain, anorexia, nausea or vomiting, fever, guarding, or rebound. Delayed appendicitis can progress to perforation, peritonitis, abscess, and sepsis, so the whole abdominal pattern—not repeated provocation—determines urgency.",
+    associatedConditions: ["Acute appendicitis", "Right-lower-quadrant peritoneal irritation"],
+    clinicalInterpretation: "A positive result supports appendicitis thinking but must be integrated with pain migration, focal tenderness, guarding, fever, gastrointestinal symptoms, pregnancy possibility, urinary or gynecologic symptoms, and alternative causes of an acute abdomen.",
+    diagnosticUsefulness: "Cause-directed evaluation commonly includes serial abdominal assessment, vital signs, a blood test such as a complete blood count or inflammatory marker, urinalysis, pregnancy testing when relevant, and clinician-selected abdominal imaging. CT is commonly appropriate in nonpregnant adults; ultrasound and MRI are prioritized in pregnancy and selected younger patients.",
+    nursingRelevance: "Assess pain location and migration, vital signs, nausea or vomiting, fever, guarding, rigidity, rebound, pregnancy possibility, and urinary or gynecologic symptoms. Use slow gentle pressure only when the maneuver is clinically appropriate, stop for severe pain or involuntary guarding, do not repeatedly provoke peritoneal pain, and report a worsening acute-abdomen pattern promptly.",
+    urgentEscalation: "Urgently escalate possible peritonitis or hemorrhage when severe or worsening pain occurs with guarding or rigidity, rebound tenderness, syncope, hypotension, sepsis findings, or pregnancy-related concern. Do not delay stabilization or cause-directed imaging merely to repeat Rovsing sign.",
+    evidenceLimitations: "Rovsing sign is neither diagnostic nor sufficiently sensitive to exclude appendicitis. Definitions and technique vary, and gynecologic, urinary, bowel, and abdominal-wall disorders can produce overlapping pain.",
+    sourceNote: "Reviewed against NCBI Bookshelf/StatPearls: Appendicitis (https://www.ncbi.nlm.nih.gov/books/NBK493193/), NCBI Bookshelf/StatPearls: Abdominal Examination (https://www.ncbi.nlm.nih.gov/books/NBK459220/), and ACR Appropriateness Criteria: Right Lower Quadrant Pain (https://acsearch.acr.org/docs/69357/Narrative/).",
     sections: [
       ["What to notice", "The examiner palpates the LLQ, but the client reports pain in the RLQ near the appendix region."],
       ["What it means", "The maneuver can shift bowel/peritoneal tension and reproduce pain where inflamed peritoneum is irritated, classically appendicitis."],
@@ -5207,7 +5270,15 @@ const baseClinicalReferenceEntries = [
     nclexEssential: true,
     aliases: ["Cullen's sign", "periumbilical ecchymosis", "umbilical bruising", "periumbilical bruising"],
     summary: "Cullen sign is periumbilical ecchymosis that can signal intraperitoneal or retroperitoneal bleeding, severe pancreatitis, ruptured ectopic pregnancy, trauma, or other hemorrhagic pathology.",
-    quickAnswer: "**Cullen sign** is bruising around the umbilicus. Treat it as a red-flag bleeding sign, not a skin finding to ignore: assess hemodynamics, abdominal pain, pregnancy risk, pancreatitis/trauma context, hemoglobin trend, and urgent imaging/provider response.",
+    quickAnswer: "**Cullen sign** is bruising around the umbilicus. This sign can indicate blood tracking from intraperitoneal or retroperitoneal bleeding; severe pancreatitis and ruptured ectopic pregnancy are important associations, but the sign is delayed, uncommon, and not diagnostic of one cause.",
+    whyItMatters: "New unexplained Cullen sign raises concern for hidden internal bleeding and can accompany severe hemorrhagic pancreatitis, ruptured ectopic pregnancy, trauma, or another abdominal hemorrhage. Assess circulation and the abdomen promptly rather than treating the discoloration as routine bruising.",
+    associatedConditions: ["Intra-abdominal hemorrhage", "Retroperitoneal hemorrhage", "Severe acute pancreatitis", "Ruptured ectopic pregnancy", "Abdominal trauma"],
+    clinicalInterpretation: "Cullen sign with severe abdominal or back pain, tachycardia, hypotension, syncope, falling hemoglobin, peritoneal findings, pregnancy possibility, or trauma strengthens concern for clinically important internal bleeding.",
+    diagnosticUsefulness: "Cause-directed evaluation may include serial vital signs and abdominal examinations, a complete blood count and hemoglobin trend, coagulation testing, pregnancy testing, pancreatic enzymes, type and screen, and clinician-selected ultrasound or CT based on hemodynamic stability and the suspected source.",
+    nursingRelevance: "Assess blood pressure, heart rate, perfusion, pain, abdomen, pregnancy possibility, trauma history, anticoagulants, and bleeding trend; maintain ordered access and monitoring while escalating concerning findings.",
+    urgentEscalation: "Escalate immediately for possible major bleeding when Cullen sign accompanies hemodynamic instability, syncope, severe pain, peritonitis, pregnancy-related concern, or rapid deterioration. Stabilization takes priority over waiting for the discoloration to evolve.",
+    evidenceLimitations: "Cullen sign does not diagnose pancreatitis or identify the bleeding source, and its absence does not exclude severe pancreatitis or major internal hemorrhage. Local trauma, injections, anticoagulant-related bruising, and abdominal-wall hematoma can mimic it.",
+    sourceNote: "Reviewed against NCBI Bookshelf/StatPearls: Grey Turner Sign (https://www.ncbi.nlm.nih.gov/books/NBK534296/), NCBI Bookshelf/StatPearls: Blunt Abdominal Trauma (https://www.ncbi.nlm.nih.gov/books/NBK431087/), and Merck Manual Professional: Acute Abdominal Pain (https://www.merckmanuals.com/professional/gastrointestinal-disorders/acute-abdomen-and-surgical-gastroenterology/acute-abdominal-pain).",
     sections: [
       ["What to notice", "Blue-purple or dark bruising/ecchymosis around the umbilicus, sometimes appearing after the bleeding process has been present for hours."],
       ["What it means", "Blood can track through fascial planes to the periumbilical tissues. Causes include severe acute pancreatitis, retroperitoneal/intraperitoneal hemorrhage, ruptured ectopic pregnancy, trauma, or ruptured aneurysm context."],
@@ -5223,7 +5294,15 @@ const baseClinicalReferenceEntries = [
     nclexEssential: true,
     aliases: ["Grey Turner's sign", "Grey-Turner sign", "flank ecchymosis", "flank bruising", "Grey Turner"],
     summary: "Grey Turner sign is flank ecchymosis that can indicate retroperitoneal hemorrhage, severe pancreatitis, trauma, ruptured aneurysm, or ruptured ectopic pregnancy context.",
-    quickAnswer: "**Grey Turner sign** is bruising of the flank from blood tracking through retroperitoneal tissues. It is a high-risk clue for hidden hemorrhage or severe pancreatitis and needs hemodynamic and abdominal escalation.",
+    quickAnswer: "**Grey Turner sign** is flank bruising caused by blood or hemorrhagic fluid tracking into subcutaneous tissue. This sign can indicate retroperitoneal or intra-abdominal hemorrhage and is classically associated with severe acute pancreatitis, but it is delayed, uncommon, and not diagnostic of one cause.",
+    whyItMatters: "New unexplained Grey Turner sign raises concern for severe internal bleeding or hemorrhagic pancreatitis; ruptured abdominal aortic aneurysm, trauma, anticoagulant-related bleeding, and ruptured ectopic pregnancy are important alternatives. The finding warrants prompt hemodynamic and abdominal assessment.",
+    associatedConditions: ["Retroperitoneal hemorrhage", "Intra-abdominal hemorrhage", "Severe acute pancreatitis", "Ruptured abdominal aortic aneurysm", "Abdominal trauma", "Ruptured ectopic pregnancy"],
+    clinicalInterpretation: "Grey Turner sign with severe abdominal, back, or flank pain, tachycardia, hypotension, syncope, falling hemoglobin, peritoneal findings, pregnancy possibility, trauma, or anticoagulant use strengthens concern for clinically important internal bleeding.",
+    diagnosticUsefulness: "Cause-directed evaluation may include serial vital signs and abdominal examinations, a complete blood count and hemoglobin trend, coagulation testing, pregnancy testing, pancreatic enzymes, type and screen, and clinician-selected CT scan or ultrasound. CT is commonly used to define retroperitoneal pathology in a stable patient.",
+    nursingRelevance: "Assess blood pressure, heart rate, perfusion, pain, abdomen and flanks, pregnancy possibility, trauma history, anticoagulants, and bleeding trend; maintain ordered access and monitoring while escalating concerning findings.",
+    urgentEscalation: "Escalate immediately when Grey Turner sign accompanies hemodynamic instability, syncope, severe pain, peritonitis, major bleeding, pregnancy-related concern, or rapid deterioration. Do not wait for the bruise to expand before acting.",
+    evidenceLimitations: "Grey Turner sign does not diagnose pancreatitis or identify the bleeding source, and its absence does not exclude severe pancreatitis or major retroperitoneal hemorrhage. The sign may not appear for days, while local trauma and abdominal-wall bruising can mimic it.",
+    sourceNote: "Reviewed against NCBI Bookshelf/StatPearls: Grey Turner Sign (https://www.ncbi.nlm.nih.gov/books/NBK534296/), NCBI Bookshelf/StatPearls: Acute Anemia (https://www.ncbi.nlm.nih.gov/books/NBK537232/), and Merck Manual Professional: Acute Pancreatitis (https://www.merckmanuals.com/professional/gastrointestinal-disorders/pancreatitis/acute-pancreatitis).",
     sections: [
       ["What to notice", "Blue-purple discoloration or ecchymosis along one or both flanks."],
       ["What it means", "Retroperitoneal blood or inflammatory hemorrhage can track to the flank. Severe pancreatitis with necrosis/bleeding is classic, but trauma, aneurysm, renal/adrenal bleeding, anticoagulation, or ectopic pregnancy contexts matter."],
@@ -5239,7 +5318,15 @@ const baseClinicalReferenceEntries = [
     nclexEssential: true,
     aliases: ["Beck's triad", "tamponade triad", "JVD muffled heart sounds hypotension", "hypotension JVD muffled heart sounds"],
     summary: "Beck triad is hypotension, jugular venous distention, and muffled heart sounds; it is a classic cardiac tamponade warning pattern from impaired ventricular filling.",
-    quickAnswer: "**Beck triad** = hypotension + JVD + muffled heart sounds. Think cardiac tamponade physiology: pericardial pressure compresses the heart, ventricular filling drops, stroke volume falls, and obstructive shock can develop.",
+    quickAnswer: "**Beck triad** = hypotension + jugular venous distention + muffled heart sounds. The triad suggests cardiac tamponade physiology, in which pressure around the heart impairs filling and can cause obstructive shock; its absence does not exclude tamponade.",
+    whyItMatters: "Beck triad raises concern for life-threatening cardiac tamponade, especially after chest trauma, a cardiac procedure, or another reason for pericardial bleeding or effusion. Do not wait for all three findings before escalating a patient with dyspnea, hypotension, elevated neck veins, syncope, or poor perfusion.",
+    associatedConditions: ["Cardiac tamponade", "Pericardial effusion", "Obstructive shock"],
+    clinicalInterpretation: "The pattern reflects impaired cardiac filling: venous pressure rises, heart sounds may become distant, and falling stroke volume produces hypotension and poor perfusion. Tachycardia, pulsus paradoxus, low-voltage QRS complexes, electrical alternans, dyspnea, and shock can strengthen concern but are variably present.",
+    diagnosticUsefulness: "Cardiac tamponade is evaluated from the complete clinical pattern with urgent echocardiography as the key bedside imaging study; electrocardiography, chest imaging, and cause-directed laboratory testing may add context without delaying stabilization.",
+    nursingRelevance: "Assess airway and breathing, blood pressure, heart rate and rhythm, neck veins, heart sounds, oxygenation, mental status, capillary refill, skin temperature, urine output, chest symptoms, and recent trauma or procedures while maintaining continuous monitoring and ordered vascular access.",
+    urgentEscalation: "Activate emergency response for suspected tamponade with hypotension, syncope, severe dyspnea, altered consciousness, chest pain, or shock. Prepare for urgent echocardiographic evaluation and pericardial drainage pathway as ordered; do not delay because the full triad is incomplete.",
+    evidenceLimitations: "Beck triad does not diagnose or independently confirm cardiac tamponade, and the complete triad is absent in many patients, particularly with slowly accumulating medical effusions or altered volume status. Echocardiographic findings also require clinical correlation.",
+    sourceNote: "Reviewed against the 2025 ESC Guidelines for myocarditis and pericarditis (https://academic.oup.com/eurheartj/article/46/40/3952/8234483), NCBI Bookshelf/StatPearls: Cardiac Tamponade (https://www.ncbi.nlm.nih.gov/books/NBK431090/), and ESC Cardiac Tamponade: A Clinical Challenge (https://www.escardio.org/communities/councils/cardiology-practice/scientific-documents-and-publications/ejournal/volume-15/Cardiac-tamponade-a-clinical-challenge/).",
     sections: [
       ["What to notice", "Low blood pressure/narrow pulse pressure, distended neck veins, and distant or muffled heart sounds. Tachycardia, dyspnea, chest pressure, pulsus paradoxus, or low-voltage ECG may also appear."],
       ["What it means", "Fluid or blood in the pericardial sac raises pressure around the heart, limiting diastolic filling and reducing stroke volume."],
@@ -5270,15 +5357,18 @@ const baseClinicalReferenceEntries = [
     category: "Diagnostic tests",
     nclexEssential: true,
     aliases: ["ECG", "EKG", "12 lead", "12-lead ECG", "heart rhythm test", "cardiac tracing"],
-    summary: "A noninvasive recording of cardiac electrical activity used to identify rate, rhythm, conduction delay, ischemia patterns, electrolyte effects, and medication toxicity cues.",
-    quickAnswer: "An **ECG/EKG** checks cardiac electrical activity. Nurses verify correct lead placement, connect symptoms to rhythm changes, compare to baseline, and escalate chest pain, dysrhythmia, ST changes, severe brady/tachycardia, syncope, or unstable vitals.",
+    summary: "A noninvasive recording of cardiac electrical activity used to evaluate rate, rhythm, conduction, repolarization, ischemic patterns, electrolyte effects, and medication-toxicity cues in clinical context.",
+    quickAnswer: "An **electrocardiogram (ECG/EKG)** records cardiac electrical activity through skin electrodes. An abnormal electrocardiogram can signal acute myocardial ischemia, a dangerous dysrhythmia, conduction block, or an electrolyte or medication effect, so connect the tracing to symptoms and perfusion rather than diagnosing from one tracing.",
+    whyItMatters: "Dynamic ST-segment changes, a sustained dangerous rhythm, or new conduction abnormalities can change the urgency of care. Assess chest pain, dyspnea, syncope, palpitations, mental status, vital signs, and perfusion; verify patient identity, electrode position, calibration, and artifact; then compare with prior and serial ECGs. Cause-directed evaluation may include high-sensitivity troponin, electrolytes, medication review, echocardiography, or other testing selected for the presentation. Escalate immediately for chest pain, syncope, hypotension, dyspnea, an unstable rhythm, or dynamic ischemic changes. Lead misplacement, motion, baseline abnormalities, and a tracing captured between intermittent events can mislead interpretation. A normal or nondiagnostic ECG does not rule out acute coronary syndrome, and one ECG does not diagnose the cause by itself.",
     sections: [
       ["What it is", "A noninvasive diagnostic test that records atrial and ventricular electrical activity through skin electrodes."],
-      ["Before / during", "Explain that stickers/leads are placed on the skin, keep the client still, verify lead placement, reduce artifact, and document symptoms during the tracing."],
-      ["What nurses watch for", "Rate, rhythm, PR interval, QRS width, QT/QTc, ST elevation/depression, T-wave changes, pacer spikes, artifact, and whether the rhythm fits the client's symptoms."],
-      ["NCLEX trap", "Do not treat the tracing alone. Treat the **client + rhythm + perfusion**. Unstable rhythm symptoms outrank a pretty-looking strip."]
+      ["Nursing assessment and acquisition", "Assess symptoms and perfusion, explain electrode placement, keep the client still, verify correct lead positions and machine settings, reduce artifact, compare with prior tracings, and document symptoms present during the recording."],
+      ["Interpretation and next evaluation", "Review rate, rhythm, PR interval, QRS width, QT/QTc, ST-T patterns, pacer activity, artifact, and change from baseline; reconcile a concerning or discordant tracing with serial ECGs and cause-directed testing."],
+      ["Safety limitation", "Treat the **client + rhythm + perfusion**, not an automated label or isolated tracing. Symptoms and instability can require urgent action even when one ECG is normal or nondiagnostic."]
     ],
-    tags: ["procedure", "test", "ECG", "EKG", "cardiac", "rhythm", "heart block"]
+    tags: ["procedure", "test", "ECG", "EKG", "cardiac", "rhythm", "heart block"],
+    sourceKeys: ["ani-core-aha-acc-ecg-standardization-2007", "ani-core-aha-acc-chest-pain-2021", "ani-core-acc-ed-chest-pain-2022"],
+    clinicalInterpretationRevision: "2026-08-13-core-diagnostic-procedure-clinical-significance-1"
   },
   {
     name: "Blood culture collection",
@@ -5286,15 +5376,18 @@ const baseClinicalReferenceEntries = [
     category: "Laboratory procedures",
     nclexEssential: true,
     aliases: ["blood cultures", "culture before antibiotics", "sepsis cultures", "blood culture"],
-    summary: "Blood cultures help identify bloodstream infection and should be obtained before antibiotics when doing so does not dangerously delay care.",
-    quickAnswer: "**Blood cultures** are drawn to identify bloodstream infection. NCLEX loves: collect cultures **before antibiotics when possible**, use sterile technique, usually draw from separate sites, label timing/site, then give antibiotics promptly per sepsis protocol.",
+    summary: "Blood cultures detect bacteria or fungi circulating in blood; collection volume, number and source of collections, antisepsis, timing, and prompt transport determine diagnostic yield and contamination risk.",
+    quickAnswer: "**Blood culture collection** obtains blood to detect organisms circulating in the bloodstream. A positive blood-culture result can signal bacteremia or fungemia, while inadequate volume or contamination can create false results that delay needed therapy or expose a patient to unnecessary antibiotics.",
+    whyItMatters: "Use meticulous skin antisepsis, collect the ordered cultures or sets from separate peripheral venipunctures when appropriate, fill each bottle to its marked target, label site and time, and send bottles promptly. Current IDSA/ASM guidance commonly uses multiple adult cultures or sets and gives 20-30 mL per adult set as an example; pediatric volume is weight based. The exact number of sets, sites, bottles, volume, and timing varies with age and weight, suspected endocarditis or catheter-related infection, prior antimicrobials, bottle manufacturer, and the local laboratory protocol. When a catheter infection is suspected, paired peripheral and catheter collections or multiple lumens may be required by the ordered protocol. In suspected sepsis, collect blood cultures as soon as possible and ideally before antimicrobial therapy, but do not delay ordered time-critical antimicrobials or resuscitation while pursuing a difficult specimen. A common skin organism in one bottle may represent contamination but does not prove it; organism identity, the number and sites of positive bottles or sets, time to positivity, devices, symptoms, and repeat results guide evaluation. A negative culture does not rule out bloodstream infection after antimicrobials or with inadequate volume or low organism burden, and one positive bottle does not diagnose true infection or contamination by itself.",
     sections: [
-      ["Why it is done", "Identifies bacteremia/fungemia and guides antimicrobial selection."],
-      ["Nursing steps", "Verify order/protocol, perform hand hygiene, use strict antisepsis, draw the ordered sets/volumes, label site/time, and send promptly."],
-      ["Priority timing", "In suspected sepsis, cultures are ideally collected before antibiotics, but antibiotics should not be dangerously delayed if the client is unstable or cultures are difficult."],
-      ["NCLEX trap", "The trap is delaying life-saving antibiotics too long because the nurse is waiting on perfect specimen collection."]
+      ["Why it is done", "Detects bacteremia or fungemia and provides organism identification and susceptibility evidence that can guide antimicrobial selection and de-escalation."],
+      ["Nursing collection and documentation", "Verify the ordered protocol and bottle type; identify the client; perform hand hygiene and strict antisepsis; collect the ordered sites, sets, and volumes; avoid underfilling; label site and time; and send promptly without refrigeration unless the laboratory directs otherwise."],
+      ["Priority timing", "In suspected sepsis, obtain cultures promptly and ideally before antimicrobials when feasible, but never create an avoidable delay in prescribed time-critical therapy or stabilization."],
+      ["Interpretation limitation", "Do not label every common skin organism a contaminant or every positive bottle true bacteremia. Reconcile the full culture pattern with the client, collection quality, devices, prior therapy, and repeat testing when ordered."]
     ],
-    tags: ["procedure", "test", "sepsis", "infection", "culture", "antibiotics", "bloodstream"]
+    tags: ["procedure", "test", "sepsis", "infection", "culture", "antibiotics", "bloodstream"],
+    sourceKeys: ["ani-core-cdc-blood-culture-contamination-2026", "ani-core-clsi-m47-blood-cultures-2022", "ani-core-idsa-asm-lab-diagnosis-2024", "ani-core-sccm-sepsis-2026"],
+    clinicalInterpretationRevision: "2026-08-13-core-diagnostic-procedure-clinical-significance-1"
   },
   {
     name: "Urinalysis clean-catch collection",
@@ -5302,14 +5395,19 @@ const baseClinicalReferenceEntries = [
     category: "Laboratory procedures",
     nclexEssential: true,
     aliases: ["urinalysis collection", "UA collection", "clean-catch urine", "clean catch urine", "urine culture collection", "midstream urine", "urine specimen collection"],
-    summary: "A urine specimen used to evaluate infection, hydration, renal/metabolic findings, glucose/ketones, protein, blood, and pregnancy-related clues.",
-    quickAnswer: "For **clean-catch urine**, teach perineal cleansing, start voiding, collect midstream urine without touching inside the cup, cap it, and send quickly. For culture, contamination ruins the result.",
+    summary: "Clean-catch collection obtains a midstream urine specimen while reducing external contamination so urinalysis or urine-culture results are more interpretable.",
+    quickAnswer: "**Urinalysis clean-catch collection** reduces external contamination before urinalysis or urine culture. Follow anatomy- and protocol-specific cleansing, collect midstream without touching the inside of the cup or lid, cap and label it, and transport or preserve it under the laboratory's instructions. A collection breach or delay can lead to a misleading result. A positive urinalysis or urine culture does not diagnose symptomatic UTI by itself.",
+    whyItMatters: "External skin or genital organisms and poor transport can lead to misleading urinalysis or urine-culture results, repeat collection, misdiagnosis, and unnecessary antibiotics. Mixed-organism growth or a result that conflicts with symptoms raises concern for contamination or another collection or handling problem before testing, but no one feature proves contamination.",
     sections: [
-      ["What it checks", "Specific gravity, pH, protein, blood, glucose, ketones, leukocyte esterase, nitrites, microscopy, and culture when ordered."],
-      ["Collection teaching", "Cleanse correctly, void a small amount first, collect midstream, avoid touching the inside of the cup/lid, cap the specimen, and deliver promptly."],
-      ["NCLEX trap", "A contaminated specimen can create misleading treatment. Collection technique matters before the nurse assumes a true UTI."]
+      ["What it checks", "Urinalysis can examine appearance, concentration, chemical markers, cells, casts, crystals, and organisms; a urine culture can identify and quantify growth and test antimicrobial susceptibility when ordered. The tests answer different questions and must be interpreted with the indication and specimen method."],
+      ["Priority nursing actions", "Verify the ordered test and specimen type, give anatomy- and protocol-appropriate cleansing instructions, have the patient begin voiding before collecting the midstream portion without touching the inside of the container or lid, then cap, label, and transport or preserve it under the laboratory's instructions."],
+      ["Interpretation and follow-up", "Interpret urinalysis, microscopy, and urine-culture findings with symptoms, patient population, collection method, transport, and laboratory method. When a specimen is questionable, review those factors with the laboratory and responsible clinician before deciding whether a repeat clean-catch or a different clinically appropriate specimen is needed."],
+      ["Urgency and limitations", "The clean-catch procedure has no independent emergency result. Promptly escalate suspected sepsis or hemodynamic instability; obtaining an ideal specimen must not delay stabilization under the applicable emergency pathway. A clean-catch specimen does not prove that it is contamination-free, and no universal colony-count threshold applies across every collection method, patient population, laboratory, and clinical context."],
+      ["NCLEX trap", "Do not treat pyuria, bacteriuria, nitrites, mixed growth, or a positive culture as proof of symptomatic UTI without the patient's symptoms, risks, specimen quality, and clinical context."]
     ],
-    tags: ["procedure", "test", "UA", "urinalysis", "UTI", "urine", "culture"]
+    tags: ["procedure", "test", "UA", "urinalysis", "UTI", "urine", "culture"],
+    sourceKeys: ["ani-urine-medlineplus-clean-catch-2024", "ani-urine-cdc-culture-stewardship-2024", "ani-urine-idsa-asm-lab-diagnosis-2024", "ani-core-sccm-sepsis-2026"],
+    clinicalInterpretationRevision: "2026-08-13-urinalysis-clean-catch-clinical-significance-1"
   },
   {
     name: "Lumbar puncture",
@@ -5317,15 +5415,18 @@ const baseClinicalReferenceEntries = [
     category: "Diagnostic procedures",
     nclexEssential: true,
     aliases: ["LP", "spinal tap", "CSF collection", "cerebrospinal fluid test"],
-    summary: "A procedure that samples cerebrospinal fluid for infection, bleeding, inflammation, malignancy, or pressure evaluation.",
-    quickAnswer: "A **lumbar puncture** collects CSF. Key nursing priorities: verify consent/labs as ordered, position correctly, maintain sterile field, monitor neuro status and puncture site, and report severe headache, neuro change, low-grade fever or higher fever, or drainage.",
+    summary: "A procedure that samples cerebrospinal fluid and, when indicated, measures opening pressure to evaluate infection, selected bleeding pathways, inflammation, malignancy, or a pressure disorder.",
+    quickAnswer: "A **lumbar puncture (LP)** samples cerebrospinal fluid (CSF) and, when indicated, measures opening pressure. An abnormal CSF result can signal meningitis or another central nervous system infection, selected bleeding patterns, inflammation, malignant cells, or a pressure disorder, but it does not diagnose the cause by itself.",
+    whyItMatters: "Before LP, assess neurologic status and cardiopulmonary stability; review focal deficits, papilledema, recent seizures, immune status, antithrombotic medicines, bleeding or coagulation risk, spinal anatomy, and infection at or near the puncture site. Routine cranial imaging before LP is not recommended. Imaging should precede LP when the history or examination raises concern for a mass lesion or unsafe pressure shift, including severely impaired consciousness, a focal neurologic deficit, papilledema, a recent new seizure in an adult, or severe immunocompromise; apply population-specific and local guidance rather than one universal rule. If bacterial meningitis or sepsis is suspected and LP is unsafe or deferred, collect ordered blood cultures and start prescribed empiric treatment promptly; do not delay treatment for imaging or LP. When opening pressure is clinically indicated, measure it with technically valid lateral-recumbent positioning and document position because pressure depends on technique and patient context rather than one universal normal range. Label CSF tubes and route them immediately for the ordered cell count, glucose, protein, Gram stain, culture, molecular, cytology, or other studies according to the local laboratory protocol. Escalate immediately for acute neurologic change, declining consciousness, seizure, respiratory or hemodynamic instability, major bleeding, CSF leakage, fever with meningitis features, or a severe persistent post-puncture headache. CSF findings must be integrated with symptoms, blood testing, imaging, specimen quality, timing, and prior treatment; a normal or negative study does not rule out every cause.",
     sections: [
-      ["Why it is done", "Evaluates meningitis/encephalitis, subarachnoid hemorrhage when indicated, inflammatory disorders, malignancy, and CSF pressure."],
-      ["Positioning", "Lateral recumbent fetal position or sitting curled forward, depending on provider preference and pressure measurement needs."],
-      ["After care", "Monitor vital signs, neuro status, pain/headache, puncture site drainage/bleeding, and ordered activity/hydration instructions."],
-      ["NCLEX trap", "New neuro change, low-grade fever or higher fever, severe headache, or leakage is not routine discomfort."]
+      ["Indications and clinical meaning", "Evaluates meningitis or encephalitis, selected subarachnoid-hemorrhage pathways, inflammatory or malignant disease, and CSF pressure; the chosen studies and urgency depend on the clinical question."],
+      ["Risk assessment and imaging", "Assess for mass effect or an unsafe pressure shift, bleeding risk, local infection, difficult anatomy, and cardiopulmonary instability. Cranial imaging is selective rather than routine and must not delay empiric treatment when meningitis is suspected."],
+      ["Nursing preparation, pressure, and specimens", "Verify consent and orders; review medicines and ordered safety studies; document baseline neurologic findings; position and support the client; maintain asepsis; document lateral-recumbent position if opening pressure is measured; label tubes; and send CSF promptly per laboratory protocol."],
+      ["After care and urgent escalation", "Monitor vital signs, neurologic status, headache and pain, and the puncture site. Report severe or persistent postural headache, fever with meningitis features, drainage, bleeding, seizure, new weakness or numbness, altered consciousness, or cardiorespiratory deterioration promptly."]
     ],
-    tags: ["procedure", "test", "CSF", "lumbar puncture", "meningitis", "spinal tap"]
+    tags: ["procedure", "test", "CSF", "lumbar puncture", "meningitis", "spinal tap"],
+    sourceKeys: ["ani-core-who-meningitis-2025", "ani-core-idsa-asm-lab-diagnosis-2024", "ani-core-lumbar-puncture-consensus-2017"],
+    clinicalInterpretationRevision: "2026-08-13-core-diagnostic-procedure-clinical-significance-1"
   },
   {
     name: "Nonstress test",
@@ -5334,14 +5435,17 @@ const baseClinicalReferenceEntries = [
     nclexEssential: true,
     aliases: ["NST", "fetal nonstress test", "fetal monitoring"],
     summary: "A fetal surveillance test that checks fetal heart rate accelerations with movement, suggesting fetal oxygenation and autonomic responsiveness.",
-    quickAnswer: "A **nonstress test (NST)** is reactive when fetal heart rate accelerates appropriately with movement. A nonreactive NST means more evaluation, not instant panic by itself.",
+    quickAnswer: "A **nonstress test (NST)** is a short fetal-surveillance snapshot. A reactive result—heart-rate accelerations that meet gestational-age and protocol criteria—suggests reassuring oxygenation and nervous-system responsiveness during the test; a nonreactive result can reflect fetal sleep, medicines, earlier gestation, or possible insufficient oxygen and requires further assessment, but it does not diagnose fetal compromise or mandate delivery by itself.",
+    whyItMatters: "Interpret acceleration size, duration, and observation time with gestational age and the local protocol; before 32 weeks, a healthy fetus is more likely to have a nonreactive result and different acceleration criteria may be used. Assess reported fetal movement, maternal symptoms and vital signs, medication exposure, contractions, baseline rate, variability, and decelerations; reposition as needed and notify the obstetric team of a nonreactive or otherwise concerning tracing. Follow-up may include longer monitoring, stimulation, a biophysical profile with ultrasonography, or other indication-directed testing. Escalate immediately for recurrent or prolonged decelerations with maternal hemodynamic instability, major bleeding, or clearly reduced or absent fetal movement; do not let a prior reactive test delay assessment of new symptoms. ACOG/SMFM suggestions for when and how often to test vary by the pregnancy risk and are not mandates because a normal short-term test does not guarantee ongoing well-being or rule out every cause of stillbirth.",
     sections: [
       ["What it measures", "Fetal heart rate response to fetal movement using external monitoring."],
       ["Nursing role", "Position to avoid supine hypotension, apply monitors, mark fetal movement if used, observe tracing, and report nonreactive or concerning patterns per protocol."],
       ["Common interpretation", "Reactive generally means expected accelerations for gestational age. Nonreactive requires follow-up such as extended monitoring or biophysical profile depending orders/protocol."],
       ["NCLEX trap", "Do not call a nonreactive NST an emergency without the whole fetal/maternal picture, but do not ignore recurrent decelerations or maternal instability."]
     ],
-    tags: ["procedure", "test", "pregnancy", "maternity", "NST", "fetal monitoring"]
+    tags: ["procedure", "test", "pregnancy", "maternity", "NST", "fetal monitoring"],
+    sourceKeys: ["ani-ob-acog-antenatal-surveillance-co828", "ani-ob-acog-fetal-wellbeing-faq098", "ani-ob-nhs-fetal-movement-urgent"],
+    clinicalInterpretationRevision: "2026-08-13-obstetric-diagnostic-clinical-significance-1"
   },
   {
     name: "Biophysical profile",
@@ -5350,13 +5454,16 @@ const baseClinicalReferenceEntries = [
     nclexEssential: true,
     aliases: ["BPP", "fetal biophysical profile", "fetal ultrasound score"],
     summary: "A fetal well-being assessment that combines ultrasound findings with fetal heart rate reactivity when paired with a nonstress test.",
-    quickAnswer: "A **biophysical profile (BPP)** checks fetal breathing, movement, tone, amniotic fluid, and often NST reactivity. NCLEX focus: low scores or low fluid require prompt provider follow-up because they can signal fetal compromise.",
+    quickAnswer: "A **biophysical profile (BPP)** combines ultrasonography of fetal breathing, body movement, tone, and amniotic fluid with nonstress-test reactivity to estimate current fetal well-being. A low total score or reduced fluid can signal possible fetal compromise or placental dysfunction and requires prompt obstetric review, but one score does not diagnose the cause or guarantee or rule out ongoing fetal health by itself.",
+    whyItMatters: "A full BPP scores each of five components as 0 or 2, for a total of 10. ACOG patient guidance uses 8–10 as reassuring, 6 as equivocal—with repeat BPP in 12–24 hours or delivery considered according to gestational age—and 4 or less as needing further testing and sometimes delivery; these are educational anchors, not universal delivery commands. Management depends on gestational age, the indication, maternal and fetal status, amniotic fluid, and local protocol, and low fluid can change surveillance or delivery planning regardless of the total. Assess fetal movement, maternal symptoms and vital signs, contractions, tracing quality, and whether each ultrasound component was observed; notify the obstetric team promptly of an equivocal, low, or incomplete result. Evaluation may include a repeat BPP, extended NST, targeted ultrasonography, growth and fluid assessment, or umbilical-artery Doppler based on the indication. Escalate immediately for maternal hemodynamic instability, major bleeding, recurrent or prolonged decelerations, or reduced or absent fetal movement. Even a reassuring BPP is time-limited and does not exclude every pathway to sudden deterioration or stillbirth.",
     sections: [
       ["What it evaluates", "Fetal breathing movement, gross body movement, fetal tone, amniotic fluid volume, and nonstress-test reactivity when a full BPP is ordered."],
       ["Nursing role", "Explain the test, position the pregnant client to avoid supine hypotension, monitor maternal symptoms, and report nonreassuring or incomplete results per protocol."],
       ["NCLEX trap", "Amniotic fluid is a chronic oxygenation/placental-function clue. Do not focus only on whether the fetus moved during the scan."]
     ],
-    tags: ["BPP", "pregnancy", "maternity", "fetal testing", "amniotic fluid", "nonstress test"]
+    tags: ["BPP", "pregnancy", "maternity", "fetal testing", "amniotic fluid", "nonstress test"],
+    sourceKeys: ["ani-ob-acog-antenatal-surveillance-co828", "ani-ob-acog-fetal-wellbeing-faq098", "ani-ob-nhs-fetal-movement-urgent"],
+    clinicalInterpretationRevision: "2026-08-13-obstetric-diagnostic-clinical-significance-1"
   },
   {
     name: "Amniocentesis",
@@ -5365,13 +5472,16 @@ const baseClinicalReferenceEntries = [
     nclexEssential: true,
     aliases: ["amnio", "amniotic fluid sampling", "fetal lung maturity test"],
     summary: "A needle aspiration of amniotic fluid used for selected genetic, diagnostic, infection, or fetal-lung-maturity evaluation.",
-    quickAnswer: "**Amniocentesis** samples amniotic fluid. Nursing priorities: verify consent, check fetal heart rate before/after, monitor for contractions, leaking fluid, bleeding, low-grade fever or higher fever, or decreased fetal movement, and know Rh-negative clients may need Rh immune globulin.",
+    quickAnswer: "**Amniocentesis** uses ultrasound guidance to sample amniotic fluid for selected chromosome, gene, infection, or other indication-specific testing. It can diagnose only what the laboratory actually tests: a negative result does not rule out untested disorders, and a positive result requires obstetric and genetics interpretation rather than serving as a stand-alone pregnancy decision.",
+    whyItMatters: "Amniocentesis is commonly performed at 15–20 weeks for prenatal genetic diagnosis and can be done later for some indications; timing is not one universal window and should follow the clinical question, imaging, counseling, and local expertise. Before the procedure, verify informed consent, the exact requested assays, gestational age and ultrasound plan, relevant maternal infection and transmission risks, blood group and Rh(D) status, antibody screen, and baseline maternal and fetal assessment. An unsensitized Rh-negative patient—one who has not already formed anti-D antibodies—generally receives Rh immune globulin after amniocentesis according to current protocol; Rh immune globulin does not treat established sensitization. Explain that operator experience, the pregnancy, number of fetuses, and indication affect a small procedure-related pregnancy-loss risk, so one rate should not be presented as universal. After the procedure, reassess fetal heart rate, uterine activity, and maternal status. Obtain urgent obstetric assessment for persistent or severe abdominal pain, vaginal fluid leakage, fever or chills, bleeding, contractions, or reduced or absent fetal movement when movement is normally perceived. Interpret results with genetic counseling, ultrasonography, family and fetal findings, specimen quality, and assay scope because the result may guide monitoring, neonatal preparation, or delivery planning without answering every genetic or structural question.",
     sections: [
       ["Before", "Verify consent, gestational age/indication, allergies, baseline maternal vitals, and fetal heart rate per protocol."],
       ["After", "Monitor fetal heart rate, uterine activity, vaginal bleeding, fluid leakage, low-grade fever or higher fever, severe pain, and decreased fetal movement."],
       ["NCLEX trap", "**Leaking fluid, bleeding, low-grade fever or higher fever, contractions, or decreased fetal movement** after the procedure is not expected soreness."]
     ],
-    tags: ["amniocentesis", "pregnancy", "maternity", "Rhogam", "fetal heart rate", "procedure"]
+    tags: ["amniocentesis", "pregnancy", "maternity", "Rhogam", "fetal heart rate", "procedure"],
+    sourceKeys: ["ani-ob-acog-prenatal-genetic-diagnostic-tests", "ani-ob-acog-amniocentesis-faq", "ani-ob-acog-rh-factor-faq", "ani-ob-rcog-amniocentesis-cvs-gtg8", "ani-ob-nhs-amniocentesis-aftercare"],
+    clinicalInterpretationRevision: "2026-08-13-obstetric-diagnostic-clinical-significance-1"
   },
   {
     name: "Chorionic villus sampling",
@@ -5380,13 +5490,16 @@ const baseClinicalReferenceEntries = [
     nclexEssential: true,
     aliases: ["CVS", "placental tissue sampling", "chorionic villi sampling"],
     summary: "A prenatal diagnostic procedure that samples placental tissue, commonly earlier than amniocentesis, for genetic evaluation.",
-    quickAnswer: "**Chorionic villus sampling (CVS)** samples placental tissue for genetic testing. Monitor for bleeding, cramping, infection, rupture of membranes, and fetal concerns; Rh-negative clients may need Rh immune globulin.",
+    quickAnswer: "**Chorionic villus sampling (CVS)** uses ultrasound guidance to sample placental chorionic villi for selected chromosome or gene testing, usually earlier than amniocentesis. It can diagnose a tested target, but because the sample is placental, confined placental mosaicism—an abnormal cell line in the placenta but not the fetus—can make some results uncertain and prompt amniocentesis or other specialist confirmation.",
+    whyItMatters: "ACOG patient guidance describes CVS commonly at 10–13 weeks, while RCOG typically uses 11 weeks 0 days through 13 weeks 6 days and advises against CVS before 10 weeks; exact availability, timing, and the transabdominal or transcervical approach are specialist- and protocol-specific. Before the procedure, verify informed consent, the exact testing target and assay, gestational age, placental mapping, relevant maternal infection and transmission risks, blood group and Rh(D) status, antibody screen, and baseline maternal and fetal assessment. An unsensitized Rh-negative patient—one who has not already formed anti-D antibodies—generally receives Rh immune globulin after CVS according to current protocol; Rh immune globulin does not treat established sensitization. Explain that operator experience, the pregnancy, number of fetuses, approach, and indication affect the small procedure-related risks of pregnancy loss, bleeding, infection, or fluid leakage, so one rate should not be presented as universal. After CVS, obtain urgent obstetric assessment for persistent or severe pain, fever or chills, heavy bleeding, clear vaginal fluid, or contractions. Interpret rapid and final results with the laboratory, genetics specialist, ultrasonography, and assay scope; placental mosaicism or an inadequate sample may require cultured-cell testing, amniocentesis, or other follow-up, and a negative result does not rule out untested genetic disorders or open neural tube defects.",
     sections: [
       ["What it is", "A transabdominal or transcervical sampling of chorionic villi for genetic/chromosomal testing."],
       ["Nursing role", "Verify consent, explain cramping/spotting precautions, check ordered fetal assessment, and teach reportable symptoms."],
       ["NCLEX trap", "CVS does not assess open neural tube defects through amniotic-fluid AFP the same way amniocentesis can."]
     ],
-    tags: ["CVS", "pregnancy", "maternity", "genetic testing", "procedure", "Rhogam"]
+    tags: ["CVS", "pregnancy", "maternity", "genetic testing", "procedure", "Rhogam"],
+    sourceKeys: ["ani-ob-acog-prenatal-genetic-diagnostic-tests", "ani-ob-acog-rh-factor-faq", "ani-ob-rcog-amniocentesis-cvs-gtg8", "ani-ob-rcog-amniocentesis-consent-6a-2026", "ani-ob-rcog-cvs-consent-6b-2026", "ani-ob-nhs-cvs-aftercare"],
+    clinicalInterpretationRevision: "2026-08-13-obstetric-diagnostic-clinical-significance-1"
   },
   {
     name: "Blood transfusion",
@@ -5395,14 +5508,17 @@ const baseClinicalReferenceEntries = [
     nclexEssential: true,
     aliases: ["blood product transfusion", "general transfusion procedure", "transfuse blood", "transfusion reaction"],
     summary: "Administration of blood products to treat selected anemia, bleeding, or clotting problems while monitoring for potentially life-threatening reactions.",
-    quickAnswer: "For a **blood transfusion**, verify consent/type/crossmatch, use the correct tubing and normal saline, start slowly, stay with the client early, and stop the transfusion for suspected reaction. Maintain IV access with normal saline and notify the provider/blood bank per policy.",
+    quickAnswer: "A **blood transfusion** gives a selected blood component to support oxygen delivery or hemostasis when the expected benefit outweighs transfusion risk; it is not an automatic response to one laboratory number. Verify consent/type/crossmatch, use the correct tubing and normal saline, start slowly, stay with the client early, and stop the transfusion for a suspected reaction. Maintain IV access with normal saline and notify the provider/blood bank per policy.",
+    whyItMatters: "Verify the patient, order, component, compatibility work, consent, baseline assessment, and blood-bank requirements, then monitor closely as the product begins. New fever or chills, dyspnea, wheeze, back or flank pain, hypotension, hives, dark urine, acute hypoxemia, or neurologic change raises concern for a reaction: stop the component, maintain venous access with normal saline and new tubing as required by local policy, assess airway, breathing, circulation, and vital signs, and notify the responsible clinician and blood bank; activate emergency response for instability. Cause-directed laboratory testing can include patient-product identity checks, direct antiglobulin and hemolysis testing, cultures, and other blood-bank studies; clinician-selected chest imaging and volume assessment may help distinguish pulmonary causes. Symptoms identify a possible reaction but do not diagnose its subtype by themselves; the clinical and blood-bank evaluation distinguishes hemolytic, septic, allergic, lung-injury, and circulatory-overload patterns.",
     sections: [
       ["Before", "Check order, consent, type/crossmatch, patient identity with two licensed staff per policy, baseline vitals, IV access, and product expiration/appearance."],
       ["During", "Start slowly, monitor closely for the first 15 minutes, reassess vitals, and watch for low-grade fever or higher fever, chills, dyspnea, back/flank pain, hypotension, hives, anxiety, or dark urine."],
-      ["Reaction priority", "**Stop the transfusion first**, keep the IV line open with normal saline using new tubing, assess the client, notify provider/blood bank, and send required blood/tubing/specimens per policy."],
+      ["Priority nursing actions for a suspected reaction", "**Stop the transfusion first**, keep the IV line open with normal saline using new tubing, assess the client, notify provider/blood bank, and send required blood/tubing/specimens per policy."],
       ["NCLEX trap", "Do not simply slow the blood when a reaction is suspected. Stop it and protect the client."]
     ],
-    tags: ["blood transfusion", "blood products", "anemia", "reaction", "normal saline", "procedure"]
+    tags: ["blood transfusion", "blood products", "anemia", "reaction", "normal saline", "procedure"],
+    sourceKeys: ["w42-aabb-circular-2024"],
+    clinicalInterpretationRevision: "2026-08-13-procedure-clinical-significance-1"
   },
   {
     name: "Tracheostomy suctioning",
@@ -5411,14 +5527,17 @@ const baseClinicalReferenceEntries = [
     nclexEssential: true,
     aliases: ["trach suctioning", "suction trach", "artificial airway suctioning", "tracheostomy care"],
     summary: "Removal of secretions from a tracheostomy to maintain airway patency while preventing hypoxia, mucosal injury, and infection.",
-    quickAnswer: "**Tracheostomy suctioning** is an airway procedure. Preoxygenate if indicated, use sterile technique for open suctioning, suction only while withdrawing, limit each pass, and stop if the client deteriorates.",
+    quickAnswer: "Retained secretions in a tracheostomy can signal partial airway obstruction and impaired ventilation or oxygenation. **Tracheostomy suctioning** removes those secretions, but the procedure can also cause hypoxemia, mucosal injury, bleeding, or dysrhythmia. Suction only when assessment indicates a need; preoxygenate when indicated, use sterile technique for open suctioning, apply suction only while withdrawing for the protocol-limited duration, and stop if the client deteriorates.",
+    whyItMatters: "First look for visible or audible secretions, coarse breath sounds, ineffective cough, rising airway resistance, increased work of breathing, or falling oxygenation. Use the ordered, age-appropriate oxygenation, catheter-size, pressure, and brief-duration plan; avoid routine saline instillation and try shallow before deep suction when appropriate. Stop, reoxygenate, and reassess for marked desaturation, bradycardia, bleeding, distress, or intolerance. Inability to pass the catheter, suspected mucus plugging, or continuing respiratory deterioration requires urgent airway evaluation and escalation. Cause-directed evaluation can include checking tracheostomy position and patency, ventilation and oxygenation, breath sounds, and clinician-selected radiography, bronchoscopy, or other airway and lung testing when indicated. Improvement after secretion removal supports the immediate purpose of suctioning, but a poor response does not diagnose tube displacement, lower-airway disease, or another cause of hypoxemia by itself.",
     sections: [
       ["When to suction", "Visible/audible secretions, coarse breath sounds, increased work of breathing, decreased SpO2, ineffective cough, or suspected mucus plugging."],
-      ["Safety steps", "Assess first, oxygenate as ordered, use correct catheter size/pressure, maintain sterility, suction intermittently while withdrawing, and allow recovery between passes."],
+      ["Priority nursing actions and safety steps", "Assess first, oxygenate as ordered, use correct catheter size/pressure, maintain sterility, suction intermittently while withdrawing, and allow recovery between passes."],
       ["Stop and reassess", "Severe desaturation, bradycardia, distress, bleeding, or inability to pass the catheter requires stopping and escalating."],
       ["NCLEX trap", "Routine deep suctioning without assessment can injure mucosa and worsen hypoxia."]
     ],
-    tags: ["tracheostomy", "suctioning", "airway", "oxygen", "procedure", "respiratory"]
+    tags: ["tracheostomy", "suctioning", "airway", "oxygen", "procedure", "respiratory"],
+    sourceKeys: ["ani-procedure-aarc-artificial-airway-suctioning-2022"],
+    clinicalInterpretationRevision: "2026-08-13-procedure-clinical-significance-1"
   },
   {
     name: "Chest tube drainage system",
@@ -5427,14 +5546,17 @@ const baseClinicalReferenceEntries = [
     nclexEssential: true,
     aliases: ["chest tube", "water seal", "pleur-evac", "thoracic drainage", "pneumothorax chest tube"],
     summary: "A drainage system that removes air, blood, or fluid from the pleural space so the lung can re-expand.",
-    quickAnswer: "For a **chest tube**, keep the system below chest level, assess respiratory status, check water seal/tidaling, monitor drainage, keep connections secure, and never clamp routinely unless ordered/protocol-directed.",
+    quickAnswer: "A **chest tube drainage system** removes pleural air or fluid so pressure can recover and the lung can re-expand; worsening breathing or perfusion can signal recurrent pneumothorax, obstruction, bleeding, or another complication. Keep the system below chest level, assess respiratory status, check the ordered water-seal and suction setup, monitor drainage, keep connections secure, and never clamp routinely unless ordered or protocol-directed.",
+    whyItMatters: "Assess breath sounds, oxygenation, work of breathing, pain, the insertion site, tubing and connections, drainage trend, and the device's water-seal and suction setup. Sudden respiratory distress, absent or sharply worse breath sounds, tube dislodgement, new subcutaneous emphysema, bright-red or rapidly increasing output, or abruptly stopped drainage when obstruction is suspected requires urgent reassessment and escalation. Cause-directed evaluation can include bedside system inspection and clinician-selected chest radiography, ultrasound, or computed tomography to assess tube position, pleural air or fluid, and lung expansion. Tidaling and bubbling vary with respiration, suction mode, and the clinical situation; one chamber finding does not diagnose a leak, obstruction, patency, or successful lung expansion by itself. Keep the system upright and below the chest, and do not routinely clamp, strip, or manipulate the tube outside the responsible clinician's order and local pleural-drain protocol.",
     sections: [
-      ["Expected checks", "Breath sounds, SpO2, work of breathing, insertion site, tubing kinks/dependent loops, drainage amount/color, water seal tidaling, and suction control if ordered."],
-      ["Report urgently", "Respiratory distress, sudden drainage increase, bright-red output, absent breath sounds, tube dislodgement, new subcutaneous emphysema, or no tidaling when obstruction is suspected."],
+      ["Priority nursing assessment and next actions", "Assess breath sounds, SpO2, work of breathing, insertion site, tubing kinks/dependent loops, drainage amount/color, water seal tidaling, and suction control if ordered; document trends and promptly report concerning changes."],
+      ["Urgent nursing reassessment and escalation", "Respiratory distress, sudden drainage increase, bright-red output, absent breath sounds, tube dislodgement, new subcutaneous emphysema, or no tidaling when obstruction is suspected."],
       ["If disconnected", "Follow facility policy; commonly place the tube end in sterile water to restore a water seal while obtaining help."],
       ["NCLEX trap", "Do not lift the drainage chamber above the chest or strip/milk tubing routinely."]
     ],
-    tags: ["chest tube", "pneumothorax", "hemothorax", "water seal", "respiratory", "procedure"]
+    tags: ["chest tube", "pneumothorax", "hemothorax", "water seal", "respiratory", "procedure"],
+    sourceKeys: ["ani-procedure-bts-pleural-procedures-2023"],
+    clinicalInterpretationRevision: "2026-08-13-procedure-clinical-significance-1"
   },
   {
     name: "Nasogastric tube placement verification",
@@ -5442,14 +5564,22 @@ const baseClinicalReferenceEntries = [
     category: "GI procedures",
     nclexEssential: true,
     aliases: ["NG tube", "nasogastric tube", "tube placement", "enteral tube placement", "gastric tube"],
-    summary: "Safety checks for NG/enteral tube placement before use, especially before feeding or medication administration.",
-    quickAnswer: "**NG tube placement** must be verified before use. Initial placement is commonly confirmed by x-ray per policy. Ongoing checks include external length, aspirate/pH when used, respiratory status, and intolerance cues; air bolus alone is not a safe confirmation method.",
+    summary: "Safety checks that prevent feeding, medication, or suction through an NG/enteral tube whose location has not been confirmed.",
+    quickAnswer: "An **NG tube** whose location is not confirmed can deliver formula or medication into the airway and cause aspiration, pulmonary injury, or death. Before first use, verify placement with the population- and facility-approved pathway; adult acute-care guidance commonly requires radiography after blind insertion, while some health systems use correctly obtained gastric-aspirate pH to decide whether radiography is needed. Never use an air bolus heard over the abdomen as proof, and do not use the tube while its location remains uncertain.",
+    whyItMatters: "Before feeding, medication, flushing, or suction, assess respiratory status, trace the tube and mouth for coiling when visible, compare the external-length mark, and obtain the approved initial confirmation. For blindly inserted adult small- or large-bore feeding tubes, AACN guidance calls for a radiograph that shows the tube's course before initial feeding or medication; other populations and systems may use a pH-first pathway, so follow the current device, population, and local policy. Gastric-aspirate pH can support bedside verification only when the approved pathway permits it: acid-suppressing therapy, recent feeding, failure to obtain aspirate, and a value outside the protocol's accepted range can limit interpretation, and pH does not establish the exact tip location by itself. Absence of coughing or respiratory distress does not prove safe placement. Before later use and after vomiting, forceful coughing, transfer, or a change in external length, repeat the prescribed checks. If the tube is coiled, displaced, the client develops coughing, desaturation, or respiratory distress, or bedside findings are uncertain, stop tube use and obtain prompt clinician review and radiographic or other approved re-verification. Air-bolus auscultation and bubbling tests never prove gastric placement.",
     sections: [
-      ["Before using the tube", "Verify placement by ordered/facility-approved method, confirm external length marking, assess respiratory status, and check the order for feeding/medication route."],
-      ["Warning signs", "Coughing, choking, respiratory distress, desaturation, inability to speak, coiling in mouth, unexpected external length change, or high residual/intolerance per policy."],
-      ["NCLEX trap", "The classic trap is relying on air insufflation and auscultation. That does not reliably prove gastric placement."]
+      ["Before initial use", "Confirm identity and the intended tube purpose, assess respiratory status, inspect for oral coiling, record the external-length mark, and obtain the population- and facility-approved placement confirmation before putting anything through the tube."],
+      ["pH and ongoing checks", "Use gastric-aspirate pH only within the approved pathway and interpret it with medicines, feeding, aspirate availability, symptoms, and tube-length trend. Recheck placement after displacement risk and before later use as policy requires."],
+      ["Stop use and escalate", "Coughing, choking, desaturation, respiratory distress, oral coiling, an unexpected external-length change, an unclear radiograph, an indeterminate bedside check, or inability to verify placement means stop and obtain prompt re-verification."],
+      ["NCLEX trap", "Air insufflation with abdominal auscultation, the absence of respiratory symptoms, and aspirate appearance do not reliably prove gastric placement."]
     ],
-    tags: ["NG tube", "nasogastric", "enteral feeding", "x-ray", "placement", "procedure"]
+    tags: ["NG tube", "nasogastric", "enteral feeding", "x-ray", "placement", "procedure"],
+    sourceKeys: [
+      "ani-bedside-aacn-feeding-tube-placement-2016",
+      "ani-bedside-nhs-ng-tube-placement-safety",
+      "ani-bedside-rcr-ng-tube-pathway-2026"
+    ],
+    clinicalInterpretationRevision: "2026-08-13-bedside-diagnostic-procedure-clinical-significance-1"
   },
   {
     name: "Tuberculin skin test",
@@ -5457,14 +5587,19 @@ const baseClinicalReferenceEntries = [
     category: "Screening tests",
     nclexEssential: true,
     aliases: ["TB skin test", "PPD", "Mantoux test", "tuberculosis test"],
-    summary: "An intradermal screening test read by measuring induration, not redness, after the correct time window.",
-    quickAnswer: "For a **TB skin test/PPD**, inject intradermally, then read **48-72 hours** later. Measure **induration**, not redness. A positive screen needs follow-up evaluation; it does not by itself prove active TB disease.",
+    summary: "An intradermal test for immune reactivity to tuberculin that is interpreted by risk-based induration, not redness, and cannot diagnose active TB by itself.",
+    quickAnswer: "A **tuberculin skin test (TST/PPD)** detects delayed immune reactivity to tuberculin. Induration that meets the client's risk-based threshold supports possible TB infection, but the test cannot distinguish inactive infection from active disease or prove contagious TB. A trained clinician injects 0.1 mL intradermally, and the test is read 48-72 hours later by measuring firm, raised induration across the forearm in millimeters, not redness. A positive test or TB symptoms requires further evaluation rather than diagnosis from the skin result alone.",
+    whyItMatters: "Confirm that the intradermal injection forms the expected small wheal and document the site and time; an incorrect dose or injection depth makes the test invalid and requires repeat testing according to protocol. At 48-72 hours, palpate the margins and record the transverse induration in millimeters, including 0 mm when none is present. Current CDC interpretation uses 5 mm, 10 mm, or 15 mm thresholds according to the person's infection and progression risk, not one universal positive cutoff. Prior BCG vaccination can cause a false-positive TST, so interpret by risk regardless of BCG history; CDC generally prefers a TB blood test for people who received BCG. Recent infection, very young age, immune suppression, severe illness, or technical error can produce a false-negative result, so TB symptoms or a high-risk exposure require clinical evaluation without waiting for a reassuring skin test. Two-step TST is for selected baseline programs in people who will be retested periodically; after a negative first test, CDC places the second test 1-3 weeks later, not as routine testing for everyone. For a positive result or TB symptoms, assess symptoms and exposure, notify the responsible clinician or public-health pathway, and obtain chest radiography and sputum bacteriology or other testing as indicated to evaluate for active TB. The TST alone never diagnoses or excludes active disease.",
     sections: [
-      ["How it is read", "Measure the raised, firm induration across the forearm in millimeters at 48-72 hours."],
-      ["Follow-up", "Positive screening requires symptom review, risk assessment, chest imaging/testing as ordered, and public-health/facility protocol."],
-      ["NCLEX trap", "Redness is not the measurement. Do not confuse latent TB infection screening with active contagious disease."]
+      ["Administration and reading", "Use trained-personnel technique for 0.1 mL intradermally. Read at 48-72 hours by palpating and measuring transverse induration in millimeters; do not measure erythema, or redness."],
+      ["Risk-based interpretation", "Apply the current risk-category threshold and document the exact millimeters. BCG history does not change risk-based TST interpretation, and recent infection or immune suppression can make a negative result falsely reassuring."],
+      ["Two-step baseline testing", "Use two-step testing only when the baseline program calls for it before future periodic retesting; a negative first test is followed 1-3 weeks later under the CDC pathway."],
+      ["Follow-up and urgent concern", "A positive test needs symptom and exposure review plus chest imaging and sputum or other evaluation as indicated. Cough, fever, night sweats, weight loss, hemoptysis, or another concern for active TB requires prompt evaluation regardless of the skin result."],
+      ["NCLEX trap", "Measure induration, not redness. A TST supports infection assessment but does not diagnose active or contagious TB by itself."]
     ],
-    tags: ["TB", "PPD", "Mantoux", "tuberculosis", "screening", "procedure"]
+    tags: ["TB", "PPD", "Mantoux", "tuberculosis", "screening", "procedure"],
+    sourceKeys: ["ani-bedside-cdc-tst-clinical-testing-2025"],
+    clinicalInterpretationRevision: "2026-08-13-bedside-diagnostic-procedure-clinical-significance-1"
   },
   {
     name: "Peak flow measurement",
@@ -5472,14 +5607,23 @@ const baseClinicalReferenceEntries = [
     category: "Respiratory tests",
     nclexEssential: true,
     aliases: ["peak expiratory flow", "peak flow meter", "asthma zone", "spirometry peak flow"],
-    summary: "A quick measure of how forcefully a client can exhale, commonly used for asthma monitoring and action plans.",
-    quickAnswer: "**Peak flow** helps monitor asthma control. Compare the reading to the client's personal best: green zone is usually 80-100%, yellow 50-79%, red below 50% and needs urgent action per plan.",
+    summary: "An effort-dependent measure of maximum expiratory flow that is trended against a personal best for asthma monitoring, not used alone to diagnose or exclude asthma.",
+    quickAnswer: "**Peak expiratory flow (PEF)** is an effort- and technique-dependent measure used to trend airflow against the client's personal best; a falling trend can signal worsening airway obstruction. One reassuring reading cannot override worsening symptoms or diagnose or exclude asthma by itself. Perform three technically sound blows and record the highest value, then follow the individualized written asthma action plan. Severe breathlessness, cyanosis, exhaustion, inability to speak normally, or poor response to prescribed reliever treatment needs urgent care regardless of the number.",
+    whyItMatters: "Reset the meter, stand or sit upright, inhale fully, seal the lips around the mouthpiece, and blow once as hard and fast as possible; repeat for three attempts and record the highest value rather than an average. Trend readings with the same meter and consistent timing when possible, and repeat coaching when a value does not fit the clinical picture because effort, seal, cough, and technique can change the result. Establish a personal best during a period of good control with the clinician's plan rather than substituting a population-predicted value. NHLBI action-plan templates commonly label at least 80% of personal best green, 50-79% yellow, and below 50% red, but the person's written zones, reliever instructions, and emergency thresholds control; these percentages are not universal medication or disposition orders. Follow the prescribed reliever plan, which may name albuterol or, for an eligible regimen, an inhaled corticosteroid-formoterol inhaler, without selecting or dosing a medicine from the zone alone. Reassess symptoms, work of breathing, ability to speak, oxygenation when available, response to treatment, and the PEF trend. Escalate immediately for severe respiratory distress, cyanosis, exhaustion, altered mental status, a silent or markedly reduced air entry pattern, or poor response even if the meter reading looks reassuring. Diagnostic evaluation for asthma requires the clinical history and clinician-selected lung-function testing, commonly spirometry with bronchodilator response or other testing; PEF alone does not identify the cause of airflow change.",
     sections: [
-      ["How to perform", "Stand or sit upright, reset meter, inhale deeply, seal lips, blow out hard and fast, repeat three times, and record the best value."],
-      ["Interpretation", "Use the client's personal best when available. Green generally means controlled, yellow means caution/medication plan, red means medical alert."],
-      ["NCLEX trap", "A normal-looking single number means little without the client's personal best and symptoms."]
+      ["How to perform", "Stand or sit upright, reset the meter, inhale fully, seal the lips, blow out once hard and fast, repeat three times, and record the highest technically acceptable value."],
+      ["Trend and zones", "Compare with the established personal best and written action plan. NHLBI's common 80-100%, 50-79%, and below-50% zones are educational anchors; the individualized plan determines actions and medicines."],
+      ["Symptoms override the meter", "Reassess work of breathing, speech, color, oxygenation when available, reliever response, and trend. Severe symptoms or poor response requires urgent care even with a reassuring value."],
+      ["NCLEX trap", "A single peak-flow reading is effort dependent and cannot diagnose asthma, exclude a dangerous exacerbation, or replace symptoms and formal lung-function evaluation."]
     ],
-    tags: ["peak flow", "asthma", "respiratory", "spirometry", "procedure", "test"]
+    tags: ["peak flow", "asthma", "respiratory", "spirometry", "procedure", "test"],
+    sourceKeys: [
+      "nhlbi-asthma-action-plan",
+      "nhlbi-managing-asthma-schools",
+      "ani-bedside-nhlbi-asthma-diagnosis-2024",
+      "ani-bedside-gina-strategy-report-2026"
+    ],
+    clinicalInterpretationRevision: "2026-08-13-bedside-diagnostic-procedure-clinical-significance-1"
   }
 ];
 
@@ -5576,9 +5720,9 @@ const BASE_CLINICAL_RESULT_MEANINGS = {
     ["Clinical significance", "Measure induration at 48-72 hours, not redness. Positive screening or TB symptoms require chest imaging/sputum evaluation as ordered."]
   ],
   "Urinalysis clean-catch collection": [
-    ["Clean valid specimen", "The sample is collected midstream with low contamination risk, making UA/culture interpretation more reliable."],
-    ["Contaminated / poor specimen", "Skin/vaginal contamination, touching the cup, delayed transport, or mixed flora can make infection results misleading."],
-    ["Clinical significance", "Collection quality changes whether leukocytes, bacteria, epithelial cells, or culture growth should be trusted."]
+    ["Lower-contamination-risk collection", "A protocol-concordant midstream specimen and proper transport lower contamination risk and make results more interpretable, but they do not prove the specimen is contamination-free."],
+    ["Questionable specimen / possible contamination", "A collection breach, improper handling, mixed-organism growth, or a result that conflicts with symptoms can reduce confidence and may prompt laboratory and clinician review or repeat collection; no one feature proves contamination."],
+    ["Clinical significance", "Interpret urinalysis and culture findings with symptoms, population, specimen method, transport, and laboratory method; one positive finding does not diagnose symptomatic UTI by itself."]
   ]
 };
 
@@ -5759,6 +5903,9 @@ let pharmContentIndexQueue = null;
 let pharmContentIndexCursor = 0;
 let pharmContentIndexScheduled = false;
 let pharmContentIndexesReady = false;
+let clinicalSearchIntelligenceIndex = null;
+const clinicalSearchIntelligenceCache = new Map();
+const reviewedTopicRequestResolvers = new Map();
 let lastAniInteractiveInputAt = 0;
 let activePharmNclexOnly = localStorage.getItem(PHARM_NCLEX_ONLY_KEY) === "true";
 let activePharmIndexMode = PHARM_INDEX_MODES.includes(localStorage.getItem(PHARM_INDEX_MODE_KEY))
@@ -5778,6 +5925,7 @@ const storedMedicalUpdateDateRange = medicalUpdateDateRange(
 let activeMedicalUpdateStartDate = storedMedicalUpdateDateRange.valid ? storedMedicalUpdateDateRange.start : "";
 let activeMedicalUpdateEndDate = storedMedicalUpdateDateRange.valid ? storedMedicalUpdateDateRange.end : "";
 let activeFoundationBrowseDomain = localStorage.getItem(FOUNDATION_BROWSE_DOMAIN_KEY) || "all";
+let activeHolisticBrowseSubcategory = localStorage.getItem(HOLISTIC_BROWSE_SUBCATEGORY_KEY) || "all";
 let activeSurgeryProcedureBrowseSpecialty = localStorage.getItem(SURGERY_PROCEDURE_BROWSE_SPECIALTY_KEY) || "all";
 let clinicalSignBrowseCatalogCache = null;
 let clinicalSignBrowseOptionsReady = false;
@@ -6051,6 +6199,66 @@ function activePharmDrugPool() {
   return activePharmNclexOnly
     ? pool.filter(isNclexCorePharmEntry)
     : pool;
+}
+
+function isNclexEssentialEncyclopediaEntry(type = "", item = {}) {
+  if (!item || typeof item !== "object") return false;
+  return type === "drug" ? isNclexCorePharmEntry(item) : item.nclexEssential === true;
+}
+
+function filterNclexEssentialEncyclopediaEntries(type = "", items = []) {
+  if (!activePharmNclexOnly) return Array.isArray(items) ? items : [];
+  return (Array.isArray(items) ? items : [])
+    .filter((item) => isNclexEssentialEncyclopediaEntry(type, item));
+}
+
+function isHolisticFederatedEntry(entry = {}) {
+  return safeText(entry.encyclopediaSection).trim().toLowerCase() === "holistic"
+    && HOLISTIC_FEDERATED_SUBCATEGORY_IDS.has(safeText(entry.holisticSubcategoryId).trim());
+}
+
+function isHolisticClinicalReferenceEntry(entry = {}) {
+  return isHolisticFederatedEntry(entry);
+}
+
+function isHolisticPathologyEntry(entry = {}) {
+  return isHolisticFederatedEntry(entry);
+}
+
+function holisticSubcategoryIdForCandidate(candidate = {}) {
+  if (candidate.type === "holistic") return "herbal-supplement-safety";
+  if (["reference", "pathology"].includes(candidate.type) && isHolisticFederatedEntry(candidate.item)) {
+    return safeText(candidate.item.holisticSubcategoryId).trim();
+  }
+  return "";
+}
+
+function holisticCandidateMatchesBrowseSubcategory(candidate = {}, subcategory = activeHolisticBrowseSubcategory) {
+  const requested = HOLISTIC_BROWSE_SUBCATEGORIES.some((record) => record.id === subcategory)
+    ? subcategory
+    : "all";
+  const candidateSubcategory = holisticSubcategoryIdForCandidate(candidate);
+  return Boolean(candidateSubcategory) && (requested === "all" || candidateSubcategory === requested);
+}
+
+function holisticBrowseCandidates() {
+  return [
+    ...holisticRemedies.map((item) => ({ type: "holistic", item })),
+    ...clinicalReferenceEntries.filter(isHolisticClinicalReferenceEntry).map((item) => ({ type: "reference", item })),
+    ...pathologyDiseases.filter(isHolisticPathologyEntry).map((item) => ({ type: "pathology", item }))
+  ].sort((a, b) => safeText(a.item?.name || a.item?.displayName).localeCompare(safeText(b.item?.name || b.item?.displayName)));
+}
+
+function holisticVisibleBrowseCandidates(options = {}) {
+  const subcategory = safeText(options.subcategory || activeHolisticBrowseSubcategory) || "all";
+  const nclexOnly = Object.prototype.hasOwnProperty.call(options, "nclexOnly")
+    ? options.nclexOnly === true
+    : activePharmNclexOnly;
+  const letter = safeText(Object.prototype.hasOwnProperty.call(options, "letter") ? options.letter : activePharmLetter) || "All";
+  return holisticBrowseCandidates()
+    .filter((candidate) => holisticCandidateMatchesBrowseSubcategory(candidate, subcategory))
+    .filter((candidate) => !nclexOnly || isNclexEssentialEncyclopediaEntry(candidate.type, candidate.item))
+    .filter((candidate) => letter === "All" || safeText(candidate.item?.name || candidate.item?.displayName).toUpperCase().startsWith(letter));
 }
 
 function readPharmFavoriteKeys() {
@@ -6800,6 +7008,10 @@ function pharmIndexShowsDiseases() {
   return activePharmIndexMode === "all" || activePharmIndexMode === "diseases" || pharmIndexShowsFavorites();
 }
 
+function pharmIndexShowsHolisticPathologies() {
+  return activePharmIndexMode === "holistic";
+}
+
 function pharmIndexShowsMicrobiology() {
   return activePharmIndexMode === "microbiology";
 }
@@ -6835,7 +7047,7 @@ function pharmIndexModeLabel() {
   if (activePharmIndexMode === "surgeries") return "Surgeries and procedures index";
   if (activePharmIndexMode === "procedures") return "Procedures and tests index";
   if (activePharmIndexMode === "clinical-signs") return "Clinical signs and examination findings index";
-  if (activePharmIndexMode === "holistic") return "Holistic safety index";
+  if (activePharmIndexMode === "holistic") return "Holistic index";
   return "Full clinical index";
 }
 
@@ -6868,6 +7080,7 @@ function updatePharmIndexModeUi() {
   updatePharmacyBrowseUi();
   updateMedicalUpdatesBrowseUi();
   updateFoundationBrowseUi();
+  updateHolisticBrowseUi();
   updateSurgeryProcedureBrowseUi();
 }
 
@@ -7572,6 +7785,7 @@ function pharmIndexBrowserSnapshot() {
     medicalUpdateStartDate: medicalUpdateFilterDate(activeMedicalUpdateStartDate),
     medicalUpdateEndDate: medicalUpdateFilterDate(activeMedicalUpdateEndDate),
     foundationDomain: safeText(activeFoundationBrowseDomain || "all").slice(0, 120),
+    holisticSubcategory: safeText(activeHolisticBrowseSubcategory || "all").slice(0, 120),
     surgerySpecialty: safeText(activeSurgeryProcedureBrowseSpecialty || "all").slice(0, 120),
     resultsScrollTop: Math.max(0, Number(pharmResultsList?.scrollTop || 0))
   };
@@ -7593,6 +7807,9 @@ function restorePharmIndexBrowserSnapshot(snapshot = {}) {
   activeMedicalUpdateStartDate = updateDateRange.valid ? updateDateRange.start : "";
   activeMedicalUpdateEndDate = updateDateRange.valid ? updateDateRange.end : "";
   activeFoundationBrowseDomain = safeText(snapshot.foundationDomain || "all").slice(0, 120) || "all";
+  activeHolisticBrowseSubcategory = HOLISTIC_BROWSE_SUBCATEGORIES.some((record) => record.id === snapshot.holisticSubcategory)
+    ? snapshot.holisticSubcategory
+    : "all";
   activeSurgeryProcedureBrowseSpecialty = safeText(snapshot.surgerySpecialty || "all").slice(0, 120) || "all";
   if (pharmSearchInput) pharmSearchInput.value = safeText(snapshot.query || "").slice(0, 240);
   const restoreTop = Math.max(0, Number(snapshot.resultsScrollTop || 0));
@@ -12140,11 +12357,10 @@ function offlineVisualCandidate(input = "") {
     if (growth) return { type: "reference", item: growth, score: 999 };
   }
   const suggestions = offlineLookupSuggestions(input);
-  const top = suggestions[0];
-  if (top && !offlineVisualCandidateSupportsVisual(top) && offlineLookupIsDirectEnough(input, top)) {
-    return null;
-  }
-  return suggestions.find(offlineVisualCandidateSupportsVisual) || null;
+  return suggestions.find((candidate) => (
+    offlineVisualCandidateSupportsVisual(candidate)
+    && offlineLookupIsDirectEnough(input, candidate)
+  )) || null;
 }
 
 function offlineVisualReadableText(response = {}) {
@@ -15929,7 +16145,14 @@ function imageScanMatchSummary(candidate = {}) {
     kind: offlineLookupEntityKind(candidate),
     query: offlineLookupQuery(candidate),
     type: candidate.type,
-    score: Math.round(candidate.score || 0)
+    score: Math.round(candidate.score || 0),
+    ambiguousIdentity: candidate.ambiguousIdentity === true,
+    identitySuggestionOnly: candidate.identitySuggestionOnly === true,
+    phoneticMatch: candidate.phoneticMatch === true,
+    clinicalClueMatch: candidate.clinicalClueMatch === true,
+    mayAutoOpen: candidate.mayAutoOpen === true,
+    confidence: Number(candidate.confidence || 0),
+    confidenceTier: candidate.confidenceTier || ""
   };
 }
 
@@ -16007,7 +16230,13 @@ function buildImageVisionScanLocalContext(input = "", scanned = {}) {
     const label = String(prediction.label || "").trim();
     if (!label) return;
     const candidates = offlineLookupSuggestions(label);
-    const topCandidate = candidates?.[0];
+    const topCandidate = candidates?.find((candidate) => (
+      candidate?.ambiguousIdentity !== true
+      && candidate?.identitySuggestionOnly !== true
+      && candidate?.phoneticMatch !== true
+      && (candidate?.clinicalClueMatch !== true || candidate?.mayAutoOpen === true)
+      && offlineLookupIsDirectEnough(label, candidate)
+    ));
     if (!topCandidate) return;
     matches.push({
       prediction,
@@ -16088,6 +16317,12 @@ function bestVisionMatchCandidate(scanned = {}) {
 
 function isVisionAutoOpenSafe(input = "", match = null, topPrediction = null) {
   if (!match?.candidate || !topPrediction?.label) return false;
+  if (match.candidate.ambiguousIdentity === true
+    || match.candidate.identitySuggestionOnly === true
+    || match.candidate.phoneticMatch === true
+    || (match.candidate.clinicalClueMatch === true && match.candidate.mayAutoOpen !== true)) {
+    return false;
+  }
   const label = offlineLookupEntityLabel(match.candidate);
   const score = Number(topPrediction.confidence || 0);
   if (!label || score < IMAGE_VISION_AUTO_OPEN_THRESHOLD) return false;
@@ -16680,6 +16915,7 @@ function lectureDirectCandidate(input = "", type = "") {
   return suggestions.find((candidate) => (
     candidate.type === type
     && candidate.ambiguousIdentity !== true
+    && (candidate.clinicalClueMatch !== true || candidate.mayAutoOpen === true)
     && (candidate.nearIdentity === true
       || (inputDirectlyNamesOfflineCandidate(lookup, candidate)
         && offlineLookupIsDirectEnough(lookup, candidate)))
@@ -16745,10 +16981,16 @@ function normalizeLectureTopic(input = "") {
     return "Antiarrhythmic medication classes";
   }
   const lookup = normalizeLectureLookupText(input) || cleaned;
-  const directSharedIdentity = resolveEncyclopediaIdentity(cleaned || input, { mode: "suggest", limit: 8 });
+  const directTopicResolution = resolveTopicRequest(cleaned || input, {
+    mode: "suggest",
+    limit: 8,
+    allowClinicalClues: false
+  });
+  const lookupTopicResolution = resolveTopicRequest(lookup, { mode: "suggest", limit: 8 });
+  const directSharedIdentity = directTopicResolution.identity;
   const sharedIdentity = directSharedIdentity.mayAutoOpen || directSharedIdentity.suppressUnrelatedMatches === true
     ? directSharedIdentity
-    : resolveEncyclopediaIdentity(lookup, { mode: "suggest", limit: 8 });
+    : lookupTopicResolution.identity;
   if (sharedIdentity.suppressUnrelatedMatches === true) {
     return cleaned || currentTopic;
   }
@@ -16756,6 +16998,50 @@ function normalizeLectureTopic(input = "") {
     return sharedIdentity.preferred.type === "drug"
       ? pharmDrugDisplayName(sharedIdentity.preferred.item)
       : safeText(sharedIdentity.preferred.item.displayName || sharedIdentity.preferred.item.name || cleaned || currentTopic);
+  }
+  const directReviewedResolution = directTopicResolution.reviewed;
+  const lookupReviewedResolution = lookupTopicResolution.reviewed;
+  const normalizedLookupConfirmsDirectReviewedTarget = Boolean(
+    lookupReviewedResolution?.mayAutoOpen
+      && directReviewedResolution?.preferred?.item
+      && lookupReviewedResolution.preferred?.item
+      && directReviewedResolution.preferred.type === lookupReviewedResolution.preferred.type
+      && directReviewedResolution.preferred.item === lookupReviewedResolution.preferred.item
+  );
+  // Preserve an exact reviewed route before lecture lookup normalization can
+  // remove identity-bearing punctuation. A normalized lecture lookup may
+  // still promote the same bound target when the raw wording was treated as
+  // a personal narrative, but it may never substitute a different target.
+  const reviewedResolution = lookupReviewedResolution?.mayAutoOpen
+    && (!directReviewedResolution?.candidates.length || normalizedLookupConfirmsDirectReviewedTarget)
+    ? lookupReviewedResolution
+    : directReviewedResolution?.candidates.length
+      ? directReviewedResolution
+      : lookupReviewedResolution;
+  if (reviewedResolution?.mayAutoOpen && reviewedResolution.preferred?.item) {
+    return reviewedResolution.preferred.type === "drug"
+      ? pharmDrugDisplayName(reviewedResolution.preferred.item)
+      : safeText(reviewedResolution.preferred.item.displayName
+        || reviewedResolution.preferred.item.name
+        || cleaned
+        || currentTopic);
+  }
+  if (reviewedResolution?.candidates.length) {
+    return cleaned || currentTopic;
+  }
+  const clinicalResolution = lookupTopicResolution.clinical
+    || clinicalSearchIntelligence(lookup, { limit: 4 });
+  if (clinicalResolution.mayAutoOpen && clinicalResolution.preferred?.item) {
+    return safeText(clinicalResolution.preferred.item.displayName
+      || clinicalResolution.preferred.item.name
+      || cleaned
+      || currentTopic);
+  }
+  if (clinicalResolution.candidates.length) {
+    // A plausible but insufficiently separated clue match is a choice, not a
+    // lecture identity. Do not let older broad drug/pathology scorers replace
+    // that explicit uncertainty with a different auto-selected topic.
+    return cleaned || currentTopic;
   }
   const directPathology = lectureDirectCandidate(lookup, "pathology");
   const directDrug = lectureDirectCandidate(lookup, "drug");
@@ -18765,7 +19051,7 @@ const MEDICAL_ABBREVIATION_EXPANSIONS = [
   { short: "ERCP", full: "endoscopic retrograde cholangiopancreatography" },
   { short: "ESR", full: "erythrocyte sedimentation rate" },
   { short: "ESRD", full: "end-stage renal disease" },
-  { short: "FIT", full: "fecal immunochemical test" },
+  { short: "FIT", full: "fecal immunochemical test", caseSensitiveBareShort: true },
   { short: "FHR", full: "fetal heart rate" },
   { short: "FOBT", full: "fecal occult blood test", aliases: ["occult blood test", "stool occult blood test", "stool blood test"] },
   { short: "FFR", full: "fractional flow reserve" },
@@ -18961,8 +19247,17 @@ const MEDICAL_ABBREVIATION_EXPANSIONS = [
   searchTerms: [entry.short, entry.full, ...(entry.aliases || [])].map((term) => normalizePharmText(term)).filter(Boolean)
 }));
 
-function medicalAbbreviationMatchesText(entry = {}, normalizedText = "") {
+function medicalAbbreviationMatchesText(entry = {}, normalizedText = "", sourceText = "") {
   if (!entry?.searchTerms?.length || !normalizedText) return false;
+  if (entry.caseSensitiveBareShort === true) {
+    const normalizedShort = normalizePharmText(entry.short);
+    const expandedTerms = entry.searchTerms.filter((term) => term !== normalizedShort);
+    const expandedMatch = expandedTerms.some((term) => term && normalizedText.includes(term));
+    if (!expandedMatch) {
+      const exactShort = new RegExp(`(^|[^A-Za-z0-9])${escapeRegExpText(entry.short)}(?=$|[^A-Za-z0-9])`);
+      if (!exactShort.test(String(sourceText || ""))) return false;
+    }
+  }
   const textTokens = new Set(normalizedText.split(" ").filter(Boolean));
   return entry.searchTerms.some((term) => {
     if (!term) return false;
@@ -18972,12 +19267,13 @@ function medicalAbbreviationMatchesText(entry = {}, normalizedText = "") {
 }
 
 function medicalAbbreviationEntriesForText(value = "", limit = 10) {
-  const normalizedText = normalizePharmText(Array.isArray(value) ? value.filter(Boolean).join(" ") : value);
+  const sourceText = Array.isArray(value) ? value.filter(Boolean).join(" ") : value;
+  const normalizedText = normalizePharmText(sourceText);
   if (!normalizedText) return [];
   const entries = [];
   const seen = new Set();
   for (const entry of MEDICAL_ABBREVIATION_EXPANSIONS) {
-    if (seen.has(entry.short) || !medicalAbbreviationMatchesText(entry, normalizedText)) {
+    if (seen.has(entry.short) || !medicalAbbreviationMatchesText(entry, normalizedText, sourceText)) {
       continue;
     }
     seen.add(entry.short);
@@ -19203,7 +19499,7 @@ function learnerSupportVisibleBlocks(sections = [], options = {}) {
         Object.prototype.hasOwnProperty.call(source, "learnerText") ? source.learnerText : source.value,
         authoredSection
       ),
-      safetyVisible: learnerSupportSafetyVisible(source.label, authoredSection),
+      safetyVisible: source.safetyVisible === true || learnerSupportSafetyVisible(source.label, authoredSection),
       sourceIndex
     };
   }).filter((block) => block.text);
@@ -19246,10 +19542,34 @@ function runtimeVisibleLearnerSupportBlocks(sourceCollection = "", item = {}) {
 function runtimeVisibleLearnerSupportProjection(sourceCollection = "", item = {}) {
   const blocks = runtimeVisibleLearnerSupportBlocks(sourceCollection, item)
     .map((block) => Object.freeze({ ...block }));
+  const labStructuredSections = sourceCollection === "pharmSearchableLabRanges"
+    ? labStructuredSectionProjection(item)
+    : null;
   return Object.freeze({
     schemaVersion: "ani-runtime-visible-learner-blocks-v1",
     sourceCollection: safeText(sourceCollection),
-    blocks: Object.freeze(blocks)
+    blocks: Object.freeze(blocks),
+    ...(labStructuredSections ? {
+      labStructuredSections: Object.freeze({
+        schemaVersion: labStructuredSections.schemaVersion,
+        recognized: labStructuredSections.recognized,
+        hasValidAuthoredSections: labStructuredSections.hasValidAuthoredSections,
+        suppressGeneratedTeaching: labStructuredSections.suppressGeneratedTeaching,
+        coverageComplete: labStructuredSections.coverageComplete,
+        recognizedFields: Object.freeze(Array.from(labStructuredSections.recognizedFields || [])),
+        validFields: Object.freeze(Array.from(labStructuredSections.validFields || [])),
+        emptyFields: Object.freeze(Array.from(labStructuredSections.emptyFields || [])),
+        malformedFields: Object.freeze(Array.from(labStructuredSections.malformedFields || [])),
+        projectedSectionPaths: Object.freeze((labStructuredSections.sections || []).map((section) => section.path)),
+        projectedLeafPaths: Object.freeze((labStructuredSections.sections || [])
+          .flatMap((section) => (section.items || []).map((item) => item.path))),
+        sourceItemCount: Number(labStructuredSections.sourceItemCount || 0),
+        projectedLeafCount: Number(labStructuredSections.projectedLeafCount || 0),
+        automaticRewritePerformed: false,
+        populationSiblingInheritancePerformed: false,
+        mutationTargetAuthorized: false
+      })
+    } : {})
   });
 }
 
@@ -20074,7 +20394,7 @@ function getPharmContentIndexQueue() {
 function pharmContentIndexValues(record = {}) {
   if (record.type === "reference") return clinicalReferenceSearchBlob(record.item);
   if (record.type === "pathology") return pathologyEntryTerms(record.item);
-  if (record.type === "lab") return pharmLabTerms(record.item);
+  if (record.type === "lab") return pharmLabContentIndexValues(record.item);
   if (record.type === "drug") return pharmEntryTerms(record.item);
   if (record.type === "holistic") return holisticEntryTerms(record.item);
   return [];
@@ -20099,6 +20419,7 @@ function processPharmContentIndexChunk(deadline = null, maxItems = isPhoneDevice
     // entire collection here made the first item of each nominal "chunk"
     // synchronous and could freeze typing for many seconds on mobile hardware.
     addFastLookupContent(indexes, record.type, record.item, pharmContentIndexValues(record));
+    addClinicalSearchIntelligenceRecord(record);
     // Populate pathology identities one record at a time during the same idle
     // pass. This makes full disease names, abbreviations, misspellings, and
     // natural-language aliases immediately addressable once their record has
@@ -20114,7 +20435,23 @@ function processPharmContentIndexChunk(deadline = null, maxItems = isPhoneDevice
       ].forEach((term) => addFastLookupSynonym(indexes, "pathology", record.item, term, 225));
     }
   }
+  const wasReady = pharmContentIndexesReady;
   pharmContentIndexesReady = pharmContentIndexCursor >= queue.length;
+  if (!wasReady && pharmContentIndexesReady) {
+    // Replace cold fallback snapshots and repaint an active query once the
+    // deterministic field-aware index is ready. The learner should not need
+    // to type another character to receive the stronger completed ranking.
+    offlineLookupSuggestionCache.clear();
+    if (typeof clinicalSpeechCandidateScoreCache !== "undefined") {
+      clinicalSpeechCandidateScoreCache.clear();
+    }
+    if (pharmSearchInput?.value && pharmDatabaseScreen && !pharmDatabaseScreen.hidden) {
+      queuePharmSearchRender();
+    }
+    if (medicalSearchAssistInput?.value && document.activeElement === medicalSearchAssistInput) {
+      queueMedicalSearchAssist(medicalSearchAssistInput, 0);
+    }
+  }
   return {
     processed,
     indexed: pharmContentIndexCursor,
@@ -21070,7 +21407,8 @@ function responsiveEncyclopediaSearchMatches(input = "") {
   }
   const types = ["lab", "pathology", "reference", "holistic", "drug"];
   const exactPrioritySource = responsiveEncyclopediaExactPriority(input);
-  const sharedIdentityResolution = resolveEncyclopediaIdentity(input, { mode: "suggest", limit: 8 });
+  const topicResolution = resolveTopicRequest(input, { mode: "suggest", limit: 12 });
+  const sharedIdentityResolution = topicResolution.identity;
   if (!exactPrioritySource && sharedIdentityResolution.suppressUnrelatedMatches === true) {
     const groups = { lab: [], pathology: [], reference: [], holistic: [], drug: [] };
     sharedIdentityResolution.candidates.forEach((candidate) => {
@@ -21132,6 +21470,27 @@ function responsiveEncyclopediaSearchMatches(input = "") {
     candidate === sharedIdentityResolution.preferred ? 1700 : 340,
     candidate === sharedIdentityResolution.preferred ? 1700 : 340,
     1
+  ));
+  const reviewedResolution = topicResolution.resolutionKind === "reviewed-route"
+    || topicResolution.resolutionKind === "ambiguous-reviewed-route"
+    ? topicResolution.reviewed
+    : null;
+  (reviewedResolution?.candidates || []).forEach((candidate) => add(
+    candidate.type,
+    candidate.item,
+    candidate.mayAutoOpen ? 1900 : 760,
+    candidate.mayAutoOpen ? 1900 : 760,
+    1
+  ));
+  const clinicalResolution = topicResolution.resolutionKind === "clinical-clue"
+    ? topicResolution.clinical
+    : null;
+  (clinicalResolution?.candidates || []).forEach((candidate) => add(
+    candidate.type,
+    candidate.item,
+    260 + Math.round(candidate.confidence * 360),
+    540 + Math.round(candidate.score * 18),
+    candidate.matchedClues.length
   ));
 
   // The inverted index has already reduced the corpus to records that share
@@ -21195,8 +21554,48 @@ function responsiveEncyclopediaSearchMatches(input = "") {
     .sort((a, b) => a.mentionIndex - b.mentionIndex
       || b.candidate.score - a.candidate.score
       || offlineLookupEntityLabel(a.candidate).localeCompare(offlineLookupEntityLabel(b.candidate)))[0]?.candidate || null;
-  const preferred = exactPriority || prefixPriority || sharedPreferred || directPreferred;
-  return { ...groups, preferred, candidateCount: scored.length };
+  const clinicalPreferred = clinicalResolution?.preferred
+    ? scored.find((candidate) => candidate.type === clinicalResolution.preferred.type
+      && candidate.item === clinicalResolution.preferred.item)
+      || clinicalResolution.preferred
+    : null;
+  const reviewedPreferred = reviewedResolution?.preferred
+    ? scored.find((candidate) => candidate.type === reviewedResolution.preferred.type
+      && candidate.item === reviewedResolution.preferred.item)
+      || reviewedResolution.preferred
+    : null;
+  if (!exactPriority && !prefixPriority && !sharedPreferred && reviewedPreferred && groups[reviewedPreferred.type]) {
+    groups[reviewedPreferred.type] = [
+      reviewedPreferred.item,
+      ...groups[reviewedPreferred.type].filter((item) => item !== reviewedPreferred.item)
+    ];
+  }
+  if (!exactPriority && !prefixPriority && !sharedPreferred && clinicalPreferred && groups[clinicalPreferred.type]) {
+    groups[clinicalPreferred.type] = [
+      clinicalPreferred.item,
+      ...groups[clinicalPreferred.type].filter((item) => item !== clinicalPreferred.item)
+    ];
+  }
+  const preferred = exactPriority || prefixPriority || sharedPreferred || reviewedPreferred || clinicalPreferred || directPreferred;
+  return {
+    ...groups,
+    preferred,
+    candidateCount: scored.length,
+    reviewedRoute: reviewedResolution ? {
+      status: reviewedResolution.status,
+      mayAutoOpen: reviewedResolution.mayAutoOpen,
+      ambiguousIdentity: reviewedResolution.ambiguousIdentity === true
+    } : null,
+    clinicalSearch: clinicalResolution ? {
+      status: clinicalResolution.status,
+      confidence: clinicalResolution.confidence,
+      confidenceTier: clinicalResolution.confidenceTier,
+      margin: clinicalResolution.margin,
+      mayAutoOpen: clinicalResolution.mayAutoOpen,
+      matchedClues: clinicalResolution.preferred?.matchedClues || [],
+      unmatchedClues: clinicalResolution.preferred?.unmatchedClues || []
+    } : null
+  };
 }
 
 let medicalPhoneticIdentityIndex = null;
@@ -21374,20 +21773,44 @@ function medicalSearchAssistCandidates(input = "", limit = 6) {
       mayAutoOpen: true
     };
   }
-  const identity = resolveEncyclopediaIdentity(input, { mode: "suggest", limit });
-  const candidates = identity.candidates.map((candidate) => ({
+  const topicResolution = resolveTopicRequest(input, { mode: "suggest", limit });
+  const identity = topicResolution.identity;
+  const reviewedResolution = topicResolution.resolutionKind === "reviewed-route"
+    || topicResolution.resolutionKind === "ambiguous-reviewed-route"
+    ? topicResolution.reviewed
+    : null;
+  const clinicalResolution = topicResolution.resolutionKind === "clinical-clue"
+    ? topicResolution.clinical
+    : null;
+  const candidateSource = identity.candidates.length
+    ? identity.candidates
+    : reviewedResolution?.candidates || clinicalResolution?.candidates || [];
+  const candidates = candidateSource.map((candidate) => ({
     type: candidate.type,
     item: candidate.item,
     label: offlineLookupEntityLabel(candidate),
     kind: offlineLookupEntityKind(candidate),
-    matchKind: candidate === identity.preferred || identity.suppressUnrelatedMatches === true
+    matchKind: candidate.reviewedRoute === true
+      ? "reviewed-route"
+      : candidate.clinicalClueMatch === true
+      ? "clinical-clue"
+      : candidate === identity.preferred || identity.suppressUnrelatedMatches === true
       ? identity.matchKind
       : "prefix-suggestion",
-    mayAutoOpen: candidate === identity.preferred && identity.mayAutoOpen,
+    mayAutoOpen: candidate.reviewedRoute === true
+      ? candidate.mayAutoOpen === true
+      : candidate.clinicalClueMatch === true
+      ? candidate.mayAutoOpen === true
+      : candidate === identity.preferred && identity.mayAutoOpen,
     ambiguousIdentity: candidate.ambiguousIdentity === true || identity.suppressUnrelatedMatches === true,
     identitySuggestionOnly: candidate.identitySuggestionOnly === true || identity.suppressUnrelatedMatches === true,
     termKinds: Array.isArray(candidate.termKinds) ? [...candidate.termKinds] : [],
-    sourceFields: Array.isArray(candidate.sourceFields) ? [...candidate.sourceFields] : []
+    sourceFields: Array.isArray(candidate.sourceFields) ? [...candidate.sourceFields] : [],
+    confidence: Number(candidate.confidence || 0),
+    confidenceTier: candidate.confidenceTier || "",
+    matchedClues: Array.isArray(candidate.matchedClues) ? [...candidate.matchedClues] : [],
+    unmatchedClues: Array.isArray(candidate.unmatchedClues) ? [...candidate.unmatchedClues] : [],
+    fieldPaths: Array.isArray(candidate.fieldPaths) ? [...candidate.fieldPaths] : []
   }));
   if (!candidates.length) {
     medicalPhoneticIdentityCandidates(input, limit).forEach((candidate) => candidates.push({
@@ -21406,9 +21829,14 @@ function medicalSearchAssistCandidates(input = "", limit = 6) {
       .filter((candidate) => candidate.label)
       .map((candidate) => [`${candidate.type}:${normalizePharmText(candidate.label)}`, candidate])).values())
       .slice(0, Math.max(1, limit)),
-    preferred: identity.preferred,
-    matchKind: identity.matchKind,
-    mayAutoOpen: identity.mayAutoOpen,
+    preferred: topicResolution.preferred,
+    matchKind: identity.candidates.length
+      ? identity.matchKind
+      : reviewedResolution?.preferred ? "reviewed-route" : clinicalResolution?.preferred ? "clinical-clue" : identity.matchKind,
+    mayAutoOpen: topicResolution.mayAutoOpen === true,
+    confidence: Number(clinicalResolution?.confidence || 0),
+    confidenceTier: clinicalResolution?.confidenceTier || "",
+    margin: Number(clinicalResolution?.margin || 0),
     ambiguousIdentity: identity.suppressUnrelatedMatches === true,
     recognizedAbbreviation: identity.recognizedAbbreviation === true
   };
@@ -21804,7 +22232,9 @@ function descriptionPiecesForCandidate(type = "", item = {}) {
       item.why,
       item.groupNote,
       item.tags,
-      typeof labTeachingSections === "function" ? labTeachingSections(item) : []
+      typeof labProjectedTeachingSections === "function"
+        ? labProjectedTeachingSections(item).map((section) => section.value)
+        : []
     ]);
   }
   if (type === "pathology") {
@@ -21833,8 +22263,19 @@ function descriptionPiecesForCandidate(type = "", item = {}) {
       item.type,
       item.category,
       item.aliases,
+      item.abbreviations,
+      item.commonMisspellings,
+      item.searchTerms,
       item.summary,
       item.quickAnswer,
+      item.whyItMatters,
+      item.associatedConditions,
+      item.clinicalInterpretation,
+      item.diagnosticUsefulness,
+      item.nursingRelevance,
+      item.urgentEscalation,
+      item.evidenceLimitations,
+      item.resultMeanings,
       item.tags,
       item.sections,
       item.sourceNote
@@ -21858,6 +22299,538 @@ function descriptionPiecesForCandidate(type = "", item = {}) {
     ]);
   }
   return [];
+}
+
+/*
+ * ANI's clinical search intelligence is a derived, in-memory view of the same
+ * five production collections used by the encyclopedia. It adds no medical
+ * claims and never treats clue text as an alias. Instead, it retains the
+ * authored field that supplied each clue, measures how rare that clue is
+ * across the installed corpus, and combines several independent clues before
+ * offering a card. The index is filled by the existing idle content-index
+ * queue so it does not add a second startup scan or block typing.
+ */
+function clinicalSearchIntelligenceFields(record = {}) {
+  const item = record.item || {};
+  const fields = [];
+  const add = (path, weight, value) => {
+    const pieces = flattenDescriptionPieces(value).map(safeText).filter(Boolean);
+    if (pieces.length) fields.push({ path, weight, pieces });
+  };
+  add("identity", 3.4, [item.name, item.generic, item.displayName, item.fullForm]);
+  add("aliases", 3.1, [item.aliases, item.abbreviations, item.commonMisspellings]);
+  add("category", 1.15, [item.type, item.category, item.class, item.templateKey]);
+  add("tags", 1.35, [item.tags, item.searchTerms]);
+
+  if (record.type === "reference") {
+    add("quickAnswer", 2.9, item.quickAnswer);
+    add("summary", 2.6, item.summary);
+    add("associatedConditions", 2.9, item.associatedConditions);
+    add("clinicalInterpretation", 2.75, item.clinicalInterpretation);
+    add("whyItMatters", 2.55, item.whyItMatters);
+    add("diagnosticUsefulness", 2.35, item.diagnosticUsefulness);
+    add("urgentEscalation", 2.4, item.urgentEscalation);
+    add("nursingRelevance", 2.15, item.nursingRelevance);
+    add("evidenceLimitations", 1.8, item.evidenceLimitations);
+    add("resultMeanings", 2.2, item.resultMeanings);
+    clinicalReferenceSectionPairs(item).forEach((section, index) => {
+      add(`sections.${index}`, 2.25, section);
+    });
+  } else if (record.type === "pathology") {
+    add("signsSymptoms", 2.9, item.signsSymptoms);
+    add("diagnostics", 2.55, [item.diagnostics, typeof pathologyDiagnosticAlterationText === "function"
+      ? pathologyDiagnosticAlterationText(item)
+      : ""]);
+    add("pathology", 2.3, item.pathology);
+    add("etiology", 2.15, item.etiology);
+    add("complications", 2.35, item.complications);
+    add("nursingPriorities", 2.15, item.nursingPriorities);
+    add("treatments", 1.75, item.treatments);
+    add("nclexTraps", 1.9, item.nclexTraps);
+  } else if (record.type === "drug") {
+    add("usedToTreat", 2.7, pharmUsedToTreat(item));
+    add("mechanism", 2.55, item.mechanism);
+    add("boxedWarning", 2.75, item.boxedWarning);
+    add("seriousAdverseReactions", 2.65, item.seriousAdverseReactions);
+    add("toxicityManagement", 2.6, item.toxicityManagement);
+    add("contraindications", 2.5, item.contraindications);
+    add("interactions", 2.25, item.interactions);
+    add("keyLabs", 2.3, item.keyLabs);
+    add("nursingEssentials", 2.15, item.nursingEssentials);
+    add("administration", 1.95, [item.routes, item.administration]);
+    add("specialPopulations", 2.0, [item.specialPopulations, item.populationRisks]);
+    add("patientEducation", 1.85, item.patientEducation);
+    add("nclexTraps", 1.9, item.nclexTraps);
+  } else if (record.type === "lab") {
+    add("why", 2.8, item.why);
+    add("range", 2.25, [item.range, item.groupNote]);
+    add("highCauses", 2.65, item.highCauses);
+    add("lowCauses", 2.65, item.lowCauses);
+    add("criticalConcerns", 2.8, item.criticalConcerns);
+    add("nursingConsiderations", 2.25, item.nursingConsiderations);
+    add("nclexTraps", 2.0, item.nclexTraps);
+  } else if (record.type === "holistic") {
+    add("usedFor", 2.6, item.usedFor);
+    add("mechanism", 2.35, item.mechanism);
+    add("majorRisks", 2.65, item.majorRisks);
+    add("contraindications", 2.5, item.contraindications);
+    add("interactions", 2.4, item.interactions);
+    add("nursingAssessment", 2.2, item.nursingAssessment);
+    add("teaching", 1.9, item.teaching);
+    add("nclexTraps", 1.9, item.nclexTraps);
+  }
+  return fields;
+}
+
+function clinicalSearchIntelligenceTokens(value = "") {
+  return normalizePharmText(value)
+    .split(" ")
+    .map((token) => descriptionStemToken(token))
+    .filter((token) => token.length >= 3 && !DESCRIPTION_LOOKUP_STOP_WORDS.has(token));
+}
+
+function ensureClinicalSearchIntelligenceIndex() {
+  if (clinicalSearchIntelligenceIndex) return clinicalSearchIntelligenceIndex;
+  clinicalSearchIntelligenceIndex = {
+    records: [],
+    recordMembership: new WeakSet(),
+    postings: new Map(),
+    documentFrequency: new Map(),
+    byFirstLength: new Map(),
+    byInnerLength: new Map()
+  };
+  return clinicalSearchIntelligenceIndex;
+}
+
+function addClinicalSearchIntelligenceRecord(record = {}) {
+  const item = record.item;
+  if (!item || typeof item !== "object") return false;
+  const index = ensureClinicalSearchIntelligenceIndex();
+  if (index.recordMembership.has(item)) return false;
+  const tokenEvidence = new Map();
+  const clueSets = [];
+  clinicalSearchIntelligenceFields(record).forEach((field) => {
+    field.pieces.forEach((piece) => {
+      const pieceTokens = Array.from(new Set(clinicalSearchIntelligenceTokens(piece)));
+      if (pieceTokens.length >= 2) {
+        clueSets.push({ path: field.path, weight: field.weight, tokens: pieceTokens });
+      }
+      pieceTokens.forEach((token) => {
+        const previous = tokenEvidence.get(token);
+        if (!previous) {
+          tokenEvidence.set(token, { weight: field.weight, paths: new Set([field.path]) });
+          return;
+        }
+        previous.weight = Math.max(previous.weight, field.weight);
+        previous.paths.add(field.path);
+      });
+    });
+  });
+  if (!tokenEvidence.size) return false;
+  const indexedRecord = {
+    type: record.type,
+    item,
+    tokenEvidence,
+    clueSets,
+    blob: descriptionSearchBlob(record.type, item)
+  };
+  index.records.push(indexedRecord);
+  index.recordMembership.add(item);
+  tokenEvidence.forEach((evidence, token) => {
+    if (!index.postings.has(token)) index.postings.set(token, []);
+    index.postings.get(token).push({ record: indexedRecord, evidence });
+    index.documentFrequency.set(token, (index.documentFrequency.get(token) || 0) + 1);
+    const firstKey = `${token[0]}:${token.length}`;
+    const innerKey = `${token.slice(1, 3)}:${token.length}`;
+    if (!index.byFirstLength.has(firstKey)) index.byFirstLength.set(firstKey, new Set());
+    if (!index.byInnerLength.has(innerKey)) index.byInnerLength.set(innerKey, new Set());
+    index.byFirstLength.get(firstKey).add(token);
+    index.byInnerLength.get(innerKey).add(token);
+  });
+  return true;
+}
+
+function clinicalSearchTokenImportance(token = "", index = ensureClinicalSearchIntelligenceIndex()) {
+  const documents = Math.max(1, index.records.length);
+  const frequency = Math.max(0, index.documentFrequency.get(token) || 0);
+  return Math.min(4.8, Math.max(0.18, Math.log((documents + 1) / (frequency + 1))));
+}
+
+function clinicalSearchFuzzyTokens(queryToken = "", index = ensureClinicalSearchIntelligenceIndex()) {
+  const token = descriptionStemToken(queryToken);
+  if (token.length < 5) return [];
+  const radius = token.length <= 7 ? 1 : 2;
+  const candidates = new Set();
+  for (let length = Math.max(5, token.length - radius); length <= token.length + radius; length += 1) {
+    (index.byFirstLength.get(`${token[0]}:${length}`) || []).forEach((candidate) => candidates.add(candidate));
+    (index.byInnerLength.get(`${token.slice(1, 3)}:${length}`) || []).forEach((candidate) => candidates.add(candidate));
+  }
+  return Array.from(candidates)
+    .map((candidate) => {
+      const distance = nearIdentityEditDistance(token, candidate);
+      const maximumLength = Math.max(token.length, candidate.length);
+      return { token: candidate, distance, similarity: 1 - (distance / maximumLength) };
+    })
+    .filter((candidate) => candidate.distance > 0
+      && candidate.distance <= radius
+      && candidate.similarity >= (token.length <= 7 ? 0.82 : 0.78))
+    .sort((left, right) => right.similarity - left.similarity
+      || clinicalSearchTokenImportance(right.token, index) - clinicalSearchTokenImportance(left.token, index)
+      || left.token.localeCompare(right.token))
+    .slice(0, 4);
+}
+
+function clinicalSearchConfidenceTier(value = 0) {
+  if (value >= 0.82) return "high";
+  if (value >= 0.62) return "moderate";
+  return "low";
+}
+
+function isPersonalClinicalNarrative(input = "") {
+  const inputText = safeText(input);
+  return /\b(?:i|i'm|im|i've|ive|my|me|we|we're|our)\b/i.test(inputText)
+    || /\b(?:my|our|this|the)\s+(?:patient|client|child|baby|toddler)\b/i.test(inputText)
+    || /\b(?:patient|client|child|baby|toddler)\s+(?:has|have|is|are|was|were|feels?|reports?|developed?|started?|cannot|can't)\b/i.test(inputText);
+}
+
+function clinicalSearchIntelligence(input = "", options = {}) {
+  const limit = Math.max(1, Math.min(12, Number(options.limit || 8)));
+  const index = ensureClinicalSearchIntelligenceIndex();
+  const queryTokens = descriptionQueryTokens(input).slice(0, 18);
+  const personalClinicalNarrative = isPersonalClinicalNarrative(input);
+  const unavailable = (status) => ({
+    schemaVersion: "ani-clinical-search-intelligence-v1",
+    status,
+    queryTokens,
+    candidates: [],
+    preferred: null,
+    confidence: 0,
+    confidenceTier: "low",
+    margin: 0,
+    mayAutoOpen: false
+  });
+  if (!pharmContentIndexesReady) return unavailable("INDEXING");
+  if (queryTokens.length < 2) return unavailable("INSUFFICIENT_CLUES");
+  const cacheKey = `${personalClinicalNarrative ? "personal" : "reference"}|${queryTokens.join("|")}`;
+  if (clinicalSearchIntelligenceCache.has(cacheKey)) {
+    const cached = clinicalSearchIntelligenceCache.get(cacheKey);
+    clinicalSearchIntelligenceCache.delete(cacheKey);
+    clinicalSearchIntelligenceCache.set(cacheKey, cached);
+    return { ...cached, candidates: cached.candidates.slice(0, limit) };
+  }
+
+  const candidateEvidence = new Map();
+  const addPosting = (queryToken, matchedToken, matchQuality, matchKind) => {
+    const importance = clinicalSearchTokenImportance(matchedToken, index);
+    (index.postings.get(matchedToken) || []).forEach((posting) => {
+      let candidate = candidateEvidence.get(posting.record);
+      if (!candidate) {
+        candidate = { record: posting.record, byQueryToken: new Map() };
+        candidateEvidence.set(posting.record, candidate);
+      }
+      const fieldFactor = 0.34 + (Math.min(3.4, posting.evidence.weight) / 3.4) * 1.16;
+      const contribution = importance * matchQuality * fieldFactor;
+      const previous = candidate.byQueryToken.get(queryToken);
+      if (!previous || contribution > previous.contribution) {
+        candidate.byQueryToken.set(queryToken, {
+          queryToken,
+          matchedToken,
+          matchKind,
+          matchQuality,
+          importance,
+          contribution,
+          paths: Array.from(posting.evidence.paths).sort()
+        });
+      }
+    });
+  };
+  queryTokens.forEach((queryToken) => {
+    if (index.postings.has(queryToken)) addPosting(queryToken, queryToken, 1, "exact-clue");
+    clinicalSearchFuzzyTokens(queryToken, index).forEach((candidate) => {
+      addPosting(queryToken, candidate.token, candidate.similarity * 0.86, "fuzzy-clue");
+    });
+  });
+
+  const fallbackImportance = queryTokens.reduce((sum, token) => (
+    sum + (index.postings.has(token) ? clinicalSearchTokenImportance(token, index) : 2.4)
+  ), 0) || 1;
+  const candidates = Array.from(candidateEvidence.values()).map((candidate) => {
+    const matches = Array.from(candidate.byQueryToken.values())
+      .sort((left, right) => right.contribution - left.contribution || left.queryToken.localeCompare(right.queryToken));
+    const matchedTokens = new Set(matches.map((match) => match.queryToken));
+    const matchedImportance = matches.reduce((sum, match) => sum + (match.importance * match.matchQuality), 0);
+    const coverage = Math.min(1, matchedImportance / fallbackImportance);
+    const fuzzyCount = matches.filter((match) => match.matchKind === "fuzzy-clue").length;
+    const distinctiveMatches = matches.filter((match) => match.importance >= 2.5).length;
+    const fieldPaths = Array.from(new Set(matches.flatMap((match) => match.paths))).sort();
+    const unmatchedClues = queryTokens.filter((token) => !matchedTokens.has(token));
+    const bestClueSet = candidate.record.clueSets.map((clueSet) => {
+      const tokens = clueSet.tokens.filter((token) => matchedTokens.has(token));
+      return {
+        path: clueSet.path,
+        weight: clueSet.weight,
+        tokens,
+        coverage: tokens.length / Math.max(1, clueSet.tokens.length)
+      };
+    }).filter((clueSet) => clueSet.tokens.length >= 2)
+      .sort((left, right) => right.tokens.length - left.tokens.length
+        || right.coverage - left.coverage
+        || right.weight - left.weight)[0] || null;
+    const signatureBonus = bestClueSet
+      ? bestClueSet.tokens.length * bestClueSet.weight * 0.52
+        + Math.min(2.8, bestClueSet.coverage * bestClueSet.weight)
+        + (bestClueSet.path === "aliases" ? 2.4 : bestClueSet.path === "identity" ? 1.8 : 0)
+      : 0;
+    const phraseBonus = matches.length >= 2 && candidate.record.blob.includes(
+      matches.slice().sort((left, right) => queryTokens.indexOf(left.queryToken) - queryTokens.indexOf(right.queryToken))
+        .map((match) => match.matchedToken).join(" ")
+    ) ? 1.2 : 0;
+    const score = matches.reduce((sum, match) => sum + match.contribution, 0)
+      + Math.min(3.2, matches.length * 0.45)
+      + Math.min(2.4, distinctiveMatches * 0.5)
+      + signatureBonus
+      + phraseBonus
+      - Math.max(0, unmatchedClues.length - 1) * 0.18;
+    return {
+      type: candidate.record.type,
+      item: candidate.record.item,
+      score,
+      coverage,
+      matches,
+      matchedClues: matches.map((match) => match.queryToken),
+      unmatchedClues,
+      fieldPaths,
+      bestClueSet,
+      signatureBonus,
+      fuzzyCount,
+      distinctiveMatches
+    };
+  }).filter((candidate) => candidate.matchedClues.length >= 2
+    && candidate.coverage >= 0.3
+    && (candidate.distinctiveMatches >= 1 || candidate.matchedClues.length >= 3))
+    .sort((left, right) => right.score - left.score
+      || right.coverage - left.coverage
+      || right.distinctiveMatches - left.distinctiveMatches
+      || offlineLookupEntityLabel(left).localeCompare(offlineLookupEntityLabel(right)));
+
+  const top = candidates[0] || null;
+  const runnerUp = candidates.find((candidate) => candidate.item !== top?.item || candidate.type !== top?.type) || null;
+  const margin = top
+    ? Math.max(0, Math.min(1, runnerUp ? (top.score - runnerUp.score) / Math.max(top.score, 1) : 1))
+    : 0;
+  candidates.forEach((candidate, rank) => {
+    const noiseRatio = candidate.unmatchedClues.length / Math.max(1, queryTokens.length);
+    const rankMargin = rank === 0 ? margin : Math.max(0, (candidate.score - (candidates[rank + 1]?.score || 0)) / Math.max(candidate.score, 1));
+    const signatureConfidence = candidate.bestClueSet
+      ? Math.min(0.18, 0.05 + candidate.bestClueSet.tokens.length * 0.025
+        + (candidate.bestClueSet.path === "aliases" ? 0.055 : 0))
+      : 0;
+    const confidence = Math.max(0, Math.min(0.98,
+      0.15 + candidate.coverage * 0.5 + Math.min(0.12, candidate.distinctiveMatches * 0.035)
+      + Math.min(0.15, rankMargin * 0.22) + signatureConfidence
+      - noiseRatio * 0.2 - candidate.fuzzyCount * 0.015));
+    const coherentEvidence = candidate.score >= 12 && candidate.bestClueSet?.tokens?.length >= 2;
+    const calibratedConfidence = coherentEvidence ? confidence : Math.min(confidence, 0.59);
+    candidate.confidence = Number(calibratedConfidence.toFixed(3));
+    candidate.confidenceTier = clinicalSearchConfidenceTier(calibratedConfidence);
+    candidate.rank = rank + 1;
+    candidate.clinicalClueMatch = true;
+    candidate.matchKind = "clinical-clue";
+    candidate.mayAutoOpen = rank === 0
+      && confidence >= 0.78
+      && margin >= 0.12
+      && !personalClinicalNarrative
+      && coherentEvidence
+      && candidate.unmatchedClues.length <= Math.max(1, Math.floor(queryTokens.length / 4));
+    candidate.identitySuggestionOnly = candidate.mayAutoOpen !== true;
+  });
+  // Confidence is meaningful only relative to the ranked result set. Keep a
+  // lower-ranked choice from displaying a stronger confidence label than the
+  // actual winner merely because its own next-runner gap is wider.
+  const topConfidence = candidates[0]?.confidence || 0;
+  candidates.slice(1).forEach((candidate, index) => {
+    const rankCeiling = Math.max(0.05, topConfidence - Math.min(0.32, (index + 1) * 0.035));
+    candidate.confidence = Number(Math.min(candidate.confidence, rankCeiling).toFixed(3));
+    candidate.confidenceTier = clinicalSearchConfidenceTier(candidate.confidence);
+  });
+  const resultConfidenceTier = top
+    ? (!top.mayAutoOpen && (margin < 0.12 || top.unmatchedClues.length > Math.max(1, Math.floor(queryTokens.length / 4)))
+      ? "uncertain"
+      : top.confidenceTier)
+    : "low";
+  if (top && resultConfidenceTier === "uncertain") {
+    top.confidenceTier = "uncertain";
+  }
+  const result = {
+    schemaVersion: "ani-clinical-search-intelligence-v1",
+    status: top ? "MATCHED" : "NO_CONFIDENT_MATCH",
+    queryTokens,
+    candidates,
+    preferred: top || null,
+    confidence: top?.confidence || 0,
+    confidenceTier: resultConfidenceTier,
+    margin: Number(margin.toFixed(3)),
+    mayAutoOpen: top?.mayAutoOpen === true,
+    personalClinicalNarrative
+  };
+  clinicalSearchIntelligenceCache.set(cacheKey, result);
+  while (clinicalSearchIntelligenceCache.size > 96) {
+    clinicalSearchIntelligenceCache.delete(clinicalSearchIntelligenceCache.keys().next().value);
+  }
+  return { ...result, candidates: result.candidates.slice(0, limit) };
+}
+
+function runtimeTopicRequestCandidateIsBound(candidate = {}) {
+  if (!candidate?.item || !candidate.type) return false;
+  const pools = {
+    drug: pharmDrugs,
+    lab: pharmSearchableLabRanges,
+    pathology: pathologyDiseases,
+    reference: clinicalReferenceEntries,
+    holistic: holisticRemedies
+  };
+  return Array.isArray(pools[candidate.type]) && pools[candidate.type].includes(candidate.item);
+}
+
+function registerReviewedTopicRequestResolver(registration = {}) {
+  const id = safeText(registration.id).trim();
+  const version = safeText(registration.version).trim();
+  if (!/^[a-z0-9][a-z0-9._-]{2,80}$/i.test(id)
+    || !version
+    || typeof registration.resolve !== "function") {
+    return false;
+  }
+  const existing = reviewedTopicRequestResolvers.get(id);
+  if (existing) return existing.version === version;
+  reviewedTopicRequestResolvers.set(id, Object.freeze({
+    id,
+    version,
+    resolve: registration.resolve
+  }));
+  return true;
+}
+
+window.ANI_REGISTER_REVIEWED_TOPIC_REQUEST_RESOLVER = registerReviewedTopicRequestResolver;
+
+function resolveReviewedTopicRequest(input = "", options = {}) {
+  const limit = Math.max(1, Math.min(12, Number(options.limit || 8)));
+  const personalClinicalNarrative = isPersonalClinicalNarrative(input);
+  const byTarget = new Map();
+  Array.from(reviewedTopicRequestResolvers.values())
+    .sort((left, right) => left.id.localeCompare(right.id))
+    .forEach((registration) => {
+      let resolved = null;
+      try {
+        resolved = registration.resolve(safeText(input), {
+          mode: options.mode === "navigate" ? "navigate" : "suggest",
+          limit
+        });
+      } catch {
+        return;
+      }
+      const rows = Array.isArray(resolved) ? resolved : resolved ? [resolved] : [];
+      rows.forEach((row) => {
+        const candidate = row?.candidate?.item ? row.candidate : row;
+        if (!runtimeTopicRequestCandidateIsBound(candidate)) return;
+        const key = offlineLookupEntityKey(candidate);
+        if (!key) return;
+        const mayAutoOpen = row.mayAutoOpen === true
+          && row.activeCurrent !== true
+          && !personalClinicalNarrative;
+        const proposal = {
+          type: candidate.type,
+          item: candidate.item,
+          score: Number(row.score || 0),
+          reviewedRoute: true,
+          reviewedRouteId: safeText(row.routeId || row.id),
+          reviewedResolverIds: [registration.id],
+          matchKind: "reviewed-route",
+          mayAutoOpen,
+          identitySuggestionOnly: !mayAutoOpen,
+          activeCurrent: row.activeCurrent === true
+        };
+        const existing = byTarget.get(key);
+        if (!existing) {
+          byTarget.set(key, proposal);
+          return;
+        }
+        existing.score = Math.max(existing.score, proposal.score);
+        existing.mayAutoOpen = existing.mayAutoOpen && proposal.mayAutoOpen;
+        existing.identitySuggestionOnly = !existing.mayAutoOpen;
+        existing.activeCurrent = existing.activeCurrent || proposal.activeCurrent;
+        existing.reviewedResolverIds = Array.from(new Set(
+          existing.reviewedResolverIds.concat(proposal.reviewedResolverIds)
+        )).sort();
+      });
+    });
+  const candidates = Array.from(byTarget.values())
+    .sort((left, right) => right.score - left.score
+      || offlineLookupEntityLabel(left).localeCompare(offlineLookupEntityLabel(right)))
+    .slice(0, limit);
+  const ambiguous = candidates.length > 1;
+  if (ambiguous) {
+    candidates.forEach((candidate) => {
+      candidate.mayAutoOpen = false;
+      candidate.identitySuggestionOnly = true;
+      candidate.ambiguousIdentity = true;
+    });
+  }
+  return {
+    schemaVersion: "ani-reviewed-topic-request-resolution-v1",
+    status: ambiguous ? "AMBIGUOUS_REVIEWED_ROUTE" : candidates.length ? "MATCHED" : "NO_MATCH",
+    candidates,
+    preferred: ambiguous ? null : candidates[0] || null,
+    mayAutoOpen: !ambiguous && candidates[0]?.mayAutoOpen === true,
+    ambiguousIdentity: ambiguous,
+    personalClinicalNarrative
+  };
+}
+
+function resolveTopicRequest(input = "", options = {}) {
+  const limit = Math.max(1, Math.min(12, Number(options.limit || 8)));
+  const mode = options.mode === "navigate" ? "navigate" : "suggest";
+  const identity = resolveEncyclopediaIdentity(input, { mode, limit });
+  const identityOwnsRequest = identity.candidates.length > 0
+    || identity.suppressUnrelatedMatches === true;
+  const reviewed = identityOwnsRequest
+    ? null
+    : resolveReviewedTopicRequest(input, { mode, limit });
+  const reviewedOwnsRequest = Boolean(reviewed?.candidates.length);
+  const clinical = options.allowClinicalClues === false || identityOwnsRequest || reviewedOwnsRequest
+    ? null
+    : clinicalSearchIntelligence(input, { limit });
+  const clinicalOwnsRequest = Boolean(clinical?.preferred);
+  const preferred = identity.preferred || reviewed?.preferred || clinical?.preferred || null;
+  return {
+    schemaVersion: "ani-topic-request-resolution-v1",
+    status: identityOwnsRequest
+      ? (identity.suppressUnrelatedMatches === true ? "AMBIGUOUS_IDENTITY" : "IDENTITY_MATCHED")
+      : reviewedOwnsRequest ? reviewed.status : clinical?.status || "NO_MATCH",
+    resolutionKind: identityOwnsRequest
+      ? (identity.suppressUnrelatedMatches === true ? "ambiguous-identity" : identity.matchKind || "identity")
+      : reviewedOwnsRequest
+        ? (reviewed.ambiguousIdentity ? "ambiguous-reviewed-route" : "reviewed-route")
+        : clinicalOwnsRequest ? "clinical-clue" : "none",
+    identity,
+    reviewed,
+    clinical,
+    candidates: identityOwnsRequest
+      ? identity.candidates
+      : reviewedOwnsRequest ? reviewed.candidates : clinical?.candidates || [],
+    preferred,
+    mayAutoOpen: identityOwnsRequest
+      ? identity.mayAutoOpen === true
+      : reviewedOwnsRequest ? reviewed.mayAutoOpen === true : clinical?.mayAutoOpen === true,
+    identitySuggestionOnly: identityOwnsRequest
+      ? identity.mayAutoOpen !== true
+      : reviewedOwnsRequest ? reviewed.mayAutoOpen !== true : clinicalOwnsRequest && clinical.mayAutoOpen !== true,
+    ambiguousIdentity: identity.suppressUnrelatedMatches === true || reviewed?.ambiguousIdentity === true,
+    personalClinicalNarrative: reviewed?.personalClinicalNarrative === true
+      || clinical?.personalClinicalNarrative === true,
+    confidence: Number(clinical?.confidence || 0),
+    confidenceTier: clinical?.confidenceTier || "",
+    margin: Number(clinical?.margin || 0)
+  };
 }
 
 function descriptionSearchBlob(type = "", item = {}) {
@@ -22219,6 +23192,19 @@ function pharmLabTerms(lab = {}) {
     .filter(Boolean);
   pharmLabTermCache.set(lab, terms);
   return terms;
+}
+
+function pharmLabContentIndexValues(lab = {}) {
+  const projectedTeaching = labProjectedTeachingSections(lab)
+    .flatMap((section) => (Array.isArray(section.items) && section.items.length
+      ? section.items.map((item) => item.text)
+      : [section.value]))
+    .map((value) => normalizePharmText(value))
+    .filter(Boolean);
+  return Array.from(new Set([
+    ...pharmLabTerms(lab),
+    ...projectedTeaching
+  ]));
 }
 
 function pharmTermContainsQuery(term = "", cleanQuery = "") {
@@ -22940,11 +23926,15 @@ function makeOfflinePreeclampsiaSevereFeaturesAnswer(input = "") {
 }
 
 function makeOfflineLabRangeAnswer(input = "") {
-  const populationIntent = detectLabPopulationIntent(input);
-  if (!wantsLabRangeLookup(input) || (!hasExplicitLabRangeCue(input) && !populationIntent.size)) return "";
-  const lab = bestLabMatch(input);
+  // Keep the reviewed lab-spelling corrections consistent with search scoring.
+  // This remains a range/population intent path; it does not promote fuzzy
+  // suggestions or relax the fail-closed identity routing rules.
+  const fixedInput = applyClinicalSpeechFixups(input) || input;
+  const populationIntent = detectLabPopulationIntent(fixedInput);
+  if (!wantsLabRangeLookup(fixedInput) || (!hasExplicitLabRangeCue(fixedInput) && !populationIntent.size)) return "";
+  const lab = bestLabMatch(fixedInput);
   if (!lab) return "";
-  const ageIntent = detectPediatricAgeIntent(input);
+  const ageIntent = detectPediatricAgeIntent(fixedInput);
   const pediatricSegment = ageIntent ? bestPediatricRangeSegmentForAge(lab.range, ageIntent) : "";
   const populationLine = ageIntent
     ? `**Requested population:** ${ageIntent.label}.`
@@ -27678,6 +28668,33 @@ function isAcronymShapedIdentityAlias(value = "") {
   return /[A-Z].*[A-Z]/.test(text) || /[A-Za-z].*\d|\d.*[A-Za-z]/.test(text);
 }
 
+function encyclopediaIdentityTermGroups(type = "", item = {}) {
+  const shared = [
+    { values: item.preferredBareAliases || [], termKind: "preferred-bare-alias", sourceField: "preferredBareAliases" },
+    { values: item.abbreviations || [], termKind: "abbreviation", sourceField: "abbreviations" },
+    { values: item.aliases || [], termKind: "identity-alias", sourceField: "aliases" },
+    { values: item.commonMisspellings || [], termKind: "misspelling", sourceField: "commonMisspellings" }
+  ];
+  if (type === "drug") {
+    return [
+      { values: [item.name, item.generic, item.displayName, pharmDrugDisplayName(item, "")], termKind: "canonical", sourceField: "name/generic/displayName" },
+      ...shared.slice(0, 3),
+      { values: [item.brandExamples || [], item.brands || []], termKind: "brand", sourceField: "brandExamples/brands" },
+      shared[3]
+    ];
+  }
+  if (type === "reference") {
+    return [
+      { values: [item.name, item.displayName, item.fullForm], termKind: "canonical", sourceField: "name/displayName/fullForm" },
+      ...shared
+    ];
+  }
+  return [
+    { values: [item.name, item.displayName], termKind: "canonical", sourceField: "name/displayName" },
+    ...shared
+  ];
+}
+
 function getFastVoiceIdentityIndex() {
   if (fastVoiceIdentityIndex) return fastVoiceIdentityIndex;
   const index = new Map();
@@ -27703,42 +28720,11 @@ function getFastVoiceIdentityIndex() {
       });
     });
   };
-  pathologyDiseases.forEach((item) => register("pathology", item, [
-    { values: [item.name, item.displayName], termKind: "canonical", sourceField: "name/displayName" },
-    { values: item.preferredBareAliases || [], termKind: "preferred-bare-alias", sourceField: "preferredBareAliases" },
-    { values: item.abbreviations || [], termKind: "abbreviation", sourceField: "abbreviations" },
-    { values: item.aliases || [], termKind: "identity-alias", sourceField: "aliases" },
-    { values: item.commonMisspellings || [], termKind: "misspelling", sourceField: "commonMisspellings" }
-  ]));
-  clinicalReferenceEntries.forEach((item) => register("reference", item, [
-    { values: [item.name, item.displayName, item.fullForm], termKind: "canonical", sourceField: "name/displayName/fullForm" },
-    { values: item.preferredBareAliases || [], termKind: "preferred-bare-alias", sourceField: "preferredBareAliases" },
-    { values: item.abbreviations || [], termKind: "abbreviation", sourceField: "abbreviations" },
-    { values: item.aliases || [], termKind: "identity-alias", sourceField: "aliases" },
-    { values: item.commonMisspellings || [], termKind: "misspelling", sourceField: "commonMisspellings" }
-  ]));
-  pharmSearchableLabRanges.forEach((item) => register("lab", item, [
-    { values: [item.name, item.displayName], termKind: "canonical", sourceField: "name/displayName" },
-    { values: item.preferredBareAliases || [], termKind: "preferred-bare-alias", sourceField: "preferredBareAliases" },
-    { values: item.abbreviations || [], termKind: "abbreviation", sourceField: "abbreviations" },
-    { values: item.aliases || [], termKind: "identity-alias", sourceField: "aliases" },
-    { values: item.commonMisspellings || [], termKind: "misspelling", sourceField: "commonMisspellings" }
-  ]));
-  holisticRemedies.forEach((item) => register("holistic", item, [
-    { values: [item.name, item.displayName], termKind: "canonical", sourceField: "name/displayName" },
-    { values: item.preferredBareAliases || [], termKind: "preferred-bare-alias", sourceField: "preferredBareAliases" },
-    { values: item.abbreviations || [], termKind: "abbreviation", sourceField: "abbreviations" },
-    { values: item.aliases || [], termKind: "identity-alias", sourceField: "aliases" },
-    { values: item.commonMisspellings || [], termKind: "misspelling", sourceField: "commonMisspellings" }
-  ]));
-  pharmDrugs.forEach((item) => register("drug", item, [
-    { values: [item.name, item.generic, item.displayName, pharmDrugDisplayName(item, "")], termKind: "canonical", sourceField: "name/generic/displayName" },
-    { values: item.preferredBareAliases || [], termKind: "preferred-bare-alias", sourceField: "preferredBareAliases" },
-    { values: item.abbreviations || [], termKind: "abbreviation", sourceField: "abbreviations" },
-    { values: item.aliases || [], termKind: "identity-alias", sourceField: "aliases" },
-    { values: [item.brandExamples || [], item.brands || []], termKind: "brand", sourceField: "brandExamples/brands" },
-    { values: item.commonMisspellings || [], termKind: "misspelling", sourceField: "commonMisspellings" }
-  ]));
+  pathologyDiseases.forEach((item) => register("pathology", item, encyclopediaIdentityTermGroups("pathology", item)));
+  clinicalReferenceEntries.forEach((item) => register("reference", item, encyclopediaIdentityTermGroups("reference", item)));
+  pharmSearchableLabRanges.forEach((item) => register("lab", item, encyclopediaIdentityTermGroups("lab", item)));
+  holisticRemedies.forEach((item) => register("holistic", item, encyclopediaIdentityTermGroups("holistic", item)));
+  pharmDrugs.forEach((item) => register("drug", item, encyclopediaIdentityTermGroups("drug", item)));
   fastVoiceIdentityIndex = index;
   return fastVoiceIdentityIndex;
 }
@@ -28842,7 +29828,9 @@ function updateFoundationBrowseUi() {
   const active = activePharmIndexMode === "foundations";
   foundationBrowseControls.hidden = !active;
   if (!active) return;
-  const entries = clinicalReferenceEntries.filter((entry) => (entry.type === "foundation" || entry.educationalArticle === true) && !isMicrobiologyReferenceEntry(entry));
+  const entries = clinicalReferenceEntries.filter((entry) => (entry.type === "foundation" || entry.educationalArticle === true)
+    && !isMicrobiologyReferenceEntry(entry)
+    && !isHolisticClinicalReferenceEntry(entry));
   const domainCounts = new Map();
   entries.forEach((entry) => {
     const label = foundationBrowseDomain(entry);
@@ -28879,6 +29867,32 @@ function updateFoundationBrowseUi() {
     foundationBrowseCount.textContent = activeFoundationBrowseDomain === "all"
       ? `${entries.length} foundations in the alphabetical index`
       : `${visible} of ${entries.length} foundations; searching still checks every domain`;
+  }
+}
+
+function holisticSubcategoryLabel(subcategory = activeHolisticBrowseSubcategory) {
+  return HOLISTIC_BROWSE_SUBCATEGORIES.find((record) => record.id === subcategory)?.label
+    || HOLISTIC_BROWSE_SUBCATEGORIES[0].label;
+}
+
+function updateHolisticBrowseUi() {
+  if (!holisticBrowseControls || !holisticSubcategorySelect) return;
+  const active = activePharmIndexMode === "holistic";
+  holisticBrowseControls.hidden = !active;
+  if (!active) return;
+  const validValues = new Set(HOLISTIC_BROWSE_SUBCATEGORIES.map((record) => record.id));
+  if (!validValues.has(activeHolisticBrowseSubcategory)) {
+    activeHolisticBrowseSubcategory = "all";
+    localStorage.setItem(HOLISTIC_BROWSE_SUBCATEGORY_KEY, activeHolisticBrowseSubcategory);
+  }
+  holisticSubcategorySelect.value = activeHolisticBrowseSubcategory;
+  if (holisticBrowseCount) {
+    const allCount = holisticVisibleBrowseCandidates({ subcategory: "all", letter: "All" }).length;
+    const visibleCount = holisticVisibleBrowseCandidates({ letter: "All" }).length;
+    const filterLabel = activePharmNclexOnly ? " NCLEX Essential" : "";
+    holisticBrowseCount.textContent = activeHolisticBrowseSubcategory === "all"
+      ? `${allCount}${filterLabel} Holistic ${allCount === 1 ? "topic" : "topics"} in the alphabetical index`
+      : `${visibleCount} of ${allCount}${filterLabel} Holistic topics; searching still checks the complete encyclopedia`;
   }
 }
 
@@ -28952,8 +29966,14 @@ function clinicalReferenceMatchesActiveMode(entry = {}) {
   const isSurgeryProcedure = isSurgeryProcedureReferenceEntry(entry);
   if (activePharmIndexMode === "procedures") return entry.type !== "foundation" && !isClinicalSign && !isMicrobiology && !isSurgeryProcedure;
   if (activePharmIndexMode === "surgeries") return isSurgeryProcedure && surgeryProcedureMatchesBrowseSpecialty(entry);
-  if (activePharmIndexMode === "foundations") return entry.type === "foundation" && !isMicrobiology && foundationMatchesBrowseDomain(entry);
+  if (activePharmIndexMode === "foundations") return entry.type === "foundation" && !isMicrobiology && !isHolisticClinicalReferenceEntry(entry) && foundationMatchesBrowseDomain(entry);
   if (activePharmIndexMode === "clinical-signs") return isClinicalSign && clinicalSignMatchesBrowseFacet(entry);
+  if (activePharmIndexMode === "holistic") {
+    const candidate = { type: "reference", item: entry };
+    return isHolisticClinicalReferenceEntry(entry)
+      && holisticCandidateMatchesBrowseSubcategory(candidate)
+      && (!activePharmNclexOnly || isNclexEssentialEncyclopediaEntry(candidate.type, entry));
+  }
   if (activePharmIndexMode === "microbiology") {
     return microbiologyBrowseCandidates()
       .some((candidate) => candidate.type === "reference" && candidate.item === entry && microbiologyCandidateMatchesBrowseBranch(candidate));
@@ -29513,6 +30533,7 @@ function renderPharmAlphabet() {
   const diseasePool = favoritesOnly ? filterPharmFavorites("diseases", pathologyDiseases) : pathologyDiseases;
   const referencePool = favoritesOnly ? filterPharmFavorites("procedures", clinicalReferenceEntries) : clinicalReferenceEntries;
   const holisticPool = favoritesOnly ? filterPharmFavorites("holistic", holisticRemedies) : holisticRemedies;
+  const holisticFederatedPool = activePharmIndexMode === "holistic" ? holisticVisibleBrowseCandidates({ letter: "All" }) : [];
   const microbiologyPool = pharmIndexShowsMicrobiology()
     ? microbiologyBrowseCandidates().filter((candidate) => microbiologyCandidateMatchesBrowseBranch(candidate))
     : [];
@@ -29525,7 +30546,9 @@ function renderPharmAlphabet() {
       .map((entry) => safeText(entry.name)[0]?.toUpperCase()) : []),
     ...(pharmIndexShowsMicrobiology() ? microbiologyPool
       .map((candidate) => safeText(offlineLookupEntityLabel(candidate))[0]?.toUpperCase()) : []),
-    ...(pharmIndexShowsHolistic() ? holisticPool.map((remedy) => safeText(remedy.name)[0]?.toUpperCase()) : [])
+    ...(activePharmIndexMode === "holistic"
+      ? holisticFederatedPool.map((candidate) => safeText(candidate.item?.name || candidate.item?.displayName)[0]?.toUpperCase())
+      : (pharmIndexShowsHolistic() ? holisticPool.map((remedy) => safeText(remedy.name)[0]?.toUpperCase()) : []))
   ].filter(Boolean);
   const letters = ["All", ...Array.from(new Set(letterSources)).sort()];
   if (!letters.includes(activePharmLetter)) {
@@ -33203,11 +34226,29 @@ let pharmDetailLinkCandidates = null;
 let pharmDetailLinkCandidateIndex = null;
 let pharmDetailLinkAmbiguityRecordsCache = [];
 const PHARM_DETAIL_DRUG_LINK_LIMIT = 520;
-const PHARM_SHORT_LINK_TERMS = new Set(["bun", "inr", "map", "wbc", "anc", "pt", "ph"]);
+const PHARM_SHORT_LINK_TERMS = new Set(["bun", "fit", "inr", "map", "wbc", "anc", "pt", "ph"]);
 const PHARM_LINK_STOP_TERMS = new Set(["toxicity", "vitamin", "thyroid", "seizure", "seizures", "depression", "pain", "fever", "infection", "warning", "warnings"]);
+const PHARM_INLINE_LINK_EXCLUSION_PATTERNS = Object.freeze([
+  /\bsame\b/g,
+  /\bfit(?:-tested)?\b/g,
+  /\bmedical clearance\b/gi
+]);
 
-function addPharmDetailLinkCandidate(candidates, seen, term, type, item, matchKind = "alias") {
-  const label = safeText(term);
+function pharmInlineLinkRangeIsExcluded(source = "", index = 0, end = 0) {
+  return PHARM_INLINE_LINK_EXCLUSION_PATTERNS.some((pattern) => {
+    pattern.lastIndex = 0;
+    let match = pattern.exec(source);
+    while (match) {
+      const matchEnd = match.index + match[0].length;
+      if (index < matchEnd && end > match.index) return true;
+      match = pattern.exec(source);
+    }
+    return false;
+  });
+}
+
+function addPharmDetailLinkCandidate(candidates, seen, term, type, item, matchKind = "alias", sourceField = "") {
+  const label = fastIdentityText(term);
   const normalized = normalizePharmText(label);
   if (!normalized || (normalized.length < 4 && !PHARM_SHORT_LINK_TERMS.has(normalized))) return;
   if (PHARM_LINK_STOP_TERMS.has(normalized)) return;
@@ -33227,12 +34268,35 @@ function addPharmDetailLinkCandidate(candidates, seen, term, type, item, matchKi
     query: type === "lab" ? pharmLabLookupQuery(item) : targetLabel,
     targetKey,
     targetLabel,
-    matchKind
+    matchKind,
+    identitySource: "shared-exact-identity-registry",
+    identitySourceField: safeText(sourceField)
   });
 }
 
 function pharmDetailLinkMatchKindRank(matchKind = "") {
-  return ({ canonical: 0, display: 1, "full-form": 1, abbreviation: 2, alias: 3, misspelling: 4 })[matchKind] ?? 5;
+  return ({ canonical: 0, display: 1, "full-form": 1, "preferred-bare-alias": 2, abbreviation: 3, brand: 4, alias: 5, misspelling: 6 })[matchKind] ?? 7;
+}
+
+function addExactIdentityLinkGroups(candidates, seen, type, item) {
+  encyclopediaIdentityTermGroups(type, item).forEach((group) => {
+    const values = (Array.isArray(group.values) ? group.values.flat() : [group.values]);
+    values.forEach((value) => {
+      const declared = safeText(group.termKind || "identity-alias");
+      const matchKind = declared === "identity-alias"
+        ? (isAcronymShapedIdentityAlias(value) ? "abbreviation" : "alias")
+        : declared;
+      addPharmDetailLinkCandidate(
+        candidates,
+        seen,
+        value,
+        type,
+        item,
+        matchKind,
+        group.sourceField
+      );
+    });
+  });
 }
 
 function getPharmDetailLinkCandidates() {
@@ -33240,27 +34304,10 @@ function getPharmDetailLinkCandidates() {
   const candidates = [];
   const seen = new Set();
 
-  pharmSearchableLabRanges.forEach((lab) => {
-    addPharmDetailLinkCandidate(candidates, seen, lab.name, "lab", lab, "canonical");
-    (lab.aliases || []).forEach((alias) => addPharmDetailLinkCandidate(candidates, seen, alias, "lab", lab, "alias"));
-    (lab.abbreviations || []).forEach((abbreviation) => addPharmDetailLinkCandidate(candidates, seen, abbreviation, "lab", lab, "abbreviation"));
-  });
-  pathologyDiseases.forEach((disease) => {
-    addPharmDetailLinkCandidate(candidates, seen, disease.name, "pathology", disease, "canonical");
-    (disease.aliases || []).forEach((alias) => addPharmDetailLinkCandidate(candidates, seen, alias, "pathology", disease, "alias"));
-  });
-  holisticRemedies.forEach((remedy) => {
-    addPharmDetailLinkCandidate(candidates, seen, remedy.name, "holistic", remedy, "canonical");
-    (remedy.aliases || []).forEach((alias) => addPharmDetailLinkCandidate(candidates, seen, alias, "holistic", remedy, "alias"));
-  });
-  clinicalReferenceEntries.forEach((entry) => {
-    addPharmDetailLinkCandidate(candidates, seen, entry.name, "reference", entry, "canonical");
-    addPharmDetailLinkCandidate(candidates, seen, entry.displayName, "reference", entry, "display");
-    addPharmDetailLinkCandidate(candidates, seen, entry.fullForm, "reference", entry, "full-form");
-    (entry.aliases || []).forEach((alias) => addPharmDetailLinkCandidate(candidates, seen, alias, "reference", entry, "alias"));
-    (entry.abbreviations || []).forEach((alias) => addPharmDetailLinkCandidate(candidates, seen, alias, "reference", entry, "abbreviation"));
-    (entry.commonMisspellings || []).forEach((alias) => addPharmDetailLinkCandidate(candidates, seen, alias, "reference", entry, "misspelling"));
-  });
+  pharmSearchableLabRanges.forEach((lab) => addExactIdentityLinkGroups(candidates, seen, "lab", lab));
+  pathologyDiseases.forEach((disease) => addExactIdentityLinkGroups(candidates, seen, "pathology", disease));
+  holisticRemedies.forEach((remedy) => addExactIdentityLinkGroups(candidates, seen, "holistic", remedy));
+  clinicalReferenceEntries.forEach((entry) => addExactIdentityLinkGroups(candidates, seen, "reference", entry));
 
   let linkedDrugCount = 0;
   for (const drug of pharmDrugs) {
@@ -33268,9 +34315,7 @@ function getPharmDetailLinkCandidates() {
     const shouldLinkDrug = isNclexCorePharmEntry(drug) || drug.nclexEssentialRank || !drug.expandedIndex || linkedDrugCount < PHARM_DETAIL_DRUG_LINK_LIMIT;
     if (!shouldLinkDrug) continue;
     linkedDrugCount += 1;
-    addPharmDetailLinkCandidate(candidates, seen, drug.name, "drug", drug, "canonical");
-    addPharmDetailLinkCandidate(candidates, seen, drug.generic, "drug", drug, "canonical");
-    (drug.aliases || []).slice(0, 3).forEach((alias) => addPharmDetailLinkCandidate(candidates, seen, alias, "drug", drug, "alias"));
+    addExactIdentityLinkGroups(candidates, seen, "drug", drug);
   }
 
   const sortedCandidates = candidates
@@ -33370,6 +34415,8 @@ function pharmDetailLinkDestinationRecords() {
       term: candidate.term,
       normalizedTerm: candidate.normalized,
       matchKind: candidate.matchKind,
+      identitySource: candidate.identitySource,
+      identitySourceField: candidate.identitySourceField,
       boundType: candidate.type,
       boundName: candidate.targetLabel,
       boundTargetKey: candidate.targetKey,
@@ -33421,6 +34468,7 @@ function findPharmDetailLinkRanges(text = "", currentLabel = "", usedTargets = n
       const end = index + candidate.termLower.length;
       if (
         pharmShortLinkTermCaseMatches(source, index, end, candidate)
+        && !pharmInlineLinkRangeIsExcluded(source, index, end)
         && !usedTargets.has(candidate.targetKey)
         && isPharmLinkBoundary(source, index - 1)
         && isPharmLinkBoundary(source, end)
@@ -33569,7 +34617,8 @@ function appendMicrobiologyRelationshipSection(container, entry = {}) {
   heading.textContent = "Microbiology relationships";
   const grid = document.createElement("div");
   grid.className = "pharm-related-concept-grid";
-  resolved.slice(0, 16).forEach(({ relationship, candidate }) => {
+  const relationshipLimit = /Precaution Diseases$/i.test(safeText(entry.name)) ? 24 : 16;
+  resolved.slice(0, relationshipLimit).forEach(({ relationship, candidate }) => {
     activePharmDetailLinkTargets.add(offlineLookupEntityKey(candidate));
     const button = document.createElement("button");
     button.type = "button";
@@ -33669,6 +34718,7 @@ function findEncyclopediaLinkRangesForText(text = "", usedTargets = new Set(), m
       const end = index + candidate.termLower.length;
       if (
         pharmShortLinkTermCaseMatches(source, index, end, candidate)
+        && !pharmInlineLinkRangeIsExcluded(source, index, end)
         && isPharmLinkBoundary(source, index - 1)
         && isPharmLinkBoundary(source, end)
       ) {
@@ -33820,6 +34870,94 @@ function resolvedEvidenceSources(database = {}, entity = {}) {
   })).values());
 }
 
+const CLINICAL_REFERENCE_SOURCE_RESOLUTION_SCHEMA_VERSION = "ani-clinical-reference-source-resolution-v1";
+
+function clinicalReferenceEvidenceSourceKey(reference = {}) {
+  return safeText(reference && (reference.key || reference.id));
+}
+
+function clinicalReferenceEvidenceSourceProjection(reference = {}, key = "") {
+  return {
+    key: safeText(key || clinicalReferenceEvidenceSourceKey(reference)),
+    label: safeText(reference && reference.label),
+    url: safeText(reference && reference.url),
+    note: safeText(reference && reference.note)
+  };
+}
+
+function resolvedClinicalReferenceEvidenceSources(entity = {}) {
+  const registries = [
+    { registry: "diagnosticDatabase", database: diagnosticDatabase },
+    { registry: "foundationDatabase", database: foundationDatabase }
+  ];
+  const keys = Array.from(new Map((Array.isArray(entity.sourceKeys) ? entity.sourceKeys : [])
+    .map((key) => safeText(key))
+    .filter(Boolean)
+    .map((key) => [key, key])).values());
+
+  return keys.map((key) => {
+    const matches = registries.flatMap(({ registry, database }) => {
+      const references = Array.isArray(database && database.sourceReferences)
+        ? database.sourceReferences
+        : [];
+      return references.flatMap((reference, sourceIndex) => (
+        clinicalReferenceEvidenceSourceKey(reference) === key
+          ? [{ registry, sourceIndex, reference }]
+          : []
+      ));
+    });
+    const projectionRows = matches.map((match) => clinicalReferenceEvidenceSourceProjection(match.reference, key));
+    const distinctProjectionCount = new Set(projectionRows.map((projection) => JSON.stringify(projection))).size;
+    const resolutionStatus = matches.length === 0
+      ? "unresolved"
+      : distinctProjectionCount > 1
+        ? "conflicting-exact-key"
+        : matches.length === 1
+          ? "resolved-exact"
+          : "resolved-identical-multiple";
+    const sourceResolutionEvidence = Object.freeze({
+      schemaVersion: CLINICAL_REFERENCE_SOURCE_RESOLUTION_SCHEMA_VERSION,
+      sourceKey: key,
+      status: resolutionStatus,
+      matchCount: matches.length,
+      distinctProjectionCount,
+      matches: Object.freeze(matches.map((match, index) => Object.freeze({
+        registry: match.registry,
+        sourceIndex: match.sourceIndex,
+        projection: Object.freeze({ ...projectionRows[index] })
+      })))
+    });
+
+    if (resolutionStatus === "conflicting-exact-key") {
+      return {
+        key,
+        label: key,
+        url: "",
+        sourceResolutionEvidence
+      };
+    }
+    if (matches.length === 0) {
+      return {
+        key,
+        label: key,
+        url: "",
+        sourceResolutionEvidence
+      };
+    }
+    return {
+      ...matches[0].reference,
+      key,
+      sourceResolutionEvidence
+    };
+  });
+}
+
+function appendClinicalReferenceEvidenceSourceSection(container, entity = {}) {
+  return appendEvidenceSourceSection(container, {
+    sourceReferences: resolvedClinicalReferenceEvidenceSources(entity)
+  }, entity);
+}
+
 function appendEvidenceSourceSection(container, database = {}, entity = {}) {
   const sources = resolvedEvidenceSources(database, entity);
   const sourceNote = sanitizeMedicalReferenceText(entity.sourceNote);
@@ -33844,18 +34982,28 @@ function appendEvidenceSourceSection(container, database = {}, entity = {}) {
     sources.forEach((source) => {
       const label = safeText(source.label || source.key);
       const url = safeText(source.url);
-      if (/^https:\/\//i.test(url)) {
-        const link = document.createElement("a");
-        link.href = url;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        link.textContent = label;
-        links.append(link);
+      const sourceResolutionEvidence = source && source.sourceResolutionEvidence;
+      const resolutionStatus = safeText(sourceResolutionEvidence && sourceResolutionEvidence.status);
+      let renderedSource;
+      if (resolutionStatus === "conflicting-exact-key") {
+        renderedSource = document.createElement("span");
+        renderedSource.textContent = `${label} (conflicting exact-key source records; link withheld)`;
+      } else if (/^https:\/\//i.test(url)) {
+        renderedSource = document.createElement("a");
+        renderedSource.href = url;
+        renderedSource.target = "_blank";
+        renderedSource.rel = "noopener noreferrer";
+        renderedSource.textContent = label;
       } else {
-        const unresolved = document.createElement("span");
-        unresolved.textContent = `${label} (reference unavailable offline)`;
-        links.append(unresolved);
+        renderedSource = document.createElement("span");
+        renderedSource.textContent = `${label} (reference unavailable offline)`;
       }
+      if (sourceResolutionEvidence && renderedSource.dataset) {
+        renderedSource.dataset.aniSourceKey = safeText(sourceResolutionEvidence.sourceKey || source.key);
+        renderedSource.dataset.aniSourceResolutionStatus = resolutionStatus;
+        renderedSource.dataset.aniSourceResolutionEvidence = JSON.stringify(sourceResolutionEvidence);
+      }
+      links.append(renderedSource);
     });
     section.append(links);
   }
@@ -34102,7 +35250,32 @@ function labTextIncludes(lab = {}, patterns = []) {
   });
 }
 
+function labStructuredSectionProjection(lab = {}) {
+  const standard = window.ANI_LEARNER_LANGUAGE_STANDARD;
+  if (standard && typeof standard.labStructuredSectionProjection === "function") {
+    return standard.labStructuredSectionProjection(lab);
+  }
+  return Object.freeze({
+    schemaVersion: "ani-lab-structured-sections-unavailable",
+    recognized: false,
+    hasValidAuthoredSections: false,
+    suppressGeneratedTeaching: false,
+    coverageComplete: false,
+    recognizedFields: Object.freeze([]),
+    validFields: Object.freeze([]),
+    emptyFields: Object.freeze([]),
+    malformedFields: Object.freeze([]),
+    sections: Object.freeze([]),
+    sourceItemCount: 0,
+    projectedLeafCount: 0,
+    automaticRewritePerformed: false,
+    populationSiblingInheritancePerformed: false,
+    mutationTargetAuthorized: false
+  });
+}
+
 function labTeachingSections(lab = {}) {
+  if (labStructuredSectionProjection(lab).suppressGeneratedTeaching) return [];
   const name = safeText(lab.name, "this lab");
   if (labTextIncludes(lab, ["calcium", "ionized calcium"])) {
     return [
@@ -34230,22 +35403,106 @@ function labTeachingSections(lab = {}) {
   return [];
 }
 
+function labProjectedTeachingSections(lab = {}) {
+  const authored = labStructuredSectionProjection(lab);
+  if (authored.suppressGeneratedTeaching) {
+    return authored.sections.map((section) => ({
+      ...section,
+      kind: "authored-structured",
+      authoredStructured: true,
+      generatedTeaching: false,
+      structuredSchema: authored.schemaVersion,
+      structuredCoverageComplete: authored.coverageComplete === true
+    }));
+  }
+  return labTeachingSections(lab).map(([label, value], index) => {
+    const text = safeText(value);
+    const path = `generatedLabTeachingSections.${index}`;
+    return {
+      key: "",
+      label,
+      path,
+      sourceIndex: index,
+      safetyVisible: /(?:critical|urgent|danger|concerning|red flag|priority action|safety)/i.test(label),
+      items: text ? [{ field: "", fieldPath: path, path: `${path}.0`, index: 0, text }] : [],
+      value,
+      text,
+      learnerText: text,
+      kind: "generated-keyword",
+      authoredStructured: false,
+      generatedTeaching: true,
+      structuredSchema: ""
+    };
+  });
+}
+
 function labVisibleLearnerSections(lab = {}) {
   const sections = [
-    ["Reference range / threshold", lab.range],
-    ["Why every nurse should know it", lab.why],
-    ["Population note", lab.groupNote],
-    ...labTeachingSections(lab),
-    ["NCLEX use", "Use the range as a cue, then connect it to the client trend, symptoms, medication risks, and whether the nurse should hold, question, monitor, or intervene."],
-    ["Study safety note", "Ranges can vary by facility, age, pregnancy status, specimen type, and lab method. Use these numbers as NCLEX study anchors and verify the printed lab reference range in real care."]
+    {
+      key: "range",
+      label: "Reference range / threshold",
+      value: lab.range,
+      path: "range",
+      learnerText: lab.range
+    },
+    {
+      key: "why",
+      label: "Why every nurse should know it",
+      value: lab.why,
+      path: "why",
+      learnerText: lab.why
+    },
+    {
+      key: "groupNote",
+      label: "Population note",
+      value: lab.groupNote,
+      path: "groupNote",
+      learnerText: lab.groupNote
+    },
+    ...labProjectedTeachingSections(lab),
+    {
+      key: "nclexUse",
+      label: "NCLEX use",
+      value: "Use the range as a cue, then connect it to the client trend, symptoms, medication risks, and whether the nurse should hold, question, monitor, or intervene.",
+      path: "runtimeSupport.nclexUse",
+      learnerText: ""
+    },
+    {
+      key: "studySafetyNote",
+      label: "Study safety note",
+      value: "Ranges can vary by facility, age, pregnancy status, specimen type, and lab method. Use these numbers as NCLEX study anchors and verify the printed lab reference range in real care.",
+      path: "runtimeSupport.studySafetyNote",
+      learnerText: ""
+    }
   ];
-  return sections.map(([label, value], index) => ({
+  return sections.map((section, index) => ({
+    ...section,
     id: `lab-visible-section-${index + 1}`,
-    label,
-    value,
-    path: `visibleLabSections.${index}`,
-    learnerText: ["NCLEX use", "Study safety note"].includes(label) ? "" : value
+    sourceIndex: index,
+    safetyVisible: section.safetyVisible === true
   }));
+}
+
+function appendLabStructuredSectionItems(parent, section = {}, options = {}) {
+  const items = Array.isArray(section.items)
+    ? section.items.filter((item) => safeText(item && item.text))
+    : [];
+  parent.dataset.structuredSchema = safeText(section.structuredSchema || "ani-lab-structured-sections-v1");
+  parent.dataset.structuredKind = "list";
+  parent.dataset.structuredCoverage = section.structuredCoverageComplete === false ? "incomplete" : "complete";
+  parent.dataset.structuredLeafCount = String(items.length);
+  parent.dataset.rootPath = safeText(section.path);
+  if (!items.length) return 0;
+  const list = document.createElement("ul");
+  list.className = "pharm-readable-list lab-structured-section-list";
+  items.forEach((item) => {
+    const li = document.createElement("li");
+    li.dataset.leafPath = safeText(item.path);
+    appendPharmDetailText(li, item.text, options);
+    list.append(li);
+  });
+  parent.append(list);
+  return items.length;
 }
 
 function renderPharmLabDetail(lab = activePharmLabResults[0]) {
@@ -34274,14 +35531,30 @@ function renderPharmLabDetail(lab = activePharmLabResults[0]) {
 
   let treatmentMedicationsAppended = false;
   let authoredPresentationAttempted = false;
-  learnerSections.forEach(({ id, label, value }) => {
+  learnerSections.forEach((learnerSection) => {
+    const {
+      id, key, label, value, path, items, authoredStructured, structuredSchema,
+      structuredCoverageComplete, safetyVisible
+    } = learnerSection;
     if (!value) return;
     const section = document.createElement("section");
+    section.dataset.labSectionKey = safeText(key);
+    section.dataset.labSectionPath = safeText(path);
+    if (safetyVisible) section.dataset.safetyVisible = "true";
     const heading = document.createElement("strong");
     heading.textContent = label;
     const text = document.createElement("div");
     text.className = "pharm-detail-text";
-    appendReadableDetailText(text, value, { currentLabel: lab.name });
+    if (authoredStructured) {
+      appendLabStructuredSectionItems(text, {
+        ...learnerSection,
+        items,
+        structuredSchema,
+        structuredCoverageComplete
+      }, { currentLabel: lab.name });
+    } else {
+      appendReadableDetailText(text, value, { currentLabel: lab.name });
+    }
     section.append(heading, text);
     pharmDrugDetail.append(section);
     const learnerBlock = learnerProjection.byId.get(id);
@@ -34310,7 +35583,8 @@ function renderPharmLabDetail(lab = activePharmLabResults[0]) {
     lab.sourceType,
     lab.range,
     lab.why,
-    lab.groupNote
+    lab.groupNote,
+    labProjectedTeachingSections(lab).map((section) => section.value)
   ]);
   appendMedicalTermTeachingSection(pharmDrugDetail, lab);
   appendHighYieldImageSection(pharmDrugDetail, lab, "labs");
@@ -35341,10 +36615,11 @@ function appendClinicalReferenceVisuals(entry = {}, input = "") {
 function renderClinicalReferenceDetail(entry = activeClinicalReferenceResults[0], options = {}) {
   if (!pharmDrugDetail) return;
   resetPharmDetailCard();
-  const isFoundation = entry?.type === "foundation" || entry?.educationalArticle === true;
+  const isHolisticReference = isHolisticClinicalReferenceEntry(entry);
+  const isFoundation = (entry?.type === "foundation" || entry?.educationalArticle === true) && !isHolisticReference;
   const isMicrobiology = isMicrobiologyReferenceEntry(entry);
   const isSurgeryProcedure = isSurgeryProcedureReferenceEntry(entry);
-  setPharmDetailTheme(isMicrobiology ? "microbiology" : (isSurgeryProcedure ? "surgeries" : (isFoundation ? "foundations" : "procedures")));
+  setPharmDetailTheme(isHolisticReference ? "holistic" : (isMicrobiology ? "microbiology" : (isSurgeryProcedure ? "surgeries" : (isFoundation ? "foundations" : "procedures"))));
   if (!entry) {
     renderPharmDrugDetail(null);
     return;
@@ -35352,21 +36627,23 @@ function renderClinicalReferenceDetail(entry = activeClinicalReferenceResults[0]
   if (pharmDrugDetail) {
     pharmDrugDetail.dataset.narrationType = isClinicalSignReferenceEntry(entry)
       ? "clinical-signs"
-      : (isMicrobiology ? "microbiology" : (isSurgeryProcedure ? "surgeries" : (isFoundation ? "foundations" : "procedures")));
+      : (isHolisticReference ? "holistic" : (isMicrobiology ? "microbiology" : (isSurgeryProcedure ? "surgeries" : (isFoundation ? "foundations" : "procedures"))));
   }
 
   const title = document.createElement("div");
-  title.className = `pharm-detail-title ${isMicrobiology ? "pharm-microbiology-title" : (isSurgeryProcedure ? "pharm-surgery-title" : (isFoundation ? "pharm-foundation-title" : "pharm-procedure-title"))}`;
+  title.className = `pharm-detail-title ${isHolisticReference ? "pharm-holistic-title" : (isMicrobiology ? "pharm-microbiology-title" : (isSurgeryProcedure ? "pharm-surgery-title" : (isFoundation ? "pharm-foundation-title" : "pharm-procedure-title")))}`;
   const name = document.createElement("h2");
   name.textContent = clinicalReferenceDisplayName(entry);
   const category = document.createElement("span");
-  category.textContent = safeText(`${entry.icon ? `${entry.icon} | ` : ""}${entry.nclexEssential ? "NCLEX ESSENTIAL | " : ""}${isMicrobiology ? "Microbiology | " : ""}${isSurgeryProcedure ? "Surgeries & Procedures | " : ""}${entry.category || "Clinical reference"}`);
+  category.textContent = safeText(`${entry.icon ? `${entry.icon} | ` : ""}${entry.nclexEssential ? "NCLEX ESSENTIAL | " : ""}${isHolisticReference ? "Holistic | " : ""}${isMicrobiology ? "Microbiology | " : ""}${isSurgeryProcedure ? "Surgeries & Procedures | " : ""}${entry.category || "Clinical reference"}`);
   title.append(name, category);
   appendPharmFavoriteButton(title, "procedures", entry);
   pharmDrugDetail.append(title);
 
   const detailIntent = safeText(options.intent || pharmSearchInput?.value || "");
-  const studySafetyNote = isMicrobiology
+  const studySafetyNote = isHolisticReference
+    ? (entry.studySafetyNote || entry.sourceNote || "Use this educational reference with the client's individualized orders, interdisciplinary recommendations, and current facility policy in clinical care.")
+    : isMicrobiology
     ? (entry.sourceNote || "Use this Microbiology reference for study and follow current laboratory, infection-prevention, and facility guidance for real clinical decisions.")
     : isSurgeryProcedure
       ? (entry.sourceNote || "Use this procedure card for study and follow current procedural protocols, provider orders, facility policy, and the client's individualized plan in clinical care.")
@@ -35528,9 +36805,9 @@ function renderClinicalReferenceDetail(entry = activeClinicalReferenceResults[0]
   } else if (isSurgeryProcedure) {
     appendEvidenceSourceSection(pharmDrugDetail, surgeryProcedureDatabase, entry);
   } else if (isFoundation) {
-    appendEvidenceSourceSection(pharmDrugDetail, foundationDatabase, { ...entry, sourceNote: entry.evidenceNote || "" });
+    appendClinicalReferenceEvidenceSourceSection(pharmDrugDetail, { ...entry, sourceNote: entry.evidenceNote || "" });
   } else if (Array.isArray(entry.sourceKeys) && entry.sourceKeys.length) {
-    appendEvidenceSourceSection(pharmDrugDetail, diagnosticDatabase, entry);
+    appendClinicalReferenceEvidenceSourceSection(pharmDrugDetail, entry);
   }
   syncPharmDetailReadableText();
 }
@@ -35617,6 +36894,70 @@ function pathologySectionValueWithoutOpeningDuplicate(value = "", firstGlance = 
   return remaining.length ? remaining.join(" ") : "";
 }
 
+function pathologyIsolationPrecautionRecords(disease = {}) {
+  return (Array.isArray(disease.isolationPrecautions) ? disease.isolationPrecautions : [])
+    .filter((record) => record && typeof record === "object")
+    .filter((record) => {
+      const target = microbiologyRuntimeTargetFields(record);
+      return Boolean(target.targetId || (target.targetCollection && target.canonicalTitle));
+    });
+}
+
+function pathologyIsolationPrecautionText(disease = {}) {
+  return pathologyIsolationPrecautionRecords(disease)
+    .map((record) => {
+      const target = microbiologyRuntimeTargetFields(record);
+      const label = safeText(record.label || target.canonicalTitle || "Transmission-based precautions");
+      const context = safeText(record.context || record.note || record.rationale);
+      return context ? `${label}: ${context}` : label;
+    })
+    .filter(Boolean)
+    .join(" ");
+}
+
+function appendPathologyIsolationPrecautionLinks(container, disease = {}) {
+  if (!container) return false;
+  const seen = new Set();
+  const resolved = pathologyIsolationPrecautionRecords(disease)
+    .map((record) => ({ record, candidate: resolveMicrobiologyRuntimeTarget(record) }))
+    .filter(({ candidate }) => candidate?.item)
+    .filter(({ candidate }) => {
+      const key = offlineLookupEntityKey(candidate);
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  if (!resolved.length) return false;
+
+  const grid = document.createElement("div");
+  grid.className = "pharm-related-concept-grid";
+  grid.dataset.skipRead = "true";
+  resolved.forEach(({ record, candidate }) => {
+    activePharmDetailLinkTargets.add(offlineLookupEntityKey(candidate));
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `pharm-related-concept-link pharm-related-${candidate.type}`;
+    button.dataset.aniTargetType = candidate.type;
+    button.dataset.aniTargetName = offlineLookupEntityLabel(candidate);
+    button.dataset.aniTargetKey = offlineLookupEntityKey(candidate);
+    button.dataset.aniResolution = "bound-runtime-object";
+    button.dataset.aniRelationshipType = "requires-precaution";
+    const label = document.createElement("span");
+    label.textContent = safeText(record.label || offlineLookupEntityLabel(candidate));
+    const meta = document.createElement("small");
+    meta.textContent = `Open precaution card | ${offlineLookupEntityKind(candidate)}`;
+    button.append(label, meta);
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      openPharmDetailCandidate({ type: candidate.type, item: candidate.item });
+    });
+    grid.append(button);
+  });
+  container.append(grid);
+  return true;
+}
+
 function pathologyVisibleLearnerDetail(disease = {}) {
   const diagnosticAlterations = pathologyDiagnosticAlterations(disease);
   const pathophysiologyText = pathologyListText(disease.pathophysiology);
@@ -35632,6 +36973,7 @@ function pathologyVisibleLearnerDetail(disease = {}) {
   const driverText = [safeText(disease.etiology), pathologyListText(disease.riskFactors)].filter(Boolean).join(" ");
   const sections = [
     ["Crash-course definition", firstGlanceText],
+    ["Isolation precautions", pathologyIsolationPrecautionText(disease)],
     ["Priority nursing actions", pathologyListText(disease.nursingPriorities)],
     ["Urgent red flags / when to escalate", pathologyListText(disease.redFlags)],
     [coreMechanismHeading, remainingPathologyText || (!firstGlanceText ? pathologyText : "") || remainingPathophysiologyText],
@@ -35662,18 +37004,19 @@ function pathologyVisibleLearnerDetail(disease = {}) {
 function renderPathologyDetail(disease = activePathologyResults[0]) {
   if (!pharmDrugDetail) return;
   resetPharmDetailCard();
-  setPharmDetailTheme("diseases");
+  const isHolisticPathology = isHolisticPathologyEntry(disease);
+  setPharmDetailTheme(isHolisticPathology ? "holistic" : "diseases");
   if (!disease) {
     renderPharmDrugDetail(null);
     return;
   }
 
   const title = document.createElement("div");
-  title.className = "pharm-detail-title pharm-pathology-title";
+  title.className = `pharm-detail-title ${isHolisticPathology ? "pharm-holistic-title" : "pharm-pathology-title"}`;
   const name = document.createElement("h2");
   name.textContent = safeText(disease.name);
   const category = document.createElement("span");
-  category.textContent = safeText(`${disease.category || "Pathology"} | DISEASE/PATHOLOGY CARD`);
+  category.textContent = safeText(`${disease.nclexEssential ? "NCLEX ESSENTIAL | " : ""}${isHolisticPathology ? "Holistic | " : ""}${disease.category || "Pathology"} | DISEASE/PATHOLOGY CARD`);
   title.append(name, category);
   appendPharmFavoriteButton(title, "diseases", disease);
   pharmDrugDetail.append(title);
@@ -35697,6 +37040,7 @@ function renderPathologyDetail(disease = activePathologyResults[0]) {
     const heading = document.createElement("strong");
     heading.textContent = label;
     const isAlterationSection = label === "Lab/value alterations to expect";
+    const isIsolationSection = label === "Isolation precautions";
     const text = document.createElement("div");
     if (isAlterationSection) {
       text.className = "pathology-diagnostic-cue-grid";
@@ -35704,6 +37048,7 @@ function renderPathologyDetail(disease = activePathologyResults[0]) {
     } else {
       text.className = "pharm-detail-text";
       appendReadableDetailText(text, value, { currentLabel: disease.name });
+      if (isIsolationSection) appendPathologyIsolationPrecautionLinks(text, disease);
     }
     section.append(heading, text);
     pharmDrugDetail.append(section);
@@ -35750,6 +37095,7 @@ function renderPathologyDetail(disease = activePathologyResults[0]) {
     pathologyListText(disease.contraindications),
     pathologyListText(disease.nursingPriorities),
     pathologyListText(disease.redFlags),
+    pathologyIsolationPrecautionText(disease),
     pathologyListText(disease.complications),
     pathologyListText(disease.nclexTraps),
     pathologyListText(disease.relatedTopics),
@@ -35772,6 +37118,7 @@ function renderPathologyDetail(disease = activePathologyResults[0]) {
     disease.contraindications,
     disease.nursingPriorities,
     disease.redFlags,
+    pathologyIsolationPrecautionText(disease),
     disease.complications,
     disease.nclexTraps,
     disease.relatedTopics,
@@ -37755,9 +39102,14 @@ function renderPharmResults(options = {}) {
   const exactQueryTexts = Array.from(new Set([rawExactQueryText, queryText, ...uppercaseAcronymQueryTexts].filter(Boolean)));
   const isSearchMode = Boolean(queryText);
   const isTinyPhoneSearch = isPhoneDeviceMode() && isSearchMode && queryText.length <= 1;
-  const exactReferenceFastOwners = isSearchMode
-    ? fastVoiceIdentityCandidates(rawQuery).filter((candidate) => candidate.type === "reference"
-      && ["vaccination", "clinical-signs"].includes(safeText(candidate.item?.encyclopediaSection)))
+  const exactReferenceIdentityResolution = isSearchMode
+    ? resolveEncyclopediaIdentity(rawQuery, { mode: "navigate", limit: 8 })
+    : null;
+  const exactReferenceFastOwners = exactReferenceIdentityResolution?.mayAutoOpen === true
+    && exactReferenceIdentityResolution.candidates.length === 1
+    && exactReferenceIdentityResolution.preferred?.type === "reference"
+    && ["vaccination", "clinical-signs"].includes(safeText(exactReferenceIdentityResolution.preferred.item?.encyclopediaSection))
+    ? [exactReferenceIdentityResolution.preferred]
     : [];
   const exactReferenceFastEntries = Array.from(new Set(exactReferenceFastOwners.map((candidate) => candidate.item).filter(Boolean)));
   const exactReferenceFastEntry = exactReferenceFastEntries.length === 1
@@ -37774,8 +39126,9 @@ function renderPharmResults(options = {}) {
   const microbiologyBrowseMode = !isSearchMode && pharmIndexShowsMicrobiology();
   const showLabs = !exactReferenceFastCandidate && !medicationClassSearch && !isTinyPhoneSearch && (isSearchMode || microbiologyBrowseMode || pharmIndexShowsLabs());
   const showDrugs = !exactReferenceFastCandidate && !isTinyPhoneSearch && (isSearchMode || microbiologyBrowseMode || pharmIndexShowsDrugs());
-  const showDiseases = !exactReferenceFastCandidate && !medicationClassSearch && !isTinyPhoneSearch && (isSearchMode || microbiologyBrowseMode || pharmIndexShowsDiseases());
-  const showReferences = !medicationClassSearch && !isTinyPhoneSearch && (isSearchMode || microbiologyBrowseMode || pharmIndexShowsProcedures() || pharmIndexShowsSurgeries() || pharmIndexShowsFoundations() || pharmIndexShowsClinicalSigns());
+  const holisticBrowseMode = !isSearchMode && activePharmIndexMode === "holistic";
+  const showDiseases = !exactReferenceFastCandidate && !medicationClassSearch && !isTinyPhoneSearch && (isSearchMode || microbiologyBrowseMode || pharmIndexShowsDiseases() || pharmIndexShowsHolisticPathologies());
+  const showReferences = !medicationClassSearch && !isTinyPhoneSearch && (isSearchMode || microbiologyBrowseMode || pharmIndexShowsProcedures() || pharmIndexShowsSurgeries() || pharmIndexShowsFoundations() || pharmIndexShowsClinicalSigns() || holisticBrowseMode);
   const showHolistic = !exactReferenceFastCandidate && !medicationClassSearch && !isTinyPhoneSearch && (isSearchMode || microbiologyBrowseMode || pharmIndexShowsHolistic());
   const preferredNamedCandidate = isSearchMode
     ? (exactReferenceFastCandidate
@@ -37801,6 +39154,18 @@ function renderPharmResults(options = {}) {
   activeHolisticResults = showHolistic
     ? (responsiveSearchMatches ? responsiveSearchMatches.holistic : searchHolisticEntries(query, activePharmLetter))
     : [];
+  if (holisticBrowseMode) {
+    const browseCandidates = holisticVisibleBrowseCandidates();
+    const candidateItems = (type) => new Set(browseCandidates
+      .filter((candidate) => candidate.type === type)
+      .map((candidate) => candidate.item));
+    const holisticItems = candidateItems("holistic");
+    const referenceItems = candidateItems("reference");
+    const pathologyItems = candidateItems("pathology");
+    activeHolisticResults = activeHolisticResults.filter((item) => holisticItems.has(item));
+    activeClinicalReferenceResults = activeClinicalReferenceResults.filter((item) => referenceItems.has(item));
+    activePathologyResults = activePathologyResults.filter((item) => pathologyItems.has(item));
+  }
   if (microbiologyBrowseMode) {
     const browseCandidates = microbiologyBrowseCandidates()
       .filter((candidate) => microbiologyCandidateMatchesBrowseBranch(candidate));
@@ -37872,23 +39237,33 @@ function renderPharmResults(options = {}) {
   const drugCountText = `${activePharmResults.length} ${activePharmResults.length === 1 ? "drug" : "drugs"}`;
   const labCountText = `${activePharmLabResults.length} ${activePharmLabResults.length === 1 ? "lab/reference" : "labs/references"}`;
   const diseaseCountText = `${activePathologyResults.length} ${activePathologyResults.length === 1 ? "disease/pathology" : "diseases/pathologies"}`;
-  const foundationCount = activeClinicalReferenceResults.filter((entry) => entry.type === "foundation" && !isMicrobiologyReferenceEntry(entry)).length;
+  const holisticReferenceCount = activeClinicalReferenceResults.filter(isHolisticClinicalReferenceEntry).length;
+  const holisticPathologyCount = activePathologyResults.filter(isHolisticPathologyEntry).length;
+  const foundationCount = activeClinicalReferenceResults.filter((entry) => entry.type === "foundation"
+    && !isMicrobiologyReferenceEntry(entry)
+    && (!holisticBrowseMode || !isHolisticClinicalReferenceEntry(entry))).length;
   const microbiologyReferenceCount = activeClinicalReferenceResults.filter(isMicrobiologyReferenceEntry).length;
   const surgeryProcedureCount = activeClinicalReferenceResults.filter(isSurgeryProcedureReferenceEntry).length;
-  const diagnosticReferenceCount = activeClinicalReferenceResults.length - foundationCount - microbiologyReferenceCount - surgeryProcedureCount;
+  const diagnosticReferenceCount = Math.max(0, activeClinicalReferenceResults.length
+    - foundationCount
+    - microbiologyReferenceCount
+    - surgeryProcedureCount
+    - (holisticBrowseMode ? holisticReferenceCount : 0));
   const foundationCountText = `${foundationCount} ${foundationCount === 1 ? "clinical foundation" : "clinical foundations"}`;
   const referenceCountText = `${diagnosticReferenceCount} ${diagnosticReferenceCount === 1 ? "diagnostic/specialty reference" : "diagnostic/specialty references"}`;
   const microbiologyReferenceCountText = `${microbiologyReferenceCount} ${microbiologyReferenceCount === 1 ? "Microbiology reference" : "Microbiology references"}`;
   const surgeryProcedureCountText = `${surgeryProcedureCount} ${surgeryProcedureCount === 1 ? "surgery/procedure" : "surgeries/procedures"}`;
-  const holisticCountText = `${activeHolisticResults.length} ${activeHolisticResults.length === 1 ? "herbal/holistic card" : "herbal/holistic cards"}`;
+  const holisticTotalCount = activeHolisticResults.length
+    + (holisticBrowseMode ? holisticReferenceCount + holisticPathologyCount : 0);
+  const holisticCountText = `${holisticTotalCount} ${holisticTotalCount === 1 ? "Holistic topic" : "Holistic topics"}`;
   const countParts = [
     ...(showLabs ? [labCountText] : []),
     ...(showHolistic ? [holisticCountText] : []),
-    ...(showDiseases ? [diseaseCountText] : []),
-    ...(showReferences && foundationCount ? [foundationCountText] : []),
-    ...(showReferences && microbiologyReferenceCount ? [microbiologyReferenceCountText] : []),
-    ...(showReferences && surgeryProcedureCount ? [surgeryProcedureCountText] : []),
-    ...(showReferences && diagnosticReferenceCount ? [referenceCountText] : []),
+    ...(showDiseases && !holisticBrowseMode ? [diseaseCountText] : []),
+    ...(showReferences && !holisticBrowseMode && foundationCount ? [foundationCountText] : []),
+    ...(showReferences && !holisticBrowseMode && microbiologyReferenceCount ? [microbiologyReferenceCountText] : []),
+    ...(showReferences && !holisticBrowseMode && surgeryProcedureCount ? [surgeryProcedureCountText] : []),
+    ...(showReferences && !holisticBrowseMode && diagnosticReferenceCount ? [referenceCountText] : []),
     ...(showDrugs ? [drugCountText] : [])
   ];
   const microbiologyBrowseTotal = activePharmResults.length
@@ -37985,7 +39360,7 @@ function renderPharmResults(options = {}) {
       const name = document.createElement("strong");
       name.textContent = safeText(remedy.name);
       const meta = document.createElement("span");
-      meta.textContent = safeText(`${remedy.nclexEssential ? "NCLEX HERBAL SAFETY" : "Holistic safety"} | ${remedy.category || "Herbal/holistic entry"}`);
+      meta.textContent = safeText(`${remedy.nclexEssential ? "NCLEX ESSENTIAL" : "Holistic"} | ${remedy.category || "Herbal/supplement safety"}`);
       const useSummary = document.createElement("small");
       appendPharmEmphasizedText(useSummary, holisticListText(remedy.usedFor));
       const riskSummary = document.createElement("small");
@@ -38012,11 +39387,12 @@ function renderPharmResults(options = {}) {
     const createPathologyButton = (disease, index) => {
       const button = document.createElement("button");
       button.type = "button";
-      button.className = "pharm-result-button pharm-pathology-result-button";
+      const isHolisticPathology = isHolisticPathologyEntry(disease);
+      button.className = `pharm-result-button ${isHolisticPathology ? "pharm-holistic-result-button" : "pharm-pathology-result-button"}`;
       const name = document.createElement("strong");
       name.textContent = safeText(disease.name);
       const meta = document.createElement("span");
-      meta.textContent = safeText(`${disease.category || "Pathology"} | Disease/pathology`);
+      meta.textContent = safeText(`${disease.nclexEssential ? "NCLEX ESSENTIAL | " : ""}${isHolisticPathology ? "Holistic | " : ""}${disease.category || "Pathology"} | Disease/pathology`);
       const summary = document.createElement("small");
       appendPharmEmphasizedText(summary, disease.pathology);
       const priority = document.createElement("small");
@@ -38042,12 +39418,13 @@ function renderPharmResults(options = {}) {
       button.type = "button";
       const isMicrobiology = isMicrobiologyReferenceEntry(entry);
       const isSurgeryProcedure = isSurgeryProcedureReferenceEntry(entry);
-      const isFoundation = !isMicrobiology && !isSurgeryProcedure && (entry.type === "foundation" || entry.educationalArticle === true);
-      button.className = `pharm-result-button ${isMicrobiology ? "pharm-microbiology-result-button" : (isSurgeryProcedure ? "pharm-surgery-result-button" : (isFoundation ? "pharm-foundation-result-button" : "pharm-procedure-result-button"))}`;
+      const isHolisticReference = isHolisticClinicalReferenceEntry(entry);
+      const isFoundation = !isHolisticReference && !isMicrobiology && !isSurgeryProcedure && (entry.type === "foundation" || entry.educationalArticle === true);
+      button.className = `pharm-result-button ${isHolisticReference ? "pharm-holistic-result-button" : (isMicrobiology ? "pharm-microbiology-result-button" : (isSurgeryProcedure ? "pharm-surgery-result-button" : (isFoundation ? "pharm-foundation-result-button" : "pharm-procedure-result-button")))}`;
       const name = document.createElement("strong");
       name.textContent = clinicalReferenceDisplayName(entry);
       const meta = document.createElement("span");
-      meta.textContent = safeText(`${entry.nclexEssential ? "NCLEX ESSENTIAL | " : ""}${isMicrobiology ? "Microbiology | " : ""}${isSurgeryProcedure ? "Surgeries & Procedures | " : ""}${entry.category || (isFoundation ? "Clinical foundation" : "Clinical reference")}`);
+      meta.textContent = safeText(`${entry.nclexEssential ? "NCLEX ESSENTIAL | " : ""}${isHolisticReference ? "Holistic | " : ""}${isMicrobiology ? "Microbiology | " : ""}${isSurgeryProcedure ? "Surgeries & Procedures | " : ""}${entry.category || (isFoundation ? "Clinical foundation" : "Clinical reference")}`);
       const summary = document.createElement("small");
       appendPharmEmphasizedText(summary, entry.summary || entry.quickAnswer);
       const quick = document.createElement("small");
@@ -38160,9 +39537,17 @@ function renderPharmResults(options = {}) {
     const drugPool = activePharmDrugPool();
     const letterText = activePharmLetter === "All" ? "" : ` under ${activePharmLetter}`;
     if (queryText) {
+      const clinicalSearch = responsiveSearchMatches?.clinicalSearch;
+      const clinicalLabel = clinicalSearch?.status === "MATCHED"
+        ? offlineLookupEntityLabel(responsiveSearchMatches?.preferred)
+        : "";
+      const unmatchedCount = clinicalSearch?.unmatchedClues?.length || 0;
+      const clinicalSearchNote = clinicalLabel
+        ? ` Best clinical-clue match: ${clinicalLabel} (${clinicalSearch.confidenceTier} confidence${unmatchedCount ? `; ${unmatchedCount} unmatched ${unmatchedCount === 1 ? "clue" : "clues"}` : ""}). ${clinicalSearch.mayAutoOpen ? "The clue pattern is separated enough for direct navigation." : "Review the choices; ANI will not auto-open this uncertain match."}`
+        : "";
       pharmSearchSummary.textContent = favoritesOnly
         ? `Searching your favorites${letterText} for "${query}". Clear search to browse every starred entry.`
-        : `Searching the whole clinical reference${letterText} for "${query}". Typo-close matching is on. Clear search to browse by the selected category.`;
+        : `Searching the whole clinical reference${letterText} for "${query}". Typo-close matching is on.${clinicalSearchNote} Clear search to browse by the selected category.`;
     } else if (favoritesOnly) {
       pharmSearchSummary.textContent = pharmFavoriteKeys.size
         ? `Browsing ${pharmFavoriteKeys.size} favorite encyclopedia entries${letterText}. Search here to narrow your starred study set.`
@@ -38193,11 +39578,13 @@ function renderPharmResults(options = {}) {
     } else if (activePharmIndexMode === "clinical-signs") {
       pharmSearchSummary.textContent = `Browsing ${activeClinicalReferenceResults.length} clinical signs and examination findings${letterText}. Each card distinguishes bedside clues from definitive tests and states important reliability limits.`;
     } else if (activePharmIndexMode === "holistic") {
-      pharmSearchSummary.textContent = `Browsing ${activeHolisticResults.length} herbal/holistic safety cards${letterText}. These focus on NCLEX-style interactions, contraindications, perioperative teaching, and risk flags.`;
+      const selectedSubcategory = activeHolisticBrowseSubcategory === "all" ? "" : ` in ${holisticSubcategoryLabel()}`;
+      const nclexLabel = activePharmNclexOnly ? " NCLEX Essential" : "";
+      pharmSearchSummary.textContent = `Browsing ${holisticTotalCount}${nclexLabel} Holistic ${holisticTotalCount === 1 ? "topic" : "topics"}${selectedSubcategory}${letterText}. Use the subcategory menu to explore therapeutic nutrition, swallowing and diet consistency, or herbal and supplement safety.`;
     } else {
       pharmSearchSummary.textContent = activePharmNclexOnly
-        ? `Browsing ${activePharmLabResults.length} lab references, ${activePathologyResults.length} pathology cards, ${microbiologyReferenceCount} Microbiology references, ${foundationCount} clinical foundations, ${surgeryProcedureCount} surgery/procedure cards, ${diagnosticReferenceCount} diagnostic/test references, ${activeHolisticResults.length} herbal safety cards, and ${drugPool.length} NCLEX ESSENTIAL medication entries${letterText}. Turn the filter off for the full drug index.`
-        : `Browsing ${activePharmLabResults.length} lab references, ${activePathologyResults.length} pathology cards, ${microbiologyReferenceCount} Microbiology references, ${foundationCount} clinical foundations, ${surgeryProcedureCount} surgery/procedure cards, ${diagnosticReferenceCount} diagnostic/test references, ${activeHolisticResults.length} herbal safety cards, and ${drugPool.length} installed pharmacy entries${letterText}. Use the category buttons to focus the list.`;
+        ? `Browsing ${activePharmLabResults.length} lab references, ${activePathologyResults.length} pathology cards, ${microbiologyReferenceCount} Microbiology references, ${foundationCount} clinical foundations, ${surgeryProcedureCount} surgery/procedure cards, ${diagnosticReferenceCount} diagnostic/test references, ${holisticTotalCount} Holistic topics, and ${drugPool.length} NCLEX ESSENTIAL medication entries${letterText}. Turn the filter off for the full drug index.`
+        : `Browsing ${activePharmLabResults.length} lab references, ${activePathologyResults.length} pathology cards, ${microbiologyReferenceCount} Microbiology references, ${foundationCount} clinical foundations, ${surgeryProcedureCount} surgery/procedure cards, ${diagnosticReferenceCount} diagnostic/test references, ${holisticTotalCount} Holistic topics, and ${drugPool.length} installed pharmacy entries${letterText}. Use the category buttons to focus the list.`;
     }
   }
   finishPharmSearchRender(rawQuery, requestGeneration);
@@ -38989,13 +40376,18 @@ function openBestPharmDetailForQuery(query = "", options = {}) {
       performanceTimingToken: options.performanceTimingToken
     });
   }
-  const directLab = inferredPreferredType === "lab" ? bestLabMatch(query) : null;
-  const suggestions = directLab ? [] : offlineLookupSuggestions(query);
-  const candidate = directLab
-    ? { type: "lab", item: directLab }
-    : normalizedPreferredType
-    ? suggestions.find((item) => item.type === normalizedPreferredType) || suggestions[0]
+  const suggestions = offlineLookupSuggestions(query);
+  const candidate = normalizedPreferredType
+    ? suggestions.find((item) => item.type === normalizedPreferredType)
     : suggestions[0];
+  if (!candidate
+    || candidate?.ambiguousIdentity === true
+    || candidate?.identitySuggestionOnly === true
+    || candidate?.phoneticMatch === true
+    || (candidate?.clinicalClueMatch === true && candidate?.mayAutoOpen !== true)
+    || (candidate?.clinicalClueMatch !== true && !offlineLookupIsDirectEnough(query, candidate))) {
+    return false;
+  }
   return openPharmDetailCandidate(candidate, {
     intent: query,
     autoRead: options.autoRead,
@@ -40234,6 +41626,7 @@ function offlineLookupDatabaseRedirect(candidate = {}, input = "") {
     type: "pharm-database",
     query,
     detailType: candidate.type,
+    targetCandidate: { type: candidate.type, item: candidate.item },
     openDetail: true,
     highlightQuery: sourceInput || offlineLookupEntityLabel(candidate) || query,
     preface: offlineLookupDefinitionPreface(candidate, sourceInput)
@@ -43499,7 +44892,8 @@ function offlineLookupSuggestionsUncached(input = "") {
   if (insulinActionProfileReference) {
     return [insulinActionProfileReference];
   }
-  const sharedIdentity = resolveEncyclopediaIdentity(input, { mode: "suggest", limit: 4 });
+  const topicResolution = resolveTopicRequest(input, { mode: "suggest", limit: 4 });
+  const sharedIdentity = topicResolution.identity;
   if (sharedIdentity.candidates.length) {
     const ambiguous = sharedIdentity.candidates.length > 1;
     return sharedIdentity.candidates.map((candidate) => ({
@@ -43513,6 +44907,34 @@ function offlineLookupSuggestionsUncached(input = "") {
       mayAutoOpen: false
     }));
   }
+  const reviewedResolution = topicResolution.reviewed;
+  if (reviewedResolution?.candidates.length) {
+    return reviewedResolution.candidates.map((candidate) => ({
+      ...candidate,
+      score: Math.round(3200 + Number(candidate.score || 0)),
+      reviewedRoute: true,
+      identitySuggestionOnly: candidate.mayAutoOpen !== true,
+      ambiguousIdentity: reviewedResolution.ambiguousIdentity === true,
+      mayAutoOpen: reviewedResolution.ambiguousIdentity === true ? false : candidate.mayAutoOpen === true
+    }));
+  }
+  const clinicalResolution = topicResolution.clinical
+    || clinicalSearchIntelligence(input, { limit: 4 });
+  if (clinicalResolution.candidates.length) {
+    return clinicalResolution.candidates.map((candidate) => ({
+      type: candidate.type,
+      item: candidate.item,
+      score: Math.round(1800 + candidate.score * 30),
+      confidence: candidate.confidence,
+      confidenceTier: candidate.confidenceTier,
+      clinicalClueMatch: true,
+      matchedClues: [...candidate.matchedClues],
+      unmatchedClues: [...candidate.unmatchedClues],
+      fieldPaths: [...candidate.fieldPaths],
+      identitySuggestionOnly: candidate.identitySuggestionOnly,
+      mayAutoOpen: candidate.mayAutoOpen
+    }));
+  }
   const bareCore = fastCanonicalLookupCore(input) || normalizePharmText(applyClinicalSpeechFixups(input) || input);
   if (bareCore && !bareCore.includes(" ") && isConciseOfflineLookupQuery(input)) {
     // A bare ordinary word with no canonical identity must not inherit a card
@@ -43522,7 +44944,16 @@ function offlineLookupSuggestionsUncached(input = "") {
   // The shared identity resolver has already handled bounded spelling and
   // ambiguity checks. Passing null prevents the full fallback from repeating
   // a cross-domain fuzzy scan for an unknown query.
-  return offlineLookupSuggestionsFull(input, null);
+  const fallback = offlineLookupSuggestionsFull(input, null);
+  if (clinicalResolution.status === "INDEXING" && clinicalResolution.queryTokens.length >= 2) {
+    return fallback.map((candidate) => ({
+      ...candidate,
+      contentIndexPending: true,
+      identitySuggestionOnly: true,
+      mayAutoOpen: false
+    }));
+  }
+  return fallback;
 }
 
 const OFFLINE_LOOKUP_SUGGESTION_CACHE_LIMIT = 96;
@@ -43569,7 +45000,7 @@ function offlineLookupSuggestions(input = "") {
   const unitRatioInput = /\b(?:mcg|ug|mg|g|kg|ml|l|meq|mmol|unit|units)\s*\/\s*(?:kg|ml|l|min|hr|day)\b/i.test(safeText(input));
   const normalizedCacheKey = normalizePharmText(fixed);
   const cacheKey = normalizedCacheKey
-    ? `${normalizedCacheKey}${unitRatioInput ? "|unit-ratio" : ""}`
+    ? `${normalizedCacheKey}${unitRatioInput ? "|unit-ratio" : ""}|${pharmContentIndexesReady ? "content-ready" : "content-indexing"}`
     : "";
   const contextDependent = isBareOfflineLookupFollowup(fixed)
     || isOfflineLookupConfirmation(fixed)
@@ -45543,13 +46974,21 @@ function offlineSegmentValue(candidate = {}, intent = "", input = "") {
   }
 
   if (candidate.type === "lab") {
-    const teaching = labTeachingSections(item).map(([label, value]) => record(
-      `teaching:${normalizePharmText(label)}`,
-      label,
-      value
-    ));
-    const pickTeaching = (patterns = []) => teaching.filter((section) => (
-      section && patterns.some((pattern) => pattern.test(section.label))
+    const teaching = labProjectedTeachingSections(item).flatMap((section) => {
+      const items = Array.isArray(section.items) && section.items.length
+        ? section.items
+        : [{ path: section.path, text: section.value }];
+      return items.map((leaf) => ({
+        ...record(safeText(leaf.path || section.path), section.label, leaf.text),
+        structuredField: safeText(section.key),
+        authoredStructured: section.authoredStructured === true
+      }));
+    }).filter((section) => section && safeText(section.value));
+    const pickTeaching = (patterns = [], structuredFields = []) => teaching.filter((section) => (
+      section && (
+        structuredFields.includes(section.structuredField)
+        || (!section.structuredField && patterns.some((pattern) => pattern.test(section.label)))
+      )
     ));
     const range = record("range", "Reference range / values", item.range);
     const why = record("why", "What this lab tells you", item.why);
@@ -45558,19 +46997,19 @@ function offlineSegmentValue(candidate = {}, intent = "", input = "") {
       class: [record("category", "Category", item.category)],
       range: [range],
       uses: [why],
-      warning: pickTeaching([/red flag|danger|critical|urgent|concerning/i]),
+      warning: pickTeaching([/red flag|danger|critical|urgent|concerning/i], ["criticalConcerns"]),
       contraindications: pickTeaching([/^contraindications?|when not to|do not use/i]),
       interactions: pickTeaching([/^interactions?/i]),
-      risks: pickTeaching([/red flag|danger|critical|concerning|low pattern|high pattern/i]),
+      risks: pickTeaching([/red flag|danger|critical|concerning|low pattern|high pattern/i], ["criticalConcerns"]),
       labs: [range, why],
-      nursing: pickTeaching([/^priority nursing|nursing actions?|monitoring/i]),
+      nursing: pickTeaching([/^priority nursing|nursing actions?|monitoring/i], ["nursingConsiderations"]),
       signs: pickTeaching([/low pattern|high pattern|signs?|symptoms?|findings?|concerning/i]),
       diagnostics: [why],
-      etiology: pickTeaching([/^etiology|^causes?|risk factors?/i]),
+      etiology: pickTeaching([/^etiology|^causes?|risk factors?/i], ["highCauses", "lowCauses"]),
       pathophysiology: pickTeaching([/^pathophysiology|disease process/i]),
       treatment: pickTeaching([/treatment direction|^treatment|^management/i]),
       teaching: pickTeaching([/patient teaching|client teaching|education/i]),
-      nclex: pickTeaching([/nclex|trap|nuance/i]),
+      nclex: pickTeaching([/nclex|trap|nuance/i], ["nclexTraps"]),
       population: offlineSegmentSourceRecords([groupNote, ...pickTeaching([/pregnan|pediatric|geriatric|population|trimester|age/i])]),
       procedureSteps: pickTeaching([/^procedure|collection steps?|before collection|during collection|after collection/i])
     };
@@ -46134,7 +47573,9 @@ function offlineLookupIntent(input = "") {
 }
 
 function offlineLookupIsDirectEnough(input = "", candidate = {}) {
-  if (candidate?.identitySuggestionOnly === true || candidate?.phoneticMatch === true) {
+  if (candidate?.identitySuggestionOnly === true
+    || candidate?.phoneticMatch === true
+    || (candidate?.clinicalClueMatch === true && candidate?.mayAutoOpen !== true)) {
     return false;
   }
   const cleanInput = normalizePharmText(input);
@@ -46171,6 +47612,7 @@ function shouldAutoRouteToOfflineLookup(input = "", candidate = {}) {
     || candidate.ambiguousIdentity === true
     || candidate.identitySuggestionOnly === true
     || candidate.phoneticMatch === true
+    || (candidate.clinicalClueMatch === true && candidate.mayAutoOpen !== true)
     || shouldUseAiForUserRequest(input)) {
     return false;
   }
@@ -46221,6 +47663,7 @@ function handleOfflineLookupFlow(input = "", options = {}) {
       query: offlineLookupQuery(candidate),
       detailType: candidate.type,
       openDetail: true,
+      targetCandidate: { type: candidate.type, item: candidate.item },
       highlightQuery: offlineLookupEntityLabel(candidate),
       preface: `Yes. Opening **${offlineLookupEntityLabel(candidate)}** in the clinical reference.`
     };
@@ -46466,7 +47909,10 @@ function handleOfflineLookupFlow(input = "", options = {}) {
       && !wantsAiDepthTeaching(input)
       && !wantsAiGeneratedStudyWork(input)
       && !/\b(question|questions|quiz|quizzes|practice problem|test question|diagram|draw|flowchart|concept map)\b/i.test(normalizeIntentText(input));
-    if (earlyTopCanRedirect && earlyTop && earlyTop.ambiguousIdentity !== true && earlyTop.score >= 2450) {
+    if (earlyTopCanRedirect
+      && earlyTop
+      && earlyTop.score >= 2450
+      && shouldAutoRouteToOfflineLookup(input, earlyTop)) {
       pendingOfflineLookupSuggestions = [];
       return offlineLookupDatabaseRedirect(earlyTop, input);
     }
@@ -48428,6 +49874,14 @@ async function makeModelEnhancedResponse(input = "", images = [], resources = []
   const explicitLectureRequest = lectureModePrimed
     || lectureState.active
     || /\b(lecture|lecture mode|full lecture|audio lecture)\b/i.test(normalizeIntentText(input));
+  const sharedTopicRequest = !images.length && !resources.length
+    ? resolveTopicRequest(input, { mode: "navigate", limit: 8 })
+    : null;
+  const sharedClinicalClueOwnsRequest = sharedTopicRequest?.resolutionKind === "clinical-clue";
+  const sharedReviewedRouteOwnsRequest = ["reviewed-route", "ambiguous-reviewed-route"]
+    .includes(sharedTopicRequest?.resolutionKind);
+  const sharedNonIdentityRouteOwnsRequest = sharedClinicalClueOwnsRequest
+    || sharedReviewedRouteOwnsRequest;
   if (!images.length && !resources.length && wantsOfflineAbgInterpretationAnswer(input)) {
     return makeOfflineAbgInterpretationAnswer(input);
   }
@@ -48468,7 +49922,19 @@ async function makeModelEnhancedResponse(input = "", images = [], resources = []
         score: scorePathologyEntry(immediateExactPathologyTitle, input) + 3000
       }, input);
     }
-    const immediateSpecificDrugClueMatch = highYieldDrugClueMatch(input);
+    if (sharedNonIdentityRouteOwnsRequest
+      && sharedTopicRequest.mayAutoOpen
+      && sharedTopicRequest.preferred?.item) {
+      return offlineLookupDatabaseRedirect(sharedTopicRequest.preferred, input);
+    }
+    // Once the shared resolver has reviewed evidence for this request, older
+    // domain-specific clue routers must not replace that decision. A reviewed
+    // route that is ambiguous, personal, or suggestion-only should continue
+    // to the shared choice/clarification flow instead of being auto-opened by
+    // a legacy high-yield shortcut.
+    const immediateSpecificDrugClueMatch = sharedNonIdentityRouteOwnsRequest
+      ? null
+      : highYieldDrugClueMatch(input);
     if (immediateSpecificDrugClueMatch) {
       return offlineLookupDatabaseRedirect({
         type: "drug",
@@ -48476,7 +49942,9 @@ async function makeModelEnhancedResponse(input = "", images = [], resources = []
         score: 2700 + pharmIdentityPreferenceScore(immediateSpecificDrugClueMatch)
       }, input);
     }
-    const immediatePathologyClueMatch = highYieldPathologyClueMatch(input);
+    const immediatePathologyClueMatch = sharedNonIdentityRouteOwnsRequest
+      ? null
+      : highYieldPathologyClueMatch(input);
     if (immediatePathologyClueMatch) {
       return offlineLookupDatabaseRedirect({
         type: "pathology",
@@ -48499,7 +49967,9 @@ async function makeModelEnhancedResponse(input = "", images = [], resources = []
   if (!images.length && !resources.length && !wantsAiGeneratedStudyWork(input)) {
     const offlineListAnswer = makeOfflineListResponse(input);
     if (offlineListAnswer) {
-      const listSpecificDrugClueMatch = highYieldDrugClueMatch(input);
+      const listSpecificDrugClueMatch = sharedNonIdentityRouteOwnsRequest
+        ? null
+        : highYieldDrugClueMatch(input);
       if (listSpecificDrugClueMatch) {
         return offlineLookupDatabaseRedirect({
           type: "drug",
@@ -48527,7 +49997,9 @@ async function makeModelEnhancedResponse(input = "", images = [], resources = []
       }
       return localLimit || adaptiveResponse || aiUnavailableMessage();
     }
-    const earlySpecificDrugClueMatch = highYieldDrugClueMatch(input);
+    const earlySpecificDrugClueMatch = sharedNonIdentityRouteOwnsRequest
+      ? null
+      : highYieldDrugClueMatch(input);
     // curated-high-confidence-clue-before-broad-smart-segments
     if (earlySpecificDrugClueMatch) {
       return offlineLookupDatabaseRedirect({
@@ -48937,7 +50409,9 @@ function sendUserMessage(text, options = {}) {
       const userOpenedEncyclopediaWhileWaiting = !encyclopediaWasOpenWhenSent
         && Boolean(pharmDatabaseScreen && !pharmDatabaseScreen.hidden);
       const responseTarget = response.query
-        ? exactPharmDetailCandidate(response.query, response.detailType)
+        ? (response.targetCandidate?.item
+          ? { type: response.targetCandidate.type, item: response.targetCandidate.item }
+          : exactPharmDetailCandidate(response.query, response.detailType))
         : null;
       if (userOpenedEncyclopediaWhileWaiting) {
         addMessage(
@@ -48957,6 +50431,7 @@ function sendUserMessage(text, options = {}) {
           openDetail: response.openDetail,
           expandDetail: response.openDetail === true,
           detailType: response.detailType,
+          targetCandidate: responseTarget,
           fastDetail: true,
           highlightQuery: response.highlightQuery
         });
@@ -49709,6 +51184,7 @@ function clinicalSpeechCandidateScore(text = "") {
     return clinicalSpeechCandidateScoreCache.get(cacheKey);
   }
   let score = 0;
+  let compactOwners = [];
   const diabetesRoute = wave41DiabetesPathologyIntentSuggestion(cleaned);
   if (diabetesRoute) {
     score += 1500;
@@ -49717,13 +51193,25 @@ function clinicalSpeechCandidateScore(text = "") {
     // encyclopedia relevance search. Use the compact true-identity layer here;
     // building every deep ranker for every speech alternative caused a
     // several-second freeze on first use.
-    const compactOwners = fastVoiceIdentityCandidates(cleaned);
+    compactOwners = fastVoiceIdentityCandidates(cleaned);
     if (compactOwners.length) {
       score += 980;
       if (compactOwners.some((owner) => owner.type === "lab") && hasLabLookupIntent(cleaned)) score += 220;
       if (compactOwners.some((owner) => owner.type === "pathology")) score += 150;
       if (compactOwners.some((owner) => owner.type === "drug")) score += 110;
       if (compactOwners.some((owner) => owner.type === "reference")) score += 100;
+    }
+  }
+  if (!compactOwners.length && typeof resolveTopicRequest === "function") {
+    const topicRequest = resolveTopicRequest(cleaned, { mode: "suggest", limit: 3 });
+    if (["reviewed-route", "clinical-clue"].includes(topicRequest.resolutionKind)
+      && topicRequest.preferred?.item) {
+      // Use the same reviewed/systemic evidence to choose among speech-engine
+      // transcript alternatives. This affects transcript ranking only; the
+      // later navigation policy still owns ambiguity, personal-context, and
+      // mayAutoOpen decisions.
+      score += topicRequest.mayAutoOpen === true ? 1050 : 480;
+      score += Math.round(Math.max(0, Math.min(1, Number(topicRequest.confidence || 0))) * 180);
     }
   }
   if (hasLabLookupIntent(cleaned)) score += 120;
@@ -49825,6 +51313,7 @@ function maybeOpenClinicalOfflineLookup(cleaned = "", options = {}) {
     openPharmDatabase(redirect.query || cleaned, {
       openDetail: true,
       detailType: redirect.detailType,
+      targetCandidate: redirect.targetCandidate,
       fastDetail: true,
       autoFocus: false,
       highlightQuery: redirect.highlightQuery
@@ -50832,7 +52321,9 @@ function renderMedicalSearchAssist(input) {
     const detail = document.createElement("small");
     detail.textContent = record.matchKind === "phonetic-suggestion"
       ? `Sounds like this · ${record.kind}`
-      : `${record.kind}${record.mayAutoOpen ? " · reviewed direct match" : ""}`;
+      : record.matchKind === "clinical-clue"
+        ? `${record.confidenceTier || "Possible"} clinical match · ${record.kind}${record.unmatchedClues?.length ? ` · ${record.unmatchedClues.length} unmatched clue${record.unmatchedClues.length === 1 ? "" : "s"}` : ""}`
+        : `${record.kind}${record.mayAutoOpen ? " · reviewed direct match" : ""}`;
     if (record.ambiguousIdentity === true) {
       detail.textContent = `Context-dependent abbreviation - choose this ${record.kind}`;
     }
@@ -51061,6 +52552,16 @@ foundationDomainSelect?.addEventListener("change", () => {
   closePharmDetailPage();
   activeFoundationBrowseDomain = foundationDomainSelect.value || "all";
   localStorage.setItem(FOUNDATION_BROWSE_DOMAIN_KEY, activeFoundationBrowseDomain);
+  activePharmLetter = "All";
+  renderPharmAlphabet();
+  renderPharmResults();
+});
+holisticSubcategorySelect?.addEventListener("change", () => {
+  closePharmDetailPage();
+  activeHolisticBrowseSubcategory = HOLISTIC_BROWSE_SUBCATEGORIES.some((record) => record.id === holisticSubcategorySelect.value)
+    ? holisticSubcategorySelect.value
+    : "all";
+  localStorage.setItem(HOLISTIC_BROWSE_SUBCATEGORY_KEY, activeHolisticBrowseSubcategory);
   activePharmLetter = "All";
   renderPharmAlphabet();
   renderPharmResults();

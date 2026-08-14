@@ -4,8 +4,8 @@
   const payload = {
   "schemaVersion": "ani-pathology-reviewed-runtime-v1",
   "builderVersion": "ani-pathology-builder-2026-08-02.2",
-  "domainVersion": "2026-08-02.3",
-  "sourceSha256": "a596cb3decb5b0caf1815d1f351fa34a26d33c877baaf53c949d47c277022779",
+  "domainVersion": "2026-08-14.11",
+  "sourceSha256": "34f6f1cb3effd3d5ac34dd2e481a274266b16dfc6c597f59b6e240e485adb26a",
   "sourceReferences": [
     {
       "key": "ninds-migraine",
@@ -668,6 +668,517 @@
         "biomarker limitations",
         "research status"
       ]
+    },
+    {
+      "key": "nice-cg159-social-anxiety",
+      "label": "Social anxiety disorder: recognition, assessment and treatment",
+      "authority": "National Institute for Health and Care Excellence",
+      "url": "https://www.nice.org.uk/guidance/cg159/chapter/recommendations",
+      "fieldsSupported": [
+        "assessment",
+        "differential",
+        "treatments",
+        "medications",
+        "monitoring",
+        "specialPopulations",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "nice-ng222-chronic-depression",
+      "label": "Depression in adults: treatment and management",
+      "authority": "National Institute for Health and Care Excellence",
+      "url": "https://www.nice.org.uk/guidance/ng222/chapter/Recommendations",
+      "fieldsSupported": [
+        "definition",
+        "assessment",
+        "treatments",
+        "medication classes",
+        "monitoring",
+        "safetyConsiderations",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "who-icd11-cddr-mental-2024",
+      "label": "Clinical descriptions and diagnostic requirements for ICD-11 mental, behavioural and neurodevelopmental disorders",
+      "authority": "World Health Organization",
+      "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+      "fieldsSupported": [
+        "identity",
+        "classification",
+        "diagnostic requirements",
+        "differential",
+        "duration",
+        "functional impact"
+      ]
+    },
+    {
+      "key": "va-dod-ptsd-asd-cpg-2023",
+      "label": "VA/DoD Clinical Practice Guideline for Management of Posttraumatic Stress Disorder and Acute Stress Disorder",
+      "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+      "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/ptsd/VA-DoD-CPG-PTSD-Full-CPG-Edited-111624-V5-81825.pdf",
+      "fieldsSupported": [
+        "definition",
+        "assessment",
+        "differential",
+        "psychotherapy",
+        "medications",
+        "nightmares",
+        "contraindications",
+        "safetyConsiderations",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "nice-ng116-ptsd",
+      "label": "Post-traumatic stress disorder: recognition, assessment and treatment",
+      "authority": "National Institute for Health and Care Excellence",
+      "url": "https://www.nice.org.uk/guidance/ng116/chapter/Recommendations",
+      "fieldsSupported": [
+        "recognition",
+        "assessment",
+        "psychotherapy",
+        "medications",
+        "monitoring",
+        "complex needs",
+        "specialPopulations",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "apa-ptsd-related-disorders-2025",
+      "label": "What is Posttraumatic Stress Disorder (PTSD)?",
+      "authority": "American Psychiatric Association",
+      "url": "https://www.psychiatry.org/patients-families/ptsd/what-is-ptsd",
+      "fieldsSupported": [
+        "definition",
+        "signsSymptoms",
+        "diagnostics",
+        "acute stress disorder",
+        "adjustment disorder",
+        "psychotherapy",
+        "medications",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "apa-prolonged-grief-disorder-2025",
+      "label": "Prolonged Grief Disorder",
+      "authority": "American Psychiatric Association",
+      "url": "https://www.psychiatry.org/patients-families/prolonged-grief-disorder",
+      "fieldsSupported": [
+        "definition",
+        "DSM diagnostic pattern",
+        "duration",
+        "riskFactors",
+        "differential",
+        "psychotherapy",
+        "medication boundary",
+        "specialPopulations",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "va-complex-ptsd-assessment-2025",
+      "label": "Complex PTSD: Assessment and Treatment",
+      "authority": "U.S. Department of Veterans Affairs National Center for PTSD",
+      "url": "https://www.ptsd.va.gov/professional/treat/txessentials/complex_ptsd_assessment.asp",
+      "fieldsSupported": [
+        "definition",
+        "ICD and DSM classification",
+        "diagnostic pattern",
+        "assessment tools",
+        "differential",
+        "trauma-focused treatment",
+        "phase-based treatment evidence",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "who-icd11-mms-2026-rad-6b44",
+      "label": "ICD-11 MMS 6B44: Reactive attachment disorder",
+      "authority": "World Health Organization",
+      "url": "https://icd.who.int/browse/2026-01/mms/en#1867081699",
+      "fieldsSupported": [
+        "identity",
+        "classification",
+        "diagnostic requirements",
+        "developmental boundary",
+        "differential",
+        "functional impact"
+      ]
+    },
+    {
+      "key": "who-icd11-mms-2026-dsed-6b45",
+      "label": "ICD-11 MMS 6B45: Disinhibited social engagement disorder",
+      "authority": "World Health Organization",
+      "url": "https://icd.who.int/browse/2026-01/mms/en#467941148",
+      "fieldsSupported": [
+        "identity",
+        "classification",
+        "diagnostic requirements",
+        "developmental boundary",
+        "differential",
+        "functional impact"
+      ]
+    },
+    {
+      "key": "apa-dsm5tr-2022",
+      "label": "Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition, Text Revision",
+      "authority": "American Psychiatric Association",
+      "url": "https://doi.org/10.1176/appi.books.9780890425787",
+      "fieldsSupported": [
+        "classification",
+        "DSM diagnostic requirements",
+        "developmental boundary",
+        "duration specifier",
+        "differential",
+        "insufficient-care requirement"
+      ]
+    },
+    {
+      "key": "aacap-rad-dsed-practice-parameter-2016",
+      "label": "Practice Parameter for the Assessment and Treatment of Children and Adolescents With Reactive Attachment Disorder and Disinhibited Social Engagement Disorder",
+      "authority": "American Academy of Child and Adolescent Psychiatry",
+      "url": "https://doi.org/10.1016/j.jaac.2016.08.004",
+      "fieldsSupported": [
+        "assessment",
+        "collateral history",
+        "observation",
+        "differential",
+        "caregiver treatment",
+        "supervision",
+        "medication boundary",
+        "prognosis"
+      ]
+    },
+    {
+      "key": "aacap-coercive-attachment-policy-2022",
+      "label": "Policy Statement on Coercive Interventions for Attachment Disorders",
+      "authority": "American Academy of Child and Adolescent Psychiatry",
+      "url": "https://www.aacap.org/AACAP/AACAP/Policy_Statements/2022/Policy_Statement_Coercive_Interventions_Attachment_Disorders.aspx",
+      "fieldsSupported": [
+        "coercive-treatment prohibition",
+        "safetyConsiderations",
+        "patientEducation",
+        "caregiverEducation"
+      ]
+    },
+    {
+      "key": "nice-ng26-childrens-attachment",
+      "label": "Children's attachment: attachment in children and young people who are adopted from care, in care or at high risk of going into care",
+      "authority": "National Institute for Health and Care Excellence",
+      "url": "https://www.nice.org.uk/guidance/ng26/chapter/recommendations",
+      "fieldsSupported": [
+        "assessment",
+        "attachment tools",
+        "caregiver-child interventions",
+        "medication boundary",
+        "looked-after children",
+        "service coordination",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "nice-ng76-child-abuse-neglect",
+      "label": "Child abuse and neglect: recognition and response",
+      "authority": "National Institute for Health and Care Excellence",
+      "url": "https://www.nice.org.uk/guidance/ng76/chapter/Recommendations",
+      "fieldsSupported": [
+        "maltreatment recognition",
+        "immediate safety",
+        "safeguarding",
+        "communication",
+        "documentation",
+        "caregiver-child interventions"
+      ]
+    },
+    {
+      "key": "dha-adjustment-cbt-evidence-2025",
+      "label": "Cognitive Behavioral Therapy for Adjustment Disorder",
+      "authority": "Defense Health Agency Psychological Health Center of Excellence",
+      "url": "https://health.mil/Reference-Center/Publications/2025/05/15/CBT_Adjustment-Disorder-Evidence-Briefs_508",
+      "fieldsSupported": [
+        "diagnostic timing",
+        "psychotherapy evidence",
+        "treatment limitations",
+        "shared decision making"
+      ]
+    },
+    {
+      "key": "dha-adjustment-ssri-evidence-2025",
+      "label": "Selective Serotonin Reuptake Inhibitors for Adjustment Disorder",
+      "authority": "Defense Health Agency Psychological Health Center of Excellence",
+      "url": "https://health.mil/Reference-Center/Publications/2025/05/15/SSRIs_Adjustment-Disorder-Evidence-Briefs_508",
+      "fieldsSupported": [
+        "medication evidence",
+        "FDA approval boundary",
+        "treatment limitations",
+        "differential",
+        "prognosis"
+      ]
+    },
+    {
+      "key": "nice-cg185-bipolar",
+      "label": "Bipolar disorder: assessment and management",
+      "authority": "National Institute for Health and Care Excellence",
+      "url": "https://www.nice.org.uk/guidance/cg185/chapter/recommendations",
+      "fieldsSupported": [
+        "assessment",
+        "risk assessment",
+        "treatments",
+        "medication monitoring",
+        "physical health",
+        "specialPopulations",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "nice-cg158-conduct-disorders",
+      "label": "Antisocial behaviour and conduct disorders in children and young people: recognition and management",
+      "authority": "National Institute for Health and Care Excellence",
+      "url": "https://www.nice.org.uk/guidance/cg158/chapter/recommendations",
+      "fieldsSupported": [
+        "assessment",
+        "risk assessment",
+        "safeguarding",
+        "psychosocial interventions",
+        "medication boundaries",
+        "monitoring",
+        "specialPopulations",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "apa-personality-disorders",
+      "label": "Personality Disorders",
+      "authority": "American Psychiatric Association",
+      "url": "https://www.psychiatry.org/patients-families/personality-disorders",
+      "fieldsSupported": [
+        "definition",
+        "classification",
+        "diagnostics",
+        "differential",
+        "psychotherapy",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "medlineplus-personality-disorders",
+      "label": "Personality Disorders",
+      "authority": "MedlinePlus, U.S. National Library of Medicine",
+      "url": "https://medlineplus.gov/personalitydisorders.html",
+      "fieldsSupported": [
+        "definition",
+        "classification",
+        "signsSymptoms",
+        "diagnostics",
+        "treatments",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "who-icd10-anankastic-personality",
+      "label": "ICD-10: Anankastic personality disorder",
+      "authority": "World Health Organization",
+      "url": "https://icd.who.int/browse10/2019/en#/F60.5",
+      "fieldsSupported": [
+        "identity",
+        "definition",
+        "signsSymptoms",
+        "classification",
+        "differential"
+      ]
+    },
+    {
+      "key": "nimh-ocd",
+      "label": "Obsessive-Compulsive Disorder: When Unwanted Thoughts or Repetitive Behaviors Take Over",
+      "authority": "National Institute of Mental Health",
+      "url": "https://www.nimh.nih.gov/health/publications/obsessive-compulsive-disorder-when-unwanted-thoughts-or-repetitive-behaviors-take-over",
+      "fieldsSupported": [
+        "definition",
+        "signsSymptoms",
+        "diagnostics",
+        "differential",
+        "treatments",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "nimh-borderline-personality",
+      "label": "Borderline Personality Disorder",
+      "authority": "National Institute of Mental Health",
+      "url": "https://www.nimh.nih.gov/health/publications/borderline-personality-disorder",
+      "fieldsSupported": [
+        "definition",
+        "riskFactors",
+        "signsSymptoms",
+        "diagnostics",
+        "differential",
+        "treatments",
+        "safetyConsiderations",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "apa-bpd-guideline-2024",
+      "label": "The American Psychiatric Association Practice Guideline for the Treatment of Patients With Borderline Personality Disorder",
+      "authority": "American Psychiatric Association",
+      "url": "https://psychiatryonline.org/doi/book/10.1176/appi.books.9780890428009",
+      "fieldsSupported": [
+        "assessment",
+        "risk assessment",
+        "treatment planning",
+        "psychotherapy",
+        "monitoring",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "nice-cg78-borderline",
+      "label": "Borderline personality disorder: recognition and management",
+      "authority": "National Institute for Health and Care Excellence",
+      "url": "https://www.nice.org.uk/guidance/cg78/chapter/Recommendations",
+      "fieldsSupported": [
+        "assessment",
+        "risk assessment",
+        "care planning",
+        "psychotherapy",
+        "medication boundaries",
+        "crisis management",
+        "monitoring",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "apa-somatic-symptom-disorder-2024",
+      "label": "What is Somatic Symptom Disorder?",
+      "authority": "American Psychiatric Association",
+      "url": "https://www.psychiatry.org/patients-families/somatic-symptom-disorder/what-is-somatic-symptom-disorder",
+      "fieldsSupported": [
+        "definition",
+        "diagnostics",
+        "differential",
+        "treatments",
+        "medication boundaries",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "apa-dsm5tr-functional-neurological-symptom-disorder",
+      "label": "Functional Neurological Symptom Disorder (Conversion Disorder)",
+      "authority": "American Psychiatric Association",
+      "url": "https://www.psychiatry.org/getmedia/c57b724e-7fc7-4082-bbbf-28b458709b51/APA-DSM5TR-FunctionalNeurologicalSymptomDisorder.pdf",
+      "fieldsSupported": [
+        "identity",
+        "aliases",
+        "classification",
+        "terminology boundary"
+      ]
+    },
+    {
+      "key": "nice-ng127-functional-neurological-disorder",
+      "label": "Suspected neurological conditions: recognition and referral - recommendations for adults",
+      "authority": "National Institute for Health and Care Excellence",
+      "url": "https://www.nice.org.uk/guidance/ng127/chapter/Recommendations-for-adults-aged-over-16",
+      "fieldsSupported": [
+        "assessment",
+        "new neurological signs",
+        "stroke boundary",
+        "referral",
+        "patientEducation",
+        "safetyConsiderations"
+      ]
+    },
+    {
+      "key": "ncbi-statpearls-narcissistic-personality-2024",
+      "label": "Narcissistic Personality Disorder",
+      "authority": "NCBI Bookshelf, StatPearls authors",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK556001/",
+      "fieldsSupported": [
+        "definition",
+        "signsSymptoms",
+        "assessment",
+        "differential",
+        "treatments",
+        "medication boundaries",
+        "safetyConsiderations",
+        "prognosis"
+      ]
+    },
+    {
+      "key": "who-icd10-dependent-personality",
+      "label": "ICD-10: Dependent personality disorder",
+      "authority": "World Health Organization",
+      "url": "https://icd.who.int/browse10/2019/en#/F60.7",
+      "fieldsSupported": [
+        "identity",
+        "definition",
+        "signsSymptoms",
+        "classification",
+        "differential"
+      ]
+    },
+    {
+      "key": "ncbi-statpearls-dependent-personality-2024",
+      "label": "Dependent Personality Disorder",
+      "authority": "NCBI Bookshelf, StatPearls authors",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK606086/",
+      "fieldsSupported": [
+        "definition",
+        "signsSymptoms",
+        "assessment",
+        "differential",
+        "treatments",
+        "medication boundaries",
+        "safetyConsiderations",
+        "prognosis"
+      ]
+    },
+    {
+      "key": "who-icd10-histrionic-personality",
+      "label": "ICD-10: Histrionic personality disorder",
+      "authority": "World Health Organization",
+      "url": "https://icd.who.int/browse10/2019/en#/F60.4",
+      "fieldsSupported": [
+        "identity",
+        "definition",
+        "signsSymptoms",
+        "classification",
+        "differential"
+      ]
+    },
+    {
+      "key": "ncbi-statpearls-histrionic-personality-2024",
+      "label": "Histrionic Personality Disorder",
+      "authority": "NCBI Bookshelf, StatPearls authors",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK542325/",
+      "fieldsSupported": [
+        "definition",
+        "signsSymptoms",
+        "assessment",
+        "differential",
+        "treatments",
+        "medication boundaries",
+        "bias cautions",
+        "safetyConsiderations",
+        "prognosis"
+      ]
+    },
+    {
+      "key": "samhsa-safe-t-2024",
+      "label": "SAFE-T Suicide Assessment Five-Step Evaluation and Triage",
+      "authority": "Substance Abuse and Mental Health Services Administration",
+      "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+      "fieldsSupported": [
+        "suicide assessment",
+        "risk factors",
+        "protective factors",
+        "safety planning",
+        "triage",
+        "documentation"
+      ]
     }
   ],
   "cards": [
@@ -834,7 +1345,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.obesity-hypoventilation-syndrome",
@@ -981,7 +1492,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.immunoglobulin-a-nephropathy",
@@ -1134,7 +1645,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.acute-promyelocytic-leukemia",
@@ -1288,7 +1799,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.antiphospholipid-syndrome",
@@ -1450,7 +1961,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.autoimmune-encephalitis",
@@ -1606,7 +2117,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.microscopic-colitis",
@@ -1753,7 +2264,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.common-variable-immunodeficiency",
@@ -1917,7 +2428,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.cluster-headache",
@@ -2062,7 +2573,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.focal-segmental-glomerulosclerosis",
@@ -2212,7 +2723,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.pituitary-apoplexy",
@@ -2364,7 +2875,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.meningococcemia",
@@ -2519,7 +3030,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.diffuse-large-b-cell-lymphoma",
@@ -2686,7 +3197,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.burkitt-lymphoma",
@@ -2840,7 +3351,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.babesiosis",
@@ -2992,7 +3503,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.pemphigus-vulgaris",
@@ -3144,7 +3655,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.alport-syndrome",
@@ -3299,7 +3810,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.primary-ciliary-dyskinesia",
@@ -3452,7 +3963,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.autoimmune-hepatitis",
@@ -3607,7 +4118,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.primary-sclerosing-cholangitis",
@@ -3762,7 +4273,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.ergotism",
@@ -3940,7 +4451,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.venous-thromboembolism",
@@ -4122,7 +4633,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
     },
     {
       "id": "disease.chronic-traumatic-encephalopathy",
@@ -4299,7 +4810,4617 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-02.3"
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.social-anxiety-disorder",
+      "name": "Social anxiety disorder",
+      "displayName": "Social anxiety disorder (social phobia)",
+      "category": "Mental health",
+      "aliases": [
+        "social phobia",
+        "social anxiety"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "plainLanguage": "Social anxiety disorder is a persistent fear of being watched, judged, embarrassed, or rejected in social or performance situations. The person may endure these situations with intense anxiety or avoid them even when connection, school, work, or care is important.",
+      "whyItMatters": "Avoidance can progressively narrow education, employment, relationships, health care, and daily independence. Nurses should identify functional loss, depression, substance use, and suicide risk while helping the person access effective treatment without dismissing the problem as ordinary shyness.",
+      "plainLanguageGlosses": [
+        {
+          "term": "negative evaluation",
+          "plainLanguage": "being judged unfavorably, rejected, mocked, or seen as inadequate by other people",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "nice-cg159-social-anxiety"
+          ]
+        },
+        {
+          "term": "safety-seeking behaviour",
+          "plainLanguage": "a habit used to prevent embarrassment, such as avoiding eye contact or rehearsing every sentence, that can keep the fear going",
+          "sourceKeys": [
+            "nice-cg159-social-anxiety"
+          ]
+        },
+        {
+          "term": "exposure",
+          "plainLanguage": "planned, supported practice entering feared situations instead of escaping them, so new learning can occur",
+          "sourceKeys": [
+            "nice-cg159-social-anxiety"
+          ]
+        }
+      ],
+      "definition": "Social anxiety disorder is an anxiety disorder marked by persistent, excessive fear or anxiety in one or more social situations where scrutiny or negative evaluation is possible. The fear leads to avoidance or marked distress and causes meaningful impairment in personal, family, social, educational, occupational, or other important functioning; a symptom or questionnaire score alone does not establish the diagnosis.",
+      "pathology": "Social anxiety disorder is not defined by a structural brain lesion or a diagnostic laboratory abnormality. Threat-prediction and self-monitoring systems repeatedly interpret social attention as danger, producing autonomic arousal, self-focused attention, negative mental imagery, and avoidance. Short-term relief after escape or safety behaviours reinforces the cycle and prevents corrective learning that the feared outcome may not occur or may be manageable.",
+      "pathophysiology": [
+        "Anticipation of scrutiny activates a threat response with palpitations, tremor, sweating, flushing, gastrointestinal discomfort, muscle tension, or cognitive blanking. The sensations can then become additional feared evidence that other people will notice anxiety.",
+        "Attention turns inward toward symptoms and an imagined observer's view. Avoidance, rehearsing, speaking very little, or using alcohol may reduce distress briefly but preserve threat beliefs; disorder-specific cognitive behavioural therapy tests these predictions through attention work and graduated behavioural experiments."
+      ],
+      "etiology": "No single cause explains social anxiety disorder. Temperamental sensitivity to threat, learning from humiliating or critical experiences, family and cultural context, and genetic vulnerability may interact. The disorder often begins early, but clinicians must distinguish developmentally expected caution and culturally appropriate behaviour from persistent fear that is excessive for the context and impairs functioning.",
+      "riskFactors": [
+        "Behavioural inhibition, marked childhood shyness, or a family history of anxiety disorders",
+        "Bullying, humiliation, rejection, criticism, discrimination, or repeated adverse social experiences",
+        "A communication, appearance, movement, or health difference that increases actual or anticipated scrutiny",
+        "Depression, another anxiety disorder, avoidant personality features, autism, or alcohol and other substance use that can complicate presentation and treatment"
+      ],
+      "signsSymptoms": [
+        "Fear before or during conversations, meeting unfamiliar people, being observed, eating or writing in public, using a telephone, speaking in class, interviews, dating, or performance situations",
+        "Worry about blushing, sweating, trembling, appearing boring or incompetent, saying the wrong thing, or being rejected",
+        "Avoidance, escape, missed appointments, school refusal, reduced participation, dependence on a companion, or use of alcohol or sedatives to tolerate social situations",
+        "Palpitations, tremor, sweating, flushing, nausea, dry mouth, dizziness, muscle tension, or the mind going blank",
+        "Anticipatory worry before an event and prolonged review or self-criticism afterward"
+      ],
+      "diagnostics": [
+        "Diagnosis is clinical. Establish the feared situations, expected negative outcome, degree of avoidance and distress, duration, developmental and cultural context, and concrete impairment across school, work, relationships, finances, health care, and daily living.",
+        "Assess whether symptoms are better explained by panic disorder, generalized anxiety, a depressive episode, body-image concern, trauma, psychosis, autism, a communication disorder, avoidant personality disorder, a substance or medication, or a medical condition.",
+        "Validated measures such as the Social Phobia Inventory (SPIN) or Liebowitz Social Anxiety Scale (LSAS) can support baseline assessment and track response, but there is no universal score that independently confirms or excludes the disorder."
+      ],
+      "labs": [
+        "There is no blood test, scan, or physiologic measurement that confirms social anxiety disorder.",
+        "Order targeted studies only when the history or examination suggests a mimic or treatment issue, such as thyroid testing for unexplained persistent adrenergic symptoms, an ECG for selected cardiac symptoms or medicines, or toxicology when substance effects are plausible.",
+        "Normal laboratory results do not determine whether fear and avoidance meet diagnostic requirements; diagnosis depends on the clinical pattern and functional impact."
+      ],
+      "assessment": "Use a private, nonjudgmental setting and permit extra response time. Ask directly about feared and avoided situations, self-image, attention focus, safety behaviours, anticipatory and post-event thinking, medications, alcohol and recreational drugs, depression, self-harm, suicide, psychosis, trauma, and functional loss. A patient who avoids eye contact or speaks briefly may be highly anxious rather than unwilling to engage.",
+      "differential": [
+        "Expected shyness or culturally appropriate reserve without marked persistent impairment",
+        "Panic disorder or agoraphobia, where fear centers on panic-like symptoms or inability to escape rather than negative evaluation",
+        "Generalized anxiety disorder, major depressive disorder, post-traumatic stress disorder, obsessive-compulsive disorder, body dysmorphic disorder, or psychotic illness",
+        "Avoidant personality disorder, autism, selective mutism, or a communication disorder",
+        "Stimulants, caffeine, alcohol withdrawal, medication effects, hyperthyroidism, arrhythmia, or another medical cause of autonomic symptoms"
+      ],
+      "treatments": [
+        "For adults, offer individual cognitive behavioural therapy specifically developed for social anxiety disorder; it uses education, attention retraining, cognitive work, behavioural experiments or graduated exposure, and relapse planning.",
+        "If an adult declines CBT and prefers medication, NICE recommends an SSRI such as sertraline or escitalopram, with shared decision-making and close monitoring for adverse effects, early activation, suicide risk, adherence, and withdrawal symptoms.",
+        "CBT-based supported self-help is an alternative for some adults who decline individual CBT; partial or absent response should prompt review of diagnosis, adherence, comorbidity, treatment quality, and the next evidence-based step.",
+        "For children and young people, offer developmentally adapted individual or group social-anxiety-focused CBT and involve parents or carers when helpful; do not routinely use medication."
+      ],
+      "contraindications": [
+        "Do not routinely offer benzodiazepines, tricyclic antidepressants, anticonvulsants, or antipsychotics solely to treat social anxiety disorder in adults.",
+        "Do not routinely offer pharmacologic treatment for social anxiety disorder in children or young people.",
+        "Do not use alcohol, nonprescribed sedatives, St John's wort, or other over-the-counter preparations as treatment; interactions, dependence, and worsening avoidance can cause harm.",
+        "Do not abruptly stop an SSRI; tapering and monitoring should follow the individual medicine, treatment duration, symptoms, and prescriber plan."
+      ],
+      "safetyConsiderations": [
+        "Assess suicide and self-harm risk whenever depression, hopelessness, major functional loss, substance use, recent rejection, or medication activation is present.",
+        "Avoidance can make clinics, telephone calls, groups, and waiting rooms hard to tolerate; agree on a preferred contact method and remove practical barriers after missed visits.",
+        "Sertraline and escitalopram are representative adult options, not interchangeable instructions. Review interactions, pregnancy context, bipolar-spectrum history, adverse effects, and discontinuation risk before prescribing or changing treatment.",
+        "A first episode of severe chest pain, syncope, persistent arrhythmia, focal neurologic change, intoxication, or withdrawal requires medical evaluation rather than automatic attribution to anxiety."
+      ],
+      "nursingPriorities": [
+        "Establish immediate safety and ask directly about suicidal thoughts, self-harm, substances used to cope, inability to eat or attend essential care, and severe functional decline.",
+        "Describe observable behaviour and the patient's stated fear without labeling quietness as resistance; offer privacy, predictable steps, choices, and time to answer.",
+        "Identify one measurable target, such as attending class, making a call, or speaking once in a meeting, and track avoidance, distress, participation, and recovery rather than reassurance alone.",
+        "Monitor SSRI adherence, nausea, sleep change, agitation, sexual adverse effects, emerging hypomanic or manic symptoms, suicidal thinking, and symptoms after missed doses or tapering."
+      ],
+      "redFlags": [
+        "Suicidal intent, a recent attempt, inability to maintain safety, severe self-neglect, or escalating substance use",
+        "New mania, psychosis, severe agitation, or markedly reduced need for sleep after starting or changing an antidepressant",
+        "Syncope, persistent chest pain, sustained palpitations, focal neurologic deficit, or another acute symptom not safely explained by the established anxiety pattern",
+        "School refusal, loss of employment or housing, inability to obtain needed medical care, or nutritional compromise caused by avoidance"
+      ],
+      "complications": [
+        "Educational and occupational underachievement, financial strain, social isolation, and delayed medical or dental care",
+        "Major depression, other anxiety disorders, avoidant personality features, and increased suicide risk",
+        "Alcohol or sedative misuse, dependence, withdrawal, and accidents when substances are used to cope",
+        "A progressively restricted life as avoidance and safety behaviours become more entrenched"
+      ],
+      "prognosis": "The course is often persistent without effective care, but disorder-specific CBT and, for selected adults, medication can substantially reduce fear, avoidance, and impairment. Progress is better judged by restored function and ability to enter valued situations than by the complete absence of anxiety; relapse planning and treatment of comorbidity support durable gains.",
+      "prevention": [
+        "Address bullying, humiliation, discrimination, communication barriers, and school or workplace avoidance early.",
+        "Teach that anxiety sensations are uncomfortable but not proof of social failure, and reinforce gradual approach behaviour instead of repeated rescue or forced flooding.",
+        "Screen for depression and substance use when social participation narrows, and intervene before missed care and isolation become entrenched."
+      ],
+      "patientEducation": [
+        "Social anxiety disorder is more than shyness: the key issue is persistent fear and avoidance that interfere with life.",
+        "A questionnaire can help measure progress but cannot diagnose the disorder by itself.",
+        "CBT practice is gradual and planned. The goal is to learn through experience, not to be pushed into the hardest situation without preparation.",
+        "If taking an SSRI, do not stop suddenly; report marked agitation, suicidal thoughts, unusually high energy with little sleep, or other concerning change promptly."
+      ],
+      "specialPopulations": [
+        "Children and adolescents may show school refusal, freezing, tantrums, limited speech, or reliance on a parent; assess developmental level, bullying, autism, selective mutism, and family participation, and prioritize adapted CBT over routine medication.",
+        "Autistic people and people with communication, mobility, appearance, sensory, or cultural differences may face real negative experiences; distinguish realistic barriers from excessive threat predictions and adapt treatment without invalidating lived experience.",
+        "Pregnancy, breastfeeding, older age, cardiac disease, polypharmacy, and substance use change medication selection and monitoring and require individualized review."
+      ],
+      "nclexTraps": [
+        "Do not equate social anxiety disorder with normal shyness; clinically important impairment and persistent avoidance are central.",
+        "SPIN and LSAS support assessment and outcome tracking but do not diagnose the disorder alone.",
+        "Individual social-anxiety-specific CBT is the preferred adult psychological treatment; benzodiazepines are not routine long-term treatment.",
+        "A withdrawn patient may need a lower-pressure communication approach, but acute suicide or medical red flags still require direct assessment."
+      ],
+      "relatedTopics": [
+        "Phobias",
+        "Generalized anxiety disorder",
+        "Panic disorder",
+        "Avoidant personality disorder",
+        "Major depressive disorder"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "nice-cg159-social-anxiety"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based only on the WHO ICD-11 clinical descriptions and diagnostic requirements and NICE CG159 recommendations; terminology and diagnostic limits are preserved and no source prose was copied.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR, 2024; accessed 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "definition",
+            "classification",
+            "diagnostic requirements",
+            "duration",
+            "differential",
+            "functional impact"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/cg159/chapter/recommendations",
+          "documentVersion": "CG159 current recommendations; accessed 2026-08-13",
+          "fieldsSupported": [
+            "assessment",
+            "treatments",
+            "medications",
+            "monitoring",
+            "contraindications",
+            "specialPopulations",
+            "patientEducation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.social-anxiety-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.persistent-depressive-disorder",
+      "name": "Persistent depressive disorder",
+      "displayName": "Persistent depressive disorder (dysthymia / chronic depression)",
+      "category": "Mental health",
+      "aliases": [
+        "dysthymia",
+        "dysthymic disorder",
+        "chronic depression"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "plainLanguage": "Persistent depressive disorder describes depression that stays present over years rather than occurring only as a short episode. Low mood may feel like the person's normal baseline, but chronic symptoms, low energy, hopelessness, and reduced function are treatable health problems rather than a character trait.",
+      "whyItMatters": "Long duration can hide severity: people may stop reporting symptoms, normalize major impairment, or develop a superimposed major depressive episode. Nurses should assess suicide risk, function, bipolar-spectrum history, substances, physical causes, and treatment response instead of assuming that long-standing means low-risk.",
+      "plainLanguageGlosses": [
+        {
+          "term": "persistent",
+          "plainLanguage": "continuing over a long period, even if intensity changes from day to day",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "nice-ng222-chronic-depression"
+          ]
+        },
+        {
+          "term": "subthreshold",
+          "plainLanguage": "causing real symptoms and difficulty but not meeting every requirement for a full major depressive episode",
+          "sourceKeys": [
+            "nice-ng222-chronic-depression"
+          ]
+        },
+        {
+          "term": "rumination",
+          "plainLanguage": "repeatedly circling the same painful thoughts without reaching a useful solution",
+          "sourceKeys": [
+            "nice-ng222-chronic-depression"
+          ]
+        }
+      ],
+      "definition": "Persistent depressive disorder is ANI's learner-facing title for a chronic depressive presentation with sustained low mood and associated symptoms over years. NICE's chronic-depression pathway includes continuous major depression, persistent subthreshold symptoms, or persistent low mood with or without major episodes for at least 2 years in adults; WHO uses the related diagnostic term dysthymic disorder. Exact labels and boundaries vary by classification system, age, and full clinical history.",
+      "pathology": "Persistent depressive disorder is not defined by one brain lesion, neurotransmitter level, laboratory result, or personality type. Chronic depressive symptoms reflect interacting mood-regulation, reward, sleep, stress-response, cognitive, interpersonal, and behavioural processes. Avoidance and rumination can reduce rewarding activity and reinforce hopeless predictions, while medical illness, substances, pain, trauma, and social adversity may initiate or maintain a similar presentation.",
+      "pathophysiology": [
+        "Reduced reward responsiveness and sustained negative expectations can make effort feel unrewarding. Withdrawal then reduces positive experience, activity, social feedback, and mastery, creating a self-reinforcing cycle rather than proof that recovery is impossible.",
+        "Sleep disruption, fatigue, pain, stress physiology, and impaired concentration can amplify one another. Because these mechanisms are nonspecific, diagnosis requires a longitudinal clinical assessment and active evaluation for bipolar-spectrum, substance-related, medication-related, and medical explanations."
+      ],
+      "etiology": "The cause is usually multifactorial. Genetic vulnerability, earlier depressive episodes, trauma or chronic adversity, social isolation, persistent pain or illness, sleep disturbance, substance use, and learned patterns of avoidance or rumination may contribute. A chronic course does not show which factor is primary, and it must not be used to blame the patient or overlook a treatable medical or social driver.",
+      "riskFactors": [
+        "Personal or family history of depressive or bipolar-spectrum illness",
+        "Early onset depressive symptoms, recurrent depression, trauma, prolonged stress, loss, social isolation, or poverty",
+        "Chronic pain, disabling illness, sleep disorder, and medications or substances that can worsen mood",
+        "Anxiety disorders, substance use disorders, or entrenched avoidance and rumination that sustain functional loss"
+      ],
+      "signsSymptoms": [
+        "Low, sad, empty, or irritable mood on most days over a prolonged course",
+        "Low energy, fatigue, sleep or appetite change, reduced pleasure, low self-esteem, hopelessness, poor concentration, or difficulty making decisions",
+        "Reduced work, school, self-care, social participation, intimacy, or ability to complete ordinary responsibilities",
+        "Symptoms that fluctuate but never return to a durable well baseline, sometimes with a more severe superimposed major depressive episode",
+        "Passive wishes for death, suicidal thinking, self-harm, or increased alcohol or drug use, which require direct assessment regardless of apparent chronicity"
+      ],
+      "diagnostics": [
+        "Build a longitudinal timeline of mood, associated symptoms, symptom-free intervals, major depressive episodes, function, treatment, and adverse events. For NICE's adult chronic-depressive-symptom pathway, the relevant pattern persists for at least 2 years; age-specific and classification-system rules must be checked rather than extrapolated.",
+        "Screen specifically for past or current mania or hypomania by asking about elevated or irritable mood, decreased need for sleep, increased activity, pressured speech, impulsive risk, psychosis, and antidepressant-associated activation before assigning a unipolar depressive label or excluding bipolar disorder.",
+        "Assess suicide and self-harm risk, substance use, trauma, bereavement, anxiety, sleep, pain, cognition, medications, medical illness, social stressors, and the degree of personal and social impairment.",
+        "A depression scale can quantify current symptom burden and track change, but no score by itself establishes chronic duration, excludes bipolar disorder, or identifies the cause."
+      ],
+      "labs": [
+        "There is no laboratory test or scan that confirms persistent depressive disorder or dysthymic disorder.",
+        "Use history- and examination-directed testing for plausible contributors, such as thyroid disease, anemia, nutritional deficiency, sleep disorder, pregnancy, substance effects, or medication adverse effects; the exact panel depends on the patient and setting.",
+        "Medication monitoring depends on the selected drug, comorbidities, interactions, age, pregnancy potential, and overdose risk rather than on the depression label alone."
+      ],
+      "assessment": "Ask what the person's best and worst periods have looked like, not only how they feel today. Document onset, at least 2-year adult chronicity when applicable, major episodes, any elevated-energy periods, sleep and appetite, concentration, pleasure, guilt, hopelessness, psychosis, substances, pain, physical illness, treatment adherence, side effects, supports, responsibilities, access to lethal means, and specific functional losses. Chronic passive death wishes still require a current suicide assessment.",
+      "differential": [
+        "Major depressive disorder with discrete episodes and meaningful recovery between episodes",
+        "Bipolar I, bipolar II, cyclothymic, or other bipolar-spectrum disorder",
+        "Substance- or medication-induced depressive disorder, including alcohol and sedative effects or withdrawal",
+        "Grief, post-traumatic stress, anxiety, personality-related difficulties, adjustment disorder, or a psychotic disorder",
+        "Hypothyroidism, anemia, sleep apnea, chronic pain, neurocognitive illness, and other medical conditions that can produce fatigue, slowing, sleep change, or low mood"
+      ],
+      "treatments": [
+        "Use shared decision-making that considers symptom severity, chronicity, suicide risk, function, prior response, adverse effects, comorbidity, access, and the person's preference.",
+        "NICE options for adults with chronic depressive symptoms include CBT focused on chronic depression, an SSRI, an SNRI, a tricyclic antidepressant in appropriate circumstances, or combined CBT with an SSRI or TCA.",
+        "Chronic-depression-focused CBT should address maintaining processes such as avoidance, rumination, and interpersonal difficulty and should include measurable functional goals and relapse planning.",
+        "No or limited response should prompt confirmation of adherence and adequate treatment exposure, reassessment of diagnosis and comorbidity, and a shared next-step plan; complex medication changes and selected alternatives belong in specialist care."
+      ],
+      "contraindications": [
+        "Do not assume a chronic low mood is unipolar depression until past mania, hypomania, mixed symptoms, and antidepressant activation have been assessed.",
+        "Tricyclic antidepressants are dangerous in overdose; suicide risk, cardiac risk, interactions, and safe dispensing matter before selection.",
+        "Do not stop an antidepressant abruptly; tapering must be individualized to the medicine, dose, duration, prior withdrawal symptoms, and clinical course.",
+        "Do not treat a questionnaire score, fatigue, or low mood in isolation while ignoring intoxication, withdrawal, delirium, endocrine disease, anemia, sleep disorder, or another plausible cause."
+      ],
+      "safetyConsiderations": [
+        "Long-standing symptoms can coexist with acute suicide risk. Ask directly about intent, plan, preparation, recent attempt, access to lethal means, protective factors, and ability to follow a safety plan.",
+        "Early treatment and dose changes require monitoring for worsening agitation, suicidal thoughts, marked insomnia, impulsivity, or emerging elevated mood, especially in younger people and anyone with possible bipolar-spectrum illness.",
+        "Medication choice must consider overdose toxicity, withdrawal, interactions, pregnancy context, comorbid disease, and the person's previous response; class names are not patient-specific prescriptions.",
+        "Sudden confusion, focal neurologic change, catatonia, severe self-neglect, dehydration, or inability to eat or drink requires urgent evaluation rather than routine outpatient follow-up."
+      ],
+      "nursingPriorities": [
+        "Complete and document a direct suicide, self-harm, and immediate-safety assessment; chronicity never replaces current risk evaluation.",
+        "Track mood together with sleep, intake, hygiene, movement, social contact, medication use, work or school participation, and one patient-defined functional goal.",
+        "Ask about lifetime elevated-energy or reduced-sleep periods and report new activation, psychosis, agitation, or rapid behavioural change promptly.",
+        "Support treatment adherence and follow-up, monitor adverse effects and withdrawal symptoms, and connect the person with practical help for pain, housing, finances, isolation, caregiving, or substance use when these maintain depression."
+      ],
+      "redFlags": [
+        "Suicidal intent or plan, recent attempt, escalating self-harm, inability to maintain safety, or access to lethal means during crisis",
+        "Psychotic depression, catatonia, severe agitation, mania or mixed symptoms, or markedly reduced need for sleep",
+        "Refusal or inability to eat, drink, take essential medicine, maintain shelter, or perform basic self-care",
+        "Acute intoxication or withdrawal, delirium, or a sudden neurologic or cognitive change"
+      ],
+      "complications": [
+        "Superimposed major depressive episodes, suicide, self-harm, and substance-related harm",
+        "Long-term educational, occupational, relationship, financial, and self-care impairment",
+        "Social isolation, deconditioning, disrupted sleep, and worsening chronic pain or medical self-management",
+        "Misdiagnosed bipolar-spectrum illness or untreated medical contributors, leading to ineffective or harmful treatment"
+      ],
+      "prognosis": "Persistent depressive symptoms can be prolonged and relapse can occur, but chronic does not mean permanent or untreatable. Improvement may be gradual; monitor both symptom burden and restored function. Earlier onset, severe comorbidity, social adversity, and incomplete treatment can complicate recovery, while sustained evidence-based care, follow-up, and support for practical problems improve the chance of meaningful change.",
+      "prevention": [
+        "Recognize and treat earlier depressive episodes, anxiety, sleep problems, pain, and substance use before impairment becomes entrenched.",
+        "Maintain routines for sleep, activity, meals, social connection, and follow-up while addressing barriers such as cost, transportation, stigma, or caregiving.",
+        "After improvement, use a relapse plan that identifies early warning signs, medication or therapy follow-up, support contacts, and what to do if suicidal thinking returns."
+      ],
+      "patientEducation": [
+        "A low mood that has lasted for years is not simply your personality, and treatment can still help.",
+        "The 2-year adult pattern describes chronicity; it does not measure today's severity or mean that every age group and diagnostic system uses identical wording.",
+        "Tell the clinician about any lifetime period of unusually high energy, much less need for sleep, impulsive behaviour, or activation on an antidepressant.",
+        "Do not stop antidepressant medicine suddenly. Seek urgent help for suicidal intent, psychosis, inability to care for basic needs, or a rapid major change in mood or behaviour."
+      ],
+      "specialPopulations": [
+        "Children and adolescents may present with irritability, school decline, somatic complaints, or withdrawal; duration and diagnostic requirements differ by age and classification, so the adult 2-year pathway must not be applied automatically.",
+        "Older adults require attention to grief, isolation, cognition, polypharmacy, pain, sensory loss, sleep, vascular and endocrine disease, falls, and overdose risk.",
+        "Pregnancy and the postpartum period require individualized risk-benefit review of untreated illness, medication exposure, sleep loss, bipolar-spectrum symptoms, and parent-infant safety."
+      ],
+      "nclexTraps": [
+        "Persistent depressive disorder is not automatically mild; chronic symptoms can include major functional loss and acute suicide risk.",
+        "NICE's adult chronic-depression pathway uses at least 2 years, but age and classification system alter the formal diagnostic label and requirements.",
+        "A screening score does not establish duration or exclude bipolar disorder, substances, medication effects, or a medical mimic.",
+        "Assess safety first, then mood history, function, and causes; do not accept 'I have always been this way' as evidence that care is unnecessary."
+      ],
+      "relatedTopics": [
+        "Major depressive disorder",
+        "Bipolar disorder",
+        "Bipolar II disorder",
+        "Generalized anxiety disorder",
+        "Substance use disorders"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "nice-ng222-chronic-depression"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based only on the WHO ICD-11 clinical descriptions and diagnostic requirements and NICE NG222 chronic-depressive-symptom recommendations; differing classification boundaries are stated and no source prose was copied.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR, 2024; accessed 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "dysthymic disorder classification",
+            "diagnostic requirements",
+            "duration",
+            "differential",
+            "functional impact"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/ng222/chapter/Recommendations",
+          "documentVersion": "NG222 current recommendations; accessed 2026-08-13",
+          "fieldsSupported": [
+            "chronic depressive symptom definition",
+            "assessment",
+            "treatments",
+            "medication classes",
+            "monitoring",
+            "safetyConsiderations",
+            "patientEducation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.persistent-depressive-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.cyclothymic-disorder",
+      "name": "Cyclothymic disorder",
+      "displayName": "Cyclothymic disorder (cyclothymia)",
+      "category": "Mental health",
+      "aliases": [
+        "cyclothymia"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "plainLanguage": "Cyclothymic disorder is a long-running pattern of repeated mood and energy shifts. There are many periods with some hypomanic-type symptoms and many periods with depressive symptoms, but the pattern does not meet the full episode requirements that define bipolar I or bipolar II disorder.",
+      "whyItMatters": "The shifts can disrupt sleep, judgment, relationships, school, work, and treatment adherence, and a person may later develop a full manic, hypomanic, or depressive episode. Nurses should build a timeline, screen for suicide and risky behaviour, identify substances or medical mimics, and escalate a full episode rather than treating every fluctuation as ordinary moodiness.",
+      "plainLanguageGlosses": [
+        {
+          "term": "hypomanic symptoms",
+          "plainLanguage": "changes such as unusually increased energy, activity, confidence, talkativeness, irritability, or reduced need for sleep that may not form a full hypomanic episode",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "subthreshold",
+          "plainLanguage": "present and clinically important but not meeting every duration, number, or severity requirement for a full mood episode",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "longitudinal",
+          "plainLanguage": "understood by following the pattern across months and years rather than judging one appointment",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "nice-cg185-bipolar"
+          ]
+        }
+      ],
+      "definition": "Cyclothymic disorder is a persistent bipolar-spectrum mood disorder with numerous periods of hypomanic symptoms and numerous periods of depressive symptoms across an extended course. In WHO's ICD-11 clinical description, the instability lasts at least 2 years and is present much of the time without prolonged symptom-free periods; the symptom periods do not establish the full episodes required for bipolar I or bipolar II disorder, and the diagnosis cannot be made from a single mood change or screening score.",
+      "pathology": "Cyclothymic disorder is not defined by a structural lesion, a rapid-cycling count, or a laboratory biomarker. The clinically observable pathology is unstable regulation of mood, energy, sleep, activity, cognition, and reward across time. Vulnerable mood-regulation systems may shift with circadian disruption, stress, substances, and individual biology, but these mechanisms are not diagnostic; the longitudinal episode pattern and exclusion of full episodes, substances, medicines, and medical causes determine the clinical boundary.",
+      "pathophysiology": [
+        "Periods of increased drive, reduced need for sleep, confidence, talkativeness, distractibility, irritability, or impulsivity alternate with low mood, fatigue, reduced interest, hopelessness, and slowed thinking. Subthreshold does not mean harmless: repeated changes can still impair judgment and relationships.",
+        "Sleep loss can both signal and amplify upward mood change, while withdrawal and inactivity can deepen depressive symptoms. Mood tracking can reveal direction, duration, triggers, and functional consequences, but it does not independently diagnose cyclothymic disorder."
+      ],
+      "etiology": "The cause is multifactorial and incompletely defined. Bipolar-family vulnerability, early mood instability, sleep and circadian disruption, stress, and substance use may contribute. Similar fluctuations can arise from attention-deficit/hyperactivity disorder, trauma-related reactivity, personality-related patterns, stimulants, antidepressants, thyroid disease, and other conditions, so apparent mood cycling is a starting clue rather than the diagnosis.",
+      "riskFactors": [
+        "Family or personal history suggesting bipolar-spectrum illness",
+        "Early-onset recurrent shifts in mood, energy, activity, and sleep across years",
+        "Sleep deprivation, irregular routines, psychosocial stress, or substance use that destabilizes mood",
+        "Antidepressant- or stimulant-associated activation, which requires diagnostic reassessment rather than proving cyclothymia"
+      ],
+      "signsSymptoms": [
+        "Repeated upward periods with increased energy or activity, less need for sleep, increased confidence or sociability, talkativeness, distractibility, irritability, or impulsive decisions",
+        "Repeated downward periods with low mood, reduced interest, fatigue, sleep or appetite change, low self-worth, poor concentration, or hopelessness",
+        "Mood and energy symptoms present over much of a long course, with only brief well intervals rather than sustained remission",
+        "Variable work, school, spending, relationships, sexual behaviour, substance use, and treatment adherence that follow the mood shifts",
+        "No established history within the cyclothymic pattern of a full manic episode; a new full episode changes the diagnostic and treatment pathway"
+      ],
+      "diagnostics": [
+        "Diagnosis is longitudinal. Construct a calendar of mood, energy, sleep need, activity, speech, judgment, depressive symptoms, impairment, symptom-free intervals, substances, medicines, and collateral observations across at least the required course; WHO's adult clinical description uses 2 years or more.",
+        "Determine whether any period met requirements for mania, hypomania, a depressive episode, or a mixed episode. Full mania redirects to bipolar I; a qualifying hypomanic and depressive episode redirects toward bipolar II, subject to complete assessment.",
+        "Exclude substance- or medication-induced mood disorder and mood disorder secondary to a medical condition. Review stimulants, antidepressants, corticosteroids, alcohol and drug use, thyroid symptoms, sleep disorders, neurologic illness, and the temporal relationship to changes.",
+        "Use collateral history and mood or sleep records when available because recall differs by current mood. A questionnaire or a patient's use of the phrase mood swings cannot establish the diagnosis."
+      ],
+      "labs": [
+        "No laboratory test, genetic test, scan, or drug level confirms cyclothymic disorder.",
+        "Use targeted testing for medical and substance-related alternatives, commonly including thyroid assessment and other studies guided by history, examination, medicines, pregnancy context, and local protocol.",
+        "If specialist treatment later includes lithium or an antipsychotic for a qualifying bipolar syndrome, baseline and ongoing monitoring is medicine-specific; for example, NICE requires renal, thyroid, calcium, blood-count, weight, and plasma-level monitoring for lithium and metabolic monitoring for antipsychotics."
+      ],
+      "assessment": "Ask the patient and, with consent, a trusted observer about years of changes in sleep need, energy, activity, speech, confidence, irritability, concentration, spending, sex, driving, substances, work, relationships, depression, psychosis, and safety. Record the timing and functional effect of each direction of change, not simply the number of mood shifts. Assess current suicide risk, dangerous impulsivity, access to money or lethal means, pregnancy possibility, medications, and signs of a full episode.",
+      "differential": [
+        "Bipolar I disorder, bipolar II disorder, a mixed episode, or another specified bipolar-spectrum presentation",
+        "Major depressive disorder or persistent depressive disorder without a qualifying long-term upward-symptom pattern",
+        "Attention-deficit/hyperactivity disorder, trauma-related reactivity, borderline personality disorder, anxiety, normal temperament, or situational mood change",
+        "Substance- or medication-induced mood disorder, including stimulants, antidepressants, corticosteroids, intoxication, or withdrawal",
+        "Hyperthyroidism, sleep deprivation, neurologic illness, and other medical causes of altered energy, sleep, or behaviour"
+      ],
+      "treatments": [
+        "Use specialist-informed, individualized care built around psychoeducation, a regular sleep-wake routine, mood and sleep tracking, recognition of early escalation, psychological support, substance-risk reduction, and a written crisis or relapse plan.",
+        "Target functional problems and comorbid anxiety, trauma, attention, substance use, and medical illness without losing sight of the longitudinal bipolar-spectrum pattern.",
+        "The reviewed sources do not support one universal medication regimen specifically for cyclothymic disorder. Medication decisions require diagnostic confirmation, prior response, physical health, pregnancy context, adverse-effect risk, monitoring capacity, and specialist judgment.",
+        "If full mania or hypomania emerges, reassess the diagnosis and use the matching bipolar pathway. NICE examples for that separate pathway include quetiapine and, in selected care, lithium; these are not blanket prescriptions for cyclothymia or evidence of cyclothymia-specific drug efficacy."
+      ],
+      "contraindications": [
+        "Do not label ordinary moodiness, rapid emotional reactions, ADHD symptoms, or a short observation period as cyclothymic disorder without the required longitudinal pattern.",
+        "Do not continue routine antidepressant monotherapy without urgent review when mania or hypomania emerges; NICE advises considering stopping the antidepressant and treating the qualifying upward episode.",
+        "Do not start lithium when the person cannot participate in required safety monitoring, and do not use a generic therapeutic range as a self-dosing instruction.",
+        "Pregnancy or pregnancy potential materially changes valproate and other medication decisions; use current specialist and regulatory safety requirements rather than a remembered class rule."
+      ],
+      "safetyConsiderations": [
+        "Assess suicide risk during depressive symptoms and impulsive self-harm, unsafe driving, spending, sexual risk, aggression, exploitation, and substance use during upward symptoms.",
+        "A full manic, mixed, psychotic, or severe depressive episode is not simply a stronger day of cyclothymia; it requires urgent diagnostic reassessment and syndrome-specific care.",
+        "Sleep loss is both an early warning and a destabilizer. Markedly reduced need for sleep with rising energy, agitation, or risk-taking warrants prompt escalation.",
+        "Medication monitoring must follow the actual drug and indication. Lithium toxicity risk increases with dehydration and interacting medicines, while antipsychotics require metabolic and movement-effect surveillance."
+      ],
+      "nursingPriorities": [
+        "Assess immediate suicide, self-harm, psychosis, aggression, intoxication, driving, spending, sexual, and self-care risk before completing the long-term history.",
+        "Create a concrete timeline of sleep need, energy, activity, mood direction, impulsivity, function, medicines, and substances; seek collateral history with consent when recall is incomplete.",
+        "Protect sleep and reduce stimulation during upward change, support hydration and nutrition, set clear limits around unsafe behaviour, and escalate signs of a full episode.",
+        "Teach the purpose and schedule of any medicine-specific monitoring, verify adherence without judgment, and report toxicity, pregnancy, activation, or rapid clinical change promptly."
+      ],
+      "redFlags": [
+        "Suicidal intent or plan, recent attempt, severe self-neglect, or inability to maintain safety",
+        "New psychosis, severe agitation, aggression, dangerous impulsivity, or marked reduction in sleep with escalating energy",
+        "A suspected full manic, mixed, or severe depressive episode, especially with major functional loss or need for hospitalization",
+        "Possible lithium toxicity, acute intoxication or withdrawal, delirium, or a sudden neurologic or medical change"
+      ],
+      "complications": [
+        "Progression to a full manic, hypomanic, mixed, or depressive episode and reassignment to another bipolar-spectrum diagnosis",
+        "Suicide, self-harm, substance-related harm, unsafe driving, financial loss, exploitation, and relationship disruption",
+        "Sleep disruption, inconsistent treatment, educational or occupational instability, and cumulative functional loss",
+        "Misdiagnosis as unipolar depression, ADHD, personality difficulty, or ordinary moodiness, delaying appropriate monitoring and care"
+      ],
+      "prognosis": "The course is variable. Some people continue to have chronic subthreshold fluctuations, some improve with stable routines and appropriate care, and some later develop a full bipolar mood episode. Because a single visit cannot predict the trajectory, ongoing monitoring of sleep, function, risk, and episode thresholds is more useful than assuming either inevitable progression or harmless temperament.",
+      "prevention": [
+        "Maintain a consistent sleep-wake schedule and identify the person's earliest upward and downward warning signs.",
+        "Limit alcohol and nonprescribed drugs, review prescribed activating medicines, and address medical or psychosocial triggers promptly.",
+        "Use a written plan that names whom to contact and what actions to take for reduced sleep, escalating energy, suicidal thinking, psychosis, or unsafe behaviour."
+      ],
+      "patientEducation": [
+        "Cyclothymic disorder is a specific long-term pattern, not a synonym for ordinary mood swings.",
+        "Track sleep need, energy, activity, mood, medicines, substances, and consequences; the pattern helps the clinician but the diary does not diagnose the disorder by itself.",
+        "Report several nights of much less sleep with increasing energy, impulsivity, agitation, or unusual confidence promptly, and seek urgent help for psychosis or inability to stay safe.",
+        "Do not start, stop, or change a mood medicine on your own; some require gradual changes, blood tests, pregnancy precautions, or close relapse monitoring."
+      ],
+      "specialPopulations": [
+        "Children and adolescents require developmentally informed assessment, collateral history from caregivers and school when appropriate, and careful separation of persistent mood episodes from ADHD, trauma responses, irritability, and normal developmental change.",
+        "Pregnancy, the postpartum period, and pregnancy potential require specialist review because sleep loss can destabilize mood and medication risks and monitoring differ substantially.",
+        "Older adults with new mood instability need especially careful evaluation for medications, substances, delirium, neurologic illness, endocrine disease, sleep problems, and cognitive change before a primary cyclothymic diagnosis is accepted."
+      ],
+      "nclexTraps": [
+        "Cyclothymic disorder requires a chronic pattern of both upward and depressive symptoms; mood swings alone are not diagnostic.",
+        "The symptoms are subthreshold for the full episodes defining bipolar I or bipolar II, but safety and functional harm can still be substantial.",
+        "A new full manic, hypomanic, mixed, or depressive episode changes the diagnostic and treatment pathway and should not be hidden under the old label.",
+        "There is no confirmatory lab test. Use labs to investigate mimics or monitor a chosen medication, not to prove cyclothymia."
+      ],
+      "relatedTopics": [
+        "Bipolar disorder",
+        "Bipolar II disorder",
+        "Major depressive disorder",
+        "Attention-deficit/hyperactivity disorder"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "nice-cg185-bipolar"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based only on the WHO ICD-11 clinical descriptions and diagnostic requirements and NICE CG185 bipolar safety and management recommendations. NICE bipolar drug examples are explicitly limited to a qualifying bipolar episode and are not presented as cyclothymia-specific efficacy evidence; no source prose was copied.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR, 2024; accessed 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "definition",
+            "classification",
+            "diagnostic requirements",
+            "duration",
+            "differential",
+            "functional impact"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/cg185/chapter/recommendations",
+          "documentVersion": "CG185 updated 2025; accessed 2026-08-13",
+          "fieldsSupported": [
+            "risk assessment",
+            "full-episode escalation",
+            "bipolar treatment examples",
+            "medication monitoring",
+            "physical health",
+            "specialPopulations",
+            "patientEducation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.cyclothymic-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.oppositional-defiant-disorder",
+      "name": "Oppositional defiant disorder",
+      "displayName": "Oppositional defiant disorder (ODD)",
+      "category": "Mental health",
+      "aliases": [
+        "ODD",
+        "oppositional defiant disorder (ODD)",
+        "oppositional defiant disorder of childhood"
+      ],
+      "preferredBareAliases": [
+        "ODD"
+      ],
+      "preferredBareAliasRationale": "ODD is the standard child-and-adolescent mental-health abbreviation for oppositional defiant disorder, has no competing ANI clinical identity owner, and is safer than activating broad behaviour phrases.",
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "plainLanguage": "Oppositional defiant disorder is a persistent pattern of unusually strong anger, irritability, arguing, refusal, provocation, or spitefulness that is well beyond what is expected for the person's age and context and causes real problems at home, school, work, or in relationships.",
+      "whyItMatters": "Repeated conflict can disrupt learning, family safety, peer relationships, and access to care, while ADHD, autism, depression, trauma, learning or communication needs, abuse, and substance use can be missed if every difficulty is labeled defiance. Nursing care should assess risk and unmet needs without blaming the child or family.",
+      "plainLanguageGlosses": [
+        {
+          "term": "oppositional or defiant",
+          "plainLanguage": "repeatedly resisting, arguing against, or refusing reasonable requests or rules in a way that is markedly outside the expected developmental and cultural context",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "nice-cg158-conduct-disorders"
+          ]
+        },
+        {
+          "term": "chronic irritability-anger",
+          "plainLanguage": "an angry or irritable mood that persists across ordinary situations instead of appearing only during a brief outburst",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "prosocial emotions",
+          "plainLanguage": "empathy, concern for other people, remorse after harm, and sincere positive connection; these must be assessed across time and relationships rather than assumed from one event",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024"
+          ]
+        }
+      ],
+      "definition": "Oppositional defiant disorder is a disruptive-behaviour disorder defined by a persistent pattern of markedly defiant, disobedient, provocative, angry, irritable, or spiteful behaviour that occurs more often than expected for comparable age, developmental level, gender, and sociocultural context and causes significant impairment. WHO's ICD-11 clinical description uses an extended course such as 6 months or more, but duration is only one part of a full, classification-aware assessment and does not diagnose the condition by itself.",
+      "pathology": "Oppositional defiant disorder is not a structural brain lesion, a laboratory abnormality, a moral failing, or proof of poor parenting. The clinical problem is a sustained pattern of emotion and behaviour regulation difficulty within relationships and demands. Irritability, threat sensitivity, impulsive responding, limited problem-solving, and escalating interaction cycles can reinforce one another, while developmental, neurodevelopmental, communication, learning, trauma, family, school, and social factors shape how the pattern appears.",
+      "pathophysiology": [
+        "A request, limit, correction, or perceived unfairness may trigger rapid anger and arousal. Arguing, refusal, provocation, or blaming can end the demand or intensify the adult response, so both sides may unintentionally learn an escalating cycle that provides short-term relief but worsens long-term functioning.",
+        "Executive-function, language, learning, sensory, mood, or trauma-related difficulties may make demands harder to understand or tolerate. Those needs require direct assessment because treating all dysregulation as deliberate defiance can miss the mechanism and increase conflict."
+      ],
+      "etiology": "There is no single cause. Temperament, emotion regulation, attention and impulse control, communication or learning differences, adverse experiences, family stress, inconsistent or coercive interaction patterns, school mismatch, peer problems, and broader social adversity can interact. These are risk or maintaining factors rather than evidence that a parent, child, school, or culture caused the disorder.",
+      "riskFactors": [
+        "ADHD, autism, learning disability or difficulty, language or communication disorder, mood or anxiety symptoms, and other neurodevelopmental or mental health needs",
+        "Frequent early irritability, impulsivity, difficulty with emotional regulation, or persistent conflict across ordinary demands",
+        "Exposure to abuse, neglect, domestic violence, bullying, unstable care, punitive experiences, family stress, or social disadvantage",
+        "Parental mental health or substance problems, disrupted relationships, school failure, peer rejection, or inconsistent support, none of which alone establishes the diagnosis"
+      ],
+      "signsSymptoms": [
+        "Persistent arguing with authority figures, active refusal of reasonable requests or rules, or blaming others for mistakes or misconduct",
+        "Frequent temper loss, touchiness, anger, resentment, provocation, or spiteful behaviour beyond the expected developmental and cultural range",
+        "Conflict and impaired functioning at home, school, with peers, or in other important settings",
+        "A pattern that is not limited to an occasional disagreement, one difficult relationship, a sibling interaction, or a brief response to stress",
+        "Some people have prevailing chronic irritability-anger; others mainly show headstrong, argumentative, or defiant behaviour"
+      ],
+      "diagnostics": [
+        "Diagnosis is clinical and longitudinal. Establish the pattern, onset, frequency, triggers, duration, settings, relationships, developmental and cultural expectations, distress, and functional impairment. WHO gives 6 months or more as an example of persistence; current local classification and the person's age and context still govern the formal diagnosis.",
+        "Seek information from the child or young person and, when appropriate, parents or carers, school, and other observers. Offer private time with the young person and explain how information and safety concerns will be handled.",
+        "The Strengths and Difficulties Questionnaire or another validated measure can organize concerns and track change but cannot diagnose ODD, prove intent, or replace a comprehensive assessment.",
+        "Assess whether behaviours are limited to one antagonistic or unreasonable relationship, are expected for development, or are better explained by ADHD, autism, communication or learning difficulty, depression, bipolar symptoms, trauma, substance use, abuse, or another condition.",
+        "Aggression toward people or animals, property destruction, deceit or theft, or serious persistent violations of rights or rules require a conduct-disorder assessment rather than being automatically folded into ODD."
+      ],
+      "labs": [
+        "No blood test, scan, rating-scale score, or genetic test confirms oppositional defiant disorder.",
+        "Order targeted medical, developmental, substance, hearing, vision, sleep, or medication evaluation only when the history and examination suggest a contributor or mimic.",
+        "Laboratory monitoring is based on a separately indicated medicine or medical condition, not on the ODD label itself."
+      ],
+      "assessment": "Use calm, concrete, nonjudgmental language and document observable behaviour, antecedents, consequences, duration, setting, and impact instead of labels such as bad, manipulative, or delinquent. Assess self-harm, harm to others, self-neglect, exploitation, physical, sexual or emotional abuse, domestic violence, substances, access to weapons or fire, and caregiver capacity. Also assess strengths, school function, sleep, communication, learning, ADHD, autism, mood, anxiety, trauma, physical health, and what helps de-escalation.",
+      "differential": [
+        "Developmentally expected limit testing, culturally shaped communication, or conflict limited to one unreasonable or unsafe relationship",
+        "Conduct disorder, especially when there is a persistent pattern of aggression, destruction, deceit, theft, or serious rights violations",
+        "ADHD, autism spectrum disorder, intellectual or learning disability, language or communication disorder, and sensory or sleep problems",
+        "Depression, bipolar disorder, anxiety, post-traumatic stress, adjustment reactions, substance use, or medication effects",
+        "Abuse, neglect, coercive control, bullying, discrimination, school mismatch, or another environmental problem requiring safeguarding or practical intervention"
+      ],
+      "treatments": [
+        "Use a shared, strength-based plan that defines specific target behaviours, antecedents, predictable responses, reinforcement of safer skills, school supports, family needs, and measurable functional goals.",
+        "NICE recommends parent-training approaches for children aged 3 to 11 who have ODD, conduct disorder, or high risk; offer an individual programme when a group cannot be used and combined parent-and-child training when problems are severe and complex.",
+        "For ages 9 to 14, social and cognitive problem-solving programmes can teach emotion awareness, self-control, perspective-taking, rehearsal, and safer problem solving at a developmentally appropriate level.",
+        "Do not use medication routinely to manage ODD behaviour. Methylphenidate or atomoxetine may be offered only within their licensed indications for separately diagnosed coexisting ADHD; they are not ODD-specific medicines."
+      ],
+      "contraindications": [
+        "Do not diagnose ODD from one outburst, one rating scale, ordinary disagreement, legal trouble, or behaviour limited to a single antagonistic relationship.",
+        "Do not use punitive confrontation, humiliation, threats, inconsistent bargaining, or staff splitting as a treatment strategy; these responses can intensify arousal and mistrust.",
+        "Do not offer medication for routine management of oppositional behaviour, and do not present ADHD medication as treatment for ODD itself.",
+        "Do not assume limited empathy, conduct disorder, antisocial personality disorder, or inevitable adult criminality from an ODD label."
+      ],
+      "safetyConsiderations": [
+        "Assess risk to and from the child: self-harm, harm to others, self-neglect, exploitation, abuse, neglect, domestic violence, and rapid escalation all require an individualized safety response.",
+        "Separate a behavioural diagnosis from safeguarding. Apparent defiance can be resistance to an unsafe person, traumatic trigger, incomprehensible demand, sensory overload, or communication failure.",
+        "If coexisting ADHD is treated with methylphenidate or atomoxetine, follow the current ADHD indication and monitoring plan; the ODD card does not supply dosing or medicine-specific clearance.",
+        "Coordinate language and limits across caregivers, school, and clinicians while preserving the young person's privacy, dignity, developmental needs, and opportunity to be heard."
+      ],
+      "nursingPriorities": [
+        "Assess immediate risk, abuse or exploitation, self-harm, aggression, weapon or fire access, intoxication, psychosis, and caregiver ability to maintain safety before routine behaviour planning.",
+        "Describe the sequence: trigger, observable response, duration, consequence, recovery, and what helped. Avoid assigning motive when the evidence shows only behaviour.",
+        "Use brief directions, one choice at a time, consistent nonpunitive limits, specific praise for safer behaviour, planned breaks, and a calm exit route from escalating interactions.",
+        "Screen for ADHD, autism, learning and communication needs, depression, trauma, sleep problems, and substance use and coordinate family, school, social care, and mental-health follow-up."
+      ],
+      "redFlags": [
+        "Suicidal intent, serious self-harm, credible threat, weapon access, fire-setting, escalating violence, or inability to maintain immediate safety",
+        "Suspected physical, sexual or emotional abuse, neglect, trafficking, coercion, exploitation, or unsafe domestic violence exposure",
+        "New psychosis, mania, severe depression, intoxication, withdrawal, delirium, or abrupt neurologic or behavioural change",
+        "Cruelty, serious aggression, property destruction, deceit or theft, or major persistent rights violations suggesting a different or more severe pathway"
+      ],
+      "complications": [
+        "School exclusion or failure, peer rejection, family conflict, reduced access to care, and involvement with social or justice systems",
+        "Depression, anxiety, substance use, self-harm, aggression, and worsening functional impairment when coexisting needs are missed",
+        "Progression in some people to conduct disorder, although this is not inevitable and must not be predicted from the ODD label alone",
+        "Stigma, punitive care, or diagnostic overshadowing that hides trauma, abuse, communication, learning, developmental, or medical needs"
+      ],
+      "prognosis": "Course and outcome vary. Many children improve when development, communication, family stress, school needs, coexisting conditions, and interaction patterns are addressed early and consistently. ODD does not inevitably become conduct disorder or antisocial personality disorder; persistent multi-setting impairment, severe aggression, limited supports, and untreated comorbidity increase concern and justify closer follow-up.",
+      "prevention": [
+        "Respond early to persistent irritability, school difficulty, bullying, trauma, communication or learning needs, and family stress before escalating patterns become established.",
+        "Use developmentally appropriate emotional-learning, problem-solving, predictable routines, positive reinforcement, and caregiver support rather than humiliation or coercive discipline.",
+        "Make care accessible across health, school, social, and community settings and reduce stigma that discourages children and families from seeking help."
+      ],
+      "patientEducation": [
+        "ODD describes a persistent pattern and its impact; it does not mean a child is bad, deliberately difficult in every situation, or destined to become violent or criminal.",
+        "A questionnaire can help organize concerns but cannot diagnose ODD by itself. The clinician needs the pattern across time, relationships, development, and daily function.",
+        "Parent training is not about blaming parents. It teaches predictable, practiced responses that can lower conflict and strengthen safer behaviour.",
+        "Seek urgent help for suicidal thoughts, serious threats, weapons or fire, severe aggression, abuse or exploitation, psychosis, or inability to keep anyone safe."
+      ],
+      "specialPopulations": [
+        "Preschool children require especially careful comparison with normal development; frequent refusal or tantrums alone is not enough without persistence and significant impairment.",
+        "Autistic young people and those with ADHD, intellectual, language, learning, sensory, or communication differences need adapted assessment so overload or inability is not mistaken for deliberate defiance.",
+        "Children in care, justice-involved young people, and those exposed to trauma, discrimination, poverty, or unstable housing need coordinated safeguarding and practical support, not a behaviour label used to deny care.",
+        "Transition-age youth with persistent difficulties need planned continuity and reassessment rather than automatic conversion to an adult personality diagnosis."
+      ],
+      "nclexTraps": [
+        "ODD is a persistent developmentally atypical pattern with impairment, not one outburst, ordinary limit testing, or a high questionnaire score.",
+        "Do not call the child manipulative or bad; document behaviour, trigger, consequence, safety, and unmet developmental or mental-health needs.",
+        "Parent and child psychosocial programmes are core. Medication is not routine treatment for ODD; methylphenidate or atomoxetine applies only to separately diagnosed ADHD.",
+        "ODD does not equal conduct disorder, antisocial personality disorder, or inevitable criminality."
+      ],
+      "relatedTopics": [
+        "Conduct disorder",
+        "Attention-deficit/hyperactivity disorder",
+        "Autism spectrum disorder",
+        "Major depressive disorder",
+        "Child abuse and neglect"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "nice-cg158-conduct-disorders"
+      ],
+      "sourceNote": "Original ANI child-and-adolescent nursing synthesis based only on the WHO ICD-11 clinical descriptions and diagnostic requirements and NICE CG158 recommendations. Developmental, diagnostic, safeguarding, treatment, and medication boundaries are preserved and no source prose was copied.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR, 2024; oppositional defiant disorder pp. 538–543; accessed 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "definition",
+            "diagnostic requirements",
+            "duration",
+            "specifiers",
+            "differential",
+            "functional impact"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/cg158/chapter/recommendations",
+          "documentVersion": "CG158 current recommendations, updated 2017; accessed 2026-08-13",
+          "fieldsSupported": [
+            "assessment",
+            "risk assessment",
+            "safeguarding",
+            "parent and child interventions",
+            "medication boundaries",
+            "specialPopulations",
+            "patientEducation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.oppositional-defiant-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.conduct-disorder",
+      "name": "Conduct disorder",
+      "displayName": "Conduct disorder (ICD-11: conduct-dissocial disorder)",
+      "category": "Mental health",
+      "aliases": [
+        "conduct-dissocial disorder",
+        "conduct disorder in children and young people"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "plainLanguage": "Conduct disorder is a persistent pattern of serious behaviour that violates other people's basic rights or major age-appropriate rules, such as aggression, cruelty, property destruction, deceit, theft, or severe rule violations. It is not diagnosed from one incident, an arrest, or a social label.",
+      "whyItMatters": "The young person and other people may face injury, exploitation, abuse, school loss, substance harm, legal consequences, or unsafe escalation. Nurses must assess immediate safety and safeguarding while identifying trauma, ADHD, autism, learning or communication needs, mood symptoms, substances, family stress, and strengths that can change the care plan.",
+      "plainLanguageGlosses": [
+        {
+          "term": "dissocial",
+          "plainLanguage": "persistently violating other people's rights or major shared rules; it is a clinical pattern term, not a synonym for being unpopular or having one legal problem",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "limited prosocial emotions",
+          "plainLanguage": "a persistent cross-situation pattern of unusually low empathy, concern, remorse, or sincere emotional expression, assessed over time rather than inferred from one event",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "multimodal intervention",
+          "plainLanguage": "coordinated treatment that works with the young person, family, school, community, and other involved services instead of relying on one setting",
+          "sourceKeys": [
+            "nice-cg158-conduct-disorders"
+          ]
+        }
+      ],
+      "definition": "Conduct disorder, called conduct-dissocial disorder in ICD-11, is a repetitive and persistent pattern in which the basic rights of others or major age-appropriate social norms, rules, or laws are violated and important functioning is impaired. WHO describes an enduring course such as 12 months or more; the duration anchor is classification- and context-specific, and neither an isolated dissocial or criminal act nor a rating-scale score establishes the diagnosis.",
+      "pathology": "Conduct disorder is not defined by a brain lesion, laboratory marker, arrest record, moral judgment, or inevitable adult personality disorder. The clinical pathology is a sustained developmental pattern of severe behaviour across rights, safety, property, honesty, or rules, shaped by interacting emotion regulation, impulse control, reward learning, empathy, planning, communication, trauma, family, peer, school, substance, and social conditions. Different mechanisms require different interventions even when the outward act looks similar.",
+      "pathophysiology": [
+        "Immediate reward, peer status, escape from demands, anger relief, or protection from perceived threat can outweigh delayed consequences. Repetition and reinforcement may make aggression, deceit, theft, destruction, or rule violation more likely, but the same act can have different functions and must be assessed rather than assumed.",
+        "Limited emotion recognition, impulsivity, hostile threat interpretation, reduced future planning, trauma-related hyperarousal, communication difficulty, or substance effects may contribute. These mechanisms are neither universal nor diagnostic, and a formulation should connect the specific pattern to modifiable individual and environmental factors."
+      ],
+      "etiology": "Cause is multifactorial. Genetic and temperamental vulnerability, ADHD or other neurodevelopmental needs, trauma and abuse, inconsistent or coercive relationships, caregiver illness or substance use, peer reinforcement, school failure, poverty, discrimination, unsafe neighborhoods, and substance use can interact. Risk factors do not prove causation and must not be used to blame the child, family, or community.",
+      "riskFactors": [
+        "Earlier persistent disruptive behaviour, ADHD, impulsivity, learning or communication difficulty, or other neurodevelopmental needs",
+        "Abuse, neglect, domestic violence, exploitation, unstable care, bullying, trauma, harsh or coercive experiences, or repeated exposure to violence",
+        "School failure or exclusion, peer rejection or delinquent peer reinforcement, family stress, poverty, housing instability, and limited access to support",
+        "Depression, post-traumatic stress, substance use, sleep disruption, and caregiver mental health or substance problems that may increase risk or complicate care"
+      ],
+      "signsSymptoms": [
+        "Repeated aggression, threats, bullying, cruelty, coercion, or serious harm toward people or animals",
+        "Deliberate serious property destruction or fire-setting rather than an accident or one developmentally limited event",
+        "A persistent pattern of deceit, theft, manipulation for material gain, or serious violation of trust",
+        "Major age-inappropriate rule violations such as repeated running away, truancy, or unsafe activity with meaningful impairment",
+        "Childhood- or adolescent-onset patterns and limited- or typical-prosocial-emotion specifiers may refine ICD-11 description, but they are not separate umbrella aliases"
+      ],
+      "diagnostics": [
+        "Diagnosis is clinical and longitudinal. Establish the exact behaviours, onset, frequency, severity, victims and consequences, settings, duration, developmental and cultural context, intent where knowable, functional impairment, and periods of remission. WHO gives 12 months or more as an example of an enduring pattern; current classification and local protocol govern formal requirements.",
+        "One fight, theft, arrest, rule violation, or other dissocial or criminal act is not enough. Confirm a repetitive pattern that crosses the clinical threshold rather than converting a legal, school, or social label into a diagnosis.",
+        "Use separate interviews and multi-informant history from the young person, parent or carer, school, and other appropriate observers. Explain confidentiality and its safety limits, and assess for bias or different behaviour across settings.",
+        "The Strengths and Difficulties Questionnaire, Child Behavior Checklist, or another measure may support assessment and track response but cannot diagnose conduct disorder, determine motive, or replace safeguarding and differential diagnosis.",
+        "Assess ICD-11 age-of-onset and prosocial-emotion specifiers carefully. Childhood onset refers to features before adolescence, with WHO giving before age 10 as an example; do not infer a specifier from one relationship, one observation, or the person's current age."
+      ],
+      "labs": [
+        "No laboratory result, toxicology screen, imaging study, genetic test, or rating-scale score confirms conduct disorder.",
+        "Order targeted studies when intoxication, withdrawal, head injury, seizure, endocrine illness, pregnancy, medication effects, or another medical contributor is plausible; a negative test does not settle the psychiatric diagnosis.",
+        "Before selected specialist risperidone use, NICE requires baseline weight and height on a growth chart, waist and hip measurements, pulse and blood pressure, fasting glucose or HbA1c, blood lipids, prolactin, movement assessment, nutritional status, diet, and physical activity."
+      ],
+      "assessment": "Start with immediate safety and safeguarding, then construct the developmental pattern without criminalizing language. Ask about self-harm, suicide, harm to others, weapons, fire, cruelty, sexual harm, exploitation, abuse, domestic violence, substances, victims, legal and school events, sleep, mood, psychosis, trauma, ADHD, autism, learning and communication, physical health, caregiver wellbeing, and strengths. Document observable acts and credible reports, distinguish fact from inference, and involve the young person in goals and feedback.",
+      "differential": [
+        "Oppositional defiant disorder, where persistent defiance or irritability is present without the sustained serious rights-violation pattern defining conduct disorder",
+        "Developmentally expected conflict, a single legal or school event, survival behaviour in an unsafe environment, or a relational problem with an antagonistic authority figure",
+        "ADHD, autism, intellectual or learning disability, language or communication disorder, and sleep or sensory problems",
+        "Depression, bipolar disorder, psychosis, post-traumatic stress, substance intoxication or withdrawal, and medication effects",
+        "Abuse, neglect, coercion, trafficking, peer exploitation, neurologic disease, head injury, seizure, or delirium",
+        "Antisocial personality disorder is an adult personality diagnosis with separate requirements; conduct disorder is neither identical to it nor proof that it will develop"
+      ],
+      "treatments": [
+        "Build a shared, strengths-based plan around safety, safeguarding, specific target behaviours, family and school needs, communication, reinforcement, problem solving, substance care, and measurable functional outcomes.",
+        "NICE parent or carer training applies to ages 3 to 11; child social and cognitive problem-solving programmes apply to ages 9 to 14; severe or complex younger presentations may need combined parent-and-child work.",
+        "For ages 11 to 17 with conduct disorder, offer a coordinated multimodal intervention involving the young person, family or carers, school, community, and other relevant services.",
+        "Do not offer medication for routine behavioural management. Methylphenidate or atomoxetine is reserved for separately diagnosed coexisting ADHD within its licensed indication, not as conduct-disorder treatment.",
+        "A qualified specialist may consider short-term risperidone only for severe aggression with explosive anger and severe emotional dysregulation after psychosocial interventions have not worked. Review response after 3 to 4 weeks and discontinue by 6 weeks when there is no clinically important response."
+      ],
+      "contraindications": [
+        "Do not diagnose conduct disorder from an isolated criminal, dissocial, aggressive, or rule-breaking act or from a screening score.",
+        "Do not offer medication routinely, and do not use sedation, restraint, humiliation, threats, or punishment as behavioural treatment.",
+        "Do not start selected risperidone without comprehensive diagnosis, specialist expertise, shared information about off-label and adverse-effect context where applicable, and the required baseline assessment and monitoring plan.",
+        "Do not use the diagnosis as shorthand for criminal, remorseless, antisocial, dangerous, untreatable, or destined to develop antisocial personality disorder."
+      ],
+      "safetyConsiderations": [
+        "Assess self-harm, suicide, harm to others, victim safety, weapons, fire-setting, cruelty, sexual harm, retaliation, exploitation, abuse, neglect, trafficking, and caregiver capacity; use the applicable emergency and safeguarding pathways.",
+        "The young person may also be a victim. Gather safety information without coercive interviewing, avoid promising absolute confidentiality, and share only what is necessary under law and policy.",
+        "Risperidone can cause weight and metabolic change, movement disorders, cardiovascular effects including QT concerns, and prolactin elevation. Monitor benefits, adverse effects, adherence, and physical measures throughout the short trial.",
+        "Methylphenidate and atomoxetine examples apply only to coexisting ADHD and require the ADHD-specific cardiovascular, growth, mental-state, interaction, and adverse-effect plan."
+      ],
+      "nursingPriorities": [
+        "Protect the young person, peers, family, staff, animals, and community from immediate credible harm while initiating safeguarding for suspected abuse, neglect, exploitation, or trafficking.",
+        "Use calm, consistent, nonpunitive boundaries and choices; identify triggers, function, early escalation signs, recovery needs, and a safe exit plan without arguing about character or motive.",
+        "Document the specific act, source of information, context, injury or risk, response, and outcome. Separate observed fact, patient report, collateral report, and clinical inference.",
+        "Coordinate mental-health, pediatric, primary-care, school, social-care, substance-use, and justice-system services as needed while tracking safety, attendance, family function, peer relationships, and agreed behavioural goals.",
+        "If risperidone is used, verify baseline measures, monitor weight, appetite, glucose and lipid risk, prolactin effects, movement symptoms, pulse, blood pressure, response, and the 3-to-4-week and 6-week decision points."
+      ],
+      "redFlags": [
+        "Credible threat or plan, weapon access, serious assault, strangulation, fire-setting, cruelty, sexual violence, escalating retaliation, or inability to maintain safety",
+        "Suicidal intent, serious self-harm, severe depression, psychosis, mania, intoxication, withdrawal, or abrupt behavioural or neurologic change",
+        "Suspected abuse, neglect, trafficking, exploitation, domestic violence, unsafe caregiver response, or serious harm to another person or animal",
+        "Risperidone-associated severe rigidity, fever, altered consciousness, acute dystonia affecting breathing or swallowing, syncope, severe hyperglycemic symptoms, or other medically urgent adverse effect"
+      ],
+      "complications": [
+        "Injury to self or others, victimization, exploitation, substance-related harm, unsafe sexual behaviour, property loss, and legal consequences",
+        "School exclusion or failure, family disruption, unstable placement, peer problems, reduced access to care, and worsening social disadvantage",
+        "Depression, trauma symptoms, substance use, self-harm, suicide risk, and continued aggression when coexisting needs are missed",
+        "Persistent conduct difficulty or later antisocial personality disorder in some people, but neither outcome is inevitable and neither may be inferred from one act"
+      ],
+      "prognosis": "Outcome varies with onset, severity, settings, comorbidity, victimization, supports, and access to effective care. Earlier and more pervasive patterns can carry greater long-term risk, but coordinated family, school, community, safeguarding, substance, and mental-health interventions can improve safety and function. A conduct-disorder diagnosis does not determine adult personality, morality, or legal outcome.",
+      "prevention": [
+        "Identify and address early emotional, communication, learning, attention, family, school, trauma, abuse, and substance needs before severe patterns become entrenched.",
+        "Use school emotional-learning and problem-solving support, consistent positive reinforcement, caregiver training, safe recreation, mentoring, and practical family assistance when appropriate.",
+        "Reduce exclusionary and stigmatizing responses that disconnect the young person from education, health care, stable relationships, and treatment."
+      ],
+      "patientEducation": [
+        "Conduct disorder is a clinical pattern across time and impairment; it is not another word for an arrest, a bad child, antisocial behaviour in general, or one serious mistake.",
+        "The assessment includes strengths, safety, trauma, learning, attention, communication, family and school needs because the same outward behaviour can have different causes and solutions.",
+        "Psychosocial and multimodal care is central. Medication is not routine; the three named medicines apply only to coexisting ADHD or a narrowly selected short severe-aggression trial with monitoring.",
+        "Seek emergency help for immediate threats, weapons, serious violence, fire-setting, sexual harm, suicidal intent, psychosis, severe intoxication, or inability to keep anyone safe."
+      ],
+      "specialPopulations": [
+        "Younger children need developmentally calibrated assessment and family-based care; serious rights violations must not be confused with ordinary tantrums or immature judgment.",
+        "Autistic young people and those with ADHD, intellectual, language, learning, sensory, or communication differences require adapted assessment so disability-related distress is not mislabeled as intentional misconduct.",
+        "Children in care, justice-involved youth, and those exposed to trauma, racism, poverty, unstable housing, exploitation, or violence require coordinated advocacy and safeguarding rather than diagnostic exclusion or criminalization.",
+        "Transition-age youth need planned continuity, reassessment, and adult-service criteria; a childhood conduct diagnosis does not automatically become an adult personality diagnosis."
+      ],
+      "nclexTraps": [
+        "One illegal, aggressive, or dissocial act and one high rating-scale score do not diagnose conduct disorder; establish an enduring impaired pattern and complete the differential.",
+        "Conduct disorder is more severe than ODD because it involves sustained major rights or norm violations, but neither diagnosis is a moral or legal label.",
+        "Medication is not routine. Methylphenidate and atomoxetine treat separately diagnosed ADHD; selected short-term risperidone follows psychosocial nonresponse, specialist assessment, baseline monitoring, and 3-to-4-week/6-week review.",
+        "Always assess whether the young person is also being abused, exploited, trafficked, coerced, or harmed and activate safeguarding when indicated."
+      ],
+      "relatedTopics": [
+        "Oppositional defiant disorder",
+        "Attention-deficit/hyperactivity disorder",
+        "Substance use disorders",
+        "Antisocial personality disorder",
+        "Child abuse and neglect",
+        "Violence risk"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "nice-cg158-conduct-disorders"
+      ],
+      "sourceNote": "Original ANI child-and-adolescent nursing synthesis based only on the WHO ICD-11 clinical descriptions and diagnostic requirements and NICE CG158 recommendations. Legal-label, isolated-act, developmental, safeguarding, treatment, and medication boundaries are explicit and no source prose was copied.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR, 2024; conduct-dissocial disorder pp. 544–549; accessed 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "definition",
+            "diagnostic requirements",
+            "duration",
+            "age-of-onset and prosocial-emotion specifiers",
+            "differential",
+            "functional impact"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/cg158/chapter/recommendations",
+          "documentVersion": "CG158 current recommendations, updated 2017; accessed 2026-08-13",
+          "fieldsSupported": [
+            "assessment",
+            "risk assessment",
+            "safeguarding",
+            "parent child and multimodal interventions",
+            "medication boundaries",
+            "risperidone monitoring",
+            "specialPopulations",
+            "patientEducation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.conduct-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.personality-disorders-overview",
+      "name": "Personality disorders",
+      "displayName": "Personality disorders (Cluster A, B, and C overview)",
+      "category": "Mental health",
+      "aliases": [
+        "personality disorder",
+        "personality disorder clusters",
+        "Cluster A personality disorders",
+        "Cluster B personality disorders",
+        "Cluster C personality disorders"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "plainLanguage": "Personality disorders are enduring patterns in how a person understands self and others, manages emotions and impulses, and relates to people. The pattern is inflexible across important parts of life and causes meaningful distress, relationship difficulty, unsafe behaviour, or impaired daily functioning.",
+      "whyItMatters": "A personality-disorder label can affect suicide and violence assessment, crisis planning, therapeutic boundaries, medication expectations, and continuity of care. Nurses must respond to the person's current safety and needs without treating a cluster name as a moral judgment, a severity score, or a diagnosis made from one difficult encounter.",
+      "plainLanguageGlosses": [
+        {
+          "term": "pervasive",
+          "plainLanguage": "present across several important situations or relationships rather than appearing only with one person or during one brief crisis",
+          "sourceKeys": [
+            "apa-personality-disorders",
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "personality trait",
+          "plainLanguage": "a relatively consistent tendency in how someone thinks, feels, behaves, or relates; a trait alone is not a disorder",
+          "sourceKeys": [
+            "apa-personality-disorders",
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "trait domain",
+          "plainLanguage": "an ICD-11 category used to describe a prominent style, such as detachment or disinhibition, after personality-disorder severity is assessed",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024"
+          ]
+        }
+      ],
+      "definition": "Personality disorders are mental disorders in which enduring and pervasive patterns of inner experience and behaviour differ markedly from cultural expectations, are inflexible across important settings, and cause clinically meaningful distress or impairment. Diagnosis requires a longitudinal, culturally informed clinical assessment; an isolated trait, conflict, crisis, crime, questionnaire result, or cluster label does not establish a personality disorder.",
+      "pathology": "There is no single structural lesion, laboratory abnormality, or universal biologic mechanism that defines all personality disorders. The clinical pathology is a persistent disturbance in self-function, interpersonal functioning, emotional regulation, cognition, or impulse control that repeatedly produces harmful or inflexible responses. A personality trait becomes clinically relevant only when its pattern, severity, context, and functional consequences support a disorder assessment.",
+      "pathophysiology": [
+        "Long-standing ways of interpreting threat, closeness, criticism, rules, identity, and emotion can shape attention and behaviour. A response that reduces distress in the moment, such as withdrawal, control, aggression, reassurance seeking, or self-harm, may be reinforced even while it worsens relationships and function over time.",
+        "Different personality disorders emphasize different domains, and people can have mixed features or more than one categorical diagnosis. Neurobiology, temperament, learning, attachment, trauma exposure, culture, and social conditions may contribute, but no one mechanism or history is necessary or sufficient for diagnosis."
+      ],
+      "etiology": "Personality disorders are multifactorial. Genetic and temperamental vulnerability may interact with development, relationships, learning, adversity, trauma, social environment, and culture. Many people with adversity do not develop a personality disorder, and some affected people report no specific trauma; the diagnosis must never be used to assign blame to the person, family, or culture.",
+      "riskFactors": [
+        "Temperamental emotional sensitivity, impulsivity, suspiciousness, detachment, or rigidity that persists and impairs adaptation",
+        "Childhood abuse, neglect, unstable caregiving, chronic invalidation, violence, discrimination, or other adversity, none of which alone establishes the diagnosis",
+        "Family history of personality or other mental disorders and co-occurring mood, anxiety, trauma-related, psychotic, neurodevelopmental, eating, or substance-use conditions",
+        "Repeated relationship, education, employment, housing, legal, or health-care disruption that can both reflect and intensify an enduring maladaptive pattern"
+      ],
+      "signsSymptoms": [
+        "Cluster A in DSM-5-TR groups paranoid, schizoid, and schizotypal personality disorders; the grouping describes broadly odd or eccentric patterns and is not a severity grade.",
+        "Cluster B groups antisocial, borderline, histrionic, and narcissistic personality disorders; the grouping describes broadly dramatic, emotional, or erratic patterns and is not proof of dangerousness.",
+        "Cluster C groups avoidant, dependent, and obsessive-compulsive personality disorders; the grouping describes broadly anxious or fearful patterns and is not the same as an anxiety-disorder diagnosis.",
+        "Persistent difficulties may involve identity, self-direction, empathy, intimacy, emotional regulation, cognition, suspiciousness, detachment, disinhibition, perfectionism, or control.",
+        "The pattern causes distress or impaired relationships, work, education, self-care, safety, or other functioning and is not limited to one episode, substance effect, medical illness, or culturally expected practice."
+      ],
+      "diagnostics": [
+        "Diagnosis is clinical and longitudinal. Establish onset and course, stability across relationships and settings, self and interpersonal functioning, distress, impairment, strengths, cultural context, developmental stage, and the person's own goals and explanation.",
+        "Assess mood episodes, psychosis, trauma, anxiety, obsessive-compulsive symptoms, autism and other neurodevelopmental conditions, substance or medication effects, cognitive change, neurologic or medical illness, and immediate risks before attributing a presentation to personality.",
+        "DSM-5-TR retains 10 named categorical types grouped in Clusters A, B, and C. ICD-11 instead classifies personality disorder primarily by mild, moderate, or severe impairment and may add prominent trait domains such as negative affectivity, detachment, dissociality, disinhibition, or anankastia and an optional borderline-pattern qualifier. Do not transfer criteria or labels between systems without naming the system.",
+        "Structured interviews and validated instruments may support a comprehensive evaluation and track function, but no questionnaire score, trait list, or single observation independently confirms or excludes a personality disorder."
+      ],
+      "labs": [
+        "No blood test, brain scan, genetic result, toxicology screen, or rating-scale score diagnoses a personality disorder.",
+        "Use targeted medical, neurologic, cognitive, pregnancy, substance, and medication evaluation when the history or examination suggests a mimic, contributor, consequence, or treatment-safety need.",
+        "Normal tests do not prove a personality diagnosis; they answer only the medical question for which they were ordered."
+      ],
+      "assessment": "Use respectful, nonpejorative language and separate the enduring pattern from the current crisis. Ask about self-harm, suicide, aggression, victimization, abuse, exploitation, substances, psychosis, mood episodes, dissociation, sleep, medical needs, medications, relationships, work or school, housing, culture, strengths, prior treatment, and what has helped. Obtain collateral history only with appropriate consent or under an applicable safety duty, and document observed facts separately from interpretations.",
+      "differential": [
+        "A developmentally expected or culturally normative personality style that does not cause clinically meaningful distress or impairment",
+        "A mood, anxiety, trauma-related, obsessive-compulsive, psychotic, eating, dissociative, substance-use, neurodevelopmental, or neurocognitive disorder",
+        "Substance intoxication or withdrawal, medication effects, delirium, traumatic brain injury, epilepsy, endocrine disease, infection, pain, sleep loss, or another medical cause of behavioural change",
+        "A temporary reaction to grief, abuse, coercion, discrimination, unsafe housing, relationship conflict, or another severe stressor",
+        "Personality change due to another medical condition, which is different from a long-standing developmental personality pattern"
+      ],
+      "treatments": [
+        "Psychotherapy is the main treatment approach. The structure and modality should match the person's diagnosis or dimensional formulation, risks, goals, developmental needs, comorbidity, culture, prior response, and available expertise.",
+        "Use a collaborative care and crisis plan with clear roles, predictable boundaries, manageable goals, and follow-up. Address housing, abuse, substance use, physical health, family or caregiver needs, education, and employment when these affect recovery.",
+        "No medication class treats every personality disorder or changes personality by itself. A prescriber may treat a separately diagnosed co-occurring disorder or a clearly defined short-term target according to that condition's evidence, product information, overdose risk, and monitoring plan.",
+        "Urgent care treats the immediate problem, including overdose, injury, intoxication, psychosis, mania, severe agitation, or suicide risk, while preserving longer-term psychotherapy and continuity."
+      ],
+      "contraindications": [
+        "Do not diagnose a personality disorder from one conflict, one self-harm event, one crime, one hospital encounter, appearance, staff frustration, or a screening score.",
+        "Do not use Cluster A, B, or C as a severity scale, and do not assume all members of a cluster have the same risks, motives, or treatment needs.",
+        "Do not use pejorative labels such as manipulative, attention seeking, difficult, or untreatable in place of observable behaviour, the person's stated need, and a clinical formulation.",
+        "Do not use medication, seclusion, restraint, coercion, or hospitalization as punishment or as a substitute for an indicated psychosocial, safety, safeguarding, or medical intervention."
+      ],
+      "safetyConsiderations": [
+        "Risk changes over time. Distinguish chronic vulnerability from immediate intent, plan, means, recent acts, intoxication, psychosis, severe mood symptoms, violence risk, and the ability to use a safety plan.",
+        "A personality-disorder diagnosis does not make new chest pain, neurologic change, injury, delirium, pregnancy complication, intoxication, or medication toxicity psychiatric; assess acute medical findings on their own merits.",
+        "Transitions, perceived rejection, relationship loss, legal or housing crises, and treatment endings can increase distress for some people; plan communication and follow-up rather than using abrupt discharge as a boundary.",
+        "Review polypharmacy, dependence, withdrawal, metabolic effects, interactions, and overdose access whenever medicines are used for comorbidity or short-term crisis targets."
+      ],
+      "nursingPriorities": [
+        "Assess immediate self-harm, suicide, aggression, victimization, abuse, exploitation, intoxication, psychosis, mania, medical injury, and dependent-person safety before routine teaching.",
+        "Validate distress without confirming an inaccurate belief, use calm and specific language, offer realistic choices, and keep team boundaries consistent and nonpunitive.",
+        "Document the trigger, observable behaviour, stated emotion or need, intervention, response, and agreed next step; avoid assigning motive when it was not established.",
+        "Support autonomy and skills rather than rescuing, rejecting, or making every decision for the person. Coordinate psychotherapy, physical care, comorbidity treatment, crisis planning, and social supports.",
+        "Monitor function and outcomes meaningful to the person, including safety, self-care, relationships, work or school, substance use, treatment engagement, and adverse effects."
+      ],
+      "redFlags": [
+        "Current suicidal intent or plan, recent serious attempt, escalating self-harm, access to lethal means, or inability to maintain immediate safety",
+        "Credible violence threat, weapon access, severe agitation, psychosis, mania, intoxication, withdrawal, or rapidly changing mental status",
+        "Overdose, uncontrolled bleeding, strangulation concern, head injury, severe self-neglect, dehydration, or another untreated medical emergency",
+        "Suspected abuse, exploitation, trafficking, coercive control, unsafe discharge, or a dependent child or adult at risk"
+      ],
+      "complications": [
+        "Self-harm, suicide, aggression, victimization, exploitation, substance-related harm, and preventable medical injury",
+        "Depression, anxiety, trauma-related illness, eating disorders, psychosis, substance-use disorders, and other co-occurring conditions",
+        "Relationship disruption, family strain, social isolation, school or work loss, housing instability, legal involvement, and delayed health care",
+        "Stigma, diagnostic overshadowing, fragmented treatment, polypharmacy, and harmful crisis cycles when the label replaces individualized assessment"
+      ],
+      "prognosis": "Course varies by pattern, severity, comorbidity, social conditions, treatment access, and life stage. Personality disorders can improve, and meaningful recovery may include safer coping, more stable relationships, improved work or school function, fewer crises, and a stronger sense of self. The diagnosis should guide individualized treatment and monitoring, not be treated as a fixed prediction of character or outcome.",
+      "prevention": [
+        "There is no guaranteed method that prevents all personality disorders; early support for trauma, bullying, unstable care, emotional dysregulation, learning or communication needs, and family stress may reduce harm and functional loss.",
+        "Use safe, consistent relationships, developmentally appropriate emotion and problem-solving skills, and timely care for co-occurring mental, substance, and physical health problems.",
+        "Reduce stigma and improve continuity so people can seek help before a relationship, housing, school, work, or safety crisis becomes severe."
+      ],
+      "patientEducation": [
+        "A personality disorder is an enduring clinical pattern with real functional consequences; it is not a moral judgment, an insult, or a diagnosis made because someone is upset or disagrees with staff.",
+        "Cluster A, B, and C are DSM groupings, not stages of severity. ICD-11 uses a different severity-and-traits approach, so ask which classification system a clinician is using.",
+        "Psychotherapy is central, progress is possible, and medicines are used for specific co-occurring conditions or carefully defined short-term targets rather than to change personality itself.",
+        "Seek urgent help for suicidal intent, serious self-harm, threats with means, psychosis, severe intoxication, overdose, injury, abuse, or inability to keep anyone safe."
+      ],
+      "specialPopulations": [
+        "Children and adolescents require developmentally informed specialist assessment. Enduring symptoms may be clinically important, but transient developmental behaviour and a single crisis must not be prematurely converted into a fixed adult label.",
+        "Culture, migration, discrimination, religion, gender, sexuality, disability, and community norms shape communication and relationships; difference from the clinician's expectations is not itself pathology.",
+        "Autistic people, people with intellectual or communication disabilities, and people with brain injury or neurocognitive change need adapted assessment so lifelong traits, new decline, distress, and environmental mismatch are distinguished.",
+        "Pregnancy, postpartum care, older age, medical illness, polypharmacy, and substance use change acute risk, differential diagnosis, medication safety, and required coordination."
+      ],
+      "nclexTraps": [
+        "A cluster label is not a diagnosis or severity score; assess the individual pattern, impairment, culture, comorbidity, and current safety.",
+        "Do not call behaviour manipulative when you can document the trigger, action, stated need, risk, and response.",
+        "Consistent boundaries are clear and nonpunitive. Abandonment, humiliation, coercion, or abrupt discharge is not therapeutic limit setting.",
+        "No universal medication treats personality disorders; psychotherapy, safety planning, comorbidity care, and functional goals are central."
+      ],
+      "relatedTopics": [
+        "Antisocial personality disorder",
+        "Borderline personality disorder",
+        "Narcissistic personality disorder",
+        "Avoidant personality disorder",
+        "Dependent personality disorder",
+        "Obsessive-compulsive personality disorder"
+      ],
+      "sourceKeys": [
+        "apa-personality-disorders",
+        "medlineplus-personality-disorders",
+        "who-icd11-cddr-mental-2024"
+      ],
+      "sourceNote": "Original ANI nursing overview based only on the American Psychiatric Association patient-family personality-disorder resource, the MedlinePlus personality-disorders overview, and WHO ICD-11 CDDR. The DSM cluster map and ICD-11 severity-and-trait model are kept distinct, and no source prose was copied.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/patients-families/personality-disorders",
+          "documentVersion": "DSM-5-TR-oriented patient and family resource; accessed 2026-08-13",
+          "fieldsSupported": [
+            "definition",
+            "longitudinal pattern",
+            "functional impairment",
+            "diagnostic boundaries",
+            "psychotherapy",
+            "patientEducation"
+          ]
+        },
+        {
+          "authority": "MedlinePlus, U.S. National Library of Medicine",
+          "url": "https://medlineplus.gov/personalitydisorders.html",
+          "documentVersion": "Page updated 2024-01-09; accessed 2026-08-13",
+          "fieldsSupported": [
+            "definition",
+            "10 named disorders",
+            "Cluster A B and C classification",
+            "diagnostics",
+            "treatments",
+            "OCPD versus OCD boundary"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR, 2024; personality disorders and related traits pp. 553-570; accessed 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "severity classification",
+            "trait domains",
+            "borderline-pattern qualifier",
+            "diagnostic requirements",
+            "cultural and differential context"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.personality-disorders-overview",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.obsessive-compulsive-personality-disorder",
+      "name": "Obsessive-compulsive personality disorder",
+      "displayName": "Obsessive-compulsive personality disorder (OCPD)",
+      "category": "Mental health",
+      "aliases": [
+        "OCPD",
+        "obsessive compulsive personality disorder",
+        "obsessive-compulsive PD",
+        "anankastic personality disorder"
+      ],
+      "preferredBareAliases": [
+        "OCPD"
+      ],
+      "preferredBareAliasRationale": "OCPD is the standard exact abbreviation for obsessive-compulsive personality disorder, has no competing ANI runtime identity owner, and remains explicitly distinct from the separately owned abbreviation OCD.",
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "plainLanguage": "Obsessive-compulsive personality disorder is an enduring need for order, perfection, rules, and control that reduces flexibility and can interfere with finishing tasks, sharing responsibility, resting, or maintaining relationships. It is a personality pattern, not the same disorder as OCD.",
+      "whyItMatters": "Rigid perfectionism can produce exhaustion, delayed decisions or task completion, conflict, isolation, and poor adaptation when circumstances change. Nurses should assess function and distress without praising harmful overcontrol or confusing OCPD with the intrusive unwanted thoughts and repetitive rituals of obsessive-compulsive disorder.",
+      "plainLanguageGlosses": [
+        {
+          "term": "anankastic",
+          "plainLanguage": "a classification term related to rigid perfectionism, control, rules, and excessive concern with doing things in one exact way",
+          "sourceKeys": [
+            "who-icd10-anankastic-personality",
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "obsession",
+          "plainLanguage": "an intrusive and unwanted recurring thought, urge, or mental image as described in obsessive-compulsive disorder",
+          "sourceKeys": [
+            "nimh-ocd"
+          ]
+        },
+        {
+          "term": "compulsion",
+          "plainLanguage": "a repetitive behaviour or mental act a person feels driven to perform, often to reduce distress from an obsession",
+          "sourceKeys": [
+            "nimh-ocd"
+          ]
+        }
+      ],
+      "definition": "Obsessive-compulsive personality disorder is a pervasive personality pattern dominated by preoccupation with order, perfectionism, control, rules, details, and rigidity at the expense of flexibility, openness, efficiency, or relationships. It is not diagnosed from neatness or high standards alone and is not the same as obsessive-compulsive disorder, which centers on intrusive unwanted obsessions, compulsions, or both.",
+      "pathology": "OCPD is not a structural brain lesion and has no diagnostic laboratory marker. The clinically important pattern is persistent overcontrol: exact standards and rules become so central that adaptation, delegation, completion, recreation, and relationships are impaired. The person may experience the approach as reasonable or necessary, while still feeling distress about failures, conflict, lost time, or inability to meet self-imposed standards.",
+      "pathophysiology": [
+        "Attention repeatedly narrows toward mistakes, details, rules, uncertainty, and control. Checking, reworking, planning, retaining responsibility, or avoiding delegation may reduce uncertainty briefly but can delay completion and reinforce the belief that only exact control prevents failure.",
+        "Perfectionism can create a self-reinforcing cycle: an unrealistically rigid standard increases delay or conflict, the resulting problem is interpreted as evidence that more control is needed, and flexibility becomes harder. This describes a clinical pattern, not one proven universal brain mechanism."
+      ],
+      "etiology": "The cause is not known. Temperament, family and cultural learning, developmental experiences, and genetic vulnerability may interact, but no specific parenting style, trauma, occupation, or personality trait is necessary or sufficient. High conscientiousness or culturally valued order is not a disorder unless the enduring pattern is inflexible and causes meaningful distress or impairment.",
+      "riskFactors": [
+        "Long-standing perfectionism, rigidity, excessive conscientiousness, doubt, or need for control that becomes difficult to adapt",
+        "Family history of personality, anxiety, obsessive-compulsive, depressive, or other mental disorders, which is a vulnerability rather than a diagnosis",
+        "Environments that strongly reinforce mistakes as dangerous or worth as dependent on flawless performance, without implying that such an environment alone causes OCPD",
+        "Co-occurring anxiety, depression, obsessive-compulsive disorder, eating pathology, or occupational and relationship stress that can intensify impairment"
+      ],
+      "signsSymptoms": [
+        "Preoccupation with details, lists, order, organization, schedules, or rules that can obscure the main purpose of an activity",
+        "Perfectionism that delays or prevents completion because the result does not meet an exact self-imposed standard",
+        "Excessive devotion to work or productivity at the expense of rest, recreation, relationships, or health when this is not explained by economic necessity",
+        "Reluctance to delegate unless another person follows the exact preferred method, with conflict or excessive checking when responsibility is shared",
+        "Rigidity, stubbornness, excessive conscientiousness, difficulty tolerating uncertainty, or distress when plans and standards must change",
+        "The pattern may feel justified or necessary to the person, but it produces impairment, distress, or repeated interpersonal consequences"
+      ],
+      "diagnostics": [
+        "Diagnosis is clinical and longitudinal. Establish onset by adolescence or early adulthood, stability across settings, the person's standards and beliefs, cultural and occupational context, distress, functional impairment, and the consequences for completion, delegation, health, rest, and relationships.",
+        "Do not diagnose OCPD from cleanliness, punctuality, conscientiousness, one demanding task, a temporary stress response, or perfectionism that remains flexible and functional. A questionnaire or trait score can support assessment but cannot diagnose the disorder by itself.",
+        "Ask separately about OCD. An obsession is intrusive and unwanted, and a compulsion is a repetitive act or mental ritual performed under pressure or to reduce distress. OCPD instead concerns a broad enduring personality pattern of control and perfectionism; the conditions can coexist, and one neither confirms nor excludes the other.",
+        "Name the classification system. DSM-5-TR retains OCPD as a named categorical disorder; ICD-10 uses anankastic personality disorder, while ICD-11 classifies personality-disorder severity first and may add anankastia as a trait domain. These terms must not be treated as perfectly interchangeable criteria sets."
+      ],
+      "labs": [
+        "No blood test, imaging study, genetic result, or rating-scale score confirms OCPD.",
+        "Use targeted testing only when symptoms suggest thyroid disease, neurologic or cognitive change, substance or medication effects, an eating disorder complication, sleep disorder, or another medical contributor.",
+        "Medicine monitoring follows the separately treated condition and exact prescribed product; the OCPD diagnosis itself does not create a universal laboratory schedule."
+      ],
+      "assessment": "Use a collaborative, concrete approach. Ask how rules and standards affect time, completion, delegation, rest, finances, nutrition, relationships, work, and health care; what happens when plans change; and whether thoughts are intrusive and unwanted or instead feel justified. Assess depression, anxiety, OCD symptoms, eating concerns, substance use, sleep, self-harm, suicide, anger, coercive control, medical needs, and the person's goals, strengths, and cultural or occupational context.",
+      "differential": [
+        "Obsessive-compulsive disorder, where intrusive unwanted obsessions and compulsions are central; OCD and OCPD may coexist",
+        "Adaptive conscientiousness, culturally valued order, occupational precision, or a temporary high-stakes task that remains flexible and does not cause pervasive impairment",
+        "Generalized anxiety disorder, depression, autism spectrum disorder, eating disorders, hoarding disorder, illness anxiety, or trauma-related hypercontrol",
+        "Narcissistic, avoidant, paranoid, or other personality patterns distinguished by the motivation, breadth, course, and interpersonal pattern",
+        "New rigidity from neurocognitive disorder, traumatic brain injury, psychosis, mania, substance or medication effects, or another medical condition"
+      ],
+      "treatments": [
+        "Psychotherapy is the main treatment approach. Build a shared formulation and goals around flexibility, task completion, uncertainty tolerance, delegation, rest, relationships, and the costs and perceived benefits of control.",
+        "Use specific, measurable behavioural goals, such as completing a task at an agreed adequate standard or sharing one responsibility, without turning treatment into another perfectionistic test.",
+        "No medication is established as a universal treatment for OCPD itself. Treat a separately diagnosed depression, anxiety disorder, OCD, or other condition according to that condition's evidence, product-specific safety information, and monitoring plan.",
+        "ERP and serotonin-targeting antidepressants are evidence-based options for OCD in appropriate patients, but an OCD regimen must not be copied to OCPD unless OCD or another supported indication is actually diagnosed."
+      ],
+      "contraindications": [
+        "Do not diagnose OCPD from neatness, punctuality, moral seriousness, high achievement, one conflict about standards, or an OCPD screening score alone.",
+        "Do not label ordinary intrusive thoughts as OCPD or use OCPD as another name for OCD; complete the obsession-compulsion assessment.",
+        "Do not force abrupt uncontrolled change, shame perfectionism, or enter a power struggle over the one correct way; these approaches can increase defensiveness and disengagement.",
+        "Do not promise that an SSRI, antipsychotic, mood stabilizer, sedative, or other medicine will change the personality pattern; use medicines only for a source-supported separate indication or target."
+      ],
+      "safetyConsiderations": [
+        "Assess suicide and self-harm risk when perfectionistic failure, shame, depression, relationship loss, occupational collapse, or another crisis is present.",
+        "Severe overwork, sleep loss, restricted eating, inability to complete essential care, financial control, or coercive behaviour can create medical and relationship harm even when the person describes the rule as necessary.",
+        "New or rapidly worsening rigidity, confusion, psychosis, mania, neurologic change, intoxication, or withdrawal is not an expected personality fluctuation and needs prompt differential assessment.",
+        "If medication is used for a co-occurring disorder, assess interactions, adherence, adverse effects, withdrawal, overdose access, pregnancy context, and the exact condition-specific monitoring plan."
+      ],
+      "nursingPriorities": [
+        "Assess immediate safety, depression, suicide, self-neglect, nutrition, sleep, substance use, aggression or coercion, medical needs, and acute change before focusing on personality education.",
+        "Explain the plan, priorities, time limits, and necessary choices clearly. Offer bounded choices and invite questions without agreeing that only one rigid method is acceptable.",
+        "Validate the effort or anxiety behind control while identifying its functional cost. Reinforce adequate completion, flexibility, delegation, rest, and collaborative problem solving rather than flawless performance.",
+        "Clarify whether a thought is intrusive and unwanted and whether a ritual is driven by distress; route suspected OCD for its own assessment rather than assuming the OCPD label explains it.",
+        "Track function, not only distress: time spent, tasks completed, missed care, sleep, relationships, work or school, and ability to adapt to a planned change."
+      ],
+      "redFlags": [
+        "Suicidal intent, serious self-harm, inability to maintain safety, severe depression, or crisis after perceived failure or loss",
+        "Severe food or fluid restriction, prolonged sleep deprivation, inability to complete essential care, or medically dangerous overwork",
+        "New psychosis, mania, delirium, intoxication, withdrawal, focal neurologic change, or rapidly progressive cognitive or personality change",
+        "Threats, coercive control, abuse, unsafe financial restriction, or escalating conflict that places the person or others at risk"
+      ],
+      "complications": [
+        "Delayed or unfinished work, indecision, burnout, sleep loss, reduced recreation, and impaired self-care",
+        "Relationship conflict, isolation, difficulty collaborating, workplace impairment, and crisis when control is lost",
+        "Depression, anxiety, obsessive-compulsive disorder, eating pathology, substance use, and suicide risk when co-occurring conditions are present",
+        "Missed or delayed health care when exact routines, mistrust of delegation, or inability to accept uncertainty obstruct treatment"
+      ],
+      "prognosis": "Course varies, and change is often gradual because rules and perfectionism may feel protective or correct. A strong collaborative relationship and concrete functional goals can improve flexibility, task completion, self-care, and relationships. Progress does not require abandoning conscientiousness; it means using standards without allowing them to control safety, health, or valued life activities.",
+      "prevention": [
+        "There is no proven universal method to prevent OCPD. Early support for anxiety, rigid perfectionism, family conflict, sleep loss, eating problems, and school or work impairment may reduce harm.",
+        "Model flexible standards, planned rest, shared responsibility, repair after mistakes, and problem solving that distinguishes adequate and safe from flawless.",
+        "Treat co-occurring OCD, depression, anxiety, eating pathology, substance use, or medical illness promptly instead of attributing every problem to personality."
+      ],
+      "patientEducation": [
+        "OCPD concerns an enduring pattern of order, perfectionism, and control that impairs flexibility or functioning. Being organized or careful by itself is not a disorder.",
+        "OCPD is not OCD. OCD involves intrusive unwanted obsessions and compulsions; the two conditions can occur together and require separate assessment.",
+        "Treatment aims to keep useful conscientiousness while reducing the cost of rigid standards. Agree on small functional experiments rather than demanding a total personality change.",
+        "Medicines may be used for a separately diagnosed condition, but there is no universal medication regimen for OCPD itself."
+      ],
+      "specialPopulations": [
+        "Children and adolescents may be perfectionistic or rule-bound without having an enduring adult personality disorder; assess development, autism, anxiety, OCD, family and school context, and functional impairment carefully.",
+        "Culture, religion, occupation, disability, and real safety requirements can value precision and duty. Diagnosis requires inflexibility and harm beyond what the context reasonably requires.",
+        "Older adults with new rigidity or personality change need evaluation for neurocognitive, neurologic, medication, sensory, grief, and medical causes rather than assumption of lifelong OCPD.",
+        "Pregnancy, postpartum care, eating disorders, chronic illness, and caregiving roles can make control and uncertainty especially salient and require individualized medical and psychosocial support."
+      ],
+      "nclexTraps": [
+        "OCPD is not OCD: personality-wide perfectionism and control differ from intrusive unwanted obsessions and compulsions.",
+        "Neatness and conscientiousness do not diagnose OCPD; the enduring inflexible pattern must cause distress or functional impairment.",
+        "Do not use a power struggle to prove flexibility. Use clear priorities, bounded choices, collaborative goals, and consistent limits.",
+        "ERP and serotonin-targeting antidepressants are OCD treatments in appropriate patients, not an automatic OCPD treatment plan."
+      ],
+      "relatedTopics": [
+        "Personality disorders",
+        "Obsessive-compulsive disorder",
+        "Generalized anxiety disorder",
+        "Major depressive disorder",
+        "Avoidant personality disorder"
+      ],
+      "sourceKeys": [
+        "medlineplus-personality-disorders",
+        "who-icd10-anankastic-personality",
+        "who-icd11-cddr-mental-2024",
+        "nimh-ocd"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based only on the MedlinePlus personality-disorders overview, WHO ICD-10 anankastic personality description, WHO ICD-11 CDDR personality severity and anankastia framework, and NIMH OCD resource. OCPD, OCD, and classification-system boundaries remain explicit and no source prose was copied.",
+      "provenance": [
+        {
+          "authority": "MedlinePlus, U.S. National Library of Medicine",
+          "url": "https://medlineplus.gov/personalitydisorders.html",
+          "documentVersion": "Page updated 2024-01-09; accessed 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "definition",
+            "Cluster C classification",
+            "OCPD versus OCD boundary",
+            "general diagnostics",
+            "psychotherapy and medication boundary"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://icd.who.int/browse10/2019/en#/F60.5",
+          "documentVersion": "ICD-10 2019, F60.5 anankastic personality disorder; accessed 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "definition",
+            "perfectionism",
+            "excessive conscientiousness",
+            "details",
+            "rigidity",
+            "OCD exclusion"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR, 2024; personality disorders and related traits pp. 553-570; accessed 2026-08-13",
+          "fieldsSupported": [
+            "personality-disorder diagnostic requirements",
+            "severity-first classification",
+            "anankastia trait domain",
+            "cultural context",
+            "classification limitation"
+          ]
+        },
+        {
+          "authority": "National Institute of Mental Health",
+          "url": "https://www.nimh.nih.gov/health/publications/obsessive-compulsive-disorder-when-unwanted-thoughts-or-repetitive-behaviors-take-over",
+          "documentVersion": "Current NIMH OCD publication; accessed 2026-08-13",
+          "fieldsSupported": [
+            "OCD definition",
+            "obsessions",
+            "compulsions",
+            "diagnostics",
+            "ERP",
+            "serotonin-targeting antidepressants",
+            "OCPD differential boundary"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.obsessive-compulsive-personality-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.borderline-personality-disorder",
+      "name": "Borderline personality disorder",
+      "displayName": "Borderline personality disorder (BPD)",
+      "category": "Mental health",
+      "aliases": [
+        "BPD",
+        "borderline PD"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "plainLanguage": "Borderline personality disorder is an enduring pattern of intense and rapidly changing emotions, unstable self-image and relationships, strong fear of abandonment, and impulsive behaviour. Stress can trigger self-harm, suicidal crises, anger, suspiciousness, or feeling disconnected from oneself or reality.",
+      "whyItMatters": "Self-injury, suicide attempts, overdose, substance use, interpersonal violence, and unsafe care transitions can be life-threatening, but effective structured psychotherapy can reduce symptoms and improve function. Nurses should assess the current crisis directly, validate distress, treat physical injury, and use a collaborative plan instead of dismissing behaviour as manipulation.",
+      "plainLanguageGlosses": [
+        {
+          "term": "affective instability",
+          "plainLanguage": "emotions that shift quickly and intensely, often in response to stress or relationship events",
+          "sourceKeys": [
+            "nimh-borderline-personality",
+            "apa-personality-disorders"
+          ]
+        },
+        {
+          "term": "dissociation",
+          "plainLanguage": "feeling detached from one's body, thoughts, memory, surroundings, or sense of reality, especially during severe stress",
+          "sourceKeys": [
+            "nimh-borderline-personality"
+          ]
+        },
+        {
+          "term": "longitudinal",
+          "plainLanguage": "understood by following the pattern across years and settings instead of judging one crisis or appointment",
+          "sourceKeys": [
+            "apa-bpd-guideline-2024",
+            "apa-personality-disorders"
+          ]
+        }
+      ],
+      "definition": "Borderline personality disorder is a pervasive personality disorder marked by enduring instability in emotion regulation, self-image, goals, relationships, and impulse control, with substantial sensitivity to rejection or abandonment. The pattern causes distress or impaired functioning and may include recurrent self-harm or suicidal behaviour; diagnosis requires a comprehensive longitudinal assessment rather than one symptom, crisis, or screening result.",
+      "pathology": "BPD is not a structural brain lesion and has no diagnostic laboratory marker. The clinical pathology involves unstable integration of identity, relationships, and emotion regulation: interpersonal stress may rapidly amplify fear, anger, shame, emptiness, impulsivity, dissociation, or self-destructive urges. Immediate relief after self-harm, escape, substance use, or abrupt relationship action can reinforce a crisis cycle even while worsening longer-term safety and functioning.",
+      "pathophysiology": [
+        "Emotional and interpersonal cues may be experienced with unusually high intensity and slow return to baseline. Under stress, attention can narrow toward perceived rejection or abandonment, making reflective problem solving harder and increasing impulsive action, anger, dissociation, or rapidly changing views of self and others.",
+        "Self-harm or another crisis behaviour may temporarily interrupt unbearable emotion or communicate urgent distress, but the resulting injury, shame, conflict, or fragmented care can increase future vulnerability. This functional cycle guides assessment and skills treatment; it does not imply that every behaviour has the same motive."
+      ],
+      "etiology": "No single cause explains BPD. Genetic vulnerability, brain and emotion-regulation differences, temperament, developmental experience, trauma, invalidating or unstable relationships, and broader social and cultural factors may interact. Trauma is common in many histories but is neither required nor sufficient, and the diagnosis must not be used to blame the person or family.",
+      "riskFactors": [
+        "Family history of borderline personality disorder or other mental disorders and individual vulnerability in emotion or impulse regulation",
+        "Childhood abuse, neglect, maltreatment, abandonment, hardship, unstable relationships, or chronic interpersonal conflict, none of which alone establishes the diagnosis",
+        "Depression, bipolar disorder, post-traumatic stress, anxiety, eating disorders, ADHD, conduct problems, substance use, or other co-occurring conditions",
+        "Recent rejection, relationship loss, unsafe housing, legal or financial crisis, treatment disruption, intoxication, sleep loss, or access to lethal means that can raise acute risk"
+      ],
+      "signsSymptoms": [
+        "Intense fear of real or perceived abandonment and urgent efforts to prevent or respond to separation",
+        "Unstable intense relationships, rapidly changing views of self or others, identity disturbance, or chronic emptiness",
+        "Affective instability, intense anger, rejection sensitivity, shame, anxiety, or mood reactivity that can change over hours or with interpersonal events",
+        "Impulsive spending, sex, substance use, eating, driving, aggression, or other behaviour with harmful consequences",
+        "Recurrent self-injury, suicidal thoughts or behaviour, threats during distress, or crises after relationship or treatment changes",
+        "Stress-related suspiciousness, dissociation, or feeling unreal, detached, numb, or outside oneself"
+      ],
+      "diagnostics": [
+        "A licensed mental health professional makes the diagnosis through a comprehensive assessment of the presenting concern, goals, psychiatric and medical history, core personality features, co-occurring disorders, treatment history, psychosocial and cultural context, mental status, physical health, and risk of suicide, self-injury, or aggression.",
+        "Establish the longitudinal pattern across years, relationships, and settings, including identity, abandonment fear, affective instability, impulsivity, self-harm, anger, dissociation, functional impairment, strengths, and periods of improvement. One crisis or screening score does not diagnose BPD.",
+        "Differentiate bipolar disorder carefully. BPD produces an enduring self-image and relationship pattern with reactive emotional instability over years; bipolar disorders produce distinct mood episodes, and mania or hypomania includes significantly elevated, expansive, or irritable mood with increased energy or activity and episode-linked changes such as reduced need for sleep. The conditions can coexist.",
+        "Assess depression, PTSD, substance use, eating disorders, ADHD, psychotic symptoms, dissociative disorders, autism, other personality patterns, medication or substance effects, and medical causes rather than treating all impulsivity or mood change as BPD."
+      ],
+      "labs": [
+        "No blood test, imaging study, genetic result, or rating-scale score confirms BPD.",
+        "Use a medical examination and targeted testing when overdose, injury, pregnancy, intoxication, withdrawal, endocrine or neurologic illness, eating-disorder complications, medication toxicity, or another contributor is possible.",
+        "Medicine monitoring follows the separately diagnosed condition, exact product, dose, comorbidity, and protocol; the BPD diagnosis itself does not create a universal laboratory schedule."
+      ],
+      "assessment": "Approach the person calmly and ask what happened, what changed, what has helped before, and what is needed now. Assess suicidal thoughts, intent, plan, means, recent self-harm, overdose, medical injury, violence, dissociation, psychosis, intoxication or withdrawal, abuse, exploitation, dependent-person safety, and ability to use a crisis plan. Also document mood-episode history, sleep and energy changes, trauma, substances, eating, medications, physical health, relationships, function, strengths, and the person's treatment goals.",
+      "differential": [
+        "Bipolar I or II disorder, distinguished by discrete manic or hypomanic episodes with increased energy or activity and episode-linked changes; BPD and bipolar disorder may coexist",
+        "Major depressive disorder, post-traumatic stress disorder, complex trauma presentations, dissociative disorders, anxiety disorders, and eating disorders",
+        "Substance intoxication or withdrawal, ADHD, autism spectrum disorder, psychotic disorders, and medication effects",
+        "Histrionic, narcissistic, antisocial, dependent, avoidant, or other personality patterns assessed by the enduring motivation and full longitudinal pattern",
+        "Delirium, traumatic brain injury, seizure, endocrine illness, sleep deprivation, pain, or another medical cause of acute behavioural or mental-status change"
+      ],
+      "treatments": [
+        "Use a structured psychotherapy that targets the core features of BPD and is delivered by trained clinicians within a coherent treatment plan. Dialectical behavior therapy is one evidence-based option and directly teaches mindfulness, distress tolerance, emotion regulation, interpersonal effectiveness, and alternatives to self-harm.",
+        "Other supported structured approaches may also be appropriate. APA guidance does not identify one psychotherapy as universally superior; selection depends on goals, availability, risk, developmental needs, prior response, and the clinician's competence.",
+        "Create a collaborative crisis and care plan with warning signs, coping strategies, supportive contacts, lethal-means safety, service access, clear team roles, manageable goals, and planned follow-up after transitions or crises.",
+        "Medication is not first-line treatment for BPD itself. Treat a separately diagnosed co-occurring disorder according to its guideline, and use any short-term crisis medicine only for a defined target with one prescriber, overdose and interaction review, monitoring, and a stop plan."
+      ],
+      "contraindications": [
+        "Do not use medication specifically to treat BPD or its individual behaviours as a routine substitute for psychotherapy, crisis planning, or comorbidity care; NICE also advises against medium- or long-term antipsychotic treatment for BPD itself.",
+        "Do not use several crisis drugs when one can meet the defined target, and avoid polypharmacy whenever possible. If NICE short-term sedative guidance is followed, agree the duration and generally keep it no longer than 1 week; local law, labeling, and protocol still apply.",
+        "Do not use pejorative labels, punitive withdrawal, humiliation, threatening discharge, or inconsistent team responses as limit setting.",
+        "Do not assume that self-harm is attention seeking, that chronic risk is harmless, or that every new symptom is psychiatric; complete the immediate medical and suicide assessment."
+      ],
+      "safetyConsiderations": [
+        "Differentiate long-term vulnerability from immediate risk by assessing current intent, plan, means, recent acts, escalating frequency or lethality, intoxication, psychosis, severe mood symptoms, supports, and ability to collaborate on safety.",
+        "Treat overdose, wounds, strangulation concern, head injury, intoxication, pregnancy complications, and other physical needs promptly and with the same standard of care as any other patient.",
+        "Transitions, perceived rejection, relationship loss, and treatment endings can increase distress; plan communication, medication supply, crisis contacts, and follow-up rather than creating an abrupt gap.",
+        "For any medicine, review its actual indication, overdose toxicity, quantity supplied, alcohol and drug interactions, pregnancy context, adherence, adverse effects, dependence, withdrawal, and stop plan."
+      ],
+      "nursingPriorities": [
+        "Approach crisis with a calm nonthreatening manner, validate the person's stated distress, ask what happened and what has helped before, and avoid pejorative labels or assumptions of manipulation because respectful curiosity reduces escalation and preserves a therapeutic alliance.",
+        "Assess current suicidal thoughts, intent, plan, recent self-harm, access to lethal means, intoxication, violence risk, dissociation, psychosis, medical injury, safeguarding, and dependent-child safety because immediate risk must be separated from chronic background risk.",
+        "Treat overdose, wounds, intoxication, pain, and other physical needs without delaying a collaborative psychosocial assessment because self-harm deserves the same medical care and can reveal modifiable triggers and supports.",
+        "Use the existing crisis plan or co-create a brief plan with warning signs, coping strategies, supportive contacts, lethal-means safety, service access, and specific follow-up, documenting shared decisions because predictable transitions reduce abandonment fears and recurrent crisis.",
+        "Coordinate structured psychotherapy and comorbidity care; do not present medication as treatment for the personality disorder, and if short-term crisis medicine is prescribed, monitor target, quantity, interactions, overdose risk, and stop plan because polypharmacy can add harm without building durable coping."
+      ],
+      "redFlags": [
+        "Current suicidal intent or plan, recent serious attempt, escalating self-harm, increasing lethality, or access to lethal means",
+        "Violence risk, severe dissociation or psychosis, intoxication or withdrawal, mania, or inability to collaborate on immediate safety",
+        "Overdose, uncontrolled bleeding, strangulation concern, head injury, severe food or fluid restriction, or another untreated medical emergency",
+        "Unsafe discharge, abrupt care transition without a plan, suspected abuse or exploitation, or a dependent child or adult at risk"
+      ],
+      "complications": [
+        "Self-injury, suicide attempts, suicide, overdose, substance-related harm, accidental injury, and victimization",
+        "Depression, anxiety, PTSD, eating disorders, bipolar disorder, ADHD, substance-use disorders, and other co-occurring conditions",
+        "Unstable relationships, family strain, school or work loss, housing or financial crisis, and repeated emergency or inpatient care",
+        "Stigma, diagnostic overshadowing, fragmented care, polypharmacy, dependence, and abrupt treatment endings that intensify crisis cycles"
+      ],
+      "prognosis": "Many people improve substantially with sustained evidence-based treatment. Recovery may include fewer and less severe crises, reduced self-harm, stronger emotion and relationship skills, improved identity and daily function, and better quality of life. Progress can take time and may be uneven; a recurrence of distress is a reason to reassess the plan, not proof that the person is untreatable.",
+      "prevention": [
+        "There is no guaranteed way to prevent BPD, but early support for trauma, abuse, emotional dysregulation, self-harm, family conflict, and co-occurring mental or substance problems may reduce harm and functional loss.",
+        "Use collaborative safety planning, lethal-means safety, predictable care transitions, skills coaching, and timely follow-up after self-harm, relationship loss, or treatment disruption.",
+        "Reduce stigma and improve continuity so the person can seek help before distress escalates to overdose, injury, homelessness, substance crisis, or suicidal action."
+      ],
+      "patientEducation": [
+        "Your distress and safety concerns deserve direct care. Tell the team what changed, what has helped before, and what makes the current moment unsafe so the crisis plan can fit the actual problem.",
+        "BPD and bipolar disorder are not the same. BPD is an enduring relationship, identity, and emotion-regulation pattern; bipolar disorder involves distinct mood episodes. A person can have both, so report elevated energy, reduced need for sleep, and episode timing.",
+        "Structured psychotherapy is the main treatment and can improve symptoms and function. DBT is one option; the best programme is one you can access, understand, and use consistently with trained clinicians.",
+        "Medicine does not treat BPD itself as a first-line approach. Ask what separate condition or short-term target a drug is treating, how benefit and harm will be monitored, and when it will be reviewed or stopped.",
+        "Seek immediate help for suicidal intent, a serious self-harm injury, overdose, threats with means, severe dissociation or psychosis, intoxication, or inability to stay safe."
+      ],
+      "specialPopulations": [
+        "Adolescents require developmentally informed specialist assessment. NIMH notes that diagnosis may occasionally be made before age 18 when symptoms are severe and have lasted at least a year; transient development or one crisis must not be mislabeled.",
+        "Pregnancy and postpartum care require coordinated suicide, self-harm, trauma, substance, infant-safety, medication, and physical-health assessment without abrupt discontinuation of needed treatment.",
+        "Culture, gender, sexuality, trauma exposure, disability, racism, and access to care influence expression and clinician interpretation; intense emotion or conflict alone must not become a biased personality label.",
+        "People with intellectual, communication, autism, neurologic, or cognitive differences need adapted assessment so disability-related distress, lifelong traits, and new mental-status change are distinguished."
+      ],
+      "nclexTraps": [
+        "Do not label self-harm as manipulation; assess medical injury and immediate suicide risk, validate distress, and use the crisis plan.",
+        "BPD affective instability is not automatically bipolar disorder. Look for distinct mania or hypomania with elevated or irritable mood, increased energy or activity, reduced need for sleep, and an episodic course.",
+        "Consistent boundaries are clear, predictable, and nonpunitive; rescuing, arguing, threatening abandonment, or changing rules between staff can worsen risk.",
+        "Psychotherapy is central. Medication may treat comorbidity or a narrowly defined short crisis target but is not routine first-line treatment for BPD itself."
+      ],
+      "relatedTopics": [
+        "Personality disorders",
+        "Bipolar disorder",
+        "Bipolar II disorder",
+        "Major depressive disorder",
+        "Post-traumatic stress disorder",
+        "Substance use disorders"
+      ],
+      "sourceKeys": [
+        "nimh-borderline-personality",
+        "apa-bpd-guideline-2024",
+        "nice-cg78-borderline",
+        "apa-personality-disorders"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based only on the current NIMH borderline-personality resource, the 2024 American Psychiatric Association BPD practice guideline, NICE CG78, and the APA personality-disorders patient-family resource. Existing ANI crisis, DBT, suicide, medical-care, and therapeutic-boundary strengths were preserved while bipolar and medication limits were made explicit; no source prose was copied.",
+      "provenance": [
+        {
+          "authority": "National Institute of Mental Health",
+          "url": "https://www.nimh.nih.gov/health/publications/borderline-personality-disorder",
+          "documentVersion": "Current NIMH publication; accessed 2026-08-13",
+          "fieldsSupported": [
+            "definition",
+            "riskFactors",
+            "signsSymptoms",
+            "diagnostics",
+            "bipolar differential",
+            "psychotherapy",
+            "DBT",
+            "medication boundary",
+            "patientEducation"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://psychiatryonline.org/doi/book/10.1176/appi.books.9780890428009",
+          "documentVersion": "APA Practice Guideline for BPD, approved 2023 and published 2024; accessed 2026-08-13",
+          "fieldsSupported": [
+            "comprehensive assessment",
+            "suicide self-injury and aggression risk",
+            "treatment planning",
+            "structured psychotherapy",
+            "monitoring",
+            "patientEducation"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/cg78/chapter/Recommendations",
+          "documentVersion": "CG78 current recommendations; accessed 2026-08-13",
+          "fieldsSupported": [
+            "risk assessment",
+            "care planning",
+            "DBT",
+            "crisis management",
+            "medication and polypharmacy boundaries",
+            "one-week crisis limit",
+            "monitoring",
+            "transitions"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/patients-families/personality-disorders",
+          "documentVersion": "DSM-5-TR-oriented patient and family resource; accessed 2026-08-13",
+          "fieldsSupported": [
+            "longitudinal pattern",
+            "BPD versus bipolar episode course",
+            "relationship and identity pattern",
+            "DBT",
+            "family boundaries"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.borderline-personality-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.somatic-symptom-disorder",
+      "name": "Somatic symptom disorder",
+      "displayName": "Somatic symptom disorder",
+      "category": "Mental health",
+      "aliases": [
+        "somatic symptom disorder (SSD)"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "plainLanguage": "Somatic symptom disorder means that one or more physical symptoms are distressing or disrupt daily life and the person also has excessive health-related thoughts, anxiety, or behaviours. The symptoms are real, may occur with or without another medical condition, and are not the same as pretending to be ill.",
+      "whyItMatters": "Dismissal can miss new disease and damage trust, while repeated uncoordinated tests or procedures can cause iatrogenic harm, meaning harm from health care itself. Nurses help protect both sides of that risk by assessing new red flags, validating symptoms, coordinating consistent follow-up, and tracking function rather than arguing about whether the symptoms are real.",
+      "plainLanguageGlosses": [
+        {
+          "term": "somatic",
+          "plainLanguage": "related to physical or bodily symptoms",
+          "sourceKeys": [
+            "apa-somatic-symptom-disorder-2024"
+          ]
+        },
+        {
+          "term": "disproportionate",
+          "plainLanguage": "much greater than the situation reasonably calls for after the full clinical context is considered",
+          "sourceKeys": [
+            "apa-somatic-symptom-disorder-2024"
+          ]
+        },
+        {
+          "term": "iatrogenic harm",
+          "plainLanguage": "harm caused by a test, treatment, procedure, or other part of health care",
+          "sourceKeys": [
+            "apa-somatic-symptom-disorder-2024"
+          ]
+        }
+      ],
+      "definition": "Somatic symptom disorder is a DSM-5-TR diagnosis in which at least one physical symptom causes meaningful distress or disruption and is accompanied by excessive thoughts, feelings, or behaviours related to the symptom or health concern. The physical symptom may be medically explained or unexplained. A normal test, an uncertain cause, repeated attendance, or disagreement with a clinician does not diagnose the disorder by itself.",
+      "pathology": "Somatic symptom disorder is not defined by one hidden lesion or by proof that a symptom is imaginary. The clinically important process is a persistent cycle in which bodily sensations or symptoms draw intense threat-focused attention, anxiety, checking, reassurance seeking, avoidance, or repeated care; short-term relief can reinforce the cycle, increase disability, and expose the person to unnecessary interventions. This formulation does not rule out coexisting medical disease.",
+      "pathophysiology": [
+        "Attention can become repeatedly focused on bodily sensations and danger. Heightened arousal may make symptoms more noticeable, while checking, repeated reassurance, avoidance, or repeated testing briefly reduces anxiety and can unintentionally maintain the pattern.",
+        "Pain, fatigue, breathlessness, weakness, gastrointestinal symptoms, or another genuine symptom may coexist with medical disease. The diagnosis concerns the disproportionate and impairing response to symptoms, not whether every symptom has a biomedical explanation.",
+        "No single universal neural mechanism explains all cases, and a psychiatric formulation must never replace reassessment when the history, examination, vital signs, or symptom pattern changes."
+      ],
+      "etiology": "No single cause is established. Biological sensitivity, prior illness or injury, anxiety or depression, trauma or chronic stress, family and cultural beliefs about illness, fragmented care, and reinforcement from repeated checking or avoidance may interact. None of these factors is required, and the disorder must not be blamed on personality, attention seeking, or a failure to cope.",
+      "riskFactors": [
+        "Persistent painful, neurologic, gastrointestinal, cardiopulmonary, or other physical symptoms, including symptoms from a diagnosed medical condition",
+        "Co-occurring anxiety, depression, trauma-related symptoms, chronic stress, sleep disturbance, or substance use",
+        "Repeated urgent visits, fragmented care, conflicting explanations, extensive low-yield testing, or prior harmful health-care experiences",
+        "High health anxiety, frequent body checking or reassurance seeking, avoidance of activity, or major time and energy spent on symptoms"
+      ],
+      "signsSymptoms": [
+        "One or more physical symptoms that cause significant distress or interfere with daily life, work, school, relationships, sleep, mobility, or self-care",
+        "Persistent thoughts that are disproportionate to the assessed seriousness of symptoms, high health anxiety, or excessive time and energy devoted to symptoms or health concerns",
+        "Repeated checking, reassurance seeking, appointments, emergency visits, testing, treatment requests, or avoidance that provides only short-lived relief",
+        "Symptoms may change, fluctuate, or coexist with a diagnosed medical illness; inconsistency or an unexplained result is not evidence that the person is faking"
+      ],
+      "diagnostics": [
+        "Diagnosis is clinical. Complete an appropriate history, physical and mental-status examination, medication and substance review, and targeted investigation based on the symptom, age, risk factors, previous results, and current red flags before making a psychiatric formulation.",
+        "In the DSM-5-TR framework, the symptomatic state is persistent, typically for more than 6 months, even if individual symptoms change. ICD-11 instead describes bodily distress disorder with its own requirements; the labels and criteria must not be treated as interchangeable.",
+        "Assess the degree of distress, functional disruption, disproportionate thoughts, health anxiety, time and energy spent, checking, reassurance seeking, avoidance, and care use. One questionnaire score or one clinician's impression cannot establish the diagnosis.",
+        "Reassess any new, objectively changing, focal, progressive, exertional, infectious, bleeding, toxic, pregnancy-related, or otherwise concerning feature. A previous somatic symptom diagnosis never closes the medical differential."
+      ],
+      "labs": [
+        "No blood test, imaging study, physiologic test, or rating scale confirms somatic symptom disorder.",
+        "Order or repeat tests when the clinical history, examination, risk, or change in pattern supports them; avoid automatic repeated testing that does not answer a defined question or change management.",
+        "Review prior results and trends across settings, medication adverse effects, substance exposure, pregnancy context, sleep, nutrition, and relevant organ-specific evaluation rather than using one normal result as proof of a psychiatric cause."
+      ],
+      "assessment": "Use a calm, nonjudgmental history that treats symptoms as real. Ask what changed, the person's feared explanation, functional effect, checking and avoidance, previous tests and treatments, medications and substances, depression, anxiety, trauma, sleep, self-harm and suicide risk, and the patient's goals. Examine and escalate new red flags, then document one coordinated plan, named follow-up clinician, review interval, functional targets, and the conditions that should trigger earlier reassessment.",
+      "differential": [
+        "A medical, neurologic, medication-related, toxic, sleep, pain, endocrine, infectious, inflammatory, or pregnancy-related condition, which may coexist with the disorder",
+        "Illness anxiety disorder, where preoccupation with serious illness is central and physical symptoms are absent or mild rather than prominent and distressing",
+        "Functional neurological symptom disorder, where motor, sensory, seizure-like, speech, gait, or cognitive symptoms are evaluated using positive neurologic features and an appropriate differential",
+        "Panic disorder, generalized anxiety disorder, obsessive-compulsive disorder, major depression, trauma-related disorders, or delusional disorder",
+        "Factitious disorder, which involves intentional falsification to assume a sick role, and malingering, which involves intentional symptom production for external gain; neither should be inferred from frustration, frequent care, or unexplained symptoms"
+      ],
+      "treatments": [
+        "Arrange regular planned follow-up with a trusted clinician or coordinated team. Validate symptoms, monitor health and function, review new findings, and reduce fragmented duplicate testing without promising that no medical disease can ever occur.",
+        "Use collaborative psychotherapy or another structured psychological intervention to reduce catastrophic interpretation, checking, reassurance cycles, and avoidance while building pacing, coping, activity, sleep, and functional goals.",
+        "Treat a separately diagnosed depression, anxiety disorder, pain condition, sleep disorder, or medical illness according to its own evidence. No medication is established as a universal treatment for somatic symptom disorder itself, so this card does not imply a routine drug or generic example.",
+        "Coordinate rehabilitation, pain, primary-care, mental-health, and specialty services when disability or comorbidity requires them; measure benefit by safety, function, distress, and reduced harmful care rather than by demanding immediate symptom disappearance."
+      ],
+      "contraindications": [
+        "Do not diagnose the disorder solely because tests are normal, a cause is uncertain, symptoms vary, or the patient seeks repeated care.",
+        "Do not tell the person that symptoms are imaginary, all psychological, or attention seeking; invalidation can increase harm and conceal new illness.",
+        "Do not repeat invasive or radiation-producing tests without a defined clinical question, but do not withhold indicated reassessment because of the psychiatric diagnosis.",
+        "Do not prescribe sedatives, opioids, antidepressants, antipsychotics, or other medicines as a nonspecific response to distress; use a clear separate indication, safety review, and monitoring plan."
+      ],
+      "safetyConsiderations": [
+        "Check vital signs and assess acute symptom-specific emergencies before focusing on the mental-health formulation, including chest pain, respiratory distress, focal neurologic change, syncope, severe bleeding, sepsis, overdose, or pregnancy-related danger.",
+        "Assess depression, hopelessness, self-harm, suicide, substance use, overdose access, functional collapse, abuse, and neglect; chronic or recurrent symptoms do not make an acute safety signal less important.",
+        "Review cumulative radiation, procedure complications, medication interactions, dependence, withdrawal, polypharmacy, and duplicated prescriptions across services.",
+        "Use consistent team communication and one agreed plan so conflicting reassurance, repeated rescue testing, or punitive limit setting does not intensify risk."
+      ],
+      "nursingPriorities": [
+        "Triage new red flags and complete symptom-appropriate assessment first; never let the psychiatric label substitute for vital signs, examination, or escalation.",
+        "Validate the symptom and emotion without confirming an unproven feared diagnosis. A useful response is that the symptom is real, the current danger has been assessed, and the team will keep monitoring defined changes.",
+        "Review the care plan, prior investigations, medications, and named follow-up clinician before arranging duplicate care; document exactly what should prompt routine versus urgent reassessment.",
+        "Set functional goals with the patient, such as sleep, activity, school or work attendance, self-care, or fewer reassurance checks, and trend progress without making symptom elimination the only success measure.",
+        "Screen for depression, anxiety, trauma, substance use, self-harm, suicide, abuse, and caregiver strain, and coordinate referrals for identified needs."
+      ],
+      "redFlags": [
+        "New focal neurologic deficit, altered consciousness, severe or rapidly progressive weakness, seizure-like activity without a known plan, or sudden severe headache",
+        "Chest pain, severe dyspnea, hypoxemia, syncope, hemodynamic instability, major bleeding, fever with toxicity, or another acute symptom-specific emergency",
+        "Suicidal intent, serious self-harm, overdose, inability to maintain safety, severe depression, intoxication, withdrawal, abuse, or neglect",
+        "A material change from the established pattern, new objective finding, pregnancy-related concern, significant weight loss, persistent vomiting, or loss of essential function"
+      ],
+      "complications": [
+        "Functional disability, school or work loss, relationship strain, isolation, sleep disruption, deconditioning, and reduced quality of life",
+        "Iatrogenic injury from repeated radiation, procedures, medication adverse effects, dependence, polypharmacy, or conflicting treatment plans",
+        "Missed or delayed medical diagnosis when every new symptom is attributed to the psychiatric condition",
+        "Depression, anxiety, trauma-related symptoms, substance use, self-harm, suicide risk, and breakdown of trust with health-care teams"
+      ],
+      "prognosis": "Course varies. Symptoms may persist, change, or improve, and meaningful recovery can occur even when some symptoms remain. A consistent therapeutic relationship, treatment of co-occurring illness, reduction of harmful testing, and gradual functional rehabilitation can improve safety and quality of life. Recurrence or a new pattern requires reassessment rather than blame or automatic repetition of prior testing.",
+      "prevention": [
+        "There is no proven universal way to prevent somatic symptom disorder. Early, coordinated care for persistent symptoms, anxiety, depression, trauma, pain, and sleep problems may reduce disability and fragmented care.",
+        "Give one clear explanation and follow-up plan, share prior results across services, and define the red flags that warrant renewed investigation.",
+        "Encourage paced activity, sleep, coping skills, and function while avoiding both forced activity through dangerous symptoms and prolonged avoidance that increases deconditioning."
+      ],
+      "patientEducation": [
+        "Your symptoms are real. This diagnosis concerns how much distress, fear, time, and disruption surround them; it does not mean that you are pretending or that medical illness is impossible.",
+        "A planned follow-up schedule is active care, not dismissal. Bring new or clearly changed symptoms forward using the red-flag plan rather than waiting for the next routine visit.",
+        "Repeated tests can sometimes cause harm without improving the answer. Ask what question a proposed test will answer and how the result would change care.",
+        "Psychotherapy and rehabilitation can reduce distress and restore function even if symptoms have not fully disappeared. Medicines are used for a separate supported condition, not automatically for this diagnosis."
+      ],
+      "specialPopulations": [
+        "Children and adolescents need developmentally informed medical and mental-health assessment with family and school context, safeguarding, and avoidance of labeling normal developmental complaints as a disorder.",
+        "Older adults or anyone with new late-onset symptoms need careful medication, neurologic, cardiac, malignant, endocrine, cognitive, sensory, and functional review before attributing change to an established pattern.",
+        "Pregnancy and postpartum symptoms require obstetric assessment when indicated; medication, imaging, and differential decisions depend on gestation, postpartum timing, and the exact symptom.",
+        "People with chronic medical disease, disability, limited communication, trauma, stigma, or poor access to care are at particular risk of diagnostic overshadowing and require accessible, coordinated assessment."
+      ],
+      "nclexTraps": [
+        "Unexplained does not mean unreal, and a normal test does not diagnose somatic symptom disorder.",
+        "Validate symptoms and assess new red flags before redirecting toward the coordinated plan; do not argue that the problem is all psychological.",
+        "Scheduled follow-up and functional goals are therapeutic. Repeated uncoordinated rescue testing can cause harm, but indicated reassessment must not be withheld.",
+        "Frequent care seeking is not proof of factitious disorder or malingering; intentional falsification requires separate evidence and motive assessment."
+      ],
+      "relatedTopics": [
+        "Illness anxiety disorder",
+        "Functional neurological symptom disorder",
+        "Generalized anxiety disorder",
+        "Major depressive disorder",
+        "Panic disorder",
+        "Obsessive-compulsive disorder"
+      ],
+      "sourceKeys": [
+        "apa-somatic-symptom-disorder-2024",
+        "who-icd11-cddr-mental-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based only on the American Psychiatric Association's DSM-5-TR-oriented somatic-symptom resource and the WHO ICD-11 CDDR classification. It preserves the real-symptom, medical-coexistence, duration, differential, coordinated-care, and non-diagnostic-test boundaries without treating the nonidentical ICD-11 bodily distress category as the same diagnosis.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/patients-families/somatic-symptom-disorder/what-is-somatic-symptom-disorder",
+          "documentVersion": "Physician-reviewed July 2024 resource; accessed 2026-08-13",
+          "fieldsSupported": [
+            "definition",
+            "diagnostics",
+            "differential",
+            "regular follow-up",
+            "psychotherapy",
+            "medication boundary",
+            "patientEducation"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; accessed 2026-08-13",
+          "fieldsSupported": [
+            "classification boundary",
+            "diagnostic requirements",
+            "duration context",
+            "differential",
+            "functional impact"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.somatic-symptom-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.illness-anxiety-disorder",
+      "name": "Illness anxiety disorder",
+      "displayName": "Illness anxiety disorder",
+      "category": "Mental health",
+      "aliases": [
+        "illness anxiety disorder (IAD)",
+        "health anxiety disorder (hypochondriasis)"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "plainLanguage": "Illness anxiety disorder is persistent fear or preoccupation about having or developing a serious illness even though physical symptoms are absent or mild. The person is not faking: the fear is real and may drive repeated body checking and reassurance seeking or, in some people, avoidance of care and illness reminders.",
+      "whyItMatters": "Severe health anxiety can consume time, disrupt work and relationships, lead to repeated low-value tests or complete avoidance of needed care, and hide depression or suicide risk. Nurses should still assess new symptoms, then use one consistent plan that reduces reassurance cycles while preserving safe medical follow-up.",
+      "plainLanguageGlosses": [
+        {
+          "term": "preoccupation",
+          "plainLanguage": "a concern that repeatedly dominates attention and is difficult to set aside",
+          "sourceKeys": [
+            "apa-somatic-symptom-disorder-2024"
+          ]
+        },
+        {
+          "term": "reassurance seeking",
+          "plainLanguage": "repeatedly checking with people, clinicians, tests, or online information to feel certain that illness is absent",
+          "sourceKeys": [
+            "apa-somatic-symptom-disorder-2024"
+          ]
+        },
+        {
+          "term": "maladaptive avoidance",
+          "plainLanguage": "avoiding care, activity, people, or information in a way that briefly lowers fear but worsens function or safety",
+          "sourceKeys": [
+            "apa-somatic-symptom-disorder-2024"
+          ]
+        }
+      ],
+      "definition": "Illness anxiety disorder is a DSM-5-TR diagnosis marked by persistent preoccupation with having or acquiring a serious illness when somatic symptoms are absent or only mild, together with high health anxiety and excessive health-related behaviours or maladaptive avoidance. The DSM duration anchor is at least 6 months, although the feared illness may change. One negative test or one episode of understandable worry does not diagnose the disorder.",
+      "pathology": "Illness anxiety disorder is not a laboratory abnormality and does not mean the person invents symptoms. Threat-focused attention can amplify ordinary sensations and uncertainty; checking, internet searching, repeated examinations, reassurance, or avoidance may briefly reduce fear but teach the brain that certainty must be obtained again. The cycle can persist even after appropriate evaluation while still allowing a real medical condition to develop independently.",
+      "pathophysiology": [
+        "Benign sensations or ordinary health information may be interpreted as evidence of severe disease. Anxiety increases attention and arousal, which can produce more sensations and further strengthen the feared interpretation.",
+        "Repeated checking and reassurance or, conversely, avoidance of appointments and illness information can provide short-term relief and reinforce the preoccupation over time.",
+        "There is no single universal biomarker or mechanism, and the diagnosis never establishes that future symptoms are harmless or that the person is intentionally deceptive."
+      ],
+      "etiology": "No single cause is established. Anxiety vulnerability, prior illness or loss, trauma or chronic stress, family or cultural learning about disease, uncertainty intolerance, repeated exposure to alarming health information, and fragmented medical care may interact. None is required, and realistic concern about an actual risk or symptom should not be pathologized.",
+      "riskFactors": [
+        "Personal or family experience of serious illness, medical trauma, loss, caregiving, or repeated exposure to frightening health information",
+        "Anxiety, obsessive-compulsive symptoms, depression, trauma-related symptoms, intolerance of uncertainty, or high attention to bodily sensations",
+        "Repeated checking, online searching, reassurance seeking, doctor switching, or avoidance of clinicians, tests, activity, people, or places associated with illness",
+        "Fragmented care, conflicting explanations, poor continuity, discrimination, or prior missed diagnosis that makes uncertainty harder to tolerate"
+      ],
+      "signsSymptoms": [
+        "Persistent preoccupation with having or developing a serious illness despite appropriate evaluation, with the feared diagnosis sometimes changing over time",
+        "Physical symptoms are absent or mild; if a medical condition or high disease risk is present, the worry and behaviours are clearly excessive for the full clinical context",
+        "Frequent body checking, repeated reassurance or testing, extensive health-information searching, or repeated appointments that give only brief relief",
+        "Maladaptive avoidance of appointments, hospitals, exercise, travel, people, news, or other illness reminders because the feared information or sensation feels intolerable"
+      ],
+      "diagnostics": [
+        "Complete a symptom- and risk-appropriate history, examination, medication and substance review, and targeted medical evaluation before deciding that worry is excessive. Review prior results and define what new findings would reopen the differential.",
+        "In the DSM-5-TR framework, illness preoccupation persists for at least 6 months, though the specific feared disease may change. ICD-11 uses hypochondriasis or health anxiety disorder within a different classification framework, so names and requirements should be stated rather than blended.",
+        "Assess preoccupation, health anxiety, checking, reassurance seeking, avoidance, time spent, functional impairment, insight, realistic medical risk, and the effect of reassurance. A health-anxiety questionnaire can organize symptoms but cannot diagnose the disorder alone.",
+        "Assess depression, obsessive-compulsive symptoms, panic, trauma, psychosis, substance use, sleep, self-harm, suicide, and whether new symptoms or objective changes require further medical assessment."
+      ],
+      "labs": [
+        "No laboratory value, imaging result, genetic test, or rating-scale score confirms illness anxiety disorder.",
+        "Use targeted investigation based on current symptoms, examination, age, exposure, family history, pregnancy context, and other risk; do not order serial testing solely to produce impossible absolute certainty.",
+        "Trend prior results and communicate one interpretation and follow-up plan across clinicians so duplicate testing and conflicting reassurance do not reinforce the cycle."
+      ],
+      "assessment": "Ask what disease is feared, what evidence the person notices, how certain they need to feel, what they check or avoid, how long the concern has persisted, how reassurance changes anxiety, and how the pattern affects sleep, activity, relationships, work, school, and care. Assess actual risk and new red flags, then document one medical follow-up plan, functional goals, and specific triggers for earlier reassessment. Screen directly for depression, OCD, panic, trauma, substance use, self-harm, and suicide.",
+      "differential": [
+        "A current medical condition or realistic disease risk that has not been adequately assessed, including a new condition arising after the anxiety diagnosis",
+        "Somatic symptom disorder, where one or more prominent distressing physical symptoms and the response to them are central",
+        "Obsessive-compulsive disorder, where intrusive unwanted obsessions and compulsions may include illness themes but occur within the broader OCD pattern",
+        "Generalized anxiety disorder, panic disorder, major depression, trauma-related disorders, body dysmorphic disorder, or delusional disorder with fixed somatic belief",
+        "Factitious disorder or malingering, which require intentional symptom falsification for different motives; neither is implied by genuine fear, frequent questions, or repeated care"
+      ],
+      "treatments": [
+        "Establish one trusted clinician or coordinated team with planned visits, a shared explanation, review of new findings, and a written threshold for routine versus urgent reassessment.",
+        "Use structured psychotherapy, commonly a cognitive-behavioural approach, to examine feared interpretations, reduce checking and reassurance or avoidance, tolerate uncertainty, and restore valued activity and function.",
+        "Treat a separately diagnosed depression, anxiety disorder, OCD, sleep disorder, or medical condition according to that condition's evidence. No medication is established as a universal treatment for illness anxiety disorder itself, so this card does not imply a routine generic drug example.",
+        "Agree on gradual behaviour goals, such as delaying one reassurance check, limiting online searches, attending an indicated appointment, or safely resuming activity, and review outcomes collaboratively."
+      ],
+      "contraindications": [
+        "Do not promise that a test proves the person can never develop the feared illness; use the current evidence, uncertainty, follow-up, and red-flag plan honestly.",
+        "Do not dismiss new symptoms, avoid indicated care, or label every concern as anxiety because the person already has this diagnosis.",
+        "Do not order repeated tests or provide repeated unstructured reassurance without a clinical question, because brief relief can strengthen the cycle.",
+        "Do not accuse the person of faking or use factitious disorder, malingering, hypochondriac, or attention seeking as a casual label."
+      ],
+      "safetyConsiderations": [
+        "Assess acute symptom-specific emergencies before redirecting to the health-anxiety plan; a psychiatric history does not lower the urgency of objective red flags.",
+        "Screen for depression, hopelessness, self-harm, suicide, substance use, overdose access, severe avoidance of necessary care, and functional collapse.",
+        "Review cumulative radiation, invasive procedures, false-positive cascades, medication adverse effects, polypharmacy, and financial or occupational harm from repeated care.",
+        "Care avoidance can be as dangerous as overuse: identify missed screening, immunization, chronic-disease follow-up, pregnancy care, and urgent evaluation."
+      ],
+      "nursingPriorities": [
+        "Assess the current symptom and objective risk first, then link back to the shared plan when no new red flag is present.",
+        "Validate the fear without confirming the feared diagnosis or offering impossible certainty. Use the same concise explanation and follow-up threshold across team members.",
+        "Ask about both checking and avoidance, because either pattern can impair health; record time spent, care use, missed care, sleep, activity, work or school, and relationship effects.",
+        "Coach one planned coping or uncertainty-tolerance step before another reassurance cycle, and reinforce safe function rather than repeated checking.",
+        "Screen directly for depression, OCD, panic, trauma, substance use, self-harm, suicide, abuse, and barriers to indicated medical care."
+      ],
+      "redFlags": [
+        "New objective abnormality, material symptom change, focal neurologic sign, severe pain, respiratory distress, syncope, bleeding, fever with toxicity, or another symptom-specific emergency",
+        "Suicidal intent, serious self-harm, overdose, inability to maintain safety, psychosis, severe depression, intoxication, or withdrawal",
+        "Avoidance of urgent or essential medical care, major weight loss or self-neglect, inability to leave home, loss of work or school, or severe functional collapse",
+        "Escalating invasive testing, multiple conflicting prescriptions, procedure complications, or repeated emergency use without coordinated follow-up"
+      ],
+      "complications": [
+        "Chronic anxiety, depression, sleep loss, impaired concentration, relationship strain, school or work loss, and reduced quality of life",
+        "Iatrogenic injury, false-positive cascades, radiation or procedure exposure, medication harms, and financial burden from repeated testing",
+        "Missed prevention or delayed diagnosis when fear leads to avoidance, or diagnostic overshadowing when clinicians attribute new disease to anxiety",
+        "Fragmented care, clinician-patient conflict, isolation, substance use, self-harm, and suicide risk when co-occurring conditions are present"
+      ],
+      "prognosis": "Course varies, and fear may shift from one disease to another. Improvement is possible when the person has a consistent therapeutic relationship, a credible medical follow-up plan, structured psychotherapy, and gradual reduction of checking or avoidance. Progress means safer use of care and better function, not a promise of perfect certainty or the absence of every bodily sensation.",
+      "prevention": [
+        "There is no proven universal method to prevent illness anxiety disorder. Early care for anxiety, trauma, grief, depression, OCD symptoms, and frightening medical experiences may reduce persistence and disability.",
+        "Provide clear explanations, share results across services, and define follow-up and red flags so uncertainty is contained without endless testing.",
+        "Encourage reliable health information, planned routine care, gradual return to safe activity, and limits on compulsive checking or online searching."
+      ],
+      "patientEducation": [
+        "The fear is real, but fear itself is not proof of the disease you fear. The plan separates what has been assessed now from the changes that would require new evaluation.",
+        "Repeated checking or reassurance often helps briefly and then makes the fear return. Treatment builds a different response while keeping appropriate medical follow-up.",
+        "Avoiding care can also be part of the disorder. Keep indicated screening, chronic-disease, pregnancy, and urgent appointments using the agreed support plan.",
+        "Psychotherapy can improve health anxiety and function. Medicines are considered only for a separate supported condition, not automatically for this diagnosis."
+      ],
+      "specialPopulations": [
+        "Children and adolescents need developmental and family assessment; fears after illness, loss, media exposure, or school events should not be labeled from one episode, and safeguarding remains essential.",
+        "Older adults and people with strong personal or family disease risk require careful medical assessment because realistic risk, grief, cognitive change, and medication effects may alter the interpretation.",
+        "Pregnancy and postpartum periods produce real bodily change and risk; obstetric red flags and medication decisions require pregnancy-specific assessment rather than reassurance alone.",
+        "People with chronic illness, disability, limited communication, trauma, discrimination, or prior missed diagnosis need an accessible plan that reduces both overtesting and diagnostic overshadowing."
+      ],
+      "nclexTraps": [
+        "Illness anxiety disorder usually has absent or mild somatic symptoms; prominent distressing physical symptoms point toward the somatic symptom differential.",
+        "Do not provide endless reassurance or accuse the patient of faking. Assess current risk, use a consistent plan, and redirect toward coping and function.",
+        "The DSM-5-TR duration anchor is at least 6 months, but one score, one negative test, or one episode of worry does not diagnose the disorder.",
+        "Both repeated care and avoidance can occur. The nurse protects needed medical care while reducing low-value checking and testing."
+      ],
+      "relatedTopics": [
+        "Somatic symptom disorder",
+        "Functional neurological symptom disorder",
+        "Generalized anxiety disorder",
+        "Obsessive-compulsive disorder",
+        "Panic disorder",
+        "Major depressive disorder"
+      ],
+      "sourceKeys": [
+        "apa-somatic-symptom-disorder-2024",
+        "who-icd11-cddr-mental-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based only on the American Psychiatric Association's DSM-5-TR-oriented illness-anxiety discussion and the WHO ICD-11 CDDR classification. The contextual ICD-11 phrase health anxiety disorder (hypochondriasis) is preserved without activating either broad historical word as a bare alias, and no source prose was copied.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/patients-families/somatic-symptom-disorder/what-is-somatic-symptom-disorder",
+          "documentVersion": "Physician-reviewed July 2024 resource; accessed 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "definition",
+            "diagnostics",
+            "somatic symptom differential",
+            "checking and avoidance",
+            "psychotherapy",
+            "patientEducation"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; accessed 2026-08-13",
+          "fieldsSupported": [
+            "hypochondriasis health-anxiety classification boundary",
+            "diagnostic requirements",
+            "duration context",
+            "differential",
+            "functional impact"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.illness-anxiety-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.functional-neurological-symptom-disorder",
+      "name": "Functional neurological symptom disorder",
+      "displayName": "Functional neurological symptom disorder (FND)",
+      "category": "Mental health",
+      "aliases": [
+        "Functional neurological disorder",
+        "Conversion disorder",
+        "FND"
+      ],
+      "preferredBareAliases": [
+        "FND"
+      ],
+      "preferredBareAliasRationale": "FND is the standard exact abbreviation for functional neurological disorder, has no competing ANI runtime identity owner, and is activated only for this reviewed full disorder identity.",
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "plainLanguage": "Functional neurological symptom disorder causes real, involuntary problems with movement, sensation, speech, awareness, thinking, or seizure-like episodes because nervous-system functioning is disrupted even though the pattern is not explained by structural neurologic disease alone. Diagnosis uses positive clinical features, not simply normal tests or a history of stress.",
+      "whyItMatters": "FND can cause falls, injury, aspiration risk, immobility, communication loss, repeated emergency care, and major disability, while new stroke, seizure, infection, toxic-metabolic disease, or another neurologic disorder can still occur. Nurses must protect immediate safety, assess new signs, use nonstigmatizing language, and reinforce a consistent rehabilitation plan.",
+      "plainLanguageGlosses": [
+        {
+          "term": "functional",
+          "plainLanguage": "describing how a nervous-system function is working rather than proving permanent structural damage",
+          "sourceKeys": [
+            "apa-dsm5tr-functional-neurological-symptom-disorder",
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "positive clinical features",
+          "plainLanguage": "examination findings that actively support the diagnosis because they show a recognized internally inconsistent or incongruent pattern",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "involuntary",
+          "plainLanguage": "not consciously produced or under ordinary deliberate control",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024"
+          ]
+        }
+      ],
+      "definition": "Functional neurological symptom disorder is the DSM-5-TR name for one or more altered voluntary motor or sensory functions whose clinical pattern shows incompatibility with recognized neurologic or medical disease. Functional neurological disorder is the preferred modern clinical term, and conversion disorder remains a full historical diagnostic name. ICD-11 classifies a related construct as dissociative neurological symptom disorder. Symptoms are real and involuntary; normal testing, psychological stress, or exclusion alone is insufficient.",
+      "pathology": "FND reflects altered nervous-system functioning rather than one universal structural lesion. Attention, prediction, sense of agency, arousal, movement or sensory processing, prior illness or injury, and learned symptom responses may interact, but no single mechanism or psychological trigger is required. Positive signs such as internally inconsistent weakness, distractibility, or entrainment may demonstrate preserved capacity and support reversibility; they must be interpreted by trained clinicians within a complete neurologic assessment.",
+      "pathophysiology": [
+        "Brain networks that predict, select, and monitor movement, sensation, attention, and agency may function abnormally even when routine structural imaging is normal. This is a functional network explanation, not evidence that symptoms are imagined.",
+        "Symptoms can be reinforced by threat, attention, pain, fatigue, injury, illness, sleep loss, or learned protective responses, but trauma or stress is neither necessary nor sufficient for diagnosis.",
+        "Positive examination features show a pattern that differs from recognized structural disease and may reveal preserved automatic function. A coexisting neurologic or medical disorder remains possible and must be assessed on its own evidence."
+      ],
+      "etiology": "Cause is usually multifactorial and may include biologic vulnerability, prior neurologic symptoms, pain, migraine, injury, medical illness, fatigue, anxiety, depression, trauma, stress, or learned symptom responses. Some patients report no psychological trigger. FND is not caused by conscious deception, and no particular trauma, personality, sex, or life event is required.",
+      "riskFactors": [
+        "Prior neurologic symptoms, migraine, chronic pain, fatigue, injury, surgery, infection, or another medical illness, without implying that any one factor proves causation",
+        "Anxiety, depression, trauma-related symptoms, dissociation, sleep disturbance, or chronic stress, which may coexist but are not diagnostic requirements",
+        "Previous functional symptoms, repeated emergency care, inconsistent explanations, stigma, prolonged immobility, or fear-driven avoidance that can maintain disability",
+        "Coexisting epilepsy, multiple sclerosis, movement disorder, or another neurologic condition, which must not be overlooked because FND is also present"
+      ],
+      "signsSymptoms": [
+        "Functional weakness or paralysis, gait disturbance, tremor, dystonia, jerks, abnormal posturing, facial movement, or other motor symptoms",
+        "Numbness, altered sensation, visual or auditory symptoms, dizziness, speech or swallowing difficulty, memory or concentration symptoms, or mixed presentations",
+        "Functional seizures or attacks with altered movement, responsiveness, or awareness that require specialist differentiation from epileptic seizures and other causes",
+        "Symptoms may fluctuate, distract, change with task or attention, or show other positive patterns recognized on neurologic examination; variability alone does not prove FND or intentional production"
+      ],
+      "diagnostics": [
+        "Diagnosis is clinical and should be made by a clinician with appropriate neurologic expertise using positive features that demonstrate incompatibility or internal inconsistency, together with a symptom-appropriate medical and neurologic evaluation. It is not merely a diagnosis of exclusion.",
+        "Document the exact positive finding and explain what it means. Examples may include preserved automatic movement despite impaired voluntary movement, a positive Hoover-type pattern, distractible or entrainable tremor, or attack features evaluated by a seizure specialist; no single sign is universal or diagnostic outside its proper examination context.",
+        "State the classification system: DSM-5-TR uses functional neurological symptom disorder with conversion disorder in parentheses, while ICD-11 uses dissociative neurological symptom disorder with presentation specifiers. These are related but not identical criteria frameworks.",
+        "A psychological stressor is not required. Assess neurologic and medical comorbidity, medication or substance effects, mood, anxiety, trauma, sleep, pain, cognition, function, self-harm, and suicide without using any one history item or screening scale as proof."
+      ],
+      "labs": [
+        "No blood test, imaging result, electroencephalogram, or rating scale confirms all forms of FND; testing is selected according to the symptom and differential.",
+        "Brain or spine imaging, electroencephalography, metabolic testing, cardiac assessment, or other studies may be indicated for stroke, epilepsy, neuromuscular, toxic-metabolic, infectious, structural, or other suspected causes.",
+        "Normal routine tests do not establish FND. Review the examination's positive features, prior studies and trends, medication and substance effects, and any new objective sign before deciding that repeat testing is unnecessary."
+      ],
+      "assessment": "First assess airway, breathing, circulation, glucose when indicated, injury, vital signs, consciousness, new focal deficits, speech, swallowing, gait, seizure features, medication and substance exposure, and the symptom timeline. Compare the episode with the documented FND pattern and specialist plan, but assess every new sign or material change through the relevant neurologic pathway. Ask how symptoms affect falls, mobility, nutrition, communication, self-care, work or school, sleep, pain, mood, trauma, self-harm, suicide, and the patient's treatment goals.",
+      "differential": [
+        "Stroke or transient ischemic attack, epilepsy, migraine, multiple sclerosis, myasthenia gravis, movement disorder, neuropathy, spinal cord or nerve-root disease, vestibular disease, or another neurologic condition",
+        "Hypoglycemia, electrolyte or endocrine disturbance, infection, hypoxia, medication adverse effect, intoxication, withdrawal, cardiac syncope, sleep disorder, or another medical cause",
+        "Panic, dissociation, post-traumatic stress, depression, anxiety, delirium, psychosis, or neurocognitive disorder that may coexist or produce a different presentation",
+        "Somatic symptom disorder or illness anxiety disorder, which focus on the broader response to physical symptoms or fear of illness rather than a positive functional neurologic pattern",
+        "Factitious disorder or malingering, which involve intentional symptom production; FND symptoms are involuntary and inconsistency is not proof of deception"
+      ],
+      "treatments": [
+        "Give a clear, respectful explanation that names FND, demonstrates the positive diagnostic feature when appropriate, confirms that symptoms are real and potentially reversible, and explains why the current evidence supports the diagnosis.",
+        "Use individualized multidisciplinary rehabilitation. Physiotherapy may retrain automatic movement and reduce maladaptive attention; occupational therapy, speech-language therapy, swallowing care, cognitive strategies, and graded return to activity depend on the symptom and safety assessment.",
+        "Offer psychotherapy when helpful for symptom management, coping, trauma, anxiety, depression, or other identified needs, without implying that a psychological cause must be found before rehabilitation can begin.",
+        "No medication has established FND-specific efficacy. Treat a separately diagnosed depression, anxiety disorder, migraine, pain condition, epilepsy, or other illness according to its own evidence, and avoid continuing unnecessary antiseizure or sedating drugs without specialist review.",
+        "Use a written relapse or episode plan that distinguishes the person's recognized recurrent pattern from new signs requiring stroke, seizure, injury, toxic-metabolic, or other emergency assessment."
+      ],
+      "contraindications": [
+        "Do not diagnose FND solely because imaging, EEG, or laboratory testing is normal or because symptoms are unusual, variable, or associated with stress.",
+        "Do not call symptoms fake, psychogenic, hysterical, pseudoseizures, or all in the head; these terms can stigmatize, misclassify, and obstruct care.",
+        "Do not assume every later neurologic symptom is recurrent FND. New sudden weakness, speech change, altered consciousness, injury, or other new sign requires relevant assessment.",
+        "Do not abruptly stop antiseizure, psychiatric, opioid, benzodiazepine, or other long-term medicine because FND is diagnosed; verify the indication and use a supervised condition-specific plan."
+      ],
+      "safetyConsiderations": [
+        "Sudden-onset limb or facial weakness can be stroke or transient ischemic attack even in a person with diagnosed FND; use the stroke pathway for new sudden deficits rather than waiting for symptoms to fluctuate.",
+        "During seizure-like events, protect from injury, maintain airway and observation, avoid restraint and painful stimuli, time and describe the episode, and escalate new or prolonged events according to the emergency and specialist plan.",
+        "Assess falls, aspiration, choking, immobility, pressure injury, venous thromboembolism risk, driving or work hazards, medication effects, and safe use of mobility or communication aids.",
+        "Screen for depression, trauma, anxiety, self-harm, suicide, substance use, abuse, and functional collapse; stigma and disbelief can worsen disengagement and risk."
+      ],
+      "nursingPriorities": [
+        "Triage new focal deficits, altered consciousness, airway or swallowing problems, injury, hypoglycemia when relevant, and other acute medical threats before applying the established FND plan.",
+        "Use neutral, consistent language: the symptom is real and involuntary, the examination shows how nervous-system functioning is disrupted, and rehabilitation aims to retrain function.",
+        "Document positive signs and the exact observed episode without judgment, including onset, duration, responsiveness, movement, triggers, injuries, recovery, and differences from the known pattern.",
+        "Promote safe independence and automatic movement, follow therapy cueing, avoid unnecessary immobilization or excessive rescue attention, and reinforce function without forcing through unsafe symptoms.",
+        "Coordinate neurology, rehabilitation, mental-health, primary-care, and emergency plans so all teams know which recurrent features are expected and which new signs require escalation."
+      ],
+      "redFlags": [
+        "New sudden facial or limb weakness, speech or language change, vision loss, severe acute imbalance, or another possible stroke or transient ischemic attack",
+        "First seizure-like event, a new event pattern, prolonged or repeated events without recovery, significant injury, cyanosis, persistent altered consciousness, pregnancy, or concern for status epilepticus",
+        "Rapidly progressive weakness, respiratory or bulbar difficulty, new bladder or bowel dysfunction, saddle numbness, fever, severe headache, or other evidence of neurologic or medical emergency",
+        "Suicidal intent, serious self-harm, overdose, psychosis, intoxication, withdrawal, abuse, inability to maintain safety, or severe functional collapse"
+      ],
+      "complications": [
+        "Falls, injury, aspiration, immobility, deconditioning, pressure injury, venous thromboembolism, communication impairment, and loss of independence",
+        "Repeated emergency visits, unnecessary testing or treatment, inappropriate antiseizure medication, sedation, polypharmacy, and procedure-related harm",
+        "School or work loss, driving restrictions, isolation, caregiver strain, depression, anxiety, trauma-related symptoms, substance use, self-harm, and suicide risk",
+        "Missed coexisting neurologic or medical disease because every new symptom is attributed to FND, or prolonged disability because the diagnosis is not explained and treated constructively"
+      ],
+      "prognosis": "FND is potentially reversible, but course varies by symptom, duration, comorbidity, access to informed rehabilitation, and whether the diagnosis is understood and accepted. Early clear explanation and coordinated therapy can improve function. Persistent symptoms do not prove structural damage or deception, and recurrence should trigger the written plan plus reassessment of any genuinely new neurologic sign.",
+      "prevention": [
+        "There is no proven universal way to prevent FND. Early recognition, a positive diagnosis, clear explanation, and timely rehabilitation may reduce secondary disability and harmful repeated investigation.",
+        "Treat pain, migraine, sleep problems, anxiety, depression, trauma-related symptoms, and other medical or neurologic conditions without presenting them as the single required cause of FND.",
+        "Use fall, swallowing, mobility, activity, work or school, and episode-safety plans that preserve independence and define when new symptoms require urgent assessment."
+      ],
+      "patientEducation": [
+        "FND is real and involuntary. It describes a problem with nervous-system functioning, not proof that the symptom is imagined or that you caused it.",
+        "The diagnosis should be supported by positive clinical features, not just normal tests. Ask the clinician which examination finding supports your diagnosis and what other conditions were considered.",
+        "Symptoms may fluctuate and can worsen with stress, fatigue, pain, or attention, but stress is not required. A new neurologic sign still needs assessment using the agreed plan.",
+        "Rehabilitation retrains movement, sensation, speech, cognition, or episode responses. Medicine treats a separate diagnosed condition; there is no universal FND-specific drug regimen.",
+        "Seek emergency help for new sudden weakness or speech change, a first or materially different seizure-like event, persistent altered consciousness, serious injury, breathing or swallowing difficulty, or inability to stay safe."
+      ],
+      "specialPopulations": [
+        "Children and adolescents require pediatric neurologic and developmentally informed assessment, family and school planning, safeguarding, and avoidance of assumptions that distress or family factors prove causation.",
+        "Older adults and people with vascular, neurologic, cancer, cognitive, or medication risks need careful assessment of new change; late-onset symptoms should not be assumed to match a prior functional pattern.",
+        "Pregnancy and postpartum care require obstetric and neurologic assessment for new events, individualized medication review, fall and seizure safety, and avoidance of abrupt drug discontinuation.",
+        "People with coexisting epilepsy, multiple sclerosis, movement disorder, disability, limited communication, trauma, or poor access to rehabilitation need an explicit plan separating each condition's treatment and red flags."
+      ],
+      "nclexTraps": [
+        "FND is a positive clinical diagnosis, not simply normal imaging or a diagnosis of exclusion.",
+        "Symptoms are involuntary. Do not use inconsistency, distractibility, or a functional seizure as proof of malingering or factitious disorder.",
+        "A known FND diagnosis never rules out stroke, epilepsy, hypoglycemia, injury, or another new medical condition; assess new signs first.",
+        "Use safety, neutral observation, consistent explanation, and rehabilitation. Painful stimuli, restraint, confrontation, and repeated unplanned testing can cause harm."
+      ],
+      "relatedTopics": [
+        "Somatic symptom disorder",
+        "Illness anxiety disorder",
+        "Stroke",
+        "Epilepsy",
+        "Multiple sclerosis",
+        "Myasthenia gravis"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "apa-dsm5tr-functional-neurological-symptom-disorder",
+        "nice-ng127-functional-neurological-disorder"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based only on the WHO ICD-11 CDDR, the APA DSM-5-TR terminology fact sheet, and NICE NG127 adult recognition and referral recommendations. It preserves positive-diagnosis, real and involuntary symptom, classification, new-neurologic-sign, stroke, nonstigmatizing terminology, rehabilitation, and medication boundaries; no source prose was copied.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; accessed 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "classification",
+            "positive diagnostic requirements",
+            "presentation specifiers",
+            "differential",
+            "functional impact"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/getmedia/c57b724e-7fc7-4082-bbbf-28b458709b51/APA-DSM5TR-FunctionalNeurologicalSymptomDisorder.pdf",
+          "documentVersion": "DSM-5-TR terminology fact sheet; accessed 2026-08-13",
+          "fieldsSupported": [
+            "preferred identity",
+            "conversion disorder full-name alias",
+            "terminology rationale",
+            "classification boundary"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/ng127/chapter/Recommendations-for-adults-aged-over-16",
+          "documentVersion": "NG127 current adult recommendations; accessed 2026-08-13",
+          "fieldsSupported": [
+            "new neurologic signs",
+            "sudden weakness stroke boundary",
+            "recurrent symptoms",
+            "referral",
+            "patientEducation",
+            "safetyConsiderations"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.functional-neurological-symptom-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.narcissistic-personality-disorder",
+      "name": "Narcissistic personality disorder",
+      "displayName": "Narcissistic personality disorder",
+      "category": "Mental health",
+      "aliases": [
+        "narcissistic PD"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "plainLanguage": "Narcissistic personality disorder is a long-standing pattern of grandiosity, strong need for admiration, entitlement, and difficulty recognizing other people's needs and feelings. The outward confidence can coexist with fragile self-esteem, marked sensitivity to criticism, and major problems in relationships, work, or treatment.",
+      "whyItMatters": "A humiliating loss, rejection, conflict, depression, substance use, or threat to self-esteem can trigger withdrawal, rage, self-harm, suicidal thinking, aggression, or treatment dropout. Nurses should assess the current risk directly, maintain respectful limits, and distinguish this enduring pattern from an acute mood, psychotic, substance-related, or medical change.",
+      "plainLanguageGlosses": [
+        {
+          "term": "grandiosity",
+          "plainLanguage": "an exaggerated sense of importance, ability, status, or entitlement",
+          "sourceKeys": [
+            "apa-personality-disorders",
+            "ncbi-statpearls-narcissistic-personality-2024"
+          ]
+        },
+        {
+          "term": "empathy",
+          "plainLanguage": "the ability to understand and respond to another person's feelings and perspective",
+          "sourceKeys": [
+            "apa-personality-disorders",
+            "medlineplus-personality-disorders"
+          ]
+        },
+        {
+          "term": "longitudinal assessment",
+          "plainLanguage": "assessment of the pattern across years, relationships, and settings instead of judging one difficult encounter",
+          "sourceKeys": [
+            "apa-personality-disorders",
+            "ncbi-statpearls-narcissistic-personality-2024"
+          ]
+        }
+      ],
+      "definition": "Narcissistic personality disorder is an enduring personality pattern involving grandiosity, need for admiration, entitlement, and impaired empathy that begins by early adulthood, occurs across contexts, and causes clinically meaningful distress or impaired social or occupational functioning. Diagnosis requires a comprehensive longitudinal mental-health assessment; arrogance, confidence, conflict, or one self-centered action does not establish the disorder.",
+      "pathology": "Narcissistic personality disorder is not a structural brain lesion and has no diagnostic laboratory or imaging marker. The clinical problem involves a rigid pattern of self-evaluation and interpersonal regulation in which status, admiration, entitlement, comparison, and threats to self-esteem can strongly shape emotion and behaviour. Shame, anger, depression, withdrawal, exploitation, or counterattack may follow criticism or loss and can worsen safety, relationships, and treatment engagement.",
+      "pathophysiology": [
+        "No single biological mechanism explains narcissistic personality disorder. Temperament, personality development, learning, relationships, and social context may interact, but none is independently diagnostic or a proven universal cause.",
+        "Self-esteem may depend heavily on admiration, achievement, status, or comparison. When that support is threatened, shame, anger, defensiveness, withdrawal, or attempts to restore control can intensify.",
+        "These patterns are understood through behaviour, emotion, identity, relationships, and function over time; routine CT, MRI, EEG, lumbar puncture, or laboratory testing does not confirm the diagnosis."
+      ],
+      "etiology": "The cause is not known and is likely multifactorial. Inherited temperament, developmental experiences, family and peer relationships, culture, reinforcement, and other psychological or social factors may contribute. A particular parenting style, trauma history, personality trait, or social position should not be presented as a necessary or sufficient cause.",
+      "riskFactors": [
+        "Long-standing grandiosity, entitlement, admiration seeking, empathy difficulty, or marked sensitivity to criticism that becomes rigid and impairs functioning",
+        "Co-occurring depression, anxiety, substance use, trauma-related symptoms, another personality pattern, or major occupational and relationship stress",
+        "Recent humiliation, rejection, bereavement, status loss, legal or financial crisis, or relationship rupture that threatens self-esteem",
+        "Limited support, repeated conflict, inconsistent treatment boundaries, or prior disengagement from mental-health care"
+      ],
+      "signsSymptoms": [
+        "Persistent grandiose beliefs or fantasies about importance, success, power, status, ability, or ideal relationships",
+        "Strong need for admiration or special recognition, with entitlement to preferred treatment or exceptions",
+        "Difficulty recognizing another person's perspective or feelings, exploitative interactions, envy, or belief that others are envious",
+        "Arrogant, dismissive, competitive, or devaluing behaviour, especially when status or self-image feels threatened",
+        "Marked shame, anger, defensiveness, withdrawal, depression, or interpersonal crisis after criticism, rejection, failure, or loss"
+      ],
+      "diagnostics": [
+        "Use a comprehensive psychiatric interview to establish an enduring pattern beginning by early adulthood, present across relationships and settings, and associated with distress or impaired function. Assess identity, empathy, intimacy, work, behaviour, mood, substances, trauma, medical history, and current goals.",
+        "Obtain collateral history only when appropriate, safe, and consented or otherwise legally authorized. Several encounters may be needed because one conflict, self-report, or staff reaction is not enough to diagnose a personality disorder.",
+        "Assess for manic or hypomanic episodes: bipolar illness has distinct periods of elevated or irritable mood with increased energy or activity and often reduced need for sleep, while narcissistic personality features are an enduring cross-situational pattern. Both conditions can coexist.",
+        "Screen directly for depression, suicidal thoughts and behaviour, violence risk, substance intoxication or withdrawal, psychosis, and abrupt mental-status change, especially after humiliation, rejection, loss, or functional collapse.",
+        "Keep the classification system explicit: the familiar Cluster B named pattern comes from the DSM-oriented framework, while ICD-11 emphasizes overall personality-disorder severity and trait domains. A cluster name is not a severity score."
+      ],
+      "labs": [
+        "No laboratory test, brain scan, EEG, lumbar puncture, or rating scale confirms narcissistic personality disorder.",
+        "Use targeted medical, toxicology, medication, endocrine, neurologic, sleep, or other evaluation only when the history or examination suggests an acute change or another condition.",
+        "If medicine is prescribed for a separately diagnosed condition, monitoring follows that diagnosis, exact product, dose, interactions, comorbidity, and protocol rather than the personality-disorder label."
+      ],
+      "assessment": "Approach the person with calm respect and ask what happened, what feels threatened or lost, what the person wants help with, and how the pattern affects relationships and function. Assess mood, sleep, energy, impulsivity, shame, anger, substance use, psychosis, self-harm, suicide, violence, weapon access, exploitation, medical needs, and supports. Document observable behaviour and stated concerns without pejorative labels, and notice staff countertransference so frustration does not distort assessment or care.",
+      "differential": [
+        "Bipolar I or II disorder, where grandiosity occurs within a distinct manic or hypomanic episode with increased energy or activity and reduced need for sleep; bipolar disorder and narcissistic personality disorder may coexist",
+        "Borderline personality disorder, where identity instability, abandonment sensitivity, recurrent self-harm, emptiness, and rapidly changing relationships may be more prominent",
+        "Histrionic personality disorder, where pervasive emotional expressiveness and efforts to hold attention are more central than superiority, entitlement, or status",
+        "Antisocial personality disorder, substance intoxication or withdrawal, post-traumatic responses, depression, anxiety, psychosis, or another personality pattern",
+        "Adaptive confidence, ambition, leadership, culturally shaped self-presentation, or a temporary response to stress that remains flexible and does not cause pervasive impairment"
+      ],
+      "treatments": [
+        "Use a collaborative psychotherapy plan matched to the person's goals, impairment, readiness, and available expertise. Evidence for any one narcissistic-personality-specific method remains limited, so progress should be tracked through function, safety, relationships, and agreed targets.",
+        "Maintain a clear therapeutic frame with consistent appointments, roles, limits, and communication across the team while addressing housing, work, finances, legal stress, substance use, and other practical barriers when relevant.",
+        "No medicine specifically treats the narcissistic personality pattern. Treat a separately diagnosed depression, anxiety disorder, bipolar disorder, psychosis, sleep disorder, or substance-use disorder according to its own evidence and monitoring plan.",
+        "Use crisis assessment and a collaborative safety plan for suicidal thoughts, self-harm, violence risk, intoxication, psychosis, or severe functional collapse; acute risk care does not depend on whether the personality diagnosis is confirmed."
+      ],
+      "contraindications": [
+        "Do not use routine neurologic imaging, EEG, lumbar puncture, toxicology, or stroke workup to diagnose the personality disorder; order testing only for a clinically supported medical or substance-related differential.",
+        "Do not present antidepressants, antipsychotics, mood stabilizers, sedatives, or any named medicine as a routine treatment list for narcissistic personality disorder itself.",
+        "Avoid humiliation, sarcasm, arguing about superiority, retaliatory limit setting, excessive flattery, or power struggles; these responses can intensify shame, rage, disengagement, and risk.",
+        "Do not diagnose from staff frustration, a social-media label, one boastful statement, wealth, ambition, or interpersonal conflict."
+      ],
+      "safetyConsiderations": [
+        "Ask directly about suicide and self-harm after rejection, public embarrassment, occupational or financial loss, relationship rupture, or new depression; outward confidence does not establish safety.",
+        "Assess a credible violent threat by target, intent, plan, means, access to weapons, intoxication, escalating agitation, and protective factors, and follow the local emergency and duty-to-protect pathway.",
+        "Validate emotion without endorsing distortion, and keep limits neutral, specific, proportionate, and consistent across staff to reduce splitting, retaliation, or unsafe exceptions.",
+        "Treat overdose, injury, intoxication, withdrawal, psychosis, mania, delirium, or another medical emergency before attributing behaviour to personality."
+      ],
+      "nursingPriorities": [
+        "Assess mood, shame, anger, interpersonal conflict, substance use, impulsivity, self-harm, violence risk, occupational loss, and response to recent criticism because crises often follow threats to self-esteem rather than stable grandiosity alone.",
+        "Use respectful neutral language, validate emotion without endorsing distortion, and maintain consistent limits because humiliation and power struggles can intensify rage, withdrawal, treatment dropout, or retaliatory behavior.",
+        "Monitor mental status, function, treatment attendance, escalating entitlement conflicts, depression, sleep, substance use, and stated safety intent because longitudinal change can reveal a developing mood, intoxication, self-harm, or violence crisis more reliably than debating the patient's self-description.",
+        "Coordinate psychotherapy and treatment of defined depression, anxiety, or substance-use disorders while aligning staff responses because personality traits improve gradually and inconsistent exceptions undermine the therapeutic frame.",
+        "Escalate immediately for suicidal intent after humiliation or loss, a credible violent threat, weapon access, severe intoxication, psychosis, or inability to maintain safety because acute risk requires intervention independent of the personality formulation."
+      ],
+      "redFlags": [
+        "Suicidal intent, preparatory behaviour, recent serious attempt, or access to lethal means after major loss, rejection, or humiliation",
+        "Credible violent threat with a target, plan, means, weapon access, escalating aggression, or inability to control impulses",
+        "Severe intoxication, dangerous withdrawal, mania, psychosis, delirium, or rapidly changing mental status",
+        "Abrupt functional collapse, severe self-neglect, untreated medical injury, or inability to participate in immediate safety planning"
+      ],
+      "complications": [
+        "Relationship breakdown, occupational or academic loss, legal or financial problems, isolation, and reduced quality of life",
+        "Depression, anxiety, substance-related harm, self-harm, suicide attempts, suicide, aggression, or victimization",
+        "Treatment conflict, fragmented care, repeated dropout, inappropriate prescribing, or missed comorbid illness",
+        "Escalating shame, rage, withdrawal, retaliation, or functional collapse after criticism, rejection, failure, or loss"
+      ],
+      "prognosis": "The course and response to treatment vary, and disorder-specific outcome evidence is limited. Enduring patterns often change gradually rather than during one crisis. A stable alliance, clear goals, attention to comorbidity and practical function, consistent team boundaries, and direct safety care can improve quality of life even when traits persist.",
+      "prevention": [
+        "There is no proven universal method to prevent narcissistic personality disorder.",
+        "Early help for depression, substance use, trauma-related distress, repeated relationship conflict, or functional decline may reduce harm without assuming that these problems caused the personality pattern.",
+        "Consistent care, nonhumiliating limits, crisis planning, and support for stable work, housing, relationships, and medical care can reduce preventable escalation."
+      ],
+      "patientEducation": [
+        "The diagnosis describes a long-term pattern that affects self-image, relationships, and function; it is not a moral judgment and cannot be established from one disagreement or online checklist.",
+        "Psychotherapy focuses on the goals you identify, including managing criticism or shame, improving relationships, and reducing repeated conflicts or losses.",
+        "Medicine may treat a separate depression, anxiety, bipolar, psychotic, sleep, or substance-use condition, but there is no standard drug list for the personality pattern itself.",
+        "Seek urgent help for suicidal thoughts, a plan to harm someone, severe intoxication or withdrawal, psychosis, inability to care for basic needs, or a sudden dangerous change."
+      ],
+      "specialPopulations": [
+        "Adolescents are still developing personality and identity; use developmentally informed assessment across time and settings and avoid premature or stigmatizing labels.",
+        "Culture, racism, gender expectations, occupation, status, disability, trauma, and social power affect how confidence, emotion, competition, and authority are expressed and interpreted.",
+        "Older adults or anyone with a new personality change require assessment for neurocognitive, neurologic, medication, substance, mood, sleep, and other medical causes rather than assuming a lifelong personality pattern.",
+        "People with limited access to psychotherapy, unstable housing, legal stress, or poor continuity need realistic goals and coordinated social and medical support."
+      ],
+      "nclexTraps": [
+        "The therapeutic response is calm respect plus clear limits, not flattery, humiliation, confrontation, or a power struggle.",
+        "Grandiosity with reduced need for sleep and increased energy or activity in a distinct episode suggests mania or hypomania, not automatically the enduring personality pattern.",
+        "Do not order neurologic tests or list psychotropic medicines merely because narcissistic personality disorder appears in the chart.",
+        "A personality label never replaces direct suicide, violence, substance, psychosis, and medical assessment during a crisis."
+      ],
+      "relatedTopics": [
+        "Personality disorders",
+        "Borderline personality disorder",
+        "Histrionic personality disorder",
+        "Bipolar disorder",
+        "Major depressive disorder",
+        "Substance use disorders"
+      ],
+      "sourceKeys": [
+        "apa-personality-disorders",
+        "medlineplus-personality-disorders",
+        "who-icd11-cddr-mental-2024",
+        "ncbi-statpearls-narcissistic-personality-2024",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based on the APA and MedlinePlus personality-disorder resources, WHO ICD-11 CDDR, SAMHSA SAFE-T, and secondary verification against the current NCBI StatPearls NPD review. The strong existing ANI nursing and crisis material was preserved while unrelated neurologic diagnostics and generic medication examples were removed; no source prose was copied or mechanically adapted.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/patients-families/personality-disorders",
+          "documentVersion": "Physician-reviewed November 2024; accessed 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "definition",
+            "features",
+            "longitudinal diagnosis",
+            "psychotherapy",
+            "medication boundary",
+            "patientEducation"
+          ]
+        },
+        {
+          "authority": "MedlinePlus, U.S. National Library of Medicine",
+          "url": "https://medlineplus.gov/personalitydisorders.html",
+          "documentVersion": "Page updated 2024-01-09; accessed 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "Cluster B classification",
+            "features",
+            "diagnostics",
+            "treatments",
+            "patientEducation"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; personality disorders and related traits pp. 553-570; accessed 2026-08-13",
+          "fieldsSupported": [
+            "classification boundary",
+            "severity and trait framework",
+            "diagnostic requirements",
+            "culture",
+            "differential"
+          ]
+        },
+        {
+          "authority": "NCBI Bookshelf, StatPearls authors",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK556001/",
+          "documentVersion": "Narcissistic Personality Disorder, updated 2024-03-01; accessed 2026-08-13; secondary verification only",
+          "fieldsSupported": [
+            "clinical pattern",
+            "assessment",
+            "bipolar and Cluster B differential",
+            "treatment evidence limits",
+            "comorbidity-only pharmacotherapy",
+            "safety",
+            "team care"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; accessed 2026-08-13",
+          "fieldsSupported": [
+            "direct suicide inquiry",
+            "risk and protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.narcissistic-personality-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.dependent-personality-disorder",
+      "name": "Dependent personality disorder",
+      "displayName": "Dependent personality disorder",
+      "category": "Mental health",
+      "aliases": [
+        "dependent PD"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "plainLanguage": "Dependent personality disorder is a long-standing pattern of needing others to make decisions or provide care, with submissive or clinging behaviour and intense fear of being left to manage alone. It is different from receiving practical help because of disability, illness, culture, pregnancy, age, or a temporary crisis.",
+      "whyItMatters": "Fear of losing support can make a person remain in an abusive or exploitative relationship, give up autonomy, or enter crisis after separation or bereavement. Nurses should assess relationship safety and suicide risk while offering supported choices that build independence instead of rescuing, controlling, or abruptly withdrawing care.",
+      "plainLanguageGlosses": [
+        {
+          "term": "submissive",
+          "plainLanguage": "repeatedly giving up one's preferences or decisions to keep another person's support or approval",
+          "sourceKeys": [
+            "who-icd10-dependent-personality",
+            "ncbi-statpearls-dependent-personality-2024"
+          ]
+        },
+        {
+          "term": "coercive control",
+          "plainLanguage": "a pattern of threats, isolation, monitoring, financial control, or other behaviour used to dominate another person",
+          "sourceKeys": [
+            "ncbi-statpearls-dependent-personality-2024"
+          ]
+        },
+        {
+          "term": "autonomy",
+          "plainLanguage": "the ability and supported opportunity to make one's own informed choices",
+          "sourceKeys": [
+            "apa-personality-disorders",
+            "ncbi-statpearls-dependent-personality-2024"
+          ]
+        }
+      ],
+      "definition": "Dependent personality disorder is an enduring pattern of excessive need to be cared for that leads to submissive or clinging behaviour, difficulty making decisions independently, and fear of separation. The pattern begins by early adulthood, appears across relationships and settings, and causes distress or impaired function. Diagnosis must distinguish pathological dependency from realistic support needs, cultural interdependence, and temporary reliance during illness or crisis.",
+      "pathology": "Dependent personality disorder is not a neurologic lesion and is not diagnosed from weakness, altered consciousness, speech change, seizure, or another acute neurologic sign. The clinical pattern involves low confidence in one's ability to function independently, repeated transfer of decisions or responsibility to others, and fear that disagreement or separation will remove essential care. This can reinforce avoidance, helplessness, exploitation risk, and clinician or caregiver overfunctioning.",
+      "pathophysiology": [
+        "No single biological mechanism explains dependent personality disorder. Temperament, development, relationships, learning, culture, and social circumstances may interact, but no one experience or trait proves the diagnosis.",
+        "Reassurance, rescue, or allowing another person to make every decision can reduce anxiety briefly while reinforcing the belief that independent action is unsafe or impossible.",
+        "Fear of abandonment or inability to cope alone can increase compliance, difficulty setting limits, rapid replacement of a lost relationship, and vulnerability to coercion or abuse."
+      ],
+      "etiology": "The cause is not established and is likely multifactorial. Temperament, developmental experiences, family and relationship patterns, illness, trauma, and social or cultural context may influence dependency. Disability, caregiving needs, poverty, discrimination, or a collectivist culture must not be misclassified as a personality disorder merely because support is important.",
+      "riskFactors": [
+        "Long-standing difficulty making everyday decisions, expressing disagreement, initiating tasks, or functioning alone because support or approval may be lost",
+        "A repeated pattern of transferring responsibility, tolerating harmful treatment, or urgently seeking another caregiving relationship after one ends",
+        "Co-occurring depression, anxiety, trauma-related symptoms, substance use, another personality pattern, or low self-confidence",
+        "Relationship rupture, bereavement, caregiver loss, coercive control, social isolation, or practical instability that increases fear and dependence"
+      ],
+      "signsSymptoms": [
+        "Needs extensive advice or reassurance for ordinary decisions and asks others to assume responsibility for major areas of life",
+        "Has difficulty disagreeing, making reasonable requests, or expressing needs because approval or support might be lost",
+        "Struggles to begin projects or act independently because of low confidence rather than lack of energy or motivation alone",
+        "Feels helpless or markedly uncomfortable when alone and fears being unable to care for oneself",
+        "May tolerate unpleasant, exploitative, or abusive situations or seek another supportive relationship quickly after a close relationship ends"
+      ],
+      "diagnostics": [
+        "Use a longitudinal clinical interview to establish an enduring early-adult pattern across relationships and settings, the motivation for dependent behaviour, associated distress or impairment, and the person's actual abilities and support needs.",
+        "Assess depression, anxiety, trauma, separation fears, coercive control, abuse, substance use, cognitive change, disability, medical illness, medications, suicide risk, and practical needs. Collateral information may help only when safe, consented, and not controlled by a potentially abusive person.",
+        "Distinguish fear of being unable to care for oneself from adult separation anxiety focused on harm or loss involving an attachment figure, and distinguish dependent compliance from BPD identity instability, self-harm, anger, and rapidly changing relationships.",
+        "Evaluate cultural norms, family roles, disability accommodations, caregiving, pregnancy, age, and temporary illness before calling reliance excessive or impairing.",
+        "Keep classification systems explicit: ICD-10 describes a named dependent personality type, while ICD-11 emphasizes severity and trait domains rather than treating the Cluster C label as a diagnosis or severity score."
+      ],
+      "labs": [
+        "No laboratory test, brain scan, EEG, or rating scale confirms dependent personality disorder.",
+        "Use targeted medical, cognitive, neurologic, medication, substance, endocrine, sleep, or other testing only when new change, examination findings, or history suggests another cause of dependence or impaired decision-making.",
+        "Medicine monitoring follows the separately diagnosed condition and exact product; the personality-disorder diagnosis creates no universal laboratory schedule."
+      ],
+      "assessment": "Ask which decisions feel difficult, what the person fears will happen if they disagree or act alone, who controls money, transport, medicines, communication, or housing, and whether any relationship feels unsafe. Assess actual function, cognition, depression, anxiety, trauma, substance use, self-neglect, abuse, exploitation, suicide and self-harm after loss, supports, strengths, and treatment goals. Offer realistic choices and privacy rather than automatically turning to the caregiver for answers.",
+      "differential": [
+        "Adult separation anxiety disorder, where distress centers on separation from or harm to attachment figures rather than a pervasive belief that the person cannot function independently",
+        "Borderline personality disorder, where identity instability, abandonment sensitivity, recurrent self-harm, emptiness, anger, and rapidly changing relationships may be more prominent",
+        "Avoidant personality disorder, where social inhibition and fear of criticism or rejection are central even though the person often wants connection",
+        "Agoraphobia, panic disorder, depression, generalized anxiety, trauma-related disorders, substance effects, cognitive disorder, or another medical or psychiatric condition",
+        "Disability-related assistance, culturally normative interdependence, caregiving during pregnancy or illness, limited resources, or a temporary crisis without a pervasive maladaptive pattern"
+      ],
+      "treatments": [
+        "Use psychotherapy that supports autonomy, assertiveness, realistic self-efficacy, problem solving, relationship safety, and gradual independent action. Evidence specific to dependent personality disorder is limited, so goals and functional response should be reviewed collaboratively.",
+        "Set small achievable choice and independence goals while preserving needed disability, medical, financial, or social support; independence does not mean abandonment or removal of appropriate care.",
+        "Maintain warm, predictable team boundaries so the clinician does not become a substitute decision-maker or abruptly withdraw in response to dependence.",
+        "No medicine specifically treats the dependent personality pattern. Treat a separately diagnosed depression, anxiety disorder, trauma-related condition, or substance-use disorder according to its own evidence and monitoring plan.",
+        "Use trauma-informed safeguarding, advocacy, social work, and emergency support when coercive control, abuse, exploitation, unsafe housing, or dependent-child or vulnerable-adult risk is identified."
+      ],
+      "contraindications": [
+        "Do not use acute neurologic findings such as altered consciousness, focal weakness, speech change, seizure, severe headache, or swallowing difficulty as expected signs of dependent personality disorder; assess them medically.",
+        "Do not make every decision for the person, reward escalating helplessness, threaten abandonment, or withdraw appropriate support to force independence.",
+        "Do not list antidepressants, anti-anxiety medicines, or other psychotropics as routine treatment for the personality disorder itself.",
+        "Do not assume that disability, culture, caregiving, age, poverty, pregnancy, or needing practical assistance is pathological dependency."
+      ],
+      "safetyConsiderations": [
+        "Interview privately when safe and assess physical, sexual, emotional, financial, and digital abuse, coercive control, trafficking, exploitation, and barriers to leaving; a controlling companion should not provide the only history.",
+        "Relationship loss can precipitate severe hopelessness, self-harm, suicide, substance use, self-neglect, or a rapid unsafe attachment; ask directly and make a specific follow-up and safety plan.",
+        "Support decision-making capacity and autonomy. If cognition, delirium, intoxication, psychosis, or another condition impairs capacity, use the relevant legal and clinical process rather than attributing it to personality.",
+        "Coordinate staff responses to avoid rescue cycles, conflicting promises, punitive withdrawal, or overdependence on one clinician."
+      ],
+      "nursingPriorities": [
+        "Assess mental status, decision-making patterns, fear of separation, passivity, relationship safety, depression, anxiety, substance use, and self-harm thoughts because dependence may hide coercion, abuse, or a crisis after threatened loss.",
+        "Maintain warm, predictable boundaries and offer two realistic choices instead of making every decision for the patient because repeated supported choices build autonomy without turning the therapeutic relationship into another dependency.",
+        "Set small independence goals and record what the patient decided, attempted, and learned because tracking function over time detects progress, avoidance, escalating helplessness, and treatment-interfering reliance more accurately than reassurance alone.",
+        "Coordinate consistent psychotherapy, social support, and treatment of coexisting depression or anxiety because talk therapy addresses the dependent pattern while medication should target a defined comorbidity rather than personality traits themselves.",
+        "Escalate immediately for suicidal intent or plan, inability to maintain basic safety, escalating substance intoxication, credible abuse danger, or a relationship rupture followed by severe hopelessness because these findings can precede self-harm or exploitation."
+      ],
+      "redFlags": [
+        "Suicidal intent, plan, preparatory behaviour, recent serious attempt, or access to lethal means",
+        "Credible physical, sexual, financial, digital, or emotional abuse, coercive control, trafficking, or immediate danger",
+        "Severe hopelessness, intoxication, self-neglect, or inability to meet basic needs after separation, rejection, caregiver loss, or bereavement",
+        "Delirium, psychosis, new cognitive impairment, focal neurologic findings, or inability to participate in immediate safety decisions"
+      ],
+      "complications": [
+        "Abuse, exploitation, coercive control, trafficking, financial loss, unsafe relationships, and loss of autonomy",
+        "Depression, anxiety, substance-related harm, self-harm, suicide attempts, suicide, or severe crisis after relationship loss",
+        "Occupational, educational, social, or daily-function impairment and reduced confidence from repeated avoidance of independent action",
+        "Clinician dependency, fragmented team responses, inappropriate prescribing, overprotection, or abrupt punitive withdrawal of care"
+      ],
+      "prognosis": "High-quality disorder-specific outcome evidence is limited, and change is usually gradual. A consistent therapeutic relationship, supported choices, attention to abuse and comorbidity, realistic autonomy goals, and preservation of appropriate practical supports can improve safety and function even when dependent traits persist.",
+      "prevention": [
+        "There is no proven universal method to prevent dependent personality disorder.",
+        "Support age-appropriate decision-making, safe relationships, problem solving, and access to help without blaming families or removing needed care.",
+        "Early response to depression, anxiety, trauma, coercive control, social isolation, and repeated crisis after separation may reduce harm and strengthen autonomy."
+      ],
+      "patientEducation": [
+        "Needing help does not equal a personality disorder. The diagnosis concerns a long-term pattern of fear-driven reliance that limits your choices or safety across situations.",
+        "Treatment should help you make more of your own decisions in manageable steps while preserving any medical, disability, financial, or social support you genuinely need.",
+        "Medicine may treat a separate depression, anxiety, trauma-related, or substance-use condition, but there is no standard drug list for dependent personality disorder itself.",
+        "Seek urgent help for suicidal thoughts, immediate abuse danger, severe hopelessness after a relationship ends, inability to meet basic needs, or a sudden medical or mental-status change."
+      ],
+      "specialPopulations": [
+        "Disability, chronic illness, pregnancy, older age, limited resources, and caregiving can create appropriate dependence; assessment must focus on choice, fear, flexibility, actual ability, safety, and impairment.",
+        "Cultural and family norms may value interdependence and shared decisions. Difference from an individualistic norm is not a disorder without pervasive dysfunction or distress in context.",
+        "Adolescents and young adults require developmentally informed assessment because reliance on caregivers can be expected and personality continues to develop.",
+        "A new increase in dependence in an older adult or medically ill person requires assessment for delirium, neurocognitive disorder, depression, medication effects, neurologic disease, abuse, and loss of practical support."
+      ],
+      "nclexTraps": [
+        "Offer two realistic choices and reinforce successful decisions; making every choice for the patient can strengthen dependency.",
+        "Supporting autonomy is not abandonment. Preserve legitimate disability, medical, cultural, and practical support while building safe choice-making.",
+        "Screen privately for abuse and coercive control; compliance and a controlling companion do not prove that the relationship is safe.",
+        "Acute neurologic signs are not expected dependent-personality symptoms and require the appropriate medical assessment."
+      ],
+      "relatedTopics": [
+        "Personality disorders",
+        "Borderline personality disorder",
+        "Avoidant personality disorder",
+        "Obsessive-compulsive personality disorder",
+        "Major depressive disorder",
+        "Generalized anxiety disorder"
+      ],
+      "sourceKeys": [
+        "apa-personality-disorders",
+        "who-icd10-dependent-personality",
+        "who-icd11-cddr-mental-2024",
+        "ncbi-statpearls-dependent-personality-2024",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based on the APA personality-disorder resource, WHO ICD-10 and ICD-11 materials, SAMHSA SAFE-T, and secondary verification against the current NCBI StatPearls dependent-personality review. The strong existing ANI autonomy, abuse, suicide, and boundary material was preserved while malformed generic and acute-neurologic template content was removed; the restricted individual MedlinePlus A.D.A.M. article was not used.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/patients-families/personality-disorders",
+          "documentVersion": "Physician-reviewed November 2024; accessed 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "definition",
+            "features",
+            "longitudinal diagnosis",
+            "psychotherapy",
+            "medication boundary",
+            "patientEducation"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://icd.who.int/browse10/2019/en#/F60.7",
+          "documentVersion": "ICD-10 2019, F60.7 dependent personality disorder; accessed 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "definition",
+            "signsSymptoms",
+            "classification",
+            "differential"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; personality disorders and related traits pp. 553-570; accessed 2026-08-13",
+          "fieldsSupported": [
+            "classification boundary",
+            "severity and trait framework",
+            "diagnostic requirements",
+            "culture",
+            "differential"
+          ]
+        },
+        {
+          "authority": "NCBI Bookshelf, StatPearls authors",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK606086/",
+          "documentVersion": "Dependent Personality Disorder, updated 2024-08-17; accessed 2026-08-13; secondary verification only",
+          "fieldsSupported": [
+            "clinical pattern",
+            "assessment",
+            "differential",
+            "psychotherapy evidence limits",
+            "comorbidity-only pharmacotherapy",
+            "abuse and suicide risk",
+            "team boundaries"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; accessed 2026-08-13",
+          "fieldsSupported": [
+            "direct suicide inquiry",
+            "risk and protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.dependent-personality-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.histrionic-personality-disorder",
+      "name": "Histrionic personality disorder",
+      "displayName": "Histrionic personality disorder",
+      "category": "Mental health",
+      "aliases": [
+        "histrionic PD"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-13",
+      "plainLanguage": "Histrionic personality disorder is a long-standing pattern of intense emotional expression and repeated efforts to hold other people's attention across many settings. Diagnosis depends on the full pattern, impairment, and cultural context; being expressive, sociable, stylish, flirtatious, or upset during one event does not establish a disorder.",
+      "whyItMatters": "Mislabeling can introduce gender and cultural bias, while missed bipolar illness, trauma, substance use, depression, self-harm, or suicide risk can delay needed care. Nurses should describe observable behaviour, assess current safety and function, maintain respectful boundaries, and distinguish an enduring pattern from an acute episode.",
+      "plainLanguageGlosses": [
+        {
+          "term": "labile affect",
+          "plainLanguage": "emotion that shifts quickly and may appear shallow or short-lived",
+          "sourceKeys": [
+            "who-icd10-histrionic-personality",
+            "ncbi-statpearls-histrionic-personality-2024"
+          ]
+        },
+        {
+          "term": "suggestibility",
+          "plainLanguage": "being readily influenced by other people, circumstances, or the immediate social setting",
+          "sourceKeys": [
+            "who-icd10-histrionic-personality",
+            "ncbi-statpearls-histrionic-personality-2024"
+          ]
+        },
+        {
+          "term": "impressionistic speech",
+          "plainLanguage": "speech that conveys strong impressions or emotion but few specific supporting details",
+          "sourceKeys": [
+            "ncbi-statpearls-histrionic-personality-2024"
+          ]
+        }
+      ],
+      "definition": "Histrionic personality disorder is an enduring personality pattern of excessive emotionality and repeated attention-seeking that begins by early adulthood, occurs across contexts, and causes clinically meaningful distress or impairment. The diagnosis requires longitudinal assessment of the complete pattern and must account for culture, gender bias, trauma, mood episodes, substances, and other personality or mental disorders.",
+      "pathology": "Histrionic personality disorder is not a structural brain lesion and has no diagnostic laboratory marker. The clinical pattern involves rigid reliance on emotional display, interpersonal performance, appearance, suggestibility, or rapid closeness to obtain attention, validation, or connection. These strategies may provide short-term reassurance while contributing to unstable relationships, boundary problems, distress, impaired function, and repeated crisis when attention or approval changes.",
+      "pathophysiology": [
+        "No single biological mechanism explains histrionic personality disorder. Temperament, development, learning, relationships, culture, and social reinforcement may interact, but no isolated trait or life event proves the disorder.",
+        "Strong emotional display or rapid interpersonal closeness may draw immediate attention and reassurance; repeated short-term reinforcement can make the pattern more rigid even when it harms longer-term relationships or function.",
+        "The diagnosis is based on an enduring clinical pattern, not a person's sex, gender, clothing, attractiveness, occupation, social-media use, or culturally expected emotional expression."
+      ],
+      "etiology": "The cause is uncertain and likely multifactorial. Temperament, developmental experiences, relationship learning, family and social context, trauma, and cultural expectations may contribute, but none is required or independently diagnostic. Historical descriptions are vulnerable to gendered and stigmatizing assumptions, so current assessment must use observable behaviour and impairment rather than stereotypes.",
+      "riskFactors": [
+        "Long-standing excessive emotional expression, discomfort when not receiving attention, suggestibility, or repeated overestimation of relationship closeness that impairs function",
+        "Co-occurring depression, anxiety, trauma-related symptoms, substance use, bipolar disorder, somatic concerns, or another personality pattern",
+        "Relationship rupture, rejection, loss of attention or status, occupational stress, or social conflict that precipitates crisis",
+        "Prior biased or fragmented care, inconsistent boundaries, or treatment based on labels such as dramatic, manipulative, seductive, or attention seeking rather than observed needs and risks"
+      ],
+      "signsSymptoms": [
+        "Repeated discomfort when not the focus of attention, with behaviour that redirects attention across different settings",
+        "Rapidly shifting or strongly expressed emotion that may appear theatrical, exaggerated, or lacking detail",
+        "Speech that communicates vivid impressions but few specifics, and a tendency to be readily influenced by people or circumstances",
+        "Use of appearance, charm, flirtation, or provocative interaction to draw attention in some presentations; record the observed behaviour without inferring motive, gender, or sexual intent",
+        "Perceives relationships as closer or more intimate than the other person does, which can contribute to disappointment, conflict, or boundary strain"
+      ],
+      "diagnostics": [
+        "Use a comprehensive longitudinal psychiatric interview to establish a pervasive early-adult pattern across settings and relationships, clinically meaningful distress or impairment, and the person's own goals and perspective.",
+        "Assess mood episodes, sleep, energy, activity, impulsivity, trauma, anxiety, depression, substance use, somatic concerns, self-harm, suicide, violence, medical change, and other personality patterns. Collateral history may help only when appropriate, safe, and consented.",
+        "Differentiate an enduring pattern from mania or hypomania: bipolar episodes have a distinct onset and offset with elevated or irritable mood, increased energy or activity, and often reduced need for sleep. Histrionic traits alone do not create that episodic syndrome, and both conditions can coexist.",
+        "Review cultural norms, gender expectations, communication style, occupation, disability, and situational context. Emotional expression, clothing, flirtation, sociability, or one crisis is not enough to diagnose a personality disorder.",
+        "Keep classification systems explicit: the DSM-oriented cluster model names histrionic personality disorder within Cluster B, while ICD-11 emphasizes overall severity and trait domains. A cluster label is not a severity score."
+      ],
+      "labs": [
+        "No laboratory test, brain scan, EEG, or rating scale confirms histrionic personality disorder.",
+        "Use targeted medical, toxicology, medication, endocrine, neurologic, sleep, pregnancy, or other evaluation when new or episodic symptoms suggest another condition.",
+        "If medicine is prescribed for a separately diagnosed condition, monitoring follows that indication and exact product; the personality pattern creates no universal laboratory or drug regimen."
+      ],
+      "assessment": "Use neutral curiosity: ask what happened, what the person hoped others would understand or do, how emotion and relationships change across settings, and what has affected function. Assess mood episodes, sleep and energy, depression, trauma, substances, somatic symptoms, self-harm, suicide, impulsive risk, exploitation, medical needs, supports, and boundaries. Document the trigger, observable behaviour, stated feeling or need, intervention, and response instead of writing pejorative conclusions about motive.",
+      "differential": [
+        "Bipolar I or II disorder, where heightened emotion, speech, confidence, sexuality, or social behaviour occurs within a distinct manic or hypomanic episode with increased energy or activity and reduced need for sleep",
+        "Borderline personality disorder, where identity instability, abandonment sensitivity, recurrent self-harm, emptiness, anger, dissociation, and rapidly changing relationships may be more prominent",
+        "Narcissistic personality disorder, where superiority, entitlement, status, admiration, and impaired empathy are more central than broad emotional expressiveness and attention holding",
+        "Somatic symptom disorder or illness anxiety disorder, where distressing physical symptoms or fear of illness is central rather than assuming that any expressive symptom report is histrionic",
+        "Trauma-related disorder, anxiety, depression, substance intoxication or withdrawal, ADHD, another personality pattern, culturally normative expression, performance work, or a temporary situational response"
+      ],
+      "treatments": [
+        "Use collaborative psychotherapy focused on the person's goals, emotional awareness, relationship patterns, coping, boundaries, and function. Evidence for any one histrionic-personality-specific method is limited, so treatment response should be reviewed rather than promised.",
+        "Maintain a reliable therapeutic alliance and consistent team limits without punitive withdrawal, flirtation, special exceptions, humiliation, or reinforcement of crisis as the only route to care.",
+        "No medicine specifically treats the histrionic personality pattern. Treat a separately diagnosed depression, anxiety disorder, bipolar disorder, trauma-related condition, or substance-use disorder according to its own evidence and monitoring plan.",
+        "Use direct crisis assessment and a collaborative safety plan for suicidal thoughts, self-harm, severe impulsivity, intoxication, psychosis, mania, exploitation, or inability to maintain safety."
+      ],
+      "contraindications": [
+        "Do not diagnose from emotional intensity, clothing, flirtation, sociability, occupation, gender, culture, one dramatic event, or a staff member's irritation.",
+        "Avoid pejorative charting such as manipulative, seductive, dramatic, or attention seeking when the trigger, observable action, stated need, risk, and response can be documented.",
+        "Do not list antidepressants, mood stabilizers, antipsychotics, sedatives, or other named medicines as routine treatment for histrionic personality disorder itself.",
+        "Do not assume a physical symptom, suicide statement, or acute behavioural change is merely part of the personality pattern; assess the medical and safety concern directly."
+      ],
+      "safetyConsiderations": [
+        "Ask directly about suicide and self-harm during depression, rejection, relationship rupture, loss, intoxication, or escalating crisis; expressive presentation does not make a threat less clinically important.",
+        "Assess impulsive sexual, substance, spending, driving, interpersonal, or other risk only when supported by the person's actual behaviour; do not infer it from appearance or diagnosis.",
+        "Maintain professional boundaries and consistent staff communication. Address flirtation or rapid perceived intimacy neutrally, name the care role, and redirect to agreed goals without shaming.",
+        "Treat overdose, injury, intoxication, withdrawal, mania, psychosis, delirium, pregnancy-related concern, or another medical emergency before attributing behaviour to personality."
+      ],
+      "nursingPriorities": [
+        "Assess current mood, sleep, energy, impulsivity, depression, trauma, substance use, self-harm, suicide, exploitation, relationship rupture, and medical needs because an expressive presentation can coexist with a serious acute risk.",
+        "Use calm, specific, nonjudgmental language and document observable behaviour, the stated emotion or need, and the response because labels such as dramatic or manipulative can hide bias and weaken care.",
+        "Maintain warm, consistent professional boundaries and redirect the interaction to agreed goals because punitive withdrawal, flirtation, special exceptions, or inconsistent staff responses can intensify conflict and dependency.",
+        "Monitor function, treatment attendance, relationship crises, somatic concerns, mood episodes, sleep, and substance use over time because longitudinal change distinguishes the personality pattern from bipolar illness or another acute condition.",
+        "Coordinate psychotherapy and separately indicated comorbidity care, and escalate suicidal intent, severe impulsivity, mania, psychosis, intoxication, exploitation, or inability to maintain safety without dismissing the crisis as attention seeking."
+      ],
+      "redFlags": [
+        "Suicidal intent, plan, preparatory behaviour, recent serious attempt, escalating self-harm, or access to lethal means",
+        "Distinct decreased need for sleep with increased energy or activity, severe impulsivity, psychosis, or another possible manic episode",
+        "Severe intoxication, dangerous withdrawal, overdose, untreated injury, exploitation, abuse, or inability to maintain immediate safety",
+        "Sudden mental-status or behavioural change, delirium, focal neurologic finding, pregnancy-related concern, or another acute medical presentation"
+      ],
+      "complications": [
+        "Relationship conflict, boundary strain, occupational or academic impairment, social instability, and reduced quality of life",
+        "Depression, anxiety, substance-related harm, self-harm, suicide attempts, suicide, impulsive injury, exploitation, or victimization",
+        "Biased or dismissive care, missed bipolar or medical illness, inappropriate prescribing, fragmented treatment, or dropout",
+        "Repeated crisis when attention, validation, status, or a close relationship changes"
+      ],
+      "prognosis": "The course varies, high-quality disorder-specific evidence is limited, and change generally occurs over time. A respectful alliance, clear goals, consistent boundaries, treatment of comorbidity, attention to bias, and direct safety care can improve function and reduce harm even when traits remain.",
+      "prevention": [
+        "There is no proven universal method to prevent histrionic personality disorder.",
+        "Early support for emotion regulation, safe relationships, trauma-related distress, depression, substance use, and recurrent functional crisis may reduce harm without assuming that any one factor caused the disorder.",
+        "Bias-aware assessment and consistent nonpunitive care can prevent avoidable misdiagnosis, dismissal, boundary conflict, and unsafe treatment."
+      ],
+      "patientEducation": [
+        "The diagnosis describes a long-term pattern of emotion, attention, and relationships that causes problems across settings; it is not a judgment about your gender, clothing, personality, or sincerity.",
+        "Psychotherapy can focus on the goals you choose, including understanding emotional triggers, communicating needs directly, strengthening boundaries, and improving relationships and function.",
+        "Medicine may treat a separate depression, anxiety, bipolar, trauma-related, or substance-use condition, but there is no standard drug list for the histrionic personality pattern itself.",
+        "Seek urgent help for suicidal thoughts, severe impulsivity, very little sleep with unusually high energy, psychosis, overdose, abuse danger, or a sudden medical or mental-status change."
+      ],
+      "specialPopulations": [
+        "Gendered stereotypes have historically influenced this diagnosis. Apply the same longitudinal, functional, and differential standards to every person and document behaviour rather than sexualized assumptions.",
+        "Culture, communication style, disability, occupation, religion, performance settings, and community norms shape emotional expression and appearance; difference alone is not pathology.",
+        "Adolescents and young adults require developmentally informed assessment because identity, relationships, and emotional expression are still changing.",
+        "Older adults or anyone with new-onset behaviour require assessment for mania, depression, neurocognitive disorder, medication or substance effects, neurologic disease, delirium, and other medical causes."
+      ],
+      "nclexTraps": [
+        "Do not dismiss suicide, pain, or another physical concern as attention seeking; assess the stated risk and medical need directly.",
+        "A distinct period of increased energy or activity with reduced need for sleep points toward mania or hypomania rather than the enduring personality pattern alone.",
+        "Use neutral observable documentation and consistent professional boundaries, not shame, flirtation, punitive withdrawal, or special exceptions.",
+        "No named medicine or routine laboratory panel treats or confirms histrionic personality disorder itself."
+      ],
+      "relatedTopics": [
+        "Personality disorders",
+        "Borderline personality disorder",
+        "Narcissistic personality disorder",
+        "Bipolar disorder",
+        "Somatic symptom disorder",
+        "Illness anxiety disorder"
+      ],
+      "sourceKeys": [
+        "apa-personality-disorders",
+        "who-icd10-histrionic-personality",
+        "who-icd11-cddr-mental-2024",
+        "ncbi-statpearls-histrionic-personality-2024",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based on the APA personality-disorder resource, WHO ICD-10 and ICD-11 materials, SAMHSA SAFE-T, and secondary verification against the current NCBI StatPearls histrionic-personality review. It uses observable, gender- and culture-aware language with explicit bipolar, somatic, medication, boundary, and safety limits; no source prose was copied or mechanically adapted.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/patients-families/personality-disorders",
+          "documentVersion": "Physician-reviewed November 2024; accessed 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "definition",
+            "features",
+            "longitudinal diagnosis",
+            "psychotherapy",
+            "medication boundary",
+            "patientEducation"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://icd.who.int/browse10/2019/en#/F60.4",
+          "documentVersion": "ICD-10 2019, F60.4 histrionic personality disorder; accessed 2026-08-13",
+          "fieldsSupported": [
+            "identity",
+            "definition",
+            "signsSymptoms",
+            "classification",
+            "differential"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; personality disorders and related traits pp. 553-570; accessed 2026-08-13",
+          "fieldsSupported": [
+            "classification boundary",
+            "severity and trait framework",
+            "diagnostic requirements",
+            "culture",
+            "differential"
+          ]
+        },
+        {
+          "authority": "NCBI Bookshelf, StatPearls authors",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK542325/",
+          "documentVersion": "Histrionic Personality Disorder, updated 2024-06-20; accessed 2026-08-13; secondary verification only",
+          "fieldsSupported": [
+            "clinical pattern",
+            "assessment",
+            "bipolar and Cluster B differential",
+            "somatic differential",
+            "gender-bias caution",
+            "treatment evidence limits",
+            "comorbidity-only pharmacotherapy",
+            "safety"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; accessed 2026-08-13",
+          "fieldsSupported": [
+            "direct suicide inquiry",
+            "risk and protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.histrionic-personality-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.ptsd",
+      "name": "PTSD",
+      "displayName": "Post-traumatic stress disorder (PTSD)",
+      "category": "Mental health",
+      "aliases": [
+        "post-traumatic stress disorder",
+        "posttraumatic stress disorder",
+        "trauma-related PTSD"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-14",
+      "plainLanguage": "Post-traumatic stress disorder (PTSD) is a treatable condition in which trauma reminders keep triggering the body and mind as if danger is happening now. A person may relive the event, avoid reminders, feel detached or blame themself, and remain constantly on guard long after the immediate threat has passed.",
+      "whyItMatters": "PTSD can disrupt sleep, concentration, relationships, work, physical health, and engagement with medical care. Depression, substance use, self-harm, suicide risk, dissociation, aggression during an acute crisis, or continuing abuse may change the nursing priority from routine teaching to immediate safety and coordinated treatment.",
+      "plainLanguageGlosses": [
+        {
+          "term": "intrusion",
+          "plainLanguage": "unwanted memories, nightmares, flashbacks, or body reactions that make the trauma feel present again",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "apa-ptsd-related-disorders-2025"
+          ]
+        },
+        {
+          "term": "avoidance",
+          "plainLanguage": "efforts to stay away from thoughts, feelings, people, places, or situations connected with the trauma",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "nice-ng116-ptsd"
+          ]
+        },
+        {
+          "term": "hypervigilance",
+          "plainLanguage": "remaining unusually watchful for danger even when no current threat is apparent",
+          "sourceKeys": [
+            "apa-ptsd-related-disorders-2025",
+            "va-dod-ptsd-asd-cpg-2023"
+          ]
+        }
+      ],
+      "definition": "PTSD is a trauma- and stressor-related disorder that follows exposure to an extremely threatening, horrific, or DSM-qualifying traumatic event and produces persistent re-experiencing or intrusion, avoidance, altered mood or thinking, heightened threat or arousal, and clinically important distress or impaired function. Diagnostic systems organize the pattern differently, so a symptom checklist or one trauma exposure does not establish the diagnosis.",
+      "pathology": "PTSD is not weakness, intentional behaviour, or a simple failure to forget. Trauma-linked memories, threat detection, body arousal, attention, sleep, and contextual learning can remain coupled so that a cue activates fear, shame, anger, dissociation, or defensive behaviour as though danger is current. Avoidance may briefly lower distress while preventing corrective learning and narrowing daily life, but no single brain scan, laboratory marker, or universal mechanism confirms PTSD.",
+      "pathophysiology": [
+        "Threat-learning and memory networks can attach intense meaning to sounds, smells, body sensations, places, procedures, or relationships. Later cues may trigger autonomic arousal, intrusive recollection, or dissociation before the person consciously identifies the reminder.",
+        "Sleep disruption, nightmares, hypervigilance, pain, and repeated stress can reinforce one another, impair concentration and emotion regulation, and increase medical and psychiatric burden.",
+        "Biologic stress responses, prior learning, developmental experience, social support, ongoing danger, and recovery resources interact. No single hormone, gene, imaging finding, or trauma type predicts who will develop PTSD."
+      ],
+      "etiology": "PTSD requires a qualifying traumatic exposure within the diagnostic framework being used, but most trauma-exposed people do not develop the disorder. Risk and course reflect the event, repeated or interpersonal exposure, prior trauma, age and development, injury or pain, sleep, prior mental illness, substance use, social support, discrimination, ongoing danger, and access to safe recovery resources rather than one universal cause.",
+      "riskFactors": [
+        "Severe, repeated, interpersonal, childhood, combat, sexual, disaster, medical, or occupational trauma exposure",
+        "Prior trauma, PTSD, depression, anxiety, substance-use disorder, traumatic brain injury, chronic pain, or major sleep disruption",
+        "Ongoing abuse, unsafe housing, displacement, discrimination, moral injury, bereavement, or continuing exposure to reminders",
+        "Limited social support, barriers to culturally and linguistically appropriate care, or loss of work, school, family, or community function",
+        "Dissociation, marked early symptoms, intense avoidance, or inability to meet basic needs after the event"
+      ],
+      "signsSymptoms": [
+        "Intrusion or re-experiencing: unwanted memories, trauma-related dreams, flashbacks, or intense emotional and physical reactions to reminders",
+        "Avoidance of internal memories and feelings or external people, places, conversations, activities, objects, and situations linked with the trauma",
+        "Negative mood or thinking: guilt, shame, distorted blame, persistent negative beliefs, emotional numbing, detachment, reduced interest, or memory gaps",
+        "Arousal and current-threat symptoms: hypervigilance, exaggerated startle, irritability, anger, reckless behaviour, poor concentration, and disturbed sleep",
+        "Functional and safety effects such as school or work decline, relationship strain, substance use, self-harm, suicidal thinking, aggression, or inability to tolerate needed care"
+      ],
+      "diagnostics": [
+        "Establish the exact trauma exposure, symptom pattern, onset, duration, impairment, cultural context, and exclusions through a trauma-informed clinical interview. Ask only the detail needed for care and safety; a patient does not need to provide a graphic narrative to deserve assessment or support.",
+        "Under DSM-5-TR, the four symptom domains are intrusion, avoidance, negative changes in mood or cognition, and arousal or reactivity, and the disturbance lasts more than 1 month. Under ICD-11, symptoms persist for at least several weeks and PTSD uses a narrower pattern of re-experiencing in the present, avoidance, persistent sense of current threat, and functional impairment after an extremely threatening or horrific event. Do not mix the two systems into one universal checklist.",
+        "A PC-PTSD-5, PCL-5, or another validated screen can identify people needing fuller assessment and can track symptoms, but no score independently confirms PTSD or replaces diagnostic interview and risk assessment.",
+        "Assess depression, bipolar symptoms, psychosis, dissociation, substance intoxication or withdrawal, sleep disorder, pain, grief, traumatic brain injury, delirium, medication effects, and ongoing violence or abuse because these conditions may mimic, amplify, or coexist with PTSD.",
+        "Assess suicidal thoughts and behaviour, self-harm, harm to others, access to lethal means, reckless behaviour, severe dissociation, inability to care for basic needs, and the safety of the current environment at presentation and when risk changes."
+      ],
+      "labs": [
+        "No laboratory test, brain scan, physiologic measurement, or questionnaire confirms PTSD.",
+        "Use targeted toxicology, medication levels, metabolic studies, pregnancy testing, neurologic evaluation, imaging, sleep assessment, or other tests only when the history and examination support an injury, intoxication, withdrawal, delirium, pregnancy-related, neurologic, or medical differential.",
+        "When a medicine is used, monitoring follows the exact drug and patient: for example, mood and suicidality after an antidepressant starts or changes, blood pressure with venlafaxine, and orthostatic symptoms with prazosin."
+      ],
+      "assessment": "Begin with physical injury, pain, airway and neurologic needs, intoxication or withdrawal, current danger, housing and basic needs, then ask about trauma-linked symptoms, sleep, nightmares, triggers, avoidance, dissociation, mood, substances, function, supports, and treatment preferences. Ask directly about suicide, self-harm, violence, weapons or other lethal means, and ongoing abuse. Explain before touching, offer realistic choices, use interpreters when needed, and document observable responses and the agreed safety plan without forcing disclosure.",
+      "differential": [
+        "Acute stress disorder under DSM-5-TR, where a qualifying trauma is followed by a clinically significant 3-day-to-1-month syndrome; PTSD uses a longer DSM duration, while ICD-11 timing and symptom structure are different",
+        "Adjustment disorder, where an identifiable psychosocial stressor may be serious but need not meet the trauma definition and the central pattern is stressor preoccupation or failure to adapt",
+        "Major depressive disorder, generalized anxiety disorder, panic disorder, prolonged grief, obsessive-compulsive disorder, bipolar disorder, psychotic disorder, or a dissociative disorder",
+        "Substance intoxication or withdrawal, medication effects, traumatic brain injury, seizure, delirium, sleep disorder, chronic pain, endocrine disease, or another medical condition",
+        "Expected and time-limited distress after trauma that does not meet the full symptom, duration, impairment, or exclusion requirements",
+        "Ongoing intimate-partner violence, trafficking, war, unsafe housing, occupational exposure, or another current threat in which safety planning cannot assume the danger is over"
+      ],
+      "treatments": [
+        "Offer an individual evidence-based trauma-focused psychotherapy matched to age, preference, readiness, safety, access, and clinical expertise. Strong adult examples include Cognitive Processing Therapy, Prolonged Exposure, and Eye Movement Desensitization and Reprocessing; trauma-focused CBT is a key child and adolescent example.",
+        "When an adult prefers medication or psychotherapy is unavailable or not chosen, current VA/DoD guidance supports sertraline, paroxetine, or venlafaxine. Review response, activation, suicidal thinking, adverse effects, adherence, interactions, pregnancy considerations, and discontinuation rather than treating the class name as a complete plan.",
+        "Prazosin may be considered for PTSD-associated nightmares under current VA/DoD guidance, but it is not a general PTSD treatment and the recommendation is weak. Monitor dizziness, orthostatic hypotension, falls, and other blood-pressure-lowering medicines.",
+        "Treat a separately diagnosed depression, substance-use disorder, pain, sleep disorder, traumatic brain injury, or other comorbidity without excluding the person from PTSD care solely because a comorbidity is present.",
+        "Stabilize immediate safety, shelter, medical injury, severe substance effects, psychosis, mania, and ability to meet basic needs before or alongside trauma-focused work; build trust and remove access barriers rather than demanding detailed retelling."
+      ],
+      "contraindications": [
+        "Do not use benzodiazepines or cannabis or cannabinoid products as PTSD treatment; current VA/DoD guidance recommends against them because benefit is not established and harms can interfere with recovery.",
+        "Do not offer medication, including benzodiazepines, to prevent PTSD after trauma. Exposure alone is not an indication for routine psychotropic treatment.",
+        "Do not provide single-session psychologically focused debriefing or force immediate detailed recounting; early support should prioritize safety, practical needs, consent, and indicated follow-up.",
+        "Do not start unstructured exposure exercises during routine nursing care. Trauma processing belongs within a prepared, consented, evidence-based treatment plan.",
+        "Do not present antipsychotic augmentation as routine PTSD care: NICE permits narrowly selected specialist-reviewed use after nonresponse in disabling adult cases, whereas VA/DoD suggests against antipsychotic augmentation. Follow the applicable guideline and specialist plan."
+      ],
+      "safetyConsiderations": [
+        "Ask directly about suicidal thoughts, intent, plan, prior behaviour, access to lethal means, self-harm, reckless behaviour, and protective factors; create or update a risk-management and safety plan when concern is present.",
+        "Assess a violent threat by target, intent, plan, means, weapon access, intoxication, agitation, psychosis, and ability to control impulses, and follow the local emergency and duty-to-protect pathway.",
+        "Assess current abuse, coercive control, trafficking, unsafe housing, occupational danger, or combat exposure before reassuring the person that the threat is over.",
+        "During flashback or dissociation, use calm orientation, reduce stimulation, state where and when the person is, invite feet-on-floor or sensory grounding, and avoid sudden touch or restraint unless immediately necessary for safety.",
+        "Medical emergencies, overdose, withdrawal, head injury, delirium, psychosis, and mania require direct treatment and must not be attributed automatically to PTSD."
+      ],
+      "nursingPriorities": [
+        "Recognize and treat physical injury, intoxication or withdrawal, neurologic change, ongoing violence, and unmet basic needs before assuming every symptom is psychiatric.",
+        "Assess suicide, self-harm, violence, access to lethal means, dissociation, severe sleep loss, substance use, psychosis, and the current environment because these findings determine observation, escalation, and discharge safety.",
+        "Use trauma-informed communication: introduce yourself, explain each step, ask permission before touch, offer realistic choices, preserve privacy, and do not force a trauma narrative.",
+        "Monitor sleep, nightmares, functioning, avoidance, substance use, therapy engagement, and medication-specific effects because symptom change and adverse effects are more useful than a label alone.",
+        "Coordinate trauma-focused therapy, medication when chosen, comorbidity care, family or caregiver education, crisis resources, and follow-up while preserving the patient's rights and the least-restrictive safe plan."
+      ],
+      "redFlags": [
+        "Suicidal intent, recent serious attempt, preparatory behaviour, escalating self-harm, inability to maintain safety, or access to lethal means",
+        "Credible violent threat, weapon access, severe agitation, command hallucinations, intoxication, or loss of behavioural control",
+        "Severe dissociation, psychosis, mania, prolonged inability to sleep, inability to eat or care for basic needs, or rapidly worsening function",
+        "Ongoing abuse or danger, overdose or dangerous withdrawal, head injury, focal neurologic finding, delirium, or another untreated medical emergency"
+      ],
+      "complications": [
+        "Major depression, substance-use disorder, panic, dissociation, sleep disorder, chronic pain, or other co-occurring mental and physical illness",
+        "Self-harm, suicide attempt, suicide, reckless injury, aggression during crisis, or victimization",
+        "Family and relationship strain, occupational or academic loss, social isolation, homelessness, and reduced quality of life",
+        "Avoidance of needed medical care, treatment dropout, medication harm, or repeated crisis use when care is not trauma informed"
+      ],
+      "prognosis": "PTSD is treatable, and recovery patterns vary. Some people improve with support and time, while others need structured psychotherapy, medication, or combined care over months or longer. Ongoing danger, severe comorbidity, avoidance, and barriers to care can prolong impairment; a stable alliance, evidence-based treatment, practical safety, and follow-up improve the chance of meaningful recovery.",
+      "prevention": [
+        "No medicine is recommended routinely to prevent PTSD after trauma.",
+        "Provide psychological first aid, accurate information, sleep and basic-needs support, connection to trusted people, and active monitoring according to symptoms and risk rather than mandatory treatment for everyone exposed.",
+        "For clinically important early symptoms or diagnosed acute stress disorder, offer age- and context-appropriate trauma-focused care and follow-up rather than one-session debriefing.",
+        "Reduce ongoing violence, unsafe housing, occupational exposure, pain, substance-related harm, and barriers to culturally appropriate care when possible."
+      ],
+      "patientEducation": [
+        "PTSD is a treatable trauma response, not weakness, blame, or proof that you will always feel this way.",
+        "You may choose how much detail to share during routine care. Tell the team about triggers, preferred grounding methods, and what makes examinations or procedures feel safer.",
+        "Trauma-focused therapies such as Cognitive Processing Therapy, Prolonged Exposure, EMDR, and trauma-focused CBT are structured treatments; they are not the same as being forced to relive the event without preparation.",
+        "Take prescribed medicine consistently and contact the prescriber before stopping; report worsening suicidal thoughts, severe activation, troublesome blood-pressure symptoms, or other adverse effects promptly.",
+        "Seek urgent help for suicidal or violent intent, severe dissociation or psychosis, dangerous substance use or withdrawal, ongoing abuse, or inability to care for basic needs."
+      ],
+      "specialPopulations": [
+        "Children and adolescents may show regression, play reenactment, irritability, somatic symptoms, school decline, or caregiver-related distress. NICE does not recommend drug treatment for PTSD in people under 18; use developmentally appropriate trauma-focused care and safeguarding.",
+        "Pregnancy, postpartum experiences, sexual trauma, intimate-partner violence, refugee status, military or first-responder work, disability, and serious medical illness may alter triggers, safety, access, and medication decisions without changing the need for respectful individualized assessment.",
+        "Older adults and people with traumatic brain injury, cognitive impairment, delirium risk, sensory loss, falls, or polypharmacy need careful medical and medication differential assessment.",
+        "Culture, language, faith, community, racism, discrimination, and historical trauma shape the meaning and expression of symptoms; use qualified interpreters and avoid treating cultural difference as pathology."
+      ],
+      "nclexTraps": [
+        "Safety, medical stability, and current danger come before detailed trauma processing.",
+        "Do not force the patient to describe the trauma, touch without warning, or provide mandatory single-session debriefing.",
+        "Under DSM-5-TR, PTSD lasts more than 1 month; acute stress disorder occupies the 3-day-to-1-month window, but ICD-11 uses a different structure and should not be silently mixed with DSM criteria.",
+        "Sertraline, paroxetine, and venlafaxine are context-bound adult PTSD examples; prazosin is nightmare-specific, and benzodiazepines are not routine PTSD treatment.",
+        "A positive screen suggests further assessment and never replaces direct suicide, violence, substance, medical, and diagnostic evaluation."
+      ],
+      "relatedTopics": [
+        "Acute stress disorder",
+        "Adjustment disorder",
+        "Major depressive disorder",
+        "Substance use disorders",
+        "Suicidal ideation",
+        "Functional neurological symptom disorder"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "va-dod-ptsd-asd-cpg-2023",
+        "nice-ng116-ptsd",
+        "apa-ptsd-related-disorders-2025",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based on WHO ICD-11 CDDR 2024, the VA/DoD 2023 PTSD/ASD guideline, NICE NG116, the APA physician-reviewed PTSD and related-disorders overview, and SAMHSA SAFE-T. It keeps DSM and ICD timing and symptom structures explicit, preserves adult and pediatric treatment boundaries, and does not copy source prose.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024, disorders specifically associated with stress; accessed 2026-08-14",
+          "fieldsSupported": [
+            "identity",
+            "classification",
+            "diagnostic requirements",
+            "differential",
+            "functional impact"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/ptsd/VA-DoD-CPG-PTSD-Full-CPG-Edited-111624-V5-81825.pdf",
+          "documentVersion": "VA/DoD PTSD/ASD CPG version 4.0, June 2023; current official file accessed 2026-08-14",
+          "fieldsSupported": [
+            "assessment",
+            "psychotherapy",
+            "medications",
+            "nightmares",
+            "contraindications",
+            "safetyConsiderations"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/ng116/chapter/Recommendations",
+          "documentVersion": "NG116, published 2018 and reviewed 2025-04-08 with no recommendation change; accessed 2026-08-14",
+          "fieldsSupported": [
+            "recognition",
+            "assessment",
+            "psychotherapy",
+            "medications",
+            "complex needs",
+            "specialPopulations"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/patients-families/ptsd/what-is-ptsd",
+          "documentVersion": "Physician review March 2025; accessed 2026-08-14",
+          "fieldsSupported": [
+            "definition",
+            "signsSymptoms",
+            "diagnostics",
+            "related disorders",
+            "psychotherapy",
+            "patientEducation"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; accessed 2026-08-14",
+          "fieldsSupported": [
+            "suicide assessment",
+            "risk and protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.ptsd",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.acute-stress-disorder",
+      "name": "Acute stress disorder",
+      "displayName": "Acute stress disorder (ASD)",
+      "category": "Mental health",
+      "aliases": [
+        "ASD",
+        "acute stress disorder (ASD)"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-14",
+      "plainLanguage": "Acute stress disorder is a DSM-defined pattern of severe trauma symptoms that lasts from 3 days through 1 month after a qualifying traumatic event. The person may relive the event, feel numb or unreal, avoid reminders, remain on guard, and struggle to sleep, concentrate, work, or care for themself.",
+      "whyItMatters": "The early post-trauma period can include hidden injury, intoxication or withdrawal, ongoing abuse, suicidal thinking, dissociation, severe sleep loss, or inability to meet basic needs. Prompt nursing assessment protects immediate safety and connects a symptomatic person to follow-up without labeling every expected short-term trauma response as a disorder.",
+      "plainLanguageGlosses": [
+        {
+          "term": "dissociation",
+          "plainLanguage": "feeling detached from oneself or surroundings, being in a daze, or having trauma-related memory gaps",
+          "sourceKeys": [
+            "va-dod-ptsd-asd-cpg-2023",
+            "apa-ptsd-related-disorders-2025"
+          ]
+        },
+        {
+          "term": "acute stress reaction",
+          "plainLanguage": "the ICD-11 term for an expected short-lived response to extreme trauma, classified as a factor affecting health rather than the DSM disorder",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "va-dod-ptsd-asd-cpg-2023"
+          ]
+        },
+        {
+          "term": "trauma-focused CBT",
+          "plainLanguage": "structured therapy that helps a person safely process trauma-related thoughts, feelings, memories, and avoidance",
+          "sourceKeys": [
+            "va-dod-ptsd-asd-cpg-2023",
+            "nice-ng116-ptsd"
+          ]
+        }
+      ],
+      "definition": "Acute stress disorder is a DSM-5-TR trauma- and stressor-related diagnosis in which a qualifying traumatic exposure is followed by at least 9 symptoms drawn from intrusion, negative mood, dissociation, avoidance, and arousal, with clinically significant distress or impairment and a duration of 3 days through 1 month. The ICD-11 acute stress reaction is not an exact synonym and is classified as an expected response rather than a mental disorder.",
+      "pathology": "A severe trauma can temporarily keep attention, memory, arousal, sleep, and threat responses organized around immediate survival. Intrusions, numbness, derealization, avoidance, and hypervigilance may impair function even after physical danger has ended. These reactions are real, but no laboratory test or single biologic mechanism separates expected distress, DSM acute stress disorder, and evolving PTSD; the trauma context, timing, symptom burden, impairment, and exclusions do that work.",
+      "pathophysiology": [
+        "Autonomic arousal and threat attention may remain high after trauma, causing startle, insomnia, irritability, concentration problems, and strong body reactions to reminders.",
+        "Trauma memories may be fragmented or feel present again, while dissociation can produce numbness, a dreamlike environment, detachment from the body, or gaps in recall.",
+        "Avoidance can reduce distress briefly but may interfere with medical care, support, and recovery. Many early reactions resolve; persistence and impairment require reassessment rather than a prediction that PTSD is inevitable."
+      ],
+      "etiology": "DSM acute stress disorder follows direct, witnessed, close-person, or qualifying repeated occupational exposure to actual or threatened death, serious injury, or sexual violence. Severity, interpersonal or repeated trauma, prior trauma or mental illness, injury, dissociation, ongoing danger, limited support, and unmet basic needs may increase risk, but no one feature proves the diagnosis or predicts later PTSD.",
+      "riskFactors": [
+        "Severe, interpersonal, repeated, sexual, combat, disaster, occupational, or medically traumatic exposure",
+        "Prior trauma, PTSD, depression, anxiety, substance use, dissociation, or traumatic brain injury",
+        "Ongoing threat, abuse, unsafe housing, untreated injury or pain, displacement, or loss of basic needs",
+        "Marked early symptoms, sleep deprivation, limited social support, or barriers to follow-up",
+        "Childhood or adolescent developmental vulnerability and dependence on caregiver safety"
+      ],
+      "signsSymptoms": [
+        "Intrusive memories, dreams, flashbacks, or intense emotional and physical reactions to trauma reminders",
+        "Persistent inability to feel positive emotion, emotional numbing, or a sense that the world or self is unreal",
+        "Dissociative amnesia for parts of the event, depersonalization, derealization, or feeling in a daze",
+        "Avoidance of trauma-related thoughts, feelings, people, places, conversations, activities, or other reminders",
+        "Sleep disturbance, irritability or angry outbursts, hypervigilance, exaggerated startle, and difficulty concentrating"
+      ],
+      "diagnostics": [
+        "Under DSM-5-TR, confirm a qualifying trauma, at least 9 of 14 symptoms across intrusion, negative mood, dissociation, avoidance, and arousal, clinically significant distress or impairment, and a duration of 3 days through 1 month. Symptoms before day 3 do not meet the duration requirement.",
+        "If a qualifying syndrome persists beyond 1 month, assess PTSD under DSM rather than extending acute stress disorder indefinitely. PTSD can occur without prior acute stress disorder, and acute stress disorder does not make later PTSD inevitable.",
+        "Keep ICD-11 separate: acute stress reaction QE84 is classified as a factor influencing health or contact with services and usually begins subsiding within days; it is not an exact alternate name for DSM acute stress disorder.",
+        "Assess physical injury, traumatic brain injury, delirium, seizure, intoxication or withdrawal, medication effects, psychosis, depression, panic, grief, adjustment disorder, functional neurologic symptoms, and ongoing danger.",
+        "A symptom screen may organize follow-up but cannot establish trauma qualification, timing, impairment, exclusions, or immediate safety."
+      ],
+      "labs": [
+        "No laboratory test, scan, or questionnaire confirms acute stress disorder.",
+        "Select glucose, toxicology, pregnancy testing, injury imaging, neurologic evaluation, infection or metabolic studies, or other tests from the trauma, examination, medication exposure, and medical differential.",
+        "Normal testing does not establish a psychiatric diagnosis, and a psychiatric symptom pattern must not delay treatment of injury, intoxication, withdrawal, hypoxia, seizure, or delirium."
+      ],
+      "assessment": "First assess airway, breathing, circulation, injury, pain, neurologic status, intoxication or withdrawal, ongoing violence, shelter, food, hydration, sleep, and contact with trusted supports. Then assess exact trauma timing, symptom clusters, dissociation, function, substances, depression, psychosis, suicide, self-harm, violence, lethal means, and protective factors. Use short calm questions, explain why information is needed, offer choices, and avoid demanding a detailed retelling while the person is overwhelmed.",
+      "differential": [
+        "Expected acute stress reaction after extreme trauma, which ICD-11 treats as a non-disorder health-contact factor that usually begins subsiding within days",
+        "PTSD when a DSM-qualifying syndrome persists beyond 1 month, recognizing that ICD-11 uses a different symptom and timing structure",
+        "Adjustment disorder after a psychosocial stressor that need not qualify as trauma and produces stressor preoccupation or failure to adapt rather than the required ASD symptom count",
+        "Traumatic brain injury, seizure, delirium, hypoxia, pain, medication effect, substance intoxication or withdrawal, or another medical condition",
+        "Major depression, panic disorder, grief, brief psychotic disorder, dissociative disorder, functional neurological symptom disorder, or bipolar disorder",
+        "Ongoing violence, abuse, trafficking, combat, disaster, or another current danger where symptoms may be adaptive signals and safety is not yet restored"
+      ],
+      "treatments": [
+        "Meet immediate survival and practical needs: treat injury, establish safety and shelter, support food, hydration and sleep, orient the person, connect trusted supports, provide clear information, and arrange follow-up according to risk.",
+        "For diagnosed acute stress disorder, current VA/DoD guidance weakly supports multi-session trauma-focused cognitive behavioural psychotherapy; NICE also supports individual trauma-focused CBT for clinically important symptoms or acute stress disorder within the first month. Match timing to readiness, age, safety, preference, and clinician expertise.",
+        "Use active monitoring when symptoms are subthreshold or improving, with a specific return plan for worsening symptoms, unsafe behaviour, substance use, or persistence toward or beyond 1 month.",
+        "There is insufficient evidence to recommend a routine pharmacotherapy to treat acute stress disorder or prevent PTSD. Treat injury, pain, withdrawal, sleep disorder, depression, or another separately diagnosed condition according to its own indication and monitoring plan.",
+        "Coordinate trauma-informed primary, emergency, mental-health, safeguarding, social, school, occupational, and family support as the situation requires."
+      ],
+      "contraindications": [
+        "Do not provide mandatory single-session psychological or critical-incident debriefing and do not force detailed trauma recounting during routine nursing care.",
+        "Do not prescribe a routine benzodiazepine, antidepressant, antipsychotic, or other drug merely because trauma occurred or to prevent PTSD; no medication has established universal acute-stress benefit.",
+        "Do not diagnose before the 3-day DSM minimum or continue the DSM acute-stress label beyond the 1-month boundary without reassessment.",
+        "Do not use the ICD-11 term acute stress reaction as a silent exact synonym for DSM acute stress disorder.",
+        "Do not attribute confusion, amnesia, agitation, collapse, or unusual behaviour to trauma before evaluating head injury, hypoxia, intoxication, withdrawal, seizure, delirium, and ongoing danger."
+      ],
+      "safetyConsiderations": [
+        "Ask directly about suicidal thoughts, self-harm, violent intent, lethal means, severe impulsivity, intoxication, and protective factors; acute timing does not mean low risk.",
+        "Confirm whether abuse, trafficking, war, disaster, occupational threat, or unsafe housing is continuing, and avoid reassuring the person that danger is over when it is not.",
+        "Use calm orientation and grounding for dissociation, reduce unnecessary stimulation, explain before touch, and maintain the least-restrictive safe environment.",
+        "Children, dependent adults, and people injured in interpersonal violence may need immediate safeguarding, mandated reporting, forensic, and caregiver-safety procedures according to law and policy.",
+        "Escalate medical instability, head injury, severe sleep deprivation, psychosis, dangerous withdrawal, inability to care for basic needs, or rapidly worsening function."
+      ],
+      "nursingPriorities": [
+        "Treat injury, medical instability, intoxication or withdrawal, and ongoing danger before completing a psychiatric label.",
+        "Assess suicide, self-harm, violence, dissociation, psychosis, lethal means, housing, sleep, hydration, supports, and ability to care for self because these determine observation and disposition.",
+        "Use psychological first-aid principles: calm presence, practical help, accurate information, consent, simple choices, connection to supports, and no forced narrative.",
+        "Document the trauma date, symptom onset and duration, impairment, interventions, response, and exact follow-up plan so persistence toward 1 month triggers reassessment rather than diagnostic drift.",
+        "Teach the patient and family which reactions may improve, when to return urgently, and how to access trauma-focused follow-up without promising or predicting PTSD."
+      ],
+      "redFlags": [
+        "Suicidal intent, recent serious self-harm, violent intent, access to lethal means, or inability to maintain immediate safety",
+        "Head injury, focal neurologic finding, seizure, hypoxia, severe pain, delirium, overdose, or dangerous intoxication or withdrawal",
+        "Severe dissociation, psychosis, escalating agitation, inability to sleep or eat, or inability to care for basic needs",
+        "Continuing abuse, trafficking, unsafe housing, unprotected child or dependent adult, or inability to reach safe follow-up"
+      ],
+      "complications": [
+        "PTSD, depression, panic, substance-related harm, sleep disorder, or persistent dissociation",
+        "Self-harm, suicide attempt, suicide, reckless injury, violence during crisis, or victimization",
+        "Avoidance of medical care, family or occupational disruption, school decline, housing instability, and reduced function",
+        "Missed head injury, intoxication, withdrawal, abuse, or other medical and safety conditions when symptoms are assumed to be purely psychiatric"
+      ],
+      "prognosis": "Many acute trauma responses lessen with safety, practical support, and time. Diagnosed acute stress disorder increases risk for later PTSD but does not guarantee it, and PTSD can develop without preceding acute stress disorder. Follow-up should track safety, function, symptom course, and new diagnoses rather than using the first-month label as a prediction.",
+      "prevention": [
+        "No routine medication is established to prevent PTSD after acute stress disorder or trauma exposure.",
+        "Support immediate safety, basic needs, sleep, connection, accurate information, and access to follow-up without forcing treatment on every trauma-exposed person.",
+        "Offer multi-session trauma-focused CBT when clinically appropriate for diagnosed acute stress disorder or important early symptoms, and avoid single-session debriefing.",
+        "Reduce continuing danger, untreated injury, pain, substance-related harm, and barriers to social or mental-health support."
+      ],
+      "patientEducation": [
+        "Strong reactions can occur after trauma and do not mean weakness; many improve, while persistent or disabling symptoms deserve follow-up.",
+        "The DSM acute stress disorder window is 3 days through 1 month. Return for reassessment if symptoms worsen, function drops, or symptoms continue toward or beyond 1 month.",
+        "You do not have to give a detailed account during routine care. Tell staff what helps you feel oriented and what touch, sounds, positions, or procedures are triggering.",
+        "Avoid using alcohol, nonprescribed sedatives, or other drugs to suppress symptoms because they can worsen sleep, judgment, dependence, and safety.",
+        "Seek urgent help for suicidal or violent thoughts, severe detachment from reality, inability to sleep or care for yourself, ongoing danger, or new medical or neurologic symptoms."
+      ],
+      "specialPopulations": [
+        "Children and adolescents may show regression, clinging, trauma play, irritability, somatic symptoms, school decline, or changed attachment behaviour. Coordinate caregivers and safeguarding while protecting the child's privacy and developmental needs.",
+        "People with military, first-responder, health-care, disaster, or forensic occupational exposure may have repeated work-related trauma and need occupational safety and confidential follow-up.",
+        "Pregnancy, postpartum events, sexual assault, intimate-partner violence, displacement, disability, and serious medical illness require tailored safety, examination, medication, forensic, and support decisions.",
+        "Older adults and people with brain injury, cognitive impairment, sensory loss, or polypharmacy need careful delirium, medication, neurologic, and fall-risk assessment."
+      ],
+      "nclexTraps": [
+        "Stabilize physical injury and immediate safety before trauma processing or teaching.",
+        "DSM acute stress disorder lasts 3 days through 1 month; ICD-11 acute stress reaction is a different non-disorder concept and not an interchangeable alias.",
+        "Do not force trauma retelling or provide mandatory single-session psychological debriefing.",
+        "No routine medication treats acute stress disorder or prevents PTSD; trauma-focused CBT is the supported structured intervention when clinically appropriate.",
+        "Acute stress disorder raises later PTSD risk but does not make PTSD inevitable."
+      ],
+      "relatedTopics": [
+        "PTSD",
+        "Adjustment disorder",
+        "Major depressive disorder",
+        "Substance use disorders",
+        "Suicidal ideation",
+        "Functional neurological symptom disorder"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "va-dod-ptsd-asd-cpg-2023",
+        "nice-ng116-ptsd",
+        "apa-ptsd-related-disorders-2025",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based on WHO ICD-11 CDDR 2024, the VA/DoD 2023 PTSD/ASD guideline, NICE NG116, the APA physician-reviewed PTSD and related-disorders overview, and SAMHSA SAFE-T. It explicitly separates DSM acute stress disorder from ICD-11 acute stress reaction and avoids routine medication or forced-debriefing claims.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024, acute stress reaction QE84 and disorders specifically associated with stress; accessed 2026-08-14",
+          "fieldsSupported": [
+            "classification boundary",
+            "acute stress reaction",
+            "differential",
+            "functional impact"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/ptsd/VA-DoD-CPG-PTSD-Full-CPG-Edited-111624-V5-81825.pdf",
+          "documentVersion": "VA/DoD PTSD/ASD CPG version 4.0, June 2023; current official file accessed 2026-08-14",
+          "fieldsSupported": [
+            "definition",
+            "DSM timing",
+            "assessment",
+            "trauma-focused CBT",
+            "medication evidence limit",
+            "safetyConsiderations"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/ng116/chapter/Recommendations",
+          "documentVersion": "NG116, published 2018 and reviewed 2025-04-08 with no recommendation change; accessed 2026-08-14",
+          "fieldsSupported": [
+            "early symptoms",
+            "active monitoring",
+            "trauma-focused CBT",
+            "debriefing contraindication",
+            "specialPopulations"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/patients-families/ptsd/what-is-ptsd",
+          "documentVersion": "Physician review March 2025; accessed 2026-08-14",
+          "fieldsSupported": [
+            "identity",
+            "definition",
+            "signsSymptoms",
+            "DSM timing",
+            "psychotherapy",
+            "patientEducation"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; accessed 2026-08-14",
+          "fieldsSupported": [
+            "suicide assessment",
+            "risk and protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.acute-stress-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.adjustment-disorder",
+      "name": "Adjustment disorder",
+      "displayName": "Adjustment disorder",
+      "category": "Mental health",
+      "aliases": [
+        "Adjustment disorders"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-14",
+      "plainLanguage": "Adjustment disorder is a clinically important difficulty adapting to an identifiable life stressor. The person becomes preoccupied with what happened or struggles to regain daily function, with emotional or behavioural symptoms that are more impairing than an expected temporary response but are not better explained by another mental disorder.",
+      "whyItMatters": "Adjustment disorder is often described as time limited, but it is not automatically mild. Depression, anxiety, impulsive behaviour, substance use, self-harm, suicidal thinking, family conflict, school or work loss, and continuing danger may require urgent nursing action, while an inaccurate label can delay recognition of PTSD, major depression, grief, abuse, or medical illness.",
+      "plainLanguageGlosses": [
+        {
+          "term": "identifiable stressor",
+          "plainLanguage": "a specific life change or pressure such as illness, relationship loss, migration, work or school disruption, financial strain, or another major transition",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "apa-ptsd-related-disorders-2025"
+          ]
+        },
+        {
+          "term": "preoccupation",
+          "plainLanguage": "repeated distressing thoughts, worry, or rumination focused on the stressor or its consequences",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "apa-ptsd-related-disorders-2025"
+          ]
+        },
+        {
+          "term": "failure to adapt",
+          "plainLanguage": "difficulty restoring sleep, concentration, relationships, work, school, or other everyday functioning after the stressor",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "dha-adjustment-cbt-evidence-2025"
+          ]
+        }
+      ],
+      "definition": "Adjustment disorder is a stressor-related diagnosis that follows an identifiable psychosocial stressor and causes clinically significant distress or impaired function. ICD-11 emphasizes preoccupation with the stressor or its consequences plus failure to adapt, while DSM-5-TR emphasizes distress out of proportion to context and/or impairment. The presentation must not be better explained by another mental disorder, ordinary culturally expected response, or uncomplicated bereavement.",
+      "pathology": "Adjustment disorder has no established single brain lesion, laboratory marker, or universal biological mechanism. Symptoms reflect the interaction of the stressor, its meaning and duration, coping resources, development, culture, supports, prior health, and ongoing consequences. The diagnosis is therefore based on the stressor-linked clinical pattern, timing, impairment, and exclusions—not on how dramatic the event sounds or one rating-scale score.",
+      "pathophysiology": [
+        "Ongoing worry, rumination, sleep disruption, autonomic arousal, low mood, and avoidance can narrow coping and make work, school, relationships, or self-care harder, which then creates additional stress.",
+        "The stressor may be a single event, repeated events, or a continuing circumstance. Severity depends on personal, developmental, cultural, medical, family, and social context rather than a universal hierarchy of stressful events.",
+        "Symptoms can overlap depression, anxiety, trauma, grief, and substance-related disorders. Longitudinal reassessment is essential because a clearer disorder may emerge or the initial stress response may resolve."
+      ],
+      "etiology": "An identifiable psychosocial stressor is required, but the event need not meet the trauma definition used for PTSD or acute stress disorder. Examples include relationship loss, illness or disability, caregiving strain, relocation, migration, financial or legal difficulty, work or school change, family conflict, retirement, or multiple accumulating stressors. The stressor does not by itself establish the diagnosis.",
+      "riskFactors": [
+        "Severe, repeated, or continuing psychosocial stress with limited control or uncertain consequences",
+        "Prior depression, anxiety, trauma-related symptoms, substance use, chronic illness, disability, pain, or earlier difficulty adapting to major change",
+        "Limited social support, unstable housing, financial strain, discrimination, language barriers, caregiving burden, or poor access to care",
+        "Childhood, adolescence, pregnancy, postpartum change, older age, migration, military transition, medical diagnosis, or another major developmental or role transition",
+        "Sleep deprivation, escalating avoidance, substance use, family conflict, or loss of routine and meaningful activity"
+      ],
+      "signsSymptoms": [
+        "Persistent worry, rumination, or preoccupation with the stressor and its consequences",
+        "Low mood, tearfulness, hopelessness, anxiety, tension, irritability, anger, or feeling unable to cope",
+        "Sleep, appetite, concentration, energy, somatic, school, work, relationship, or self-care changes linked to the stressor",
+        "Withdrawal, avoidance, reduced performance, impulsive or rule-breaking behaviour, substance use, or conflict in some presentations",
+        "Clinically significant distress or impaired function that exceeds an expected transient response in the person's cultural and situational context"
+      ],
+      "diagnostics": [
+        "Identify the stressor, symptom onset, preoccupation, failure to adapt, distress, functional impairment, cultural context, supports, and course. Confirm that the pattern is not better explained by another mental disorder, substance effect, medication, medical condition, or expected grief response.",
+        "DSM-5-TR-oriented teaching places onset within 3 months of the stressor and expects symptoms to resolve within 6 months after the stressor or its consequences end. ICD-11 generally places onset within 1 month and expects resolution within 6 months after the stressor ends unless the stressor or its consequences continue. Name the framework instead of presenting one timeline as universal.",
+        "Assess specifically for PTSD or acute stress disorder when a qualifying trauma and their symptom pattern are present; a difficult but non-traumatic stressor can support adjustment disorder but does not satisfy the trauma requirement.",
+        "Assess major depression, generalized anxiety, panic, prolonged grief, bipolar disorder, psychosis, substance use, personality patterns, sleep disorder, pain, endocrine or neurologic illness, and ongoing abuse or coercion.",
+        "A PHQ-9, GAD-7, suicide screen, or another measure can quantify a symptom or risk domain but cannot diagnose adjustment disorder, prove disproportionate distress, or replace the stressor-linked differential."
+      ],
+      "labs": [
+        "No laboratory test, imaging study, or questionnaire confirms adjustment disorder.",
+        "Use targeted medical, medication, toxicology, pregnancy, endocrine, neurologic, sleep, pain, or other evaluation when the history and examination suggest a mimic or contributor.",
+        "If medicine is used for a separately diagnosed disorder or a carefully selected symptom, monitoring follows that exact indication, product, age, pregnancy status, interactions, and risk profile."
+      ],
+      "assessment": "Ask what changed, when symptoms began, what consequences are ongoing, what the person fears or cannot manage, and how sleep, work, school, relationships, caregiving, substances, and self-care have changed. Assess strengths, culture, supports, housing, finances, abuse, coercion, medical needs, depression, mania, psychosis, suicide, self-harm, violence, lethal means, and protective factors. Validate the burden without assuming the diagnosis is mild or telling the person they should simply cope better.",
+      "differential": [
+        "PTSD or acute stress disorder when the stressor qualifies as trauma and the relevant framework's full symptom, timing, exclusion, and impairment pattern is present. DSM acute stress disorder requires at least 9 of 14 symptoms drawn from any of five categories and does not require one symptom from every category.",
+        "Major depressive disorder, generalized anxiety disorder, panic disorder, bipolar disorder, psychotic disorder, or substance-induced symptoms when the full syndrome better explains the presentation",
+        "Prolonged grief disorder or culturally expected bereavement, recognizing that grief and another disorder can coexist",
+        "Somatic symptom disorder, illness anxiety disorder, sleep disorder, chronic pain, medication effect, endocrine disease, neurologic illness, or another medical condition",
+        "Expected short-lived distress or role transition that remains flexible and does not cause clinically significant impairment",
+        "Ongoing abuse, coercive control, unsafe housing, discrimination, workplace danger, or another current problem requiring practical protection rather than only symptom treatment"
+      ],
+      "treatments": [
+        "Build an individualized plan around the stressor, immediate practical problems, safety, sleep, routine, social support, coping, and restoration of function. Brief supportive, problem-solving, CBT-informed, family, or group approaches may be used, but current official evidence does not establish one universal adjustment-disorder-specific psychotherapy.",
+        "Use shared decision making and monitor whether the selected intervention improves the person's agreed functional goals; revise the diagnosis and plan if symptoms persist, worsen, or develop into another syndrome.",
+        "No medication is established as a routine first-line treatment for adjustment disorder, and SSRIs are not FDA approved for this diagnosis. Do not attach sertraline, fluoxetine, escitalopram, or another generic drug list to the adjustment label.",
+        "Treat a separately diagnosed major depression, generalized anxiety disorder, sleep disorder, substance-use disorder, or other condition according to its own evidence and medication-monitoring plan.",
+        "Address housing, financial, work, school, caregiver, legal, language, disability, abuse, and community needs through appropriate interdisciplinary and social-service support."
+      ],
+      "contraindications": [
+        "Do not minimize the presentation as normal stress or assume a time-limited diagnosis is low risk; assess suicide, self-harm, violence, substances, abuse, and basic needs directly.",
+        "Do not prescribe an SSRI or other psychotropic as a routine adjustment-disorder treatment without a clearly documented indication, evidence discussion, alternatives, and monitoring plan.",
+        "Do not use the diagnosis when PTSD, acute stress disorder, major depression, generalized anxiety, prolonged grief, bipolar disorder, psychosis, a substance effect, or a medical condition better explains the presentation.",
+        "Do not diagnose from one questionnaire score or from the clinician's judgment that a person is coping poorly.",
+        "Do not promise that symptoms must end on a calendar date; reassess the ongoing stressor, consequences, function, safety, and alternative diagnoses."
+      ],
+      "safetyConsiderations": [
+        "Ask directly about suicidal thoughts, intent, plan, prior behaviour, self-harm, lethal means, impulsivity, hopelessness, and protective factors; adjustment disorder can coexist with serious suicide risk.",
+        "Assess violent intent, escalating conflict, substance use, weapons, psychosis, and ability to control impulses when behaviour or circumstances raise concern.",
+        "Identify ongoing abuse, coercive control, trafficking, unsafe housing, caregiver strain, workplace danger, or child and dependent-adult safeguarding needs.",
+        "Escalate severe depression, mania, psychosis, dangerous intoxication or withdrawal, inability to sleep or meet basic needs, or a sudden medical or neurologic change.",
+        "Use the least-restrictive safe setting, preserve rights and dignity, and create a concrete follow-up and crisis plan instead of relying on reassurance alone."
+      ],
+      "nursingPriorities": [
+        "Identify the exact stressor, timing, current consequences, functional losses, strengths, supports, and practical needs because intervention should address what is still driving distress.",
+        "Assess suicide, self-harm, violence, substance use, sleep, abuse, housing, finances, medical illness, and ability to care for self because the diagnosis does not guarantee low acuity.",
+        "Use validating, nonjudgmental communication and collaborative problem solving; avoid statements such as everyone goes through this or you need to cope better.",
+        "Help the person choose small achievable actions, restore routine and support, and track school, work, relationships, sleep, and self-care rather than only a symptom score.",
+        "Report worsening or persistent symptoms, new manic or psychotic features, escalating risk, continued major impairment, or a stressor that has ended without expected recovery so the diagnosis and plan are reassessed."
+      ],
+      "redFlags": [
+        "Suicidal intent, preparatory behaviour, serious self-harm, access to lethal means, or inability to maintain immediate safety",
+        "Credible violent threat, weapon access, severe agitation, psychosis, mania, dangerous intoxication, or withdrawal",
+        "Ongoing abuse, trafficking, homelessness, inability to obtain food or medication, or unsafe child or dependent-adult circumstances",
+        "Rapid functional collapse, inability to sleep or care for basic needs, or a new medical or neurologic emergency"
+      ],
+      "complications": [
+        "Major depression, anxiety disorder, substance-related harm, sleep disorder, or another psychiatric condition becoming clearer over time",
+        "Self-harm, suicide attempt, suicide, impulsive injury, family violence, or victimization",
+        "School or work loss, relationship breakdown, caregiver burnout, housing or financial instability, and social isolation",
+        "Chronic impairment, fragmented care, unnecessary medication, or missed PTSD, grief, abuse, or medical illness when the diagnosis is not reassessed"
+      ],
+      "prognosis": "Many people recover as the stressor resolves, supports strengthen, and function returns, but course depends on whether the stressor or its consequences continue. DSM- and ICD-oriented frameworks generally expect resolution within 6 months after the stressor ends; persistence, worsening, or a new symptom pattern requires reassessment rather than automatic extension of the label.",
+      "prevention": [
+        "Adjustment disorder cannot always be prevented, and exposure to a stressor does not make the diagnosis inevitable.",
+        "Early practical support, sleep and routine protection, social connection, problem solving, and access to culturally appropriate care may reduce avoidable impairment.",
+        "Treat medical illness, pain, substance-related problems, depression, anxiety, and unsafe conditions promptly rather than waiting for adaptation to occur on its own.",
+        "Use follow-up after major transitions or losses to identify worsening function, suicide risk, abuse, or a more specific emerging disorder."
+      ],
+      "patientEducation": [
+        "The diagnosis means a specific stressor is linked with distress and difficulty functioning; it does not mean your experience is trivial or that you failed to cope.",
+        "Treatment focuses on safety, practical problems, support, coping, and getting daily life working again. No single therapy is universally best for every adjustment-disorder presentation.",
+        "There is no standard medication list for adjustment disorder. A medicine may be considered only for a separate diagnosis or a carefully selected symptom with its own risks and monitoring.",
+        "Track sleep, substance use, work or school function, relationships, self-care, and whether the stressor is continuing; bring worsening or persistent symptoms back for reassessment.",
+        "Seek urgent help for suicidal or violent thoughts, severe agitation, psychosis, dangerous substance use or withdrawal, ongoing abuse, or inability to meet basic needs."
+      ],
+      "specialPopulations": [
+        "Children and adolescents may show school decline, withdrawal, irritability, somatic symptoms, regression, or rule-breaking. Assess development, family and school context, bullying, abuse, neurodevelopmental needs, and caregiver safety.",
+        "Pregnancy, postpartum change, infertility treatment, cancer or another serious diagnosis, disability, migration, military transition, retirement, and caregiving can create distinctive ongoing stressors and treatment constraints.",
+        "Older adults need assessment for grief, cognitive or medical change, medication effects, loss of independence, caregiver strain, exploitation, and social isolation.",
+        "Culture, faith, language, community norms, discrimination, finances, and access to resources shape both expected response and impairment; use qualified interpreters and avoid culture-blind judgments of proportionality."
+      ],
+      "nclexTraps": [
+        "Adjustment disorder is not automatically mild; assess suicide and immediate safety directly.",
+        "The stressor need not qualify as trauma, which helps distinguish adjustment disorder from PTSD and acute stress disorder.",
+        "DSM and ICD timing differ; name the framework and reassess when symptoms persist instead of inventing one universal cutoff.",
+        "No score diagnoses adjustment disorder, and no routine SSRI or generic psychotropic list treats the label itself.",
+        "Use validation and collaborative problem solving, not minimization, forced positivity, or advice to simply cope better."
+      ],
+      "relatedTopics": [
+        "PTSD",
+        "Acute stress disorder",
+        "Major depressive disorder",
+        "Generalized anxiety disorder",
+        "Substance use disorders",
+        "Suicidal ideation"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "apa-ptsd-related-disorders-2025",
+        "dha-adjustment-cbt-evidence-2025",
+        "dha-adjustment-ssri-evidence-2025",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based on WHO ICD-11 CDDR 2024, the APA physician-reviewed PTSD and related-disorders overview, the Defense Health Agency's March 2025 adjustment-disorder CBT and SSRI evidence briefs, and SAMHSA SAFE-T. It preserves DSM/ICD timing differences, avoids overstating psychotherapy evidence, and excludes a routine adjustment-disorder drug list.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024, adjustment disorder 6B43; accessed 2026-08-14",
+          "fieldsSupported": [
+            "identity",
+            "classification",
+            "diagnostic requirements",
+            "timing",
+            "differential",
+            "functional impact"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/patients-families/ptsd/what-is-ptsd",
+          "documentVersion": "Physician review March 2025; accessed 2026-08-14",
+          "fieldsSupported": [
+            "definition",
+            "signsSymptoms",
+            "DSM timing",
+            "stressor context",
+            "psychotherapy",
+            "patientEducation"
+          ]
+        },
+        {
+          "authority": "Defense Health Agency Psychological Health Center of Excellence",
+          "url": "https://health.mil/Reference-Center/Publications/2025/05/15/CBT_Adjustment-Disorder-Evidence-Briefs_508",
+          "documentVersion": "March 2025 evidence brief; accessed 2026-08-14",
+          "fieldsSupported": [
+            "diagnostic timing",
+            "CBT evidence limitations",
+            "treatment planning",
+            "shared decision making"
+          ]
+        },
+        {
+          "authority": "Defense Health Agency Psychological Health Center of Excellence",
+          "url": "https://health.mil/Reference-Center/Publications/2025/05/15/SSRIs_Adjustment-Disorder-Evidence-Briefs_508",
+          "documentVersion": "March 2025 evidence brief; accessed 2026-08-14",
+          "fieldsSupported": [
+            "SSRI evidence limitations",
+            "FDA approval boundary",
+            "medication boundary",
+            "prognosis"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; accessed 2026-08-14",
+          "fieldsSupported": [
+            "suicide assessment",
+            "risk and protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.adjustment-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.prolonged-grief-disorder",
+      "name": "Prolonged grief disorder",
+      "displayName": "Prolonged grief disorder (PGD)",
+      "category": "Mental health",
+      "aliases": [
+        "prolonged grief disorder (PGD)"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-14",
+      "plainLanguage": "Prolonged grief disorder (PGD) is persistent, disabling grief after the death of someone close. The person remains intensely pulled toward the loss through yearning or preoccupation, and the pattern disrupts daily life beyond what is expected in the person's cultural, social, or religious context.",
+      "whyItMatters": "PGD can impair sleep, nutrition, self-care, relationships, school, work, and engagement with health care. Depression, substance use, self-neglect, suicidal thinking, or inability to function can change the nursing priority from routine bereavement support to urgent safety assessment and coordinated grief-focused treatment.",
+      "plainLanguageGlosses": [
+        {
+          "term": "yearning",
+          "plainLanguage": "an intense and persistent longing for the person who died",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "apa-prolonged-grief-disorder-2025"
+          ]
+        },
+        {
+          "term": "preoccupation",
+          "plainLanguage": "repeated thoughts or attention centered on the person who died or the circumstances of the death",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "apa-prolonged-grief-disorder-2025"
+          ]
+        },
+        {
+          "term": "cultural context",
+          "plainLanguage": "the person's family, community, faith, social, and cultural expectations about grief and mourning",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "apa-prolonged-grief-disorder-2025"
+          ]
+        }
+      ],
+      "definition": "Prolonged grief disorder is a trauma- and stressor-related disorder following the death of a person who was close to the patient. It involves persistent longing or preoccupation, additional grief-related symptoms, clinically significant distress or impaired function, and a duration and intensity beyond the applicable diagnostic framework and cultural context. Time since death or grief intensity alone does not establish the diagnosis.",
+      "pathology": "PGD has no diagnostic laboratory, imaging, or physiologic marker. It is identified clinically by persistent loss-focused yearning or preoccupation, accompanying grief symptoms, impairment, timing, cultural context, and exclusion of better explanations; a proposed attachment or memory mechanism does not diagnose it.",
+      "pathophysiology": [
+        "Loss reminders may be accompanied by yearning, emotional pain, disbelief, avoidance, emotional numbness, identity disruption, or difficulty re-engaging with life.",
+        "These are clinical features and treatment targets, not biomarkers; the registered WHO and APA sources do not establish one causal pathophysiologic mechanism for PGD."
+      ],
+      "etiology": "PGD follows bereavement, but most bereaved people do not develop the disorder. Risk reflects the relationship, sudden or violent death, multiple losses, caregiving burden, prior mental illness or trauma, limited support, ongoing adversity, developmental stage, cultural meaning, and access to appropriate care; no one loss type or response automatically causes PGD.",
+      "riskFactors": [
+        "Sudden, unnatural, or violent death",
+        "Death of a child, spouse, partner, or another person to whom the bereaved was especially close or emotionally dependent",
+        "History of depression or another mental illness, trauma exposure, anxious attachment, or high grief before the death",
+        "Limited social support or lower socioeconomic resources"
+      ],
+      "signsSymptoms": [
+        "Persistent yearning or longing for the deceased, or repeated preoccupation with the deceased or circumstances of the death",
+        "Identity disruption, disbelief, avoidance of reminders, intense emotional pain, emotional numbness, meaninglessness, difficulty reintegrating, or intense loneliness",
+        "Sleep, appetite, concentration, energy, self-care, school, work, relationship, or physical-health disruption linked with the loss",
+        "Withdrawal, repeated rumination, anniversary or reminder reactions, difficulty engaging in meaningful activity, or feeling that life cannot continue",
+        "Depression, anxiety, traumatic-stress symptoms, substance use, self-neglect, self-harm, or suicidal thinking that may coexist and require separate assessment"
+      ],
+      "diagnostics": [
+        "Establish who died, when the death occurred, the relationship and circumstances, symptom frequency and persistence, functional impairment, cultural and religious expectations, supports, and alternative diagnoses through a compassionate clinical interview. A grief screen or one intense reaction does not diagnose PGD by itself.",
+        "Under DSM-5-TR, the death must have occurred at least 12 months earlier for adults or 6 months earlier for children and adolescents. Nearly daily yearning or preoccupation during the previous month is accompanied by at least 3 of 8 additional symptoms, clinically significant distress or impairment, and a response beyond cultural, social, or religious norms.",
+        "Under ICD-11, persistent and pervasive longing or preoccupation with intense emotional pain, functional impairment, and a duration clearly beyond cultural expectations are required. A duration shorter than 6 months cannot meet the ICD-11 requirement, and some cultural contexts require a longer period; ICD-11 does not use DSM's fixed 3-of-8 accessory-symptom rule.",
+        "Assess major depressive disorder, PTSD, adjustment disorder, bipolar disorder, anxiety, substance use, psychosis, neurocognitive or medical illness, and culturally expected grief. Violent loss can produce both PTSD and PGD when both full patterns are present.",
+        "Assess suicide and self-harm thoughts, intent, plan, prior behaviour, access to lethal means, self-neglect, substance use, ability to meet basic needs, and protective factors at presentation and when risk changes."
+      ],
+      "labs": [
+        "No laboratory test, imaging study, grief questionnaire, or physiologic measurement confirms PGD.",
+        "Use targeted medical, neurologic, cognitive, medication, toxicology, endocrine, sleep, nutrition, or other evaluation only when the history and examination suggest a contributor or mimic.",
+        "If medication is used for a separately diagnosed condition, monitoring follows that exact drug, indication, age, pregnancy status, interactions, and safety profile rather than the PGD label."
+      ],
+      "assessment": "Ask about the death, relationship, symptoms, reminders, culture and faith, meaning, function, sleep, appetite, self-care, substances, depression, trauma symptoms, supports, and what the person hopes care will help. Assess suicide, self-harm, intent, plan, lethal means, prior behaviour, self-neglect, and ability to stay safe. Use the person's language for the deceased, allow silence, and avoid imposing a timetable, universal stages, or assumptions about how grief should look.",
+      "differential": [
+        "Expected grief, which can be intense and fluctuate around reminders or anniversaries but does not by itself establish the persistent, impairing, culturally incongruent pattern required for PGD",
+        "Major depressive disorder, where low mood and loss of interest are usually more generalized across life domains; PGD remains centered on separation and the deceased, and both disorders can coexist",
+        "PTSD, where re-experiencing, avoidance, and current-threat symptoms center on trauma; violent loss can support both PTSD and PGD when each full pattern is present",
+        "Adjustment disorder only when its full stressor-linked preoccupation or failure-to-adapt pattern is present and culturally expected grief, PGD, and other mental or medical disorders do not better explain the presentation; being before the PGD duration threshold alone is not sufficient",
+        "Bipolar disorder, anxiety disorder, substance intoxication or withdrawal, psychosis, delirium, neurocognitive disorder, medication effect, endocrine disease, sleep disorder, pain, or another medical contributor",
+        "Culturally or spiritually expected mourning practices, continuing bonds, anniversary reactions, and normal variation that should not be pathologized by a calendar threshold alone"
+      ],
+      "treatments": [
+        "Offer grief-focused psychotherapy, such as Prolonged Grief Therapy or a CBT-based grief treatment, that supports accepting the reality of the loss, approaching avoided reminders safely, restoring meaningful activity and relationships, and building an ongoing life connection that is not disabling.",
+        "Use shared decision making and match individual, family, group, peer, spiritual, and bereavement supports to age, culture, access, preference, risk, and functional goals; support groups may supplement but do not replace indicated clinical treatment.",
+        "No medication is established as routine treatment for prolonged grief disorder or as a treatment for grief-specific symptoms. Antidepressants may treat a separately diagnosed depressive or anxiety disorder, but they are not grief-focused therapy and should not be presented as PGD-specific treatment.",
+        "Treat coexisting PTSD, depression, substance-use disorder, sleep disorder, pain, or medical illness according to its own evidence while coordinating care so grief treatment is not fragmented.",
+        "Address immediate safety, nutrition, housing, caregiving, financial, legal, cultural, and practical consequences of the death alongside psychotherapy and follow-up."
+      ],
+      "contraindications": [
+        "Do not diagnose PGD from elapsed time, grief intensity, one questionnaire score, or deviation from a clinician's personal expectations.",
+        "Do not impose universal grief stages, a fixed recovery timeline, forced closure, or pressure to move on; these approaches can invalidate the person's culture and relationship.",
+        "Do not prescribe an SSRI or another psychotropic as routine PGD treatment without a separate evidence-based indication and medication-specific monitoring plan.",
+        "Do not use reassurance or a no-suicide contract in place of direct suicide assessment, collaborative safety planning, means-safety work, and appropriate observation or escalation.",
+        "Do not attribute delirium, mania, psychosis, dangerous intoxication or withdrawal, severe malnutrition, or a new medical or neurologic change to grief without direct evaluation."
+      ],
+      "safetyConsiderations": [
+        "Ask directly about suicidal thoughts, intent, plan, prior attempts, preparatory behaviour, access to lethal means, self-harm, reasons for living, and the wish to reunite with the deceased.",
+        "Assess severe self-neglect, inability to eat, drink, sleep, take essential medication, care for dependents, or maintain safe housing; these findings can require urgent intervention even without stated suicidal intent.",
+        "Assess alcohol and drug use, dangerous withdrawal, impulsivity, aggression, victimization, exploitation, and access to weapons when clinically relevant.",
+        "Current suicidal intent, inability to maintain safety, psychosis, mania, severe intoxication or withdrawal, or a medical emergency requires immediate escalation and the least-restrictive safe observation and treatment setting.",
+        "Create a collaborative safety plan, involve chosen supports when permitted and helpful, document follow-up ownership, and use local emergency resources rather than relying on a promise not to self-harm."
+      ],
+      "nursingPriorities": [
+        "Establish immediate safety, nutrition, hydration, sleep, medication access, housing, caregiving responsibilities, and ability to perform basic self-care before focusing only on grief symptoms.",
+        "Ask directly about suicide, self-harm, lethal means, substances, trauma symptoms, depression, and function, then communicate changes promptly to the responsible clinician.",
+        "Use therapeutic presence, the person's preferred words and rituals, open questions, reflection, and silence; avoid clichés, comparison, forced positivity, or statements that the person should be over the loss.",
+        "Assess the cultural, social, religious, developmental, and relationship meaning of the loss and distinguish respectful continuing bonds from persistent impairment that needs treatment.",
+        "Monitor function, sleep, nutrition, self-care, substance use, anniversary reactions, therapy engagement, and the agreed safety plan; document who owns follow-up and how urgent help will be reached."
+      ],
+      "redFlags": [
+        "Suicidal intent, a plan, preparatory behaviour, recent serious attempt, escalating self-harm, access to lethal means, or a stated need to die to reunite with the deceased",
+        "Inability to eat, drink, sleep, take essential medication, care for self or dependents, or remain in a safe environment",
+        "Psychosis, mania, severe agitation, dangerous intoxication or withdrawal, credible violence risk, or rapidly worsening function",
+        "Delirium, focal neurologic finding, severe malnutrition or dehydration, overdose, or another acute medical emergency"
+      ],
+      "complications": [
+        "Major depressive disorder, PTSD, anxiety, substance-use disorder, sleep disorder, or worsening chronic medical illness",
+        "Self-neglect, malnutrition, medication nonadherence, social isolation, family strain, occupational or academic loss, and reduced quality of life",
+        "Self-harm, suicide attempt, suicide, substance-related injury, victimization, or repeated crisis use",
+        "Delayed grief-focused care, unnecessary medication, or missed depression, PTSD, bipolar illness, cognitive change, or medical disease when all symptoms are attributed to bereavement"
+      ],
+      "prognosis": "PGD is treatable, and improvement can include greater ability to tolerate reminders, reconnect with people and activities, care for oneself, and carry the relationship forward without disabling distress. Course varies with trauma, comorbidity, culture, support, ongoing adversity, and access to grief-focused treatment; continued love or sadness does not mean treatment has failed.",
+      "prevention": [
+        "PGD cannot always be prevented, and intense early grief does not mean the disorder is inevitable.",
+        "Provide practical support, culturally appropriate bereavement resources, sleep and nutrition support, social connection, and follow-up after high-risk or traumatic losses.",
+        "Identify and treat depression, PTSD, substance-related problems, self-neglect, and medical needs while avoiding automatic pathologizing of expected grief.",
+        "Reassess function and safety around anniversaries, court or medical events, secondary losses, and other predictable reminders when risk is elevated."
+      ],
+      "patientEducation": [
+        "Grief has no universal stages or fixed finish line. PGD is considered only when a persistent pattern causes major distress or functional problems beyond the applicable timing and cultural expectations.",
+        "Grief-focused therapy does not erase the person who died or require forgetting; it helps you carry the relationship while restoring safety, choice, connection, and daily life.",
+        "No medicine specifically treats grief itself. A medicine may be used for a separate depression, anxiety, sleep, or other condition after its own assessment and monitoring plan.",
+        "Tell the care team about worsening isolation, not eating or sleeping, increased alcohol or drug use, inability to manage daily needs, or thoughts of dying or joining the deceased.",
+        "Seek urgent help for suicidal intent, a plan or means, severe self-neglect, psychosis, mania, dangerous substance effects, or inability to stay safe."
+      ],
+      "specialPopulations": [
+        "DSM-5-TR uses a 6-month post-death threshold for children and adolescents rather than the adult 12-month threshold. Assessment must be developmentally appropriate and include caregiver, school, safeguarding, and family context without diagnosing from behaviour alone.",
+        "Older adults need assessment for multiple losses, cognitive change, medical illness, medication effects, isolation, nutrition, mobility, caregiver changes, and exploitation.",
+        "After the death of someone close, contexts such as stillbirth, neonatal death, suicide, homicide, disaster, war, or culturally disenfranchised bereavement may require specialized trauma-informed support. Infertility and ambiguous or other non-death losses can cause serious distress and deserve care, but do not meet the PGD death criterion by themselves.",
+        "Culture, faith, migration, community rituals, language, relationship recognition, and discrimination shape mourning and the meaning of duration; use qualified interpreters and avoid culture-blind diagnosis."
+      ],
+      "nclexTraps": [
+        "Time since death alone does not diagnose PGD; assess symptoms, impairment, exclusions, and cultural context.",
+        "DSM-5-TR uses 12 months for adults and 6 months for youth, while ICD-11 does not diagnose before 6 months and may require longer according to culture.",
+        "PGD is centered on separation, yearning, and the deceased; major depression is usually more generalized, and PTSD is threat- and trauma-centered, although disorders can coexist.",
+        "Do not force closure, universal stages, or moving on, and do not substitute a no-suicide contract for direct risk assessment and safety planning.",
+        "Grief-focused psychotherapy is central; there is no routine PGD-specific medication list."
+      ],
+      "relatedTopics": [
+        "PTSD",
+        "Adjustment disorder",
+        "Major depressive disorder",
+        "Generalized anxiety disorder",
+        "Substance use disorders",
+        "Suicidal ideation"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "apa-prolonged-grief-disorder-2025",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based on WHO ICD-11 CDDR 2024, the APA physician-reviewed prolonged-grief resource, and SAMHSA SAFE-T. It preserves DSM-versus-ICD timing and symptom differences, centers cultural context and function, avoids universal grief stages and routine PGD medication claims, and keeps suicide assessment and collaborative safety planning explicit.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024, prolonged grief disorder 6B42; accessed 2026-08-14",
+          "fieldsSupported": [
+            "identity",
+            "classification",
+            "diagnostic requirements",
+            "duration",
+            "cultural context",
+            "differential",
+            "functional impact"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/patients-families/prolonged-grief-disorder",
+          "documentVersion": "Physician-reviewed August 2025; accessed 2026-08-14",
+          "fieldsSupported": [
+            "definition",
+            "DSM diagnostic pattern",
+            "duration",
+            "risk factors",
+            "differential",
+            "psychotherapy",
+            "medication boundary",
+            "special populations",
+            "patient education"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; accessed 2026-08-14",
+          "fieldsSupported": [
+            "suicide assessment",
+            "risk and protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.prolonged-grief-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.complex-ptsd",
+      "name": "Complex PTSD",
+      "displayName": "Complex post-traumatic stress disorder (CPTSD)",
+      "category": "Mental health",
+      "aliases": [
+        "complex post-traumatic stress disorder",
+        "complex posttraumatic stress disorder",
+        "complex post-traumatic stress disorder (CPTSD)",
+        "complex posttraumatic stress disorder (CPTSD)",
+        "CPTSD",
+        "C-PTSD"
+      ],
+      "preferredBareAliases": [
+        "CPTSD",
+        "C-PTSD"
+      ],
+      "preferredBareAliasRationale": "CPTSD and C-PTSD are widely used full-diagnosis abbreviations, had no competing ANI identity owners at review, and remain bounded to this reviewed ICD-11 card while broad trauma phrases stay excluded.",
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-14",
+      "plainLanguage": "Complex post-traumatic stress disorder (CPTSD) is an ICD-11 diagnosis in which the core PTSD pattern occurs together with lasting difficulty regulating emotions, a persistently diminished or worthless view of oneself, and difficulty feeling close to or sustaining relationships.",
+      "whyItMatters": "CPTSD can impair safety, relationships, sleep, work, self-care, physical health, and engagement with treatment. Suicide or self-harm risk, severe dissociation, substance use, ongoing abuse, unstable housing, or inability to function can require immediate nursing action before or alongside trauma-focused care.",
+      "plainLanguageGlosses": [
+        {
+          "term": "disturbances in self-organization",
+          "plainLanguage": "persistent problems regulating emotions, viewing oneself with deep shame or worthlessness, and maintaining close relationships",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "va-complex-ptsd-assessment-2025"
+          ]
+        },
+        {
+          "term": "affect regulation",
+          "plainLanguage": "the ability to notice, tolerate, and manage emotional responses without becoming overwhelmed or shut down",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "va-complex-ptsd-assessment-2025"
+          ]
+        },
+        {
+          "term": "trauma-focused psychotherapy",
+          "plainLanguage": "structured treatment that directly works with trauma memories, meanings, avoidance, and current reactions",
+          "sourceKeys": [
+            "va-complex-ptsd-assessment-2025",
+            "nice-ng116-ptsd",
+            "va-dod-ptsd-asd-cpg-2023"
+          ]
+        }
+      ],
+      "definition": "Complex PTSD is a formal ICD-11 trauma-related diagnosis, code 6B41. It requires the complete ICD-11 PTSD pattern plus persistent disturbances in self-organization across emotion regulation, self-concept, and relationships, with clinically significant impairment. Prolonged trauma exposure, emotional dysregulation, dissociation, or relationship difficulty alone does not establish the diagnosis, and DSM-5-TR does not define a separate CPTSD diagnosis or code.",
+      "pathology": "CPTSD has no confirmatory laboratory or imaging test. Diagnosis rests on the complete ICD-11 PTSD pattern plus persistent disturbances in affect regulation, negative self-concept, and relationships with functional impairment, not on a particular trauma mechanism or history alone.",
+      "pathophysiology": [
+        "Re-experiencing in the present, avoidance, current threat, affect-regulation difficulty, negative self-concept, and relationship disturbance describe the clinical pattern.",
+        "Proposed effects on threat learning, memory, attachment, or biology are not diagnostic tests and are not established by the registered source fields for this card."
+      ],
+      "etiology": "CPTSD follows exposure to extremely threatening or horrific events. Prolonged, repeated, interpersonal, or difficult-to-escape trauma is common, but ICD-11 does not require one specific trauma type and trauma exposure alone does not diagnose CPTSD. Development, prior adversity, current danger, social support, culture, medical health, and access to safe recovery resources influence risk and course.",
+      "riskFactors": [
+        "Exposure to an extremely threatening or horrific event or series of events is required; CPTSD is more likely after chronic, repeated interpersonal trauma, although ICD-11 does not require one specific trauma type",
+        "Prolonged, repetitive, or difficult-to-escape exposures such as repeated childhood sexual or physical abuse, prolonged domestic violence, torture, slavery, genocide, or other organized violence are common contexts",
+        "Development, culture, current danger, housing, social support, and access to care affect assessment and treatment needs but are not diagnostic by themselves"
+      ],
+      "signsSymptoms": [
+        "ICD-11 PTSD features: re-experiencing the trauma in the present, avoidance of reminders, and a persistent sense of current threat",
+        "Affect-regulation difficulty such as intense or prolonged emotional reactions, inability to calm, emotional numbing, shutdown, or dissociation",
+        "Persistent negative self-concept involving shame, guilt, defeat, failure, or worthlessness related to the trauma",
+        "Persistent difficulty sustaining relationships, feeling close to others, trusting safely, or maintaining connection",
+        "Sleep disturbance, concentration problems, pain, substance use, self-harm, suicidal thinking, impaired work or school, and difficulty engaging with medical care may coexist"
+      ],
+      "diagnostics": [
+        "Under ICD-11, Complex PTSD requires all core PTSD features—re-experiencing in the present, avoidance, and persistent current threat—plus all three disturbances in self-organization: affect regulation difficulty, persistent negative self-concept, and persistent relationship difficulty, with significant impairment.",
+        "The ICD-11 PTSD features persist for at least several weeks. Prolonged or repeated difficult-to-escape trauma is common, but trauma history, chronicity, dissociation, emotional dysregulation, or relationship difficulty alone does not diagnose CPTSD.",
+        "ICD-11 PTSD and CPTSD are mutually exclusive diagnostic categories. DSM-5-TR does not define a separate CPTSD diagnosis or code; its broader PTSD criteria and dissociative subtype overlap with some features, so the systems are not one-to-one equivalents.",
+        "A clinician evaluates trauma exposure, symptoms, duration, impairment, development, culture, ongoing danger, medical and neurologic contributors, substances, and differential diagnoses. The International Trauma Questionnaire can support a provisional ICD-11 assessment but cannot diagnose CPTSD by itself.",
+        "Assess suicide, self-harm, harm to others, access to lethal means, ongoing abuse or exploitation, severe dissociation, psychosis, mania, substance intoxication or withdrawal, sleep, housing, and ability to meet basic needs."
+      ],
+      "labs": [
+        "No laboratory test, imaging study, autonomic measure, or questionnaire confirms CPTSD.",
+        "Use targeted toxicology, medication, metabolic, endocrine, pregnancy, neurologic, imaging, sleep, pain, or traumatic-brain-injury evaluation only when the history and examination support a contributor or mimic.",
+        "If an adult PTSD-guideline medication is used, monitoring follows the exact drug and patient—for example mood and suicidality after an antidepressant starts or changes and blood pressure with venlafaxine—not the CPTSD label alone."
+      ],
+      "assessment": "Begin with current physical safety, injuries, ongoing abuse or violence, suicide and self-harm risk, harm to others, severe dissociation, substances, housing, sleep, and basic needs. Then assess ICD-11 PTSD features and each self-organization domain, function, culture, development, relationships, strengths, supports, medical or neurologic contributors, and treatment preferences. Explain what will happen, seek consent or permission before touch and sensitive questions, offer realistic choices, and do not require a detailed trauma narrative during routine nursing care.",
+      "differential": [
+        "PTSD without the complete persistent affect-regulation, negative self-concept, and relationship-disturbance pattern required for ICD-11 CPTSD; ICD-11 assigns PTSD or CPTSD, not both",
+        "Borderline personality disorder, where a pervasive pattern involving identity, abandonment sensitivity, relationships, affective instability, and impulsivity may overlap but is not diagnosed from trauma history or dysregulation alone",
+        "Major depressive disorder, bipolar disorder, generalized anxiety, panic disorder, prolonged grief disorder, obsessive-compulsive disorder, psychotic disorder, or a dissociative disorder",
+        "Substance intoxication or withdrawal, medication effects, traumatic brain injury, seizure, delirium, sleep disorder, chronic pain, endocrine disease, or another medical condition",
+        "Ongoing abuse, trafficking, combat, unsafe housing, coercion, or discrimination in which present danger and practical protection must be addressed rather than assuming every threat response is post-traumatic",
+        "DSM-5-TR PTSD, including its dissociative subtype, because DSM-5-TR does not contain a separate CPTSD diagnosis and should not be silently relabeled with the ICD-11 category"
+      ],
+      "treatments": [
+        "Offer an individual trauma-focused psychotherapy matched to safety, preference, age, access, dissociation, comorbidity, and clinical expertise. People with CPTSD can benefit from established PTSD treatments such as Cognitive Processing Therapy, Prolonged Exposure, or Eye Movement Desensitization and Reprocessing.",
+        "Skills work or a phase-based approach such as STAIR may be individualized when emotion regulation, dissociation, immediate safety, or treatment engagement needs it, but a stabilization phase is not mandatory for every patient and current evidence does not establish a universal phase sequence.",
+        "There is no CPTSD-specific medication. Sertraline, paroxetine, or venlafaxine are adult PTSD-guideline options when medication is chosen for qualifying adult PTSD symptoms, not CPTSD-specific treatment; psychotherapy is preferred when available and acceptable.",
+        "Treat separately diagnosed depression, substance-use disorder, sleep disorder, pain, traumatic brain injury, or other comorbidity according to its own evidence without excluding the person from trauma-focused care solely because a comorbidity exists.",
+        "Address current safety, housing, exploitation, legal needs, medical injury, substances, caregiving, and barriers to care; allow extra time for trust and provide planned continuing support when engagement or relationships are difficult."
+      ],
+      "contraindications": [
+        "Do not diagnose CPTSD from complex trauma, childhood adversity, dissociation, emotion dysregulation, relationship conflict, or one screening score without the complete ICD-11 pattern and impairment.",
+        "Do not tell every patient that a mandatory stabilization phase must be completed before trauma-focused treatment; sequence care according to immediate safety, consent, symptoms, preference, and clinical need.",
+        "Do not present sertraline, paroxetine, venlafaxine, prazosin, or another medication as a CPTSD-specific treatment. Prazosin, when used, is limited to an adult PTSD-nightmare context under the applicable guideline.",
+        "Do not use benzodiazepines, cannabis, or cannabinoid products as PTSD treatment, and do not offer PTSD drug treatment to patients under 18 under NICE guidance.",
+        "Do not force detailed trauma disclosure, conduct psychologically focused debriefing, or begin unstructured exposure during routine nursing care."
+      ],
+      "safetyConsiderations": [
+        "Ask directly about suicidal thoughts, intent, plan, prior behaviour, self-harm, access to lethal means, reasons for living, and the person's ability to use a safety plan.",
+        "Assess ongoing abuse, coercive control, trafficking, unsafe housing, contact with a perpetrator, child or dependent-adult safeguarding needs, and other current danger before assuming the threat has ended.",
+        "Assess severe dissociation, inability to orient, psychosis, mania, dangerous intoxication or withdrawal, aggression, weapon access, inability to meet basic needs, and untreated injury or medical illness.",
+        "During flashback or dissociation, reduce stimulation, use calm orientation to time and place, invite grounding, preserve personal space, and avoid sudden touch or restraint unless immediately necessary for safety.",
+        "Use a collaborative safety plan, means-safety measures, chosen supports when appropriate, clear follow-up ownership, and the least-restrictive safe observation or treatment setting."
+      ],
+      "nursingPriorities": [
+        "Identify immediate injury, ongoing danger or abuse, suicide and self-harm risk, violence risk, severe dissociation, intoxication or withdrawal, housing, and basic needs before focusing only on trauma history.",
+        "Use trauma-informed consent, permission, predictable explanations, realistic choice, privacy, and control over pacing; do not force disclosure or touch without warning when an emergency does not require it.",
+        "Assess and document re-experiencing, avoidance, current threat, affect regulation, self-concept, relationships, sleep, substances, function, supports, and medical or neurologic contributors.",
+        "Teach and practice individualized grounding or orientation skills, monitor whether they help, and avoid implying that coping skills alone replace evidence-based trauma treatment.",
+        "Coordinate trauma-focused therapy, comorbidity treatment, medication-specific monitoring when used, safeguarding, practical resources, crisis planning, and follow-up while preserving rights and the least-restrictive safe plan."
+      ],
+      "redFlags": [
+        "Suicidal intent, recent serious attempt, preparatory behaviour, escalating self-harm, access to lethal means, or inability to maintain immediate safety",
+        "Ongoing abuse, trafficking, weapon threat, unsafe discharge setting, child or dependent-adult safeguarding emergency, or credible threat to another person",
+        "Severe dissociation with inability to orient or function, psychosis, mania, dangerous agitation, prolonged inability to sleep, or inability to meet basic needs",
+        "Overdose, dangerous intoxication or withdrawal, head injury, focal neurologic finding, delirium, or another acute medical emergency"
+      ],
+      "complications": [
+        "Major depression, substance-use disorder, dissociative disorder, sleep disorder, chronic pain, traumatic brain injury, or other co-occurring mental and physical illness",
+        "Self-harm, suicide attempt, suicide, impulsive injury, aggression during crisis, revictimization, or exploitation",
+        "Relationship disruption, parenting or caregiver strain, occupational or academic loss, homelessness, isolation, and reduced quality of life",
+        "Avoidance of medical care, fragmented treatment, medication harm, or repeated crisis use when care is not trauma informed or current danger remains unaddressed"
+      ],
+      "prognosis": "CPTSD is treatable, but recovery may be nonlinear and often involves safety, reduced re-experiencing and avoidance, improved emotion regulation and self-worth, stronger relationships, and restored function. Ongoing danger, severe comorbidity, unstable housing, discrimination, and barriers to care can prolong impairment; a trustworthy alliance, effective trauma-focused treatment, practical support, and coordinated follow-up improve outcomes.",
+      "prevention": [
+        "CPTSD cannot always be prevented, and trauma exposure does not make the disorder inevitable.",
+        "Prevent and interrupt abuse, trafficking, violence, unsafe institutional practices, and repeated occupational exposure when possible, and provide early practical and culturally appropriate support.",
+        "After trauma, prioritize safety, basic needs, sleep, social connection, accurate information, and monitoring according to symptoms and risk rather than mandatory treatment for everyone.",
+        "Identify and treat PTSD, depression, substance-related harm, pain, sleep disorder, traumatic brain injury, and other medical needs early to reduce current harm and impairment; the reviewed sources do not establish that doing so prevents CPTSD."
+      ],
+      "patientEducation": [
+        "CPTSD is an ICD-11 diagnosis, not a sign of weakness or proof that you are permanently damaged. DSM-5-TR does not use a separate CPTSD diagnosis, so clinicians may use different but overlapping language.",
+        "The diagnosis requires the PTSD pattern plus lasting emotion-regulation, self-view, and relationship difficulties; a trauma history or screening score alone is not enough.",
+        "You can ask what will happen, choose how much detail to share during routine care, request grounding or pauses, and identify what makes examinations and conversations feel safer.",
+        "Trauma-focused therapies can help. Skills work may be useful, but there is no universal rule that everyone must finish a stabilization phase before trauma-focused treatment.",
+        "There is no CPTSD-specific medication. If medication is used for adult PTSD symptoms or a separate condition, ask what it targets, how it will be monitored, and what adverse effects require contact."
+      ],
+      "specialPopulations": [
+        "Children and adolescents require developmentally appropriate trauma assessment, caregiver and school context, safeguarding, and specialized trauma-focused treatment; do not simply apply an adult CPTSD checklist or adult medication plan.",
+        "People with intellectual, communication, sensory, or physical disabilities may need accessible communication, additional time, supported choice, and careful assessment for caregiver abuse or diagnostic overshadowing.",
+        "Pregnancy and postpartum care requires assessment of current safety, reproductive trauma, medication-specific risks, sleep, infant and caregiver needs, and coordinated perinatal mental-health support.",
+        "Refugees, veterans, survivors of trafficking or torture, Indigenous communities, LGBTQ+ people, and others exposed to collective or identity-based trauma need culturally responsive care that addresses present legal, housing, language, and safety needs without stereotyping."
+      ],
+      "nclexTraps": [
+        "ICD-11 CPTSD requires all core PTSD features plus affect-regulation difficulty, negative self-concept, and relationship difficulty; trauma exposure or dysregulation alone is not diagnostic.",
+        "DSM-5-TR has no separate CPTSD diagnosis or code, and ICD-11 PTSD and CPTSD are mutually exclusive categories.",
+        "CPTSD and borderline personality disorder can overlap or coexist; neither should be inferred from trauma history, self-harm, or relationship difficulty alone.",
+        "Use trauma-informed consent, choice, predictable communication, grounding, direct safety assessment, and safeguarding; do not force disclosure or debriefing.",
+        "Trauma-focused psychotherapy remains appropriate when safely individualized; a phase is not universally mandatory, and sertraline, paroxetine, or venlafaxine are adult PTSD options rather than CPTSD-specific drugs."
+      ],
+      "relatedTopics": [
+        "PTSD",
+        "Acute stress disorder",
+        "Adjustment disorder",
+        "Major depressive disorder",
+        "Substance use disorders",
+        "Suicidal ideation",
+        "Borderline personality disorder",
+        "Traumatic brain injury"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "va-complex-ptsd-assessment-2025",
+        "nice-ng116-ptsd",
+        "va-dod-ptsd-asd-cpg-2023",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based on WHO ICD-11 CDDR 2024, the VA National Center for PTSD Complex-PTSD review, NICE NG116, the 2023 VA/DoD PTSD guideline, and SAMHSA SAFE-T. It preserves the ICD-versus-DSM classification boundary, avoids diagnosing from trauma exposure or one tool, rejects mandatory universal phase sequencing, and labels medication examples as adult PTSD options rather than CPTSD-specific therapy.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024, Complex PTSD 6B41; accessed 2026-08-14",
+          "fieldsSupported": [
+            "identity",
+            "classification",
+            "diagnostic requirements",
+            "duration",
+            "differential",
+            "functional impact"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs National Center for PTSD",
+          "url": "https://www.ptsd.va.gov/professional/treat/txessentials/complex_ptsd_assessment.asp",
+          "documentVersion": "Complex PTSD assessment and treatment review; accessed 2026-08-14",
+          "fieldsSupported": [
+            "definition",
+            "ICD and DSM classification",
+            "diagnostic pattern",
+            "assessment tools",
+            "differential",
+            "trauma-focused treatment",
+            "phase-based treatment evidence",
+            "patient education"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/ng116/chapter/Recommendations",
+          "documentVersion": "NG116 recommendations, reviewed 2025-04-08; accessed 2026-08-14",
+          "fieldsSupported": [
+            "assessment",
+            "risk management",
+            "complex needs",
+            "trauma-focused psychotherapy",
+            "medication boundaries",
+            "children and young people",
+            "continuing support"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/ptsd/VA-DoD-CPG-PTSD-Full-CPG-Edited-111624-V5-81825.pdf",
+          "documentVersion": "2023 VA/DoD PTSD and ASD clinical practice guideline; accessed 2026-08-14",
+          "fieldsSupported": [
+            "trauma-focused psychotherapy",
+            "adult PTSD medication examples",
+            "benzodiazepine and cannabis boundaries",
+            "nightmare treatment boundary",
+            "shared decision making"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; accessed 2026-08-14",
+          "fieldsSupported": [
+            "suicide assessment",
+            "risk and protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.complex-ptsd",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.reactive-attachment-disorder",
+      "name": "Reactive attachment disorder",
+      "displayName": "Reactive attachment disorder (RAD)",
+      "category": "Mental health",
+      "aliases": [
+        "reactive attachment disorder (RAD)"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-14",
+      "plainLanguage": "Reactive attachment disorder (RAD) is an early-childhood condition in which a child who experienced extreme insufficient care is emotionally withdrawn with caregivers and rarely seeks or responds to comfort when distressed.",
+      "whyItMatters": "RAD can affect safety, development, relationships, learning, and the child's ability to use a caregiver for comfort. Nurses must recognize possible maltreatment or unmet basic needs, protect immediate safety, support a stable responsive caregiver, and avoid blaming or coercive attachment practices that can cause harm.",
+      "plainLanguageGlosses": [
+        {
+          "term": "selective attachment",
+          "plainLanguage": "a developmentally expected preference for and use of familiar caregivers for comfort, protection, and help",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "aacap-rad-dsed-practice-parameter-2016"
+          ]
+        },
+        {
+          "term": "insufficient care",
+          "plainLanguage": "persistent neglect, repeated caregiver changes, institutional deprivation, or similarly extreme care that prevents stable selective attachments",
+          "sourceKeys": [
+            "who-icd11-mms-2026-rad-6b44",
+            "apa-dsm5tr-2022"
+          ]
+        },
+        {
+          "term": "emotionally withdrawn",
+          "plainLanguage": "rarely turning to a familiar caregiver for comfort and rarely accepting comfort when distressed",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "apa-dsm5tr-2022"
+          ]
+        },
+        {
+          "term": "safeguarding",
+          "plainLanguage": "steps to protect a child from abuse, neglect, exploitation, or an unsafe care setting and to report concerns under local law and policy",
+          "sourceKeys": [
+            "nice-ng76-child-abuse-neglect"
+          ]
+        }
+      ],
+      "definition": "Reactive attachment disorder is a trauma- and stressor-related disorder of early childhood marked by a persistent emotionally inhibited or withdrawn pattern toward caregivers: the child rarely seeks comfort and rarely responds to comfort when distressed. Diagnosis also requires a persistent social and emotional disturbance, developmental capacity for selective attachment, and documented extreme or grossly insufficient care presumed to account for the pattern. Care history, shyness, or one difficult relationship alone is not diagnostic.",
+      "pathology": "RAD has no confirmatory laboratory, imaging, genetic, or attachment-style test. Its clinical pattern reflects severely disrupted opportunities to form and use a selective attachment during early development, but most children exposed to neglect or caregiver disruption do not develop RAD. The diagnosis depends on the characteristic caregiver-directed behavior, developmental context, impairment, insufficient-care history, and exclusion of better explanations such as autism or another developmental, psychiatric, medical, or relational condition.",
+      "pathophysiology": [
+        "The observable syndrome is an inhibited caregiver-directed attachment pattern with limited comfort seeking and limited response to comfort, not a laboratory-defined brain lesion or a measure of how affectionate a child appears.",
+        "Extreme deprivation may affect stress regulation, social learning, and caregiver expectations, but proposed neurobiological mechanisms are not diagnostic tests and cannot identify RAD in an individual child.",
+        "A safe, predictable caregiving environment can support developmental recovery; the child is not choosing the disorder and should not be treated as manipulative or incapable of attachment."
+      ],
+      "etiology": "RAD requires a history of extreme or grossly insufficient care that is presumed to explain the attachment pattern. Examples include persistent emotional or physical neglect, repeated changes of primary caregiver that prevent stable attachment, or institutional or similarly unusual rearing. Exposure is necessary but not sufficient: foster care, adoption, poverty, trauma, or caregiver turnover alone does not diagnose RAD, and most exposed children do not develop the disorder.",
+      "riskFactors": [
+        "Persistent emotional or physical neglect that leaves basic comfort, stimulation, affection, nutrition, hygiene, medical, or safety needs unmet",
+        "Repeated primary-caregiver changes or placement changes that prevent a stable selective attachment, including some foster, institutional, or disrupted caregiving histories",
+        "Institutional or similarly unusual rearing with too few consistent, responsive caregivers for the number of children",
+        "Developmental delay, medical complexity, caregiver mental illness or substance use, family violence, housing instability, and poverty may increase care needs or risk of deprivation but do not diagnose RAD",
+        "Current abuse, neglect, exploitation, injury, malnutrition, or unsafe placement requires immediate assessment regardless of whether diagnostic criteria are met"
+      ],
+      "signsSymptoms": [
+        "An emotionally withdrawn or emotionally inhibited pattern toward adult caregivers",
+        "The child rarely seeks comfort when distressed and rarely responds to comfort that a familiar caregiver offers",
+        "Limited positive affect, reduced social responsiveness to caregivers, or episodes of unexplained irritability, sadness, or fearfulness during nonthreatening caregiver interactions",
+        "The pattern is persistent across appropriate observations and causes meaningful developmental, relational, school, or daily-function impairment",
+        "Coexisting sleep, feeding, growth, language, developmental, trauma, anxiety, depression, or disruptive-behavior concerns may be present but are not themselves RAD"
+      ],
+      "diagnostics": [
+        "Diagnosis requires the inhibited caregiver-directed pattern, a persistent social and emotional disturbance, and extreme insufficient care presumed to cause it; neglect history or one behavior does not diagnose RAD.",
+        "The child must have the developmental capacity for a selective attachment, generally a developmental age of at least 9 months. DSM-5-TR requires the disturbance to be evident before age 5; ICD-11 also places symptom development before age 5.",
+        "There is no 12-month diagnostic minimum. In DSM-5-TR, persistence beyond 12 months is a course specifier rather than a requirement for diagnosis.",
+        "A comprehensive child psychiatric and developmental evaluation uses collateral caregiving and placement history plus direct observation with a familiar caregiver; diagnosis is not made from a checklist, attachment style, single visit, or caregiver report alone.",
+        "DSM-5-TR does not diagnose RAD when autism spectrum disorder criteria are met; ICD-11 requires that autism or another condition not better account for the presentation."
+      ],
+      "labs": [
+        "No laboratory test, brain scan, genetic test, rating scale, or attachment procedure confirms RAD.",
+        "Assess growth, nutrition, hydration, injuries, pain, sleep, hearing, vision, development, and medical history; order tests only when findings suggest malnutrition, infection, toxic exposure, injury, endocrine disease, neurologic disease, or another contributor.",
+        "Use developmentally appropriate attachment observations or structured tools only as part of specialist evaluation; no score independently diagnoses RAD or proves maltreatment.",
+        "Document objective findings and report suspected abuse or neglect through local safeguarding pathways rather than delaying protection for diagnostic testing."
+      ],
+      "assessment": "Begin by assessing immediate safety, current maltreatment or neglect, injuries, nutrition, hydration, growth, development, caregiver strain, placement stability, and urgent safeguarding or reporting needs. Obtain collateral caregiving and placement history and observe concrete comfort-seeking and response-to-comfort behavior with a familiar caregiver. Use open, non-leading questions, record the child's words accurately, explain confidentiality limits, and avoid repeatedly questioning the child. Evaluate autism, language and intellectual development, mood, anxiety, trauma symptoms, sleep, medical contributors, strengths, culture, and functioning without blaming the child or current caregiver.",
+      "differential": [
+        "Autism spectrum disorder, which includes persistent social-communication differences and restricted or repetitive behavior; RAD centers on an inhibited comfort-seeking and comfort-response pattern after extreme insufficient care",
+        "Normal shyness, temperament, cultural communication patterns, or a child's caution in an unfamiliar clinical setting",
+        "Major depression, anxiety, PTSD, Complex PTSD, adjustment disorder, selective mutism, language disorder, intellectual disability, hearing loss, or another developmental or medical condition",
+        "Insecure attachment or attachment difficulties, which are broader descriptions and do not equal the RAD diagnostic syndrome",
+        "Conflict, fear, or lack of affection in one relationship; a single difficult caregiver-child relationship or appearing not affectionate does not establish a pervasive disorder",
+        "Disinhibited social engagement disorder, which involves reduced reticence and overly familiar behavior with unfamiliar adults rather than inhibited comfort behavior toward caregivers"
+      ],
+      "treatments": [
+        "Ensure a safe, stable, responsive caregiver and reduce unnecessary placement disruption while addressing current maltreatment, medical needs, nutrition, development, housing, and practical family needs.",
+        "Provide specialist caregiver-child intervention or family psychotherapy that builds sensitive, consistent responses, predictable routines, safe play, emotional attunement, and developmentally appropriate comfort.",
+        "Video-feedback and caregiver-sensitivity or behavior training may be used. Child-Parent Psychotherapy or Attachment and Biobehavioral Catch-up may help children with maltreatment or attachment difficulty, although evidence is stronger for those broader groups than for confirmed RAD specifically.",
+        "Coordinate developmental, speech-language, occupational, school, pediatric, child-psychiatry, social-work, and safeguarding services according to the child's needs.",
+        "No medication directly or specifically treats RAD. Use medication only for a separately assessed comorbid disorder and monitor it according to that disorder and the exact drug."
+      ],
+      "contraindications": [
+        "Do not use rebirthing, compression, coercive holding or holding therapy, forced regression, forced affection, restraint-based attachment interventions, or deprivation of food, water, toileting, movement, or contact as treatment.",
+        "Do not remove or change a placement solely to test attachment, punish symptoms, or create artificial dependence; placement decisions require child-welfare and clinical assessment.",
+        "Do not infer abuse from one behavior, diagnose from foster or adoptive status, or label a child manipulative, dangerous, incapable of love, or permanently damaged.",
+        "Do not offer routine medication for the core RAD pattern or substitute medication for safety, stable caregiving, developmental assessment, and caregiver-child intervention."
+      ],
+      "safetyConsiderations": [
+        "Protect the child immediately when there is suspected current abuse, neglect, exploitation, unsafe placement, serious injury, malnutrition, or inability of caregivers to meet basic needs; follow jurisdiction-specific safeguarding and mandatory-reporting procedures.",
+        "Use open, non-leading questions and avoid repeated investigative interviewing. Preserve exact statements and objective findings and coordinate with the designated safeguarding team.",
+        "Assess self-harm, suicidal statements, aggression, running away, unsafe sexual behavior, fire setting, animal harm, severe food or sleep disturbance, and risk to siblings or caregivers according to developmental level and presentation.",
+        "Never participate in coercive holding, rebirthing, forced affection, restraint-based attachment treatment, or food and water control; these practices can cause severe injury or death.",
+        "Use the least-restrictive safe environment, predictable explanations, consent or assent when possible, and trauma-informed boundaries during examinations and care."
+      ],
+      "nursingPriorities": [
+        "Assess immediate injury, nutrition, hydration, growth, development, sleep, hygiene, medication exposure, current maltreatment, caregiver capacity, and placement safety before focusing only on the psychiatric label.",
+        "Report safeguarding concerns through the required local pathway, document objective findings and the child's exact words, and avoid promising secrecy or conducting repeated interviews.",
+        "Build predictable routines and calm, consistent responses; offer comfort without forcing touch or affection and let the child approach at a developmentally tolerable pace.",
+        "Support the stable responsive caregiver with specific observations and coaching, and use non-blaming language that separates the child's learned survival pattern from intentional misconduct.",
+        "Coordinate caregiver-child treatment, developmental services, school supports, pediatric follow-up, and placement communication with one clear owner for results and follow-up.",
+        "Monitor treatment goals such as increased safe comfort seeking and accepting, caregiver sensitivity, regulation, sleep, nutrition, participation, and function rather than demanding instant affection."
+      ],
+      "redFlags": [
+        "Current or newly disclosed abuse, neglect, exploitation, trafficking, unsafe placement, serious caregiver impairment, or another child-safeguarding emergency",
+        "Unexplained injury, bruising pattern, fracture, burn, pain, bleeding, malnutrition, dehydration, growth faltering, untreated illness, or developmental regression",
+        "Suicidal or self-harm behavior, credible violence risk, severe aggression, running away, fire setting, animal harm, or inability to maintain immediate safety",
+        "Acute confusion, seizure, focal neurologic finding, toxic exposure, severe sleep loss, psychosis, mania, or another urgent medical or psychiatric presentation"
+      ],
+      "complications": [
+        "Persistent relationship and emotion-regulation difficulty, impaired school participation, developmental delay, sleep or feeding problems, and reduced quality of life",
+        "PTSD, anxiety, depression, disruptive behavior, language or learning disorder, or other co-occurring developmental and mental-health conditions",
+        "Placement disruption, caregiver burnout, family conflict, revictimization, exploitation, and fragmented medical or social care",
+        "Harm from stigmatizing labels, unnecessary medication, forced affection, coercive attachment practices, or failure to recognize ongoing maltreatment"
+      ],
+      "prognosis": "Many children improve when they have a safe, stable, responsive caregiver and coordinated developmentally appropriate treatment, although recovery varies with the duration and severity of deprivation, ongoing danger, developmental needs, placement stability, and access to care. Progress may be gradual and is better measured through safety, comfort behavior, regulation, relationships, growth, development, and function than through forced displays of affection.",
+      "prevention": [
+        "Prevent and respond early to child abuse, neglect, caregiver violence, severe deprivation, and unsafe institutional care.",
+        "Support stable placements, responsive caregiving, caregiver mental-health and substance-use treatment, adequate nutrition and health care, housing, respite, and practical resources.",
+        "Minimize avoidable caregiver and placement changes while preserving the child's safety; stability is not a reason to leave a child in danger.",
+        "Provide developmentally appropriate follow-up after maltreatment or placement disruption without assuming every exposed child has or will develop RAD."
+      ],
+      "patientEducation": [
+        "RAD is not the child's fault and is not proof that a foster, kinship, adoptive, or current caregiver caused the original deprivation. Use non-blaming language and focus on what helps now.",
+        "Foster care, adoption, institutional history, poverty, caregiver changes, insecure attachment, or one sign does not diagnose RAD; the full pattern and extreme insufficient-care history require specialist assessment.",
+        "Offer predictable routines and calm responses, notice small bids for comfort, and avoid forcing hugs, eye contact, affection, or gratitude.",
+        "No medication specifically treats RAD. Ask what any medicine targets, how benefit and adverse effects will be monitored, and how caregiver-child treatment and developmental supports will continue.",
+        "Reject rebirthing, coercive holding or holding therapy, forced regression, forced affection, restraint-based attachment treatment, and food or water deprivation; seek urgent help if anyone recommends or uses them.",
+        "Report new safety concerns, injuries, severe food or sleep problems, regression, self-harm, aggression, or inability to keep the child or others safe."
+      ],
+      "specialPopulations": [
+        "A developmental age of at least 9 months is required because the child must be capable of selective attachment; the assessment must match developmental rather than chronological age alone.",
+        "DSM-5-TR requires RAD to be evident before age 5. Children assessed later may retain a history and persistent pattern, but a new adult-onset attachment label is not established by these criteria.",
+        "Children in foster, kinship, adoptive, refugee, institutional, or repeatedly disrupted placements need careful collateral history and culturally responsive assessment; placement status or caregiver turnover alone does not diagnose RAD.",
+        "Poverty, disability, medical complexity, autism, intellectual or communication differences, and culturally different caregiving practices must not be mistaken for neglect or RAD without evidence.",
+        "Looked-after children and families may need coordinated pediatric, developmental, school, mental-health, social-care, legal, language, and placement support with clear confidentiality limits."
+      ],
+      "nclexTraps": [
+        "RAD is the inhibited caregiver-directed pattern: rarely seeking comfort and rarely responding to comfort after extreme insufficient care; it is not simply shyness, insecure attachment, or lack of affection.",
+        "A single behavior, foster or adopted status, poverty, institutional history, or caregiver change does not diagnose RAD; assess the complete pattern, development, impairment, and causal care history.",
+        "Differentiate autism by its social-communication and restricted or repetitive behavior pattern; DSM-5-TR does not diagnose RAD when autism criteria are met.",
+        "Prioritize immediate safety, nutrition, growth, injury assessment, safeguarding, and mandatory reporting before long-term attachment treatment.",
+        "Use a stable responsive caregiver and caregiver-child intervention; never use coercive attachment practices and do not prescribe routine medication for the core disorder."
+      ],
+      "relatedTopics": [
+        "Disinhibited social engagement disorder",
+        "PTSD",
+        "Complex PTSD",
+        "Adjustment disorder",
+        "Autism spectrum disorder",
+        "Social anxiety disorder",
+        "Child abuse and neglect",
+        "Oppositional defiant disorder"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "who-icd11-mms-2026-rad-6b44",
+        "apa-dsm5tr-2022",
+        "aacap-rad-dsed-practice-parameter-2016",
+        "aacap-coercive-attachment-policy-2022",
+        "nice-ng26-childrens-attachment",
+        "nice-ng76-child-abuse-neglect"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based on WHO ICD-11 CDDR and MMS, DSM-5-TR, the historical 2016 AACAP practice parameter paired with AACAP's current coercive-intervention safety policy, NICE NG26, and NICE NG76. NICE supports assessment, caregiving, and safeguarding rather than ICD-11 criteria. The card preserves developmental and autism boundaries, requires both the characteristic syndrome and extreme insufficient care, and rejects coercive treatment or diagnosis from placement history alone.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024, Reactive attachment disorder 6B44; accessed 2026-08-14",
+          "fieldsSupported": [
+            "identity",
+            "classification",
+            "diagnostic pattern",
+            "insufficient-care requirement",
+            "developmental boundary",
+            "differential",
+            "functional impact"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://icd.who.int/browse/2026-01/mms/en#1867081699",
+          "documentVersion": "ICD-11 MMS 2026-01, Reactive attachment disorder 6B44; accessed 2026-08-14",
+          "fieldsSupported": [
+            "identity",
+            "classification",
+            "diagnostic requirements",
+            "developmental boundary",
+            "differential",
+            "functional impact"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022, Reactive Attachment Disorder; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "DSM classification",
+            "diagnostic requirements",
+            "insufficient-care requirement",
+            "developmental age",
+            "age-five boundary",
+            "duration specifier",
+            "autism exclusion"
+          ]
+        },
+        {
+          "authority": "American Academy of Child and Adolescent Psychiatry",
+          "url": "https://doi.org/10.1016/j.jaac.2016.08.004",
+          "documentVersion": "Historical 2016 AACAP RAD and DSED practice parameter; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "assessment",
+            "collateral history",
+            "observation",
+            "differential",
+            "caregiver treatment",
+            "medication boundary",
+            "prognosis"
+          ]
+        },
+        {
+          "authority": "American Academy of Child and Adolescent Psychiatry",
+          "url": "https://www.aacap.org/AACAP/AACAP/Policy_Statements/2022/Policy_Statement_Coercive_Interventions_Attachment_Disorders.aspx",
+          "documentVersion": "AACAP coercive-interventions policy 2022; accessed 2026-08-14",
+          "fieldsSupported": [
+            "coercive-treatment prohibition",
+            "safety considerations",
+            "patient education",
+            "caregiver education"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/ng26/chapter/recommendations",
+          "documentVersion": "NICE NG26 recommendations, minor terminology correction 2023; accessed 2026-08-14",
+          "fieldsSupported": [
+            "assessment",
+            "attachment tools",
+            "caregiver-child interventions",
+            "medication boundary",
+            "looked-after children",
+            "service coordination",
+            "patient education"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/ng76/chapter/Recommendations",
+          "documentVersion": "NICE NG76 recommendations; accessed 2026-08-14",
+          "fieldsSupported": [
+            "maltreatment recognition",
+            "immediate safety",
+            "safeguarding",
+            "communication",
+            "documentation",
+            "caregiver-child interventions"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.reactive-attachment-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
+    },
+    {
+      "id": "disease.disinhibited-social-engagement-disorder",
+      "name": "Disinhibited social engagement disorder",
+      "displayName": "Disinhibited social engagement disorder (DSED)",
+      "category": "Mental health",
+      "aliases": [
+        "disinhibited social engagement disorder (DSED)",
+        "DSED"
+      ],
+      "preferredBareAliases": [
+        "DSED"
+      ],
+      "preferredBareAliasRationale": "DSED is a diagnosis-specific acronym with no current ANI runtime collision; generic friendliness and historical attachment terms remain excluded because they do not establish the disorder.",
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-14",
+      "plainLanguage": "Disinhibited social engagement disorder (DSED) is an early-childhood condition in which a child who experienced extreme insufficient care shows unusually little caution and overly familiar behavior with unfamiliar adults.",
+      "whyItMatters": "DSED can create immediate safety risks through wandering, leaving with unfamiliar adults, unsafe physical closeness, and vulnerability to exploitation. Nurses must assess current abuse or neglect, development and placement stability, teach a realistic stranger-safety plan, and support stable responsive caregiving without blaming the child.",
+      "plainLanguageGlosses": [
+        {
+          "term": "reticence",
+          "plainLanguage": "developmentally expected hesitation or caution with an unfamiliar person",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "who-icd11-mms-2026-dsed-6b45"
+          ]
+        },
+        {
+          "term": "checking back",
+          "plainLanguage": "looking to or returning to a familiar caregiver for reassurance and safety in an unfamiliar setting",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "aacap-rad-dsed-practice-parameter-2016"
+          ]
+        },
+        {
+          "term": "insufficient care",
+          "plainLanguage": "persistent neglect, repeated caregiver changes, institutional deprivation, or similarly extreme care that prevents stable selective attachments",
+          "sourceKeys": [
+            "who-icd11-mms-2026-dsed-6b45",
+            "apa-dsm5tr-2022"
+          ]
+        },
+        {
+          "term": "safeguarding",
+          "plainLanguage": "steps to protect a child from abuse, neglect, exploitation, wandering, or another unsafe care situation and report concerns under local law and policy",
+          "sourceKeys": [
+            "nice-ng76-child-abuse-neglect"
+          ]
+        }
+      ],
+      "definition": "Disinhibited social engagement disorder is a trauma- and stressor-related disorder of early childhood marked by reduced reticence and developmentally inappropriate, overly familiar behavior with unfamiliar adults after extreme or grossly insufficient care. The pattern is not merely friendliness, cultural sociability, or impulsivity. Diagnosis requires developmental capacity for selective attachment, meaningful impairment or safety concern, and a care history presumed to account for the syndrome.",
+      "pathology": "DSED has no confirmatory laboratory, imaging, genetic, or attachment-style test. The syndrome reflects disrupted social boundaries and caregiver-referencing after severely limited opportunities for stable selective attachment, but most children exposed to neglect or placement disruption do not develop DSED. Clinicians must identify the characteristic unfamiliar-adult behavior across context, document insufficient care, and exclude better developmental, psychiatric, medical, cultural, or situational explanations.",
+      "pathophysiology": [
+        "The observable syndrome is reduced caution and boundary checking with unfamiliar adults, not a laboratory-defined lesion or proof that a child is intentionally reckless.",
+        "Extreme deprivation may affect social learning, threat discrimination, caregiver referencing, and regulation, but proposed neurobiological mechanisms are not diagnostic tests for an individual child.",
+        "DSED behavior may persist even after placement in a safer home, while stable responsive care and structured learning can support safer boundaries and function."
+      ],
+      "etiology": "DSED requires a history of extreme or grossly insufficient care presumed to account for the pattern. Examples include persistent emotional or physical neglect, repeated changes of primary caregiver that prevent stable attachments, or institutional or similarly unusual rearing. Foster care, adoption, poverty, trauma, or caregiver changes alone do not diagnose DSED, and most exposed children do not develop it.",
+      "riskFactors": [
+        "Persistent emotional or physical neglect that leaves comfort, stimulation, supervision, nutrition, hygiene, medical, or safety needs unmet",
+        "Repeated primary-caregiver changes or placement changes that prevent stable selective attachment, including some foster, institutional, or disrupted caregiving histories",
+        "Institutional or similarly unusual rearing with too few consistent, responsive caregivers for the number of children",
+        "Developmental delay, ADHD symptoms, medical complexity, caregiver mental illness or substance use, family violence, housing instability, and poverty may increase needs or risk but do not diagnose DSED",
+        "Current abuse, neglect, exploitation, unsafe stranger contact, wandering, injury, malnutrition, or unsafe placement requires immediate assessment regardless of diagnosis"
+      ],
+      "signsSymptoms": [
+        "Reduced reticence or little hesitation in approaching and interacting with unfamiliar adults",
+        "Developmentally inappropriate overly familiar verbal or physical behavior with unfamiliar adults",
+        "Diminished checking back with a familiar caregiver after venturing away, especially in unfamiliar settings",
+        "Willingness to leave with an unfamiliar adult with little or no hesitation",
+        "Unsafe closeness, boundary crossing, wandering, or vulnerability to exploitation that persists beyond culturally expected sociability",
+        "The child may still have a selective attachment; DSED does not mean the child cannot form any caregiver relationship"
+      ],
+      "diagnostics": [
+        "Diagnosis requires a persistent pattern of developmentally inappropriate approach or overfamiliar behavior with unfamiliar adults plus extreme insufficient care presumed to cause it; one behavior or a friendly temperament does not diagnose DSED.",
+        "DSM-5-TR requires at least 2 of 4 unfamiliar-adult behaviors: reduced reticence, overly familiar verbal or physical behavior, diminished checking back, or willingness to leave with an unfamiliar adult. ICD-11 requires reduced or absent reticence plus at least one characteristic unfamiliar-adult behavior.",
+        "The child must have the developmental capacity for selective attachment, generally a developmental age of at least 9 months. ICD-11 requires symptoms to develop before age 5; DSM-5-TR does not impose a separate before-age-5 criterion for DSED.",
+        "There is no 12-month diagnostic minimum. In DSM-5-TR, persistence beyond 12 months is a course specifier rather than a diagnostic requirement.",
+        "ADHD-like impulsivity alone does not diagnose DSED. The social disinhibition must not be limited to impulsivity and must be interpreted with development, culture, setting, caregiver behavior, insufficient-care history, and functional or safety consequences.",
+        "Comprehensive child psychiatric and developmental evaluation uses collateral caregiving and placement history plus direct observation with a familiar caregiver and an unfamiliar adult; a checklist or attachment score cannot diagnose the disorder by itself."
+      ],
+      "labs": [
+        "No laboratory test, brain scan, genetic test, rating scale, or attachment procedure confirms DSED.",
+        "Assess injuries, nutrition, hydration, growth, development, sleep, hearing, vision, medication exposure, and medical history; test only when findings suggest a medical, neurologic, toxic, developmental, or injury-related contributor.",
+        "Use developmentally appropriate structured observations or attachment tools only within specialist assessment; no score proves DSED, neglect, or risk from a single encounter.",
+        "Document objective behavior and report suspected abuse, neglect, exploitation, or unsafe supervision through local safeguarding pathways without delaying immediate protection for testing."
+      ],
+      "assessment": "Begin by assessing immediate safety, current maltreatment or neglect, injuries, nutrition, growth, development, wandering, unsafe stranger approach, exploitation risk, caregiver strain, placement stability, and urgent safeguarding or reporting needs. Obtain collateral caregiving and placement history and observe concrete stranger reticence, verbal and physical boundaries, checking back, willingness to leave, and behavior with a familiar caregiver and an unfamiliar adult. Use open, non-leading questions, record exact words, explain confidentiality limits, and evaluate ADHD, autism, intellectual and language development, mania, conduct symptoms, trauma, culture, medical contributors, strengths, and function without blaming the child or current caregiver.",
+      "differential": [
+        "Developmentally and culturally expected sociability, warmth, or friendliness that preserves safe boundaries and caregiver referencing",
+        "ADHD, where impulsivity and inattention occur broadly; DSED requires a characteristic unfamiliar-adult pattern and extreme insufficient-care history, not impulsivity alone",
+        "Autism spectrum disorder, intellectual disability, language disorder, developmental delay, hearing impairment, or another condition affecting social understanding and communication",
+        "Bipolar mania, substance or medication effects, frontal or other neurologic disease, or acute confusion when disinhibition is episodic, new, or medically unexplained",
+        "Conduct disorder, oppositional defiant disorder, trauma-related symptoms, sexualized behavior, exploitation, or learned survival behavior, none of which by itself establishes DSED",
+        "Reactive attachment disorder, which centers on inhibited comfort seeking and response toward caregivers; a child with DSED may still have a selective attachment",
+        "Current abuse, trafficking, unsafe supervision, caregiver coaching, or a specific situational threat requiring protection rather than a psychiatric label"
+      ],
+      "treatments": [
+        "Ensure a safe, stable, responsive caregiver and reduce unnecessary placement disruption while addressing current maltreatment, medical needs, nutrition, development, housing, and practical family needs.",
+        "Provide specialist caregiver-child intervention or family psychotherapy that strengthens sensitive, consistent responding, predictable routines, safe boundaries, emotional regulation, and developmentally appropriate caregiver referencing.",
+        "Use structured supervision, rehearsed checking-back routines, controlled introductions, school and community safety planning, and age-appropriate stranger-safety teaching without socially isolating the child.",
+        "Video-feedback and caregiver-sensitivity or behavior training may be used. Child-Parent Psychotherapy or Attachment and Biobehavioral Catch-up may help maltreatment or attachment difficulty, although evidence is stronger for those broader groups than for confirmed DSED specifically.",
+        "Coordinate developmental, speech-language, occupational, school, pediatric, child-psychiatry, social-work, and safeguarding services according to the child's needs.",
+        "No medication directly or specifically treats DSED. Use medication only for a separately assessed comorbid disorder such as qualifying ADHD and monitor it according to that disorder and the exact drug."
+      ],
+      "contraindications": [
+        "Do not use rebirthing, compression, coercive holding or holding therapy, forced regression, forced affection, restraint-based attachment interventions, or deprivation of food, water, toileting, movement, or contact as treatment.",
+        "Do not socially isolate the child, use frightening stranger tests, encourage unsafe exposure, or remove supervision to see whether the child checks back.",
+        "Do not infer abuse from one behavior, diagnose from foster or adoptive status, or label the child promiscuous, manipulative, attention seeking, incapable of attachment, or destined for conduct disorder.",
+        "Do not offer routine medication for the core DSED pattern or substitute medication for safety planning, stable caregiving, developmental assessment, and caregiver-child intervention."
+      ],
+      "safetyConsiderations": [
+        "Protect the child immediately when there is suspected current abuse, neglect, exploitation, trafficking, unsafe placement, serious injury, malnutrition, or inability of caregivers to supervise; follow jurisdiction-specific safeguarding and mandatory-reporting procedures.",
+        "Create a developmentally appropriate stranger, wandering, exploitation, elopement, transport, school, online-contact, and community supervision plan; coordinate it with the safeguarding team and name who watches, how the child checks back, and what triggers urgent escalation.",
+        "Use open, non-leading questions and avoid repeated investigative interviewing. Preserve exact statements and objective findings and coordinate with the designated safeguarding team.",
+        "Never participate in coercive holding, rebirthing, forced affection, restraint-based attachment treatment, or food and water control; these practices can cause severe injury or death.",
+        "Assess self-harm, suicidal statements, aggression, running away, unsafe sexual behavior, exploitation, fire setting, animal harm, and risk to siblings or caregivers according to development and presentation."
+      ],
+      "nursingPriorities": [
+        "Assess immediate injury, nutrition, hydration, growth, development, sleep, medication exposure, current maltreatment, stranger and exploitation risk, caregiver capacity, and placement safety before focusing only on the psychiatric label.",
+        "Report safeguarding concerns through the required local pathway, document objective behavior and the child's exact words, and avoid promising secrecy or conducting repeated interviews.",
+        "Maintain close developmentally appropriate supervision in unfamiliar settings, rehearse checking back, use controlled introductions, and coordinate the same safety plan across caregivers, school, transport, and health care.",
+        "Support the stable responsive caregiver with predictable routines, calm limit setting, praise for safe checking-back behavior, and non-blaming explanations that separate the syndrome from intentional misconduct.",
+        "Coordinate caregiver-child treatment, developmental services, school supports, pediatric follow-up, and placement communication with one clear owner for results and follow-up.",
+        "Monitor treatment goals such as safer stranger boundaries, checking back, reduced wandering, caregiver sensitivity, regulation, school participation, and function rather than demanding instant reserve or affection."
+      ],
+      "redFlags": [
+        "Current or newly disclosed abuse, neglect, exploitation, trafficking, unsafe placement, serious caregiver impairment, or another child-safeguarding emergency",
+        "A missing child, attempted departure with an unfamiliar adult, escalating wandering, unsafe online contact, sexual exploitation concern, or inability to maintain required supervision",
+        "Unexplained injury, bruising pattern, fracture, burn, pain, bleeding, malnutrition, dehydration, growth faltering, untreated illness, or developmental regression",
+        "Suicidal or self-harm behavior, credible violence risk, severe aggression, fire setting, animal harm, psychosis, mania, acute confusion, or another urgent medical or psychiatric presentation"
+      ],
+      "complications": [
+        "Wandering, exploitation, abduction risk, unsafe physical or online contact, injury, and repeated boundary violations",
+        "Persistent relationship and emotion-regulation difficulty, impaired school participation, developmental delay, and reduced quality of life",
+        "ADHD, PTSD, anxiety, depression, disruptive behavior, language or learning disorder, or other co-occurring developmental and mental-health conditions",
+        "Placement disruption, caregiver burnout, stigma, social isolation, fragmented care, and harm from coercive attachment practices or unnecessary medication"
+      ],
+      "prognosis": "DSED can improve with safe stable responsive caregiving, consistent supervision, developmentally appropriate boundary teaching, and coordinated treatment, but unfamiliar-adult behavior may persist after a safer placement and needs ongoing monitoring. Course varies with deprivation, development, comorbidity, continuing danger, caregiver stability, and access to services; improvement should be measured by safety, checking back, boundaries, relationships, and function.",
+      "prevention": [
+        "Prevent and respond early to child abuse, neglect, caregiver violence, severe deprivation, unsafe institutional care, and exploitation.",
+        "Support stable placements, responsive caregiving, adequate supervision, caregiver mental-health and substance-use treatment, nutrition, health care, housing, respite, and practical resources.",
+        "Minimize avoidable caregiver and placement changes while preserving safety; stability is not a reason to leave a child in danger.",
+        "Provide developmentally appropriate follow-up after maltreatment or placement disruption without assuming every exposed child has or will develop DSED."
+      ],
+      "patientEducation": [
+        "DSED is not the child's fault and is not proof that a foster, kinship, adoptive, or current caregiver caused the original deprivation. Use non-blaming language and teach observable safe behavior.",
+        "Foster care, adoption, institutional history, poverty, caregiver changes, friendliness, or one sign does not diagnose DSED; the full pattern and extreme insufficient-care history require specialist assessment.",
+        "Use consistent supervision, controlled introductions, simple stranger-safety rules, checking-back practice, and coordinated plans across home, school, transport, health care, and community settings.",
+        "No medication specifically treats DSED. Ask what any medicine targets, how benefit and adverse effects will be monitored, and how caregiver-child treatment and safety teaching will continue.",
+        "Reject rebirthing, coercive holding or holding therapy, forced regression, forced affection, restraint-based attachment treatment, and food or water deprivation; seek urgent help if anyone recommends or uses them.",
+        "Report a missing child, unsafe departure, exploitation concern, injury, self-harm, severe aggression, regression, or inability to keep the child or others safe immediately."
+      ],
+      "specialPopulations": [
+        "A developmental age of at least 9 months is required because the child must be capable of selective attachment; assessment must match developmental rather than chronological age alone.",
+        "ICD-11 requires DSED features to develop before age 5, whereas DSM-5-TR does not impose a separate before-age-5 rule for DSED; do not silently substitute one classification system for the other.",
+        "Children in foster, kinship, adoptive, refugee, institutional, or repeatedly disrupted placements need collateral history and culturally responsive assessment; placement status or caregiver turnover alone does not diagnose DSED.",
+        "Poverty, disability, autism, ADHD, intellectual or communication differences, and culturally expected sociability must not be mistaken for neglect or DSED without the complete evidence.",
+        "Older children may show the pattern through peer-like overfamiliarity, online risk, boundary violations, or leaving with unfamiliar people; interpret behavior developmentally and assess exploitation directly."
+      ],
+      "nclexTraps": [
+        "DSED is reduced caution and overly familiar behavior with unfamiliar adults after extreme insufficient care; normal sociability or one behavior does not diagnose it.",
+        "A single sign, foster or adopted status, poverty, institutional history, caregiver change, ADHD-like impulsivity, or conduct behavior does not diagnose DSED.",
+        "A child with DSED may still have a selective attachment; RAD instead centers on inhibited comfort seeking and response toward caregivers.",
+        "Prioritize stranger and wandering safety, injury and nutrition assessment, growth and development, safeguarding, and mandatory reporting before long-term treatment.",
+        "Use a stable responsive caregiver, caregiver-child intervention, and structured supervision; never socially isolate the child, use coercive attachment practices, or prescribe routine medication for the core disorder."
+      ],
+      "relatedTopics": [
+        "Reactive attachment disorder",
+        "PTSD",
+        "Complex PTSD",
+        "Adjustment disorder",
+        "Autism spectrum disorder",
+        "Attention-deficit/hyperactivity disorder",
+        "Child abuse and neglect",
+        "Conduct disorder"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "who-icd11-mms-2026-dsed-6b45",
+        "apa-dsm5tr-2022",
+        "aacap-rad-dsed-practice-parameter-2016",
+        "aacap-coercive-attachment-policy-2022",
+        "nice-ng26-childrens-attachment",
+        "nice-ng76-child-abuse-neglect"
+      ],
+      "sourceNote": "Original ANI nursing synthesis based on WHO ICD-11 CDDR and MMS, DSM-5-TR, the historical 2016 AACAP practice parameter paired with AACAP's current coercive-intervention safety policy, NICE NG26, and NICE NG76. NICE supports assessment, caregiving, and safeguarding rather than ICD-11 criteria. The card preserves DSM-versus-ICD age boundaries, requires both the characteristic syndrome and extreme insufficient care, and rejects diagnosis from friendliness or placement history alone.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024, Disinhibited social engagement disorder 6B45; accessed 2026-08-14",
+          "fieldsSupported": [
+            "identity",
+            "classification",
+            "diagnostic pattern",
+            "insufficient-care requirement",
+            "developmental boundary",
+            "differential",
+            "functional impact"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://icd.who.int/browse/2026-01/mms/en#467941148",
+          "documentVersion": "ICD-11 MMS 2026-01, Disinhibited social engagement disorder 6B45; accessed 2026-08-14",
+          "fieldsSupported": [
+            "identity",
+            "classification",
+            "diagnostic requirements",
+            "developmental boundary",
+            "differential",
+            "functional impact"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022, Disinhibited Social Engagement Disorder; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "DSM classification",
+            "diagnostic requirements",
+            "insufficient-care requirement",
+            "developmental age",
+            "age boundary",
+            "duration specifier",
+            "ADHD differential"
+          ]
+        },
+        {
+          "authority": "American Academy of Child and Adolescent Psychiatry",
+          "url": "https://doi.org/10.1016/j.jaac.2016.08.004",
+          "documentVersion": "Historical 2016 AACAP RAD and DSED practice parameter; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "assessment",
+            "collateral history",
+            "observation",
+            "differential",
+            "caregiver treatment",
+            "supervision",
+            "medication boundary",
+            "prognosis"
+          ]
+        },
+        {
+          "authority": "American Academy of Child and Adolescent Psychiatry",
+          "url": "https://www.aacap.org/AACAP/AACAP/Policy_Statements/2022/Policy_Statement_Coercive_Interventions_Attachment_Disorders.aspx",
+          "documentVersion": "AACAP coercive-interventions policy 2022; accessed 2026-08-14",
+          "fieldsSupported": [
+            "coercive-treatment prohibition",
+            "safety considerations",
+            "patient education",
+            "caregiver education"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/ng26/chapter/recommendations",
+          "documentVersion": "NICE NG26 recommendations, minor terminology correction 2023; accessed 2026-08-14",
+          "fieldsSupported": [
+            "assessment",
+            "attachment tools",
+            "caregiver-child interventions",
+            "medication boundary",
+            "looked-after children",
+            "service coordination",
+            "patient education"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/ng76/chapter/Recommendations",
+          "documentVersion": "NICE NG76 recommendations; accessed 2026-08-14",
+          "fieldsSupported": [
+            "maltreatment recognition",
+            "immediate safety",
+            "safeguarding",
+            "communication",
+            "documentation",
+            "caregiver-child interventions"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.disinhibited-social-engagement-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.11"
     }
   ]
 };
@@ -4320,7 +9441,7 @@
     else { db.sourceReferences.push({ ...reference }); referenceByKey.set(key, db.sourceReferences[db.sourceReferences.length - 1]); }
   });
   db.reviewedExpansion = { schemaVersion: payload.schemaVersion, builderVersion: payload.builderVersion, domainVersion: payload.domainVersion, sourceSha256: payload.sourceSha256, cardCount: payload.cards.length };
-  db.version = [db.version, "reviewed-pathology-2026-08-02.3"].filter(Boolean).join("+");
+  db.version = [db.version, "reviewed-pathology-2026-08-14.11"].filter(Boolean).join("+");
   window.ANI_PATHOLOGY_DATABASE = db;
   window.ANI_PATHOLOGY_REVIEWED_EXPANSION = payload;
 }());
