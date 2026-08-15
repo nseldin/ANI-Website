@@ -21212,7 +21212,6 @@ function resolveEncyclopediaIdentity(input = "", options = {}) {
     ? medicalPhoneticIdentityCandidates(fixed, limit)
     : [];
   const nearIdentityAssessment = !deduped.length
-    && !readyPhoneticSuggestions.length
     && core.length >= 5
     && !restrictedPhoneticInput
     ? fastVoiceNearIdentityAssessment(fixed, {
@@ -21265,6 +21264,8 @@ function resolveEncyclopediaIdentity(input = "", options = {}) {
       ? "near-identity"
       : safeNearIdentityAmbiguities.length > 1
         ? "near-identity-ambiguity"
+      : readyPhoneticSuggestions.length
+        ? "phonetic-suggestions"
       : deduped.length
         ? "prefix-suggestions"
         : "none";
@@ -21272,6 +21273,8 @@ function resolveEncyclopediaIdentity(input = "", options = {}) {
     ? [preferred, ...deduped.filter((candidate) => offlineLookupEntityKey(candidate) !== offlineLookupEntityKey(preferred))]
     : safeNearIdentityAmbiguities.length
       ? safeNearIdentityAmbiguities
+      : readyPhoneticSuggestions.length
+        ? readyPhoneticSuggestions
       : deduped;
   const unresolvedShortPrefix = !preferred
     && matchKind === "prefix-suggestions"
@@ -39973,6 +39976,7 @@ function exactPharmDetailCandidate(query = "", preferredType = "") {
 
 const PHARM_REDIRECT_SECTION_PATTERNS = {
   range: [/reference\s+range|threshold|values?|normal|therapeutic|target|toxic/i],
+  components: [/components?|defining\s+features?|criteria|what\s+to\s+notice|quick\s+answer/i],
   class: [/specific\s+class|class\s*\/\s*pathway|what\s+this\s+class\s+is|category/i],
   uses: [/used\s+to\s+treat|common\s+uses|indication|why\s+every\s+nurse\s+should\s+know|quick\s+answer/i],
   mechanism: [/mechanism|how\s+it\s+works|what\s+it\s+evaluates|what\s+it\s+measures|how\s+to\s+read|pathophysiology/i],
@@ -46817,17 +46821,21 @@ const OFFLINE_SEGMENT_INTENT_TERMS = Object.freeze([
   "action", "actions", "monitoring", "warning", "warnings", "boxed", "contraindication",
   "contraindications", "interaction", "interactions", "adverse", "effect", "effects", "side",
   "risk", "risks", "factor", "factors",
-  "symptom", "symptoms", "finding", "findings", "diagnostic", "diagnostics", "diagnosis",
+  "symptom", "symptoms", "sign", "signs", "finding", "findings", "diagnostic", "diagnostics", "diagnosis",
   "cause", "causes", "trigger", "triggers", "etiology", "pathophysiology", "treatment",
   "treatments", "teaching", "education", "mechanism", "class", "range", "ranges", "value",
-  "values", "laboratory", "labs"
+  "values", "laboratory", "labs", "use", "uses", "used",
+  "component", "components", "constitute", "constitutes", "constituted", "constituting",
+  "comprise", "comprises", "comprised", "comprising", "consist", "consists", "consisting",
+  "include", "includes", "included", "including", "make", "makes", "made", "up"
 ]);
 
 const OFFLINE_SEGMENT_IDENTITY_DROP_WORDS = new Set([
   ...OFFLINE_SEGMENT_INTENT_TERMS,
   "black", "box", "for", "of", "about", "please", "tell", "show", "give", "explain",
   "what", "which", "who", "why", "how", "when", "where", "is", "are", "was", "were",
-  "do", "does", "did", "can", "could", "would", "should", "will", "me", "my", "the", "a", "an"
+  "do", "does", "did", "can", "could", "would", "should", "will", "i", "me", "my", "you", "your",
+  "we", "our", "it", "this", "that", "s", "the", "a", "an"
 ]);
 
 function normalizeOfflineSegmentIntentText(input = "") {
@@ -46922,6 +46930,7 @@ function offlineSegmentIntents(input = "", candidate = null) {
   if (!candidate && hasExplicitLabRangeCue(input) && bestLabMatch(input)) add("range");
   if (/\bnormal\b[\s\S]{0,80}\b(height|weight|growth|percentile|percentiles)\b/i.test(lower)) add("range");
   if (/\b(class|drug class|med class|medication class|category|type of drug|what kind of drug)\b/i.test(lower)) add("class");
+  if (/\b(component|components|constitute|constitutes|constituted|constituting|comprise|comprises|comprised|comprising|consist|consists|consisting|include|includes|included|including|make up|makes up|made up)\b/i.test(lower)) add("components");
   if (/\b(used for|use for|treats?|treated with|indication|indications|why (?:is|do|does).*used)\b/i.test(lower)
     || /\bwhat\s+(?:is|are)\s+(?:(?:it|this|that)\s+)?for\b/i.test(lower)) add("uses");
   const causalMechanismRequest = /\b(why can|why does|why do|why did|how can|what makes)\b/i.test(lower)
@@ -47024,6 +47033,7 @@ function offlineSegmentTitle(intent = "", candidate = null) {
   }
   return {
     range: "Reference range / values",
+    components: "Components / defining features",
     class: "Class",
     uses: "Used for / common uses",
     mechanism: "Mechanism / how it works",
@@ -47189,6 +47199,7 @@ function offlineSegmentValue(candidate = {}, intent = "", input = "") {
     ));
     const patterns = {
       range: [/reference range|normal range|expected range|threshold|target range|percentile|weeks?|trimester/i],
+      components: [/^components?\b|^criteria\b|^defining features?\b|^what to notice\b|^quick answer\b/i],
       uses: [/^purpose\b|^used for\b|^indications?\b|when .*used/i],
       mechanism: [/^mechanism\b|^how it works\b|^physiology\b/i],
       warning: [/^red flags?\b|^warnings?\b|^urgent\b|when to report|danger/i],
@@ -47207,6 +47218,12 @@ function offlineSegmentValue(candidate = {}, intent = "", input = "") {
       population: [/pregnan|trimester|pediatric|geriatric|population|maternal|fetal|growth|percentile|age-specific/i],
       procedureSteps: [/^procedure steps?\b|^before\b|^during\b|^after\b|positioning|collection steps?|how to perform/i]
     };
+    if (intent === "components") {
+      return offlineSegmentSourceRecords([
+        record("quickAnswer", "Components / defining features", item.quickAnswer || item.summary),
+        ...pickSections(patterns.components)
+      ]);
+    }
     const selected = pickSections(patterns[intent] || []);
     if (intent !== "diagnostics") return offlineSegmentSourceRecords(selected);
 
@@ -47291,12 +47308,22 @@ function offlineSegmentTargetDescriptor(candidate = {}) {
   };
 }
 
+function offlineSegmentHasPersonalClinicalContext(input = "") {
+  // “Tell me” and similar educational phrasing uses a first-person object but
+  // does not describe the learner's care. Remove only those request phrases;
+  // any remaining personal narrative still fails closed.
+  const withoutEducationalRequestObject = safeText(input)
+    .replace(/\b(?:tell|show|give|teach|explain|help)(?:\s+it)?(?:\s+to)?\s+me\b/gi, " ");
+  return isPersonalClinicalNarrative(withoutEducationalRequestObject);
+}
+
 function makeOfflineSegmentResponse(input = "") {
   if (wantsOfflineListExpansionFollowup(input)
     || wantsOfflineBroadCauseList(input)
     || wantsBinaryRelationshipAnswer(input)
     || wantsAiGeneratedStudyWork(input)
     || wantsLecture(input)
+    || offlineSegmentHasPersonalClinicalContext(input)
     || wantsOfflineLabComparison(input)) return null;
   const candidate = offlineSegmentCandidate(input);
   if (!candidate) return null;
@@ -47922,6 +47949,16 @@ function handleOfflineLookupFlow(input = "", options = {}) {
       pendingOfflineLookupSuggestions = [];
       return earlySmartDatabaseAnswer;
     }
+  }
+
+  // Exact card-plus-field questions are answered from that card's authored
+  // field before description routing or a broad card redirect. The segment
+  // resolver rejects personal clinical narratives and ambiguous identities,
+  // so this cannot turn a current-care statement into an encyclopedia answer.
+  const exactQuestionFieldResponse = makeOfflineSegmentResponse(input);
+  if (exactQuestionFieldResponse) {
+    pendingOfflineLookupSuggestions = [];
+    return exactQuestionFieldResponse.text;
   }
 
   if (wantsAiGeneratedStudyWork(input)) {

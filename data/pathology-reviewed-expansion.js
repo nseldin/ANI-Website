@@ -4,8 +4,8 @@
   const payload = {
   "schemaVersion": "ani-pathology-reviewed-runtime-v1",
   "builderVersion": "ani-pathology-builder-2026-08-14.2",
-  "domainVersion": "2026-08-15.22",
-  "sourceSha256": "841fa57a08d31378cca962a755645cdd2a3a8a779412f5df886c22f3760d97d8",
+  "domainVersion": "2026-08-15.25",
+  "sourceSha256": "0bc066fd4bc4ca4c0591ce0f4650d1e4a4816d52b41ef4e98ab32617965571af",
   "sourceReferences": [
     {
       "key": "ninds-migraine",
@@ -3383,6 +3383,397 @@
         "Poison Help",
         "avoidance of induced vomiting"
       ]
+    },
+    {
+      "key": "acog-premenstrual-disorders-cpg-2023",
+      "label": "Management of Premenstrual Disorders",
+      "authority": "American College of Obstetricians and Gynecologists",
+      "url": "https://www.acog.org/clinical/clinical-guidance/clinical-practice-guideline/articles/2023/06/management-of-premenstrual-disorders",
+      "fieldsSupported": [
+        "prospective symptom tracking",
+        "functional impairment",
+        "SSRIs",
+        "hormonal treatment context",
+        "nonpharmacologic care",
+        "shared decision-making"
+      ]
+    },
+    {
+      "key": "dailymed-sertraline-pmdd-current",
+      "label": "Sertraline prescribing information",
+      "authority": "U.S. National Library of Medicine DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fe9e8b7d-61ea-409d-84aa-3ebd79a046b5",
+      "fieldsSupported": [
+        "PMDD indication",
+        "continuous and intermittent administration",
+        "boxed warning",
+        "mania activation",
+        "serotonin syndrome",
+        "contraindications"
+      ]
+    },
+    {
+      "key": "dailymed-fluoxetine-pmdd-current",
+      "label": "Fluoxetine prescribing information",
+      "authority": "U.S. National Library of Medicine DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c88f33ed-6dfb-4c5e-bc01-d8e36dd97299",
+      "fieldsSupported": [
+        "PMDD indication",
+        "boxed warning",
+        "long washout",
+        "mania activation",
+        "serotonin syndrome",
+        "contraindications"
+      ]
+    },
+    {
+      "key": "bap-catatonia-guideline-2023",
+      "label": "Evidence-based consensus guidelines for the management of catatonia",
+      "authority": "British Association for Psychopharmacology consensus guideline group",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10101189/",
+      "fieldsSupported": [
+        "cross-diagnostic syndrome",
+        "clinical signs",
+        "etiologic evaluation",
+        "differential",
+        "benzodiazepine treatment",
+        "ECT",
+        "malignant catatonia",
+        "special populations"
+      ]
+    },
+    {
+      "key": "bush-francis-catatonia-scale-1996",
+      "label": "Catatonia. I. Rating scale and standardized examination",
+      "authority": "Bush, Fink, Petrides, Dowling, and Francis",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8686483/",
+      "fieldsSupported": [
+        "structured catatonia screening",
+        "severity trending",
+        "standardized examination",
+        "instrument limitations"
+      ]
+    },
+    {
+      "key": "dailymed-lorazepam-injection-2026",
+      "label": "Lorazepam injection prescribing information",
+      "authority": "U.S. National Library of Medicine DailyMed",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=20140b19-846b-425f-b191-670e17809945",
+      "fieldsSupported": [
+        "sedation",
+        "respiratory depression",
+        "opioid interaction",
+        "dependence",
+        "withdrawal",
+        "monitoring"
+      ]
+    },
+    {
+      "key": "ect-catatonia-review-2020",
+      "label": "Electroconvulsive Therapy for Patients with Catatonia: Current Perspectives",
+      "authority": "Neuropsychiatric Disease and Treatment via PubMed Central",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7526008/",
+      "fieldsSupported": [
+        "ECT effectiveness",
+        "early-use rationale",
+        "preparation",
+        "consent",
+        "monitoring",
+        "evidence limitations"
+      ]
+    },
+    {
+      "key": "medlineplus-stereotypic-movement-2024",
+      "label": "Stereotypic movement disorder",
+      "authority": "U.S. National Library of Medicine MedlinePlus",
+      "url": "https://medlineplus.gov/ency/article/001548.htm",
+      "fieldsSupported": [
+        "plain-language definition",
+        "examples",
+        "injury risk",
+        "medical differential",
+        "environmental safety",
+        "behavioral treatment"
+      ]
+    },
+    {
+      "key": "mackenzie-stereotypic-movement-review-2018",
+      "label": "Stereotypic Movement Disorders",
+      "authority": "Seminars in Pediatric Neurology",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29735112/",
+      "fieldsSupported": [
+        "phenomenology",
+        "early onset",
+        "primary and secondary stereotypies",
+        "coexisting conditions",
+        "differential",
+        "behavioral treatment"
+      ]
+    },
+    {
+      "key": "asha-fluency-disorders-2026",
+      "label": "Stuttering, Cluttering, and Fluency",
+      "authority": "American Speech-Language-Hearing Association",
+      "url": "https://www.asha.org/practice-portal/clinical-topics/fluency-disorders",
+      "fieldsSupported": [
+        "plain-language description",
+        "speech-language assessment",
+        "cultural and linguistic context",
+        "participation impact",
+        "differential",
+        "family-centered treatment"
+      ]
+    },
+    {
+      "key": "asha-social-communication-2026",
+      "label": "Social Communication Disorder",
+      "authority": "American Speech-Language-Hearing Association",
+      "url": "https://www.asha.org/practice-portal/clinical-topics/social-communication-disorder/",
+      "fieldsSupported": [
+        "definition",
+        "pragmatic communication",
+        "cultural context",
+        "speech-language assessment",
+        "autism differential",
+        "school intervention"
+      ]
+    },
+    {
+      "key": "niddk-enuresis-diagnosis-2026",
+      "label": "Diagnosis of Bladder Control Problems and Bedwetting in Children",
+      "authority": "National Institute of Diabetes and Digestive and Kidney Diseases",
+      "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/bladder-control-problems-bedwetting-children/diagnosis",
+      "fieldsSupported": [
+        "history",
+        "bladder diary",
+        "constipation connection",
+        "urinalysis",
+        "selective imaging",
+        "medical differential"
+      ]
+    },
+    {
+      "key": "niddk-enuresis-treatment-2026",
+      "label": "Treatment of Bladder Control Problems and Bedwetting in Children",
+      "authority": "National Institute of Diabetes and Digestive and Kidney Diseases",
+      "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/bladder-control-problems-bedwetting-children/treatment",
+      "fieldsSupported": [
+        "nonpunitive care",
+        "bladder and bowel routines",
+        "moisture alarms",
+        "desmopressin",
+        "constipation treatment",
+        "patient education"
+      ]
+    },
+    {
+      "key": "nice-cg111-enuresis-current",
+      "label": "Bedwetting in under 19s: recommendations",
+      "authority": "National Institute for Health and Care Excellence",
+      "url": "https://www.nice.org.uk/guidance/cg111/chapter/Recommendations",
+      "fieldsSupported": [
+        "assessment",
+        "alarm therapy",
+        "desmopressin selection",
+        "fluid safety",
+        "response review",
+        "specialist referral"
+      ]
+    },
+    {
+      "key": "niddk-child-constipation-2026",
+      "label": "Constipation in Children: Diagnosis and Treatment",
+      "authority": "National Institute of Diabetes and Digestive and Kidney Diseases",
+      "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/constipation-children",
+      "fieldsSupported": [
+        "stool withholding",
+        "overflow soiling",
+        "history",
+        "physical examination",
+        "selective testing",
+        "toileting routine",
+        "laxative safety"
+      ]
+    },
+    {
+      "key": "naspghan-espghan-constipation-guideline-2014",
+      "label": "Evaluation and Treatment of Functional Constipation in Infants and Children",
+      "authority": "NASPGHAN and ESPGHAN",
+      "url": "https://www.naspghan.org/files/documents/pdfs/cme/jpgn/Evaluation_and_Treatment_of_Functional.24.pdf",
+      "fieldsSupported": [
+        "functional constipation",
+        "fecal impaction",
+        "overflow incontinence",
+        "alarm findings",
+        "disimpaction",
+        "maintenance therapy",
+        "follow-up"
+      ]
+    },
+    {
+      "key": "apa-gender-dysphoria-2026",
+      "label": "What is Gender Dysphoria?",
+      "authority": "American Psychiatric Association",
+      "url": "https://www.psychiatry.org/patients-families/gender-dysphoria/what-is-gender-dysphoria",
+      "fieldsSupported": [
+        "plain-language definition",
+        "distress and impairment boundary",
+        "age-specific DSM framework",
+        "identity-versus-diagnosis distinction",
+        "individualized pathways"
+      ]
+    },
+    {
+      "key": "aacap-gender-affirming-healthcare-policy-2024",
+      "label": "Policy Statement on Access to Gender-Affirming Healthcare",
+      "authority": "American Academy of Child and Adolescent Psychiatry",
+      "url": "https://www.aacap.org/AACAP/Policy_Statements/2024/Access_Gender-Affirming_Healthcare.aspx",
+      "fieldsSupported": [
+        "multidisciplinary care",
+        "trauma-informed care",
+        "individualized treatment",
+        "family support",
+        "research limitations",
+        "opposition to coercive conversion practices"
+      ]
+    },
+    {
+      "key": "endocrine-gender-dysphoria-guideline-2024",
+      "label": "Gender Dysphoria/Gender Incongruence Guideline Resources",
+      "authority": "Endocrine Society",
+      "url": "https://www.endocrine.org/clinical-practice-guidelines/gender-dysphoria-gender-incongruence",
+      "fieldsSupported": [
+        "multidisciplinary assessment",
+        "adolescent consent capacity",
+        "endocrine treatment boundaries",
+        "fertility counseling",
+        "bone and cardiometabolic monitoring",
+        "longitudinal care"
+      ]
+    },
+    {
+      "key": "wpath-soc8-2022",
+      "label": "Standards of Care for the Health of Transgender and Gender Diverse People, Version 8",
+      "authority": "World Professional Association for Transgender Health",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9553112/",
+      "fieldsSupported": [
+        "whole-person care",
+        "adolescent assessment",
+        "mental health",
+        "informed decision-making",
+        "reproductive health",
+        "individualized care pathways"
+      ]
+    },
+    {
+      "key": "aacap-school-refusal-2026",
+      "label": "School Refusal",
+      "authority": "American Academy of Child and Adolescent Psychiatry",
+      "url": "https://www.aacap.org/AACAP/Families_and_Youth/Facts_for_Families/FFF-Guide/School-Refusal-007.aspx",
+      "fieldsSupported": [
+        "plain-language presentation",
+        "age patterns",
+        "bullying and social drivers",
+        "mental-health assessment",
+        "family-school-clinician plan",
+        "timely supported return"
+      ]
+    },
+    {
+      "key": "aafp-school-refusal-review-2003",
+      "label": "School Refusal in Children and Adolescents",
+      "authority": "American Family Physician",
+      "url": "https://www.aafp.org/pubs/afp/issues/2003/1015/p1555.html",
+      "fieldsSupported": [
+        "differential",
+        "functional assessment",
+        "exposure-based treatment",
+        "family and school collaboration",
+        "return-to-school goal",
+        "medication boundary"
+      ]
+    },
+    {
+      "key": "youth-trichotillomania-hrt-rct-2017",
+      "label": "Preliminary Randomized Controlled Trial of Habit Reversal Training for Treatment of Hair Pulling in Youth",
+      "authority": "Journal of Child and Adolescent Psychopharmacology",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28005403/",
+      "fieldsSupported": [
+        "pediatric trichotillomania",
+        "habit-reversal training",
+        "age range",
+        "symptom response",
+        "evidence limitation"
+      ]
+    },
+    {
+      "key": "bfrb-habit-reversal-systematic-review-2019",
+      "label": "Habit Reversal Therapy in Obsessive Compulsive Related Disorders: A Systematic Review",
+      "authority": "Frontiers in Behavioral Neuroscience",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6491945/",
+      "fieldsSupported": [
+        "habit reversal components",
+        "trichotillomania",
+        "excoriation disorder",
+        "trial limitations",
+        "behavioral-first boundary"
+      ]
+    },
+    {
+      "key": "excoriation-treatment-systematic-review-2017",
+      "label": "Excoriation (skin-picking) disorder: a systematic review of treatment options",
+      "authority": "Neuropsychiatric Disease and Treatment",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5522672/",
+      "fieldsSupported": [
+        "definition",
+        "medical complications",
+        "psychiatric comorbidity",
+        "habit reversal",
+        "acceptance-enhanced treatment",
+        "limited medication evidence"
+      ]
+    },
+    {
+      "key": "pediatric-trichotillomania-review-2012",
+      "label": "Pediatric Trichotillomania",
+      "authority": "Current Psychiatry Reports",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3366724/",
+      "fieldsSupported": [
+        "childhood presentation",
+        "hair-loss differential",
+        "trichophagia",
+        "family assessment",
+        "habit reversal",
+        "limited pediatric medication evidence"
+      ]
+    },
+    {
+      "key": "samhsa-tip35-mi-2019",
+      "label": "TIP 35: Enhancing Motivation for Change in Substance Use Disorder Treatment",
+      "authority": "Substance Abuse and Mental Health Services Administration",
+      "url": "https://library.samhsa.gov/product/tip-35-enhancing-motivation-change-substance-use-disorder-treatment/pep19-02-01-003",
+      "fieldsSupported": [
+        "motivational interviewing definition",
+        "engaging",
+        "focusing",
+        "evoking",
+        "planning",
+        "core communication skills",
+        "substance-use treatment engagement",
+        "patient autonomy"
+      ]
+    },
+    {
+      "key": "nhs-bpd-mbt-treatment",
+      "label": "Borderline personality disorder: treatment",
+      "authority": "National Health Service",
+      "url": "https://www.nhs.uk/mental-health/conditions/borderline-personality-disorder/treatment/",
+      "fieldsSupported": [
+        "mentalization-based treatment definition",
+        "treatment structure",
+        "borderline personality disorder association",
+        "patientEducation"
+      ]
     }
   ],
   "cards": [
@@ -3549,7 +3940,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.obesity-hypoventilation-syndrome",
@@ -3696,7 +4087,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.immunoglobulin-a-nephropathy",
@@ -3849,7 +4240,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.acute-promyelocytic-leukemia",
@@ -4003,7 +4394,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.antiphospholipid-syndrome",
@@ -4165,7 +4556,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.autoimmune-encephalitis",
@@ -4321,7 +4712,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.microscopic-colitis",
@@ -4468,7 +4859,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.common-variable-immunodeficiency",
@@ -4632,7 +5023,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.cluster-headache",
@@ -4777,7 +5168,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.focal-segmental-glomerulosclerosis",
@@ -4927,7 +5318,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.pituitary-apoplexy",
@@ -5079,7 +5470,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.meningococcemia",
@@ -5234,7 +5625,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.diffuse-large-b-cell-lymphoma",
@@ -5401,7 +5792,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.burkitt-lymphoma",
@@ -5555,7 +5946,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.babesiosis",
@@ -5707,7 +6098,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.pemphigus-vulgaris",
@@ -5859,7 +6250,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.alport-syndrome",
@@ -6014,7 +6405,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.primary-ciliary-dyskinesia",
@@ -6167,7 +6558,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.autoimmune-hepatitis",
@@ -6322,7 +6713,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.primary-sclerosing-cholangitis",
@@ -6477,7 +6868,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.ergotism",
@@ -6655,7 +7046,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.venous-thromboembolism",
@@ -6837,7 +7228,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.chronic-traumatic-encephalopathy",
@@ -7014,7 +7405,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.social-anxiety-disorder",
@@ -7199,7 +7590,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.persistent-depressive-disorder",
@@ -7385,7 +7776,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.cyclothymic-disorder",
@@ -7569,7 +7960,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.oppositional-defiant-disorder",
@@ -7762,7 +8153,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.conduct-disorder",
@@ -7954,7 +8345,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.personality-disorders-overview",
@@ -8159,7 +8550,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.obsessive-compulsive-personality-disorder",
@@ -8381,7 +8772,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.borderline-personality-disorder",
@@ -8603,7 +8994,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.somatic-symptom-disorder",
@@ -8788,7 +9179,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.illness-anxiety-disorder",
@@ -8974,7 +9365,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.functional-neurological-symptom-disorder",
@@ -9180,7 +9571,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.narcissistic-personality-disorder",
@@ -9412,7 +9803,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.dependent-personality-disorder",
@@ -9643,7 +10034,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.histrionic-personality-disorder",
@@ -9874,7 +10265,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.ptsd",
@@ -10114,7 +10505,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.acute-stress-disorder",
@@ -10351,7 +10742,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.adjustment-disorder",
@@ -10586,7 +10977,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.prolonged-grief-disorder",
@@ -10799,7 +11190,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.complex-ptsd",
@@ -11050,7 +11441,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.reactive-attachment-disorder",
@@ -11332,7 +11723,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.disinhibited-social-engagement-disorder",
@@ -11624,7 +12015,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.schizophrenia",
@@ -11897,7 +12288,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.schizophreniform-disorder",
@@ -12148,7 +12539,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.brief-psychotic-disorder",
@@ -12405,7 +12796,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.schizoaffective-disorder",
@@ -12694,7 +13085,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.delusional-disorder",
@@ -12985,7 +13376,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.substance-medication-induced-psychotic-disorder",
@@ -13319,7 +13710,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.psychotic-disorder-due-to-another-medical-condition",
@@ -13627,7 +14018,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.dissociative-identity-disorder",
@@ -13866,7 +14257,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.dissociative-amnesia",
@@ -14105,7 +14496,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.depersonalization-derealization-disorder",
@@ -14350,7 +14741,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.factitious-disorder-imposed-on-self",
@@ -14574,7 +14965,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.factitious-disorder-imposed-on-another",
@@ -14838,7 +15229,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "concept.malingering",
@@ -15047,7 +15438,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.schizotypal-personality-disorder",
@@ -15311,7 +15702,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.disruptive-mood-dysregulation-disorder",
@@ -15601,7 +15992,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.intermittent-explosive-disorder",
@@ -15876,7 +16267,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "concept.shared-and-induced-delusional-phenomena",
@@ -16176,7 +16567,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.major-depressive-disorder",
@@ -16404,7 +16795,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.bipolar-ii-disorder",
@@ -16638,7 +17029,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.avoidant-personality-disorder",
@@ -16853,7 +17244,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.obsessive-compulsive-disorder",
@@ -17083,7 +17474,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "concept.suicidal-ideation",
@@ -17311,7 +17702,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "concept.self-harm",
@@ -17538,7 +17929,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.postpartum-psychosis",
@@ -17795,7 +18186,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "concept.psychiatric-emergency-assessment",
@@ -18048,7 +18439,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "concept.suicide-risk-assessment",
@@ -18277,7 +18668,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "concept.psychiatric-observation-levels",
@@ -18487,7 +18878,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "concept.psychiatric-seclusion",
@@ -18730,7 +19121,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "concept.involuntary-psychiatric-care",
@@ -18976,7 +19367,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "concept.columbia-suicide-severity-rating-scale",
@@ -19204,7 +19595,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "concept.electroconvulsive-therapy",
@@ -19468,7 +19859,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.generalized-anxiety-disorder",
@@ -19709,7 +20100,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.panic-disorder",
@@ -19952,7 +20343,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.agoraphobia",
@@ -20195,7 +20586,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.specific-phobia",
@@ -20439,7 +20830,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.separation-anxiety-disorder",
@@ -20699,7 +21090,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.selective-mutism",
@@ -20971,7 +21362,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.hoarding-disorder",
@@ -21173,7 +21564,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.body-dysmorphic-disorder",
@@ -21392,7 +21783,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.feeding-and-eating-disorders-overview",
@@ -21697,7 +22088,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.anorexia-nervosa",
@@ -21978,7 +22369,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.bulimia-nervosa",
@@ -22240,7 +22631,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.binge-eating-disorder",
@@ -22475,7 +22866,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.avoidant-restrictive-food-intake-disorder",
@@ -22756,7 +23147,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.pica",
@@ -22959,7 +23350,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.rumination-disorder",
@@ -23206,7 +23597,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.other-specified-feeding-or-eating-disorder",
@@ -23488,7 +23879,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.insomnia-disorder",
@@ -23704,7 +24095,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.idiopathic-hypersomnia",
@@ -23933,7 +24324,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.narcolepsy",
@@ -24188,7 +24579,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.circadian-rhythm-sleep-wake-disorders",
@@ -24401,7 +24792,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.nightmare-disorder",
@@ -24605,7 +24996,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.non-rem-sleep-arousal-disorders",
@@ -24816,7 +25207,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.rem-sleep-behavior-disorder",
@@ -25003,7 +25394,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.restless-legs-syndrome",
@@ -25177,7 +25568,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.autism-spectrum-disorder",
@@ -25423,7 +25814,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.attention-deficit-hyperactivity-disorder",
@@ -25679,7 +26070,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.intellectual-developmental-disorder",
@@ -25893,7 +26284,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.specific-learning-disorder",
@@ -26105,7 +26496,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.developmental-language-disorder",
@@ -26317,7 +26708,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.developmental-coordination-disorder",
@@ -26516,7 +26907,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.tourette-syndrome",
@@ -26753,7 +27144,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.persistent-motor-or-vocal-tic-disorder",
@@ -26990,7 +27381,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "concept.violence-risk-assessment",
@@ -27210,7 +27601,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.alcohol-withdrawal",
@@ -27427,7 +27818,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.opioid-withdrawal",
@@ -27665,7 +28056,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.tardive-dyskinesia",
@@ -27897,7 +28288,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.alcohol-use-disorder",
@@ -28141,7 +28532,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.substance-use-disorders",
@@ -28495,7 +28886,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.opioid-use-disorder",
@@ -28704,7 +29095,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.stimulant-use-disorder",
@@ -28923,7 +29314,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.cannabis-use-disorder",
@@ -29138,7 +29529,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.sedative-hypnotic-or-anxiolytic-use-disorder",
@@ -29357,7 +29748,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.tobacco-use-disorder",
@@ -29599,7 +29990,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.gambling-disorder",
@@ -29805,7 +30196,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.other-hallucinogen-use-disorder",
@@ -30012,7 +30403,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
     },
     {
       "id": "disease.inhalant-use-disorder",
@@ -30236,7 +30627,6380 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-15.22"
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.bipolar-i-disorder",
+      "name": "Bipolar I disorder",
+      "displayName": "Bipolar I disorder",
+      "category": "Mental health",
+      "aliases": [
+        "bipolar 1 disorder",
+        "bipolar type I disorder",
+        "manic-depressive illness"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Bipolar I disorder is a mood disorder defined by at least one manic episode: a clear period of unusually elevated, expansive, or very irritable mood with much more energy and activity than usual, severe enough to cause major impairment, require hospitalization, or include psychosis. Depressive episodes are common, but a person does not need to have had one to meet the definition of bipolar I disorder.",
+      "whyItMatters": "Mania can quickly lead to unsafe spending, driving, sex, conflict, exhaustion, substance use, inability to care for basic needs, psychosis, suicide risk, or harm to others. Early recognition changes the immediate plan: assess safety and medical causes, protect sleep and hydration, reduce stimulation, and arrange urgent psychiatric treatment rather than treating the presentation as ordinary stress or unipolar depression.",
+      "plainLanguageGlosses": [
+        {
+          "term": "mania",
+          "plainLanguage": "a distinct episode of abnormally elevated, expansive, or irritable mood plus increased energy and activity that causes severe impairment, hospitalization, or psychosis",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "mixed features",
+          "plainLanguage": "important symptoms of the opposite mood pole occurring during a manic, hypomanic, or depressive episode",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "va-dod-bipolar-cpg-2023"
+          ]
+        },
+        {
+          "term": "psychosis",
+          "plainLanguage": "loss of accurate reality testing, such as delusions or hallucinations; psychosis during an elevated episode makes the episode manic rather than hypomanic",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "who-icd11-cddr-mental-2024"
+          ]
+        }
+      ],
+      "definition": "Bipolar I disorder requires a lifetime manic episode that is not better explained by a substance, medication, another medical condition, or a primary schizophrenia-spectrum disorder. In DSM-5-TR, the abnormal mood and increased activity or energy usually last at least 1 week and are present most of the day nearly every day, or for any duration if hospitalization is necessary; three associated symptoms are required, or four when the mood is only irritable. Diagnostic systems and clinical protocols differ in wording, so the whole episode, functional change, severity, and exclusion of secondary causes matter more than one isolated symptom or screening score.",
+      "pathology": "Bipolar I disorder is an episodic brain-based mood illness involving abnormal regulation of mood, reward, activity, sleep, attention, and impulse control. It is not ordinary moodiness, a personality flaw, or simply having good and bad days. Between episodes, functioning may recover fully or residual mood, cognitive, sleep, or physical-health problems may remain.",
+      "pathophysiology": [
+        "Vulnerability across circadian, reward, stress-response, and frontolimbic control networks can allow mood and activity to shift into a self-sustaining manic or depressive episode.",
+        "Reduced need for sleep is both a symptom and a possible amplifier: continued sleep loss can worsen activation, judgment, and psychosis, but sleep loss alone does not diagnose bipolar I disorder.",
+        "Dopamine, glutamate, GABA, serotonin, intracellular signaling, inflammation, and neuroplasticity have all been studied; no single neurotransmitter test explains or confirms the disorder."
+      ],
+      "etiology": "Cause is multifactorial, with strong genetic susceptibility interacting with development, sleep and circadian disruption, stress, reproductive transitions, substances, medications, and medical illness. A trigger can precipitate an episode without being the sole cause. A first manic presentation still requires evaluation for substances, medications, endocrine disease, neurologic illness, infection, delirium, and other secondary explanations.",
+      "riskFactors": [
+        "A first-degree relative with bipolar disorder or another severe mood disorder",
+        "A prior manic, hypomanic, mixed, or recurrent depressive episode, especially with antidepressant-associated activation",
+        "Major sleep loss, postpartum transition, high stress, or disrupted daily rhythms in a susceptible person",
+        "Stimulants, corticosteroids, dopaminergic drugs, antidepressants, intoxication, or withdrawal; temporal association requires careful diagnostic attribution rather than automatic labeling"
+      ],
+      "signsSymptoms": [
+        "Unusually elevated, expansive, or irritable mood together with clearly increased energy or goal-directed activity",
+        "Markedly reduced need for sleep without feeling tired, pressured or unusually rapid speech, racing thoughts, distractibility, inflated self-esteem or grandiosity",
+        "Increased projects or social activity, agitation, and high-risk behavior involving money, driving, sex, substances, work, or conflict",
+        "Severe impairment, hospitalization, or psychosis; depressive episodes, anxiety, or mixed symptoms may occur across the illness but are not required for the bipolar I diagnosis"
+      ],
+      "diagnostics": [
+        "Reconstruct the lifetime episode timeline using the patient interview, collateral history, prior records, sleep and activity change, functional consequences, treatment response, and the relationship of psychosis to mood episodes.",
+        "Confirm a distinct change from baseline and distinguish mania from hypomania by severity, impairment, hospitalization, or psychosis; a screening questionnaire does not establish the diagnosis.",
+        "Review every prescribed, nonprescribed, recreational, and recently stopped substance or medication, including corticosteroids, stimulants, dopaminergic drugs, antidepressants, and sleep agents.",
+        "Evaluate medical and neurologic causes when the presentation is first, later in life, abrupt, fluctuating, focal, febrile, postpartum, or otherwise atypical."
+      ],
+      "labs": [
+        "No laboratory, imaging, genetic, or rating-scale result independently diagnoses bipolar I disorder.",
+        "Use targeted testing such as glucose, electrolytes, renal and hepatic function, thyroid studies, pregnancy testing, toxicology, infection studies, ECG, imaging, or EEG when history, examination, age, planned treatment, or local protocol supports it.",
+        "Before and during medication treatment, follow the selected drug's current monitoring requirements; lithium, antipsychotics, valproate, and other agents do not share one universal laboratory schedule."
+      ],
+      "assessment": "Assess suicide and self-harm, violence, impulsivity, psychosis, command hallucinations, access to weapons or money, driving, sexual vulnerability, substance use, sleep, food and fluid intake, medication adherence, pregnancy possibility, dependents, and ability to accept care. Record baseline and current mood, speech, thought process, activity, judgment, vital signs, hydration, and neurologic findings, and obtain collateral information when lawful and clinically necessary.",
+      "differential": [
+        "Bipolar II disorder or cyclothymic disorder, which do not include a lifetime manic episode",
+        "Major depressive disorder with activation, ADHD, trauma-related hyperarousal, personality-related affective instability, anxiety, sleep deprivation, or grief",
+        "Schizoaffective disorder, schizophrenia, brief psychotic disorder, or delusional disorder based on the longitudinal relationship between mood episodes and psychosis",
+        "Substance/medication-induced bipolar and related disorder, bipolar and related disorder due to another medical condition, delirium, seizure disorder, thyroid disease, or another neurologic or systemic illness"
+      ],
+      "treatments": [
+        "For severe mania, psychosis, unsafe behavior, inability to meet basic needs, or major diagnostic uncertainty, arrange protected urgent or inpatient care with low stimulation, sleep restoration, hydration, nutrition, and treatment of medical or substance-related contributors.",
+        "Guideline-supported acute antimanic options can include an antipsychotic such as quetiapine, olanzapine, or risperidone and, when appropriate, a mood stabilizer such as lithium; selection depends on prior response, severity, interactions, organ function, pregnancy potential, and current guidance.",
+        "Long-term relapse prevention commonly combines psychoeducation, regular sleep and daily rhythms, a written early-warning plan, psychotherapy when useful, substance-risk reduction, and individualized maintenance medication such as lithium, quetiapine, or lamotrigine for the phase it is intended to prevent; lamotrigine is not an acute antimanic rescue drug.",
+        "Treat bipolar depression with a bipolar-specific plan. An antidepressant, if used at all, requires careful selection and monitoring and should not be used as unopposed treatment for an active manic episode."
+      ],
+      "contraindications": [
+        "Do not manage active mania with antidepressant monotherapy or assume new activation is a desired antidepressant response.",
+        "Do not abruptly stop lithium, benzodiazepines, or other maintenance therapy without an individualized plan unless an emergency toxicity pathway requires immediate action.",
+        "Avoid pregnancy exposure to valproate whenever safer effective alternatives are available and follow current jurisdiction-specific restrictions; all reproductive decisions require individualized risk-benefit planning.",
+        "Do not start or continue a mood stabilizer or antipsychotic without checking its current contraindications, interactions, organ-function limits, and monitoring needs."
+      ],
+      "safetyConsiderations": [
+        "Use the least restrictive setting that can safely contain impulsivity, psychosis, aggression, elopement, exploitation, unsafe driving, or inability to eat, drink, sleep, or manage dependents.",
+        "Monitor antipsychotic cardiometabolic, movement, orthostatic, QT, and neuroleptic malignant syndrome risks according to the selected drug and patient.",
+        "With lithium, watch hydration and sodium balance, renal and thyroid function, drug interactions, tremor, GI symptoms, ataxia, confusion, and toxicity; a therapeutic level does not replace clinical assessment.",
+        "Assess suicide risk during depression, mixed states, early activation, discharge, postpartum transition, and medication changes rather than assuming elevated mood is protective."
+      ],
+      "nursingPriorities": [
+        "Reduce stimulation, set calm consistent limits, use brief concrete communication, offer portable food and fluids, and cluster care to protect sleep.",
+        "Track sleep, intake and output, weight when relevant, activity, agitation, psychosis, risky behavior, medication response, adverse effects, and change from the patient's usual baseline.",
+        "Protect finances, driving, sexual safety, privacy, and dependents through lawful least-restrictive planning with the care team and support network.",
+        "Before discharge, confirm medication understanding, follow-up, laboratory plan when applicable, access to medication, sleep and relapse plan, crisis contacts, and removal or control of immediate lethal means."
+      ],
+      "redFlags": [
+        "Suicidal or homicidal intent, command hallucinations, severe aggression, dangerous driving or spending, weapon access, or inability to protect a dependent",
+        "No meaningful sleep with escalating activation, psychosis, severe agitation, exhaustion, dehydration, refusal of food or fluids, or inability to care for basic needs",
+        "Fever, rigidity, confusion, autonomic instability, seizure, focal neurologic deficit, severe headache, or fluctuating consciousness",
+        "Possible lithium toxicity, severe medication reaction, overdose, intoxication, withdrawal, pregnancy-related emergency, or abrupt first mania later in life"
+      ],
+      "complications": [
+        "Suicide, accidental injury, violence, exploitation, legal or financial loss, relationship and occupational disruption",
+        "Psychosis, mixed states, substance-use complications, malnutrition, dehydration, and sleep-related physiologic stress",
+        "Cardiometabolic, renal, thyroid, neurologic, reproductive, or movement complications related to illness or treatment",
+        "Relapse and rehospitalization when early warning signs, adherence barriers, sleep disruption, or substance triggers are not addressed"
+      ],
+      "prognosis": "Bipolar I disorder is usually recurrent, but episode frequency, recovery, and disability vary widely. Accurate diagnosis, sustained treatment, reliable sleep and follow-up, early response to warning signs, and attention to physical health can reduce relapse, hospitalization, suicide risk, and functional loss. One episode or one medication response does not predict every person's course.",
+      "prevention": [
+        "Maintain regular sleep-wake and daily routines and make a specific plan for travel, shift work, postpartum periods, and other predictable disruptions.",
+        "Keep a written relapse signature that identifies the person's earliest changes in sleep, speech, spending, activity, irritability, or medication use.",
+        "Reduce alcohol and nonprescribed substance exposure, review activating medications before use, and maintain physical-health and medication monitoring."
+      ],
+      "patientEducation": [
+        "Bipolar I disorder is defined by mania; depression is common but not required for the diagnosis.",
+        "Feeling unusually productive while needing almost no sleep can be an early warning sign, not proof that treatment is unnecessary.",
+        "Do not change medication on your own; call promptly for new activation, severe depression, pregnancy, major illness, dehydration, or adverse effects.",
+        "Use emergency services for immediate danger, severe psychosis, inability to eat or drink, or rapidly worsening behavior."
+      ],
+      "specialPopulations": [
+        "Pregnancy and postpartum periods require proactive relapse planning, medication-specific reproductive risk review, protected sleep, and rapid evaluation of mania or psychosis.",
+        "Children and adolescents require developmental, family, school, substance, trauma, and medication assessment; chronic irritability alone is not a manic episode.",
+        "Older adults or anyone with a first later-life episode need especially careful medical, neurologic, medication, and delirium evaluation.",
+        "People with kidney, thyroid, liver, cardiac, metabolic, or neurologic disease need treatment matched to organ function and interaction risk."
+      ],
+      "nclexTraps": [
+        "A manic episode, not a depressive episode, is the defining lifetime requirement for bipolar I disorder.",
+        "Reduced need for sleep means little sleep without feeling tired; insomnia with fatigue is not the same finding.",
+        "Psychosis during an elevated episode makes it mania, not hypomania.",
+        "A positive bipolar screen, family history, or antidepressant activation is a clue for assessment, not a standalone diagnosis."
+      ],
+      "relatedTopics": [
+        "Bipolar II disorder",
+        "Cyclothymic disorder",
+        "Major depressive disorder",
+        "Schizoaffective disorder",
+        "Substance/medication-induced bipolar and related disorder",
+        "Bipolar and related disorder due to another medical condition",
+        "Suicide risk assessment and care"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "who-icd11-cddr-mental-2024",
+        "nice-cg185-bipolar",
+        "va-dod-bipolar-cpg-2023",
+        "nimh-bipolar-current"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. DSM-5-TR and WHO support identity, episode boundaries, exclusions, and differentials; NICE and VA/DoD support risk assessment, phase-specific treatment, representative medication choices, monitoring, reproductive considerations, and relapse prevention; NIMH supports the learner-facing overview. Medication examples are representative, indication- and phase-dependent, and not a universal regimen.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "manic-episode requirements",
+            "exclusions",
+            "differential",
+            "specifiers"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "classification",
+            "episode features",
+            "functional impact",
+            "differential"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/cg185/chapter/recommendations",
+          "documentVersion": "CG185 current recommendations; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "assessment",
+            "acute mania",
+            "long-term treatment",
+            "monitoring",
+            "pregnancy",
+            "patient education"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/bd/VA-DOD-CPG-BD-Full-CPGFinal508.pdf",
+          "documentVersion": "Bipolar disorder CPG 2023; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "diagnostic evaluation",
+            "triage",
+            "differential",
+            "phase-specific medications",
+            "maintenance",
+            "monitoring"
+          ]
+        },
+        {
+          "authority": "National Institute of Mental Health",
+          "url": "https://www.nimh.nih.gov/health/publications/bipolar-disorder",
+          "documentVersion": "Bipolar Disorder current publication; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "plain-language definition",
+            "symptoms",
+            "course",
+            "treatment overview",
+            "patient education"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.bipolar-i-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.premenstrual-dysphoric-disorder",
+      "name": "Premenstrual dysphoric disorder",
+      "displayName": "Premenstrual dysphoric disorder (PMDD)",
+      "category": "Mental health",
+      "aliases": [
+        "PMDD",
+        "premenstrual dysphoria"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Premenstrual dysphoric disorder is a severe, recurring pattern of mood and physical symptoms that appears in the days before menstruation, improves soon after bleeding begins, and is minimal or absent during the rest of the cycle. The symptoms are strong enough to disrupt work, school, relationships, or daily life; PMDD is more than ordinary premenstrual discomfort.",
+      "whyItMatters": "PMDD can cause predictable episodes of intense depression, irritability, anxiety, conflict, impaired concentration, and suicidal thinking. Recognizing the cycle-linked pattern prevents the symptoms from being dismissed, but prospective tracking is also essential so persistent depression, bipolar disorder, thyroid disease, pregnancy-related change, medication effects, and other conditions are not missed.",
+      "plainLanguageGlosses": [
+        {
+          "term": "luteal phase",
+          "plainLanguage": "the part of the menstrual cycle after ovulation and before the next menstrual period",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "acog-premenstrual-disorders-cpg-2023"
+          ]
+        },
+        {
+          "term": "prospective daily ratings",
+          "plainLanguage": "recording symptoms every day as they happen, rather than trying to remember the whole month later",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "acog-premenstrual-disorders-cpg-2023"
+          ]
+        },
+        {
+          "term": "premenstrual exacerbation",
+          "plainLanguage": "a different disorder is present across the month but becomes worse before menstruation",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "who-icd11-cddr-mental-2024"
+          ]
+        }
+      ],
+      "definition": "DSM-5-TR PMDD is a cyclic disorder in which at least five qualifying symptoms occur in most menstrual cycles during the final week before menses, begin improving within a few days after onset, and become minimal or absent in the postmenstrual week; at least one core mood symptom and clinically significant distress or interference are required. Prospective daily ratings across at least two symptomatic cycles confirm the pattern when feasible, although a provisional diagnosis may guide assessment before confirmation. Symptoms must not be merely the worsening of another disorder or better explained by a substance, medication, or medical condition.",
+      "pathology": "PMDD reflects an abnormal brain and behavioral sensitivity to normal reproductive-hormone changes across the menstrual cycle, not necessarily an abnormal hormone level. The cyclic pattern is central: symptoms that remain substantial throughout the month suggest another or coexisting condition even if they worsen premenstrually.",
+      "pathophysiology": [
+        "Changes in ovarian steroids and their neuroactive metabolites can affect serotonin, GABA, stress-response, sleep, and emotion-regulation networks in susceptible people.",
+        "Symptoms recur with the hormonal transition rather than with menstruation alone, which is why daily timing across the whole cycle is diagnostically useful.",
+        "Biologic vulnerability interacts with stress, sleep, pain, and coexisting psychiatric or gynecologic illness; one hormone test cannot establish PMDD."
+      ],
+      "etiology": "Cause is multifactorial and appears to involve individual sensitivity to cyclic ovarian-hormone change. Genetic vulnerability, prior mood or anxiety illness, trauma or stress, and reproductive transitions may affect risk or severity, but none proves the diagnosis. Symptoms may change with pregnancy, postpartum transitions, hormonal contraception, perimenopause, or medications that alter ovulation.",
+      "riskFactors": [
+        "A personal or family history of depression, anxiety, PMDD, or other severe premenstrual symptoms",
+        "Reproductive transitions or changes in hormonal medication that alter cycle patterns",
+        "Sleep disruption, high stress, pain, or coexisting gynecologic illness that can worsen functional burden",
+        "Prior suicidal thinking or severe mood symptoms during the premenstrual window"
+      ],
+      "signsSymptoms": [
+        "Marked irritability or anger, depressed mood or hopelessness, anxiety or tension, or rapid mood shifts that recur before menses",
+        "Reduced interest, difficulty concentrating, low energy, appetite change, sleep change, feeling overwhelmed, or loss of control",
+        "Breast tenderness, bloating, joint or muscle pain, headache, or weight and fluid-related symptoms",
+        "Clear interference with work, school, relationships, caregiving, or usual activities followed by a meaningful symptom-light interval after menses"
+      ],
+      "diagnostics": [
+        "Use daily symptom ratings that include timing, severity, function, bleeding, sleep, medication, and safety across at least two symptomatic cycles when feasible; retrospective recall alone can overestimate a cyclic pattern.",
+        "Confirm that symptoms cluster in the late luteal phase and become minimal or absent after menses rather than remaining at a similar level throughout the cycle.",
+        "Assess for major depression, bipolar disorder, anxiety, trauma-related illness, substance or medication effects, thyroid disease, pregnancy, perimenopause, anemia, chronic pain, and gynecologic causes based on the presentation.",
+        "A symptom scale supports pattern recognition and treatment tracking but does not replace clinical diagnosis or suicide assessment."
+      ],
+      "labs": [
+        "There is no blood hormone level, imaging study, or biomarker that independently confirms PMDD.",
+        "Use pregnancy testing, CBC, thyroid studies, or other targeted testing when bleeding pattern, fatigue, pregnancy possibility, examination, medication choice, or local protocol supports it.",
+        "Hormone values vary by cycle timing and do not distinguish normal sensitivity from PMDD by themselves."
+      ],
+      "assessment": "Ask when symptoms begin and end relative to bleeding, whether there is a symptom-free interval, how work and relationships are affected, and whether symptoms occur during cycles without predictable ovulation. Assess depression, mania or hypomania, anxiety, trauma, pain, sleep, substances, medications, contraception, pregnancy possibility, abnormal bleeding, and direct suicide or self-harm risk during the high-risk window.",
+      "differential": [
+        "Premenstrual syndrome with less severe mood and functional impairment",
+        "Major depressive disorder, persistent depressive disorder, bipolar disorder, anxiety disorder, trauma-related disorder, or personality-related affective symptoms that persist across the cycle",
+        "Premenstrual exacerbation of another psychiatric or medical condition",
+        "Thyroid disease, anemia, pregnancy-related change, perimenopause, endometriosis, migraine, medication effect, or another gynecologic or systemic illness"
+      ],
+      "treatments": [
+        "Use shared decision-making based on symptom pattern, severity, pregnancy goals, contraception needs, medical risk, and patient preference; continue daily tracking long enough to judge both benefit and adverse effects.",
+        "SSRIs are a major evidence-based option. Sertraline or fluoxetine may be prescribed continuously, and selected SSRIs may be used only during the luteal phase under an exact clinician-directed plan; treatment schedule and dose are product- and patient-specific.",
+        "Cognitive behavioral strategies, regular aerobic activity, sleep and stress support, and practical planning for the high-risk days may reduce impairment and complement medication.",
+        "Selected combined hormonal contraceptive regimens may help some patients, while ovulation-suppression treatment with a gonadotropin-releasing hormone approach is generally specialist care for severe refractory illness because adverse effects and reproductive consequences require monitoring."
+      ],
+      "contraindications": [
+        "Do not start an SSRI without assessing bipolar symptoms, suicidality, serotonergic interactions, MAOI exposure, pregnancy considerations, and the selected product's current labeling.",
+        "Do not assume estrogen-containing contraception is appropriate for everyone; review thromboembolic, migraine, smoking, blood-pressure, hepatic, cancer, postpartum, and other patient-specific risks under current contraceptive guidance.",
+        "Do not use cycle suppression or surgery as routine first-line treatment for unconfirmed PMDD.",
+        "Do not dismiss persistent all-month symptoms as PMDD or stop evaluating a new medical or psychiatric change because it worsens before menses."
+      ],
+      "safetyConsiderations": [
+        "Create a specific safety plan for the predictable symptom window when suicidal thinking, self-harm urges, aggression, or inability to function has occurred.",
+        "Monitor SSRI activation, worsening suicidality, serotonin syndrome, hyponatremia risk, bleeding, sexual effects, and discontinuation symptoms; fluoxetine has a particularly long interaction and washout period.",
+        "Track blood pressure and adverse effects when hormonal therapy is used and reassess immediately for symptoms of thrombosis, stroke, severe headache, chest pain, or shortness of breath.",
+        "Pregnancy, postpartum status, irregular or absent cycles, and perimenopause change the diagnostic and treatment context."
+      ],
+      "nursingPriorities": [
+        "Teach simple daily tracking and verify that ratings include symptom-light days, not only the worst premenstrual days.",
+        "Assess suicide risk directly and compare risk across the cycle; help the patient schedule support, reduce lethal-means access, and arrange follow-up before the expected high-risk window.",
+        "Review adherence to a continuous versus luteal-phase medication schedule and prevent unsupervised doubling, abrupt stopping, or cycle-date confusion.",
+        "Validate the functional impact while reinforcing that another disorder can coexist and may need treatment across the whole month."
+      ],
+      "redFlags": [
+        "Suicidal intent, plan, escalating self-harm, violence risk, psychosis, mania, or inability to maintain immediate safety",
+        "Severe new headache, focal neurologic symptoms, chest pain, shortness of breath, unilateral leg swelling, or suspected thromboembolism while using hormonal therapy",
+        "Fever, agitation, tremor, clonus, diarrhea, or autonomic instability suggesting serotonin syndrome",
+        "Heavy or unusual bleeding, pregnancy-related symptoms, persistent symptoms without a postmenstrual break, or a marked new change from the established pattern"
+      ],
+      "complications": [
+        "Suicide attempt, self-harm, relationship conflict, work or school loss, and recurrent functional disruption",
+        "Misdiagnosis or delayed recognition of persistent depression, bipolar disorder, thyroid disease, pregnancy-related illness, or gynecologic disease",
+        "Medication adverse effects, hormonal-treatment complications, or poor adherence caused by a confusing intermittent schedule",
+        "Progressive anticipatory anxiety and avoidance around expected symptom days"
+      ],
+      "prognosis": "Symptoms are usually recurrent during ovulatory cycles and may change with age, pregnancy, postpartum transitions, contraception, and menopause. Many patients improve substantially with a correctly matched SSRI, hormonal, behavioral, or combined plan, but response must be verified across cycles and safety risk reassessed rather than assumed.",
+      "prevention": [
+        "Use daily ratings and an early-action plan before the expected symptom window.",
+        "Protect sleep, exercise, regular meals, medication access, and social support across the cycle.",
+        "Plan ahead for reproductive transitions and review any medication or contraceptive change that alters symptoms."
+      ],
+      "patientEducation": [
+        "PMDD is a real cyclic disorder; it is not a character flaw or simply 'bad periods.'",
+        "The key clue is severe symptoms before menstruation plus a meaningful symptom-light interval afterward.",
+        "Daily tracking across the entire cycle is more reliable than remembering only the worst days.",
+        "Seek urgent help for suicidal thinking, mania, psychosis, or severe medication or contraceptive warning signs."
+      ],
+      "specialPopulations": [
+        "Adolescents need cycle tracking adapted to development, confidential safety assessment, family support when appropriate, and careful separation from persistent depression or bipolar disorder.",
+        "People with irregular cycles, anovulation, endometriosis, polycystic ovary syndrome, perimenopause, or hormonal treatment may not show a textbook calendar pattern and need individualized gynecologic assessment.",
+        "Pregnancy and postpartum periods interrupt ordinary cyclic diagnosis and require perinatal mental-health assessment for new mood symptoms.",
+        "People with migraine, thromboembolic risk, smoking exposure, hypertension, hepatic disease, or cancer history need individualized hormonal-treatment review."
+      ],
+      "nclexTraps": [
+        "PMDD is not diagnosed from one bad premenstrual week; the recurrent timing and symptom-light interval matter.",
+        "A normal hormone level does not rule out PMDD because abnormal sensitivity, not hormone excess, is central.",
+        "Prospective tracking confirms the pattern; it does not replace direct suicide assessment.",
+        "Premenstrual worsening of major depression is not automatically PMDD if substantial symptoms persist across the month."
+      ],
+      "relatedTopics": [
+        "Major depressive disorder",
+        "Persistent depressive disorder",
+        "Bipolar I disorder",
+        "Bipolar II disorder",
+        "Generalized anxiety disorder",
+        "Suicide risk assessment and care",
+        "Selective serotonin reuptake inhibitors"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "who-icd11-cddr-mental-2024",
+        "acog-premenstrual-disorders-cpg-2023",
+        "dailymed-sertraline-pmdd-current",
+        "dailymed-fluoxetine-pmdd-current"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. DSM-5-TR and WHO support diagnostic identity, cyclic timing, impairment, exclusions, and premenstrual-exacerbation boundaries; ACOG supports prospective ratings and multimodal treatment; current DailyMed labels support the representative SSRI indications, administration patterns, and medication risks. The card does not treat a hormone value or calendar estimate as diagnostic.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "symptom threshold",
+            "cyclic timing",
+            "prospective confirmation",
+            "exclusions"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "classification",
+            "clinical description",
+            "functional impact",
+            "differential"
+          ]
+        },
+        {
+          "authority": "American College of Obstetricians and Gynecologists",
+          "url": "https://www.acog.org/clinical/clinical-guidance/clinical-practice-guideline/articles/2023/06/management-of-premenstrual-disorders",
+          "documentVersion": "Clinical Practice Guideline No. 7, 2023; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "assessment",
+            "prospective tracking",
+            "SSRIs",
+            "hormonal options",
+            "nonpharmacologic treatment",
+            "shared decision-making"
+          ]
+        },
+        {
+          "authority": "U.S. National Library of Medicine DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fe9e8b7d-61ea-409d-84aa-3ebd79a046b5",
+          "documentVersion": "Sertraline label available in local ANI medication source; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "PMDD indication",
+            "continuous and intermittent use",
+            "boxed warning",
+            "contraindications",
+            "serotonergic safety"
+          ]
+        },
+        {
+          "authority": "U.S. National Library of Medicine DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c88f33ed-6dfb-4c5e-bc01-d8e36dd97299",
+          "documentVersion": "Fluoxetine label available in local ANI medication source; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "PMDD indication",
+            "boxed warning",
+            "mania activation",
+            "long washout",
+            "contraindications"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.premenstrual-dysphoric-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.substance-medication-induced-depressive-disorder",
+      "name": "Substance/medication-induced depressive disorder",
+      "displayName": "Substance/medication-induced depressive disorder",
+      "category": "Mental health",
+      "aliases": [
+        "substance-induced depressive disorder",
+        "medication-induced depressive disorder",
+        "drug-induced depressive disorder"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Substance/medication-induced depressive disorder is a clinically significant period of depressed mood or loss of interest that begins during or soon after intoxication, withdrawal, or exposure to a substance or medication known to be capable of causing the symptoms. The timing and expected effects of the exposure support the connection; substance use and depression occurring together do not prove that one caused the other.",
+      "whyItMatters": "The immediate priorities may be overdose care, safe withdrawal, medication review, and suicide prevention rather than simply adding an antidepressant. A wrong attribution can be dangerous in either direction: clinicians can miss toxicity or withdrawal, or they can dismiss an independent depressive disorder that still needs treatment after the exposure ends.",
+      "plainLanguageGlosses": [
+        {
+          "term": "intoxication",
+          "plainLanguage": "the temporary mental and physical effects while a substance is active in the body",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "va-dod-sud-cpg-2021"
+          ]
+        },
+        {
+          "term": "withdrawal",
+          "plainLanguage": "symptoms that occur after reducing or stopping a substance the body has adapted to",
+          "sourceKeys": [
+            "who-mhgap-drug-withdrawal",
+            "va-dod-sud-cpg-2021"
+          ]
+        },
+        {
+          "term": "temporal relationship",
+          "plainLanguage": "the symptoms begin, worsen, improve, or recur in a pattern that closely follows exposure, dose change, intoxication, or withdrawal",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "who-icd11-cddr-mental-2024"
+          ]
+        }
+      ],
+      "definition": "The depressive disturbance must predominate, cause clinically meaningful distress or impairment, and develop during or soon after a relevant exposure or withdrawal in a way consistent with a substance or medication capable of producing it. Evidence for an independent depressive disorder includes symptoms that clearly preceded the exposure, persist well beyond the expected physiologic period, recur without the substance, or are otherwise better explained by a primary mood disorder. Symptoms occurring only during delirium are not diagnosed as this disorder.",
+      "pathology": "This is an etiologic diagnosis: the mood syndrome is attributed to the direct effects of an external substance or medication rather than simply coexisting with use. Different agents affect monoamine, reward, stress, sleep, endocrine, immune, and cognitive systems in different ways, so there is no single induced-depression mechanism or universal recovery time.",
+      "pathophysiology": [
+        "Intoxication, rebound, withdrawal, or medication effects can reduce reward responsiveness, disrupt sleep and circadian rhythm, change monoamine signaling, or produce fatigue and cognitive slowing that becomes a depressive syndrome.",
+        "Repeated exposure can create adaptation; abrupt removal may temporarily leave inhibitory, excitatory, stress, or reward systems out of balance.",
+        "Medical complications of use, such as hypoxia, infection, pain, malnutrition, endocrine change, or organ injury, can also contribute and require separate assessment rather than being folded into one psychiatric label."
+      ],
+      "etiology": "Potential causes include alcohol or sedative withdrawal, stimulant withdrawal, some medication effects, intoxication or withdrawal from other substances, and interactions or rapid dose changes. Whether a specific agent is capable of causing a depressive disorder depends on dose, duration, timing, pharmacology, comorbidity, and diagnostic-system guidance. A medication's presence on a list is not proof of causation for one patient.",
+      "riskFactors": [
+        "A recent start, stop, dose change, binge, relapse, detoxification, or interaction involving a psychoactive substance or medication",
+        "Heavy or prolonged exposure, physiologic dependence, polysubstance use, or prior withdrawal episodes",
+        "A personal or family history of depression, bipolar disorder, suicide attempt, or substance-use disorder",
+        "Sleep loss, pain, medical illness, social crisis, or limited support that can amplify both substance use and depressive symptoms"
+      ],
+      "signsSymptoms": [
+        "Depressed, empty, or irritable mood or markedly reduced interest and pleasure arising in a plausible exposure or withdrawal window",
+        "Low energy, sleep and appetite change, slowed or agitated behavior, poor concentration, guilt, hopelessness, or suicidal thinking",
+        "Concurrent intoxication, craving, autonomic or neurologic withdrawal signs, medication adverse effects, or a recent change in access or adherence",
+        "Improvement as the substance effect resolves can support the attribution, but partial improvement does not exclude an independent coexisting disorder"
+      ],
+      "diagnostics": [
+        "Build an exact timeline of symptoms, last use, dose, route, prescribed and nonprescribed agents, recent discontinuation, prior substance-free periods, and prior independent mood episodes.",
+        "Use collateral history, pharmacy records, prescription monitoring data when lawfully available, pill or product review, and examination; a routine toxicology result detects only selected agents and time windows.",
+        "Assess whether the agent is known to cause the syndrome and whether the intensity, onset, and course are pharmacologically plausible.",
+        "Reassess after intoxication, acute withdrawal, and delirium resolve; the diagnosis may change as longitudinal evidence becomes available."
+      ],
+      "labs": [
+        "No laboratory result proves the psychiatric attribution. Toxicology can support exposure but may be false-negative, false-positive, or unable to establish timing, dose, impairment, or causation.",
+        "Use glucose, electrolytes, renal and hepatic function, CBC, pregnancy testing, ECG, oxygenation, drug levels, infection studies, or other testing according to the suspected agent, symptoms, planned treatment, and local poison or withdrawal protocol.",
+        "Targeted thyroid, nutritional, neurologic, or other evaluation may be needed when the course is atypical or symptoms persist."
+      ],
+      "assessment": "First assess airway, breathing, circulation, level of consciousness, temperature, glucose, seizure risk, delirium, overdose, withdrawal severity, trauma, and co-ingestants. Then assess depression, suicide and self-harm, violence, psychosis, mania, access to substances and lethal means, pain, pregnancy, housing, supports, and readiness for substance-use treatment. Use a nonjudgmental history and do not rely on a single screen or toxicology panel.",
+      "differential": [
+        "Major depressive disorder, persistent depressive disorder, bipolar depression, adjustment disorder, grief, or another primary mood condition",
+        "Depressive disorder due to another medical condition, delirium, neurocognitive disorder, sleep disorder, thyroid disease, infection, pain, anemia, or nutritional illness",
+        "Expected but clinically significant intoxication or withdrawal symptoms that do not meet the full disorder frame",
+        "Medication nonadherence, interaction, overdose, poisoning, or a substance-use disorder with a coexisting independent depressive disorder"
+      ],
+      "treatments": [
+        "Stabilize overdose, poisoning, severe intoxication, delirium, seizure risk, or dangerous withdrawal under the appropriate emergency, toxicology, or withdrawal protocol before assuming outpatient psychiatric treatment is sufficient.",
+        "With the prescriber, stop, substitute, taper, or adjust the suspected medication when clinically safe; abrupt withdrawal from alcohol, benzodiazepines, and some other agents can be life-threatening and must not be improvised.",
+        "Treat the substance-use disorder with evidence-based behavioral care and medication when indicated for that specific disorder, while also addressing housing, pain, trauma, and other relapse drivers.",
+        "Provide suicide-focused care and reassess mood after the expected exposure period. Persistent, severe, or clearly independent depression may require psychotherapy and/or antidepressant treatment selected for the patient's bipolar, interaction, organ-function, pregnancy, and overdose risks."
+      ],
+      "contraindications": [
+        "Do not abruptly stop alcohol, benzodiazepines, barbiturates, or another dependence-forming agent when severe withdrawal is possible; use an appropriate monitored plan.",
+        "Do not advise the patient to resume a harmful substance as a way to test the diagnosis or relieve withdrawal outside a legitimate treatment protocol.",
+        "Do not start an antidepressant without checking mania or hypomania history, serotonergic and QT interactions, overdose risk, and the current medication list.",
+        "Do not treat a negative routine toxicology screen as proof that no substance or medication contributed."
+      ],
+      "safetyConsiderations": [
+        "Suicide risk may rise during stimulant crash, alcohol or sedative withdrawal, shame, legal or social loss, and the early period after discharge or reduced tolerance.",
+        "Alcohol and sedative withdrawal can cause seizures, delirium, and autonomic instability; opioid exposure can cause fatal respiratory depression; stimulant toxicity can cause hyperthermia, psychosis, arrhythmia, or stroke.",
+        "Reduced tolerance after abstinence increases overdose risk if use resumes; connect patients to overdose-prevention education and substance-specific harm reduction.",
+        "Consider children, driving, weapons, medication stockpiles, unstable housing, interpersonal violence, and exploitation in the safety plan."
+      ],
+      "nursingPriorities": [
+        "Record last use, usual amount, route, recent change, co-ingestants, vital signs, consciousness, withdrawal findings, sleep, intake, and serial suicide risk.",
+        "Use validated agent-specific withdrawal instruments only within their intended population and protocol; a score does not replace examination or detect every complication.",
+        "Maintain seizure, fall, aspiration, and elopement precautions when indicated and avoid stigmatizing or confrontational care.",
+        "Coordinate toxicology, psychiatry, addiction treatment, pharmacy, primary care, and follow-up so both the exposure and the mood syndrome are reassessed."
+      ],
+      "redFlags": [
+        "Suicidal intent, severe self-neglect, violence, psychosis, mania, command hallucinations, or inability to maintain safety",
+        "Respiratory depression, cyanosis, seizure, severe autonomic instability, delirium, hyperthermia, chest pain, severe headache, or focal neurologic findings",
+        "Possible alcohol or sedative withdrawal, opioid overdose, stimulant toxicity, acetaminophen or other occult poisoning, or unknown co-ingestion",
+        "Worsening depression after the expected exposure period, repeated episodes without exposure, or a history suggesting an independent bipolar or depressive disorder"
+      ],
+      "complications": [
+        "Suicide, overdose, aspiration, seizure, injury, delirium, medical organ damage, or unsafe withdrawal",
+        "Relapse, reduced tolerance and fatal overdose, loss of housing or employment, legal harm, and relationship disruption",
+        "Misattribution that delays treatment of primary depression, bipolar disorder, medical illness, or toxicity",
+        "Medication interactions, nonadherence, and fragmented psychiatric and addiction care"
+      ],
+      "prognosis": "Symptoms often improve as intoxication or withdrawal resolves and the causative medication is safely changed, but timing varies by agent, chronic exposure, metabolites, organ function, and coexisting illness. Persistence, recurrence without exposure, or a strong prior history should trigger reassessment for an independent mood disorder rather than a fixed assumption.",
+      "prevention": [
+        "Review mood and suicide effects before starting, increasing, tapering, or stopping a medication known to affect mood.",
+        "Use evidence-based substance-use treatment, overdose prevention, relapse planning, safe prescribing, and coordinated follow-up.",
+        "Teach patients to report new depression, activation, intoxication, missed doses, or withdrawal symptoms early rather than changing treatment alone."
+      ],
+      "patientEducation": [
+        "The diagnosis means the timing and known effects of an exposure make it the likely cause; it does not mean the symptoms are fake or unimportant.",
+        "Do not stop a prescribed medicine or dependence-forming substance suddenly without medical guidance.",
+        "A urine screen cannot identify every drug or prove why a person feels depressed.",
+        "Seek emergency help for suicidal intent, seizure, severe confusion, breathing problems, chest pain, or dangerous withdrawal."
+      ],
+      "specialPopulations": [
+        "Pregnancy and postpartum care require obstetric, addiction, psychiatric, and medication-risk coordination; abrupt withdrawal and ongoing exposure can both harm patient and fetus.",
+        "Adolescents need confidential, developmentally appropriate assessment plus family or caregiver involvement when safe and lawful.",
+        "Older adults are more vulnerable to polypharmacy, delirium, falls, organ impairment, and medication accumulation.",
+        "People with chronic pain, cancer, neurologic disease, or organ failure need careful separation of medication effect, medical illness, grief, sleep loss, and independent depression."
+      ],
+      "nclexTraps": [
+        "Substance use plus depression does not automatically equal substance-induced depression; timing, capability, course, and prior independent episodes matter.",
+        "A positive toxicology result shows exposure, not psychiatric causation or current impairment.",
+        "Symptoms during delirium are not diagnosed as substance/medication-induced depressive disorder.",
+        "Do not delay suicide care while waiting to see whether the mood improves after withdrawal."
+      ],
+      "relatedTopics": [
+        "Major depressive disorder",
+        "Persistent depressive disorder",
+        "Bipolar I disorder",
+        "Substance use disorders",
+        "Alcohol withdrawal",
+        "Opioid overdose",
+        "Suicide risk assessment and care",
+        "Depressive disorder due to another medical condition"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "who-icd11-cddr-mental-2024",
+        "samhsa-tip42-cooccurring-2020",
+        "va-dod-sud-cpg-2021",
+        "who-mhgap-drug-withdrawal",
+        "samhsa-safe-t-2024",
+        "nice-ng222-depression"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. DSM-5-TR and WHO support etiologic attribution and exclusion boundaries; SAMHSA and VA/DoD support integrated co-occurring care and substance-use assessment; WHO supports the safety boundary around withdrawal; SAFE-T and NICE support suicide and depression care. No single substance list, toxicology result, or recovery interval is presented as universal.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "temporal attribution",
+            "independent-disorder evidence",
+            "delirium exclusion",
+            "differential"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "classification",
+            "substance-induced mood syndrome",
+            "clinical description",
+            "differential"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/sites/default/files/SAMHSA_Digital_Download/PEP20-02-01-004_Final_508.pdf",
+          "documentVersion": "TIP 42, 2020; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "co-occurring assessment",
+            "integrated care",
+            "engagement",
+            "reassessment",
+            "recovery supports"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/sud/VA-DoD-SUD-CPG_Final_for-508_v3.pdf",
+          "documentVersion": "SUD CPG 2021; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "substance-use assessment",
+            "withdrawal risk",
+            "treatment planning",
+            "follow-up"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://www.who.int/teams/mental-health-and-substance-use/treatment-care/mental-health-gap-action-programme/evidence-centre/drug-use-disorders/management-of-drug-withdrawal",
+          "documentVersion": "mhGAP withdrawal guidance current; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "withdrawal safety",
+            "monitored management",
+            "abrupt-cessation caution"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "suicide assessment",
+            "risk factors",
+            "protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/ng222/chapter/recommendations",
+          "documentVersion": "NG222 current recommendations; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "assessment",
+            "treatments",
+            "contraindications",
+            "nursingPriorities",
+            "patientEducation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.substance-medication-induced-depressive-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.depressive-disorder-due-to-another-medical-condition",
+      "name": "Depressive disorder due to another medical condition",
+      "displayName": "Depressive disorder due to another medical condition",
+      "category": "Mental health",
+      "aliases": [
+        "depressive disorder due to a medical condition",
+        "depression caused by a medical condition",
+        "secondary depressive disorder"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Depressive disorder due to another medical condition is a significant depressive syndrome judged to be a direct physical effect of a medical illness, such as a neurologic, endocrine, inflammatory, infectious, or metabolic condition. It is different from feeling understandably sad or stressed about being ill, and the medical diagnosis alone does not prove that it caused the depression.",
+      "whyItMatters": "A new depressive presentation can be an early clue to treatable medical or neurologic disease, and the underlying illness may change which psychiatric treatments are safe. Nurses must address suicide and functional risk now while also looking for delirium, focal neurologic change, endocrine symptoms, medication effects, pain, infection, and other clues instead of assuming either 'all medical' or 'all psychological.'",
+      "plainLanguageGlosses": [
+        {
+          "term": "direct pathophysiologic consequence",
+          "plainLanguage": "the medical condition physically disrupts brain, hormone, immune, metabolic, or nervous-system function in a way that produces the mood syndrome",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "secondary depression",
+          "plainLanguage": "an informal phrase for depression that occurs because of another condition; formal diagnosis still requires evidence for the connection",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "nimh-depression-current"
+          ]
+        },
+        {
+          "term": "reactive distress",
+          "plainLanguage": "an emotional response to the losses, fear, pain, or disability of illness rather than a direct physiologic effect",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "who-icd11-cddr-mental-2024"
+          ]
+        }
+      ],
+      "definition": "This diagnosis is used when prominent depressed mood or markedly reduced interest or pleasure causes clinically meaningful distress or impairment and evidence shows that another medical condition directly produced the disturbance. The syndrome cannot occur only during delirium and must not be better explained by a primary depressive, bipolar, adjustment, trauma-related, substance-induced, or neurocognitive disorder. Timing, known disease mechanisms, atypical features, examination, and longitudinal course all contribute; no one medical association proves causality.",
+      "pathology": "Neurologic injury, endocrine or metabolic disruption, inflammation, infection, hypoxia, immune disease, or another physiologic process can disturb mood-regulation networks. The same medical illness can also create pain, disability, isolation, sleep disruption, or grief that contributes psychologically, so direct and indirect mechanisms may coexist and both deserve treatment.",
+      "pathophysiology": [
+        "Damage or dysfunction in frontostriatal, limbic, basal-ganglia, or brainstem networks can alter motivation, reward, affect, and psychomotor activity.",
+        "Thyroid, adrenal, inflammatory, immune, infectious, metabolic, or nutritional disturbance can change energy, cognition, sleep, and neurotransmission in ways that resemble or produce depression.",
+        "Medication effects, pain, sleep disruption, reduced mobility, and social loss may add to symptoms but must be classified separately when they are the better explanation."
+      ],
+      "etiology": "Potential causes include selected neurologic diseases or injuries, endocrine and metabolic disorders, inflammatory or autoimmune illness, infection, hypoxia, and other systemic conditions with a plausible direct effect. Examples often considered include stroke, Parkinson disease, Huntington disease, traumatic brain injury, thyroid or adrenal disease, and some immune or infectious disorders, but each association is context-dependent and does not diagnose causation in an individual.",
+      "riskFactors": [
+        "A new neurologic, endocrine, immune, infectious, metabolic, or systemic illness with known CNS effects",
+        "Depression beginning abruptly, later in life, after a focal neurologic event, or alongside new cognitive, motor, endocrine, or autonomic findings",
+        "Severe medical burden, pain, sleep loss, functional decline, isolation, or prior depressive vulnerability",
+        "Medications used for the medical illness that can also affect mood, creating more than one possible explanation"
+      ],
+      "signsSymptoms": [
+        "Persistent depressed or irritable mood, reduced interest or pleasure, hopelessness, guilt, or suicidal thinking",
+        "Low energy, sleep or appetite change, reduced concentration, psychomotor slowing or agitation, and functional decline",
+        "A temporal relationship to onset, worsening, treatment, or recurrence of the medical condition",
+        "Neurologic, cognitive, endocrine, infectious, inflammatory, or metabolic findings that require medical assessment rather than attribution to mood alone"
+      ],
+      "diagnostics": [
+        "Confirm a depressive syndrome and its functional impact while reconstructing the timeline of medical illness, medications, pain, sleep, substance exposure, and prior independent mood episodes.",
+        "Perform physical and neurologic examination and review whether the suspected condition has a plausible direct mechanism and whether the mood course tracks its activity.",
+        "Exclude delirium by assessing attention, awareness, fluctuation, arousal, and acute precipitants; delirium can include tearfulness or withdrawal but requires its own urgent pathway.",
+        "Use collateral information and longitudinal reassessment because causation often becomes clearer after the medical condition is treated or stabilized."
+      ],
+      "labs": [
+        "No universal panel or biomarker proves that a medical condition caused depression.",
+        "Select CBC, electrolytes, glucose, renal and hepatic function, thyroid studies, pregnancy testing, inflammatory or infectious studies, nutrition tests, toxicology, imaging, EEG, or other evaluation from the history, examination, age, and suspected cause.",
+        "A mildly abnormal value or incidental imaging finding is not automatically the cause; interpret severity, timing, mechanism, and response to treatment together."
+      ],
+      "assessment": "Assess suicide and self-harm, hopelessness, psychosis, mania, delirium, capacity, pain, sleep, nutrition, medication adherence, substance use, function, caregiver strain, and access to lethal means. Document focal deficits, cognition, attention, gait or movement change, vital signs, weight or intake, endocrine symptoms, infection signs, and the patient's baseline. Ask what the illness means to the patient so direct physiologic depression and understandable distress are both addressed.",
+      "differential": [
+        "Major depressive disorder, persistent depressive disorder, bipolar depression, adjustment disorder, grief, demoralization, or trauma-related illness",
+        "Substance/medication-induced depressive disorder or medication adverse effects",
+        "Delirium, major or mild neurocognitive disorder, apathy, fatigue, sleep disorder, pain, anemia, or another symptom syndrome",
+        "Depressive symptoms associated with a medical condition but without sufficient evidence of direct physiologic causation"
+      ],
+      "treatments": [
+        "Treat or stabilize the underlying medical condition and reversible contributors such as pain, sleep disruption, infection, endocrine disturbance, nutritional deficiency, hypoxia, or medication harm.",
+        "Provide suicide-focused care, psychotherapy or supportive counseling, rehabilitation, social support, and function-preserving interventions rather than waiting for the medical illness to resolve first.",
+        "When an antidepressant is appropriate, an SSRI such as sertraline or escitalopram may be considered in selected patients, but there is no universally preferred drug; interactions, bleeding, sodium, QT, seizure, organ-function, bipolar, and disease-specific risks determine the choice.",
+        "For severe, psychotic, catatonic, life-threatening, or treatment-resistant depression, urgent specialist options including electroconvulsive therapy may be considered after medical and anesthesia evaluation."
+      ],
+      "contraindications": [
+        "Do not diagnose causation solely because depression followed a medical diagnosis or because the illness appears on an association list.",
+        "Do not delay immediate suicide, delirium, stroke, infection, endocrine-crisis, or toxicity care while completing psychiatric attribution.",
+        "Do not start an antidepressant without medication reconciliation, bipolar screening, interaction review, organ-function review, and assessment of the suspected medical mechanism.",
+        "Do not label reduced speech, movement, or appetite as depression until delirium, aphasia, catatonia, dysphagia, pain, and neurologic impairment have been considered."
+      ],
+      "safetyConsiderations": [
+        "Medical illness, new disability, pain, and access to medications can increase suicide risk even when the depressive syndrome has a physiologic cause.",
+        "Neurologic or endocrine disease may increase falls, seizures, aspiration, bleeding, electrolyte disturbance, or medication sensitivity.",
+        "Monitor new confusion, fever, focal deficit, severe headache, hypoxia, autonomic instability, or rapidly changing consciousness as medical emergencies.",
+        "Coordinate psychiatry with the treating medical specialty so treatment of one condition does not worsen the other or duplicate interacting medications."
+      ],
+      "nursingPriorities": [
+        "Trend mood, suicide risk, attention, cognition, neurologic findings, sleep, pain, intake, mobility, function, and medical-disease activity together.",
+        "Use accessible communication when aphasia, motor impairment, fatigue, hearing loss, or cognitive change affects the interview; inability to answer quickly is not absence of distress.",
+        "Complete medication reconciliation including recent steroids, dopaminergic drugs, endocrine therapy, immunotherapy, anticonvulsants, and nonprescribed agents.",
+        "Coordinate medical treatment, psychiatric follow-up, rehabilitation, caregiver teaching, and discharge safety rather than separating the patient into isolated services."
+      ],
+      "redFlags": [
+        "Suicidal intent, refusal of lifesaving care due to hopelessness, psychosis, severe self-neglect, or inability to maintain safety",
+        "New focal deficit, severe headache, seizure, rapidly changing cognition, fever, neck stiffness, hypoxia, or altered consciousness",
+        "Catatonic signs, inability to eat or drink, severe weight loss, aspiration, dehydration, or autonomic instability",
+        "Symptoms of endocrine crisis, severe electrolyte disturbance, medication toxicity, or acute worsening of the underlying disease"
+      ],
+      "complications": [
+        "Suicide, self-neglect, malnutrition, immobility, falls, pressure injury, poor adherence, and delayed medical recovery",
+        "Loss of function, rehabilitation participation, relationships, work, and quality of life",
+        "Missed delirium, neurologic disease, endocrine disorder, medication effect, or primary bipolar or depressive illness",
+        "Polypharmacy and adverse interactions when medical and psychiatric treatment are not coordinated"
+      ],
+      "prognosis": "Outcome depends on the underlying condition, reversibility, prior mood vulnerability, medical disability, and access to integrated care. Mood may improve when the medical cause is treated, but persistent depression can still require its own treatment. Lack of rapid improvement does not disprove a medical contribution, and improvement does not prove one specific mechanism.",
+      "prevention": [
+        "Screen for depression and suicide risk during illnesses and treatments known to affect mood, especially after major neurologic or functional change.",
+        "Address pain, sleep, mobility, nutrition, isolation, and medication adverse effects early.",
+        "Maintain coordinated follow-up across primary care, specialty medicine, psychiatry, rehabilitation, and social supports."
+      ],
+      "patientEducation": [
+        "A medical condition can physically affect mood, but the depression is still real and treatable.",
+        "The diagnosis requires evidence for a direct connection; being sad about an illness is understandable and may need support but is not automatically this disorder.",
+        "Report new suicidal thinking, confusion, weakness, seizure, severe headache, fever, or a major medication-related change promptly.",
+        "Do not stop medical or psychiatric medication without a coordinated plan."
+      ],
+      "specialPopulations": [
+        "Older adults need careful separation of depression from delirium, dementia, medication effects, grief, sensory loss, and neurologic disease.",
+        "Children and adolescents require developmental assessment and family, school, medical, and safety context.",
+        "Pregnancy and postpartum presentations need obstetric and perinatal psychiatric evaluation; endocrine, vascular, autoimmune, medication, and primary mood causes can overlap.",
+        "People with communication or cognitive disability require supported assessment and collateral baseline information without assuming incapacity."
+      ],
+      "nclexTraps": [
+        "A medical condition plus depression is an association, not proof of direct causation.",
+        "Delirium excludes this diagnosis during the delirious episode and requires urgent medical assessment.",
+        "Treat the underlying illness and the depressive syndrome at the same time when clinically indicated.",
+        "No single thyroid value, scan, or inflammatory marker establishes the psychiatric diagnosis by itself."
+      ],
+      "relatedTopics": [
+        "Major depressive disorder",
+        "Persistent depressive disorder",
+        "Substance/medication-induced depressive disorder",
+        "Delirium",
+        "Catatonia",
+        "Suicide risk assessment and care",
+        "Bipolar and related disorder due to another medical condition"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "who-icd11-cddr-mental-2024",
+        "nimh-depression-current",
+        "nice-ng222-depression",
+        "apa-ect-patient-guide",
+        "fda-ect-classification"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. DSM-5-TR and WHO support direct-physiologic attribution, delirium exclusion, and differential boundaries; NIMH and NICE support depression recognition and treatment; APA and FDA sources support ECT as a context-dependent specialist option. Disease examples are illustrative associations, not automatic causal findings, and testing remains history- and examination-directed.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "direct-physiologic requirement",
+            "delirium exclusion",
+            "differential",
+            "medical associations"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "classification",
+            "clinical description",
+            "etiologic attribution",
+            "functional impact",
+            "differential"
+          ]
+        },
+        {
+          "authority": "National Institute of Mental Health",
+          "url": "https://www.nimh.nih.gov/health/publications/depression",
+          "documentVersion": "Depression current publication; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "plain-language symptoms",
+            "medical contributors",
+            "treatment overview",
+            "patient education"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/ng222/chapter/recommendations",
+          "documentVersion": "NG222 current recommendations; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "depression assessment",
+            "suicide risk",
+            "psychological treatment",
+            "medication selection",
+            "monitoring"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/patients-families/ect",
+          "documentVersion": "ECT patient and family guide current; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "ECT overview",
+            "severe-depression context",
+            "preparation",
+            "risk-benefit education"
+          ]
+        },
+        {
+          "authority": "U.S. Food and Drug Administration",
+          "url": "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?id=4160",
+          "documentVersion": "ECT device classification current; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "definition",
+            "diagnostics",
+            "treatments",
+            "contraindications",
+            "specialPopulations"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.depressive-disorder-due-to-another-medical-condition",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.substance-medication-induced-bipolar-and-related-disorder",
+      "name": "Substance/medication-induced bipolar and related disorder",
+      "displayName": "Substance/medication-induced bipolar and related disorder",
+      "category": "Mental health",
+      "aliases": [
+        "substance-induced bipolar disorder",
+        "medication-induced bipolar disorder",
+        "drug-induced mania"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Substance/medication-induced bipolar and related disorder is a significant period of elevated, expansive, or very irritable mood with increased energy or activity that begins during or soon after intoxication, withdrawal, or exposure to a substance or medication capable of causing it. The episode is real, but the exposure is judged to be the main cause rather than an independent bipolar disorder.",
+      "whyItMatters": "Exposure-related mania can signal stimulant toxicity, medication harm, severe sleep loss, psychosis, or dangerous withdrawal and may require urgent medical care. Correct attribution prevents repeated re-exposure, but clinicians must also watch whether a full episode continues beyond the expected drug effect, because that can reveal an independent bipolar illness needing long-term treatment.",
+      "plainLanguageGlosses": [
+        {
+          "term": "activation",
+          "plainLanguage": "new restlessness, insomnia, increased energy, impulsivity, or mood elevation after a drug or medication change; activation is a warning pattern, not automatically a manic episode",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "va-dod-bipolar-cpg-2023"
+          ]
+        },
+        {
+          "term": "intoxication",
+          "plainLanguage": "the temporary mental and physical effects while a substance is active in the body",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "va-dod-sud-cpg-2021"
+          ]
+        },
+        {
+          "term": "independent bipolar disorder",
+          "plainLanguage": "mania or hypomania that is better explained by the person's underlying mood illness than by the current exposure",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "who-icd11-cddr-mental-2024"
+          ]
+        }
+      ],
+      "definition": "The elevated, expansive, or irritable mood disturbance must predominate, cause clinically meaningful distress or impairment, and arise in a plausible relationship to intoxication, withdrawal, medication use, or another exposure known to produce the syndrome. Symptoms that preceded exposure, recur without it, or persist well beyond the expected physiologic effect support an independent bipolar disorder. A syndrome occurring only during delirium is not diagnosed as substance/medication-induced bipolar and related disorder.",
+      "pathology": "This is an etiologic mood diagnosis rather than a claim that every drug-related burst of energy is mania. Substances and medications can increase dopamine or norepinephrine, alter corticosteroid or thyroid signaling, disrupt sleep, or cause rebound changes after withdrawal. The mechanism and expected course differ by agent, dose, route, metabolism, interaction, and patient vulnerability.",
+      "pathophysiology": [
+        "Stimulant and dopaminergic effects can amplify reward, salience, motor activity, speech, and confidence while reducing sleep and inhibitory control.",
+        "Corticosteroid, endocrine-active, and other systemic treatments can alter stress-response, circadian, immune, and limbic signaling and may produce mood elevation, depression, psychosis, or mixed symptoms.",
+        "Antidepressant-associated mania may be brief and exposure-linked, or a full syndrome may persist and reveal bipolar I disorder; time course and longitudinal history determine attribution."
+      ],
+      "etiology": "Potential triggers include amphetamine-type stimulants, cocaine, other activating substances, corticosteroids, dopaminergic medications, some antidepressants, and selected other medications or withdrawal states. A substance or medication must be capable of producing the presentation, and exposure must fit the timing. Caffeine use, prescribed treatment, or a positive screen alone does not establish the diagnosis.",
+      "riskFactors": [
+        "A recent start, dose increase, binge, intoxication, withdrawal, interaction, or abrupt discontinuation involving an activating substance or medication",
+        "A personal or family history of bipolar disorder, prior antidepressant activation, psychosis, or substance-use disorder",
+        "Sleep deprivation, postpartum transition, neurologic illness, or high physiologic stress that can amplify activation",
+        "Polysubstance use, unknown products, high-potency formulations, or impaired hepatic or renal clearance"
+      ],
+      "signsSymptoms": [
+        "Distinct new elevated, expansive, or markedly irritable mood with increased energy or goal-directed activity",
+        "Little need for sleep, pressured speech, racing thoughts, distractibility, grandiosity, agitation, or risky behavior",
+        "Psychosis, severe impairment, aggression, unsafe driving, spending, sexual behavior, or inability to care for basic needs",
+        "A close relationship to exposure, intoxication, withdrawal, dose change, or re-challenge, while recognizing that temporal proximity alone is not proof"
+      ],
+      "diagnostics": [
+        "Construct an hour-by-hour or day-by-day timeline of mood, sleep, activity, psychosis, dose, route, last use, withdrawal, co-ingestants, and prior substance-free episodes.",
+        "Obtain collateral history, medication containers, pharmacy and prescription records when lawfully available, and prior psychiatric records; patients may be unable to report accurately during severe mania or intoxication.",
+        "Determine whether the substance is pharmacologically capable of causing the syndrome and whether onset and recovery fit its action, metabolites, organ clearance, and withdrawal pattern.",
+        "Reassess after intoxication, withdrawal, delirium, and major sleep loss improve; persistent or recurrent syndromal mania changes the differential."
+      ],
+      "labs": [
+        "No toxicology, serum drug level, imaging study, or rating scale independently proves that an exposure caused the bipolar syndrome.",
+        "Use glucose, electrolytes, renal and hepatic function, thyroid studies, pregnancy testing, ECG, creatine kinase, troponin, drug levels, toxicology, infection studies, or other tests according to the suspected agent and clinical findings.",
+        "Routine drug screens miss many synthetic, prescribed, and novel agents and cannot establish dose, timing, causation, or current impairment."
+      ],
+      "assessment": "First assess airway, breathing, circulation, temperature, glucose, hydration, chest pain, severe headache, seizure, delirium, overdose, and withdrawal. Then assess psychosis, suicide, violence, agitation, sleep, risky behavior, access to money, vehicles, weapons and substances, pregnancy, dependents, medication timing, and prior independent episodes. Document serial vital signs, mental status, neurologic findings, intake, output, and treatment response.",
+      "differential": [
+        "Bipolar I disorder, bipolar II disorder, cyclothymic disorder, or another independent bipolar-spectrum condition",
+        "Bipolar and related disorder due to another medical condition",
+        "ADHD, anxiety, trauma-related hyperarousal, sleep deprivation, personality-related affective change, or ordinary stimulant effects without a syndromal mood disorder",
+        "Delirium, schizophrenia-spectrum illness, brief psychotic disorder, intoxication, withdrawal, medication adverse effect, thyroid disease, seizure, or another neurologic or systemic illness"
+      ],
+      "treatments": [
+        "Stabilize stimulant toxicity, overdose, severe intoxication, delirium, hyperthermia, arrhythmia, seizure, or dangerous withdrawal under the appropriate emergency or toxicology protocol.",
+        "Stop, reduce, substitute, or taper the suspected agent with the prescriber when clinically safe; withdrawal from alcohol, benzodiazepines, and some other agents can be life-threatening if managed abruptly.",
+        "For severe agitation, psychosis, or mania, specialist-directed short-term treatment may include a benzodiazepine such as lorazepam or an antipsychotic such as olanzapine or risperidone, chosen for the suspected exposure, vital signs, QT, respiratory, seizure, temperature, pregnancy, and interaction risks.",
+        "After stabilization, treat any substance-use disorder, restore sleep and daily rhythms, provide psychoeducation, and reassess whether ongoing bipolar maintenance treatment is needed rather than assuming either lifelong medication or no follow-up."
+      ],
+      "contraindications": [
+        "Do not give additional activating medication or allow re-exposure as a diagnostic test.",
+        "Do not abruptly stop a dependence-forming sedative or alcohol when dangerous withdrawal is possible.",
+        "Do not assume every antidepressant-associated sleep or energy change is bipolar disorder, but do not continue escalating an antidepressant through syndromal mania without urgent review.",
+        "Do not choose a sedative or antipsychotic without considering respiratory depression, stimulant-related hyperthermia, QT risk, seizure threshold, anticholinergic burden, and co-ingestants."
+      ],
+      "safetyConsiderations": [
+        "Stimulant toxicity can cause hyperthermia, dehydration, rhabdomyolysis, arrhythmia, myocardial ischemia, stroke, seizure, and severe agitation.",
+        "Sedatives combined with opioids or alcohol can cause respiratory depression; a calm appearance after medication does not replace airway and vital-sign monitoring.",
+        "Suicide risk can rise during the crash or depressive period after activation resolves, while reduced tolerance can make relapse or overdose more dangerous.",
+        "Use the least restrictive safe environment and protect the patient and others from driving, weapons, financial loss, sexual exploitation, elopement, and accidental injury."
+      ],
+      "nursingPriorities": [
+        "Record exact exposure timing, amount, route, co-ingestants, last sleep, temperature, cardiovascular and neurologic findings, mental status, and serial response.",
+        "Reduce stimulation, use calm consistent limits, maintain hydration and nutrition when safe, and implement fall, seizure, aspiration, violence, or elopement precautions as indicated.",
+        "Monitor after apparent improvement for rebound depression, suicidality, recurrent psychosis, withdrawal, and medical complications.",
+        "Coordinate toxicology, psychiatry, addiction care, pharmacy, primary care, and follow-up, including a plan to avoid the suspected trigger."
+      ],
+      "redFlags": [
+        "Hyperthermia, chest pain, severe headache, seizure, rigidity, focal neurologic deficit, severe hypertension, arrhythmia, or altered consciousness",
+        "Suicidal or homicidal intent, command hallucinations, severe aggression, psychosis, or inability to maintain safety",
+        "Respiratory depression, suspected opioid or sedative co-ingestion, dangerous alcohol or benzodiazepine withdrawal, or unknown product exposure",
+        "Mania that persists beyond the expected exposure period or recurs without exposure, suggesting an independent bipolar disorder"
+      ],
+      "complications": [
+        "Accidental injury, violence, exploitation, financial or legal loss, suicide, and relationship or occupational disruption",
+        "Hyperthermia, rhabdomyolysis, kidney injury, arrhythmia, stroke, seizure, dehydration, or respiratory depression",
+        "Rebound depression, relapse, overdose after reduced tolerance, and untreated substance-use disorder",
+        "Misdiagnosis that leads to repeated trigger exposure or failure to treat independent bipolar illness"
+      ],
+      "prognosis": "Many cases improve after the causative exposure clears or is safely changed, but recovery depends on the agent, metabolites, chronic use, sleep loss, organ function, and complications. A full episode continuing beyond the expected effect or recurring without exposure warrants reassessment for primary bipolar disorder and a different long-term plan.",
+      "prevention": [
+        "Review bipolar history, sleep, substances, and interacting medications before prescribing an activating drug when clinically relevant.",
+        "Teach early reporting of reduced need for sleep, escalating energy, irritability, impulsivity, or psychosis after a medication change.",
+        "Provide substance-use treatment, overdose prevention, relapse planning, and a documented list of suspected triggers."
+      ],
+      "patientEducation": [
+        "The symptoms are real even when a substance or medication caused them.",
+        "Do not stop a prescribed medication or dependence-forming substance abruptly without medical guidance.",
+        "Keep a timeline of medication changes, substance exposure, sleep, and symptoms for follow-up.",
+        "Seek emergency help for severe agitation, psychosis, chest pain, fever, seizure, suicidal thinking, or breathing problems."
+      ],
+      "specialPopulations": [
+        "Pregnancy and postpartum care requires obstetric, toxicology, addiction, and psychiatric coordination; both ongoing exposure and abrupt withdrawal can create serious risk.",
+        "Children and adolescents need developmentally appropriate substance, medication, family, school, and safety assessment.",
+        "Older adults are more vulnerable to medication accumulation, steroid effects, polypharmacy, delirium, falls, and medical causes of new mania.",
+        "People with cardiac, seizure, renal, hepatic, neurologic, or respiratory disease need agent-specific monitoring and treatment modification."
+      ],
+      "nclexTraps": [
+        "A positive drug screen does not prove that the exposure caused mania.",
+        "Antidepressant activation is not automatically bipolar I disorder; persistence and the full episode pattern matter.",
+        "Symptoms occurring only during delirium are not diagnosed as substance/medication-induced bipolar and related disorder.",
+        "Do not focus on psychiatric calming while missing hyperthermia, arrhythmia, seizure, hypoxia, or dangerous withdrawal."
+      ],
+      "relatedTopics": [
+        "Bipolar I disorder",
+        "Bipolar II disorder",
+        "Bipolar and related disorder due to another medical condition",
+        "Substance use disorders",
+        "Stimulant use disorder",
+        "Delirium",
+        "Suicide risk assessment and care"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "who-icd11-cddr-mental-2024",
+        "va-dod-bipolar-cpg-2023",
+        "samhsa-tip42-cooccurring-2020",
+        "va-dod-sud-cpg-2021",
+        "who-mhgap-drug-withdrawal"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. DSM-5-TR and WHO support the exposure-attribution and independent-bipolar boundaries; VA/DoD bipolar guidance supports episode assessment and acute treatment; SAMHSA, VA/DoD SUD, and WHO sources support integrated substance care and withdrawal safety. Agent examples are illustrative and require an exposure-specific protocol.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "exposure timing",
+            "independent-disorder evidence",
+            "delirium exclusion",
+            "differential"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "classification",
+            "clinical description",
+            "substance and medication attribution",
+            "differential"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/bd/VA-DOD-CPG-BD-Full-CPGFinal508.pdf",
+          "documentVersion": "Bipolar disorder CPG 2023; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "manic assessment",
+            "triage",
+            "acute treatment",
+            "monitoring",
+            "longitudinal reassessment"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/sites/default/files/SAMHSA_Digital_Download/PEP20-02-01-004_Final_508.pdf",
+          "documentVersion": "TIP 42, 2020; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "co-occurring assessment",
+            "engagement",
+            "integrated treatment",
+            "recovery planning"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://www.who.int/teams/mental-health-and-substance-use/treatment-care/mental-health-gap-action-programme/evidence-centre/drug-use-disorders/management-of-drug-withdrawal",
+          "documentVersion": "mhGAP withdrawal guidance current; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "withdrawal safety",
+            "monitored treatment",
+            "abrupt-cessation caution"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/sud/VA-DoD-SUD-CPG_Final_for-508_v3.pdf",
+          "documentVersion": "VA/DoD SUD CPG 2021; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "screening",
+            "assessment",
+            "withdrawal triage",
+            "psychosocial treatment",
+            "pharmacotherapy",
+            "medication contraindications",
+            "monitoring",
+            "shared decision making"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.substance-medication-induced-bipolar-and-related-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.bipolar-and-related-disorder-due-to-another-medical-condition",
+      "name": "Bipolar and related disorder due to another medical condition",
+      "displayName": "Bipolar and related disorder due to another medical condition",
+      "category": "Mental health",
+      "aliases": [
+        "bipolar disorder due to a medical condition",
+        "mania due to another medical condition",
+        "secondary mania"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Bipolar and related disorder due to another medical condition is a significant episode of elevated, expansive, or very irritable mood with increased energy or activity that is judged to be a direct physical effect of a medical illness. It is not diagnosed just because a person with mania also has a medical condition; the timing, mechanism, examination, and course must support the connection.",
+      "whyItMatters": "A first manic presentation can be the warning sign of neurologic, endocrine, immune, infectious, metabolic, or other medical disease. Missing that cause can delay urgent treatment, while overlooking the mania can expose the patient to psychosis, exhaustion, unsafe behavior, suicide, violence, and inability to care for basic needs.",
+      "plainLanguageGlosses": [
+        {
+          "term": "secondary mania",
+          "plainLanguage": "an informal term for a manic syndrome caused by another medical condition rather than a primary bipolar illness",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "direct pathophysiologic consequence",
+          "plainLanguage": "the illness physically disrupts brain, hormone, immune, metabolic, or nervous-system function in a way that causes the mood episode",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "later-life first mania",
+          "plainLanguage": "a person's first clear manic episode occurring at an age when a new medical, neurologic, or medication cause deserves especially careful evaluation",
+          "sourceKeys": [
+            "va-dod-bipolar-cpg-2023",
+            "nice-cg185-bipolar"
+          ]
+        }
+      ],
+      "definition": "The mood disturbance must involve prominent elevated, expansive, or irritable mood with or without depressed features, cause clinically meaningful distress or impairment, and be attributable to the direct physiologic effect of another medical condition. It cannot occur only during delirium and must not be better explained by bipolar I disorder, another primary mental disorder, or a substance or medication. The medical illness, plausible mechanism, timing, atypical features, and longitudinal course all contribute; an association alone is insufficient.",
+      "pathology": "Neurologic injury or disease, endocrine or metabolic disruption, inflammation, infection, immune activity, or another systemic physiologic process can disturb mood, reward, sleep, activity, and inhibitory-control networks. A medical condition can also cause psychological distress or require an activating medication, so the direct disease effect must be separated from reaction, treatment effect, and independent bipolar vulnerability.",
+      "pathophysiology": [
+        "Focal or distributed dysfunction in frontal, limbic, basal-ganglia, thalamic, or temporal networks can impair behavioral inhibition and amplify reward, activity, speech, and emotional salience.",
+        "Thyroid, adrenal, metabolic, inflammatory, immune, infectious, or hypoxic changes can disrupt circadian and neurotransmitter regulation and produce mood elevation or mixed symptoms.",
+        "New sleep loss, pain, steroids, dopaminergic treatment, intoxication, and delirium can mimic or add to the syndrome and require separate attribution."
+      ],
+      "etiology": "Potential causes include selected cerebrovascular, traumatic, epileptic, inflammatory, demyelinating, neurodegenerative, endocrine, metabolic, infectious, and systemic illnesses. Examples considered in context include stroke, traumatic brain injury, multiple sclerosis, seizure-related disease, Cushing syndrome, hyperthyroidism, and other conditions affecting the CNS. These examples are diagnostic prompts, not proof that the condition caused mania.",
+      "riskFactors": [
+        "A first manic episode later in life or an abrupt presentation without a prior bipolar course",
+        "New focal neurologic findings, seizure, cognitive change, endocrine symptoms, fever, immune disease, or recent brain injury",
+        "A medical condition known to affect CNS, endocrine, metabolic, or immune function",
+        "Polypharmacy or treatment with corticosteroids, dopaminergic drugs, stimulants, or antidepressants that may offer a competing medication-induced explanation"
+      ],
+      "signsSymptoms": [
+        "Elevated, expansive, or markedly irritable mood with increased energy, activity, speech, confidence, or goal-directed behavior",
+        "Reduced need for sleep, racing thoughts, distractibility, grandiosity, agitation, risky behavior, psychosis, or severe functional impairment",
+        "Focal neurologic change, cognitive decline, seizure, headache, endocrine or autonomic symptoms, fever, or other medical findings near the mood onset",
+        "A course that follows the medical illness more closely than a typical recurrent primary bipolar pattern"
+      ],
+      "diagnostics": [
+        "Confirm a syndromal mood episode and reconstruct the timeline of medical disease, neurologic events, medication changes, substances, sleep, prior episodes, and family history.",
+        "Perform full physical, neurologic, cognitive, attention, and mental-status examinations; obtain collateral baseline and prior records.",
+        "Assess whether the suspected disease has a plausible direct mechanism and whether severity and course track its activity or treatment.",
+        "Reassess after delirium, acute medical instability, and medication effects resolve because diagnostic attribution may change with longitudinal evidence."
+      ],
+      "labs": [
+        "No universal laboratory panel, scan, EEG, or biomarker proves that a medical condition caused the manic syndrome.",
+        "Use glucose, electrolytes, renal and hepatic function, thyroid studies, CBC, pregnancy testing, toxicology, infection or inflammatory studies, ECG, imaging, EEG, cerebrospinal fluid, endocrine testing, or other evaluation when supported by history and examination.",
+        "An incidental lesion or mildly abnormal value is not automatically causal; interpret location, severity, timing, mechanism, and course together."
+      ],
+      "assessment": "Assess airway and circulation when unstable, then suicide, violence, psychosis, agitation, sleep, intake, hydration, risky behavior, capacity, delirium, seizure, focal deficits, headache, fever, endocrine symptoms, substances, medications, pregnancy, access to money or vehicles, and ability to care for dependents. Compare with baseline and document serial neurologic and mental-status findings rather than treating the episode as purely behavioral.",
+      "differential": [
+        "Bipolar I disorder or another primary bipolar-spectrum condition",
+        "Substance/medication-induced bipolar and related disorder, especially with corticosteroids, stimulants, dopaminergic drugs, or antidepressants",
+        "Delirium, neurocognitive disorder, seizure or postictal state, encephalitis, psychotic disorder, ADHD, or severe sleep deprivation",
+        "Personality change due to another medical condition, frontal disinhibition, agitation from pain, or an adjustment response without a manic syndrome"
+      ],
+      "treatments": [
+        "Treat the underlying medical condition and immediate complications in parallel with the unsafe mood syndrome; neurologic, endocrine, infectious, immune, toxicologic, or other specialist care may be time-critical.",
+        "For severe mania, psychosis, or agitation, a context-appropriate antipsychotic such as quetiapine, olanzapine, or risperidone may be used while considering seizure threshold, QT, movement, metabolic, cerebrovascular, temperature, organ-function, and interaction risks.",
+        "Lithium or another mood stabilizer may be considered for persistent or recurrent syndromal illness, but organ function, fluid balance, interactions, pregnancy, neurologic disease, and the expected course of the medical cause determine appropriateness.",
+        "Use sleep restoration, low stimulation, hydration, nutrition, rehabilitation, psychoeducation, and a written relapse and medical-warning plan; ongoing maintenance is individualized rather than automatic."
+      ],
+      "contraindications": [
+        "Do not delay stroke, seizure, encephalitis, sepsis, endocrine crisis, hypoxia, or other emergency evaluation while arranging psychiatric care.",
+        "Do not diagnose direct causation solely because a medical condition is present or temporally nearby.",
+        "Do not use antidepressant monotherapy for an active manic syndrome.",
+        "Do not select an antipsychotic or mood stabilizer without accounting for the underlying disease, current neurologic status, organ function, hydration, pregnancy, and interacting treatment."
+      ],
+      "safetyConsiderations": [
+        "Later-life or abrupt first mania has a higher need for medical and neurologic evaluation, especially with focal findings, fever, seizure, cognitive change, or fluctuating awareness.",
+        "Antipsychotics may increase movement, metabolic, orthostatic, QT, sedation, and selected cerebrovascular risks; the exact profile is drug- and patient-specific.",
+        "Lithium toxicity risk rises with dehydration, renal impairment, sodium change, NSAIDs, ACE inhibitors, ARBs, and some diuretics.",
+        "Suicide, violence, exploitation, unsafe driving, spending, wandering, and inability to eat, drink, sleep, or manage dependents require immediate safety planning."
+      ],
+      "nursingPriorities": [
+        "Trend neurologic findings, cognition, attention, vital signs, sleep, intake, output, activity, psychosis, and behavior alongside medical-disease markers.",
+        "Reduce stimulation, set calm consistent limits, protect sleep, provide portable food and fluids when safe, and implement seizure, fall, aspiration, elopement, or violence precautions as indicated.",
+        "Complete medication reconciliation with start, stop, dose change, steroid, dopaminergic, endocrine, immunologic, and nonprescribed exposure timing.",
+        "Coordinate medical specialty, neurology, psychiatry, pharmacy, rehabilitation, caregivers, and discharge follow-up using one shared cause-and-safety plan."
+      ],
+      "redFlags": [
+        "New focal neurologic deficit, seizure, severe headache, fever, neck stiffness, altered consciousness, hypoxia, or autonomic instability",
+        "Suicidal or homicidal intent, command hallucinations, severe aggression, psychosis, or inability to meet basic needs",
+        "No meaningful sleep with escalating activity, dehydration, exhaustion, food or fluid refusal, or unsafe wandering",
+        "Suspected medication toxicity, endocrine crisis, infection, stroke, encephalitis, or rapid deterioration of the underlying disease"
+      ],
+      "complications": [
+        "Delayed treatment of neurologic, endocrine, infectious, immune, metabolic, or other causative disease",
+        "Suicide, injury, violence, exploitation, financial or legal loss, dehydration, malnutrition, and exhaustion",
+        "Treatment-related movement, metabolic, renal, thyroid, cardiac, or interaction harm",
+        "Persistent cognitive or functional disability and recurrent mood episodes when the cause or independent bipolar vulnerability remains active"
+      ],
+      "prognosis": "Outcome depends on the cause, reversibility, lesion or disease burden, treatment timing, and whether an independent bipolar vulnerability also exists. Mood may resolve with medical treatment, recur when the disease relapses, or persist and require longer psychiatric care. Improvement after treatment supports the working formulation but does not prove one mechanism by itself.",
+      "prevention": [
+        "Monitor mood, sleep, cognition, and behavior during diseases and treatments known to affect CNS or endocrine function.",
+        "Create an early-action plan for recurrence of neurologic symptoms, endocrine instability, infection, reduced need for sleep, or behavioral disinhibition.",
+        "Maintain coordinated medication, organ-function, and physical-health monitoring across specialties."
+      ],
+      "patientEducation": [
+        "A medical illness can physically cause a manic syndrome, but the mood symptoms still need urgent treatment when safety is affected.",
+        "The diagnosis requires evidence for the connection; one abnormal test or one associated disease does not prove it.",
+        "Report reduced need for sleep, escalating energy, psychosis, severe headache, weakness, seizure, fever, or confusion promptly.",
+        "Do not stop medical or psychiatric medication without a coordinated plan."
+      ],
+      "specialPopulations": [
+        "Older adults with first mania need careful delirium, medication, neurologic, endocrine, and neurocognitive evaluation.",
+        "Children and adolescents require developmental, neurologic, metabolic, medication, family, and school context.",
+        "Pregnancy and postpartum presentations require obstetric and perinatal psychiatric assessment because primary bipolar illness, endocrine or vascular disease, infection, medication effects, and sleep loss can overlap.",
+        "People with seizure, brain injury, stroke, dementia, kidney, liver, cardiac, or endocrine disease need treatment matched to the underlying condition and organ function."
+      ],
+      "nclexTraps": [
+        "A medical condition plus mania is not automatically bipolar and related disorder due to another medical condition.",
+        "Symptoms occurring only during delirium require a delirium pathway, not this diagnosis.",
+        "Treat the medical cause and the unsafe manic syndrome in parallel.",
+        "A new later-life manic episode is a cue for medical evaluation, not proof of a specific disease."
+      ],
+      "relatedTopics": [
+        "Bipolar I disorder",
+        "Substance/medication-induced bipolar and related disorder",
+        "Delirium",
+        "Catatonia",
+        "Personality change due to another medical condition",
+        "Suicide risk assessment and care"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "who-icd11-cddr-mental-2024",
+        "va-dod-bipolar-cpg-2023",
+        "nice-cg185-bipolar",
+        "nimh-bipolar-current"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. DSM-5-TR and WHO support direct-physiologic attribution, delirium exclusion, and differential boundaries; VA/DoD and NICE support manic assessment, acute treatment, monitoring, and medical differential; NIMH supports the learner overview. Medical examples are illustrative and never substitute for patient-specific evidence of causation.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "direct-physiologic requirement",
+            "delirium exclusion",
+            "differential",
+            "medical associations"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "classification",
+            "clinical description",
+            "etiologic attribution",
+            "functional impact",
+            "differential"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/bd/VA-DOD-CPG-BD-Full-CPGFinal508.pdf",
+          "documentVersion": "Bipolar disorder CPG 2023; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "assessment",
+            "medical differential",
+            "triage",
+            "acute treatment",
+            "monitoring"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/cg185/chapter/recommendations",
+          "documentVersion": "CG185 current recommendations; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "risk assessment",
+            "acute mania",
+            "medication selection",
+            "physical-health monitoring",
+            "special populations"
+          ]
+        },
+        {
+          "authority": "National Institute of Mental Health",
+          "url": "https://www.nimh.nih.gov/health/publications/bipolar-disorder",
+          "documentVersion": "Bipolar Disorder current publication; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "plain-language symptoms",
+            "course",
+            "treatment overview",
+            "patient education"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.bipolar-and-related-disorder-due-to-another-medical-condition",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.catatonia",
+      "name": "Catatonia",
+      "displayName": "Catatonia",
+      "category": "Mental health",
+      "aliases": [
+        "catatonic syndrome"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Catatonia is a serious syndrome in which a person's movement, speech, response to the environment, and sometimes vital functions become profoundly abnormal. A person may be motionless and mute, hold unusual postures, resist movement, copy words or actions, or become intensely active without a clear purpose. Catatonia can occur with mood or psychotic disorders, autism, neurologic or medical illness, medication effects, intoxication, or withdrawal; it is not a synonym for schizophrenia or deliberate refusal.",
+      "whyItMatters": "Untreated catatonia can cause dehydration, malnutrition, aspiration, blood clots, pressure injury, rhabdomyolysis, kidney injury, and death. Fever, autonomic instability, rigidity, or rapid deterioration suggests malignant catatonia or a dangerous mimic and requires emergency treatment while clinicians search for the cause.",
+      "plainLanguageGlosses": [
+        {
+          "term": "psychomotor syndrome",
+          "plainLanguage": "a condition that disrupts the link between mental state, purposeful movement, speech, and response to the environment",
+          "sourceKeys": [
+            "bap-catatonia-guideline-2023",
+            "apa-dsm5tr-2022"
+          ]
+        },
+        {
+          "term": "stupor",
+          "plainLanguage": "profoundly reduced movement and response despite the person not being in ordinary sleep",
+          "sourceKeys": [
+            "bap-catatonia-guideline-2023",
+            "bush-francis-catatonia-scale-1996"
+          ]
+        },
+        {
+          "term": "malignant catatonia",
+          "plainLanguage": "catatonia with fever or hyperthermia, unstable vital signs, altered consciousness, or systemic deterioration; this is an emergency",
+          "sourceKeys": [
+            "bap-catatonia-guideline-2023",
+            "ect-catatonia-review-2020"
+          ]
+        }
+      ],
+      "definition": "Catatonia is diagnosed clinically from a characteristic cluster of motor, speech, behavioral, and autonomic signs; DSM-5-TR requires three or more qualifying features. It may be associated with another mental disorder, caused by a medical condition, or remain unspecified while evaluation continues. A structured scale can standardize detection and trend severity, but no scale score, laboratory test, medication response, or psychiatric history determines the cause or safely excludes neurologic and medical mimics.",
+      "pathology": "Catatonia is a cross-diagnostic syndrome rather than one disease or a schizophrenia subtype. Dysfunction in cortical, basal-ganglia, thalamic, limbic, and brainstem motor-control networks can produce too little movement, abnormal persistence of movement, purposeless excitement, or alternating states. A mute or immobile person may still hear, understand, feel fear, and later remember care.",
+      "pathophysiology": [
+        "Altered GABA, glutamate, dopamine, and motor-network regulation are leading mechanisms, but no single neurotransmitter model explains every case.",
+        "Immobility and reduced swallowing cause venous stasis, pressure injury, contracture, atelectasis, aspiration, dehydration, malnutrition, constipation, and urinary retention.",
+        "Severe rigidity or excitement with hyperthermia and autonomic instability can cause muscle injury, rhabdomyolysis, arrhythmia, kidney injury, and multiorgan failure."
+      ],
+      "etiology": "Catatonia can occur with bipolar disorder, severe depression, schizophrenia-spectrum illness, autism and other neurodevelopmental conditions, postpartum psychiatric illness, autoimmune encephalitis, seizure disorders, stroke, CNS infection, traumatic or hypoxic brain injury, metabolic or endocrine disease, systemic illness, medication exposure, intoxication, or withdrawal. More than one contributor may coexist, and a psychiatric history must never end the medical evaluation.",
+      "riskFactors": [
+        "A current or previous catatonic episode",
+        "Severe mood, psychotic, neurologic, autoimmune, infectious, metabolic, or neurodevelopmental illness",
+        "A new sustained decline from baseline in an autistic or otherwise neurodevelopmentally disabled person",
+        "Recent dopamine-blocking treatment or abrupt withdrawal from benzodiazepines, clozapine, alcohol, or another relevant substance"
+      ],
+      "signsSymptoms": [
+        "Stupor, immobility, mutism, staring, withdrawal, or markedly reduced eating and drinking",
+        "Posturing, catalepsy, waxy flexibility, rigidity, negativism, grimacing, or repetitive abnormal movement or speech",
+        "Echolalia or echopraxia, meaning involuntary repetition of another person's words or movements",
+        "Purposeless excitement, impulsivity, or undirected combativeness that may alternate with immobility",
+        "Fever, tachycardia, labile blood pressure, rapid breathing, diaphoresis, altered consciousness, or systemic decline in malignant presentations"
+      ],
+      "diagnostics": [
+        "Observe spontaneous behavior before prompting, perform a trained motor and neurologic examination, obtain collateral baseline and timing, and document the exact signs rather than only writing 'catatonic.'",
+        "A tool such as the Bush-Francis Catatonia Screening Instrument and Rating Scale can support detection and serial response; a positive screen is not a complete diagnosis and does not identify the cause.",
+        "Review all recent medications, depot injections, antiemetics, sedatives, substances, missed doses, and withdrawal timing.",
+        "Use EEG, brain imaging, cerebrospinal fluid studies, autoimmune or infectious testing, and other investigations when seizure, encephalitis, focal findings, first or atypical presentation, fever, or another medical cause is possible.",
+        "A monitored lorazepam challenge may support the diagnosis, but improvement is not perfectly specific and no response does not exclude catatonia or the need for ECT."
+      ],
+      "labs": [
+        "No laboratory value confirms or excludes catatonia.",
+        "Use CBC, electrolytes, glucose, calcium, magnesium, phosphate, renal and hepatic function, creatine kinase, urinalysis, toxicology, cultures, thyroid or other endocrine studies, pregnancy testing, and additional tests according to the presentation.",
+        "Elevated creatine kinase supports muscle injury but is nonspecific and also occurs with seizures, neuroleptic malignant syndrome, trauma, injections, and prolonged immobility."
+      ],
+      "assessment": "Assess airway, breathing, circulation, temperature, oxygenation, glucose, vital-sign trends, hydration, intake and output, swallowing, skin, mobility, pain behavior, bowel and bladder function, VTE risk, consciousness, attention, seizure, focal deficits, recent infection, medication and withdrawal timing, and pregnancy. Continue explaining care and use supported communication because mutism does not prove unconsciousness, incapacity, or lack of understanding.",
+      "differential": [
+        "Delirium, which can coexist and changes the risks of ordinary benzodiazepine or antipsychotic treatment",
+        "Neuroleptic malignant syndrome, serotonin syndrome, malignant hyperthermia, sepsis, heat illness, intoxication, or withdrawal",
+        "Nonconvulsive status epilepticus, encephalitis, locked-in syndrome, akinetic mutism, abulia, severe parkinsonism, stroke, or coma",
+        "Severe depression, psychosis, selective mutism, medication sedation, or behavioral shutdown without the required catatonic sign cluster"
+      ],
+      "treatments": [
+        "Stabilize airway, circulation, temperature, hydration, nutrition, swallowing, skin, mobility, elimination, and VTE risk while treating the underlying psychiatric, neurologic, medical, toxic, or withdrawal cause.",
+        "Benzodiazepines, most often lorazepam, are a first-line treatment for many presentations and require protocolized dosing, respiratory and sedation monitoring, interaction review, and gradual taper after response rather than abrupt discontinuation.",
+        "Electroconvulsive therapy is a first-line or early specialist treatment when catatonia is malignant, life-threatening, severe, benzodiazepine-resistant, or when rapid response is needed; it is not merely a last resort.",
+        "Use physical therapy, range of motion, pressure redistribution, oral care, aspiration precautions, nutrition support, and pharmacologic or mechanical VTE prevention when indicated by the patient's medical risk."
+      ],
+      "contraindications": [
+        "Do not assume mutism, immobility, or poor intake is defiance, manipulation, or consent refusal.",
+        "Do not use routine antipsychotic escalation as first-line catatonia treatment; dopamine blockade can worsen catatonia or precipitate neuroleptic malignant syndrome, especially with malignant features.",
+        "Do not abruptly stop benzodiazepines after response because withdrawal can cause relapse, seizures, delirium, and other harm.",
+        "Do not give oral food, fluid, or medication before assessing swallowing when alertness, secretion control, cough, or oral movement is impaired."
+      ],
+      "safetyConsiderations": [
+        "Malignant catatonia is an emergency; stabilize and evaluate mimics while arranging urgent definitive treatment, often including ECT.",
+        "Lorazepam and other benzodiazepines can cause sedation and respiratory depression, especially with opioids, alcohol, sleep apnea, lung disease, frailty, or other CNS depressants.",
+        "Immobility requires active DVT/PE, pressure-injury, contracture, aspiration, pneumonia, dehydration, malnutrition, bladder, and bowel prevention.",
+        "Rapid return of movement after treatment creates fall, impulsivity, elopement, and line-removal risk; reassess strength, balance, judgment, and observation needs."
+      ],
+      "nursingPriorities": [
+        "Document item-level signs, vital signs, oral intake, output, swallowing, mobility, skin, elimination, respiratory status, treatment time, response, and adverse effects serially.",
+        "Turn and reposition, protect skin, provide range of motion and oral care, assess VTE prophylaxis, and support hydration and nutrition under swallowing guidance.",
+        "Speak calmly, explain each procedure, preserve privacy, avoid confrontation and unnecessary stimulation, and ask about the patient's experience when communication returns.",
+        "Escalate fever, autonomic change, rigidity, rising muscle injury, seizure, hypoxia, aspiration, or rapidly reduced responsiveness immediately."
+      ],
+      "redFlags": [
+        "Fever or hyperthermia with rigidity, autonomic instability, altered consciousness, or systemic deterioration",
+        "Inability to eat or drink, dysphagia, aspiration, dehydration, oliguria, severe constipation, urinary retention, or rapidly developing pressure injury",
+        "Seizure, focal deficit, dyskinesia, severe headache, infection signs, or fluctuating attention suggesting neurologic or medical disease",
+        "Recent dopamine blockade, serotonergic exposure, abrupt benzodiazepine or clozapine withdrawal, or rapidly escalating purposeless excitement"
+      ],
+      "complications": [
+        "Aspiration pneumonia, dehydration, malnutrition, refeeding risk, acute kidney injury, rhabdomyolysis, and electrolyte disturbance",
+        "DVT, pulmonary embolism, pressure injury, contracture, infection, constipation, urinary retention, and deconditioning",
+        "Trauma, exhaustion, accidental device removal, restraint injury, and psychological trauma from being treated as unresponsive or defiant",
+        "Death from malignant catatonia or an unrecognized medical mimic"
+      ],
+      "prognosis": "Many patients improve markedly with prompt cause-directed care, benzodiazepines, and/or ECT, but response and relapse risk depend on etiology, treatment delay, complications, and whether the underlying disorder remains active. A negative lorazepam challenge does not establish a poor prognosis or rule out ECT benefit.",
+      "prevention": [
+        "Document the person's early signs, prior triggers, effective treatment, and safe taper plan after recovery.",
+        "Avoid abrupt withdrawal of effective benzodiazepine or clozapine treatment and review dopamine-blocking medication carefully after a catatonic episode.",
+        "For high-risk patients, teach caregivers to seek early evaluation for new slowing, mutism, posturing, reduced intake, or purposeless excitement."
+      ],
+      "patientEducation": [
+        "Catatonia is a medical and psychiatric syndrome, not intentional refusal or a form of schizophrenia alone.",
+        "A person may be aware even while unable to move or speak; respectful explanation and comfort still matter.",
+        "Treatment addresses three things at once: the catatonia, its cause, and complications from immobility or poor intake.",
+        "Seek emergency help if signs return with fever, unstable vital signs, inability to eat or drink, breathing difficulty, or rapidly reduced responsiveness."
+      ],
+      "specialPopulations": [
+        "In autistic and other neurodevelopmentally disabled people, compare with the person's own baseline; longstanding stereotypy or limited speech alone is not catatonia.",
+        "Children and adolescents require pediatric, neurologic, and child-psychiatry evaluation with age-appropriate medication, consent, and ECT planning.",
+        "Older and medically ill adults have high delirium, polypharmacy, aspiration, falls, respiratory, and neurologic risk; catatonia and delirium may coexist.",
+        "Pregnancy and postpartum care requires psychiatry, obstetrics, anesthesia, pharmacy, and neonatal coordination; untreated catatonia can threaten both patient and fetus."
+      ],
+      "nclexTraps": [
+        "Catatonia is a cross-diagnostic syndrome, not a schizophrenia subtype or deliberate refusal.",
+        "Mutism does not prove unconsciousness, incapacity, or consent.",
+        "A lorazepam response supports but does not prove the diagnosis; nonconvulsive seizures can also respond.",
+        "Benzodiazepines and/or ECT are first-line treatments; antipsychotics are not routine first-line catatonia treatment."
+      ],
+      "relatedTopics": [
+        "Bipolar I disorder",
+        "Major depressive disorder",
+        "Schizophrenia",
+        "Autism spectrum disorder",
+        "Delirium",
+        "Neuroleptic malignant syndrome",
+        "Serotonin syndrome",
+        "Nonconvulsive status epilepticus",
+        "Electroconvulsive therapy",
+        "Lorazepam"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "who-icd11-cddr-mental-2024",
+        "bap-catatonia-guideline-2023",
+        "bush-francis-catatonia-scale-1996",
+        "dailymed-lorazepam-injection-2026",
+        "ect-catatonia-review-2020",
+        "fda-ect-classification",
+        "apa-ect-patient-guide"
+      ],
+      "sourceNote": "Original ANI nursing synthesis adapted from ANI's existing nonproduction catatonia field draft and rewritten to the learner-language front-door contract. BAP is the controlling management source; DSM and WHO support diagnosis and cross-diagnostic identity; Bush-Francis supports structured detection; current DailyMed labeling supports lorazepam safety; FDA, APA, and the ECT review support context-dependent ECT use and monitoring. No challenge dose or universal test panel is presented as self-directed guidance.",
+      "provenance": [
+        {
+          "authority": "British Association for Psychopharmacology consensus guideline group",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10101189/",
+          "documentVersion": "Journal of Psychopharmacology 2023;37(4):327-369; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "syndrome identity",
+            "assessment",
+            "causes",
+            "differential",
+            "benzodiazepines",
+            "ECT",
+            "malignant catatonia",
+            "special populations"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "diagnostic sign threshold",
+            "cross-diagnostic specifiers",
+            "medical attribution",
+            "differential"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "classification",
+            "clinical description",
+            "diagnostic requirements",
+            "differential"
+          ]
+        },
+        {
+          "authority": "Bush, Fink, Petrides, Dowling, and Francis",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/8686483/",
+          "documentVersion": "Acta Psychiatrica Scandinavica 1996;93:129-136; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "structured screening",
+            "rating scale",
+            "standardized examination",
+            "serial trending"
+          ]
+        },
+        {
+          "authority": "U.S. National Library of Medicine DailyMed",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=20140b19-846b-425f-b191-670e17809945",
+          "documentVersion": "Lorazepam injection label updated 2026; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "sedation",
+            "respiratory depression",
+            "opioid interaction",
+            "dependence",
+            "withdrawal"
+          ]
+        },
+        {
+          "authority": "U.S. Food and Drug Administration",
+          "url": "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?id=4160",
+          "documentVersion": "ECT device classification current; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "catatonia indication context",
+            "ECT classification",
+            "treatment boundary"
+          ]
+        },
+        {
+          "authority": "Neuropsychiatric Disease and Treatment via PubMed Central",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7526008/",
+          "documentVersion": "Neuropsychiatric Disease and Treatment 2020;16:2191-2208; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "ECT effectiveness",
+            "early-use rationale",
+            "preparation",
+            "consent",
+            "monitoring",
+            "evidence limitations"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/patients-families/ect",
+          "documentVersion": "Current ECT patient guide; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "definition",
+            "assessment",
+            "treatments",
+            "contraindications",
+            "nursingPriorities",
+            "patientEducation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.catatonia",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.paranoid-personality-disorder",
+      "name": "Paranoid personality disorder",
+      "displayName": "Paranoid personality disorder",
+      "category": "Mental health",
+      "aliases": [
+        "paranoid personality"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Paranoid personality disorder is a long-term pattern of unjustified distrust and suspiciousness in which a person often expects other people to exploit, harm, deceive, or betray them and may interpret neutral events as threatening. The pattern is broad, begins by early adulthood, and disrupts relationships or functioning; it is not the same as a temporary fear, a justified response to danger, or a persistent psychotic delusion.",
+      "whyItMatters": "Mistrust can make assessment, medication use, consent, and follow-up difficult, while confrontation or secretive care can intensify fear and conflict. Nurses must build safety through transparency and consistency while also checking for real victimization, trauma, delirium, substance effects, psychosis, neurologic illness, suicide risk, and violence risk instead of assuming every concern is part of the personality pattern.",
+      "plainLanguageGlosses": [
+        {
+          "term": "pervasive pattern",
+          "plainLanguage": "a long-standing pattern that appears across many relationships and situations rather than during one crisis",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "apa-personality-disorders"
+          ]
+        },
+        {
+          "term": "suspiciousness",
+          "plainLanguage": "expecting harmful or deceptive motives despite insufficient evidence",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "medlineplus-personality-disorders"
+          ]
+        },
+        {
+          "term": "reality testing",
+          "plainLanguage": "the ability to compare a belief with evidence and recognize other possible explanations",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "who-icd11-cddr-mental-2024"
+          ]
+        }
+      ],
+      "definition": "DSM-5-TR describes a pervasive distrust and suspiciousness of others, beginning by early adulthood and present across contexts, with at least four characteristic features such as unsupported suspicion of exploitation, preoccupation with loyalty, reluctance to confide, reading hidden threats into benign remarks, holding grudges, perceiving attacks on character, or recurrent unsupported suspicion of a partner's fidelity. The pattern must not occur exclusively during schizophrenia, bipolar or depressive disorder with psychotic features, or another psychotic disorder and must not be attributable to a medical condition. ICD-11 primarily classifies personality disorder by severity and trait domains rather than preserving every DSM categorical name.",
+      "pathology": "The disorder involves a stable interpersonal and cognitive style centered on threat expectation, guardedness, and hostile interpretation. It does not imply that every suspicion is false or that the person is violent. Personality diagnosis requires persistence, breadth, impairment, and cultural context rather than a judgment based on one difficult interaction.",
+      "pathophysiology": [
+        "Heightened attention to possible threat and a tendency to interpret ambiguity as hostile can create a self-reinforcing cycle of vigilance, guarded behavior, relationship conflict, and further mistrust.",
+        "Stress may intensify suspiciousness and transient unusual experiences, but sustained hallucinations, fixed delusions, disorganization, or marked functional decline require assessment for psychotic or medical illness.",
+        "No laboratory, scan, gene, or single neurotransmitter abnormality defines paranoid personality disorder."
+      ],
+      "etiology": "Cause is multifactorial and incompletely understood. Temperament, family vulnerability, adverse or unpredictable relationships, trauma, social environment, and learned threat expectations may contribute. Trauma or discrimination can create understandable vigilance without a personality disorder, and no history factor proves the diagnosis.",
+      "riskFactors": [
+        "Long-standing suspiciousness and guarded interpersonal style beginning by adolescence or early adulthood",
+        "Family vulnerability to personality or psychotic disorders, without deterministic inheritance",
+        "Chronic adversity, betrayal, trauma, unsafe environments, discrimination, or unstable attachment, interpreted in cultural and factual context",
+        "Stress, sleep loss, substance use, or medical illness that may worsen suspiciousness but can also indicate a different acute diagnosis"
+      ],
+      "signsSymptoms": [
+        "Repeated unsupported concern that others intend exploitation, harm, deception, or betrayal",
+        "Persistent doubts about loyalty, reluctance to confide, and close monitoring for hidden motives",
+        "Reading demeaning or threatening meaning into neutral remarks, jokes, delays, or ordinary mistakes",
+        "Holding grudges, reacting strongly to perceived attacks, or repeatedly suspecting a partner without adequate evidence",
+        "A broad long-term pattern causing relationship, occupational, treatment, or legal difficulty while reality testing is generally more intact than in a primary psychotic disorder"
+      ],
+      "diagnostics": [
+        "Use a longitudinal clinical interview, collateral information when appropriate, and records across settings; do not diagnose from a single conflict, guarded interview, or questionnaire.",
+        "Establish onset by early adulthood, persistence across contexts, distress or impairment, and a pattern that is not limited to mood, psychotic, trauma, substance, delirium, or medical episodes.",
+        "Ask what evidence supports each concern and verify possible abuse, exploitation, discrimination, stalking, unsafe housing, or treatment error before labeling suspicion unjustified.",
+        "Assess culture, language, migration, trauma, institutional history, and power differences because appropriate caution can be misread as pathology."
+      ],
+      "labs": [
+        "No laboratory, imaging, genetic, or psychological test independently diagnoses paranoid personality disorder.",
+        "Use toxicology, cognitive testing, neurologic evaluation, infection or metabolic studies, imaging, or other testing when suspiciousness is new, fluctuating, later-onset, or accompanied by cognitive, focal, autonomic, or consciousness change.",
+        "A personality inventory may support formulation but does not replace longitudinal clinical judgment and validity assessment."
+      ],
+      "assessment": "Introduce yourself and your role, explain what will happen before touching the patient or changing the plan, clarify confidentiality and its limits, offer choices, and keep promises. Assess actual threats, suicide, violence, weapons, psychosis, mania, depression, trauma, substances, sleep, cognition, delirium, medication adherence, and ability to meet basic needs. Explore beliefs without ridicule, interrogation, automatic agreement, or unnecessary argument.",
+      "differential": [
+        "Delusional disorder, schizophrenia, schizoaffective disorder, mood disorder with psychotic features, or brief psychotic disorder",
+        "PTSD or complex trauma, social anxiety disorder, autism spectrum disorder, schizotypal personality disorder, schizoid personality disorder, or avoidant personality disorder",
+        "Substance or medication effects, delirium, major neurocognitive disorder, traumatic brain injury, seizure disorder, or another neurologic or medical condition",
+        "Real abuse, exploitation, discrimination, unsafe living conditions, or culturally understandable mistrust"
+      ],
+      "treatments": [
+        "Psychotherapy is the main treatment when the patient is willing. A steady, respectful, collaborative approach that emphasizes goals, autonomy, and transparent boundaries is more useful than demanding immediate trust.",
+        "Support practical problem-solving, emotion regulation, communication, and testing alternative explanations without humiliating or coercive confrontation.",
+        "No medication treats the core personality pattern. Treat a separately diagnosed depression or anxiety disorder with an appropriate option such as sertraline or escitalopram when indicated, and use an antipsychotic only for a defined psychotic or severe target syndrome under specialist review.",
+        "Address trauma, substance use, housing, legal stress, sleep, medical illness, and treatment-access barriers that maintain threat and conflict."
+      ],
+      "contraindications": [
+        "Do not argue aggressively, mock the belief, demand disclosure, make promises that cannot be kept, or use hidden changes when transparency is possible.",
+        "Do not validate an unsupported accusation as fact or join a delusional system; acknowledge the emotion and focus on observable safety and choices.",
+        "Do not prescribe an antipsychotic solely because a person is distrustful or difficult to engage.",
+        "Do not use the diagnosis to dismiss reports of abuse, discrimination, adverse effects, or treatment errors without investigation."
+      ],
+      "safetyConsiderations": [
+        "Assess violence risk from current intent, target, plan, access, intoxication, psychosis, agitation, and history rather than from the diagnosis alone.",
+        "Assess suicide and self-harm directly, especially with depression, isolation, humiliation, legal crisis, perceived betrayal, or access to weapons.",
+        "Use consistent staff communication because contradictory explanations, whispering, surprise procedures, and unexplained delays can amplify mistrust.",
+        "Respect privacy while following lawful duties when there is imminent danger, abuse, or inability to care for basic needs."
+      ],
+      "nursingPriorities": [
+        "Use one clear plan, predictable timing, factual language, adequate personal space, and choices whenever possible.",
+        "Explain medications, identifiers, procedures, documentation, and delays openly; invite questions and correct errors without defensiveness.",
+        "Document observable behavior and exact statements rather than pejorative labels such as manipulative, crazy, or paranoid without context.",
+        "Coordinate a consistent team response and reassess for acute psychosis, delirium, intoxication, trauma, or medical change when behavior differs from baseline."
+      ],
+      "redFlags": [
+        "Specific suicidal or homicidal intent, weapon access, a named target, escalating pursuit or confrontation, command hallucinations, or inability to maintain safety",
+        "New or rapidly worsening suspiciousness, fluctuating attention, fever, focal deficit, seizure, head injury, intoxication, withdrawal, or medication change",
+        "Severe insomnia, mania, disorganization, hallucinations, fixed bizarre delusions, or marked functional decline",
+        "Evidence of actual abuse, stalking, exploitation, unsafe housing, or coercive control requiring immediate protection"
+      ],
+      "complications": [
+        "Social isolation, relationship breakdown, work or legal conflict, and avoidance of preventive or urgent health care",
+        "Medication nonadherence, early discharge, fragmented care, and escalating conflict after misunderstood communication",
+        "Depression, anxiety, substance use, suicide risk, or aggressive incidents in the presence of specific acute risk factors",
+        "Misdiagnosis of psychosis, trauma, neurocognitive disease, or real victimization as a personality problem"
+      ],
+      "prognosis": "The pattern is often long-standing, but distress, conflict, engagement, and functioning can improve with a reliable therapeutic relationship, practical goals, and treatment of coexisting conditions. Progress may be gradual and should be measured by safety, functioning, flexibility, and chosen goals rather than immediate emotional openness.",
+      "prevention": [
+        "Personality disorder itself has no established universal prevention method.",
+        "Trauma-informed, transparent care and early treatment of mood, psychotic, substance, sleep, and medical problems can prevent avoidable escalation.",
+        "Use consistent handoffs and crisis plans that identify helpful communication, known triggers, supports, and lawful safety steps."
+      ],
+      "patientEducation": [
+        "The diagnosis describes a long-standing pattern of mistrust that causes problems; it does not mean every concern is false.",
+        "Treatment should be collaborative, and trust can be built slowly through clear information and reliable follow-through.",
+        "Medication may help a separate depression, anxiety, or psychotic condition but does not directly erase the personality pattern.",
+        "Seek urgent help for thoughts of harming yourself or someone else, severe sleep loss, hallucinations, confusion, or a sudden major change."
+      ],
+      "specialPopulations": [
+        "Older adults with new suspiciousness need delirium, medication, sensory, neurocognitive, neurologic, and safety assessment before a personality diagnosis.",
+        "Adolescents should not be given a fixed personality label from developmentally limited behavior; assess persistence, context, trauma, family, school, and emerging illness carefully.",
+        "People from marginalized, surveilled, displaced, incarcerated, or previously harmed groups may have fact-based mistrust that requires cultural humility and verification.",
+        "People with hearing, language, cognitive, or communication barriers need interpreters and accessible explanations so misunderstanding is not mislabeled as suspiciousness."
+      ],
+      "nclexTraps": [
+        "Do not confront suspicious beliefs harshly and do not agree that an unsupported accusation is fact.",
+        "Paranoid personality disorder does not automatically include persistent hallucinations or fixed delusions.",
+        "A personality diagnosis requires a long-standing cross-situational pattern, not one guarded encounter.",
+        "Risk assessment is based on intent, plan, access, history, intoxication, and current symptoms—not the label alone."
+      ],
+      "relatedTopics": [
+        "Delusional disorder",
+        "Schizophrenia",
+        "Schizotypal personality disorder",
+        "Schizoid personality disorder",
+        "Post-traumatic stress disorder",
+        "Substance/medication-induced psychotic disorder",
+        "Violence risk assessment and prevention"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "who-icd11-cddr-mental-2024",
+        "apa-personality-disorders",
+        "medlineplus-personality-disorders"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. DSM-5-TR supports the categorical identity, feature threshold, and exclusions; WHO supports the broader dimensional personality-disorder frame and cultural/functional assessment; APA and MedlinePlus support diagnosis, psychotherapy, and patient education. Treatment language does not portray mistrust as psychosis or recommend routine medication for the core pattern.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "feature threshold",
+            "developmental and cross-situational pattern",
+            "exclusions",
+            "differential"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "personality-disorder severity",
+            "trait formulation",
+            "functional impairment",
+            "culture",
+            "diagnostic boundaries"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/patients-families/personality-disorders",
+          "documentVersion": "Personality Disorders current patient resource; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "definition",
+            "diagnosis",
+            "psychotherapy",
+            "medication limitation",
+            "patient education"
+          ]
+        },
+        {
+          "authority": "MedlinePlus, U.S. National Library of Medicine",
+          "url": "https://medlineplus.gov/personalitydisorders.html",
+          "documentVersion": "Personality Disorders current overview; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "plain-language overview",
+            "long-term pattern",
+            "functional impact",
+            "treatment overview"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.paranoid-personality-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.schizoid-personality-disorder",
+      "name": "Schizoid personality disorder",
+      "displayName": "Schizoid personality disorder",
+      "category": "Mental health",
+      "aliases": [
+        "schizoid personality"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Schizoid personality disorder is a long-term pattern of detachment from social relationships and limited outward expression of emotion. A person may prefer solitary activities, have little interest in close relationships, and appear indifferent to praise or criticism. It is not schizophrenia, and choosing solitude is not a disorder unless the broader pattern is persistent and causes impairment or fits the full clinical definition.",
+      "whyItMatters": "Quiet detachment can hide depression, psychosis, autism, trauma, neurocognitive change, abuse, physical illness, or unmet needs. Care improves when nurses respect the person's need for space and direct communication while still assessing pain, safety, capacity, support, and functional decline rather than assuming the patient has no feelings or does not want help.",
+      "plainLanguageGlosses": [
+        {
+          "term": "detachment",
+          "plainLanguage": "limited desire for or participation in close social relationships",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "apa-personality-disorders"
+          ]
+        },
+        {
+          "term": "restricted affect",
+          "plainLanguage": "a narrow range of emotion visible in facial expression, voice, or gestures; it does not prove the person feels nothing",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "anhedonia",
+          "plainLanguage": "reduced ability to feel interest or pleasure; broad new anhedonia can suggest depression rather than a lifelong personality style",
+          "sourceKeys": [
+            "nimh-depression-current",
+            "apa-dsm5tr-2022"
+          ]
+        }
+      ],
+      "definition": "DSM-5-TR describes a pervasive pattern of detachment from social relationships and restricted emotional expression, beginning by early adulthood and present across contexts, with at least four characteristic features such as little desire for close relationships, preference for solitary activity, limited sexual interest, pleasure in few activities, few close confidants, apparent indifference to praise or criticism, or emotional coldness or flattened affect. The pattern must not occur exclusively during schizophrenia, bipolar or depressive disorder with psychotic features, another psychotic disorder, or autism spectrum disorder and must not be attributable to a medical condition. ICD-11 uses a dimensional personality-disorder and trait-domain approach rather than retaining every DSM category.",
+      "pathology": "The disorder is a stable interpersonal and emotional-expression style, not a psychotic illness and not proof of absent inner experience. Some people are content with limited relationships while others experience functional loss or seek help for loneliness, work problems, or coexisting symptoms. Diagnosis must distinguish chosen solitude and cultural style from impairment.",
+      "pathophysiology": [
+        "The mechanisms are not established. Temperament, social-reward processing, emotional awareness and expression, developmental experience, and interpersonal learning may contribute in different combinations.",
+        "Limited outward affect can be mistaken for depression, negative symptoms, medication effect, parkinsonism, or neurocognitive disease; longitudinal baseline is essential.",
+        "No laboratory, scan, gene, or single neurotransmitter pattern defines schizoid personality disorder."
+      ],
+      "etiology": "Cause is multifactorial and incompletely understood. Temperamental preference for low social stimulation, family vulnerability, developmental environment, attachment experience, and adversity may contribute, but none is necessary or sufficient. Solitary preference, introversion, asexuality, autism, or limited emotional display alone is not the disorder.",
+      "riskFactors": [
+        "Long-standing social detachment and restricted emotional expression beginning by adolescence or early adulthood",
+        "A family history of schizophrenia-spectrum or personality illness, which is an association rather than destiny",
+        "Developmental environments with limited emotional reciprocity or chronic adversity, interpreted cautiously and without blaming caregivers",
+        "Unrecognized autism, depression, psychosis, trauma, sensory impairment, or neurologic illness that can resemble the pattern"
+      ],
+      "signsSymptoms": [
+        "Little desire for close relationships or a strong preference for solitary work and activities",
+        "Few close friends or confidants and limited interest in social approval, praise, or criticism",
+        "Restricted visible emotion, quiet speech, limited spontaneous sharing, or an appearance of emotional distance",
+        "Pleasure in relatively few activities or limited sexual interest, while recognizing that asexuality and ordinary introversion are not diagnoses",
+        "A stable pattern across settings rather than new withdrawal caused by depression, psychosis, trauma, illness, or medication"
+      ],
+      "diagnostics": [
+        "Use a longitudinal interview, functional history, collateral information when appropriate, and records across settings; do not diagnose from a quiet hospital encounter.",
+        "Clarify whether the person truly prefers limited relationships or desires connection but avoids it because of rejection fear, anxiety, trauma, paranoia, communication barriers, or depression.",
+        "Assess lifetime social communication, sensory and repetitive patterns, psychosis, mood, trauma, substance use, cognition, neurologic change, medication effects, culture, sexuality, and chosen lifestyle.",
+        "Determine whether the pattern causes clinically meaningful dysfunction or whether others are uncomfortable with a nonpathologic preference for solitude."
+      ],
+      "labs": [
+        "No laboratory, imaging, genetic, or personality test independently diagnoses schizoid personality disorder.",
+        "Use hearing, neurologic, cognitive, toxicologic, metabolic, infectious, or other testing when detachment or flat affect is new, fluctuating, later-onset, or accompanied by physical or cognitive findings.",
+        "Structured personality instruments can support but not replace clinical diagnosis, validity assessment, and longitudinal context."
+      ],
+      "assessment": "Use calm direct questions, allow pauses, avoid forced eye contact or emotional disclosure, and ask how the patient prefers to receive information and make decisions. Assess suicide, self-neglect, depression, anhedonia, psychosis, autism traits, trauma, substances, pain, sleep, nutrition, housing, supports, capacity, and new functional change. Do not infer lack of understanding or feeling from limited facial expression.",
+      "differential": [
+        "Avoidant personality disorder or social anxiety, where the person often wants connection but fears rejection or scrutiny",
+        "Autism spectrum disorder with developmental social-communication and restricted or repetitive features",
+        "Schizophrenia, schizoaffective disorder, attenuated psychosis, or negative symptoms",
+        "Major depression, persistent depressive disorder, PTSD, neurocognitive disorder, Parkinson disease, traumatic brain injury, substance or medication effect, hearing loss, or cultural preference"
+      ],
+      "treatments": [
+        "Psychotherapy is the main treatment when the person wants help, using a respectful pace, concrete goals, and tolerance for limited emotional display; forcing intense group interaction can undermine engagement.",
+        "Focus on the patient's chosen functional goals, communication, practical problem-solving, emotion identification when useful, and gradual social or occupational skills only when desired.",
+        "No medication treats the core schizoid pattern. Treat a separately diagnosed depression, anxiety, or psychotic disorder with its evidence-based treatment; an SSRI such as sertraline or escitalopram may be considered for a confirmed depressive or anxiety disorder, not for solitude itself.",
+        "Address housing, vocational needs, sensory barriers, physical illness, sleep, nutrition, and access to routine health care."
+      ],
+      "contraindications": [
+        "Do not force socialization, touch, eye contact, group therapy, or emotional disclosure as proof of progress.",
+        "Do not assume apparent indifference means no pain, fear, preference, capacity, or need for informed consent.",
+        "Do not prescribe an antipsychotic merely because the word schizoid resembles schizophrenia.",
+        "Do not pathologize introversion, asexuality, cultural reserve, solitary hobbies, or a chosen lifestyle without the full persistent and impairing pattern."
+      ],
+      "safetyConsiderations": [
+        "Assess suicide and self-neglect directly; limited expression can obscure depression, hopelessness, abuse, malnutrition, or medical deterioration.",
+        "A sudden change from baseline, hallucinations, disorganization, severe anhedonia, cognitive decline, or neurologic findings requires evaluation for another disorder.",
+        "Social isolation can reduce help-seeking and collateral information, so confirm emergency contacts and follow-up in a way the patient accepts.",
+        "Respect autonomy and privacy while assessing capacity and basic-needs safety rather than assuming either competence or incapacity from interpersonal style."
+      ],
+      "nursingPriorities": [
+        "Offer predictable low-pressure interactions, clear choices, adequate personal space, and time to respond.",
+        "Assess pain, mood, psychosis, cognition, sleep, intake, function, and safety explicitly rather than relying on emotional display.",
+        "Identify the patient's preferred level of family or support involvement and do not disclose information without consent unless a lawful safety exception applies.",
+        "Document observable behavior, stated preferences, and functional impact rather than labels such as cold, uncaring, or uncooperative."
+      ],
+      "redFlags": [
+        "Suicidal intent, inability to meet food, shelter, medical, or hygiene needs, severe depression, or rapidly worsening self-neglect",
+        "New hallucinations, delusions, disorganization, catatonic signs, severe withdrawal, or marked functional decline",
+        "New focal deficit, parkinsonism, cognitive fluctuation, seizure, fever, head injury, intoxication, or medication change",
+        "Evidence of abuse, exploitation, malnutrition, untreated pain, or medical illness hidden by limited help-seeking"
+      ],
+      "complications": [
+        "Social and occupational isolation, limited support during illness, delayed care, and reduced access to preventive services",
+        "Coexisting depression, anxiety, substance use, psychosis, autism, trauma, or medical illness going unrecognized",
+        "Mislabeling as uncaring, noncompliant, or psychotic, leading to coercion or inappropriate medication",
+        "Housing, employment, financial, or self-care difficulty when functional needs are not addressed"
+      ],
+      "prognosis": "The personality style is often stable, but distress and functioning can improve when care respects autonomy and targets the person's own goals and coexisting conditions. Not every person desires a larger social network, so success should be measured by safety, health, chosen relationships, and function rather than sociability alone.",
+      "prevention": [
+        "There is no established universal prevention method for schizoid personality disorder.",
+        "Early recognition and treatment of depression, psychosis, autism-related support needs, trauma, sensory loss, and medical illness can prevent avoidable functional decline.",
+        "Maintain accessible primary care and a practical crisis and follow-up plan for people with limited support networks."
+      ],
+      "patientEducation": [
+        "Schizoid personality disorder is not schizophrenia and does not automatically involve hallucinations or delusions.",
+        "Preferring solitude is not itself an illness; diagnosis depends on a broad, long-term pattern and its impact.",
+        "Treatment should focus on goals you choose and any separate mood, psychotic, or medical condition.",
+        "Seek urgent help for suicidal thinking, severe self-neglect, hallucinations, confusion, or a sudden change from your usual pattern."
+      ],
+      "specialPopulations": [
+        "Adolescents require developmental caution because identity, friendships, autonomy, and emotional expression are still changing.",
+        "Older adults with new withdrawal or flat affect need depression, grief, hearing, medication, Parkinson, stroke, delirium, and neurocognitive assessment.",
+        "Autistic people should not be given a personality diagnosis simply for social-communication differences, sensory needs, focused interests, or preferred solitude.",
+        "Cultural, religious, occupational, sexual, and gender context may make limited social or sexual interest understandable and nonpathologic."
+      ],
+      "nclexTraps": [
+        "Schizoid personality disorder is not schizophrenia.",
+        "Limited facial expression does not prove lack of emotion, pain, understanding, or capacity.",
+        "Avoidant personality often includes desire for relationships plus fear of rejection; schizoid personality more often involves limited desire for close relationships.",
+        "No medication treats the core personality pattern, and forced socialization is not therapeutic."
+      ],
+      "relatedTopics": [
+        "Avoidant personality disorder",
+        "Paranoid personality disorder",
+        "Schizotypal personality disorder",
+        "Autism spectrum disorder",
+        "Schizophrenia",
+        "Major depressive disorder",
+        "Negative symptoms of psychosis"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "who-icd11-cddr-mental-2024",
+        "apa-personality-disorders",
+        "medlineplus-personality-disorders",
+        "nimh-depression-current"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. DSM-5-TR supports the categorical identity, feature threshold, and exclusions; WHO supports dimensional personality-disorder assessment and functional context; APA and MedlinePlus support psychotherapy and patient education; NIMH supports the depression differential. The card explicitly avoids equating solitude, restricted affect, asexuality, autism, or schizophrenia.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "feature threshold",
+            "developmental and cross-situational pattern",
+            "exclusions",
+            "differential"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "personality-disorder severity",
+            "trait formulation",
+            "functional impairment",
+            "culture",
+            "diagnostic boundaries"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/patients-families/personality-disorders",
+          "documentVersion": "Personality Disorders current patient resource; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "definition",
+            "diagnosis",
+            "psychotherapy",
+            "medication limitation",
+            "patient education"
+          ]
+        },
+        {
+          "authority": "MedlinePlus, U.S. National Library of Medicine",
+          "url": "https://medlineplus.gov/personalitydisorders.html",
+          "documentVersion": "Personality Disorders current overview; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "plain-language overview",
+            "long-term pattern",
+            "functional impact",
+            "treatment overview"
+          ]
+        },
+        {
+          "authority": "National Institute of Mental Health",
+          "url": "https://www.nimh.nih.gov/health/publications/depression",
+          "documentVersion": "Depression current publication; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "anhedonia",
+            "depressive withdrawal",
+            "suicide risk",
+            "treatment overview"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.schizoid-personality-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.personality-change-due-to-another-medical-condition",
+      "name": "Personality change due to another medical condition",
+      "displayName": "Personality change due to another medical condition",
+      "category": "Mental health",
+      "aliases": [
+        "personality change due to a medical condition",
+        "personality change caused by a medical condition",
+        "organic personality change"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Personality change due to another medical condition is a lasting change from a person's previous way of thinking, feeling, controlling impulses, or relating to others that is judged to be a direct physical effect of a medical illness or brain injury. It is a change from that person's own baseline, not a lifelong personality disorder and not simply a difficult reaction to being sick.",
+      "whyItMatters": "A new personality change can be an early clue to stroke, brain injury, seizure-related disease, tumor, infection, autoimmune or endocrine illness, neurocognitive disease, medication harm, or another treatable problem. Sudden or fluctuating change with confusion, focal weakness, severe headache, seizure, fever, or reduced consciousness is an emergency—not a reason to label the person rude, aggressive, or uncooperative.",
+      "plainLanguageGlosses": [
+        {
+          "term": "baseline personality",
+          "plainLanguage": "the person's usual long-term pattern before the illness or injury, established from the patient, trusted observers, and prior records",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "ninds-tbi-cte"
+          ]
+        },
+        {
+          "term": "disinhibition",
+          "plainLanguage": "reduced ability to stop an impulse, filter speech, follow social boundaries, or consider consequences",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "who-icd11-cddr-mental-2024"
+          ]
+        },
+        {
+          "term": "affective lability",
+          "plainLanguage": "rapid or disproportionate shifts in visible emotion, such as laughing, crying, anger, or irritability",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "who-icd11-cddr-mental-2024"
+          ]
+        }
+      ],
+      "definition": "DSM-5-TR personality change due to another medical condition is a persistent disturbance representing a change from the individual's previous characteristic personality pattern, with evidence that the disturbance is the direct pathophysiologic consequence of a medical condition. It must not be better explained by another mental disorder, must not occur exclusively during delirium, and must cause clinically significant distress or impairment. Descriptive patterns may be labile, disinhibited, aggressive, apathetic, paranoid, other, combined, or unspecified; these describe the presentation and do not identify the cause.",
+      "pathology": "Disease or injury affecting frontal, temporal, limbic, basal-ganglia, thalamic, or connected regulatory networks can change inhibition, motivation, emotional control, judgment, empathy, threat interpretation, and social behavior. Systemic metabolic, endocrine, inflammatory, infectious, hypoxic, or toxic processes can disrupt the same functions. The diagnosis requires a physiologic link, not just temporal coincidence.",
+      "pathophysiology": [
+        "Orbitofrontal and ventromedial network dysfunction can reduce inhibition and consequence awareness, producing impulsivity, tactless behavior, risk taking, or aggression.",
+        "Dorsolateral frontal and frontostriatal dysfunction can reduce initiation, planning, flexibility, and motivation, producing apathy that may look like refusal or depression.",
+        "Limbic and right-hemisphere network disruption can alter emotional intensity, social cue interpretation, and threat perception, producing lability or suspiciousness."
+      ],
+      "etiology": "Potential causes include traumatic brain injury, stroke, brain tumor, epilepsy and seizure-related disease, CNS infection or inflammation, multiple sclerosis, Huntington disease and other neurodegenerative conditions, endocrine or metabolic disease, hypoxia, and other illnesses with direct CNS effects. Medications and substances may cause similar behavior but belong in a substance/medication-induced or adverse-effect formulation when they are the better explanation. Each cause requires patient-specific evidence.",
+      "riskFactors": [
+        "Recent head injury, stroke, seizure, neurosurgery, CNS infection, hypoxia, brain tumor, or new neurologic disease",
+        "Abrupt or progressive behavioral change later in life without a similar lifelong pattern",
+        "Focal neurologic findings, cognitive decline, gait or movement change, endocrine symptoms, fever, or altered awareness accompanying the personality change",
+        "Polypharmacy, intoxication, withdrawal, sleep loss, pain, or sensory impairment that may cause or amplify behavioral change and complicate attribution"
+      ],
+      "signsSymptoms": [
+        "A clear sustained change from baseline in impulse control, judgment, emotional expression, motivation, suspiciousness, empathy, or social behavior",
+        "Disinhibited behavior such as unsafe spending, sexual comments or actions, boundary crossing, aggression, or poor awareness of consequences",
+        "Apathy, reduced initiation, emotional flattening, or loss of interest that may resemble depression but can occur without pervasive sadness or guilt",
+        "Rapid emotional shifts, irritability, outbursts, suspiciousness, or a combined pattern",
+        "Associated cognitive, neurologic, motor, seizure, endocrine, or systemic findings that help identify the cause"
+      ],
+      "diagnostics": [
+        "Establish the person's premorbid baseline, exact onset, rate of change, functional consequences, and relationship to medical events using patient interview, collateral history, prior records, and direct observation.",
+        "Perform mental-status, attention, cognitive, neurologic, medication, substance, sleep, pain, sensory, capacity, and safety assessments; distinguish persistent change from fluctuating delirium.",
+        "Evaluate whether the suspected medical condition can directly affect behavior and whether lesion location, disease activity, timing, and course support causation.",
+        "Use formal neuropsychological, speech-language, occupational, behavioral, or functional assessment when executive, communication, social-cognition, or capacity questions require it."
+      ],
+      "labs": [
+        "No single laboratory, imaging, EEG, or cognitive test independently confirms the psychiatric diagnosis or the causal link.",
+        "Use CBC, electrolytes, glucose, renal and hepatic function, thyroid or other endocrine studies, infection or inflammatory testing, toxicology, medication levels, imaging, EEG, cerebrospinal fluid studies, or other evaluation according to onset and examination.",
+        "Normal initial imaging does not exclude all brain injury, seizure-related, inflammatory, neurodegenerative, or functional impairment; follow the appropriate disease pathway when concern remains."
+      ],
+      "assessment": "First assess delirium, stroke, seizure, head injury, infection, hypoxia, glucose, intoxication, withdrawal, medication toxicity, severe pain, and endocrine crisis. Then assess suicide, violence, sexual disinhibition, driving, finances, weapons, wandering, exploitation, capacity, self-care, dependents, caregiver strain, communication, and environmental triggers. Use objective descriptions and compare with baseline rather than moral labels.",
+      "differential": [
+        "Delirium, especially when attention and awareness fluctuate over hours or days",
+        "Major or mild neurocognitive disorder, frontal lobe syndrome, postconcussive symptoms, seizure disorder, aphasia, apathy, or pseudobulbar affect",
+        "Bipolar and related disorder due to another medical condition, psychotic disorder due to another medical condition, depression, mania, catatonia, PTSD, or adjustment disorder",
+        "Substance or medication effect, pain, sleep deprivation, sensory impairment, real environmental danger, or a preexisting personality disorder"
+      ],
+      "treatments": [
+        "Treat the underlying neurologic, endocrine, infectious, inflammatory, metabolic, toxic, or other medical cause and prevent recurrent injury or physiologic instability.",
+        "Use a structured environment, predictable routine, reduced overstimulation, clear limits, cueing, rehabilitation, caregiver education, communication support, sleep treatment, and practical risk controls tailored to the impaired function.",
+        "No single medication treats the core diagnosis. Medication may target a separately defined syndrome—for example, sertraline for confirmed depression or an antipsychotic for psychosis or severe dangerous agitation—only after cause, interactions, seizure, cerebrovascular, movement, metabolic, organ-function, and sedation risks are reviewed.",
+        "Use neuropsychiatry, neurology, rehabilitation medicine, psychology, speech-language, occupational therapy, social work, and ethics or legal consultation according to cognitive, behavioral, communication, capacity, and placement needs."
+      ],
+      "contraindications": [
+        "Do not diagnose a lifelong personality disorder when the defining evidence is a new change after illness or injury.",
+        "Do not use sedation, antipsychotics, seclusion, or restraint as a substitute for treating delirium, pain, infection, communication failure, overstimulation, or unmet basic needs.",
+        "Do not assume disinhibition equals informed intent or that apathy equals refusal; assess capacity and communication for the specific decision.",
+        "Do not allow driving, unsupervised weapons access, high-risk finances, or unsafe caregiving when current executive or behavioral impairment makes those activities dangerous."
+      ],
+      "safetyConsiderations": [
+        "Acute change with focal deficit, severe headache, seizure, fever, hypoxia, trauma, or altered consciousness requires emergency medical evaluation.",
+        "Disinhibition can create driving, sexual, financial, legal, wandering, exploitation, and violence risks; use specific least-restrictive controls rather than punishment.",
+        "Apathy and limited expression can hide pain, depression, suicidality, malnutrition, infection, or inability to initiate self-care.",
+        "Antipsychotics and sedatives can worsen falls, aspiration, cognition, movement symptoms, orthostasis, QT risk, respiratory function, and selected cerebrovascular risk."
+      ],
+      "nursingPriorities": [
+        "Document the exact behavior, trigger, duration, response, neurologic and cognitive context, and difference from baseline; avoid terms such as manipulative or bad personality.",
+        "Keep routines and staff responses consistent, give one concrete direction at a time, reduce overstimulation, and offer safe choices.",
+        "Assess pain, toileting, hunger, thirst, sleep, sensory aids, medication timing, communication, and environment before escalating a behavioral intervention.",
+        "Teach caregivers that symptoms may reflect impaired inhibition or initiation, while still setting boundaries and activating emergency plans for imminent danger."
+      ],
+      "redFlags": [
+        "Sudden personality or behavior change with facial droop, weakness, speech change, severe headache, seizure, head trauma, fever, or altered consciousness",
+        "Suicidal or homicidal intent, escalating aggression, sexual violence risk, weapon access, unsafe driving, wandering, or inability to meet basic needs",
+        "Rapid cognitive decline, new hallucinations, catatonic signs, gait change, incontinence, movement disorder, or focal neurologic findings",
+        "Medication toxicity, intoxication, withdrawal, severe sleep loss, hypoxia, endocrine crisis, infection, or inability of caregivers to maintain immediate safety"
+      ],
+      "complications": [
+        "Injury, violence, exploitation, unsafe sex, financial or legal loss, driving crashes, wandering, and family or caregiver breakdown",
+        "Missed stroke, seizure, tumor, infection, endocrine disease, neurocognitive disorder, medication effect, or delirium",
+        "Institutionalization, restraint, oversedation, loss of autonomy, and avoidable trauma when behavior is misinterpreted",
+        "Malnutrition, poor hygiene, medication nonadherence, rehabilitation failure, depression, suicide, and caregiver burnout"
+      ],
+      "prognosis": "Course depends on the underlying condition, lesion or disease burden, reversibility, rehabilitation, environment, and support. Some changes improve with recovery and treatment; others persist or progress. Even when the personality does not return fully to baseline, structured support, risk reduction, communication strategies, and treatment of coexisting syndromes can improve safety and function.",
+      "prevention": [
+        "Prevent head injury, stroke, hypoxia, infection, medication toxicity, and seizure recurrence through condition-specific care where possible.",
+        "After neurologic or systemic illness, monitor behavior, cognition, sleep, function, driving, finances, and caregiver strain rather than waiting for a crisis.",
+        "Create an individualized behavior and safety plan that records baseline, triggers, effective communication, supervision needs, and emergency signs."
+      ],
+      "patientEducation": [
+        "This diagnosis means illness or injury changed behavior from the person's prior baseline; it is not a moral failure.",
+        "Recovery may be uneven, and the person may have reduced awareness of the change, so trusted collateral information can be important.",
+        "Medication is used for a specific target symptom or coexisting disorder, not as a universal cure for personality change.",
+        "Call emergency services for sudden new behavior with stroke signs, seizure, severe headache, fever, confusion, or immediate danger."
+      ],
+      "specialPopulations": [
+        "Older adults need urgent delirium, stroke, medication, sensory, and neurocognitive assessment for new personality change.",
+        "Children and adolescents require comparison with developmental baseline and coordinated family, school, pediatric, neurologic, and rehabilitation assessment.",
+        "People with aphasia, intellectual disability, autism, or limited speech need supported communication and individualized baseline information so communication difference is not mislabeled.",
+        "Pregnancy and postpartum change the vascular, endocrine, immune, medication, sleep, and psychiatric differential and require obstetric coordination."
+      ],
+      "nclexTraps": [
+        "Personality change due to another medical condition is a new change from baseline, not a lifelong personality disorder.",
+        "Fluctuating attention and awareness suggest delirium and demand an urgent cause search.",
+        "Apathy may reflect impaired initiation rather than laziness or informed refusal.",
+        "An abnormal scan or medical diagnosis does not by itself prove causation; timing, mechanism, and functional change must fit."
+      ],
+      "relatedTopics": [
+        "Delirium",
+        "Major neurocognitive disorder",
+        "Traumatic brain injury",
+        "Stroke",
+        "Bipolar and related disorder due to another medical condition",
+        "Psychotic disorder due to another medical condition",
+        "Catatonia",
+        "Violence risk assessment and prevention"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "who-icd11-cddr-mental-2024",
+        "ninds-tbi-cte",
+        "apa-personality-disorders",
+        "medlineplus-personality-disorders"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. DSM-5-TR supports the change-from-baseline, direct-physiologic, delirium-exclusion, and descriptive-pattern framework; WHO supports medical attribution, functional assessment, and dimensional personality boundaries; NINDS supports traumatic-brain-injury behavioral and rehabilitation context; APA and MedlinePlus support the distinction from lifelong personality disorders. Treatment remains cause- and target-symptom-specific.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "change-from-baseline requirement",
+            "direct-physiologic attribution",
+            "delirium exclusion",
+            "descriptive types",
+            "differential"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "medical attribution",
+            "organic mental-disorder boundary",
+            "functional impairment",
+            "personality and behavior context"
+          ]
+        },
+        {
+          "authority": "National Institute of Neurological Disorders and Stroke",
+          "url": "https://www.ninds.nih.gov/health-information/disorders/traumatic-brain-injury-tbi",
+          "documentVersion": "Traumatic Brain Injury current overview; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "TBI-related cognitive and behavioral change",
+            "acute warning signs",
+            "recovery variability",
+            "rehabilitation"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/patients-families/personality-disorders",
+          "documentVersion": "Personality Disorders current patient resource; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "lifelong personality-pattern distinction",
+            "diagnostic context",
+            "psychotherapy and support",
+            "patient education"
+          ]
+        },
+        {
+          "authority": "MedlinePlus, U.S. National Library of Medicine",
+          "url": "https://medlineplus.gov/personalitydisorders.html",
+          "documentVersion": "Personality Disorders current overview; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "plain-language personality-disorder overview",
+            "functional impact",
+            "treatment context"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.personality-change-due-to-another-medical-condition",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.provisional-tic-disorder",
+      "name": "Provisional tic disorder",
+      "displayName": "Provisional tic disorder",
+      "category": "Mental Health",
+      "aliases": [
+        "Transient tic disorder"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Provisional tic disorder is a childhood condition in which a person has sudden repeated movements or sounds called tics, but the tics have been present for less than one year since they first began. The tics are real and involuntary even though they may be held back briefly, and the diagnosis is different from Tourette syndrome or a persistent tic disorder.",
+      "whyItMatters": "Many new tics are temporary and need education rather than medication, but painful, injurious, stigmatizing, or function-limiting tics need targeted help. Correctly recognizing the short duration prevents a premature Tourette label while still prompting assessment for ADHD, OCD, anxiety, bullying, sudden neurologic change, medication effects, and functional tic-like symptoms.",
+      "plainLanguageGlosses": [
+        {
+          "term": "tic",
+          "plainLanguage": "a sudden, rapid, repeated movement or sound that is not rhythmic, such as blinking, shoulder jerking, sniffing, or throat clearing",
+          "sourceKeys": [
+            "cdc-tic-diagnosis-2026",
+            "apa-dsm5tr-2022"
+          ]
+        },
+        {
+          "term": "premonitory urge",
+          "plainLanguage": "an uncomfortable inner feeling that may build before a tic and ease after the tic happens",
+          "sourceKeys": [
+            "aan-tic-guideline-2019-2025"
+          ]
+        },
+        {
+          "term": "CBIT",
+          "plainLanguage": "Comprehensive Behavioral Intervention for Tics, a structured therapy that teaches awareness, a competing response, and practical changes to tic triggers",
+          "sourceKeys": [
+            "aan-tic-guideline-2019-2025"
+          ]
+        }
+      ],
+      "definition": "Provisional tic disorder is diagnosed when one or more motor tics, vocal tics, or both have been present for less than one year since the first tic began; onset occurred before age 18; the symptoms are not caused by a substance or another medical condition; and criteria have never been met for Tourette syndrome or persistent motor or vocal tic disorder. Tic frequency may wax and wane during that interval. A tic seen once, a caregiver video, or a screening scale alone does not establish the disorder.",
+      "pathology": "There is no single lesion, laboratory value, or brain scan that proves provisional tic disorder. The observable event is a motor or vocal tic arising within developing movement-control networks; diagnosis depends on the movement history, elapsed time since first onset, phenotype, impairment, and exclusions.",
+      "pathophysiology": [
+        "Tics are thought to reflect altered regulation within cortico-striatal-thalamo-cortical movement circuits and interacting dopamine and inhibitory signaling, but this model is not a diagnostic biomarker for an individual child.",
+        "Tics often increase with stress, excitement, fatigue, illness, attention to the tic, or attempts at prolonged suppression. A brief ability to suppress a tic does not make it voluntary or manipulative.",
+        "Sudden complex tic-like behaviors, especially with abrupt adolescent onset and no earlier typical tic history, may have a functional mechanism and need a positive neurologic assessment rather than automatic assignment to a primary tic disorder."
+      ],
+      "etiology": "The exact cause is multifactorial and may include genetic susceptibility and neurodevelopmental factors. Tics are not caused by poor parenting. Medicines, stimulants, illicit substances, seizures, chorea, dystonia, post-infectious neurologic illness, and functional neurologic symptoms can mimic or worsen tic-like movements and must be assessed from the actual timeline rather than assumed.",
+      "riskFactors": [
+        "Family history of tic disorder, Tourette syndrome, obsessive-compulsive disorder, or related neurodevelopmental conditions",
+        "Childhood age and coexisting ADHD, OCD symptoms, anxiety, learning difficulty, sleep disruption, or autism spectrum disorder",
+        "Stress, fatigue, excitement, illness, bullying, or environmental attention that may temporarily amplify an existing tic",
+        "Recent medication, stimulant, substance, or neurologic exposure that raises a competing cause rather than proving a primary tic disorder"
+      ],
+      "signsSymptoms": [
+        "Motor tics such as blinking, facial movements, head or shoulder jerks, touching, hopping, or brief complex movements",
+        "Vocal tics such as sniffing, throat clearing, squeaking, grunting, coughing, or words; coprolalia is uncommon and is not required",
+        "Waxing and waning frequency, changing tic type, a possible premonitory urge, brief suppressibility, and rebound discomfort after suppression",
+        "Pain, skin injury, disrupted reading or writing, sleep difficulty, embarrassment, peer problems, or school avoidance when tics become impairing"
+      ],
+      "diagnostics": [
+        "Obtain the first-onset date, every motor and vocal tic, course, suppressibility, urge, triggers, pain, injury, school and social impact, family history, developmental history, medications, substances, infection or neurologic symptoms, and videos recorded with consent when direct observation is limited.",
+        "Confirm that less than one year has elapsed since the first tic began, not merely that the current tic type is new. Confirm onset before age 18 and that Tourette syndrome or persistent motor or vocal tic disorder has never been met.",
+        "Perform a neurologic and developmental examination and assess ADHD, OCD, anxiety, depression, sleep, learning, bullying, and family burden. Rating scales measure severity and impairment but do not replace diagnosis.",
+        "Use laboratory tests, EEG, imaging, or specialist testing only when the history or examination suggests seizure, inflammation, intoxication, degeneration, structural disease, or another specific cause."
+      ],
+      "labs": [
+        "No routine blood test, throat test, antibody test, EEG, or neuroimaging study confirms a primary provisional tic disorder.",
+        "Targeted testing follows the competing diagnosis: for example, toxicology for a defined exposure question, metabolic or inflammatory testing for compatible systemic findings, or EEG when events may be seizures. A positive test must still fit the clinical syndrome."
+      ],
+      "assessment": "Assess the exact movement or sound, consciousness during events, first-onset date, frequency and trend, pain or injury, respiratory or swallowing interference, medication and substance timeline, neurologic findings, coexisting ADHD/OCD/anxiety/depression, suicide risk when distress is substantial, bullying, school participation, sleep, and what the child wants help with. Treat the child's own impairment rather than the observer's discomfort alone.",
+      "differential": "Differentiate provisional tic disorder from Tourette syndrome and persistent motor or vocal tic disorder by phenotype and time since first onset. Also distinguish stereotypies, compulsions, habits, chorea, dystonia, myoclonus, seizures, akathisia or tardive dyskinesia, substance- or medication-induced movements, functional tic-like symptoms, and repetitive movements within autism. Sudden neurologic findings or loss of awareness are not explained by a routine tic label.",
+      "treatments": [
+        "Provide education, normalize the involuntary nature of tics, reduce punishment and forced suppression, and use watchful waiting when the child has no meaningful pain, injury, distress, or functional impairment.",
+        "Offer CBIT through a trained clinician when the child is motivated and tics are bothersome or impairing; coordinate classroom changes such as breaks, reduced public correction, and extra time when symptoms disrupt work.",
+        "Treat coexisting ADHD, OCD, anxiety, depression, sleep problems, or bullying according to its own evidence and urgency because those problems may cause more impairment than the tic.",
+        "Medication is not routine for a mild provisional disorder. When severe tics cause injury or major impairment, specialist-selected options may include clonidine or guanfacine, particularly with coexisting ADHD, or other tic medicines with blood pressure, sedation, metabolic, cardiac, and movement-effect monitoring matched to the drug."
+      ],
+      "contraindications": [
+        "Do not punish, shame, restrain, or repeatedly command a child to stop a tic; temporary suppressibility is not proof of intentional behavior.",
+        "Do not diagnose Tourette syndrome before its motor-plus-vocal and duration requirements are met, and do not reset the duration clock each time the tic changes form.",
+        "Do not start a tic medicine solely to make an observer more comfortable. Balance the child's impairment against sedation, hypotension, metabolic effects, movement adverse effects, and the possibility that symptoms will improve naturally.",
+        "Do not attribute abrupt, complex, or neurologically atypical events to a primary tic without examining for functional, medication, seizure, infectious, autoimmune, or other neurologic causes."
+      ],
+      "safetyConsiderations": [
+        "Protect skin, eyes, neck, teeth, and other vulnerable areas when a tic is forceful or self-injurious, while avoiding restraints or protective equipment that creates a new hazard.",
+        "Review every prescription, nonprescription stimulant, supplement, nicotine or other substance, and recent dose change before linking symptom change to the underlying disorder.",
+        "Assess bullying, humiliation, depression, self-harm, and suicidal thinking when tics cause marked distress or school withdrawal; the tic diagnosis does not account for those risks by itself.",
+        "Escalate a sudden event with impaired awareness, weakness, fever, severe headache, ataxia, breathing or swallowing compromise, toxic exposure, or rapidly progressive neurologic change."
+      ],
+      "nursingPriorities": [
+        "Describe the tic objectively, including motor or vocal form, duration, frequency, suppressibility, awareness, triggers, injury, and first-onset date; avoid charting it as attention seeking without evidence.",
+        "Ask the child privately what is most bothersome and screen for ADHD, OCD, anxiety, depression, bullying, sleep loss, school impairment, and medication or substance exposure.",
+        "Teach caregivers and school staff that tics are involuntary, commonly wax and wane, and should not be punished or made the center of every interaction.",
+        "If medication is used, obtain and trend the drug-specific baseline and adverse effects, including pulse, blood pressure, sedation, appetite, weight, metabolic measures, cardiac history, or abnormal movements as applicable."
+      ],
+      "redFlags": [
+        "A tic or movement causing eye injury, head trauma, bleeding, severe pain, breathing interference, choking, or inability to eat or drink",
+        "Abrupt onset with confusion, loss of awareness, fever, severe headache, weakness, ataxia, chorea, seizure, or rapid neurologic progression",
+        "Severe depression, suicidal intent, self-harm, abuse, dangerous bullying, or inability to attend school or remain safe",
+        "Severe sedation, syncope, bradycardia, hypotension, rigidity, fever, or a new persistent abnormal movement after medication exposure"
+      ],
+      "complications": [
+        "Pain, repetitive-strain injury, skin damage, dental injury, headache, sleep disruption, or rare breathing and swallowing interference",
+        "Bullying, stigma, anxiety, depressed mood, school avoidance, family conflict, and reduced participation",
+        "Progression beyond one year to persistent motor or vocal tic disorder or Tourette syndrome when later criteria are met; the provisional label does not predict that outcome with certainty",
+        "Medication adverse effects when treatment burden exceeds tic-related impairment"
+      ],
+      "prognosis": "Many recent-onset childhood tics lessen or disappear, while others wax and wane or later meet criteria for a persistent tic disorder or Tourette syndrome. Prognosis is based on longitudinal phenotype and functional impact, not a single visit. Coexisting ADHD, OCD, anxiety, depression, and school stress often determine day-to-day outcome more than tic count.",
+      "prevention": [
+        "There is no proven way to prevent a primary provisional tic disorder. Early accurate recognition can prevent punishment, stigma, unnecessary testing, and premature chronic labeling.",
+        "Reduce avoidable sleep loss, stress overload, bullying, and poorly matched medication exposure while preserving normal activities; these steps may reduce exacerbation but are not a cure."
+      ],
+      "patientEducation": [
+        "A tic is real and involuntary. Being able to hold it back briefly does not mean the child is choosing it.",
+        "Keep a simple timeline of first onset, changes, pain, injury, and function rather than counting every tic all day, which can increase attention and stress.",
+        "Treatment is based on what bothers or harms the child. Mild tics often need understanding and monitoring, not medicine.",
+        "Seek urgent care for loss of awareness, weakness, severe headache, fever with neurologic change, breathing or swallowing trouble, serious injury, or suicidal thoughts."
+      ],
+      "specialPopulations": [
+        "Children with ADHD or OCD need both conditions assessed independently; treating the greater source of impairment may improve overall function even if tics remain.",
+        "Autistic children and children with intellectual developmental disorder may have both tics and stereotypies; communication supports and direct observation help distinguish them.",
+        "Adolescents with sudden complex tic-like symptoms may have functional neurological symptoms. Explain that symptoms are real, give a positive diagnosis when supported, and avoid reinforcing an inaccurate infectious or degenerative explanation."
+      ],
+      "nclexTraps": [
+        "Less than one year is measured from the first tic onset, not from the latest change in tic type.",
+        "Provisional tic disorder can include motor tics, vocal tics, or both; both types do not automatically mean Tourette syndrome before the duration requirement is met.",
+        "Brief suppressibility does not make a tic voluntary and is not a reason to punish the child.",
+        "No routine lab or imaging study diagnoses a primary tic disorder; test only when history or examination points to another cause."
+      ],
+      "relatedTopics": [
+        "Tourette syndrome",
+        "Persistent motor or vocal tic disorder",
+        "Stereotypic movement disorder",
+        "Attention-deficit/hyperactivity disorder",
+        "Obsessive-compulsive disorder",
+        "Functional neurological symptom disorder"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "who-icd11-cddr-mental-2024",
+        "cdc-tic-diagnosis-2026",
+        "aan-tic-guideline-2019-2025"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. APA and WHO support diagnostic identity and exclusions; CDC supports the short-duration boundary and tic-spectrum distinctions; AAN supports impairment-led treatment, watchful waiting, CBIT, comorbidity assessment, and monitoring. No commercial-reference prose was copied.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "motor and vocal phenotypes",
+            "less-than-one-year boundary",
+            "onset before 18",
+            "exclusions",
+            "differential"
+          ]
+        },
+        {
+          "authority": "Centers for Disease Control and Prevention",
+          "url": "https://www.cdc.gov/tourette-syndrome/diagnosis/index.html",
+          "documentVersion": "updated 2026-03-24; accessed 2026-08-15",
+          "fieldsSupported": [
+            "plain-language definition",
+            "provisional criteria",
+            "Tourette boundary",
+            "persistent tic boundary",
+            "functional tic-like presentation"
+          ]
+        },
+        {
+          "authority": "American Academy of Neurology",
+          "url": "https://www.aan.com/Guidelines/home/GuidelineDetail/964",
+          "documentVersion": "practice guideline 2019; current page reviewed 2026-08-15",
+          "fieldsSupported": [
+            "natural history",
+            "functional assessment",
+            "watchful waiting",
+            "CBIT",
+            "ADHD and OCD",
+            "medication monitoring"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "classification",
+            "diagnostic requirements",
+            "differential",
+            "duration",
+            "functional impact"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.provisional-tic-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.stereotypic-movement-disorder",
+      "name": "Stereotypic movement disorder",
+      "displayName": "Stereotypic movement disorder",
+      "category": "Mental Health",
+      "aliases": [
+        "Stereotyped movement disorder"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Stereotypic movement disorder is a childhood-onset condition in which a person repeatedly makes the same seemingly purposeless movement, such as rocking, hand waving, head banging, or biting, and the movement disrupts daily life or causes injury. A repetitive movement alone is not the disorder; the pattern, developmental context, harm, and other possible causes must be assessed.",
+      "whyItMatters": "Some stereotypies are harmless, but self-injurious movements can damage the eyes, head, skin, teeth, or joints, and a new movement may instead reflect pain, seizure, medication toxicity, a tic, or another neurologic illness. The clinical goal is to protect the child, identify what the movement communicates or triggers, and treat functional impairment without punishment or reflexive sedation.",
+      "plainLanguageGlosses": [
+        {
+          "term": "stereotypy",
+          "plainLanguage": "a fixed, repeated, often rhythmic movement that looks similar each time, such as body rocking or hand flapping",
+          "sourceKeys": [
+            "mackenzie-stereotypic-movement-review-2018",
+            "medlineplus-stereotypic-movement-2024"
+          ]
+        },
+        {
+          "term": "functional analysis",
+          "plainLanguage": "a structured look at what happens before, during, and after a behavior to identify triggers, needs, and consequences that may keep it going",
+          "sourceKeys": [
+            "medlineplus-stereotypic-movement-2024"
+          ]
+        },
+        {
+          "term": "self-injurious behavior",
+          "plainLanguage": "repeated behavior directed toward one's own body that causes or could cause physical injury; its function and suicidal intent must be assessed rather than assumed",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "who-icd11-cddr-mental-2024"
+          ]
+        }
+      ],
+      "definition": "Stereotypic movement disorder involves repetitive, seemingly driven, apparently purposeless motor behavior that interferes with social, academic, or other activities and may cause self-injury; begins in the early developmental period; is not attributable to a substance or neurologic condition; and is not better explained by another neurodevelopmental or mental disorder. Specify with or without self-injurious behavior and whether it is associated with a known medical or genetic condition, neurodevelopmental disorder, or environmental factor.",
+      "pathology": "The card describes a movement phenotype and its functional consequence, not one universal brain lesion. Primary stereotypies can occur in otherwise typically developing children, while secondary stereotypies may occur with autism, intellectual developmental disorder, sensory impairment, genetic syndromes, or neurologic disease.",
+      "pathophysiology": [
+        "Motor stereotypies likely involve developing habit and movement-control circuits, including frontostriatal networks, but no pathway or imaging finding is specific enough to diagnose one child.",
+        "Movements are often fixed, rhythmic, prolonged, and triggered by excitement, focused attention, boredom, stress, fatigue, or sensory states. They may feel soothing or absorbing and can sometimes stop with distraction.",
+        "Self-injury may serve sensory, communication, escape, attention, pain-response, or other functions. The same visible behavior can have different mechanisms in different people, so intervention requires individualized assessment."
+      ],
+      "etiology": "Etiology is heterogeneous. A primary developmental stereotypy may have no identified disease, while secondary stereotypies can accompany autism spectrum disorder, intellectual disability, sensory impairment, deprivation, genetic or neurologic syndromes, pain, and medication or substance effects. Caregiver behavior does not cause the disorder, although environmental responses can change frequency or injury risk.",
+      "riskFactors": [
+        "Autism spectrum disorder, intellectual developmental disorder, developmental delay, sensory impairment, or a neurologic or genetic condition",
+        "Early childhood onset, family history of similar movements, or a primary motor stereotypy phenotype",
+        "Communication difficulty, pain, sleep loss, anxiety, boredom, overstimulation, understimulation, or abrupt routine change",
+        "Environments in which the movement is repeatedly punished, unintentionally reinforced, or allowed to cause unrecognized injury"
+      ],
+      "signsSymptoms": [
+        "Body rocking, hand or arm flapping, finger movements, head nodding, pacing, jumping, mouthing, or other fixed repeated patterns",
+        "Head banging, face slapping, eye poking, skin picking, biting, or hitting that can cause self-injury",
+        "Early onset, a similar form each time, rhythmic or prolonged episodes, excitement or absorption triggers, and possible interruption by distraction",
+        "Interference with learning, communication, care, sleep, mobility, social participation, or safety"
+      ],
+      "diagnostics": [
+        "Obtain developmental and neurologic history, exact age at onset, video when consented, movement form and rhythm, triggers, distractibility, awareness, injury, function, pain indicators, communication, medications, substances, and environmental consequences.",
+        "Perform neurologic, developmental, sensory, skin, oral, eye, musculoskeletal, and pain assessment. Examine the body for injuries that may be hidden or repeatedly reopened.",
+        "Confirm functional interference or self-injury and exclude a direct substance, medication, neurologic, or better-fitting neurodevelopmental or mental explanation before assigning the disorder.",
+        "Use EEG, imaging, laboratory, genetic, vision, hearing, dental, or specialty testing only when history and examination support a specific alternate or associated condition."
+      ],
+      "labs": [
+        "No laboratory, genetic, EEG, or imaging result independently confirms stereotypic movement disorder.",
+        "Target tests to the presentation: wound culture for clinically infected injury, metabolic or toxic testing for compatible acute change, EEG for events concerning for seizure, and genetic or neurologic evaluation for regression, dysmorphism, focal findings, or a syndromic pattern."
+      ],
+      "assessment": "First assess active injury and immediate causes such as pain, infection, sleep loss, medication change, intoxication, or neurologic deterioration. Then document the movement's form, timing, triggers, ability to interrupt, function, injury severity, developmental and communication profile, coexisting autism/IDD/ADHD/anxiety/OCD, caregiver response, school impact, and the child's sensory and participation goals.",
+      "differential": "Differentiate stereotypies from tics, compulsions, trichotillomania, excoriation disorder, self-harm with emotional or suicidal intent, functional movements, akathisia, tardive dyskinesia, dystonia, chorea, myoclonus, seizures, medication or stimulant effects, and movements caused by pain or sensory loss. A stereotypy may coexist with autism or IDD; those diagnoses do not automatically explain every new movement.",
+      "treatments": [
+        "For noninjurious movements without meaningful impairment, provide education, accept harmless self-regulation, and avoid making suppression the goal solely for social appearance.",
+        "For impairing movements, use individualized behavioral intervention based on functional analysis, including antecedent changes, reinforcement of safe alternatives, awareness and competing responses when developmentally feasible, communication supports, and caregiver-school consistency.",
+        "Treat pain, sleep, sensory, dental, dermatologic, psychiatric, neurologic, or medication causes and adapt the environment to reduce injury while preserving movement, communication, and autonomy.",
+        "There is no universal medication for stereotypic movement disorder. Specialist-selected medicine may target a severe associated condition or refractory self-injury, but benefit must be weighed against sedation, movement adverse effects, metabolic harm, and loss of function."
+      ],
+      "contraindications": [
+        "Do not use punishment, humiliation, painful aversive methods, or unnecessary restraint to stop a repetitive movement.",
+        "Do not assume every repetitive movement in an autistic child is baseline autism; new or changed behavior can signal pain, abuse, seizure, medication toxicity, or acute illness.",
+        "Do not sedate a harmless stereotypy only to make it look socially typical. Treatment should address the person's injury, distress, participation, or stated goals.",
+        "Do not use protective equipment without monitoring fit, skin, temperature, breathing, mobility, communication, and whether the equipment creates a new injury or restraint risk."
+      ],
+      "safetyConsiderations": [
+        "Use the least restrictive injury-prevention plan: remove sharp hazards, pad a specific contact surface, protect a healing wound, and increase observation only to the degree supported by current risk.",
+        "Assess head, eye, ear, mouth, teeth, skin, hands, joints, and hidden body areas after forceful or repetitive self-injury; nonverbal pain behavior may be the first sign of harm.",
+        "Maintain a separate suicide and self-harm assessment when indicated. Repetitive self-injury in a movement disorder does not prove suicidal intent, but it also does not rule it out.",
+        "Escalate new regression, focal neurologic change, altered awareness, fever, toxic exposure, severe injury, suspected abuse, or rapidly increasing frequency."
+      ],
+      "nursingPriorities": [
+        "Describe the movement objectively and record the before-during-after pattern, duration, frequency, triggers, interruptibility, apparent function, injury, and changes from baseline.",
+        "Assess pain, sleep, bowel and bladder discomfort, skin and dental injury, vision and hearing, medications, communication needs, acute illness, and possible maltreatment before labeling behavior as psychiatric.",
+        "Implement the individualized behavioral and environmental plan consistently across caregivers, school, and care settings; reinforce safe communication and alternative responses rather than the injury itself.",
+        "Monitor any protective device, restraint-like intervention, or medication for skin breakdown, circulation, breathing, sedation, falls, abnormal movements, reduced intake, and lost participation."
+      ],
+      "redFlags": [
+        "Eye poking, head banging, biting, or hitting with bleeding, suspected fracture, dental injury, vision change, loss of consciousness, or escalating force",
+        "New movement with altered awareness, weakness, ataxia, fever, severe headache, regression, or a recent medication, stimulant, or toxic exposure",
+        "Unexplained bruising, patterned injury, genital injury, fear of a caregiver, or another concern for abuse or neglect",
+        "Severe pain, wound infection, dehydration, inability to sleep or eat, suicidal intent, or a care plan that cannot keep the child safe"
+      ],
+      "complications": [
+        "Skin breakdown, infection, scarring, eye injury, dental damage, concussion, musculoskeletal injury, or chronic pain",
+        "Interrupted learning, sleep, communication, mobility, self-care, and social participation",
+        "Stigma, caregiver burnout, exclusion, unnecessary restraint, or adverse effects from poorly targeted sedating medication"
+      ],
+      "prognosis": "Primary motor stereotypies may persist but can become less frequent or less impairing with maturation and targeted behavioral strategies. Prognosis for secondary stereotypies depends on the associated developmental or neurologic condition, communication access, injury severity, and whether treatable triggers are recognized. A visible movement count alone does not measure quality of life.",
+      "prevention": [
+        "There is no proven method to prevent a primary developmental stereotypy. Early recognition can prevent punishment, hidden injury, and unnecessary medication.",
+        "Prevent complications by treating pain and illness promptly, supporting communication and sensory regulation, adapting hazards, monitoring wounds and protective devices, and using consistent positive behavioral plans."
+      ],
+      "patientEducation": [
+        "Repeated movements are not automatically misbehavior. Tell the care team what happens before and after the movement and what seems to help.",
+        "Harmless movements do not need to be eliminated just because they look different; treatment focuses on safety, comfort, participation, and the person's goals.",
+        "Check the skin, eyes, mouth, and painful areas regularly when movements are forceful or self-injurious.",
+        "Seek urgent care for serious head or eye injury, altered awareness, weakness, fever with neurologic change, suspected poisoning, abuse, or inability to keep the person safe."
+      ],
+      "specialPopulations": [
+        "People with limited speech require accessible pain assessment and augmentative communication; behavior may be their clearest signal of discomfort or overload.",
+        "Autistic people and people with intellectual developmental disorder need baseline-to-current comparison because familiar stereotypies can coexist with a new seizure, adverse drug effect, or medical illness.",
+        "Children in institutional, foster, or high-restraint settings need trauma-informed review of deprivation, environmental triggers, injury documentation, consent, and the least restrictive plan."
+      ],
+      "nclexTraps": [
+        "A repetitive movement is not automatically stereotypic movement disorder; it must cause interference or injury and meet the developmental and exclusion requirements.",
+        "A stereotypy is often fixed and rhythmic, while a tic is usually sudden and nonrhythmic; direct observation and history matter more than one label.",
+        "Self-injurious stereotypy does not automatically mean suicidal intent, but suicide assessment is still required when clinical findings indicate it.",
+        "The safest intervention is not automatically medication or restraint; first assess injury, pain, function, communication, and environmental triggers."
+      ],
+      "relatedTopics": [
+        "Provisional tic disorder",
+        "Tourette syndrome",
+        "Autism spectrum disorder",
+        "Intellectual developmental disorder",
+        "Trichotillomania",
+        "Excoriation disorder",
+        "Tardive dyskinesia"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "who-icd11-cddr-mental-2024",
+        "medlineplus-stereotypic-movement-2024",
+        "mackenzie-stereotypic-movement-review-2018"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. APA and WHO support the diagnostic boundary and specifiers; MedlinePlus and the pediatric neurology review support movement description, associated conditions, differential, injury focus, and behavioral-first management. No commercial-reference prose was copied.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "functional interference",
+            "self-injury specifier",
+            "developmental onset",
+            "exclusions",
+            "differential"
+          ]
+        },
+        {
+          "authority": "U.S. National Library of Medicine MedlinePlus",
+          "url": "https://medlineplus.gov/ency/article/001548.htm",
+          "documentVersion": "reviewed 2024-04-17; accessed 2026-08-15",
+          "fieldsSupported": [
+            "plain-language description",
+            "movement examples",
+            "injury",
+            "medical differential",
+            "environmental safety",
+            "behavioral care"
+          ]
+        },
+        {
+          "authority": "Seminars in Pediatric Neurology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29735112/",
+          "documentVersion": "review article 2018; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "fixed persistent movements",
+            "early onset",
+            "primary and secondary stereotypies",
+            "coexisting conditions",
+            "behavioral treatment"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "classification",
+            "diagnostic requirements",
+            "differential",
+            "duration",
+            "functional impact"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.stereotypic-movement-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.childhood-onset-fluency-disorder",
+      "name": "Childhood-onset fluency disorder",
+      "displayName": "Childhood-onset fluency disorder",
+      "category": "Mental Health",
+      "aliases": [
+        "Developmental stuttering",
+        "Stuttering disorder",
+        "Stuttering"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Childhood-onset fluency disorder, commonly called developmental stuttering, is a condition in which the flow and timing of speech are repeatedly interrupted by sounds or words that repeat, stretch out, or become blocked. It is not caused by low intelligence or a child being careless, and the diagnosis considers age, language, communication impact, and other speech or neurologic causes.",
+      "whyItMatters": "Stuttering can make a child avoid speaking, school participation, friendships, or future opportunities even when the visible interruptions seem mild. Early respectful speech-language assessment can reduce communication barriers and bullying, while sudden acquired dysfluency with neurologic symptoms requires urgent medical evaluation rather than a developmental label.",
+      "plainLanguageGlosses": [
+        {
+          "term": "fluency",
+          "plainLanguage": "the smooth flow, rhythm, and timing of speech",
+          "sourceKeys": [
+            "asha-fluency-disorders-2026"
+          ]
+        },
+        {
+          "term": "speech block",
+          "plainLanguage": "a moment when the speaker is trying to talk but little or no sound comes out",
+          "sourceKeys": [
+            "asha-fluency-disorders-2026",
+            "apa-dsm5tr-2022"
+          ]
+        },
+        {
+          "term": "secondary behavior",
+          "plainLanguage": "an added movement or strategy, such as blinking, facial tension, or word avoidance, used while trying to get through or prevent a stutter",
+          "sourceKeys": [
+            "asha-fluency-disorders-2026"
+          ]
+        }
+      ],
+      "definition": "Childhood-onset fluency disorder is a disturbance in the normal fluency and timing pattern of speech that is inappropriate for age and language skills, persists over time, causes anxiety or limitation in communication, participation, education, work, or social life, begins in the early developmental period, and is not better explained by a speech-motor or sensory deficit, neurologic injury, another medical condition, or another mental disorder. Features can include sound or syllable repetitions, sound prolongations, broken words, audible or silent blocks, circumlocutions, tense words, and monosyllabic whole-word repetitions.",
+      "pathology": "There is no single structural lesion or laboratory marker for developmental stuttering. The disorder reflects atypical development and coordination of speech planning, language, motor timing, and feedback networks, with wide individual variability. Emotional stress can worsen fluency but is not the primary cause.",
+      "pathophysiology": [
+        "Speech requires rapid coordination of language formulation, breathing, voice, articulation, hearing, and motor timing. Developmental differences across these systems can produce repeated or blocked speech without implying low intelligence.",
+        "Anticipation, time pressure, listener reactions, and avoidance can create a feedback cycle in which fear and physical tension increase communication burden. Anxiety may be a consequence, amplifier, or coexisting disorder rather than the original cause.",
+        "Normal developmental disfluency, developmental stuttering, cluttering, and acquired neurogenic or psychogenic dysfluency have overlapping surface features but different histories and evaluation paths."
+      ],
+      "etiology": "Developmental stuttering is multifactorial, with genetic and neurodevelopmental contributions. It is not caused by bilingualism, a parent calling attention to speech, or lack of effort. Hearing loss, structural speech differences, motor speech disorders, neurologic injury, medications, seizures, and functional neurologic symptoms can produce other forms of dysfluency.",
+      "riskFactors": [
+        "Family history of persistent developmental stuttering or another speech-language disorder",
+        "Onset in early childhood with persistence, increasing struggle, or a longer course rather than brief age-typical disfluency",
+        "Coexisting speech sound, language, learning, attention, or motor-development difficulty",
+        "Bullying, communication pressure, avoidance, social anxiety, or listener interruption that increases functional impact but does not cause the underlying disorder"
+      ],
+      "signsSymptoms": [
+        "Repeating sounds, syllables, or short whole words; stretching sounds; broken words; audible or silent blocks",
+        "Physical tension, blinking, jaw or facial movements, loss of eye contact, or other secondary behaviors during difficult speech",
+        "Changing words, avoiding names or phone calls, speaking less, pretending not to know, or choosing activities that require little talking",
+        "Variable fluency across settings, people, languages, fatigue, excitement, time pressure, and communication demands"
+      ],
+      "diagnostics": [
+        "A speech-language pathologist evaluates speech samples across tasks and settings; frequency and type of disfluency; tension and secondary behaviors; communication participation; child and family concerns; onset and course; languages and dialects; hearing; oral-motor function; and coexisting speech, language, learning, or developmental needs.",
+        "Confirm early developmental onset, persistence, age- and language-inappropriate disruption, and clinically meaningful communication anxiety or limitation. A school screening or disfluency count alone is not the diagnosis.",
+        "Assess bullying, social anxiety, depression, selective mutism, school avoidance, and self-esteem without assuming that emotional distress caused the stutter.",
+        "Urgently evaluate sudden onset after head injury, stroke-like symptoms, seizure, intoxication, infection, medication change, or other neurologic change as possible acquired dysfluency."
+      ],
+      "labs": [
+        "No blood test, genetic test, imaging study, or EEG confirms childhood-onset fluency disorder.",
+        "Hearing testing and targeted neurologic, structural, or medication evaluation are selected when history or examination suggests another cause; routine brain imaging is not required for a typical developmental course."
+      ],
+      "assessment": "Ask the child how speaking feels and what situations they avoid, then assess onset, course, speech across languages and settings, disfluency types, physical struggle, breathing and voice, hearing, speech-language development, neurologic history, medications, school participation, bullying, anxiety, depression, and family responses. Communication impact and the child's goals matter more than a raw syllable count alone.",
+      "differential": "Differentiate developmental stuttering from age-typical disfluency, cluttering, speech sound or developmental language disorder, apraxia, dysarthria, hearing loss, selective mutism, social anxiety, tic or stereotypy, and acquired neurogenic or functional dysfluency. A child may have stuttering plus another communication or mental-health condition; one does not automatically replace the other.",
+      "treatments": [
+        "Refer for individualized speech-language therapy that may target easier communication, reduced struggle, speech modification, stuttering modification, self-advocacy, participation, and the child's chosen goals rather than promising perfect fluency.",
+        "For young children, include caregiver coaching to slow conversational pace, take turns, reduce time pressure, listen without finishing sentences, and respond neutrally and supportively to stuttering.",
+        "Address bullying, classroom speaking demands, presentations, oral testing, phone use, and participation through a school plan; offer psychological treatment for coexisting anxiety or avoidance without presenting anxiety treatment as a cure for stuttering.",
+        "No medication is established as routine treatment for childhood-onset fluency disorder. Treat a separate diagnosed condition only for its own indication and monitor whether the medicine changes fluency."
+      ],
+      "contraindications": [
+        "Do not tell the child to slow down, take a breath, start over, or try harder every time they stutter; repeated correction can increase pressure and shame.",
+        "Do not finish words, speak for the child without permission, remove every speaking opportunity, or grade intelligence from fluency.",
+        "Do not promise a cure, require complete fluency as the only success outcome, or use coercive techniques that suppress participation.",
+        "Do not label sudden acquired dysfluency as developmental without evaluating neurologic, toxic, medication, and trauma-related causes."
+      ],
+      "safetyConsiderations": [
+        "Screen for bullying, humiliation, social withdrawal, depression, self-harm, and suicidal thinking when communication distress is severe.",
+        "Provide enough time for the person to speak during triage, consent, pain assessment, emergency communication, and medication teaching; time pressure can distort the clinical history.",
+        "Use qualified interpretation and bilingual assessment when needed. Disfluency may differ by language, and bilingualism itself is not a disorder.",
+        "Escalate abrupt dysfluency with facial droop, weakness, confusion, severe headache, seizure, head injury, or toxic exposure as a neurologic emergency."
+      ],
+      "nursingPriorities": [
+        "Maintain natural eye contact, listen to content, allow pauses, and avoid finishing sentences unless the patient asks for help.",
+        "Document onset, course, communication impact, physical struggle, neurologic changes, medications, hearing or language concerns, bullying, and the child's preferred communication supports.",
+        "Coordinate speech-language referral and school accommodations, and protect speaking opportunities rather than allowing avoidance to become permanent exclusion.",
+        "Teach families that developmental stuttering is not caused by anxiety or parenting, while explaining that stress and listener pressure can make communication harder."
+      ],
+      "redFlags": [
+        "Sudden new dysfluency with weakness, facial asymmetry, confusion, severe headache, seizure, head injury, intoxication, or loss of previously normal speech",
+        "Choking, aspiration, new voice weakness, drooling, progressive motor decline, or other bulbar or neurologic findings",
+        "Severe bullying, school refusal, depression, self-harm, suicidal intent, or inability to communicate an urgent need",
+        "Rapid regression in language or development, hearing loss, or a medication-linked change that is not being evaluated"
+      ],
+      "complications": [
+        "Speaking avoidance, social anxiety, reduced school participation, missed assessment, and barriers to employment or healthcare communication",
+        "Bullying, shame, depressed mood, isolation, and reduced self-advocacy",
+        "Physical tension, fatigue, and secondary behaviors that increase speaking effort",
+        "Delayed recognition of an acquired neurologic disorder when abrupt dysfluency is incorrectly labeled developmental"
+      ],
+      "prognosis": "Many young children recover, while others have persistent stuttering into adolescence or adulthood. No single feature predicts an individual's outcome. Early assessment is especially useful when stuttering persists, struggle or avoidance increases, family history is positive, or communication participation is falling. A good outcome can mean confident, effective communication even when some stuttering remains.",
+      "prevention": [
+        "There is no proven way to prevent developmental stuttering. Early referral can prevent avoidable shame, bullying, participation loss, and unhelpful communication habits.",
+        "Use patient listening, reasonable speaking time, anti-bullying action, and accessible school or workplace supports to reduce secondary harm."
+      ],
+      "patientEducation": [
+        "Stuttering is a real speech-fluency difference and is not a sign of low intelligence, dishonesty, or weak effort.",
+        "Tell listeners what helps, such as time to finish, no sentence completion, fewer interruptions, or an alternate format for a specific task.",
+        "Speech therapy is individualized; the goal may include easier speaking, less fear, stronger participation, and self-advocacy, not only fewer stutters.",
+        "Get urgent help for sudden new stuttering with weakness, confusion, severe headache, seizure, head injury, or another neurologic change."
+      ],
+      "specialPopulations": [
+        "Multilingual speakers need assessment in all relevant languages with attention to language proficiency, dialect, culture, and interpreter quality; bilingualism does not cause stuttering.",
+        "Autistic people and people with ADHD, language disorder, or learning disorder may need sensory, attention, and communication adaptations in addition to fluency care.",
+        "Adults with lifelong developmental stuttering may still benefit from participation-focused care, while adult sudden-onset dysfluency requires an acquired-cause evaluation."
+      ],
+      "nclexTraps": [
+        "Do not finish the patient's sentence; allow time and listen to meaning.",
+        "Anxiety may worsen or result from stuttering, but it is not assumed to be the primary cause.",
+        "A disfluency count alone does not diagnose the disorder; age, language, persistence, struggle, and functional impact matter.",
+        "Sudden-onset dysfluency with neurologic findings is not routine childhood-onset fluency disorder."
+      ],
+      "relatedTopics": [
+        "Social (pragmatic) communication disorder",
+        "Developmental language disorder",
+        "Specific learning disorder",
+        "Selective mutism",
+        "Social anxiety disorder",
+        "School refusal"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "who-icd11-cddr-mental-2024",
+        "asha-fluency-disorders-2026"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. APA and WHO support diagnostic identity, impairment, developmental onset, and exclusions; ASHA supports learner language, culturally responsive speech-language assessment, participation-focused care, differential diagnosis, and family-school intervention. No commercial-reference prose was copied.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "fluency features",
+            "developmental onset",
+            "functional impact",
+            "medical and neurologic exclusions"
+          ]
+        },
+        {
+          "authority": "American Speech-Language-Hearing Association",
+          "url": "https://www.asha.org/practice-portal/clinical-topics/fluency-disorders",
+          "documentVersion": "current Practice Portal; accessed 2026-08-15",
+          "fieldsSupported": [
+            "definition",
+            "assessment",
+            "communication impact",
+            "culture and language",
+            "treatment",
+            "patient and family education"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "developmental speech-fluency identity",
+            "diagnostic requirements",
+            "impairment",
+            "differential"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.childhood-onset-fluency-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.social-pragmatic-communication-disorder",
+      "name": "Social (pragmatic) communication disorder",
+      "displayName": "Social (pragmatic) communication disorder",
+      "category": "Mental Health",
+      "aliases": [
+        "Social pragmatic communication disorder"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Social (pragmatic) communication disorder is a developmental condition in which a person has persistent trouble using and understanding language for social situations, such as taking turns, adjusting speech to the listener, reading implied meaning, or following conversation rules. It is not simply shyness, rudeness, low intelligence, or a lack of eye contact, and it is diagnosed only after language, culture, hearing, development, and autism have been carefully assessed.",
+      "whyItMatters": "Social-communication difficulty can lead to misunderstanding, isolation, bullying, exploitation, academic problems, and missed needs even when vocabulary and grammar seem strong. Correct diagnosis directs speech-language and school support while preventing autism, language disorder, ADHD, anxiety, trauma, or cultural communication differences from being overlooked.",
+      "plainLanguageGlosses": [
+        {
+          "term": "pragmatics",
+          "plainLanguage": "how people use spoken, written, and nonverbal communication for a social purpose and a particular situation",
+          "sourceKeys": [
+            "asha-social-communication-2026"
+          ]
+        },
+        {
+          "term": "nonliteral language",
+          "plainLanguage": "language whose intended meaning is not exactly the words said, such as hints, sarcasm, idioms, or metaphors",
+          "sourceKeys": [
+            "asha-social-communication-2026"
+          ]
+        },
+        {
+          "term": "restricted or repetitive behaviors",
+          "plainLanguage": "repeated movements, intense or narrow interests, insistence on sameness, or unusual sensory responses that are part of the autism diagnostic framework when the required pattern is present",
+          "sourceKeys": [
+            "apa-dsm5tr-2022"
+          ]
+        }
+      ],
+      "definition": "Social (pragmatic) communication disorder is defined by persistent difficulty in the social use of verbal and nonverbal communication, including using communication for social purposes, changing it to match context or listener, following conversation and storytelling rules, and understanding unstated or nonliteral meaning. The difficulties cause functional limitation, begin during development even if demands reveal them later, are not attributable to another medical or neurologic condition or low structural-language ability, and are not better explained by autism spectrum disorder, intellectual developmental disorder, global developmental delay, or another mental disorder.",
+      "pathology": "There is no single lesion, laboratory marker, or brain scan for this disorder. The clinically relevant pattern is a mismatch between social-communication demands and the person's pragmatic communication abilities across real settings, interpreted within language, culture, development, cognition, hearing, and opportunity.",
+      "pathophysiology": [
+        "Social communication combines language knowledge, attention, inference, perspective taking, emotion recognition, memory, and flexible adjustment to context. Different developmental pathways can disrupt one or more of these functions, so no one mechanism applies to every person.",
+        "Difficulty may become more visible when school and peer interactions require subtle inference, rapid topic shifts, group work, humor, and independent conflict repair, even when earlier basic language appeared adequate.",
+        "Autism and social communication disorder can look similar in conversation, but autism also requires a current or historical restricted or repetitive pattern. That history cannot be replaced by one clinic observation."
+      ],
+      "etiology": "The cause of a primary social communication disorder is usually unknown and likely multifactorial. Risk may overlap with language, learning, attention, and neurodevelopmental differences. Acquired brain injury, hearing loss, seizure, genetic conditions, autism, intellectual disability, trauma, anxiety, and limited language access can produce social-communication problems that require another or additional diagnosis.",
+      "riskFactors": [
+        "Personal or family history of language, learning, literacy, attention, or social-communication difficulty",
+        "Developmental language disorder, ADHD, specific learning disorder, hearing impairment, or another neurodevelopmental condition",
+        "Brain injury, epilepsy, neurologic illness, or developmental regression that suggests an acquired or broader cause",
+        "Social and academic demands that exceed previously supported communication skills; limited language access or biased assessment can mimic impairment"
+      ],
+      "signsSymptoms": [
+        "Difficulty greeting, requesting, sharing information, entering a group, taking turns, staying on topic, repairing a misunderstanding, or judging how much background a listener needs",
+        "Using the same language style with a teacher, younger child, close friend, and unfamiliar person despite different expectations",
+        "Taking hints, sarcasm, idioms, jokes, or figurative language literally; difficulty making inferences or following implied social meaning",
+        "Peer conflict, isolation, vulnerability to manipulation, classroom participation problems, or strong factual language with weak reciprocal conversation"
+      ],
+      "diagnostics": [
+        "A speech-language pathologist obtains developmental, medical, hearing, language, literacy, school, and family history and evaluates pragmatic communication across conversation, narrative, inference, nonverbal communication, and real-life participation.",
+        "Gather observations from the person, caregivers, teachers, and other settings because structured one-to-one testing may hide difficulty that appears in groups or unstructured interaction.",
+        "Assess structural language, cognition, adaptive function, hearing, attention, learning, anxiety, trauma, and culture and language. Use qualified interpreters and multilingual assessment when needed.",
+        "Evaluate autism carefully, including current and historical restricted or repetitive behaviors and sensory features. Social communication disorder is not diagnosed in addition to autism when autism explains the pattern."
+      ],
+      "labs": [
+        "No blood test, genetic test, EEG, imaging study, or rating scale confirms social (pragmatic) communication disorder.",
+        "Hearing evaluation is often important. Genetic, neurologic, vision, or other testing is targeted to regression, seizures, dysmorphism, focal findings, injury, or another specific clinical clue."
+      ],
+      "assessment": "Assess how the person communicates across home, school, peers, healthcare, digital settings, and languages; identify misunderstandings, safety vulnerability, participation goals, strengths, hearing, structural language, cognition, attention, restricted or repetitive history, sensory profile, anxiety, trauma, bullying, mood, and school progress. Do not use eye contact or one culturally unfamiliar interaction as a diagnostic shortcut.",
+      "differential": "Differentiate from autism spectrum disorder by the required restricted or repetitive behavior history; from developmental language disorder by whether broader vocabulary, grammar, and language formulation are impaired; and from ADHD, social anxiety, selective mutism, intellectual developmental disorder, hearing loss, acquired brain injury, trauma, psychosis, and cultural or multilingual communication differences. Conditions can coexist when each independently meets criteria.",
+      "treatments": [
+        "Provide individualized speech-language intervention using meaningful settings to practice conversation repair, inference, narrative, perspective, self-advocacy, and flexible communication; goals should improve participation rather than force one social style.",
+        "Coordinate direct teaching, visual supports, predictable group roles, explicit instructions, peer-mediated practice, and classroom accommodations through the school team.",
+        "Teach family, peers, and clinicians to state expectations clearly, check understanding without shame, allow processing time, and explain ambiguous or figurative language when needed.",
+        "Treat coexisting ADHD, anxiety, depression, trauma, language disorder, or learning disorder for its own indication. No medication specifically treats the core pragmatic-communication disorder."
+      ],
+      "contraindications": [
+        "Do not diagnose from low eye contact, blunt tone, shyness, a single social error, or performance in only one language or culture.",
+        "Do not require masking, scripted eye contact, or suppression of harmless communication differences as the only measure of success.",
+        "Do not assign social communication disorder merely because restricted or repetitive behaviors are absent during one visit; obtain developmental history before excluding autism.",
+        "Do not use medication as a substitute for communication access, speech-language intervention, or school support."
+      ],
+      "safetyConsiderations": [
+        "Assess vulnerability to bullying, coercion, online exploitation, sexual abuse, scams, and unsafe literal interpretation; teach concrete consent, boundary, and help-seeking language.",
+        "Confirm understanding during consent, medication teaching, discharge, and emergency instructions by asking the person to explain the plan in their own words rather than asking only yes-or-no questions.",
+        "Screen depression, self-harm, suicidal thinking, and school refusal when isolation or repeated failure has become severe.",
+        "New loss of language, social reciprocity, self-care, or previously acquired skills requires urgent developmental or neurologic evaluation."
+      ],
+      "nursingPriorities": [
+        "Use direct, concrete language, one idea at a time, and a teach-back response; clarify idioms and implied instructions.",
+        "Ask the person and family which communication supports help, including written choices, visual schedules, extra processing time, a quieter setting, or an augmentative system.",
+        "Document strengths as well as difficulty and distinguish what was observed from an interpretation such as uncooperative or lacking empathy.",
+        "Coordinate speech-language, school, hearing, developmental, and mental-health referrals and screen for bullying, exploitation, anxiety, depression, and safety."
+      ],
+      "redFlags": [
+        "Regression or sudden loss of language, social engagement, motor skill, continence, or self-care",
+        "Seizure, focal neurologic change, head injury, severe headache, altered awareness, or rapidly progressive cognitive change",
+        "Suspected abuse, exploitation, trafficking, dangerous online contact, or inability to understand an immediate safety instruction",
+        "Severe depression, suicidal intent, self-harm, psychosis, or complete school withdrawal"
+      ],
+      "complications": [
+        "Peer rejection, bullying, isolation, conflict, exploitation, and reduced independent safety",
+        "Academic underperformance, misunderstood behavior, school avoidance, and barriers to healthcare or employment",
+        "Anxiety, depression, low self-esteem, exhaustion from masking, and family stress",
+        "Missed autism, language, hearing, learning, neurologic, or trauma-related needs when the assessment is too narrow"
+      ],
+      "prognosis": "The condition can persist as social demands change, but practical communication, self-advocacy, participation, and safety can improve with individualized speech-language support and environmental access. Outcome depends on the person's profile, coexisting conditions, communication partners, school support, and goals; conformity to one social style is not the outcome measure.",
+      "prevention": [
+        "There is no proven way to prevent a primary developmental social communication disorder. Early recognition can prevent mislabeling, exclusion, bullying, and delayed language support.",
+        "Use accessible communication, anti-bullying safeguards, explicit teaching, and culturally responsive assessment to reduce secondary harm."
+      ],
+      "patientEducation": [
+        "This condition affects how communication works in social situations; it does not mean the person does not care about others or cannot learn.",
+        "It is reasonable to ask people to be direct, explain a joke or hint, write down instructions, or give more processing time.",
+        "Speech-language treatment should build useful skills and participation while respecting culture, identity, and preferred communication style.",
+        "Tell a trusted adult or clinician about bullying, coercion, unsafe online contact, depression, self-harm, or sudden loss of skills."
+      ],
+      "specialPopulations": [
+        "Multilingual people require assessment across languages and cultures; difference from monolingual norms is not automatically disorder.",
+        "Autistic people may share pragmatic difficulty but have a distinct required restricted or repetitive pattern. They should not be given a second social communication disorder label for the same symptoms.",
+        "People using augmentative and alternative communication need assessment of social communication through their actual system, not speech-only tasks."
+      ],
+      "nclexTraps": [
+        "Low eye contact alone does not diagnose social communication disorder and is influenced by culture and individual preference.",
+        "Autism requires restricted or repetitive features in addition to social-communication difficulty; obtain history, not just a current observation.",
+        "No medication treats the core pragmatic deficit; use speech-language and environmental supports while treating true comorbid conditions separately.",
+        "Teach-back is safer than asking whether the patient understands, especially when implied language is difficult."
+      ],
+      "relatedTopics": [
+        "Autism spectrum disorder",
+        "Developmental language disorder",
+        "Childhood-onset fluency disorder",
+        "Attention-deficit/hyperactivity disorder",
+        "Specific learning disorder",
+        "Selective mutism",
+        "Social anxiety disorder",
+        "School refusal"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "who-icd11-cddr-mental-2024",
+        "asha-social-communication-2026"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. APA and WHO support identity, developmental course, impairment, exclusions, and the autism boundary; ASHA supports pragmatic domains, culturally responsive assessment, speech-language treatment, school supports, and participation-centered care. No commercial-reference prose was copied.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "four pragmatic domains",
+            "developmental onset",
+            "functional limitation",
+            "autism exclusion",
+            "differential"
+          ]
+        },
+        {
+          "authority": "American Speech-Language-Hearing Association",
+          "url": "https://www.asha.org/practice-portal/clinical-topics/social-communication-disorder/",
+          "documentVersion": "current Practice Portal; accessed 2026-08-15",
+          "fieldsSupported": [
+            "definition",
+            "assessment",
+            "cultural context",
+            "SLP role",
+            "treatment",
+            "school participation",
+            "AAC"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "developmental communication classification",
+            "clinical requirements",
+            "impairment",
+            "differential"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.social-pragmatic-communication-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.enuresis",
+      "name": "Enuresis",
+      "displayName": "Enuresis",
+      "category": "Mental Health",
+      "aliases": [
+        "Enuresis disorder"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Enuresis is repeated urination into bed or clothing after a child has reached the age when bladder control is normally expected. It may happen during sleep, while awake, or both; it is not laziness or bad behavior, and medical causes such as constipation, a urinary infection, diabetes, sleep apnea, or a urinary or neurologic problem must be considered.",
+      "whyItMatters": "Enuresis can disrupt sleep, confidence, school, camps, and family life, but punishment makes harm worse and does not create bladder control. New wetting after a dry period can be an early sign of diabetes, infection, severe stress, constipation, seizure, sleep-disordered breathing, abuse, or spinal and urinary disease, so the pattern and red flags determine urgency.",
+      "plainLanguageGlosses": [
+        {
+          "term": "primary enuresis",
+          "plainLanguage": "wetting in a child who has never maintained a regular dry period",
+          "sourceKeys": [
+            "niddk-enuresis-diagnosis-2026"
+          ]
+        },
+        {
+          "term": "secondary enuresis",
+          "plainLanguage": "wetting that begins again after at least six months of dryness",
+          "sourceKeys": [
+            "niddk-enuresis-diagnosis-2026"
+          ]
+        },
+        {
+          "term": "enuresis alarm",
+          "plainLanguage": "a moisture sensor that wakes the child as wetting begins so the child can gradually learn to recognize and respond to a full bladder during sleep",
+          "sourceKeys": [
+            "nice-cg111-enuresis-current",
+            "niddk-enuresis-treatment-2026"
+          ]
+        }
+      ],
+      "definition": "DSM-5-TR enuresis is repeated urination into bed or clothes, whether involuntary or intentional, in a child who is at least age 5 or an equivalent developmental level. It occurs at least twice weekly for at least three consecutive months or causes clinically significant distress or impairment, and it is not attributable to a substance or another medical condition. Specify nighttime only, daytime only, or both. A wet bed in a younger child, one accident, or wetting fully explained by medical disease is not this diagnosis.",
+      "pathology": "Most childhood nighttime enuresis reflects a variable combination of delayed nighttime bladder control, difficulty waking to bladder signals, high nighttime urine production, and functional bladder capacity. Daytime symptoms, constipation, infection, diabetes, sleep apnea, urinary anatomy, and neurologic function may change the mechanism and management.",
+      "pathophysiology": [
+        "Nighttime dryness requires coordinated urine concentration, bladder storage, and arousal to a full-bladder signal. Delay or mismatch in any of these systems can lead to wetting without intentional behavior.",
+        "Rectal stool retention can compress the bladder and disrupt pelvic-floor coordination, causing or worsening urgency, daytime accidents, and bedwetting; bowel history is therefore part of bladder assessment.",
+        "Secondary enuresis can follow medical illness or major stress, but a temporal association does not prove a psychological cause. New polyuria, dysuria, neurologic change, trauma, and sleep symptoms need direct evaluation."
+      ],
+      "etiology": "Etiology may be developmental and familial or related to constipation, overactive bladder, urinary tract infection, diabetes mellitus or insipidus, kidney disease, obstructive sleep apnea, seizure, urinary anomaly, spinal or neurologic disease, medication or substance, developmental disability, severe stress, or maltreatment. The diagnosis must reflect the actual cause and functional pattern.",
+      "riskFactors": [
+        "Family history of later bladder control or primary nighttime enuresis",
+        "Constipation, stool withholding, daytime urgency, infrequent voiding, overactive bladder symptoms, or recurrent UTI",
+        "Deep or fragmented sleep, snoring or obstructive sleep apnea, ADHD, developmental delay, or psychosocial stress",
+        "Diabetes symptoms, kidney or urinary abnormality, spinal or neurologic disease, seizure, diuretic or sedating medicine, or a recent loss of established dryness"
+      ],
+      "signsSymptoms": [
+        "Nighttime bedwetting, daytime clothing wetting, or both, with frequency and volume that vary",
+        "Urgency, frequent voiding, holding maneuvers, weak or intermittent stream, straining, pain, dribbling, or incomplete emptying when daytime bladder dysfunction coexists",
+        "Constipation, painful or infrequent stool, stool soiling, abdominal discomfort, snoring, restless sleep, or daytime sleepiness",
+        "Embarrassment, hiding laundry, avoiding sleepovers or camp, school distress, family conflict, or skin irritation"
+      ],
+      "diagnostics": [
+        "Record nighttime and daytime wetting, frequency, volume when feasible, first and longest dry period, fluid timing, voiding schedule, stool pattern, sleep and snoring, dysuria, fever, thirst, weight change, medications, development, stress, trauma, family response, and functional impact.",
+        "Use a bladder-fluid and bowel diary and perform abdominal, genital or perineal when indicated, blood pressure, growth, neurologic, gait, lower-limb, spine, and skin assessment with privacy and consent.",
+        "Urinalysis is commonly used to look for infection, glucose, concentration abnormalities, blood, or other clues; culture and further tests follow symptoms and results. A normal urinalysis does not establish a psychiatric cause.",
+        "Imaging, postvoid residual, uroflow, sleep study, renal testing, or urology/neurology referral is selective for daytime symptoms, recurrent infection, abnormal stream, neurologic signs, treatment resistance, or another red flag."
+      ],
+      "labs": [
+        "Urinalysis is the usual first targeted test when clinically assessed; urine culture is used when UTI is suspected. Check bedside or serum glucose urgently when polyuria, polydipsia, weight loss, vomiting, dehydration, or altered mental status suggests diabetes.",
+        "Kidney function, electrolytes, serum or urine osmolality, calcium, or other tests are selected for excessive thirst and urine, renal findings, desmopressin safety concerns, or an endocrine differential; no panel diagnoses enuresis by itself."
+      ],
+      "assessment": "First identify acute infection, hyperglycemia, dehydration, urinary retention or obstruction, neurologic deficit, severe constipation, abuse, and medication effects. Then classify night, day, or combined wetting; primary or secondary course; bowel and sleep links; developmental level; child and family goals; distress; skin condition; prior interventions; ability to follow an alarm or medication plan; and punishment or stigma at home or school.",
+      "differential": "Differentiate developmental enuresis from UTI, type 1 diabetes mellitus, diabetes insipidus, kidney disease, obstructive sleep apnea, constipation-related bladder dysfunction, overactive or neurogenic bladder, urinary obstruction or anomaly, seizure, medication effects, functional neurologic symptoms, and intentional urination in another behavioral context. Secondary wetting also prompts assessment for stress and maltreatment without assuming either one.",
+      "treatments": [
+        "Begin with education and a nonpunitive plan: regular daytime voiding, voiding before sleep, practical daytime hydration, constipation treatment, easy toilet access, skin care, and rewards for controllable steps such as using the toilet or resetting an alarm rather than rewards or punishment for a dry bed.",
+        "Offer an enuresis alarm for motivated children and families when appropriate; teach setup, caregiver support, progress markers, and the need for consistent use over weeks to months with scheduled review.",
+        "Desmopressin can provide faster or short-term control of nighttime wetting when an alarm is unsuitable or not preferred. Follow product and local fluid instructions exactly, review response, and explain that relapse after stopping is common because the medicine reduces nighttime urine rather than permanently teaching arousal.",
+        "Treat the cause or refer when daytime bladder dysfunction, recurrent UTI, constipation, sleep apnea, diabetes, urinary anomaly, neurologic disease, trauma, or treatment resistance is present."
+      ],
+      "contraindications": [
+        "Do not punish, shame, restrict normal daytime fluids, force public disclosure, or make the child clean as a humiliation; wetting is not evidence of laziness.",
+        "Do not give desmopressin when the child cannot follow prescribed evening fluid limits or during vomiting, diarrhea, fever, unusually heavy drinking, or another setting that raises water-balance risk without contacting the prescriber.",
+        "Do not use a sedating or tricyclic medicine casually for bedwetting; specialist selection, overdose risk, cardiac safety, interactions, and secure storage matter.",
+        "Do not assume secondary enuresis is emotional until diabetes, infection, constipation, sleep, urinary, neurologic, medication, and safety causes have been evaluated."
+      ],
+      "safetyConsiderations": [
+        "Desmopressin can cause dangerous water retention and hyponatremia when fluid guidance is not followed. Headache, nausea, vomiting, confusion, marked drowsiness, swelling, or seizure requires urgent evaluation.",
+        "Protect privacy and skin, provide dry clothing and bedding access, and prevent bullying or punitive discipline at home, school, camp, foster care, and inpatient settings.",
+        "Ask about possible abuse privately and developmentally, but do not treat wetting alone as proof. Follow mandated reporting and forensic pathways for actual concern.",
+        "Escalate fever with urinary symptoms, inability to void, severe abdominal or flank pain, new leg weakness or saddle sensory change, hyperglycemia symptoms, dehydration, or altered consciousness."
+      ],
+      "nursingPriorities": [
+        "Document the night/day pattern, first and longest dry period, voiding and fluid schedule, bowel history, sleep and snoring, urinary symptoms, medications, stress, skin findings, growth or weight change, and family response.",
+        "Obtain a clean urine specimen when ordered and recognize urgent diabetes, UTI, retention, dehydration, and neurologic findings rather than labeling the problem behavioral.",
+        "Teach alarm use or desmopressin-specific fluid safety with teach-back and confirm the family has a realistic follow-up and relapse plan.",
+        "Protect dignity, change wet clothing promptly, use gentle barrier skin care as needed, and reward plan participation rather than a physiologic outcome the child cannot fully control."
+      ],
+      "redFlags": [
+        "Polyuria with intense thirst, weight loss, vomiting, abdominal pain, dehydration, deep breathing, confusion, or fruity breath",
+        "Fever, dysuria, flank pain, blood in urine, recurrent UTI, weak stream, continuous dribbling, urinary retention, or severe genital or abdominal pain",
+        "New leg weakness, gait change, saddle numbness, back abnormality, loss of bowel control, seizure, or other neurologic change",
+        "Suspected abuse, severe punishment, suicidal distress, or headache, vomiting, confusion, swelling, or seizure while taking desmopressin"
+      ],
+      "complications": [
+        "Sleep disruption, skin irritation, odor, laundry burden, embarrassment, bullying, and avoidance of sleepovers, travel, or school activities",
+        "Family conflict, punishment, low self-esteem, anxiety, depressed mood, and school refusal",
+        "Recurrent UTI or worsening bladder-bowel dysfunction when a medical driver is missed",
+        "Hyponatremia and seizure from unsafe desmopressin-fluid use or serious toxicity from poorly secured alternative medicines"
+      ],
+      "prognosis": "Many children gain dryness with maturation, but timing varies and recurrence can occur during illness or stress. Alarm treatment can produce more durable learning for some families, while desmopressin often works quickly but wetting may return after it stops. Daytime symptoms, constipation, sleep apnea, developmental needs, and medical causes affect the course and must be treated directly.",
+      "prevention": [
+        "Primary developmental enuresis cannot always be prevented. Regular toilet access, healthy bowel routines, appropriate hydration, and early treatment of constipation, UTI, diabetes, and sleep-disordered breathing can prevent worsening and complications.",
+        "Prevent psychosocial harm with privacy, nonpunitive care, school or camp planning, safe medication storage, and clear desmopressin fluid teaching."
+      ],
+      "patientEducation": [
+        "Wetting is common and is not your fault. The plan should help your bladder and sleep system learn without punishment.",
+        "Keep a simple bladder, fluid, and stool diary so the clinician can see patterns and choose the right treatment.",
+        "If desmopressin is prescribed, follow the exact evening fluid and sick-day instructions; do not repeat or change a dose on your own.",
+        "Get urgent help for extreme thirst and weight loss, fever or painful urination, inability to urinate, leg weakness, confusion, seizure, or suspected abuse."
+      ],
+      "specialPopulations": [
+        "Children with developmental or communication disabilities need individualized toileting cues, accessible bathrooms, pain assessment, and goals based on developmental rather than chronological expectations alone.",
+        "Children with sickle cell disease, kidney or heart disease, fluid-balance disorders, or medicines affecting sodium need prescriber-specific desmopressin decisions and sick-day planning.",
+        "Foster, institutionalized, and hospitalized children need privacy, trauma-informed care, neutral cleanup, and review of new wetting against the child's baseline and safeguarding context."
+      ],
+      "nclexTraps": [
+        "Punishment is never therapeutic for enuresis; reward controllable behaviors, not dry nights.",
+        "Secondary enuresis means wetting after at least six months of dryness and requires a renewed medical and psychosocial assessment.",
+        "Constipation can cause or worsen urinary wetting and must be assessed even when the complaint is bladder-related.",
+        "Desmopressin requires exact fluid-safety teaching because water intoxication and hyponatremic seizure are preventable emergencies."
+      ],
+      "relatedTopics": [
+        "Encopresis",
+        "Constipation",
+        "UTI",
+        "Type 1 diabetes mellitus",
+        "Obstructive sleep apnea",
+        "School refusal"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "niddk-enuresis-diagnosis-2026",
+        "niddk-enuresis-treatment-2026",
+        "nice-cg111-enuresis-current"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. APA supports the elimination-disorder threshold and exclusions; NIDDK supports bladder-bowel history, urinalysis, medical differential, nonpunitive care, alarms, and desmopressin; NICE supports alarm and desmopressin selection, review, and fluid safety. No commercial-reference prose was copied.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "age threshold",
+            "frequency and duration",
+            "distress alternative",
+            "subtypes",
+            "medical exclusion"
+          ]
+        },
+        {
+          "authority": "National Institute of Diabetes and Digestive and Kidney Diseases",
+          "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/bladder-control-problems-bedwetting-children/diagnosis",
+          "documentVersion": "current NIH page; accessed 2026-08-15",
+          "fieldsSupported": [
+            "history",
+            "diary",
+            "constipation",
+            "urinalysis",
+            "medical tests",
+            "urologic and neurologic differential"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/cg111/chapter/Recommendations",
+          "documentVersion": "CG111 current recommendations; accessed 2026-08-15",
+          "fieldsSupported": [
+            "assessment",
+            "alarm",
+            "desmopressin",
+            "fluid safety",
+            "response review",
+            "referral"
+          ]
+        },
+        {
+          "authority": "National Institute of Diabetes and Digestive and Kidney Diseases",
+          "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/bladder-control-problems-bedwetting-children/treatment",
+          "documentVersion": "Current child bedwetting treatment page; accessed 2026-08-15",
+          "fieldsSupported": [
+            "nonpunitive care",
+            "bladder and bowel routines",
+            "moisture alarms",
+            "desmopressin",
+            "constipation treatment",
+            "patient education"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.enuresis",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.encopresis",
+      "name": "Encopresis",
+      "displayName": "Encopresis",
+      "category": "Mental Health",
+      "aliases": [
+        "Encopresis disorder"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Encopresis is repeated passage of stool into clothing, the floor, or another inappropriate place after a child has reached the age when bowel control is normally expected. Most cases involve constipation and stool packed in the rectum, with softer stool leaking around it; the child may not feel or control the leakage, so punishment is both ineffective and harmful.",
+      "whyItMatters": "Untreated stool retention can cause pain, a large impaction, urinary problems, skin injury, school avoidance, and serious family conflict, while rare bowel, spinal, endocrine, inflammatory, or abuse-related conditions may be missed if soiling is called behavioral. Effective care treats the bowel mechanism first and then rebuilds regular, shame-free toileting over months.",
+      "plainLanguageGlosses": [
+        {
+          "term": "fecal impaction",
+          "plainLanguage": "a large mass of hard stool stuck in the rectum or colon that the child cannot pass normally",
+          "sourceKeys": [
+            "naspghan-espghan-constipation-guideline-2014",
+            "niddk-child-constipation-2026"
+          ]
+        },
+        {
+          "term": "overflow soiling",
+          "plainLanguage": "soft or liquid stool leaking around retained hard stool, sometimes mistaken for diarrhea",
+          "sourceKeys": [
+            "naspghan-espghan-constipation-guideline-2014",
+            "niddk-child-constipation-2026"
+          ]
+        },
+        {
+          "term": "disimpaction",
+          "plainLanguage": "the first treatment phase that clears a large retained stool burden before daily maintenance can work",
+          "sourceKeys": [
+            "naspghan-espghan-constipation-guideline-2014"
+          ]
+        }
+      ],
+      "definition": "DSM-5-TR encopresis is repeated passage of stool into inappropriate places, whether involuntary or intentional, at least once a month for at least three months in a child who is at least age 4 or an equivalent developmental level. It is not attributable to the physiologic effects of a substance, such as a laxative, or another medical condition except when that condition operates through constipation. Specify with constipation and overflow incontinence or without them. One accident, developmentally expected toileting, or fecal incontinence fully explained by another medical mechanism is not the psychiatric diagnosis.",
+      "pathology": "In the common retentive pattern, painful or avoided stooling leads to progressive rectal stool storage. The stretched rectum becomes less sensitive, and softer stool leaks around the impaction. The child may have large stools and apparent diarrhea at the same time. A less common nonretentive pattern requires a different functional and medical assessment.",
+      "pathophysiology": [
+        "A painful stool can start withholding. Longer colon transit removes more water, producing a larger, harder stool and more pain; this self-reinforcing cycle causes retention and overflow leakage.",
+        "Chronic rectal distention can reduce the urge to defecate and disrupt normal pelvic-floor coordination. Continence may take months to recover after the impaction is cleared because sensation and habits recover gradually.",
+        "Constipation and urinary dysfunction interact through pelvic anatomy and shared elimination behavior, so enuresis, urgency, recurrent UTI, and stool soiling may occur together."
+      ],
+      "etiology": "Common drivers include functional constipation, painful stool, stool withholding, rushed or inaccessible toilets, difficult toilet training, low fiber or fluid intake in context, immobility, and constipating medicines. Hirschsprung disease, spinal abnormality, hypothyroidism, celiac disease, inflammatory disease, anatomic disease, neurologic disorder, developmental disability, trauma, and maltreatment are alternative or associated causes selected by the history and examination.",
+      "riskFactors": [
+        "Prior painful stool, anal fissure, withholding behavior, infrequent large stool, or an established fecal impaction",
+        "Developmental delay, autism, ADHD, communication difficulty, sensory aversion, anxiety, or stressful toilet training",
+        "Limited toilet privacy or access, school bathroom avoidance, immobility, low practical fluid or fiber intake, or constipating medication",
+        "Neurologic or spinal disease, hypothyroidism, celiac disease, Hirschsprung disease, bowel inflammation, or a history suggesting abuse"
+      ],
+      "signsSymptoms": [
+        "Stool in underwear or another inappropriate place, sometimes as smears or loose leakage despite underlying constipation",
+        "Infrequent, large, hard, or painful stools; stool withholding postures; abdominal pain or distention; reduced appetite; or a palpable stool burden",
+        "Diminished awareness of leakage, hiding soiled clothing, odor, perianal irritation, fissure, or urinary wetting and infection",
+        "Shame, bullying, school bathroom avoidance, family conflict, or refusing meals and activities because of pain or fear"
+      ],
+      "diagnostics": [
+        "Obtain first stool after birth, onset and course, stool frequency and form, pain, blood, withholding, toilet access, soiling frequency, abdominal symptoms, appetite and growth, diet and fluids, medications, urinary symptoms, development, stress, and prior treatment.",
+        "Examine growth, hydration, abdomen, perianal area when indicated and consented, lower spine, gait, lower-limb reflexes and strength, and skin; a rectal examination is selective rather than automatic.",
+        "A symptom-based diagnosis is usual when the history and examination fit functional constipation with overflow and no alarm findings. Abdominal radiography is not a routine substitute for a careful assessment.",
+        "Use laboratory, imaging, transit, anorectal, neurologic, or biopsy testing for alarm features, unclear diagnosis, or refractory disease. Hirschsprung testing follows its specific clinical pathway."
+      ],
+      "labs": [
+        "No laboratory test confirms encopresis. Routine broad testing is not required for a typical functional-constipation history without alarm findings.",
+        "Targeted thyroid, celiac, calcium, inflammatory, stool, urine, neurologic, or other testing follows poor growth, systemic illness, blood, refractory symptoms, urinary findings, or another specific clue."
+      ],
+      "assessment": "First assess obstruction, toxic megacolon, severe impaction, dehydration, GI bleeding, infection, acute abdomen, neurologic deficit, and safeguarding concerns. Then determine whether constipation and overflow are present, quantify stool and soiling, inspect skin, assess pain and urinary symptoms, review development and toilet access, identify punishment or shame, and establish what the child can realistically do in a bowel program.",
+      "differential": "Differentiate constipation-associated overflow from nonretentive fecal incontinence, infectious or inflammatory diarrhea, Hirschsprung disease, celiac disease, hypothyroidism, spinal or neurologic bowel, anatomic abnormality, medication effect, intellectual or developmental delay, and intentional stool placement within another behavioral pattern. Trauma or abuse may coexist but soiling alone neither proves nor excludes it.",
+      "treatments": [
+        "Explain the retention-leak cycle and begin disimpaction when a fecal impaction is present, using an age- and condition-appropriate clinician-directed oral or rectal plan. Polyethylene glycol is a common oral first-line agent in pediatric constipation guidance, but product, dose, hydration, and contraindications are individualized.",
+        "Continue maintenance stool-softening therapy long enough to produce regular painless stool and allow rectal sensation and toileting confidence to recover; stopping as soon as one bowel movement occurs commonly leads to relapse.",
+        "Schedule relaxed toilet sitting after meals with feet supported, easy bathroom access, neutral cleanup, and rewards for controllable behaviors such as sitting and taking medicine rather than for a clean garment.",
+        "Address diet and fluid adequacy, painful fissure, urinary problems, school access, anxiety, developmental supports, and family stress. Refer persistent or alarm-feature cases to pediatric gastroenterology or the relevant specialist."
+      ],
+      "contraindications": [
+        "Do not punish, shame, publicly expose, or require humiliating cleanup; overflow leakage may occur without normal sensation or voluntary control.",
+        "Do not repeatedly add fiber without assessing impaction and hydration; increasing bulk behind a retained stool burden can worsen pain for some children.",
+        "Do not give a laxative, enema, or manual disimpaction plan when obstruction, toxic megacolon, severe inflammatory disease, perforation, or another contraindication is suspected; obtain urgent medical direction.",
+        "Do not stop maintenance therapy abruptly after initial clearing or assume treatment failure before confirming adherence, dose, toilet routine, access, and whether the original diagnosis is correct."
+      ],
+      "safetyConsiderations": [
+        "Escalate bilious vomiting, severe distention, peritoneal signs, toxic appearance, fever, significant bleeding, or inability to pass stool or gas because obstruction or inflammatory disease may be present.",
+        "Protect perianal skin, treat fissures and infection, monitor hydration and electrolytes when cleanout produces heavy stool losses, and provide private access to clothing and hygiene supplies.",
+        "Assess urinary retention, recurrent UTI, wetting, back or leg symptoms, and sacral findings because bowel, bladder, and neurologic dysfunction can coexist.",
+        "Ask about trauma and maltreatment in a safe, nonleading way when indicated and follow safeguarding protocol; do not interrogate the child or infer abuse from soiling alone."
+      ],
+      "nursingPriorities": [
+        "Record stool form, size, frequency, pain, withholding, soiling, abdominal findings, urine symptoms, intake, medications, growth, skin, school toilet access, and the child's developmental toileting ability.",
+        "During disimpaction, administer the exact ordered product and schedule, monitor intake, output, pain, vomiting, distention, stool response, hydration, and red flags, and clarify when to stop or escalate.",
+        "Teach the long maintenance phase with teach-back and help the family build an after-meal sitting, foot-support, medication, and follow-up routine that avoids power struggles.",
+        "Protect dignity with neutral language, private cleanup, spare clothing, barrier skin care, and school coordination."
+      ],
+      "redFlags": [
+        "Bilious vomiting, severe or rapidly increasing abdominal distention, guarding, rebound, toxic appearance, inability to pass gas, or acute severe pain",
+        "Delayed passage of meconium, poor growth, persistent fever, significant blood not explained by a small fissure, recurrent unexplained vomiting, or severe refractory constipation",
+        "Leg weakness, gait change, reduced lower-limb reflexes, saddle sensory change, abnormal sacrum or anus, or new loss of bladder control",
+        "Suspected abuse, severe punishment, dehydration, electrolyte symptoms, or a child who cannot be kept safe during the current plan"
+      ],
+      "complications": [
+        "Fecal impaction, megarectum, abdominal pain, fissure, bleeding, hemorrhoidal irritation, appetite reduction, vomiting, and rare obstruction",
+        "Overflow leakage, skin breakdown, urinary wetting, urinary retention, recurrent UTI, and sleep disruption",
+        "Bullying, shame, school refusal, social isolation, family conflict, and reduced self-esteem",
+        "Relapse after inadequate maintenance or missed organic disease when alarm findings are ignored"
+      ],
+      "prognosis": "Most constipation-associated encopresis improves with complete disimpaction, months of consistent maintenance, scheduled toileting, and nonpunitive support, but relapses are common and do not mean the child failed. Recovery is slower when stool retention is longstanding, toilet access is poor, development or communication affects the plan, or an organic cause remains untreated.",
+      "prevention": [
+        "Prevent the retention cycle by treating painful stool early, ensuring accessible unhurried toilets, supporting feet during sitting, maintaining appropriate fluids and fiber, and reviewing constipating medicines.",
+        "Prevent secondary harm through private cleanup, anti-bullying action, early school planning, and maintenance follow-up after the initial impaction is gone."
+      ],
+      "patientEducation": [
+        "Leakage often happens because hard stool has stretched the rectum and softer stool slips around it; it is not proof that the child chose to soil.",
+        "The cleanout is only the first phase. Daily maintenance and toilet sitting usually continue for months while sensation and bowel size recover.",
+        "Reward sitting, medicine taking, and telling an adult about an accident; do not punish a stain or accident.",
+        "Get urgent help for green vomit, a swollen hard abdomen, severe pain, major bleeding, fever with toxic appearance, leg weakness, or inability to pass stool or gas."
+      ],
+      "specialPopulations": [
+        "Autistic children and children with intellectual or communication disability may need visual schedules, sensory-adapted bathrooms, accessible pain tools, and smaller stepwise toileting goals.",
+        "Children with spinal disease, low tone, immobility, feeding restrictions, or multiple constipating medicines need an individualized bowel program and closer monitoring.",
+        "Foster and institutional settings require consistent handoff of the bowel regimen, private supplies, trauma-informed care, and explicit protection from punitive cleanup."
+      ],
+      "nclexTraps": [
+        "Loose stool in the underwear can be overflow around a fecal impaction, not infectious diarrhea.",
+        "Disimpaction is followed by maintenance; one large bowel movement does not complete treatment.",
+        "Reward controllable behaviors and never punish soiling.",
+        "Abdominal imaging and broad labs are not routine for a typical functional pattern without alarm findings."
+      ],
+      "relatedTopics": [
+        "Enuresis",
+        "Constipation",
+        "UTI",
+        "Attention-deficit/hyperactivity disorder",
+        "Autism spectrum disorder",
+        "Intellectual developmental disorder",
+        "School refusal",
+        "Child abuse"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "niddk-child-constipation-2026",
+        "naspghan-espghan-constipation-guideline-2014"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. APA supports the elimination-disorder identity, age, frequency, duration, specifiers, and exclusions; NIDDK and NASPGHAN/ESPGHAN support the retention-overflow mechanism, alarm findings, selective testing, disimpaction, maintenance therapy, toileting, and nonpunitive education. No commercial-reference prose was copied.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "age threshold",
+            "monthly frequency",
+            "three-month duration",
+            "retentive and nonretentive specifiers",
+            "medical exclusion"
+          ]
+        },
+        {
+          "authority": "NASPGHAN and ESPGHAN",
+          "url": "https://www.naspghan.org/files/documents/pdfs/cme/jpgn/Evaluation_and_Treatment_of_Functional.24.pdf",
+          "documentVersion": "evidence-based guideline 2014; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "functional constipation",
+            "fecal impaction",
+            "alarm signs",
+            "testing boundary",
+            "polyethylene glycol",
+            "maintenance",
+            "follow-up"
+          ]
+        },
+        {
+          "authority": "National Institute of Diabetes and Digestive and Kidney Diseases",
+          "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/constipation-children",
+          "documentVersion": "current NIH topic collection; accessed 2026-08-15",
+          "fieldsSupported": [
+            "withholding",
+            "overflow leakage",
+            "history",
+            "selective testing",
+            "laxative safety",
+            "toileting routine",
+            "family education"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.encopresis",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.gender-dysphoria",
+      "name": "Gender dysphoria",
+      "displayName": "Gender dysphoria",
+      "category": "Mental Health",
+      "aliases": [
+        "DSM-5-TR gender dysphoria"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Gender dysphoria is clinically significant distress or difficulty functioning that can occur when a person's experienced gender does not align with sex-related body features or the gender others assign to them. Being transgender, nonbinary, or gender diverse is not itself a mental disorder; the diagnosis is about the distress or impairment, not the identity.",
+      "whyItMatters": "Dysphoria, unwanted pubertal changes, rejection, bullying, discrimination, or blocked access to appropriate care can contribute to depression, self-harm, suicide risk, school withdrawal, and unsafe attempts to change the body without medical supervision. Respectful assessment must address immediate safety and coexisting illness while helping the person and family make individualized, informed decisions without coercion.",
+      "plainLanguageGlosses": [
+        {
+          "term": "gender identity",
+          "plainLanguage": "a person's internal sense of their gender",
+          "sourceKeys": [
+            "apa-gender-dysphoria-2026"
+          ]
+        },
+        {
+          "term": "gender incongruence",
+          "plainLanguage": "a difference between a person's experienced gender and sex-related characteristics or the gender assigned to them; incongruence alone is not the DSM diagnosis of gender dysphoria",
+          "sourceKeys": [
+            "apa-gender-dysphoria-2026",
+            "endocrine-gender-dysphoria-guideline-2024"
+          ]
+        },
+        {
+          "term": "gender-affirming care",
+          "plainLanguage": "respectful, individualized support that helps a person explore and address gender-related needs; it can include social, psychological, primary-care, reproductive, voice, or specialist medical services and does not mean every person receives the same intervention",
+          "sourceKeys": [
+            "aacap-gender-affirming-healthcare-policy-2024",
+            "wpath-soc8-2022"
+          ]
+        }
+      ],
+      "definition": "DSM-5-TR gender dysphoria requires an age-specific pattern of marked incongruence between experienced or expressed gender and sex-related characteristics, lasting at least six months, together with clinically significant distress or impairment. Criteria differ for children and for adolescents or adults. Gender identity, gender expression, sexual orientation, gender nonconformity, or a request for information alone does not establish the disorder, and no examination or test validates or invalidates a person's identity.",
+      "pathology": "Gender dysphoria has no single structural lesion, hormone value, chromosome pattern, imaging marker, or psychological test. The clinical target is distress, impairment, and health need in the context of the person's gender experience, body development, relationships, culture, safety, and goals.",
+      "pathophysiology": [
+        "The development of gender identity is complex and cannot be reduced to one hormone, parenting style, trauma, peer influence, or neurodevelopmental condition. No current biomarker predicts an individual's identity or care path.",
+        "Distress can arise from unwanted body changes, social misrecognition, discrimination, rejection, safety threats, or barriers to care as well as from internal discomfort. These drivers must be separated because each calls for different support.",
+        "Depression, anxiety, eating symptoms, dissociation, autism, ADHD, trauma, psychosis, or body-image concerns can coexist and need their own evaluation; their presence does not automatically explain away gender-related distress."
+      ],
+      "etiology": "There is no single known cause and no evidence-based method to prevent or deliberately change a person's gender identity. Dysphoria reflects an interaction between the person's experienced gender, body and pubertal development, social environment, and individual health. Family rejection, bullying, discrimination, and unsafe care can worsen distress but are not treated as the cause of identity.",
+      "riskFactors": [
+        "Pubertal development or other sex-related body changes that intensify unwanted characteristics",
+        "Family rejection, bullying, discrimination, violence, housing insecurity, school exclusion, or barriers to confidential healthcare",
+        "Coexisting depression, anxiety, trauma, eating disorder, self-harm, substance use, autism, ADHD, or another condition that increases burden or complicates communication",
+        "Unsupervised hormone or supplement use, binding or tucking practices without safety information, or delayed access to primary and reproductive healthcare"
+      ],
+      "signsSymptoms": [
+        "Persistent distress about primary or secondary sex characteristics or anticipated puberty and a wish for different characteristics",
+        "A persistent wish to be recognized or treated as another gender, or distress when name, pronouns, clothing, roles, or records do not align with experienced gender",
+        "Avoiding mirrors, bathing, changing clothes, sports, toileting, school, intimacy, or healthcare because of gender-related distress",
+        "Anxiety, depressed mood, irritability, sleep or eating change, self-harm, suicidal thinking, or impaired school, work, relationships, or self-care when linked to dysphoria or unsafe social conditions"
+      ],
+      "diagnostics": [
+        "Use a confidential, developmentally appropriate, trauma-informed interview to understand identity and expression in the person's own words, duration and course of dysphoria, body and puberty concerns, function, goals, supports, safety, and what care is being requested.",
+        "Apply the correct age-specific DSM-5-TR framework only when a diagnosis is clinically needed. Do not diagnose from clothing, interests, sexual orientation, pronouns, one visit, or caregiver disagreement.",
+        "Assess depression, mania, anxiety, OCD, psychosis, trauma, dissociation, eating disorder, neurodevelopment, substance use, self-harm, suicide risk, abuse, exploitation, housing, school safety, and family support without using comorbidity as a reason to dismiss identity.",
+        "When medical intervention is requested, a qualified multidisciplinary team assesses persistence, decision-making capacity, informed consent or assent and guardian requirements, fertility goals, puberty, medical history, contraindications, expectations, follow-up capacity, and current jurisdictional rules."
+      ],
+      "labs": [
+        "No hormone, chromosome, genetic, imaging, or psychological test diagnoses gender dysphoria or determines whether an identity is authentic.",
+        "Laboratory and physical monitoring is treatment-specific when endocrine care is being considered or provided. Baseline and follow-up measures may include pubertal status, pregnancy testing when relevant and consented, bone health, blood pressure, blood count, liver or metabolic measures, and hormone concentrations according to the exact intervention and current protocol."
+      ],
+      "assessment": "Begin with the person's stated name, pronouns, privacy preference, immediate safety, suicidal thinking, self-harm, abuse, violence, homelessness, and unsafe self-medication. Then assess the nature and duration of distress, puberty and body concerns, functioning, family and school environment, strengths, coexisting conditions, reproductive goals, current medicines and supplements, prior care, decision-making capacity, and the person's own desired next step. Avoid turning the interview into a test of identity.",
+      "differential": "Distinguish gender diversity without clinically significant dysphoria from gender dysphoria. Evaluate body dysmorphic disorder, OCD, psychosis, trauma or dissociation, eating disorder, depression, anxiety, disorders or differences of sex development, and distress about sexual orientation or social role. These conditions can coexist; a fixed psychotic belief about bodily sex is not assumed from a transgender identity, and body dysmorphic disorder centers on a perceived appearance defect rather than gender incongruence.",
+      "treatments": [
+        "Provide respectful, noncoercive mental-health support that helps the person describe dysphoria, strengthen coping and safety, explore goals at their pace, and treat depression, anxiety, trauma, eating symptoms, substance use, or other coexisting illness for its own indication.",
+        "Support family communication, chosen name and pronouns, privacy, school safety, anti-bullying measures, peer connection, voice or communication goals, and social changes the person wants; no single social transition is required for diagnosis or care.",
+        "When requested and legally available, refer to an experienced multidisciplinary team for current, individualized medical counseling. Options in selected adolescents may include pubertal suppression with a gonadotropin-releasing hormone analog such as leuprolide or histrelin, and later gender-affirming hormones such as estradiol or testosterone; these examples are not a universal pathway and require protocol-specific capacity, consent, fertility, bone, cardiometabolic, interaction, and follow-up review.",
+        "Continue primary, sexual, reproductive, preventive, and mental healthcare regardless of whether the person chooses social, hormonal, surgical, or no transition-related intervention."
+      ],
+      "contraindications": [
+        "Do not use coercive efforts to force a cisgender or transgender identity, change sexual orientation, punish gender expression, or make acceptance conditional on conformity.",
+        "Do not prescribe puberty-suppressing or gender-affirming hormones to a prepubertal child; provide developmentally appropriate psychosocial, family, and primary care and reassess over time.",
+        "Do not start or continue a medical intervention without the exact current guideline, informed decision-making, age and capacity assessment, consent requirements, contraindication review, fertility discussion, and longitudinal monitoring that apply in that setting.",
+        "Do not withhold emergency, psychiatric, reproductive, or routine medical care because of gender identity, disagreement about transition care, documentation mismatch, or inability to disclose identity safely."
+      ],
+      "safetyConsiderations": [
+        "Ask directly about suicidal thoughts, plan, intent, access to lethal means, self-harm, violence, abuse, homelessness, and unsafe attempts to alter the body; use the same emergency thresholds as for any patient while addressing gender-specific drivers.",
+        "Protect confidentiality and disclose name, pronouns, or gender history only according to consent, legal requirements, and immediate safety. Accidental disclosure can expose a young person to violence or housing loss.",
+        "Review all prescribed and nonprescribed hormones, online products, supplements, binding, tucking, pumping, or injection practices without judgment so thrombotic, hepatic, infectious, skin, nerve, breathing, and interaction risks can be addressed.",
+        "Monitor treatment-specific physical and mental-health effects and maintain a clear plan for medication interruptions, travel, pregnancy potential, fertility goals, and transfer between pediatric and adult care."
+      ],
+      "nursingPriorities": [
+        "Ask and use the patient's stated name and pronouns, verify what may be documented or shared, and correct errors briefly without making the patient educate the team.",
+        "Perform a private suicide, self-harm, abuse, housing, and medication-safety assessment and remove immediate hazards or escalate according to actual risk.",
+        "Use anatomy-specific, neutral language and obtain consent before sensitive questions or examinations; screening is based on organs, exposures, medicines, and symptoms rather than gender marker alone.",
+        "Reconcile hormones and supplements precisely, monitor the ordered treatment-specific parameters, support follow-up and fertility counseling, and preserve access to routine preventive care."
+      ],
+      "redFlags": [
+        "Suicidal intent, escalating self-harm, severe depression, psychosis, mania, intoxication, or inability to remain safe",
+        "Abuse, trafficking, threats, family expulsion, homelessness, or imminent involuntary disclosure that creates danger",
+        "Chest pain, sudden dyspnea, unilateral leg swelling, focal neurologic deficit, severe headache, jaundice, or another serious symptom during hormone or unregulated product use",
+        "Unsafe injection, contaminated or unknown products, medication sharing, severe binding-related breathing or skin injury, or abrupt treatment interruption with clinical deterioration"
+      ],
+      "complications": [
+        "Depression, anxiety, self-harm, suicide risk, eating symptoms, substance use, social isolation, school withdrawal, and impaired healthcare access",
+        "Violence, homelessness, exploitation, family disruption, bullying, discrimination, and loss of privacy",
+        "Fertility impact and intervention-specific bone, thrombotic, cardiovascular, metabolic, hepatic, hematologic, skin, or surgical complications when applicable",
+        "Harm from coercive care, delayed assessment, unregulated products, poor monitoring, or failure to treat coexisting medical and psychiatric illness"
+      ],
+      "prognosis": "Gender-related needs and the course of dysphoria vary by person and developmental stage. Outcomes are shaped by safety, family and social support, access to competent care, coexisting illness, and how well chosen interventions match the person's informed goals. A single childhood preference does not predict one adult pathway, and uncertainty should be supported rather than punished.",
+      "prevention": [
+        "Gender identity is not a disease to prevent. Preventable harms include bullying, family rejection, coercive practices, unsafe self-medication, missed suicide risk, and loss of routine healthcare.",
+        "Build privacy, anti-violence, family support, school access, accurate information, and timely multidisciplinary referral while preserving the person's ability to decide which interventions they want."
+      ],
+      "patientEducation": [
+        "Being transgender, nonbinary, or gender diverse is not itself a mental disorder. The diagnosis describes significant distress or impairment when it is present.",
+        "You can ask for your name, pronouns, privacy, body terms, and goals to be respected, and you can ask what information will be shared before you disclose it.",
+        "Do not use someone else's hormones or an unknown online product. Tell the care team what you are taking so they can focus on safety rather than punishment.",
+        "Get urgent help for suicidal intent, violence or homelessness, chest pain, sudden breathing trouble, one-sided leg swelling, severe headache, weakness, jaundice, or a serious injection or binding injury."
+      ],
+      "specialPopulations": [
+        "Prepubertal children receive developmentally appropriate psychological, family, school, and primary-care support; endocrine suppression is not used before puberty.",
+        "Adolescents require age-appropriate capacity, assent and consent review, family involvement when safe and legally required, confidential safety assessment, fertility counseling, and longitudinal multidisciplinary follow-up for any medical intervention.",
+        "Autistic and otherwise neurodivergent people may need concrete communication, extra processing time, and supported decision-making; neurodivergence does not invalidate gender identity or remove the need to assess capacity individually.",
+        "People with pregnancy potential, fertility goals, disability, chronic disease, intersex traits, or limited access require anatomy- and treatment-specific care rather than assumptions from a gender label."
+      ],
+      "nclexTraps": [
+        "Gender diversity is not the diagnosis; clinically significant distress or impairment is required for gender dysphoria.",
+        "No lab, chromosome test, or physical examination proves or disproves gender identity.",
+        "Use organ- and exposure-based screening and the patient's stated name and pronouns; the administrative gender marker is not a complete clinical assessment.",
+        "Medical interventions are individualized, protocol-dependent, and monitored; they are not automatic for every person with dysphoria."
+      ],
+      "relatedTopics": [
+        "Major depressive disorder",
+        "Generalized anxiety disorder",
+        "Body dysmorphic disorder",
+        "Suicidal ideation",
+        "Self-harm",
+        "School refusal",
+        "Autism spectrum disorder"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "apa-gender-dysphoria-2026",
+        "aacap-gender-affirming-healthcare-policy-2024",
+        "endocrine-gender-dysphoria-guideline-2024",
+        "wpath-soc8-2022"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. APA supports the identity-versus-distress distinction and age-specific DSM framework; AACAP supports individualized multidisciplinary and trauma-informed care and opposition to coercive practices; Endocrine Society and WPATH support specialist assessment, informed decision-making, fertility and monitoring boundaries, and whole-person longitudinal care. This packet does not prescribe a universal pathway and requires current local policy review before integration. No commercial-reference prose was copied.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/patients-families/gender-dysphoria/what-is-gender-dysphoria",
+          "documentVersion": "current patient and family resource; accessed 2026-08-15",
+          "fieldsSupported": [
+            "plain-language definition",
+            "distress and impairment",
+            "identity boundary",
+            "age-specific criteria",
+            "individual variation"
+          ]
+        },
+        {
+          "authority": "American Academy of Child and Adolescent Psychiatry",
+          "url": "https://www.aacap.org/AACAP/Policy_Statements/2024/Access_Gender-Affirming_Healthcare.aspx",
+          "documentVersion": "policy approved 2024-06; accessed 2026-08-15",
+          "fieldsSupported": [
+            "multidisciplinary care",
+            "trauma-informed care",
+            "individualized planning",
+            "family support",
+            "coercive-practice boundary",
+            "evidence-development limitation"
+          ]
+        },
+        {
+          "authority": "Endocrine Society",
+          "url": "https://www.endocrine.org/clinical-practice-guidelines/gender-dysphoria-gender-incongruence",
+          "documentVersion": "guideline resource updated 2024-10-25; accessed 2026-08-15",
+          "fieldsSupported": [
+            "prepubertal boundary",
+            "multidisciplinary assessment",
+            "adolescent capacity",
+            "GnRH analogs",
+            "hormones",
+            "fertility",
+            "monitoring"
+          ]
+        },
+        {
+          "authority": "World Professional Association for Transgender Health",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9553112/",
+          "documentVersion": "Standards of Care Version 8, 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "whole-person care",
+            "adolescent assessment",
+            "mental health",
+            "reproductive care",
+            "informed decision-making",
+            "individualized pathways"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "classification",
+            "DSM diagnostic requirements",
+            "developmental boundary",
+            "duration",
+            "duration specifier",
+            "functional impairment",
+            "differential",
+            "mood-psychosis timing",
+            "course specifiers",
+            "insufficient-care requirement"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.gender-dysphoria",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "concept.school-refusal",
+      "name": "School refusal",
+      "displayName": "School refusal",
+      "category": "Mental Health",
+      "aliases": [
+        "School refusal behavior",
+        "School avoidance behavior"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "School refusal is a pattern in which a child or adolescent has major difficulty going to school or staying there, often with intense fear, distress, or physical symptoms that improve when school is avoided. It is not a diagnosis by itself and is not automatically defiance or truancy; the clinician must find and treat the medical, psychiatric, learning, peer, family, or safety problem driving the absence.",
+      "whyItMatters": "Every missed week can deepen the anxiety-avoidance cycle, academic loss, isolation, sleep reversal, and family conflict, while bullying, abuse, depression, suicide risk, psychosis, pregnancy, illness, learning disability, or an unsafe school may be hidden underneath. Early coordinated assessment and a supported return plan usually work better than punishment or indefinite home confinement.",
+      "plainLanguageGlosses": [
+        {
+          "term": "avoidance cycle",
+          "plainLanguage": "fear rises before school, staying home brings short-term relief, and that relief teaches the brain to avoid again, making the next return harder",
+          "sourceKeys": [
+            "aafp-school-refusal-review-2003",
+            "aacap-school-refusal-2026"
+          ]
+        },
+        {
+          "term": "graded exposure",
+          "plainLanguage": "practicing feared school steps in a planned sequence, with enough support to stay and learn that distress can fall without escaping",
+          "sourceKeys": [
+            "aafp-school-refusal-review-2003"
+          ]
+        },
+        {
+          "term": "truancy",
+          "plainLanguage": "unapproved absence that is often concealed from caregivers and is not necessarily driven by intense separation or school-related distress; it is a differential, not an alias",
+          "sourceKeys": [
+            "aacap-school-refusal-2026",
+            "aafp-school-refusal-review-2003"
+          ]
+        }
+      ],
+      "definition": "School refusal is a clinical presentation of persistent difficulty attending classes, entering school, or remaining for the full day, commonly accompanied by emotional distress and caregiver awareness. It is not a DSM-5-TR diagnosis and has no single duration or symptom threshold. The pattern may be maintained by avoidance of anxiety or distress, escape from evaluation or peer situations, seeking attachment or caregiver attention, access to preferred activities outside school, or multiple functions at once.",
+      "pathology": "There is no lesion or laboratory marker for school refusal. The clinically important mechanism is the interaction among a trigger, emotional or physical distress, avoidance, short-term relief, reinforcement, and accumulating academic and social consequences. The visible absence does not reveal the driver.",
+      "pathophysiology": [
+        "Anticipatory anxiety can activate nausea, abdominal pain, headache, dizziness, palpitations, or panic before school. Symptoms are real even when medical testing is normal, and rapid relief at home can unintentionally strengthen avoidance.",
+        "Sleep delay, missed work, peer disconnection, and fear of explaining the absence increase with time, turning an initial stressor into a self-sustaining cycle.",
+        "Absence can also be a rational response to bullying, discrimination, violence, inaccessible learning, untreated illness, caregiving demands, or unsafe transport; exposure without correcting the danger is not treatment."
+      ],
+      "etiology": "Drivers include separation anxiety, social anxiety, panic, generalized anxiety, depression, trauma, OCD, psychosis, autism, ADHD, learning or language disorder, chronic illness, pain, sleep disorder, bullying, discrimination, academic failure, family change, bereavement, caregiving, housing or transport instability, and school safety problems. More than one driver is common.",
+      "riskFactors": [
+        "School transition, return after illness or vacation, academic evaluation, bullying, peer conflict, public speaking, or a humiliating event",
+        "Separation anxiety, social anxiety, panic, depression, trauma, autism, ADHD, learning disorder, chronic pain, sleep disorder, or another untreated condition",
+        "Family stress, bereavement, conflict, caregiver illness, inconsistent attendance expectations, housing instability, transport barriers, or the child being needed at home",
+        "A reinforcing home environment during school hours, prolonged absence without a return plan, unsafe school conditions, or inadequate educational accommodations"
+      ],
+      "signsSymptoms": [
+        "Crying, panic, irritability, pleading, freezing, running away, or inability to leave home, enter school, or stay through the day",
+        "Headache, abdominal pain, nausea, dizziness, fatigue, palpitations, or other symptoms that peak on school mornings and lessen when staying home",
+        "Frequent nurse visits, late arrival, missed selected classes, repeated requests for pickup, or complete absence with caregiver knowledge",
+        "Sleep reversal, unfinished work, loss of friends, falling grades, shame, depression, self-harm, or escalating family conflict"
+      ],
+      "diagnostics": [
+        "Interview the young person privately and with caregivers as appropriate; obtain the attendance timeline, exact point of failure, daily triggers, physical symptoms, what happens after staying home, school records, learning history, peer and staff relationships, transport, home demands, and prior interventions.",
+        "Perform a symptom-directed medical assessment and review sleep, medications, substances, pregnancy possibility when relevant, chronic illness, pain, neurologic symptoms, and whether symptoms require urgent testing.",
+        "Assess separation and social anxiety, panic, depression, mania, psychosis, OCD, trauma, autism, ADHD, learning and language disorders, eating disorder, substance use, self-harm, suicide, abuse, bullying, discrimination, and family safety.",
+        "Build a shared functional formulation with the student, family, school, and clinicians: what triggers absence, what short-term consequence maintains it, what barriers make attendance unsafe or inaccessible, and what measurable return step is next."
+      ],
+      "labs": [
+        "No laboratory test, imaging study, attendance percentage, or questionnaire diagnoses school refusal.",
+        "Tests are selected for the actual symptom or differential, such as pregnancy, anemia, infection, endocrine disease, GI disease, substance exposure, or sleep disorder. Repeating normal tests without a new clinical indication can delay functional treatment, but new red flags still require evaluation."
+      ],
+      "assessment": "First assess suicide, self-harm, psychosis, mania, intoxication, abuse, bullying, violence, pregnancy emergency, serious medical symptoms, and whether school or home is currently safe. Then identify the student's reasons and goals, symptom pattern, attendance data, learning and communication needs, family capacity, transportation, sleep, home reinforcement, school response, and the smallest supported return step that does not ignore a real danger.",
+      "differential": "Differentiate distress-driven school refusal from truancy, ordinary short-term reluctance, medical absence, exclusion or suspension, caregiving or work obligations, housing and transport barriers, school inaccessibility, and a rational response to bullying or violence. Diagnose underlying separation anxiety, social anxiety, depression, trauma, psychosis, autism, ADHD, learning disorder, or other conditions only when their own criteria are met.",
+      "treatments": [
+        "Correct immediate safety, medical, bullying, accessibility, and learning barriers, then create a timely written return-to-school plan with the student, caregiver, school, and treating clinicians. Full return may be appropriate, while graded return is used when severity and function require staged exposure.",
+        "Use cognitive-behavioral and exposure-based treatment to practice school steps, manage panic and physical sensations, test feared predictions, reduce escape reinforcement, and build coping and problem-solving skills.",
+        "Provide school supports such as a trusted check-in adult, predictable arrival, safe space used briefly rather than as all-day avoidance, modified workload, make-up plan, anti-bullying action, communication or learning accommodations, and a plan for reinforcing attendance behaviors.",
+        "Treat a separately diagnosed anxiety, depressive, trauma, neurodevelopmental, sleep, pain, or medical disorder according to its own evidence. Medication is not a stand-alone treatment for the presentation of school refusal."
+      ],
+      "contraindications": [
+        "Do not punish, shame, threaten arrest or abandonment, or physically force attendance before assessing suicide, abuse, bullying, medical illness, and school safety.",
+        "Do not provide indefinite homebound schooling, repeated excuse notes, or unrestricted preferred activities during absence without a reviewed clinical and educational plan; prolonged avoidance can deepen disability.",
+        "Do not dismiss physical symptoms as fake because they improve at home, and do not repeat low-yield medical testing simply to avoid discussing anxiety or school conditions.",
+        "Do not prescribe medication for school refusal as if it were one disorder; identify the actual diagnosis, age-specific indication, risks, monitoring, and nonmedication plan."
+      ],
+      "safetyConsiderations": [
+        "Ask directly about suicidal intent, self-harm, abuse, bullying, weapons, exploitation, psychosis, intoxication, pregnancy, and violence at home, in transit, and at school.",
+        "A return plan must not send a student back into an uncorrected threat, inaccessible program, or contact with an alleged perpetrator; use safeguarding and school emergency pathways.",
+        "Specify who receives the student, where the student goes during distress, who may authorize pickup, how absence is communicated, and what triggers emergency evaluation.",
+        "Monitor sleep reversal, substance use, isolation, caregiver burnout, escalating restraint or conflict, and access to lethal means as absence continues."
+      ],
+      "nursingPriorities": [
+        "Validate symptoms, obtain a private safety history, and document the exact attendance pattern, triggers, function, physical findings, school conditions, family response, and underlying diagnoses under consideration.",
+        "Avoid automatic dismissal from the clinic or school nurse; use a preplanned brief assessment and return-to-class pathway when medically safe so the nurse's office does not become unintentional all-day avoidance.",
+        "Coordinate releases of information, school contact, accommodations, exposure steps, medication timing when applicable, and follow-up while protecting the student's confidentiality.",
+        "Track attendance, time in class, distress recovery, sleep, schoolwork, safety, and function rather than waiting only for anxiety to disappear before return."
+      ],
+      "redFlags": [
+        "Suicidal intent, escalating self-harm, psychosis, mania, severe depression, intoxication, or inability to remain safe",
+        "Abuse, trafficking, sexual assault, credible threat, weapon exposure, severe bullying, or danger in the home, school, or transportation route",
+        "Acute medical red flags such as syncope with instability, severe dehydration, focal neurologic change, GI bleeding, pregnancy emergency, or significant weight loss",
+        "Complete withdrawal, prolonged sleep reversal, escalating family violence or restraint, or absence so extensive that basic nutrition, housing, or development is failing"
+      ],
+      "complications": [
+        "Academic failure, loss of educational services, delayed graduation, social isolation, and reduced future participation",
+        "Worsening anxiety, depression, sleep disruption, somatic distress, substance use, self-harm, and suicide risk",
+        "Family conflict, caregiver work loss, coercive interactions, and reinforcement of avoidance",
+        "Missed bullying, abuse, learning disability, psychosis, pregnancy, chronic illness, or another treatable driver"
+      ],
+      "prognosis": "Many students return successfully when the driver is identified early and child, family, school, and clinicians follow one consistent, supported plan. Longer absence, multiple untreated conditions, unsafe school factors, and family-system strain make recovery slower. Progress is measured by safe participation and restored function, not the immediate absence of all distress.",
+      "prevention": [
+        "Respond early to emerging attendance difficulty, bullying, learning problems, chronic illness, sleep disruption, and transition stress before absence becomes entrenched.",
+        "Use predictable attendance routines, accessible education, trusted school contacts, anti-bullying action, and rapid communication among family, school, and healthcare."
+      ],
+      "patientEducation": [
+        "The symptoms are real, and avoiding school can still make the fear stronger. The plan is to fix true dangers and practice returning with support.",
+        "Tell the team exactly which place, person, class, task, or time is hardest and what happens when you stay home; that information guides treatment.",
+        "A gradual plan is not failure, and feeling anxious during a step does not mean the step is unsafe. The team should review progress and adjust support.",
+        "Tell an adult immediately about suicidal thoughts, abuse, bullying, threats, pregnancy concerns, severe illness, or an unsafe home or school."
+      ],
+      "specialPopulations": [
+        "Autistic students and students with ADHD, language, learning, sensory, or intellectual disabilities need accessible communication, predictable routines, and formal educational accommodations rather than an anxiety-only plan.",
+        "Students with chronic illness need coordinated medical and educational reintegration; genuine symptoms and deconditioning can coexist with avoidance after a long absence.",
+        "Youth facing racism, gender-based harassment, disability discrimination, housing instability, caregiving duties, or unsafe transport need the structural barrier addressed rather than being labeled noncompliant."
+      ],
+      "nclexTraps": [
+        "School refusal is a presentation, not a DSM diagnosis; identify the underlying driver.",
+        "Physical symptoms can be genuine and anxiety-linked even when tests are normal; validate and treat function without inventing disease.",
+        "Timely supported return is usually a treatment goal, but never return a student to an unaddressed safety threat.",
+        "Medication alone does not treat school refusal; pair treatment of any true underlying disorder with a return and exposure plan."
+      ],
+      "relatedTopics": [
+        "Separation anxiety disorder",
+        "Social anxiety disorder",
+        "Generalized anxiety disorder",
+        "Major depressive disorder",
+        "Specific learning disorder",
+        "Attention-deficit/hyperactivity disorder",
+        "Autism spectrum disorder",
+        "Child abuse",
+        "Suicidal ideation"
+      ],
+      "sourceKeys": [
+        "aacap-school-refusal-2026",
+        "aafp-school-refusal-review-2003"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. AACAP supports the presentation, developmental peaks, peer and bullying assessment, family-school-clinician collaboration, and supported return; the clinical review supports comprehensive differential assessment, functional formulation, exposure-based intervention, and the medication boundary. School refusal is explicitly preserved as a concept rather than a diagnosis. No commercial-reference prose was copied.",
+      "provenance": [
+        {
+          "authority": "American Academy of Child and Adolescent Psychiatry",
+          "url": "https://www.aacap.org/AACAP/Families_and_Youth/Facts_for_Families/FFF-Guide/School-Refusal-007.aspx",
+          "documentVersion": "current Facts for Families page; accessed 2026-08-15",
+          "fieldsSupported": [
+            "definition",
+            "age and transition pattern",
+            "bullying and social drivers",
+            "mental-health evaluation",
+            "school supports",
+            "timely return"
+          ]
+        },
+        {
+          "authority": "American Family Physician",
+          "url": "https://www.aafp.org/pubs/afp/issues/2003/1015/p1555.html",
+          "documentVersion": "clinical review 2003; reviewed for enduring assessment and exposure principles 2026-08-15",
+          "fieldsSupported": [
+            "medical and psychiatric differential",
+            "functional assessment",
+            "exposure-based treatment",
+            "family-school collaboration",
+            "return goal",
+            "medication limitation"
+          ]
+        }
+      ],
+      "entryType": "clinical-concept",
+      "isDiagnosis": false,
+      "diagnosisStatus": "CLINICAL_PHENOMENON_NOT_STANDALONE",
+      "directTargetId": "concept.school-refusal",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.trichotillomania",
+      "name": "Trichotillomania",
+      "displayName": "Trichotillomania",
+      "category": "Mental Health",
+      "aliases": [
+        "Hair-pulling disorder"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Trichotillomania, also called hair-pulling disorder, is a condition in which a person repeatedly pulls out their own hair, has tried to reduce or stop, and experiences meaningful distress or disruption. The pulling is not simply a cosmetic choice or bad habit, and patchy hair loss must still be checked for skin, infection, autoimmune, hormonal, nutritional, medication, and other psychiatric causes.",
+      "whyItMatters": "Hair pulling can cause permanent follicle damage, skin or eye injury, infection, shame, bullying, and major avoidance. Some people also chew or swallow hair, which can form a dangerous stomach or intestinal hair mass, so asking directly about hair eating and abdominal symptoms is a critical safety step rather than an embarrassing extra question.",
+      "plainLanguageGlosses": [
+        {
+          "term": "body-focused repetitive behavior",
+          "plainLanguage": "a repeated grooming-like action directed at the body, such as hair pulling or skin picking, that can become hard to control and cause harm",
+          "sourceKeys": [
+            "bfrb-habit-reversal-systematic-review-2019"
+          ]
+        },
+        {
+          "term": "habit-reversal training",
+          "plainLanguage": "a behavioral treatment that builds awareness of pulling and its triggers, then practices a safe action that cannot occur at the same time as pulling",
+          "sourceKeys": [
+            "youth-trichotillomania-hrt-rct-2017",
+            "bfrb-habit-reversal-systematic-review-2019"
+          ]
+        },
+        {
+          "term": "trichophagia",
+          "plainLanguage": "chewing or swallowing pulled hair, which can rarely collect into a gastrointestinal hair mass called a trichobezoar",
+          "sourceKeys": [
+            "pediatric-trichotillomania-review-2012"
+          ]
+        }
+      ],
+      "definition": "DSM-5-TR trichotillomania requires recurrent hair pulling that causes hair loss, repeated attempts to decrease or stop, and clinically significant distress or impairment. The pulling is not attributable to another medical condition and is not better explained by another mental disorder, such as removing hair to correct a perceived defect in body dysmorphic disorder. Tension before pulling or pleasure afterward may occur but is not required.",
+      "pathology": "Repeated traction breaks or removes hair and can produce patches with hairs of different lengths, skin irritation, folliculitis, scarring, and, after prolonged damage, permanent hair loss. Hair swallowing adds a separate gastrointestinal mechanism because human hair is not digested and can accumulate.",
+      "pathophysiology": [
+        "Pulling may be focused, with a recognized urge or search for a particular hair, or automatic, occurring during reading, screen use, studying, or rest with little awareness. Many people have both patterns.",
+        "Urge, sensory reward, emotional relief, boredom reduction, or focused attention can reinforce a habit loop. Shame and concealment then delay care and may increase isolated pulling.",
+        "Habit and inhibitory-control networks are implicated at a group level, but no imaging, genetic, or neurotransmitter test diagnoses an individual."
+      ],
+      "etiology": "The disorder is multifactorial, with possible genetic, neurodevelopmental, sensory, learning, and stress-related contributors. It commonly begins around late childhood or early adolescence but can occur at other ages. Stress can worsen pulling but is not required and does not mean the behavior is intentional.",
+      "riskFactors": [
+        "Family history of trichotillomania, obsessive-compulsive and related disorder, or another body-focused repetitive behavior",
+        "Childhood or adolescent onset, sensory sensitivity, boredom-prone settings, stress, fatigue, or private unstructured time",
+        "Coexisting anxiety, depression, OCD symptoms, ADHD, autism, tic disorder, excoriation disorder, or body dysmorphic disorder",
+        "Shame, bullying, concealment, hair-eating rituals, or barriers to behavioral treatment"
+      ],
+      "signsSymptoms": [
+        "Patchy or irregular hair loss with hairs of different lengths on the scalp, eyebrows, eyelashes, beard, pubic area, or another reachable site",
+        "Searching for a certain texture, rolling or biting the hair, examining the root, pulling in a ritualized way, or episodes occurring automatically during sedentary activities",
+        "Repeated unsuccessful efforts to stop, covering areas with hairstyles, makeup, hats, or false lashes, and avoiding salons, swimming, intimacy, school, or healthcare",
+        "Skin tenderness, bleeding, folliculitis, eye irritation, or abdominal pain and early fullness when hair is swallowed"
+      ],
+      "diagnostics": [
+        "Ask nonjudgmentally about every pulling site, frequency, focused versus automatic pattern, urge and sensory features, triggers, rituals, attempts to stop, distress, function, concealment, skin injury, hair chewing or swallowing, and GI symptoms.",
+        "Examine the hair, scalp, brows, lashes, skin, eyes, and nails with consent. Dermatology can use close inspection or trichoscopy and targeted fungal or other testing when the alopecia pattern is uncertain.",
+        "Confirm recurrent pulling with hair loss, attempts to reduce or stop, distress or impairment, and medical and psychiatric exclusions. A patch of alopecia or a caregiver's suspicion alone is not the diagnosis.",
+        "Assess excoriation disorder, OCD, body dysmorphic disorder, anxiety, depression, ADHD, autism, tics, psychosis, self-harm, substance or medication effects, bullying, and suicide risk."
+      ],
+      "labs": [
+        "No blood test, hair test, imaging study, or rating scale confirms trichotillomania.",
+        "Target fungal studies, thyroid or nutritional measures, autoimmune evaluation, medication review, or biopsy to an atypical alopecia pattern. CBC, iron studies, imaging, endoscopy, or surgical evaluation may be needed when hair ingestion, bleeding, weight loss, a mass, obstruction, or nutritional complication is suspected."
+      ],
+      "assessment": "First assess eye injury, infection, significant bleeding, extensive scarring, hair ingestion, abdominal pain, vomiting, early satiety, weight loss, obstruction symptoms, self-harm, and suicide risk. Then map each pulling pattern and trigger, body sites, awareness, rituals, functional impact, family responses, coexisting disorders, readiness for behavior therapy, and any dermatologic cause that still needs evaluation.",
+      "differential": "Differentiate from alopecia areata, tinea capitis, traction alopecia, telogen effluvium, androgenic or scarring alopecia, thyroid or nutritional disease, medication effect, and intentional cosmetic hair removal. Psychiatric differentials include body dysmorphic disorder, OCD, stereotypic movement disorder, tic disorder, psychosis, factitious behavior, and self-harm; the function and diagnostic criteria, not the visible hair loss alone, determine the owner.",
+      "treatments": [
+        "Offer cognitive-behavioral treatment with habit-reversal training: awareness and self-monitoring, trigger analysis, a competing response, stimulus control, practice across settings, and relapse planning. Pediatric trial evidence supports this behavioral direction, although access and response vary.",
+        "Adapt the environment collaboratively, such as changing a high-risk hand position, using a safe competing object, covering a specific trigger area temporarily, adjusting mirrors or lighting, and building planned activities during automatic-pulling times; avoid turning barriers into restraint or punishment.",
+        "Treat wounds, folliculitis, eye problems, and dermatologic disease; refer hair swallowing with gastrointestinal symptoms for medical or surgical assessment. Address bullying and restore school and social participation.",
+        "No medication is approved specifically for core hair pulling. Specialists may consider an off-label agent in selected cases or treat a coexisting disorder with its indicated medicine, but adult findings such as studied N-acetylcysteine use do not establish pediatric benefit and do not replace habit-reversal therapy."
+      ],
+      "contraindications": [
+        "Do not shame, punish, slap the hand, shave hair as discipline, or require public disclosure; concealment and pulling usually worsen.",
+        "Do not use gloves, hats, restraints, or bitter products in a way that impairs circulation, sleep, hygiene, school function, sensory regulation, or autonomy.",
+        "Do not assume every patchy alopecia is pulling or delay fungal, autoimmune, endocrine, nutritional, and scarring-alopecia evaluation when the pattern is atypical.",
+        "Do not recommend a supplement or off-label medicine as proven pediatric treatment without product quality, interaction, age, pregnancy, organ function, and evidence review."
+      ],
+      "safetyConsiderations": [
+        "Ask every patient with pulling about chewing and swallowing hair. Abdominal pain, vomiting, early satiety, weight loss, a palpable mass, GI bleeding, or obstructive symptoms require prompt medical evaluation.",
+        "Monitor eyelid pulling for corneal irritation, lash loss, infection, and vision symptoms and scalp or skin for bleeding, cellulitis, abscess, and scarring.",
+        "Separate hair pulling from suicidal or nonsuicidal self-injury by asking about intent, emotion, expected outcome, and other methods; one behavior does not exclude the other.",
+        "Assess bullying, depression, isolation, self-harm, and suicide risk when visible loss or shame causes severe impairment."
+      ],
+      "nursingPriorities": [
+        "Use neutral language and document sites, hair-loss pattern, skin and eye findings, pulling context, triggers, awareness, attempts to stop, hair ingestion, GI symptoms, distress, and function.",
+        "Protect wounds and eyes, recognize infection or trichobezoar red flags, and coordinate dermatology, behavioral therapy, primary care, GI, or surgery based on findings.",
+        "Teach the habit loop and competing response without constant surveillance; help the patient choose discreet supports that can be used at school and home.",
+        "Monitor any psychiatric medicine or supplement for the actual indication, benefit, sedation, activation, suicidality, metabolic or movement effects, interactions, and adherence rather than assuming less pulling proves safety."
+      ],
+      "redFlags": [
+        "Hair eating with persistent abdominal pain, early fullness, vomiting, weight loss, GI bleeding, a palpable mass, severe distention, or inability to pass stool or gas",
+        "Eye pain, vision change, severe eyelid swelling, spreading skin redness, fever, pus, abscess, or uncontrolled bleeding",
+        "Rapid scarring hair loss, systemic illness, lymph node swelling, or an alopecia pattern not explained by the history",
+        "Suicidal intent, escalating self-harm, severe depression, psychosis, abuse, or inability to remain safe"
+      ],
+      "complications": [
+        "Skin erosion, folliculitis, infection, scarring, permanent follicle damage, eye irritation, and cosmetic disfigurement",
+        "Trichobezoar, GI bleeding, ulceration, obstruction, perforation, weight loss, and nutritional problems when hair is swallowed",
+        "Shame, bullying, avoidance, school or work impairment, depression, anxiety, and social isolation",
+        "Adverse effects or delayed behavioral care from poorly supported off-label treatment"
+      ],
+      "prognosis": "Course varies from brief episodes to a chronic waxing and waning disorder. Early behavioral treatment, family support, reduced shame, and management of coexisting conditions can improve control and participation. Regrowth depends on whether follicles are scarred; stopping pulling does not guarantee regrowth in permanently damaged areas. Relapse is a signal to reuse skills, not a moral failure.",
+      "prevention": [
+        "There is no proven way to prevent trichotillomania. Early recognition can prevent scarring, infection, hair ingestion, shame, and entrenched habit loops.",
+        "Reduce secondary harm with neutral family responses, early behavioral access, protected school participation, and prompt evaluation of skin, eye, and abdominal symptoms."
+      ],
+      "patientEducation": [
+        "Hair-pulling disorder is treatable and is not simply a bad habit or lack of willpower.",
+        "Notice what your hands, feelings, place, and activity are doing before a pull; that pattern helps build a competing response.",
+        "Tell the clinician if you chew or swallow hair. This is private medical information that can prevent a dangerous stomach or bowel blockage.",
+        "Seek urgent help for vomiting, severe abdominal pain or swelling, weight loss, eye pain or vision change, spreading infection, heavy bleeding, or suicidal thoughts."
+      ],
+      "specialPopulations": [
+        "Young children need parent-supported, play-based awareness and reinforcement without interrogation or punishment; normal exploratory hair touching is not automatically the disorder.",
+        "Autistic people and people with ADHD, tic, sensory, or communication differences may need adapted habit-reversal steps and attention to the function of repetitive behavior.",
+        "Pregnant or breastfeeding patients and children require extra caution with supplements and off-label medicines; behavioral treatment avoids many medication risks."
+      ],
+      "nclexTraps": [
+        "Tension before pulling and relief afterward may occur but are not required diagnostic criteria.",
+        "Ask about hair swallowing because trichobezoar can cause a surgical emergency.",
+        "Habit-reversal training is the evidence-based behavioral core; do not present an off-label drug or supplement as a proven cure.",
+        "Patchy alopecia still requires a medical and dermatologic differential before attributing it to pulling."
+      ],
+      "relatedTopics": [
+        "Excoriation disorder",
+        "Obsessive-compulsive disorder",
+        "Body dysmorphic disorder",
+        "Stereotypic movement disorder",
+        "Generalized anxiety disorder",
+        "Major depressive disorder",
+        "Self-harm"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "who-icd11-cddr-mental-2024",
+        "youth-trichotillomania-hrt-rct-2017",
+        "bfrb-habit-reversal-systematic-review-2019",
+        "pediatric-trichotillomania-review-2012"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. APA and WHO support identity and exclusions; the youth randomized trial and systematic review support habit-reversal treatment with evidence limitations; the pediatric review supports childhood presentation, dermatologic differential, trichophagia safety, and the weak pediatric medication evidence. No commercial-reference prose was copied.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "hair loss",
+            "attempts to stop",
+            "distress and impairment",
+            "medical exclusion",
+            "psychiatric differential"
+          ]
+        },
+        {
+          "authority": "Journal of Child and Adolescent Psychopharmacology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/28005403/",
+          "documentVersion": "youth randomized controlled trial 2017; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "children and adolescents",
+            "habit-reversal training",
+            "clinical response",
+            "evidence scope"
+          ]
+        },
+        {
+          "authority": "Frontiers in Behavioral Neuroscience",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6491945/",
+          "documentVersion": "systematic review 2019; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "habit-reversal components",
+            "trial evidence",
+            "trichotillomania",
+            "limitations"
+          ]
+        },
+        {
+          "authority": "Current Psychiatry Reports",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3366724/",
+          "documentVersion": "pediatric review 2012; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "pediatric course",
+            "differential",
+            "trichophagia",
+            "family assessment",
+            "behavioral treatment",
+            "medication limitation"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "classification",
+            "diagnostic requirements",
+            "differential",
+            "duration",
+            "functional impact"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.trichotillomania",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "disease.excoriation-disorder",
+      "name": "Excoriation disorder",
+      "displayName": "Excoriation disorder",
+      "category": "Mental Health",
+      "aliases": [
+        "Skin-picking disorder",
+        "Dermatillomania"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Excoriation disorder, also called skin-picking disorder, is a condition in which a person repeatedly picks, scratches, squeezes, or digs at their skin until it is damaged, has tried to reduce or stop, and experiences meaningful distress or disruption. A scratch, acne picking, or skin lesion alone is not the diagnosis; itch, infection, inflammatory skin disease, medicines, substances, psychosis, and other reasons for injury must be evaluated.",
+      "whyItMatters": "Repeated picking can cause bleeding, scars, abscesses, cellulitis, eye or genital injury, and rarely deeper or life-threatening infection. Shame often keeps it hidden, so respectful wound assessment and habit-reversal treatment can prevent medical complications while distinguishing it from self-harm, body dysmorphic disorder, delusional infestation, and a skin disease that still needs treatment.",
+      "plainLanguageGlosses": [
+        {
+          "term": "excoriation",
+          "plainLanguage": "a surface skin injury caused by scratching, rubbing, or picking; the word can describe a lesion as well as the disorder, so context matters",
+          "sourceKeys": [
+            "excoriation-treatment-systematic-review-2017"
+          ]
+        },
+        {
+          "term": "habit-reversal training",
+          "plainLanguage": "a structured behavioral treatment that teaches awareness of picking and triggers, then practices a safe competing action and changes the environment",
+          "sourceKeys": [
+            "bfrb-habit-reversal-systematic-review-2019",
+            "excoriation-treatment-systematic-review-2017"
+          ]
+        },
+        {
+          "term": "formication",
+          "plainLanguage": "a crawling sensation on or under the skin that can occur with substances, medicines, neurologic illness, or psychosis and can drive picking without being primary excoriation disorder",
+          "sourceKeys": [
+            "apa-dsm5tr-2022"
+          ]
+        }
+      ],
+      "definition": "DSM-5-TR excoriation disorder requires recurrent skin picking that causes skin lesions, repeated attempts to decrease or stop, and clinically significant distress or impairment. The behavior is not attributable to a substance or medical condition and is not better explained by another mental disorder, such as a delusional belief about infestation, an appearance concern in body dysmorphic disorder, a stereotypy, or an intention to injure oneself in nonsuicidal self-injury.",
+      "pathology": "Mechanical disruption damages the epidermal barrier and can extend into deeper tissue. Repeated reopening delays healing, increases pigment change and scarring, and creates entry points for bacterial infection. Occlusion, caustic cleaning, or contaminated tools can add maceration, burns, and inoculation.",
+      "pathophysiology": [
+        "Picking can be focused, with a recognized urge, perceived irregularity, itch, or emotional trigger, or automatic during reading, screen use, driving, studying, or rest. Both forms may occur in one person.",
+        "Removing a bump or scab and the short-term sensory or emotional relief can reinforce the behavior, while visible lesions create more surfaces to inspect and pick.",
+        "Habit and inhibitory-control models are supported at a group level, but no neurotransmitter, genetic, imaging, or skin finding is diagnostic for an individual."
+      ],
+      "etiology": "The disorder is multifactorial. Skin texture, acne, eczema, stress, boredom, sensory reinforcement, and coexisting OCD-related, anxiety, mood, attention, or neurodevelopmental conditions may contribute. Cocaine, methamphetamine, prescription stimulants, some medicines, pruritic medical disease, neuropathy, infection, and psychosis can cause another picking syndrome and require cause-specific care.",
+      "riskFactors": [
+        "Acne, eczema, scars, keratosis, chronic itch, sensory sensitivity, or easy access to mirrors, magnification, tweezers, or needles",
+        "Family or personal history of excoriation disorder, trichotillomania, OCD, body dysmorphic disorder, anxiety, depression, ADHD, autism, or tic disorder",
+        "Stress, boredom, fatigue, sedentary tasks, skin inspection, perfectionistic grooming, or shame and concealment",
+        "Stimulant or cocaine exposure, a medicine linked to formication or compulsive behavior, neuropathy, infection concern, or psychosis"
+      ],
+      "signsSymptoms": [
+        "Erosions, scabs, ulcers, bleeding, scars, pigment changes, or lesions in different healing stages on reachable body areas",
+        "Searching the skin, squeezing pores, removing scabs, using needles or tweezers, saving tissue, or spending prolonged time in mirrors or bathrooms",
+        "Repeated unsuccessful attempts to stop, automatic or urge-driven episodes, covering lesions, and avoiding swimming, intimacy, school, work, or healthcare",
+        "Pain, itch, drainage, odor, warmth, swelling, fever, or reduced movement when tissue injury or infection develops"
+      ],
+      "diagnostics": [
+        "Ask privately about every body site, method and tool, time spent, automatic versus focused pattern, itch or crawling sensation, triggers, perceived skin defect, beliefs about contamination or infestation, attempts to stop, distress, function, substances, medicines, and wound care.",
+        "Examine lesions with consent and appropriate chaperoning, documenting depth, distribution, healing stage, infection, scarring, eye or genital involvement, and whether the pattern fits a dermatologic disease or access by the person's hands.",
+        "Confirm recurrent picking with lesions, attempts to reduce or stop, distress or impairment, and substance, medical, and psychiatric exclusions. A dermatologist or primary clinician may need to diagnose the original skin trigger separately.",
+        "Assess trichotillomania, OCD, body dysmorphic disorder, delusional infestation or psychosis, depression, anxiety, ADHD, autism, stereotypy, factitious behavior, nonsuicidal self-injury, suicidal intent, trauma, and abuse."
+      ],
+      "labs": [
+        "No blood test, wound pattern, imaging study, or rating scale confirms excoriation disorder.",
+        "Use wound culture for a clinically infected lesion when results will guide care; targeted dermatologic scraping, biopsy, allergy, renal, liver, thyroid, glucose, hematologic, neurologic, toxicology, or infection testing follows the itch, lesion, systemic findings, or exposure rather than a routine panel."
+      ],
+      "assessment": "First assess bleeding, deep tissue injury, eye or genital involvement, cellulitis, abscess, sepsis, immunosuppression, contaminated tools, substance intoxication, psychosis, self-harm, and suicide risk. Then map sites, triggers, sensations, beliefs, tools, automatic and focused patterns, wound care, attempts to stop, function, dermatologic disease, medications, substances, coexisting disorders, and readiness for behavioral care.",
+      "differential": "Differentiate primary excoriation disorder from acne, eczema, psoriasis, scabies or other infection, urticaria, neuropathic itch, systemic pruritus, medication or stimulant effects, cocaine or methamphetamine use, and true foreign body or infestation. Psychiatric differentials include body dysmorphic disorder, OCD, delusional infestation, psychosis, stereotypic movement disorder, trichotillomania, factitious disorder, and nonsuicidal or suicidal self-injury. Intent, belief, trigger, and full criteria determine the diagnosis.",
+      "treatments": [
+        "Offer cognitive-behavioral treatment with habit-reversal components: awareness and self-monitoring, functional analysis, competing responses, stimulus control, emotion and urge skills, and relapse planning. Evidence supports a behavioral direction but remains smaller than for some other disorders.",
+        "Treat the skin trigger and wounds with appropriate dermatology or primary care, using gentle cleansing, indicated dressings, acne or eczema care, infection treatment, and barriers that protect healing without becoming restraint or causing maceration.",
+        "Collaboratively change high-risk environments, tools, mirrors, lighting, idle-hand periods, and access to wound supplies while increasing valued activities and discreet competing responses at school or work.",
+        "No medication is approved specifically for core skin picking. Studied off-label options have included N-acetylcysteine and selective serotonin reuptake inhibitors such as fluoxetine, but evidence and age applicability are limited; specialist review, product quality, interactions, pregnancy, organ function, suicide monitoring, and a behavioral plan are required."
+      ],
+      "contraindications": [
+        "Do not shame, punish, photograph or expose lesions without consent, slap the hand, or force repeated body checks; concealment and injury may worsen.",
+        "Do not use bleach, peroxide repeatedly, caustic antiseptics, household chemicals, superglue, or tightly occlusive barriers that burn or macerate tissue.",
+        "Do not assume all lesions are self-created or psychiatric; evaluate infection, inflammatory disease, malignancy, systemic pruritus, medication effects, and true infestation when clinically supported.",
+        "Do not present a supplement or off-label medicine as proven treatment, especially in children, pregnancy, liver or kidney disease, or when product quality and interactions are unknown."
+      ],
+      "safetyConsiderations": [
+        "Mark and trend spreading erythema when appropriate, assess warmth, tenderness, drainage, fluctuance, fever, lymphangitic streaking, vital signs, and immune status, and escalate cellulitis, abscess, or sepsis.",
+        "Eye, ear, nose, mouth, genital, rectal, vascular-access, surgical-wound, or deep-tissue picking can threaten vision, function, hemorrhage control, and infection containment and needs site-specific urgent care.",
+        "Ask about needles, blades, tweezers, contamination, injection, stimulant or cocaine use, and wound manipulation without judgment; dispose of sharps safely.",
+        "Assess the purpose of injury and ask separately about suicidal and nonsuicidal self-harm. Excoriation disorder does not rule out another form of self-injury."
+      ],
+      "nursingPriorities": [
+        "Document lesion location, depth, stage, infection findings, pain, itch, tools, triggers, picking pattern, substances and medicines, wound care, distress, function, and intent using neutral language.",
+        "Provide ordered wound care, protect healing tissue, teach hand and tool hygiene, and coordinate dermatology, infection, behavioral, substance-use, or psychiatric care based on findings.",
+        "Help the patient choose a discreet competing response and safer environment without constant surveillance; track wound healing and participation as well as picking frequency.",
+        "Monitor any off-label treatment for the stated target, adverse effects, activation or suicidality, interactions, adherence, and whether behavioral therapy remains accessible."
+      ],
+      "redFlags": [
+        "Fever, rapidly spreading redness, severe pain, purulent drainage, crepitus, red streaking, hypotension, confusion, or another sign of deep infection or sepsis",
+        "Eye pain or vision change, genital or rectal injury, uncontrolled bleeding, exposed tendon or bone, deep ulcer, vascular-access manipulation, or contaminated sharp use",
+        "New formication, paranoia, hallucinations, severe insomnia, agitation, chest pain, or hyperthermia with stimulant, cocaine, medication, or psychosis concern",
+        "Suicidal intent, escalating self-harm, severe depression, abuse, or inability to keep wounds and the person safe"
+      ],
+      "complications": [
+        "Bleeding, pain, scarring, pigment change, cellulitis, abscess, tissue necrosis, osteomyelitis, and sepsis",
+        "Eye, ear, dental, genital, rectal, nerve, tendon, or vascular injury depending on the site and depth",
+        "Shame, time loss, avoidance, bullying, school or work impairment, depression, anxiety, and social isolation",
+        "Antibiotic exposure, procedure burden, or adverse effects from unproven medication when the behavioral and dermatologic mechanism is not addressed"
+      ],
+      "prognosis": "Excoriation disorder often waxes and wanes and may become chronic, but picking, wound burden, and participation can improve with habit-reversal treatment, trigger management, skin care, and treatment of coexisting illness. Scars and pigment changes may remain after behavior improves. Relapse is managed by returning to the functional plan rather than blaming the patient.",
+      "prevention": [
+        "There is no proven way to prevent the primary disorder. Treat itch, acne, eczema, and infection early; reduce shame; and offer behavioral care before repeated picking creates chronic wounds.",
+        "Prevent complications with clean wound care, safe sharps disposal, protected healing, substance and medication review, and clear escalation for infection or deep injury."
+      ],
+      "patientEducation": [
+        "Skin-picking disorder is treatable and is not simply poor self-control. The care team should address both the urge pattern and the skin condition.",
+        "Track where, when, and how picking starts and practice a safe competing response; cover a healing area only with a clinician-approved method that does not trap too much moisture.",
+        "Do not use someone else's antibiotic, harsh chemical, or unverified supplement. Tell the clinician about medicines, stimulants, cocaine, tools, and skin sensations so treatment is safe.",
+        "Get urgent help for fever, spreading redness, severe pain, pus, red streaks, eye or genital injury, deep bleeding, hallucinations, chest pain after a stimulant, or suicidal thoughts."
+      ],
+      "specialPopulations": [
+        "Children need developmentally adapted habit reversal, caregiver support, skin-disease assessment, and protection from punishment; pediatric medication evidence is especially limited.",
+        "Autistic people and people with intellectual or communication disability may need sensory and pain assessment, visual wound plans, and functional behavior support rather than an assumption of intentional injury.",
+        "Immunocompromised, diabetic, anticoagulated, pregnant, or postsurgical patients need earlier site-specific medical review and tighter medication and infection-safety decisions."
+      ],
+      "nclexTraps": [
+        "A physical excoriation is a lesion; excoriation disorder requires recurrent picking, attempts to stop, distress or impairment, and exclusions.",
+        "Always assess wound infection and depth before focusing only on psychiatric treatment.",
+        "Differentiate skin-picking disorder from nonsuicidal self-injury by the behavior's function and full criteria; they can coexist.",
+        "Habit-reversal treatment and skin care are core; no medication or supplement is an approved universal cure."
+      ],
+      "relatedTopics": [
+        "Trichotillomania",
+        "Obsessive-compulsive disorder",
+        "Body dysmorphic disorder",
+        "Stereotypic movement disorder",
+        "Generalized anxiety disorder",
+        "Major depressive disorder",
+        "Self-harm"
+      ],
+      "sourceKeys": [
+        "apa-dsm5tr-2022",
+        "who-icd11-cddr-mental-2024",
+        "bfrb-habit-reversal-systematic-review-2019",
+        "excoriation-treatment-systematic-review-2017"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. APA and WHO support identity, substance and medical exclusions, and psychiatric differential; the habit-reversal and excoriation systematic reviews support behavioral treatment, medical complications, comorbidity, and the limited off-label medication evidence. Pediatric limits are stated explicitly. No commercial-reference prose was copied.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "skin lesions",
+            "attempts to stop",
+            "distress and impairment",
+            "substance and medical exclusions",
+            "psychiatric differential"
+          ]
+        },
+        {
+          "authority": "Frontiers in Behavioral Neuroscience",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6491945/",
+          "documentVersion": "systematic review 2019; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "habit-reversal components",
+            "excoriation trials",
+            "trichotillomania overlap",
+            "evidence limitations"
+          ]
+        },
+        {
+          "authority": "Neuropsychiatric Disease and Treatment",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5522672/",
+          "documentVersion": "systematic review 2017; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "definition",
+            "medical complications",
+            "mood and anxiety comorbidity",
+            "behavioral treatment",
+            "N-acetylcysteine and SSRI evidence",
+            "limitations"
+          ]
+        },
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "identity",
+            "classification",
+            "diagnostic requirements",
+            "differential",
+            "duration",
+            "functional impact"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.excoriation-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "concept.cognitive-behavioral-therapy",
+      "name": "Cognitive behavioral therapy",
+      "displayName": "Cognitive behavioral therapy (clinical treatment, not a diagnosis)",
+      "category": "Mental health clinical concept",
+      "entryType": "clinical-concept",
+      "isDiagnosis": false,
+      "diagnosisStatus": "NOT_A_MENTAL_DISORDER",
+      "aliases": [
+        "CBT",
+        "cognitive behavioural therapy",
+        "cognitive behavior therapy"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Cognitive behavioral therapy (CBT) is a structured talking therapy that helps a person notice links among thoughts, emotions, body reactions, and actions, then practice more useful ways of thinking and responding. It is collaborative and goal-focused; it is not forced positive thinking and does not mean symptoms are the patient's fault.",
+      "whyItMatters": "CBT can reduce symptoms and improve functioning in several conditions when it is adapted to the specific problem. Depression may be maintained by withdrawal and hopeless predictions, anxiety by avoidance, OCD by compulsions, and psychosis-related distress by frightening interpretations; the treatment plan must target the actual maintaining pattern rather than use one generic worksheet for everyone.",
+      "plainLanguageGlosses": [
+        {
+          "term": "cognitive formulation",
+          "plainLanguage": "a shared map of how a person's situation, interpretations, emotions, physical reactions, and behavior may keep a problem going",
+          "sourceKeys": [
+            "nice-ng222-chronic-depression",
+            "nice-cg178-psychosis-adults"
+          ]
+        },
+        {
+          "term": "behavioral experiment",
+          "plainLanguage": "a planned, safe real-world test of a prediction rather than an attempt to prove the person wrong",
+          "sourceKeys": [
+            "nice-ng222-chronic-depression"
+          ]
+        },
+        {
+          "term": "home practice",
+          "plainLanguage": "agreed skills practice between sessions so learning can transfer into daily life",
+          "sourceKeys": [
+            "va-dod-mdd-cpg-2022"
+          ]
+        }
+      ],
+      "definition": "CBT is a family of manual-informed psychotherapies that uses an individualized formulation, collaborative goals, monitoring, cognitive and behavioral skills, and practice between sessions. The exact components, duration, and focus differ for depression, anxiety disorders, OCD, trauma-related disorders, insomnia, psychosis, pain, and other problems; a therapy label alone does not show that an evidence-based protocol was delivered.",
+      "pathology": "CBT has no pathology of its own. It addresses modifiable cycles in which interpretations, attention, avoidance, safety behaviors, inactivity, reassurance seeking, or coping responses can maintain distress and disability. Biological illness, medicines, trauma, poverty, discrimination, and genuine danger remain real and must not be reduced to distorted thinking.",
+      "pathophysiology": [
+        "Avoidance and short-term relief can negatively reinforce fear, making future avoidance more likely.",
+        "Depressive withdrawal can reduce rewarding or meaningful experiences and strengthen hopeless predictions.",
+        "Reappraisal, graded behavior change, and repeated practice can create new learning and broader coping choices; improvement is measured by symptoms and function, not agreement with the therapist."
+      ],
+      "etiology": "Not applicable as a disease cause. CBT is selected when a supported cognitive-behavioral model fits the confirmed condition, the person agrees with the approach, and an appropriately trained clinician can deliver the relevant protocol.",
+      "riskFactors": [
+        "Symptoms maintained by avoidance, inactivity, compulsions, reassurance seeking, catastrophic interpretations, or ineffective coping",
+        "Functional loss in work, school, sleep, relationships, self-care, or treatment adherence",
+        "Prior benefit from structured skills-based therapy or a preference for a time-limited collaborative approach",
+        "Barriers such as severe cognitive impairment, language mismatch, unstable housing, active intoxication, or acute medical illness that require adaptation or stabilization"
+      ],
+      "signsSymptoms": [
+        "The treatment target may include depressed mood, anxiety, panic, obsessions and compulsions, sleep difficulty, trauma-related distress, or psychosis-related distress.",
+        "Common maintaining behaviors include avoidance, withdrawal, checking, reassurance seeking, rumination, or abandoning valued activities.",
+        "Therapy response may appear as less distress, reduced target behavior, improved functioning, greater coping flexibility, and completion of agreed practice."
+      ],
+      "diagnostics": [
+        "Confirm the underlying diagnosis and assess severity, duration, function, suicide and violence risk, substance use, mania or psychosis, cognition, trauma, medical contributors, and prior treatment.",
+        "Develop a shared, problem-specific formulation and measurable goals; a screening questionnaire supports monitoring but does not establish the diagnosis or select CBT by itself.",
+        "Track symptoms, functioning, treatment engagement, adverse experiences, and patient-defined outcomes at agreed intervals; revisit the formulation if progress stalls."
+      ],
+      "labs": [
+        "No laboratory test diagnoses a need for CBT or predicts response.",
+        "Use medical testing only when history or examination suggests a physical, medication, sleep, neurologic, endocrine, pregnancy-related, or substance-related contributor.",
+        "Objective behavioral measures can be useful, but scores and logs must be interpreted with the clinical interview and the person's goals."
+      ],
+      "assessment": "Ask what the person wants to change, what happens before and after the target symptom, what they predict or fear, what they do to cope, what provides short-term relief, and what important activities have been lost. Agree on a formulation, protocol, accessibility needs, session format, measures, home practice, review point, and plan for worsening risk.",
+      "differential": [
+        "Supportive counseling, psychoeducation, problem-solving therapy, behavioral activation, ACT, IPT, DBT, ERP, and disorder-specific trauma therapy have different mechanisms and should not be mislabeled as generic CBT.",
+        "Delirium, dementia, intoxication, withdrawal, medication adverse effects, mania, catatonia, endocrine or neurologic illness, sleep disorders, and actual environmental danger may require different or additional care.",
+        "Intrusive thoughts are not the same as intent; psychotic beliefs are not managed by humiliating confrontation; culturally shared beliefs require culturally informed assessment."
+      ],
+      "treatments": [
+        "Use a condition-specific, evidence-based CBT protocol delivered by a trained clinician, with shared goals, formulation, skills practice, feedback, and outcome monitoring.",
+        "Examples of components include activity scheduling, problem solving, identifying thinking patterns, reappraisal, behavioral experiments, coping strategies, exposure-based work when indicated, and relapse planning.",
+        "Adapt language, pace, sensory demands, examples, homework, caregiver involvement, and delivery format to the person's development, cognition, culture, disability, and preference.",
+        "Medicines are not part of CBT. Depending on the underlying disorder, CBT may be used alone or with indicated medication such as an SSRI for depression or OCD or an antipsychotic for schizophrenia after shared decision-making."
+      ],
+      "contraindications": [
+        "Do not use cognitive restructuring to deny real abuse, discrimination, pain, poverty, medical illness, or danger.",
+        "Do not argue a person out of a delusion, force disclosure, assign unsafe exposure, or interpret noncompletion as resistance without assessing barriers.",
+        "Do not delay emergency treatment for suicidality, violence, delirium, intoxication or withdrawal, mania, catatonia, or medical instability in order to complete a therapy exercise.",
+        "Do not assume that all CBT protocols, session counts, or digital programs are interchangeable."
+      ],
+      "safetyConsiderations": [
+        "Assess suicide, self-harm, violence, abuse, exploitation, mania, psychosis, substance use, and medical change throughout care rather than only at intake.",
+        "Exposure or behavioral experiments must distinguish feared but safe cues from genuine hazards and use consent-based planning.",
+        "Have an escalation plan for rapidly worsening mood, inability to care for basic needs, medication problems, or new neurologic or cognitive change."
+      ],
+      "nursingPriorities": [
+        "Reinforce the patient's own formulation and agreed coping plan without debating, shaming, or providing repeated reassurance that strengthens a target cycle.",
+        "Document observable target behavior, symptom and function trends, sleep, medication response, substance use, skill use, and barriers to practice.",
+        "Support graded activity and practice that the therapist has prescribed; remain within role and do not present brief bedside coaching as a full CBT course.",
+        "Communicate new risk, activation, confusion, adverse effects, or functional decline promptly to the treatment team."
+      ],
+      "redFlags": [
+        "Current suicidal or violent intent, recent serious self-harm, command hallucinations with danger, inability to maintain basic safety, or abuse and safeguarding concern",
+        "New confusion, fluctuating attention, fever, hypoxia, hypoglycemia, seizure, focal neurologic change, intoxication, withdrawal, or medication toxicity",
+        "Markedly reduced need for sleep with escalating energy or disinhibition, severe psychosis, catatonia, or rapidly worsening function",
+        "A therapy task that is coercive, humiliating, medically unsafe, or based on an unconfirmed diagnosis"
+      ],
+      "complications": [
+        "Worsened shame or disengagement if normal reactions to trauma or real adversity are framed as faulty thinking",
+        "Symptom worsening or preventable harm from poorly planned exposure or behavioral experiments",
+        "Missed medical, substance-related, bipolar, psychotic, cognitive, or safeguarding condition",
+        "Loss of continuity when goals, formulation, measures, and crisis plan are not handed off"
+      ],
+      "prognosis": "Many patients improve with a well-matched CBT protocol, but response varies by condition, severity, comorbidity, access, therapeutic relationship, practice, and treatment fidelity. Lack of early improvement should trigger collaborative review of diagnosis, risk, barriers, formulation, protocol fit, and other evidence-based options rather than blame.",
+      "prevention": [
+        "Identify early warning signs and the thoughts, behaviors, sleep changes, or stressors linked to relapse.",
+        "Continue useful skills and meaningful activity after acute treatment and plan how to respond to setbacks.",
+        "Arrange booster or follow-up care when supported and preserve access to medication and other indicated treatment."
+      ],
+      "patientEducation": [
+        "CBT helps you test patterns and practice new responses; it is not a claim that symptoms are imaginary or your fault.",
+        "Ask which CBT protocol is being offered, what problem it targets, how progress will be measured, and what alternatives are available.",
+        "Tell the team if an exercise feels unsafe, culturally wrong, inaccessible, or causes major worsening; treatment should be adjusted collaboratively.",
+        "Seek urgent help for immediate danger, severe self-harm thoughts, new confusion, or inability to stay safe rather than waiting for the next therapy session."
+      ],
+      "specialPopulations": [
+        "Children and adolescents need developmentally adapted protocols, assent, appropriate caregiver involvement, and safeguarding.",
+        "Older adults and people with cognitive or sensory impairment may need slower pacing, memory aids, shorter steps, caregiver support with consent, and medical evaluation for new change.",
+        "People with psychosis need psychosis-specific CBT focused on coping, distress, and functioning; it complements, rather than automatically replaces, indicated antipsychotic treatment.",
+        "Language, culture, literacy, neurodivergence, disability, pregnancy, and medical limits should shape examples, format, goals, and access."
+      ],
+      "nclexTraps": [
+        "CBT is collaborative; the nurse does not correct the patient by saying a belief is irrational.",
+        "A thought record or worksheet is a tool, not proof that a full CBT intervention occurred.",
+        "CBT can be first-line for some conditions, but acute safety and medical stabilization still come first.",
+        "A nurse may reinforce therapist-assigned skills but should not independently deliver specialized CBT without training, supervision, and scope."
+      ],
+      "relatedTopics": [
+        "Major depressive disorder",
+        "Generalized anxiety disorder",
+        "Panic disorder",
+        "Obsessive-compulsive disorder",
+        "Schizophrenia",
+        "Behavioral activation",
+        "Exposure and response prevention",
+        "Acceptance and commitment therapy",
+        "Suicide risk assessment"
+      ],
+      "sourceKeys": [
+        "nice-ng222-chronic-depression",
+        "va-dod-mdd-cpg-2022",
+        "nice-cg178-psychosis-adults",
+        "nice-cg31-ocd",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. NICE NG222 and VA/DoD support CBT as an evidence-based psychotherapy for adult depression with shared choice and monitoring. NICE CG178 defines psychosis-specific CBT components and its place alongside antipsychotic treatment and family intervention. NICE CG31 supports CBT with ERP for OCD. SAFE-T supports ongoing suicide assessment and triage; it does not make CBT a crisis substitute.",
+      "provenance": [
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/ng222/chapter/Recommendations",
+          "documentVersion": "NG222 current recommendations; accessed 2026-08-15",
+          "fieldsSupported": [
+            "depression indications",
+            "shared treatment choice",
+            "CBT delivery",
+            "monitoring"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/mdd/VADODMDDCPGFinal508.pdf",
+          "documentVersion": "MDD CPG version 4.0, February 2022; accessed 2026-08-15",
+          "fieldsSupported": [
+            "CBT for MDD",
+            "psychotherapy selection",
+            "patient preference",
+            "outcome monitoring"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/Guidance/CG178/chapter/recommendations",
+          "documentVersion": "CG178 current recommendations; accessed 2026-08-15",
+          "fieldsSupported": [
+            "psychosis-specific CBT",
+            "session structure",
+            "coping and functioning",
+            "medication boundary",
+            "clinician competence"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/cg31/chapter/Recommendations",
+          "documentVersion": "CG31 current recommendations; accessed 2026-08-15",
+          "fieldsSupported": [
+            "OCD CBT",
+            "ERP relationship",
+            "treatment intensity",
+            "monitoring"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "suicide assessment",
+            "risk factors",
+            "protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "directTargetId": "concept.cognitive-behavioral-therapy",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "concept.dialectical-behavior-therapy",
+      "name": "Dialectical behavior therapy",
+      "displayName": "Dialectical behavior therapy (clinical treatment, not a diagnosis)",
+      "category": "Mental health clinical concept",
+      "entryType": "clinical-concept",
+      "isDiagnosis": false,
+      "diagnosisStatus": "NOT_A_MENTAL_DISORDER",
+      "aliases": [
+        "DBT",
+        "dialectical behaviour therapy",
+        "dialectical behavioral therapy"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Dialectical behavior therapy (DBT) is a structured psychotherapy that combines acceptance with behavior change. It teaches mindfulness, distress-tolerance, emotion-regulation, and relationship skills while directly addressing dangerous or therapy-interfering behaviors; it is more than a coping-skills handout or a single group.",
+      "whyItMatters": "DBT is strongly associated with treatment of borderline personality disorder, especially when recurrent self-harm or suicidal behavior is a priority. Because crises can be lethal, skills coaching must stay connected to a comprehensive risk plan, trained treatment team, and care for coexisting depression, substance use, trauma, eating disorders, or medical illness.",
+      "plainLanguageGlosses": [
+        {
+          "term": "dialectical",
+          "plainLanguage": "holding two truths together, such as accepting the person as they are while also working toward change",
+          "sourceKeys": [
+            "apa-bpd-guideline-2024"
+          ]
+        },
+        {
+          "term": "distress tolerance",
+          "plainLanguage": "skills for getting through an intense crisis without making it worse",
+          "sourceKeys": [
+            "nice-cg78-borderline"
+          ]
+        },
+        {
+          "term": "therapy-interfering behavior",
+          "plainLanguage": "a behavior that blocks safe and effective treatment, such as repeated nonattendance, threats within sessions, or not using an agreed crisis pathway",
+          "sourceKeys": [
+            "apa-bpd-guideline-2024"
+          ]
+        }
+      ],
+      "definition": "DBT is a cognitive-behavioral treatment model that uses behavioral analysis, validation, skills training, contingency principles, and a hierarchy that generally addresses life-threatening behaviors before therapy-interfering behaviors and quality-of-life problems. A comprehensive program commonly includes individual therapy, skills training, between-session coaching according to program rules, and a clinician consultation team; formats vary and should not be called equivalent without evidence.",
+      "pathology": "DBT has no pathology of its own. It targets patterns in which intense emotion, impulsive action, invalidating interactions, avoidance, and short-term crisis relief can reinforce self-harm, substance use, aggression, or unstable relationships. It does not assume every person with self-harm has borderline personality disorder.",
+      "pathophysiology": [
+        "High emotional sensitivity and slow return to baseline can narrow problem-solving during conflict or perceived rejection.",
+        "Self-harm or other crisis behavior may provide short-term relief, which can reinforce the behavior even while causing serious harm.",
+        "Repeated skills practice and behavioral analysis aim to increase safer responses, improve emotion regulation, and build a life the patient identifies as worth living."
+      ],
+      "etiology": "Not applicable as a disease cause. DBT is considered after comprehensive assessment identifies treatment targets that fit the model and the person can enter a structured program with informed agreement.",
+      "riskFactors": [
+        "Recurrent suicidal behavior, nonsuicidal self-injury, severe impulsivity, or repeated crisis presentations",
+        "Marked emotion dysregulation, unstable relationships, anger, dissociation, or behaviors that repeatedly disrupt treatment",
+        "Borderline personality disorder with recurrent self-harm as a major treatment priority",
+        "Coexisting substance use, eating-disorder behavior, trauma symptoms, or depression requiring coordinated parallel treatment"
+      ],
+      "signsSymptoms": [
+        "Rapidly escalating emotion, urges to self-harm, impulsive behavior, interpersonal conflict, or crisis-driven care use may be treatment targets.",
+        "A chain analysis identifies vulnerabilities, prompting events, links, consequences, and places where a skill could interrupt the sequence.",
+        "Progress includes fewer dangerous behaviors, more skill use, better attendance and functioning, and improved ability to ask for help effectively."
+      ],
+      "diagnostics": [
+        "Confirm diagnoses and assess self-harm, suicide and violence risk, substance use, trauma, eating symptoms, mood episodes, psychosis, dissociation, cognition, medical needs, and prior treatment.",
+        "Define a target hierarchy and baseline frequency, severity, context, and consequences of target behaviors; diagnosis alone does not set the hierarchy.",
+        "Monitor personal functioning, substance use, self-harm, depression, BPD symptoms, treatment engagement, and patient-defined recovery outcomes."
+      ],
+      "labs": [
+        "No laboratory test diagnoses a need for DBT or confirms borderline personality disorder.",
+        "Use targeted medical testing for overdose, injury, pregnancy, malnutrition, substance exposure, medication effects, or another indicated condition.",
+        "A behavior diary supports treatment but never replaces direct risk assessment or clinical evaluation."
+      ],
+      "assessment": "Ask about current and past suicidal behavior, self-injury, triggers, functions and consequences of the behavior, access to means, substance use, eating behavior, relationships, housing, trauma, strengths, treatment goals, and ability to use the program's crisis and coaching structure. Review the program's components, attendance expectations, confidentiality, contact boundaries, alternatives, and emergency pathway before enrollment.",
+      "differential": [
+        "Bipolar disorder, PTSD, substance-induced symptoms, ADHD, autism, eating disorders, major depression, psychotic disorders, dissociative disorders, intellectual disability, brain injury, and actual abuse or unsafe relationships can overlap with DBT treatment targets.",
+        "Nonsuicidal self-injury and suicidal behavior require separate intent assessment; either can occur without borderline personality disorder.",
+        "A DBT skills group alone, generic mindfulness class, supportive counseling, CBT, MBT, and crisis management are not automatically comprehensive DBT."
+      ],
+      "treatments": [
+        "Deliver a comprehensive, manual-informed DBT program through trained and supervised clinicians when that level of treatment is indicated and available.",
+        "Teach and rehearse mindfulness, distress tolerance, emotion regulation, and interpersonal effectiveness; use behavioral chain analysis and solution analysis for target behaviors.",
+        "Maintain a collaborative crisis and lethal-means safety plan, coordinate medical and psychiatric treatment, and provide the program's defined coaching pathway without replacing emergency services.",
+        "No medication treats DBT itself or is recommended solely for borderline personality disorder symptoms. Medicines such as an SSRI for coexisting major depression or an antipsychotic for a separate psychotic disorder may be used for the confirmed comorbidity."
+      ],
+      "contraindications": [
+        "Do not label punitive limit-setting, forced compliance, or a worksheet packet as DBT.",
+        "Do not make access to emergency care conditional on skill use or treat a suicide statement as attention seeking.",
+        "Do not use brief psychological treatment under 3 months specifically for borderline personality disorder outside an appropriately structured service when following NICE guidance.",
+        "Do not delay stabilization of overdose, injury, intoxication or withdrawal, delirium, severe eating-disorder instability, mania, psychosis, or imminent danger."
+      ],
+      "safetyConsiderations": [
+        "Directly reassess suicide, self-harm, violence, abuse, access to means, and ability to use supports whenever risk changes.",
+        "Keep coaching boundaries and after-hours instructions explicit; a coaching line is not automatically a 24-hour emergency service.",
+        "Avoid invalidating or stigmatizing labels and document behavior, context, function, intervention, and response objectively.",
+        "Coordinate treatment for substance use, eating disorders, pregnancy, medications, pain, and other medical conditions."
+      ],
+      "nursingPriorities": [
+        "Validate the emotion without validating a dangerous action, then prompt one or two skills from the patient's agreed plan.",
+        "Assess and treat injury, overdose, intoxication or withdrawal, and medical instability before a prolonged skills discussion.",
+        "Document exact urges, intent, behavior, antecedents, consequences, skills attempted, medication and substance factors, and response.",
+        "Use consistent team communication and reinforce the same crisis pathway; avoid splitting language or staff competition."
+      ],
+      "redFlags": [
+        "Current suicidal intent, recent serious attempt, escalating self-injury, inability to delay action, dangerous violence, or loss of a safe environment",
+        "Overdose, deep wound, severe bleeding, altered consciousness, intoxication or withdrawal, eating-disorder instability, or pregnancy-related emergency",
+        "New mania, severe psychosis, catatonia, delirium, or rapid functional collapse",
+        "A treatment environment using humiliation, abandonment threats, retaliation, or denial of medically necessary care"
+      ],
+      "complications": [
+        "Suicide, severe injury, overdose, substance-related harm, or medical complications when crisis behavior is minimized",
+        "Shame, disengagement, or escalating crises from inconsistent or punitive responses",
+        "Missed comorbid mood, trauma, psychotic, eating, substance-related, developmental, or medical condition",
+        "Burnout and fragmented care when the team lacks supervision, shared targets, and a consistent plan"
+      ],
+      "prognosis": "A comprehensive, well-matched DBT program can reduce important target behaviors and improve functioning for many patients, but response is not guaranteed and the evidence does not make DBT the only appropriate structured psychotherapy for every person with BPD. Progress requires repeated measurement and adjustment of the treatment plan.",
+      "prevention": [
+        "Identify vulnerability factors, prompting events, early warning signs, and skillful alternatives before the next crisis.",
+        "Reduce access to lethal means and keep a written crisis plan with support contacts and emergency thresholds.",
+        "Practice skills during lower-intensity periods and plan for transitions, missed sessions, and discharge."
+      ],
+      "patientEducation": [
+        "DBT combines acceptance and change; it does not say your pain is fake or that every crisis is a choice.",
+        "Ask whether the program includes individual therapy, skills training, coaching rules, and a therapist consultation team, and what happens in an emergency.",
+        "Use the agreed skill and coaching pathway when possible, but seek emergency help immediately when you cannot stay safe.",
+        "Medication may treat a separate condition, but there is no medicine that replaces the DBT program."
+      ],
+      "specialPopulations": [
+        "Adolescent DBT and adaptations for substance use or eating disorders require their own protocols, trained teams, developmentally appropriate consent, and caregiver planning.",
+        "Pregnant patients need coordinated obstetric, medication, substance-use, and suicide-risk care; DBT skills do not replace urgent obstetric assessment.",
+        "Autistic people, people with cognitive or sensory disabilities, and people using interpreters may need concrete language, visual supports, pacing changes, and sensory accommodation.",
+        "People experiencing abuse or coercive control need safety planning that does not frame reasonable danger responses as mere emotion dysregulation."
+      ],
+      "nclexTraps": [
+        "Validate the feeling, assess safety, and reinforce the plan; do not endorse self-harm or argue about whether distress is justified.",
+        "A skills group is not automatically comprehensive DBT.",
+        "Borderline personality disorder does not make suicide statements manipulative or low risk.",
+        "Consistent boundaries mean predictable, respectful care, not punishment or emotional withdrawal."
+      ],
+      "relatedTopics": [
+        "Borderline personality disorder",
+        "Nonsuicidal self-injury",
+        "Suicidal ideation",
+        "Suicide risk assessment",
+        "Emotion regulation",
+        "Distress tolerance",
+        "Mentalization-based treatment",
+        "Substance use disorders",
+        "Eating disorders"
+      ],
+      "sourceKeys": [
+        "apa-bpd-guideline-2024",
+        "nice-cg78-borderline",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. APA supports a structured psychotherapy focused on BPD's core features with a comprehensive initial assessment and treatment plan. NICE supports comprehensive DBT for women with BPD when reducing recurrent self-harm is a priority, structured care planning, broad outcome monitoring, crisis review, and the boundary against medication as specific BPD treatment. SAFE-T supports direct, dynamic suicide assessment and safety planning.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://psychiatryonline.org/doi/book/10.1176/appi.books.9780890428009",
+          "documentVersion": "BPD practice guideline approved 2023 and published 2024; accessed 2026-08-15",
+          "fieldsSupported": [
+            "comprehensive assessment",
+            "structured psychotherapy",
+            "treatment planning",
+            "monitoring",
+            "medication boundaries"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/cg78/chapter/Recommendations",
+          "documentVersion": "CG78 current recommendations; accessed 2026-08-15",
+          "fieldsSupported": [
+            "DBT indication boundary",
+            "self-harm priority",
+            "therapy structure",
+            "crisis care",
+            "broad outcome monitoring"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T, 2024; accessed 2026-08-15",
+          "fieldsSupported": [
+            "suicide inquiry",
+            "risk and protective factors",
+            "safety planning",
+            "triage"
+          ]
+        }
+      ],
+      "directTargetId": "concept.dialectical-behavior-therapy",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "concept.exposure-and-response-prevention",
+      "name": "Exposure and response prevention",
+      "displayName": "Exposure and response prevention (clinical treatment, not a diagnosis)",
+      "category": "Mental health clinical concept",
+      "entryType": "clinical-concept",
+      "isDiagnosis": false,
+      "diagnosisStatus": "NOT_A_MENTAL_DISORDER",
+      "aliases": [
+        "ERP",
+        "exposure and ritual prevention",
+        "exposure with response prevention",
+        "EX/RP"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Exposure and response prevention (ERP) is a form of cognitive behavioral therapy for obsessive-compulsive disorder in which a person gradually and intentionally faces an obsession trigger while practicing not doing the compulsion or mental ritual. The aim is new learning that distress can change without the ritual; ERP is planned and consent-based, not forced flooding.",
+      "whyItMatters": "Compulsions can provide quick relief, which teaches the brain to repeat them and lets OCD consume more time and functioning. ERP directly interrupts that cycle, but poorly planned exposure can worsen distress or create real danger if the clinician confuses an OCD fear with an actual infection, allergy, violence, abuse, or other hazard.",
+      "plainLanguageGlosses": [
+        {
+          "term": "exposure hierarchy",
+          "plainLanguage": "a jointly planned list of feared but appropriate situations arranged by difficulty so practice can be graded",
+          "sourceKeys": [
+            "nice-cg31-ocd"
+          ]
+        },
+        {
+          "term": "response prevention",
+          "plainLanguage": "refraining from the compulsion, reassurance, avoidance, or mental neutralizing that usually follows the trigger",
+          "sourceKeys": [
+            "nice-cg31-ocd",
+            "nimh-ocd"
+          ]
+        },
+        {
+          "term": "family accommodation",
+          "plainLanguage": "when relatives change routines, answer repeated reassurance questions, or join rituals in ways that unintentionally help OCD continue",
+          "sourceKeys": [
+            "nice-cg31-ocd"
+          ]
+        }
+      ],
+      "definition": "ERP is an evidence-based, disorder-specific CBT intervention for OCD. A trained clinician and patient identify obsessions, compulsions, avoidance, reassurance, and mental rituals; build a graded plan; conduct repeated exposures to appropriate feared cues; reduce ritualizing and neutralizing; monitor learning and function; and plan relapse prevention. The protocol may use in-person, imagined, or other carefully selected exposures.",
+      "pathology": "ERP has no pathology of its own. It targets the OCD loop in which an intrusive thought, image, urge, doubt, or sensation triggers distress, the person performs a compulsion or avoids the cue, immediate relief follows, and the feared meaning and ritual are reinforced.",
+      "pathophysiology": [
+        "Negative reinforcement occurs when a compulsion briefly lowers distress, increasing the likelihood of future ritualizing.",
+        "Repeated exposure without the ritual allows inhibitory or expectancy learning: the person can discover that feared predictions may not occur and that uncertainty and distress can be tolerated.",
+        "The goal is not to erase all intrusive thoughts or guarantee certainty; it is to change the response and restore functioning."
+      ],
+      "etiology": "Not applicable as a disease cause. ERP is used after assessment supports OCD or another protocol-specific indication and rules out a real hazard or a different condition needing another approach.",
+      "riskFactors": [
+        "Time-consuming compulsions, checking, washing, ordering, repeating, reassurance seeking, avoidance, or covert mental rituals",
+        "Family or staff accommodation that unintentionally reinforces rituals",
+        "Marked functional impairment, delayed care, skin injury, nutritional restriction, or inability to complete daily activities because of OCD",
+        "Poor insight, coexisting depression, suicidality, tic disorder, psychosis, autism, eating disorder, or substance use requiring coordinated planning"
+      ],
+      "signsSymptoms": [
+        "Obsessions are recurrent intrusive thoughts, images, urges, doubts, or sensations that cause distress; their content does not by itself show intent or character.",
+        "Compulsions are repetitive behaviors or mental acts performed to reduce distress or prevent a feared event, even when the connection is excessive or unrealistic.",
+        "During ERP, anxiety or uncertainty may rise temporarily; progress is judged by reduced rituals and avoidance and improved function, not by zero anxiety during every practice."
+      ],
+      "diagnostics": [
+        "Confirm OCD with a clinical assessment of obsessions, compulsions, avoidance, insight, time burden, distress, function, development, culture, substances, medicines, and medical causes.",
+        "Ask specifically about covert rituals such as reviewing, counting, praying, replacing a bad thought, self-reassurance, or mental checking.",
+        "Assess suicide and self-harm risk, depression, psychosis, mania, trauma, eating symptoms, skin damage, infection risk, and family accommodation.",
+        "Use a validated severity measure to support baseline and follow-up when appropriate; it does not replace diagnosis or define a universal exposure plan."
+      ],
+      "labs": [
+        "No laboratory test diagnoses OCD or determines ERP candidacy.",
+        "Order medical tests only when indicated by the feared situation or symptoms, such as actual infection, endocrine or neurologic change, medication effect, pregnancy, intoxication, or injury.",
+        "Do not repeatedly order tests solely to provide reassurance when a clinician has already assessed that pattern as part of OCD; coordinate the response with the treatment plan."
+      ],
+      "assessment": "Map the trigger, feared prediction, obsession, distress, compulsion or neutralizing response, immediate relief, long-term cost, actual safety facts, and family or staff accommodation. Agree on goals, a graded hierarchy, what counts as a ritual, how distress and learning will be tracked, medical boundaries, between-session practice, and a plan for severe worsening.",
+      "differential": [
+        "Generalized anxiety, illness anxiety, body dysmorphic disorder, eating disorders, hoarding disorder, tic disorders, autism-related routines, trauma-related avoidance, psychosis, depression rumination, obsessive-compulsive personality traits, and culturally normative rituals",
+        "Actual contamination, allergy, medical symptoms, unsafe relationship, legal duty, or occupational safety requirement must not be treated as an irrational exposure target.",
+        "An intrusive harm thought without desire or intent differs from homicidal intent, command hallucination, or a delusional belief; assess rather than assume."
+      ],
+      "treatments": [
+        "Provide CBT including ERP at an intensity matched to severity, impairment, preference, prior response, and access, using a trained and supervised clinician.",
+        "Build collaborative graded exposures and reduce overt and covert rituals, avoidance, reassurance seeking, and accommodation; review learning rather than demand that anxiety immediately fall.",
+        "Involve family or carers as co-therapists only when appropriate and with the patient's agreement, teaching them supportive responses that do not reinforce OCD.",
+        "Medication is not part of ERP. For moderate to severe OCD or inadequate response, an SSRI such as sertraline or fluoxetine may be used alone or with CBT/ERP according to age, contraindications, prior response, and guideline-based shared decision-making; clomipramine is a separate specialist option with greater monitoring needs."
+      ],
+      "contraindications": [
+        "Do not force, surprise, shame, deceive, or use maximum-intensity flooding as a test of motivation.",
+        "Do not expose a person to a genuine infection, toxin, allergen, weapon, abuse, legal violation, or medically unsafe condition.",
+        "Do not provide repeated reassurance or participate in rituals without coordinating how to reduce accommodation safely.",
+        "Do not delay emergency care for suicidality, violence, delirium, intoxication or withdrawal, severe malnutrition, psychosis, mania, or medical instability."
+      ],
+      "safetyConsiderations": [
+        "Verify the difference between an OCD fear and a real hazard before each exposure category; consult medical, infection-control, occupational, or safeguarding experts when needed.",
+        "Monitor worsening depression, suicidality, self-harm, skin damage, dehydration, malnutrition, sleep loss, and medication adverse effects.",
+        "Make the plan accessible for cognitive, developmental, sensory, language, mobility, and cultural needs.",
+        "Document consent, target, predicted outcome, response prevented, actual outcome, learning, and any adverse event."
+      ],
+      "nursingPriorities": [
+        "Use calm, consistent responses and avoid endless reassurance while still answering new medical and safety concerns appropriately.",
+        "Prompt the patient's agreed ERP or coping plan without inventing an exposure or escalating its difficulty independently.",
+        "Assess wounds, dermatitis, dehydration, nutrition, sleep, medication adherence and adverse effects, and suicide risk.",
+        "Document the trigger, obsession, ritual or avoidance, time burden, staff or family accommodation, distress, function, and response to the agreed plan."
+      ],
+      "redFlags": [
+        "Current suicidal or violent intent, recent serious self-harm, inability to maintain nutrition, hydration, hygiene, shelter, or essential medical care",
+        "Exposure involving a genuine contaminant, allergen, unsafe person, weapon, traffic, medication change, or other objective hazard",
+        "New psychosis, mania, delirium, intoxication or withdrawal, severe depression, catatonia, or rapidly changing cognition",
+        "Severe skin injury, infection, bleeding, chemical exposure, medication toxicity, or medical deterioration linked to rituals"
+      ],
+      "complications": [
+        "Worsening distress, loss of trust, or dropout after coercive or poorly graded exposure",
+        "Physical injury or medical harm when real hazards are mislabeled as OCD",
+        "Reinforced OCD when clinicians or family repeatedly reassure, enable avoidance, or join rituals",
+        "Missed suicidality, psychosis, eating disorder, autism-related need, trauma, medical illness, or substance-related condition"
+      ],
+      "prognosis": "ERP is a first-line psychological treatment for OCD and many patients improve, but response varies and some need a longer course, more intensive specialist treatment, medication, family work, or reassessment of diagnosis and barriers. Improvement can continue even when occasional intrusive thoughts remain.",
+      "prevention": [
+        "Practice approaching previously avoided but safe situations while reducing rituals and reassurance in everyday life.",
+        "Write a relapse plan naming early rituals, avoidance, accommodation, and steps for resuming practice or contacting care.",
+        "Coordinate family and healthcare responses so new safety concerns are evaluated without turning routine care into repeated OCD reassurance."
+      ],
+      "patientEducation": [
+        "ERP does not make you do the most frightening thing first; you and the clinician plan safe, graded practice together.",
+        "An intrusive thought is not the same as wanting to act on it, but tell the clinician about intent, commands, or inability to stay safe so risk can be assessed directly.",
+        "The goal is to reclaim time and functioning and learn a different response to uncertainty, not to prove that every feared event is impossible.",
+        "Ask how family, staff, and medical providers should respond to reassurance requests and genuine new health concerns."
+      ],
+      "specialPopulations": [
+        "Children and adolescents need developmentally adapted ERP, assent, caregiver coaching, school coordination when relevant, and careful distinction between OCD and normal routines.",
+        "Pregnant or postpartum patients need perinatal medical assessment for genuine health concerns; contamination or harm themes do not by themselves indicate intent.",
+        "Autistic people may have OCD in addition to preferred routines or sensory regulation; targets should be based on distress, compulsion, and impairment, not making behavior appear typical.",
+        "Poor insight, tic-related OCD, severe depression, and major functional impairment may require specialist or multidisciplinary care and combined treatment."
+      ],
+      "nclexTraps": [
+        "Do not repeatedly reassure or perform the ritual for the patient; use the agreed plan while still assessing genuine new danger.",
+        "ERP is gradual, collaborative, and safe; forced flooding is not the standard.",
+        "An intrusive harm obsession is not automatically homicidal intent, and intent still must be assessed.",
+        "Temporary anxiety during exposure is expected; the goal is reduced ritualizing and better function, not instant calm."
+      ],
+      "relatedTopics": [
+        "Obsessive-compulsive disorder",
+        "Cognitive behavioral therapy",
+        "Intrusive thoughts",
+        "Compulsions",
+        "Family accommodation",
+        "Illness anxiety disorder",
+        "Body dysmorphic disorder",
+        "Hoarding disorder",
+        "Suicide risk assessment"
+      ],
+      "sourceKeys": [
+        "nice-cg31-ocd",
+        "nimh-ocd",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. NICE CG31 supports CBT including ERP, stepped intensity, reduction of mental rituals and neutralizing, family involvement when appropriate, medication options, and specialist review for nonresponse. NIMH supports the definition and role of ERP in OCD treatment. SAFE-T supports separate direct suicide assessment; intrusive content alone is not used as a risk conclusion.",
+      "provenance": [
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/cg31/chapter/Recommendations",
+          "documentVersion": "CG31 current recommendations; accessed 2026-08-15",
+          "fieldsSupported": [
+            "ERP indication",
+            "treatment intensity",
+            "mental rituals",
+            "family involvement",
+            "SSRI and clomipramine boundaries",
+            "nonresponse"
+          ]
+        },
+        {
+          "authority": "National Institute of Mental Health",
+          "url": "https://www.nimh.nih.gov/health/publications/obsessive-compulsive-disorder-when-unwanted-thoughts-or-repetitive-behaviors-take-over",
+          "documentVersion": "OCD health information; accessed 2026-08-15",
+          "fieldsSupported": [
+            "OCD definition",
+            "obsessions and compulsions",
+            "ERP treatment",
+            "patient education"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T, 2024; accessed 2026-08-15",
+          "fieldsSupported": [
+            "direct suicide assessment",
+            "risk formulation",
+            "safety planning",
+            "triage"
+          ]
+        }
+      ],
+      "directTargetId": "concept.exposure-and-response-prevention",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "concept.motivational-interviewing",
+      "name": "Motivational interviewing",
+      "displayName": "Motivational interviewing (clinical communication treatment, not a diagnosis)",
+      "category": "Mental health clinical concept",
+      "entryType": "clinical-concept",
+      "isDiagnosis": false,
+      "diagnosisStatus": "NOT_A_MENTAL_DISORDER",
+      "aliases": [
+        "motivational interviewing counseling style",
+        "motivational intervention"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Motivational interviewing (MI) is a collaborative conversation style that helps a person explore mixed feelings about change and voice their own reasons for taking a next step. The clinician listens with empathy, respects autonomy, and guides rather than argues; MI is not a lecture, confrontation, or trick to force agreement.",
+      "whyItMatters": "People often understand a risk yet feel unsure, discouraged, pressured, or not ready to change. Confrontation can strengthen resistance and end engagement, while MI can improve participation and retention in substance-use treatment and support other health-behavior decisions. Autonomy does not remove the clinician's duty to respond to overdose, withdrawal, suicidality, violence, impaired capacity, abuse, or medical emergency.",
+      "plainLanguageGlosses": [
+        {
+          "term": "ambivalence",
+          "plainLanguage": "having important reasons both to change and not to change",
+          "sourceKeys": [
+            "samhsa-tip35-mi-2019"
+          ]
+        },
+        {
+          "term": "change talk",
+          "plainLanguage": "the person's own words about desire, ability, reasons, need, commitment, or steps toward change",
+          "sourceKeys": [
+            "samhsa-tip35-mi-2019"
+          ]
+        },
+        {
+          "term": "OARS",
+          "plainLanguage": "open questions, affirmations, reflective listening, and summaries used to understand and guide the conversation",
+          "sourceKeys": [
+            "samhsa-tip35-mi-2019"
+          ]
+        }
+      ],
+      "definition": "MI is a person-centered and directional counseling style organized around engaging, focusing, evoking, and planning. It uses open questions, affirmations, reflections, summaries, permission-based information sharing, and attention to change and sustain talk. The clinician supports autonomy while helping the patient examine how current behavior fits personal values and goals.",
+      "pathology": "MI has no pathology of its own. It addresses ambivalence, low confidence, discord, and disengagement that can block treatment participation. Motivation is treated as dynamic and influenced by the interaction, not as a fixed personality trait or a moral test.",
+      "pathophysiology": [
+        "Direct persuasion can evoke counterarguments, especially when a person feels judged or controlled.",
+        "Reflective listening and eliciting the person's own reasons can reduce discord and strengthen commitment language.",
+        "A specific, self-chosen plan can translate intention into action, but readiness and language never guarantee behavior or eliminate risk."
+      ],
+      "etiology": "Not applicable as a disease cause. MI is used when a person is ambivalent about a health behavior or treatment decision and the clinician can support informed choice without hiding urgency or legal and safety boundaries.",
+      "riskFactors": [
+        "Mixed feelings about reducing alcohol, stimulants, opioids, tobacco, or another substance",
+        "Missed appointments, treatment dropout, medication concerns, or reluctance to enter a higher level of care",
+        "Prior stigmatizing or coercive healthcare experiences, low confidence, or competing survival priorities",
+        "External pressure from family, court, employer, or healthcare staff that may increase discord"
+      ],
+      "signsSymptoms": [
+        "Sustain talk may emphasize benefits of the current behavior, costs of change, low confidence, or reasons to delay.",
+        "Discord appears in the relationship as arguing, interrupting, disengaging, or defending autonomy and should prompt the clinician to change approach.",
+        "Movement may appear as the patient naming personal reasons, confidence, commitment, or a concrete next step."
+      ],
+      "diagnostics": [
+        "MI is not a diagnostic interview. Separately assess the underlying disorder, medical status, intoxication and withdrawal, overdose risk, capacity, suicide and violence risk, pregnancy, medications, and social needs.",
+        "Clarify the specific behavior under discussion and ask what matters to the person, perceived benefits and harms, confidence, prior attempts, barriers, and preferred next step.",
+        "Do not use a readiness ruler or a statement of motivation as proof of diagnosis, consent, capacity, adherence, or future safety."
+      ],
+      "labs": [
+        "No laboratory test measures motivation or proves that MI is indicated.",
+        "Toxicology, breath alcohol, medication levels, and other tests answer limited clinical questions and must be interpreted with timing, detection limits, prescribed use, and consent or legal policy.",
+        "Objective results may be shared neutrally with permission when possible; they should not be used to shame or trap the patient."
+      ],
+      "assessment": "Engage with respect, ask permission to discuss the concern, define a mutually understood focus, explore values and mixed feelings, listen for change and sustain talk, assess confidence and barriers, offer information in an ask-offer-ask style, and invite a patient-selected plan when readiness emerges. State urgent safety facts clearly and reassess if the person's condition or capacity changes.",
+      "differential": [
+        "Psychoeducation provides information; CBT teaches cognitive-behavioral skills; contingency management reinforces an observable target; shared decision-making compares treatment options; MI specifically explores and strengthens motivation for change.",
+        "Apparent low motivation may reflect delirium, intoxication, withdrawal, psychosis, depression, cognitive impairment, pain, language or literacy mismatch, transportation, cost, unsafe housing, stigma, or a reasonable disagreement with the proposed plan.",
+        "Informed refusal by a capacitated adult is not automatically denial, resistance, or a psychiatric symptom."
+      ],
+      "treatments": [
+        "Use the MI processes of engaging, focusing, evoking, and planning with open questions, affirmations, reflections, summaries, and respect for autonomy.",
+        "Provide concise, accurate risk information and options with permission when feasible, then ask for the person's understanding and response.",
+        "Develop a specific next step chosen by the patient, such as accepting naloxone, scheduling treatment, changing one high-risk situation, or involving a support person.",
+        "MI does not contain medication. Evidence-based medicines such as buprenorphine for opioid use disorder, naltrexone for selected alcohol or opioid use disorder contexts, or nicotine replacement for tobacco dependence should be offered according to the confirmed condition, contraindications, and patient choice rather than withheld until motivation seems perfect."
+      ],
+      "contraindications": [
+        "Do not use MI as covert persuasion, false neutrality, interrogation, or a way to make the patient repeat the clinician's preferred answer.",
+        "Do not withhold emergency care, withdrawal treatment, naloxone, or evidence-based medication because a person is ambivalent.",
+        "Do not keep evoking reasons during delirium, severe intoxication, impaired consciousness, acute psychosis with loss of capacity, or imminent danger when stabilization is needed first.",
+        "Do not ignore mandated reporting, public-safety duties, or legal limits; explain them transparently."
+      ],
+      "safetyConsiderations": [
+        "Assess overdose, withdrawal, driving, weapon access, suicide, violence, exploitation, pregnancy, and ability to care for dependents independent of motivation language.",
+        "State immediate danger clearly and activate emergency protocols while preserving dignity and choice wherever possible.",
+        "Avoid stigmatizing terms, exaggeration, and moral judgment; document the person's exact goals, decisions, risks discussed, capacity, and agreed follow-up.",
+        "Offer harm-reduction measures even when abstinence is not the patient's current goal."
+      ],
+      "nursingPriorities": [
+        "Use open questions and reflections to understand the patient's perspective before giving advice, then ask permission to share concise information.",
+        "Affirm strengths and prior effort without praising unsafe behavior or giving false reassurance.",
+        "Identify practical barriers and make a warm handoff to treatment, medication, harm-reduction, transport, housing, or peer support.",
+        "Recognize when the conversation must shift from MI to emergency assessment, withdrawal protocol, overdose response, or safeguarding."
+      ],
+      "redFlags": [
+        "Depressed breathing, severe intoxication, overdose, seizure, delirium, severe withdrawal, chest pain, hyperthermia, or altered consciousness",
+        "Current suicidal or violent intent, inability to remain safe, severe psychosis, mania, catatonia, or impaired decision-making capacity",
+        "Pregnancy-related emergency, abuse, trafficking, coercive control, or unsafe dependent care",
+        "A clinician concealing consequences, threatening abandonment, or misrepresenting evidence to obtain agreement"
+      ],
+      "complications": [
+        "Treatment disengagement and mistrust when MI is replaced by argument, stigma, or manipulation",
+        "Delayed stabilization when a motivational conversation continues through a medical or psychiatric emergency",
+        "Missed barriers such as cost, withdrawal, cognitive impairment, abuse, transportation, or inaccessible care",
+        "False documentation that a patient is unmotivated rather than recording the actual concerns, choice, capacity, and options offered"
+      ],
+      "prognosis": "MI can improve engagement and strengthen movement toward change, especially as part of substance-use treatment, but it is not a guaranteed cure and effects depend on practitioner skill, treatment context, available services, and the patient's goals. A brief MI conversation may be valuable even when the immediate choice is not the clinician's preferred one.",
+      "prevention": [
+        "Revisit goals without shame after setbacks and ask what the patient learned from the attempt.",
+        "Make the next step small, specific, feasible, and linked to the patient's own values.",
+        "Maintain easy re-entry to care, harm-reduction supplies, overdose education, medication access, and crisis contacts."
+      ],
+      "patientEducation": [
+        "You are allowed to feel unsure. The clinician should help you examine both sides and make an informed choice.",
+        "Ask for plain information about benefits, harms, alternatives, urgency, and what support is available if you are not ready for the largest change.",
+        "Choosing one harm-reduction step does not close the door to additional treatment later.",
+        "In an immediate emergency, the team may need to act quickly while still explaining what is happening and preserving as much choice as possible."
+      ],
+      "specialPopulations": [
+        "Adolescents need developmentally appropriate language, assent, confidentiality explanations, caregiver involvement consistent with law and safety, and screening for coercion.",
+        "Pregnant patients should receive nonjudgmental, evidence-based substance-use and medication counseling; fear of stigma must not block prenatal or emergency care.",
+        "People with cognitive, language, hearing, literacy, or communication needs require accommodations before silence or disagreement is labeled low motivation.",
+        "Court-involved patients need a clear explanation of what is voluntary, what is mandated, who receives information, and what consequences are outside the clinician's control."
+      ],
+      "nclexTraps": [
+        "Use reflection rather than confrontation when a patient voices ambivalence.",
+        "Respecting autonomy does not mean minimizing a lethal risk or skipping capacity assessment.",
+        "Readiness is not all-or-none and is not a prerequisite for offering evidence-based treatment or harm reduction.",
+        "The patient's own reasons for change are more central than a lecture about why the nurse thinks change is necessary."
+      ],
+      "relatedTopics": [
+        "Substance use disorders",
+        "Alcohol use disorder",
+        "Opioid use disorder",
+        "Stimulant use disorder",
+        "Tobacco use disorder",
+        "Contingency management",
+        "Shared decision-making",
+        "Harm reduction",
+        "Suicide risk assessment"
+      ],
+      "sourceKeys": [
+        "samhsa-tip35-mi-2019",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. SAMHSA TIP 35 supports MI as a collaborative counseling style, the four processes of engaging, focusing, evoking, and planning, OARS skills, autonomy support, and use in substance-use treatment engagement. SAFE-T supports a separate direct safety assessment and triage process; MI language is not used to infer low risk.",
+      "provenance": [
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/tip-35-enhancing-motivation-change-substance-use-disorder-treatment/pep19-02-01-003",
+          "documentVersion": "TIP 35, October 2019; accessed 2026-08-15",
+          "fieldsSupported": [
+            "MI definition",
+            "four processes",
+            "OARS",
+            "ambivalence",
+            "substance-use treatment engagement",
+            "autonomy"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T, 2024; accessed 2026-08-15",
+          "fieldsSupported": [
+            "direct suicide assessment",
+            "risk factors",
+            "protective factors",
+            "safety planning",
+            "triage"
+          ]
+        }
+      ],
+      "directTargetId": "concept.motivational-interviewing",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "concept.behavioral-activation",
+      "name": "Behavioral activation",
+      "displayName": "Behavioral activation (clinical treatment, not a diagnosis)",
+      "category": "Mental health clinical concept",
+      "entryType": "clinical-concept",
+      "isDiagnosis": false,
+      "diagnosisStatus": "NOT_A_MENTAL_DISORDER",
+      "aliases": [
+        "BA",
+        "behavioural activation",
+        "behavioral activation therapy",
+        "behavior therapy for depression"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Behavioral activation (BA) is a structured treatment for depression that helps a person gradually reconnect with meaningful, necessary, or rewarding activities while noticing how avoidance and routine affect mood. It is not simply telling someone to stay busy, exercise, or cheer up.",
+      "whyItMatters": "Depression often leads to withdrawal, disrupted routines, and loss of positive experiences, which can deepen low mood and disability. BA breaks that cycle through small planned actions, but activity must be matched to the person's values, energy, medical limits, safety, and possible bipolar symptoms so treatment does not become blame or unsafe overactivation.",
+      "plainLanguageGlosses": [
+        {
+          "term": "activity monitoring",
+          "plainLanguage": "briefly tracking what a person does and how it relates to mood, avoidance, energy, and a sense of meaning or accomplishment",
+          "sourceKeys": [
+            "va-dod-mdd-cpg-2022"
+          ]
+        },
+        {
+          "term": "graded task",
+          "plainLanguage": "a goal divided into small achievable steps instead of expecting the whole activity at once",
+          "sourceKeys": [
+            "nice-ng222-chronic-depression"
+          ]
+        },
+        {
+          "term": "avoidance cycle",
+          "plainLanguage": "short-term relief from not doing something followed by less reward, more problems, and often worse depression",
+          "sourceKeys": [
+            "va-dod-mdd-cpg-2022"
+          ]
+        }
+      ],
+      "definition": "BA is an evidence-based behavioral psychotherapy that assesses the link between mood and activity, identifies avoidance and lost sources of reinforcement, schedules graded value-consistent actions, solves barriers, reviews consequences, and prepares for relapse. It can be delivered as a defined treatment or as a component of broader CBT; a generic activity calendar alone is not a full protocol.",
+      "pathology": "BA has no pathology of its own. It targets a depression-maintaining loop in which low mood and fatigue lead to withdrawal, withdrawal reduces meaningful activity and reinforcement and increases unfinished problems, and the resulting loss and guilt deepen depression.",
+      "pathophysiology": [
+        "Avoidance can give immediate relief from effort, anxiety, or anticipated failure, reinforcing withdrawal.",
+        "Planned contact with meaningful activities, roles, and routines can increase reinforcement and provide new information that challenges hopeless predictions through experience.",
+        "Activity affects mood over time, but depression also has biological, social, traumatic, and medical contributors; improvement is not proof that the illness was voluntary."
+      ],
+      "etiology": "Not applicable as a disease cause. BA is selected when depression is confirmed, withdrawal or avoidance is an important maintaining pattern, the person prefers the approach, and safety and bipolar differential have been addressed.",
+      "riskFactors": [
+        "Loss of interest or pleasure, reduced routine, social withdrawal, prolonged time in bed, missed self-care, or abandonment of valued roles",
+        "Avoidance driven by hopeless predictions, anxiety, shame, fatigue, pain, or fear of failure",
+        "Functional impairment after stress, illness, unemployment, caregiving burden, or reduced access to rewarding activities",
+        "Bipolar history, medical limitations, disability, unsafe environment, or severe suicidality requiring adaptation or another immediate intervention"
+      ],
+      "signsSymptoms": [
+        "Depressed mood, anhedonia, low energy, reduced initiation, isolation, disrupted sleep-wake routine, and accumulating unfinished tasks may be targets.",
+        "The person may report short-term relief after avoiding an activity but more guilt, loneliness, or loss of function later.",
+        "Progress includes completing realistic steps, restoring valued routines, improved function, and reduced depressive symptoms; mood need not improve immediately after each task."
+      ],
+      "diagnostics": [
+        "Confirm depressive disorder and assess severity, duration, suicide risk, psychosis, catatonia, substance use, cognition, sleep, medication effects, grief, trauma, medical contributors, and functional loss.",
+        "Screen carefully for past or current mania or hypomania, including reduced need for sleep, escalating energy, disinhibition, and episodic overactivity; activation is not a substitute for bipolar assessment.",
+        "Establish baseline symptoms, activity patterns, function, values, physical limits, and patient-defined goals, then monitor them at agreed intervals."
+      ],
+      "labs": [
+        "No laboratory test diagnoses a need for BA or predicts psychotherapy response.",
+        "Use targeted evaluation for thyroid disease, anemia, sleep disorder, infection, medication effects, pregnancy-related conditions, substance use, pain, or other contributors when clinically indicated.",
+        "An activity log supports formulation but does not prove that inactivity caused depression."
+      ],
+      "assessment": "Review a typical week, sleep and wake times, self-care, necessary tasks, avoided situations, sources of pleasure, mastery, connection, and meaning, and what happens before and after withdrawal. Agree on one or more small, specific, safe actions, likely barriers, supports, how completion and consequences will be tracked, and what mood or safety changes require reassessment.",
+      "differential": [
+        "Bipolar depression, grief, adjustment disorder, substance-induced depression, medication adverse effect, hypothyroidism, anemia, sleep apnea, chronic pain, dementia, delirium, psychosis, catatonia, and post-viral or other medical fatigue",
+        "CBT includes cognitive and behavioral methods; BA centers the activity-avoidance-reinforcement cycle; occupational therapy addresses broader participation and adaptation; exercise alone is not BA.",
+        "Reasonable rest, disability accommodation, pacing for chronic illness, and withdrawal from an unsafe situation must not be mislabeled maladaptive avoidance."
+      ],
+      "treatments": [
+        "Use a manual-informed BA protocol with collaborative activity monitoring, functional analysis of avoidance, values and goals, graded scheduling, problem solving, review, and relapse planning.",
+        "Start with achievable actions across self-care, connection, responsibility, pleasure, and meaning rather than an overloaded schedule.",
+        "Remove access barriers with transportation, mobility aids, financial or social support, adapted pacing, and coordination of medical care.",
+        "Medication is not part of BA. For major depression, an antidepressant such as sertraline, escitalopram, or bupropion may be considered instead of or with psychotherapy based on severity, prior response, bipolar screen, contraindications, and patient preference."
+      ],
+      "contraindications": [
+        "Do not tell a severely depressed person to just get busy, imply failure when symptoms block a task, or prescribe activity unrelated to the person's values.",
+        "Do not increase activity through chest pain, syncope, severe dyspnea, acute injury, unstable pregnancy condition, or another medical warning sign.",
+        "Do not use escalating goal-directed activity as treatment for emerging mania or hypomania.",
+        "Do not delay urgent suicide, catatonia, psychosis, malnutrition, dehydration, substance-withdrawal, or medical care."
+      ],
+      "safetyConsiderations": [
+        "Track suicidality, self-neglect, nutrition, hydration, sleep, medication adherence and adverse effects, substance use, and ability to perform basic activities.",
+        "Monitor for bipolar activation: reduced need for sleep, rapidly rising energy, impulsive spending, pressured speech, irritability, or disinhibition requires prompt reassessment.",
+        "Match activity to fall risk, cardiovascular and pulmonary status, pain, mobility, pregnancy, heat, weather, neighborhood safety, and infection risk.",
+        "Plan for predictable setbacks so a missed task does not become evidence of failure."
+      ],
+      "nursingPriorities": [
+        "Help the patient choose one small observable action linked to an agreed treatment goal and document completion and effect without pressure.",
+        "Assess sleep, energy, mood, suicide risk, self-care, intake, mobility, pain, medication response, and possible activation.",
+        "Reinforce effort and problem-solving rather than demanding a particular mood response.",
+        "Coordinate occupational, physical, social-work, and medical supports when disability or environment limits activity."
+      ],
+      "redFlags": [
+        "Current suicidal intent, inability to eat, drink, take essential medicine, maintain shelter, or care for a dependent",
+        "Catatonia, psychotic depression, severe agitation, new confusion, intoxication or withdrawal, or rapidly worsening function",
+        "Reduced need for sleep with escalating energy, impulsivity, grandiosity, pressured speech, or dangerous goal-directed activity",
+        "Chest pain, syncope, severe breathlessness, focal neurologic change, acute injury, or another medical warning during activity"
+      ],
+      "complications": [
+        "Shame and disengagement if depression is framed as laziness or tasks are repeatedly unrealistic",
+        "Fall, injury, medical exacerbation, or exploitation when activities ignore physical and environmental safety",
+        "Worsened mania or delayed bipolar treatment when activation signs are missed",
+        "Missed catatonia, psychosis, substance withdrawal, sleep disorder, medication effect, or medical cause of fatigue"
+      ],
+      "prognosis": "BA is an evidence-based psychotherapy option for adult major depression and can improve symptoms and function. Response depends on diagnosis, severity, safety, access, treatment fidelity, and whether activities are meaningful and feasible. Lack of improvement should prompt review of formulation, bipolar and medical differential, barriers, and other treatment options.",
+      "prevention": [
+        "Keep a balanced routine with sleep, self-care, connection, responsibility, pleasure, and personally meaningful activity.",
+        "Identify early withdrawal and avoidance patterns and resume small planned steps before functioning collapses.",
+        "Use a relapse plan that names supports, medication continuity, therapy follow-up, and urgent warning signs."
+      ],
+      "patientEducation": [
+        "BA does not say you chose depression. It uses small actions to change one part of the cycle while the team treats the whole illness.",
+        "Choose activities because they matter to you, not because someone thinks you should appear productive.",
+        "A task can be broken into a much smaller step, adapted, postponed for safety, or replaced if it is medically inappropriate.",
+        "Report sharply reduced need for sleep, racing energy, dangerous impulsivity, or worsening self-harm thoughts promptly."
+      ],
+      "specialPopulations": [
+        "Older adults may need fall-risk review, transport, sensory and cognitive supports, grief assessment, and coordination for medical illness or isolation.",
+        "People with chronic pain, fatigue, disability, or cardiopulmonary disease need pacing and adapted goals; overexertion is not therapeutic fidelity.",
+        "Bipolar depression requires mood monitoring and clinicians experienced with bipolar disorder; worsening hypomania or mania needs urgent reassessment.",
+        "Pregnancy, caregiving, poverty, unsafe neighborhoods, and cultural roles can determine what activities are feasible and meaningful."
+      ],
+      "nclexTraps": [
+        "Behavioral activation is graded and collaborative, not telling the patient to cheer up or exercise harder.",
+        "Assess suicide risk and basic needs before focusing on an activity schedule.",
+        "Rising energy in depression is not always recovery; reduced need for sleep and disinhibition suggest possible mania.",
+        "A missed activity is data for problem-solving, not proof of noncompliance."
+      ],
+      "relatedTopics": [
+        "Major depressive disorder",
+        "Persistent depressive disorder",
+        "Bipolar depression",
+        "Cognitive behavioral therapy",
+        "Anhedonia",
+        "Self-care deficit",
+        "Suicide risk assessment",
+        "Occupational therapy",
+        "Sleep hygiene"
+      ],
+      "sourceKeys": [
+        "nice-ng222-chronic-depression",
+        "va-dod-mdd-cpg-2022",
+        "nice-cg185-bipolar",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. NICE NG222 and VA/DoD identify behavioral activation as an evidence-based psychotherapy option for depression and support shared choice and outcome monitoring. VA/DoD describes BA as targeting the link between avoidance and depression. NICE CG185 supports monitoring bipolar depression for hypomania, mania, and deterioration. SAFE-T supports separate suicide assessment and triage.",
+      "provenance": [
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/ng222/chapter/Recommendations",
+          "documentVersion": "NG222 current recommendations; accessed 2026-08-15",
+          "fieldsSupported": [
+            "BA for depression",
+            "shared choice",
+            "delivery considerations",
+            "monitoring"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/mdd/VADODMDDCPGFinal508.pdf",
+          "documentVersion": "MDD CPG version 4.0, February 2022; accessed 2026-08-15",
+          "fieldsSupported": [
+            "BA definition",
+            "MDD psychotherapy option",
+            "patient preference",
+            "measurement-based care"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/cg185/chapter/recommendations",
+          "documentVersion": "CG185 updated September 2025; accessed 2026-08-15",
+          "fieldsSupported": [
+            "bipolar differential",
+            "mood monitoring",
+            "mania escalation",
+            "family and relapse planning"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "suicide assessment",
+            "risk factors",
+            "protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "directTargetId": "concept.behavioral-activation",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "concept.acceptance-and-commitment-therapy",
+      "name": "Acceptance and commitment therapy",
+      "displayName": "Acceptance and commitment therapy (clinical treatment, not a diagnosis)",
+      "category": "Mental health clinical concept",
+      "entryType": "clinical-concept",
+      "isDiagnosis": false,
+      "diagnosisStatus": "NOT_A_MENTAL_DISORDER",
+      "aliases": [
+        "ACT",
+        "acceptance commitment therapy"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Acceptance and commitment therapy (ACT) is a psychotherapy that helps a person make room for difficult internal experiences, step back from unhelpful thoughts, clarify what matters, and take workable action toward those values. Acceptance means changing the struggle with thoughts and feelings when that helps—not approving harm, resigning from change, or tolerating abuse.",
+      "whyItMatters": "Trying to eliminate every painful thought or feeling can consume life and strengthen avoidance. ACT aims to improve psychological flexibility so symptoms do not control every choice; it is an evidence-based option for adult major depression and is also used in selected protocol-specific settings. Real danger, medical illness, severe mental-state change, and social injustice still require direct action.",
+      "plainLanguageGlosses": [
+        {
+          "term": "psychological flexibility",
+          "plainLanguage": "staying aware of the present and choosing behavior that fits one's values even when difficult thoughts or feelings are present",
+          "sourceKeys": [
+            "va-dod-mdd-cpg-2022"
+          ]
+        },
+        {
+          "term": "cognitive defusion",
+          "plainLanguage": "noticing a thought as a mental event rather than automatically treating it as a fact or command",
+          "sourceKeys": [
+            "va-dod-mdd-cpg-2022"
+          ]
+        },
+        {
+          "term": "committed action",
+          "plainLanguage": "a specific behavior chosen because it moves toward a personally important value",
+          "sourceKeys": [
+            "va-dod-mdd-cpg-2022"
+          ]
+        }
+      ],
+      "definition": "ACT is a contextual behavioral psychotherapy that uses acceptance, defusion, present-moment awareness, perspective-taking, values clarification, and committed action to increase psychological flexibility. It does not require the person to prove thoughts false; instead, it asks whether following a thought in that moment helps the person move toward a chosen life direction.",
+      "pathology": "ACT has no pathology of its own. It targets psychological inflexibility, including rigid avoidance of internal experiences, fusion with thoughts, loss of contact with the present, a fixed self-story, unclear values, and inaction or impulsive action disconnected from values.",
+      "pathophysiology": [
+        "Avoiding thoughts, sensations, memories, or emotions may bring short-term relief while shrinking activity and increasing long-term disability.",
+        "Defusion and mindful awareness can create space between an internal event and a behavioral choice.",
+        "Repeated value-consistent action can improve functioning even before symptoms fully resolve, but it does not remove biological or environmental causes of illness."
+      ],
+      "etiology": "Not applicable as a disease cause. ACT is chosen when an evidence-supported protocol fits the confirmed problem, the person prefers its approach, and the clinician can adapt it safely to the person's context.",
+      "riskFactors": [
+        "Life increasingly organized around avoiding distress, uncertainty, memories, sensations, shame, or failure",
+        "Rigid belief that valued action must wait until symptoms disappear",
+        "Depression with withdrawal, loss of meaning, or self-critical thought fusion",
+        "Trauma, pain, medical illness, poverty, discrimination, or unsafe circumstances requiring clear separation between accepting internal experience and changing external danger"
+      ],
+      "signsSymptoms": [
+        "The patient may describe being trapped by thoughts, fighting feelings all day, or abandoning important roles to avoid discomfort.",
+        "Sessions may use brief mindfulness, metaphors, experiential exercises, values clarification, and small committed actions.",
+        "Progress includes broader behavior, less avoidance, more value-consistent action, and improved function; symptom reduction may occur but is not the only outcome."
+      ],
+      "diagnostics": [
+        "Confirm the underlying diagnosis and assess severity, suicide and violence risk, mania, psychosis, trauma, dissociation, substance use, cognition, pain, medical illness, function, and prior treatment.",
+        "Identify what the person is trying not to think, feel, remember, or sense; what avoidance costs; and which actions would express chosen values.",
+        "Use symptom and function measures appropriate to the underlying condition; no psychological-flexibility score diagnoses a disorder or selects ACT alone."
+      ],
+      "labs": [
+        "No laboratory test diagnoses a need for ACT or predicts response.",
+        "Use targeted medical evaluation when pain, fatigue, cognitive change, endocrine or neurologic symptoms, medicine effects, pregnancy, intoxication, or withdrawal may explain or alter the presentation.",
+        "A mindfulness or values exercise must not be used to explain away objective medical findings."
+      ],
+      "assessment": "Ask what matters most, what internal experiences show up, how the person responds, what those responses help in the short term and cost in the long term, and what small safe action would move toward a value. Assess whether the environment is actually dangerous, whether the person can engage with experiential exercises, and how progress and worsening risk will be monitored.",
+      "differential": [
+        "CBT often evaluates and modifies thought content; ACT more often changes the person's relationship to thoughts while building value-consistent behavior. Both may use behavioral practice.",
+        "Mindfulness training, supportive counseling, behavioral activation, DBT, and ACT overlap in some skills but are not interchangeable treatment packages.",
+        "Avoidance may be protective in actual abuse, infection risk, unsafe housing, discrimination, medical instability, or occupational hazard; acceptance does not mean remaining exposed to harm."
+      ],
+      "treatments": [
+        "Deliver a protocol matched to the condition using present-moment awareness, acceptance, defusion, perspective-taking, values, and graduated committed action.",
+        "Practice noticing thoughts and urges without automatically obeying them, while choosing a small behavior that is workable and meaningful.",
+        "Combine ACT with indicated medical, social, rehabilitative, or psychiatric care when internal and external barriers coexist.",
+        "Medication is not part of ACT. For adult major depression, an antidepressant such as sertraline, escitalopram, or bupropion may be chosen instead of or with psychotherapy according to severity, prior response, bipolar screen, contraindications, and preference."
+      ],
+      "contraindications": [
+        "Do not tell a person to accept abuse, racism, exploitation, uncontrolled pain, medical deterioration, unsafe work, or a preventable hazard.",
+        "Do not use defusion to dismiss suicidal intent, command hallucinations, mania, delirium, or a patient's factual report.",
+        "Do not force eyes-closed mindfulness or trauma disclosure when it increases dissociation, panic, sensory overload, or loss of safety.",
+        "Do not delay emergency treatment for imminent danger, medical instability, overdose, withdrawal, severe psychosis, catatonia, or inability to meet basic needs."
+      ],
+      "safetyConsiderations": [
+        "Assess suicide, self-harm, violence, abuse, psychosis, mania, dissociation, substance use, and medical change throughout treatment.",
+        "Offer grounding alternatives and adapt experiential exercises for trauma, dissociation, psychosis, autism, panic, or sensory disability.",
+        "Separate controllable external problems from internal experiences and support concrete problem-solving, advocacy, and safeguarding.",
+        "Document the value, agreed action, barriers, risk changes, and response rather than claiming acceptance from session attendance."
+      ],
+      "nursingPriorities": [
+        "Use the patient's own values and words; avoid imposing the nurse's idea of a meaningful life.",
+        "Prompt brief grounding or defusion skills already in the plan and pair them with a concrete safe action.",
+        "Assess function, sleep, intake, pain, medication effects, substance use, suicide risk, activation, and dissociation.",
+        "Escalate actual danger or medical change rather than reframing it as discomfort to be accepted."
+      ],
+      "redFlags": [
+        "Current suicidal or violent intent, recent serious attempt, command hallucination with danger, inability to care for basic needs, or severe abuse and safeguarding concern",
+        "New confusion, intoxication or withdrawal, seizure, focal neurologic change, medical instability, severe pain with warning signs, or medication toxicity",
+        "Mania, severe psychosis, catatonia, rapidly worsening dissociation, or major functional collapse",
+        "A clinician using acceptance language to discourage reporting, emergency care, disability accommodation, or leaving an unsafe situation"
+      ],
+      "complications": [
+        "Victim blaming or delayed protection when acceptance is confused with tolerating external harm",
+        "Dissociation, panic, or disengagement from poorly adapted experiential exercises",
+        "Missed medical, substance-related, bipolar, psychotic, cognitive, trauma-related, or safeguarding condition",
+        "Shame if value-consistent action is framed as willpower rather than a graded skill shaped by access and illness"
+      ],
+      "prognosis": "ACT is one evidence-based psychotherapy option for adult major depression and may help other conditions when a supported protocol is used. It is not ranked as universally superior to other psychotherapies, and response depends on diagnosis, clinician competence, access, patient preference, safety, and ongoing review.",
+      "prevention": [
+        "Practice brief present-moment awareness and value-consistent action during lower-distress periods.",
+        "Identify early experiential avoidance and choose one workable step before life becomes increasingly restricted.",
+        "Maintain a relapse and crisis plan that distinguishes internal discomfort from warning signs needing urgent external action."
+      ],
+      "patientEducation": [
+        "Acceptance means allowing an internal experience to be present when fighting it is unhelpful; it does not mean agreeing with a thought or tolerating harm.",
+        "Values are directions you choose, not goals someone uses to judge you.",
+        "You can ask to adapt or stop an exercise that causes unsafe dissociation, panic, sensory overload, or medical symptoms.",
+        "Seek urgent help for immediate danger, severe self-harm thoughts, new confusion, mania, or inability to stay safe."
+      ],
+      "specialPopulations": [
+        "Trauma survivors need choice, grounding, and careful distinction between internal acceptance and external safety; eyes-closed practice is never mandatory.",
+        "People with chronic pain or medical illness need ACT integrated with appropriate diagnosis, symptom control, rehabilitation, and red-flag evaluation.",
+        "Autistic people and those with cognitive, sensory, or language needs may benefit from concrete examples, visual values work, shorter exercises, and predictable structure.",
+        "People experiencing poverty, discrimination, or coercion need practical resources and advocacy alongside psychological flexibility work."
+      ],
+      "nclexTraps": [
+        "Acceptance is not resignation, approval, or refusal to treat symptoms.",
+        "Defusion means noticing a thought as a thought, not telling the patient the thought is untrue.",
+        "Values come from the patient; the nurse does not prescribe them.",
+        "A mindfulness exercise never outranks emergency assessment or a new medical warning sign."
+      ],
+      "relatedTopics": [
+        "Major depressive disorder",
+        "Cognitive behavioral therapy",
+        "Behavioral activation",
+        "Mindfulness",
+        "Experiential avoidance",
+        "Chronic pain",
+        "Values clarification",
+        "Psychological flexibility",
+        "Suicide risk assessment"
+      ],
+      "sourceKeys": [
+        "va-dod-mdd-cpg-2022",
+        "nice-ng222-chronic-depression",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. VA/DoD defines ACT as emphasizing acceptance of emotional distress and engagement in goal-directed behavior and lists it among evidence-based psychotherapy options for adult major depression without ranking it above the others. NICE NG222 supports shared treatment choice and monitoring in depression. SAFE-T supports separate direct suicide assessment and triage.",
+      "provenance": [
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/mdd/VADODMDDCPGFinal508.pdf",
+          "documentVersion": "MDD CPG version 4.0, February 2022; accessed 2026-08-15",
+          "fieldsSupported": [
+            "ACT definition",
+            "MDD indication",
+            "psychotherapy selection",
+            "patient preference",
+            "non-ranking boundary"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/ng222/chapter/Recommendations",
+          "documentVersion": "NG222 current recommendations; accessed 2026-08-15",
+          "fieldsSupported": [
+            "depression assessment",
+            "shared treatment choice",
+            "monitoring",
+            "safety"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T, 2024; accessed 2026-08-15",
+          "fieldsSupported": [
+            "suicide assessment",
+            "safety planning",
+            "triage"
+          ]
+        }
+      ],
+      "directTargetId": "concept.acceptance-and-commitment-therapy",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "concept.interpersonal-psychotherapy",
+      "name": "Interpersonal psychotherapy",
+      "displayName": "Interpersonal psychotherapy (clinical treatment, not a diagnosis)",
+      "category": "Mental health clinical concept",
+      "entryType": "clinical-concept",
+      "isDiagnosis": false,
+      "diagnosisStatus": "NOT_A_MENTAL_DISORDER",
+      "aliases": [
+        "IPT",
+        "interpersonal therapy",
+        "interpersonal psychotherapy for depression"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Interpersonal psychotherapy (IPT) is a structured, usually time-limited talking therapy that treats depression by connecting current symptoms with important relationship and role problems. It helps the person work on grief, conflict, life transitions, or difficulty building and maintaining supportive relationships; it does not blame family or assume every depression is caused by relationships.",
+      "whyItMatters": "Depression can damage communication, support, work, caregiving, and other roles, while losses and relationship strain can worsen depression. IPT gives treatment a clear current-life focus and is an evidence-based option for major depression. The clinician must still assess bipolar disorder, suicidality, psychosis, substance use, abuse, grief, and medical contributors rather than treating every interpersonal problem as ordinary conflict.",
+      "plainLanguageGlosses": [
+        {
+          "term": "role transition",
+          "plainLanguage": "a major change in identity or responsibilities, such as retirement, illness, divorce, caregiving, relocation, or starting or losing a job",
+          "sourceKeys": [
+            "va-dod-mdd-cpg-2022"
+          ]
+        },
+        {
+          "term": "role dispute",
+          "plainLanguage": "an ongoing conflict in which people have different expectations about a relationship",
+          "sourceKeys": [
+            "nice-ng222-chronic-depression"
+          ]
+        },
+        {
+          "term": "interpersonal inventory",
+          "plainLanguage": "a focused review of important relationships, supports, losses, conflicts, and changes linked to the current episode",
+          "sourceKeys": [
+            "va-dod-mdd-cpg-2022"
+          ]
+        }
+      ],
+      "definition": "IPT is a manual-informed psychotherapy that links a diagnosed mood episode to one or more current interpersonal focus areas, commonly grief, role disputes, role transitions, or interpersonal deficits and isolation. Treatment includes an initial formulation and focus, active communication and problem-solving work, symptom and function monitoring, and a planned ending or maintenance phase when indicated.",
+      "pathology": "IPT has no pathology of its own. It addresses reciprocal cycles in which depression impairs communication and social functioning, relationship disruption reduces support or increases stress, and the resulting isolation, conflict, or loss deepens symptoms. It recognizes medical and biological contributors and does not reduce depression to a relationship failure.",
+      "pathophysiology": [
+        "Loss, conflict, and role disruption can activate stress responses and reduce practical and emotional support.",
+        "Depressive withdrawal, irritability, low energy, and hopelessness can make communication and problem solving harder, creating further interpersonal stress.",
+        "Clarifying needs, practicing communication, mourning loss, rebuilding support, and adapting to roles can improve function and reduce a maintaining source of symptoms."
+      ],
+      "etiology": "Not applicable as a disease cause. IPT is selected when depression is confirmed, a current interpersonal focus is clinically relevant, the person agrees with that focus, and an appropriately trained therapist is available.",
+      "riskFactors": [
+        "Recent bereavement, separation, retirement, illness, job change, caregiving role, relocation, or other major role transition",
+        "Persistent relationship conflict, unclear expectations, isolation, loss of social support, or difficulty asking for help",
+        "Major depressive disorder or bipolar depression with clinically important interpersonal stress",
+        "Abuse, coercive control, financial dependence, housing instability, or cultural and family expectations requiring a safety-informed formulation"
+      ],
+      "signsSymptoms": [
+        "Depressed mood, loss of interest, guilt, sleep or appetite change, low energy, concentration difficulty, and impaired functioning are monitored as depression symptoms.",
+        "The person may describe a loss, unresolved conflict, major role change, isolation, or repeated difficulty sustaining support around the episode.",
+        "Progress may include reduced symptoms, clearer communication, more effective support use, adaptation to a role, and restored functioning."
+      ],
+      "diagnostics": [
+        "Confirm depressive disorder and assess severity, duration, suicide risk, past mania or hypomania, psychosis, substance use, trauma, grief, medical causes, medications, cognition, and function.",
+        "Build an interpersonal inventory and agree on one or two current focus areas rather than attempting to repair every relationship.",
+        "Monitor depressive symptoms, role and relationship function, safety, treatment engagement, and patient-defined goals throughout the course."
+      ],
+      "labs": [
+        "No laboratory test diagnoses a need for IPT or proves that relationships caused depression.",
+        "Use targeted testing for medical contributors such as thyroid disease, anemia, sleep disorder, neurologic illness, medication effects, pregnancy-related conditions, or substance exposure when indicated.",
+        "A symptom scale supports monitoring but does not establish the interpersonal formulation or diagnosis by itself."
+      ],
+      "assessment": "Ask when symptoms began, what losses, conflicts, role changes, or isolation occurred near the episode, how depression changed relationships, what support is available, what communication patterns are modifiable, and whether any relationship is unsafe. Agree on a current focus, goals, measures, session plan, medication coordination, and warning signs that require a different level of care.",
+      "differential": [
+        "Normal grief, prolonged grief disorder, adjustment disorder, major depression, bipolar depression, PTSD, substance-induced mood symptoms, personality disorder, psychosis, dementia, endocrine or neurologic disease, and medication effects",
+        "Actual abuse, stalking, trafficking, coercive control, exploitation, or workplace danger requires safeguarding and practical action, not mutual-conflict framing.",
+        "Family therapy treats interactional patterns with participants; couples therapy involves partners; interpersonal and social rhythm therapy adds a specific rhythm component for bipolar disorder; these are not identical to IPT."
+      ],
+      "treatments": [
+        "Deliver manual-informed IPT through a trained clinician, with a shared depression formulation, one or more current interpersonal focus areas, active skill practice, symptom monitoring, and a planned ending or maintenance plan.",
+        "Use communication analysis, role play, decision analysis, affect exploration, grief work, support building, and role-transition problem solving as appropriate to the focus.",
+        "Coordinate safeguarding, social work, medical care, family or couples services, and occupational supports when the problem exceeds the psychotherapy frame.",
+        "Medication is not part of IPT. For major depression, an antidepressant such as sertraline, escitalopram, or bupropion may be used instead of or with psychotherapy based on severity, prior response, bipolar screen, contraindications, and preference."
+      ],
+      "contraindications": [
+        "Do not frame abuse, coercion, exploitation, discrimination, or stalking as a shared communication problem.",
+        "Do not pressure reconciliation, disclosure, family involvement, or contact with an unsafe person.",
+        "Do not treat bereavement as major depression without assessing duration, symptom pattern, culture, function, trauma, and diagnostic criteria.",
+        "Do not delay urgent care for suicidality, violence, mania, psychosis, catatonia, delirium, intoxication or withdrawal, or medical instability."
+      ],
+      "safetyConsiderations": [
+        "Ask privately about intimate-partner violence, coercive control, child or vulnerable-adult safety, stalking, exploitation, and access to a safe place.",
+        "Monitor suicide risk, self-neglect, substance use, medication adherence and adverse effects, sleep, and emerging mania or psychosis.",
+        "Plan endings and transitions explicitly because separation and loss can intensify symptoms.",
+        "Protect confidentiality and obtain consent before contacting relatives or sharing therapy content, subject to emergency and safeguarding duties."
+      ],
+      "nursingPriorities": [
+        "Ask how symptoms affect current roles and support without assigning blame or taking sides.",
+        "Reinforce communication or support-seeking steps already agreed with the therapist and document their effect.",
+        "Assess suicide risk, sleep, mood activation, intake, medication response, substance use, function, and interpersonal safety.",
+        "Coordinate social work, domestic-violence resources, transport, caregiver support, or occupational help when practical barriers drive the crisis."
+      ],
+      "redFlags": [
+        "Current suicidal or violent intent, recent serious attempt, inability to maintain basic needs, or rapidly worsening depression",
+        "Mania, psychotic depression, catatonia, delirium, intoxication or withdrawal, new cognitive change, or medical instability",
+        "Intimate-partner violence, stalking, trafficking, child or vulnerable-adult danger, coercive control, or unsafe discharge destination",
+        "Marked deterioration around therapy ending, relationship loss, medication change, or loss of housing and support"
+      ],
+      "complications": [
+        "Victim blaming or increased danger when abuse is misclassified as a role dispute",
+        "Missed bipolar disorder, psychotic depression, grief disorder, substance-related condition, or medical contributor",
+        "Dependency, abandonment distress, or relapse when treatment ending is not planned",
+        "Loss of privacy or trust from unnecessary family contact or unclear confidentiality boundaries"
+      ],
+      "prognosis": "IPT is an evidence-based psychotherapy option for major depression, and many patients improve in symptoms and interpersonal functioning. It is not universally superior to CBT, BA, ACT, medication, or other supported treatments; response and format should be reviewed according to patient preference, severity, comorbidity, safety, and access.",
+      "prevention": [
+        "Identify early depression signs and the interpersonal changes that commonly follow them, such as withdrawal, irritability, or stopping help-seeking.",
+        "Maintain support contacts, communication strategies, role plans, and treatment continuity during predictable transitions.",
+        "Plan how to respond to future loss, conflict, isolation, medication changes, and emerging mania or suicide risk."
+      ],
+      "patientEducation": [
+        "IPT treats depression through current relationship and role patterns; it does not say your family caused the illness.",
+        "You and the therapist should agree on a focused problem and how progress will be measured.",
+        "Tell the clinician privately if a relationship is unsafe; safety planning is different from communication practice.",
+        "Report reduced need for sleep, rising energy, psychosis, or urgent self-harm thoughts because the treatment plan may need immediate change."
+      ],
+      "specialPopulations": [
+        "Bipolar depression requires a bipolar-informed clinician, continued mood-stabilizing treatment when indicated, and monitoring for hypomania, mania, or deterioration.",
+        "Older adults may need work around bereavement, retirement, illness, caregiving, isolation, sensory loss, and cognitive or medical differential.",
+        "Language, culture, family structure, migration, sexual and gender identity, disability, and community context shape roles and acceptable support; they should not be forced into one model.",
+        "People with cognitive or communication needs may require visual relationship maps, repetition, shorter sessions, interpreters, and support-person involvement with consent."
+      ],
+      "nclexTraps": [
+        "IPT focuses on current interpersonal functioning; it is not simply unstructured discussion of childhood.",
+        "Do not call abuse a role dispute or encourage joint communication when it increases danger.",
+        "Depression and relationship stress can reinforce each other; neither proves that one solely caused the other.",
+        "Monitor bipolar activation even when the patient initially presents with depression."
+      ],
+      "relatedTopics": [
+        "Major depressive disorder",
+        "Persistent depressive disorder",
+        "Bipolar depression",
+        "Grief",
+        "Prolonged grief disorder",
+        "Role transition",
+        "Intimate partner violence",
+        "Cognitive behavioral therapy",
+        "Behavioral activation",
+        "Suicide risk assessment"
+      ],
+      "sourceKeys": [
+        "va-dod-mdd-cpg-2022",
+        "nice-ng222-chronic-depression",
+        "nice-cg185-bipolar",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. VA/DoD defines IPT as improving interpersonal functioning and exploring current relationship-based difficulties and lists it among evidence-based psychotherapy options for adult major depression. NICE NG222 supports IPT within shared depression treatment choice. NICE CG185 supports IPT as an option for bipolar depression with monitoring for hypomania, mania, and deterioration. SAFE-T supports separate suicide assessment and triage.",
+      "provenance": [
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/mdd/VADODMDDCPGFinal508.pdf",
+          "documentVersion": "MDD CPG version 4.0, February 2022; accessed 2026-08-15",
+          "fieldsSupported": [
+            "IPT definition",
+            "MDD indication",
+            "psychotherapy choice",
+            "monitoring"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/ng222/chapter/Recommendations",
+          "documentVersion": "NG222 current recommendations; accessed 2026-08-15",
+          "fieldsSupported": [
+            "IPT for depression",
+            "shared choice",
+            "delivery",
+            "monitoring"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/cg185/chapter/recommendations",
+          "documentVersion": "CG185 updated September 2025; accessed 2026-08-15",
+          "fieldsSupported": [
+            "IPT in bipolar depression",
+            "hypomania and mania monitoring",
+            "urgent referral boundary"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "suicide assessment",
+            "risk factors",
+            "protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "directTargetId": "concept.interpersonal-psychotherapy",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "concept.mentalization-based-treatment",
+      "name": "Mentalization-based treatment",
+      "displayName": "Mentalization-based treatment (clinical treatment, not a diagnosis)",
+      "category": "Mental health clinical concept",
+      "entryType": "clinical-concept",
+      "isDiagnosis": false,
+      "diagnosisStatus": "NOT_A_MENTAL_DISORDER",
+      "aliases": [
+        "MBT",
+        "mentalisation-based treatment",
+        "mentalization-based therapy",
+        "mentalisation-based therapy"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Mentalization-based treatment (MBT) is a structured psychotherapy that helps a person become more curious and accurate about thoughts, feelings, intentions, and needs in themselves and other people. It is used especially for borderline personality disorder, where intense emotion can make assumptions feel certain; MBT does not teach mind reading or claim the therapist knows what someone else thinks.",
+      "whyItMatters": "During intense attachment stress, a person may lose the ability to consider several explanations, act quickly on a feared interpretation, self-harm, become aggressive, or rupture treatment. MBT slows that process and restores curiosity, but recurrent self-harm and suicidality still require direct risk assessment and a crisis plan rather than interpretation alone.",
+      "plainLanguageGlosses": [
+        {
+          "term": "mentalizing",
+          "plainLanguage": "trying to understand behavior in terms of possible thoughts, feelings, wishes, intentions, and beliefs while accepting uncertainty",
+          "sourceKeys": [
+            "nhs-bpd-mbt-treatment"
+          ]
+        },
+        {
+          "term": "not-knowing stance",
+          "plainLanguage": "the therapist stays curious and checks understanding instead of claiming certainty about the patient's or another person's mind",
+          "sourceKeys": [
+            "nhs-bpd-mbt-treatment"
+          ]
+        },
+        {
+          "term": "attachment stress",
+          "plainLanguage": "strong emotion linked to closeness, rejection, separation, trust, or fear of losing an important relationship",
+          "sourceKeys": [
+            "apa-bpd-guideline-2024"
+          ]
+        }
+      ],
+      "definition": "MBT is a manual-informed, usually longer-term psychotherapy designed to strengthen the ability to understand one's own and others' mental states, especially when emotion is high. Programs may include individual and group sessions, psychoeducation, a shared formulation, crisis planning, and team coordination. The exact format and duration are program-specific and should be delivered by trained clinicians.",
+      "pathology": "MBT has no pathology of its own. It targets temporary or persistent failures of mentalizing, such as assuming certainty about another person's motives, equating a feeling with a fact, understanding actions only by visible outcomes, or losing reflection when attachment and emotion intensify.",
+      "pathophysiology": [
+        "High emotional arousal can narrow attention and make flexible interpretation of self and others temporarily harder.",
+        "Certain negative assumptions may trigger impulsive action, conflict, withdrawal, self-harm, or other behavior that then seems to confirm the original fear.",
+        "Slowing down, naming emotion, checking evidence and alternatives, and restoring curiosity may interrupt this interpersonal cycle."
+      ],
+      "etiology": "Not applicable as a disease cause. MBT is considered after a comprehensive assessment supports a condition and treatment targets that fit the model, especially BPD, and the person agrees to a structured specialist program.",
+      "riskFactors": [
+        "Borderline personality disorder with intense relationship instability, impulsivity, self-harm, or rapid loss of reflective capacity under stress",
+        "Repeated certainty that others intend rejection, humiliation, abandonment, or harm without checking alternatives",
+        "Treatment ruptures, sudden withdrawal, aggression, or crises after misunderstandings or perceived rejection",
+        "Trauma, substance use, psychosis, neurodevelopmental or cognitive needs, and actual unsafe relationships that require careful differential and adaptation"
+      ],
+      "signsSymptoms": [
+        "The person may move quickly from uncertainty to certainty about motives, struggle to identify feelings, or act before checking an interpretation.",
+        "Mentalizing often works better when calm and collapses when emotion or attachment threat rises.",
+        "Progress may include pausing, naming emotion, considering more than one explanation, asking directly, reducing harmful behavior, and repairing relationships."
+      ],
+      "diagnostics": [
+        "Confirm diagnoses and assess suicide and self-harm risk, violence, substance use, trauma, dissociation, mood episodes, psychosis, cognition, autism, medical needs, and actual abuse or exploitation.",
+        "Develop a shared formulation of situations in which mentalizing fails, the emotions and interpretations involved, and the behaviors and consequences that follow.",
+        "Monitor functioning, self-harm, suicidality, substance use, depression, BPD symptoms, relationships, attendance, and patient-defined outcomes."
+      ],
+      "labs": [
+        "No laboratory test measures mentalizing capacity or diagnoses a need for MBT.",
+        "Use targeted medical evaluation for overdose, injury, intoxication or withdrawal, cognitive change, pregnancy, medication effects, or neurologic and endocrine illness when indicated.",
+        "A calm interview does not prove stable risk or reflective capacity in a later high-arousal situation."
+      ],
+      "assessment": "Ask what happened, what the person noticed in their body and mind, what they believed the other person intended, how certain they felt, what else might fit, what action followed, and what the consequence was. Confirm actual facts and danger, assess current safety, and explain the program's structure, crisis route, contact boundaries, measures, and alternatives.",
+      "differential": [
+        "Bipolar disorder, PTSD, dissociation, autism, ADHD, psychotic disorder, substance-induced symptoms, intellectual disability, brain injury, depression, eating disorders, and actual abuse or coercive control can overlap with mentalizing difficulties.",
+        "A delusion is not simply poor mentalizing, and a reasonable fear in an unsafe relationship is not a cognitive failure.",
+        "DBT directly organizes behavior targets and skills; CBT uses cognitive-behavioral formulation; psychodynamic therapy is broader; MBT specifically centers mental states and uncertainty."
+      ],
+      "treatments": [
+        "Provide a structured MBT program through trained and supervised clinicians, with psychoeducation, shared formulation, individual and/or group work according to the program, and routine outcome monitoring.",
+        "Use curiosity, clarification, emotion identification, checking perspectives, and focus on current interactions to restore mentalizing when it is lost.",
+        "Maintain a direct safety and crisis plan and coordinate care for substance use, trauma, eating disorder, medical illness, housing, and safeguarding.",
+        "Medication is not part of MBT and is not used specifically to treat BPD itself. Medicines such as an SSRI for a confirmed major depressive episode or an antipsychotic for a separate psychotic disorder may be used for that comorbidity after evidence-based review."
+      ],
+      "contraindications": [
+        "Do not claim certainty about the patient's hidden motives, insist on one interpretation, or turn every disagreement into pathology.",
+        "Do not analyze during severe intoxication, delirium, mania, catatonia, uncontrolled psychosis, or imminent danger when stabilization comes first.",
+        "Do not frame genuine abuse, exploitation, discrimination, or medical symptoms as a failure to mentalize.",
+        "Do not present a brief unstructured conversation or generic group as a complete MBT program."
+      ],
+      "safetyConsiderations": [
+        "Assess suicide, self-harm, violence, abuse, substance use, eating behavior, and ability to use supports directly and repeatedly.",
+        "Use a clear crisis pathway and treatment boundaries; uncertainty about motives does not mean uncertainty about an observed injury or stated intent.",
+        "Monitor group safety, confidentiality, interpersonal escalation, and the impact of ruptures or perceived rejection.",
+        "Adapt pace and methods for trauma, autism, cognitive disability, language, culture, sensory needs, and psychosis vulnerability."
+      ],
+      "nursingPriorities": [
+        "Slow the interaction, name observable facts, ask what the patient thinks and feels, and invite other possible explanations without arguing.",
+        "Validate the emotional experience while remaining curious about the interpretation and maintaining safety limits.",
+        "Assess injury, overdose, intoxication or withdrawal, suicide risk, violence, sleep, medication effects, and actual environmental danger.",
+        "Document exact events, statements, certainty, behavior, risk, interventions, and response; avoid labels such as manipulative or attention seeking."
+      ],
+      "redFlags": [
+        "Current suicidal or violent intent, escalating self-harm, severe injury or overdose, inability to stay safe, or dangerous aggression",
+        "Delirium, intoxication or withdrawal, mania, severe psychosis, catatonia, new neurologic change, or medical instability",
+        "Abuse, stalking, trafficking, exploitation, unsafe dependent care, or a clinician dismissing factual danger as misinterpretation",
+        "Rapid treatment rupture, disappearance from care, escalating crisis contact, or major deterioration after perceived rejection or separation"
+      ],
+      "complications": [
+        "Escalated shame, mistrust, self-harm, aggression, or dropout if the clinician claims to know motives or invalidates facts",
+        "Missed imminent risk when behavior is analyzed instead of assessed and stabilized",
+        "Missed bipolar, psychotic, trauma-related, neurodevelopmental, substance-related, cognitive, or medical condition",
+        "Confidentiality harm or interpersonal contagion when groups lack clear structure and competent facilitation"
+      ],
+      "prognosis": "MBT is a specialist psychotherapy used for BPD and may improve the ability to reflect under stress, relationships, harmful behavior, and functioning. It is not the only structured therapy for BPD, is not suitable in one identical format for everyone, and requires ongoing review of engagement, risk, comorbidity, and outcomes.",
+      "prevention": [
+        "Identify the first signs that certainty and arousal are rising and use a planned pause before acting.",
+        "Practice naming feelings, checking assumptions directly, and considering multiple explanations during lower-stress periods.",
+        "Prepare for breaks, endings, clinician changes, and relationship losses with a clear support and crisis plan."
+      ],
+      "patientEducation": [
+        "Mentalizing means being curious about minds, including your own; it does not mean the therapist can read thoughts.",
+        "Strong feelings can make one explanation seem certain. Pausing to check alternatives is a skill, not an admission that the feeling is wrong.",
+        "Tell the team about self-harm urges, intent, substance use, or real danger directly; these need action, not only interpretation.",
+        "Ask what the program includes, how long it is expected to last, how crisis contact works, and what other structured therapies are available."
+      ],
+      "specialPopulations": [
+        "Adolescent and family MBT are distinct adaptations and require developmentally trained services, assent, caregiver planning, and safeguarding.",
+        "Autistic people may be misread if differences in communication or perspective-taking are treated as BPD; assessment and adaptations must be individualized.",
+        "Trauma survivors need control over pace and disclosure and a clear distinction between uncertainty about motives and confirmed abuse.",
+        "People with psychosis, cognitive impairment, brain injury, sensory disability, or language needs require adapted methods and coordinated specialist care."
+      ],
+      "nclexTraps": [
+        "The nurse stays curious and checks understanding; do not state what the patient or another person must be thinking.",
+        "Validate emotion without confirming an unverified interpretation.",
+        "Direct safety assessment comes before exploring meanings during an acute crisis.",
+        "MBT is a structured specialist treatment, not a synonym for reflective listening."
+      ],
+      "relatedTopics": [
+        "Borderline personality disorder",
+        "Dialectical behavior therapy",
+        "Nonsuicidal self-injury",
+        "Suicide risk assessment",
+        "Emotion regulation",
+        "Attachment",
+        "Dissociation",
+        "Psychosis",
+        "Therapeutic relationship"
+      ],
+      "sourceKeys": [
+        "apa-bpd-guideline-2024",
+        "nice-cg78-borderline",
+        "nhs-bpd-mbt-treatment",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. APA supports comprehensive assessment and structured psychotherapy focused on BPD's core features without ranking one model for every patient. NICE CG78 supports structured psychological care, crisis planning, broad outcome monitoring, and the boundary against medication as specific BPD treatment; it does not make MBT a universal first choice. The NHS treatment page supports the plain-language MBT definition, BPD association, and specialist delivery. SAFE-T supports direct suicide assessment and triage.",
+      "provenance": [
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://psychiatryonline.org/doi/book/10.1176/appi.books.9780890428009",
+          "documentVersion": "BPD practice guideline approved 2023 and published 2024; accessed 2026-08-15",
+          "fieldsSupported": [
+            "comprehensive assessment",
+            "structured BPD psychotherapy",
+            "treatment planning",
+            "monitoring",
+            "medication boundaries"
+          ]
+        },
+        {
+          "authority": "National Health Service",
+          "url": "https://www.nhs.uk/mental-health/conditions/borderline-personality-disorder/treatment/",
+          "documentVersion": "BPD treatment information; accessed 2026-08-15",
+          "fieldsSupported": [
+            "MBT definition",
+            "mentalizing explanation",
+            "BPD association",
+            "specialist psychotherapy delivery"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/cg78/chapter/Recommendations",
+          "documentVersion": "CG78 current recommendations; accessed 2026-08-15",
+          "fieldsSupported": [
+            "therapy selection",
+            "care coordination",
+            "risk management",
+            "broad outcome monitoring",
+            "medication boundary"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; reviewed 2026-08-15",
+          "fieldsSupported": [
+            "suicide assessment",
+            "risk factors",
+            "protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "directTargetId": "concept.mentalization-based-treatment",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "concept.family-psychoeducation",
+      "name": "Family psychoeducation",
+      "displayName": "Family psychoeducation",
+      "category": "Mental health clinical concept",
+      "entryType": "clinical-concept",
+      "isDiagnosis": false,
+      "diagnosisStatus": "NOT_A_MENTAL_DISORDER",
+      "aliases": [
+        "family education and support",
+        "family intervention psychoeducation",
+        "psychoeducation for families and carers",
+        "family-focused psychoeducation"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Family psychoeducation is a structured, collaborative intervention that helps a patient and chosen relatives or carers understand a mental illness, treatment, early warning signs, communication, problem solving, and what to do in a crisis. It is not a meeting to blame the family, force disclosure, or make relatives responsible for curing the illness.",
+      "whyItMatters": "Psychosis, schizophrenia, and bipolar disorder can affect sleep, judgment, medication use, relationships, work, and safety, while relatives may be the first to notice relapse. Clear education and a negotiated plan can improve support and reduce confusion and crisis delay, but patient autonomy, confidentiality, caregiver needs, abuse risk, and indicated medication treatment remain essential.",
+      "plainLanguageGlosses": [
+        {
+          "term": "psychoeducation",
+          "plainLanguage": "practical teaching about an illness and its treatment combined with discussion, problem solving, and a plan for using the information",
+          "sourceKeys": [
+            "nice-cg178-psychosis-adults",
+            "nice-cg185-bipolar"
+          ]
+        },
+        {
+          "term": "early warning sign",
+          "plainLanguage": "an individual change, such as reduced sleep, withdrawal, suspiciousness, rising energy, missed medicine, or functional decline, that may occur before a relapse",
+          "sourceKeys": [
+            "nice-cg185-bipolar"
+          ]
+        },
+        {
+          "term": "carer",
+          "plainLanguage": "a relative, partner, friend, or other person who provides unpaid support; the patient decides who is involved unless an emergency or law requires otherwise",
+          "sourceKeys": [
+            "nice-cg178-psychosis-adults"
+          ]
+        }
+      ],
+      "definition": "Family psychoeducation is a manual-informed psychosocial treatment that combines accurate illness and treatment information with collaborative communication, problem solving, coping support, early-warning and relapse planning, and crisis management. In psychosis and schizophrenia it commonly sits within a broader family intervention; for bipolar disorder, carer education and family intervention are also recommended in appropriate ongoing care.",
+      "pathology": "Family psychoeducation has no pathology of its own. It addresses information gaps, fear, stigma, inconsistent responses, conflict, caregiver strain, and delayed recognition that can worsen the impact of a severe mental illness. It does not assume family behavior caused psychosis or bipolar disorder.",
+      "pathophysiology": [
+        "Relapse may be preceded by changes in sleep, behavior, medication use, substance use, mood, thinking, or function that close supports can sometimes observe early.",
+        "High stress and confusing communication can reduce coping and treatment engagement for both patient and family.",
+        "Shared knowledge, predictable communication, negotiated problem solving, and a crisis plan can support earlier response and continuity, while direct clinical treatment addresses the illness itself."
+      ],
+      "etiology": "Not applicable as a disease cause. The intervention is offered when a condition such as psychosis, schizophrenia, or bipolar disorder affects the patient's support system and the patient and involved family can participate safely and lawfully.",
+      "riskFactors": [
+        "First-episode or recurrent psychosis, schizophrenia, or bipolar disorder with close family or carer contact",
+        "Recent relapse, persistent symptoms, medication uncertainty, substance use, missed appointments, or unclear crisis response",
+        "Caregiver distress, burnout, fear, stigma, conflict, or lack of accurate information about recovery and services",
+        "Language, cultural, cognitive, housing, transportation, or digital-access barriers that limit shared understanding"
+      ],
+      "signsSymptoms": [
+        "The family may report uncertainty about symptoms, medicines, side effects, relapse signs, boundaries, or whom to call.",
+        "The patient may feel criticized, monitored, misunderstood, or excluded from decisions, while carers may feel frightened or solely responsible.",
+        "Progress includes shared language, less blame, clearer communication, earlier help-seeking, realistic roles, and a crisis and relapse plan understood by participants."
+      ],
+      "diagnostics": [
+        "Confirm the patient's diagnosis and current phase and assess suicide and violence risk, mania, psychosis, depression, substance use, cognition, medical contributors, medication effects, and function.",
+        "Ask the patient whom they want involved, what may be shared, what support is helpful, what has been harmful, and whether any participant presents an abuse, coercion, exploitation, or confidentiality risk.",
+        "Assess caregiver knowledge, stress, health, safety, support needs, communication patterns, and access barriers without diagnosing the family as the problem.",
+        "Monitor patient symptoms and function, family or carer satisfaction when appropriate, engagement, relapse signals, and whether the plan works in practice."
+      ],
+      "labs": [
+        "No laboratory test determines whether a family caused illness or whether psychoeducation is indicated.",
+        "Explain disorder- and medication-specific monitoring accurately, such as metabolic monitoring for antipsychotics or serum, renal, and thyroid monitoring for lithium, according to the actual regimen and local protocol.",
+        "A normal result does not rule out relapse, and a symptom change does not automatically mean medication nonadherence."
+      ],
+      "assessment": "Meet with the patient privately as needed, obtain informed agreement for family involvement and information sharing, identify each person's goals and concerns, review the illness and treatment plan, map individual early warning signs and triggers, define supportive and unhelpful responses, assess caregiver strain and safety, and create a written communication, relapse, and crisis plan with named contacts and review dates.",
+      "differential": [
+        "Family psychoeducation teaches and supports illness management; family therapy treats interactional patterns; couples therapy focuses on partners; individual psychoeducation does not require family participation.",
+        "Reasonable concern about medication adverse effects, actual abuse, cultural differences, grief, caregiver illness, poverty, or inaccessible services should not be labeled poor insight or family resistance.",
+        "Delirium, intoxication or withdrawal, medication toxicity, dementia, sleep disorder, medical illness, and substance-induced symptoms can resemble psychiatric relapse and require clinical evaluation."
+      ],
+      "treatments": [
+        "Provide accurate, recovery-oriented education about diagnosis, symptoms, treatment options, medicine benefits and adverse effects, substance interactions, physical health, services, and crisis access.",
+        "Teach and rehearse calm communication, listening, collaborative problem solving, graded goals, early-warning monitoring, relapse response, and crisis management.",
+        "For psychosis or schizophrenia, use a trained family-intervention program that includes the patient when practical, respects single- or multifamily preference, and follows the evidence-based program's duration and session structure.",
+        "Family psychoeducation complements rather than replaces indicated treatment. Examples include an antipsychotic such as aripiprazole or risperidone for schizophrenia and lithium or quetiapine in selected bipolar indications, with shared decision-making and regimen-specific monitoring."
+      ],
+      "contraindications": [
+        "Do not share confidential details, invite relatives, or make family contact without consent unless a specific emergency or legal duty permits or requires it.",
+        "Do not use joint sessions when they increase risk from abuse, coercive control, stalking, trafficking, exploitation, or retaliation.",
+        "Do not blame parenting, emotion, culture, or communication style for causing schizophrenia or bipolar disorder.",
+        "Do not ask relatives to restrain, supervise beyond their ability, administer covert medicine, or replace emergency and professional care."
+      ],
+      "safetyConsiderations": [
+        "Negotiate what information can be shared and review confidentiality regularly, especially when relationships or risk change.",
+        "Create explicit thresholds for urgent help: suicidal or violent intent, rapidly escalating mania or psychosis, severe self-neglect, inability to care for a dependent, delirium, overdose, withdrawal, or medical instability.",
+        "Assess caregiver burnout, sleep, fear, physical health, and safety and connect carers to their own support rather than treating them only as a resource.",
+        "Discuss medication adherence without coercion and teach adverse effects and monitoring that require prompt clinician contact."
+      ],
+      "nursingPriorities": [
+        "Ask the patient who should be involved and what may be shared; document consent and limits clearly.",
+        "Teach one or two individualized warning signs, the agreed first response, and the exact crisis contact using teach-back.",
+        "Model calm, concrete, nonblaming communication and redirect arguments toward observable changes and the shared plan.",
+        "Assess patient and caregiver safety, medication response, sleep, substance use, basic needs, and whether transport, language, or cost blocks the plan."
+      ],
+      "redFlags": [
+        "Current suicidal or violent intent, command hallucination with danger, severe mania or psychosis, catatonia, inability to maintain basic needs, or unsafe dependent care",
+        "New confusion, fever, hypoxia, hypoglycemia, seizure, focal neurologic change, overdose, intoxication or withdrawal, or medication toxicity",
+        "Domestic violence, coercive control, stalking, trafficking, exploitation, caregiver retaliation, or a joint meeting that makes disclosure unsafe",
+        "Caregiver exhaustion or illness so severe that the agreed supervision, housing, transport, or medication support cannot be provided"
+      ],
+      "complications": [
+        "Privacy violation, retaliation, or disengagement when information is shared without appropriate consent or a joint meeting is unsafe",
+        "Relapse or crisis delay when warning signs, responsibilities, and emergency contacts are vague",
+        "Caregiver burnout, resentment, or illness when the system shifts professional responsibilities onto family",
+        "Medication discontinuation, coercion, or missed adverse effects when education is inaccurate or one-sided"
+      ],
+      "prognosis": "Family psychoeducation and structured family intervention can improve illness management and support in psychosis, schizophrenia, and bipolar disorder, especially when the patient is in close contact with family and the program is delivered competently. Benefit depends on safety, consent, treatment phase, cultural fit, access, and integration with medical and psychiatric care.",
+      "prevention": [
+        "Keep an updated relapse plan with individual early signs, medicine and appointment information, preferred supports, crisis contacts, and backup arrangements.",
+        "Review the plan after relapse, discharge, medication change, move, caregiver change, or new safety concern.",
+        "Support caregiver rest, health care, peer or education programs, and realistic limits before burnout becomes a crisis."
+      ],
+      "patientEducation": [
+        "The goal is to help everyone understand the illness and respond earlier, not to decide who is at fault.",
+        "You can discuss who joins, what information is shared, and which support feels helpful; ask how confidentiality works in an emergency.",
+        "A family member can report observations, but the clinician still evaluates whether the change is psychiatric, medical, medication-related, or substance-related.",
+        "Family support does not replace medicine, psychotherapy, physical-health monitoring, or emergency care when those are indicated."
+      ],
+      "specialPopulations": [
+        "Children and adolescents need developmentally appropriate assent, caregiver education, school coordination when relevant, private safeguarding assessment, and attention to caregiver legal authority.",
+        "Older adults need attention to dementia, delirium, sensory loss, polypharmacy, caregiver strain, fall risk, and decision-specific capacity.",
+        "Chosen family, partners, friends, peers, and community supports may be more appropriate than biological relatives; involvement should reflect the patient's relationships and safety.",
+        "Interpreters, accessible materials, literacy-aware teach-back, culturally responsive examples, remote access, and disability accommodation may be essential."
+      ],
+      "nclexTraps": [
+        "Family psychoeducation does not mean teaching only the relatives while excluding the patient.",
+        "Give general education and listen to collateral concerns, but do not disclose protected patient information without permission or a valid exception.",
+        "Family is not the cause of schizophrenia or bipolar disorder.",
+        "A relapse plan supplements, not replaces, direct assessment of new confusion, suicidality, mania, psychosis, or medication toxicity."
+      ],
+      "relatedTopics": [
+        "Schizophrenia",
+        "First-episode psychosis",
+        "Bipolar disorder",
+        "Psychosis",
+        "Antipsychotic medications",
+        "Lithium",
+        "Relapse prevention",
+        "Caregiver strain",
+        "Shared decision-making",
+        "Suicide risk assessment"
+      ],
+      "sourceKeys": [
+        "nice-cg178-psychosis-adults",
+        "nice-cg185-bipolar",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. NICE CG178 supports early carer education, negotiated confidentiality, structured family intervention for psychosis and schizophrenia, supportive and educational functions, problem solving, crisis work, trained staff, and systematic outcome monitoring. NICE CG185 supports carer-focused education, family intervention, relapse planning, and urgent reassessment for mania or danger in bipolar disorder. SAFE-T supports direct suicide assessment and triage.",
+      "provenance": [
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/Guidance/CG178/chapter/recommendations",
+          "documentVersion": "CG178 current recommendations; accessed 2026-08-15",
+          "fieldsSupported": [
+            "carer education",
+            "confidentiality negotiation",
+            "family intervention structure",
+            "problem solving",
+            "crisis management",
+            "outcome monitoring"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/cg185/chapter/recommendations",
+          "documentVersion": "CG185 updated September 2025; accessed 2026-08-15",
+          "fieldsSupported": [
+            "carer education",
+            "family intervention",
+            "bipolar relapse prevention",
+            "mood and safety escalation"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T, 2024; accessed 2026-08-15",
+          "fieldsSupported": [
+            "suicide assessment",
+            "safety planning",
+            "triage"
+          ]
+        }
+      ],
+      "directTargetId": "concept.family-psychoeducation",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
+    },
+    {
+      "id": "concept.contingency-management",
+      "name": "Contingency management",
+      "displayName": "Contingency management (clinical treatment, not a diagnosis)",
+      "category": "Mental health clinical concept",
+      "entryType": "clinical-concept",
+      "isDiagnosis": false,
+      "diagnosisStatus": "NOT_A_MENTAL_DISORDER",
+      "aliases": [
+        "CM",
+        "contingency management intervention",
+        "voucher-based reinforcement",
+        "prize-based contingency management",
+        "incentive-based treatment"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-15",
+      "plainLanguage": "Contingency management (CM) is a behavioral treatment that gives a prompt, clearly defined reward when a patient meets an agreed and objectively verifiable treatment target, such as attending care or providing a specimen consistent with the program's substance-use goal. It is positive reinforcement, not punishment, humiliation, or payment for having a diagnosis.",
+      "whyItMatters": "Stimulant use disorder has no FDA-approved medication that reliably replaces behavioral treatment, and dropout and return to use can lead to overdose, psychosis, cardiovascular injury, infection, or suicide risk. CM has the strongest effectiveness among studied interventions for stimulant use disorder and should be a primary treatment component with other psychosocial care, but it requires fair rules, reliable verification, privacy, and continued care after missed targets.",
+      "plainLanguageGlosses": [
+        {
+          "term": "contingency",
+          "plainLanguage": "the reward is linked in advance to a specific observable target rather than given unpredictably or according to staff opinion",
+          "sourceKeys": [
+            "asam-aaap-stimulant-cpg-2024"
+          ]
+        },
+        {
+          "term": "positive reinforcement",
+          "plainLanguage": "adding a valued reward after a target behavior so that behavior becomes more likely",
+          "sourceKeys": [
+            "asam-aaap-stimulant-cpg-2024"
+          ]
+        },
+        {
+          "term": "objective verification",
+          "plainLanguage": "using a predefined record or test with known limits, such as attendance documentation or a valid toxicology result, rather than guessing whether the patient was truthful",
+          "sourceKeys": [
+            "asam-aaap-stimulant-cpg-2024"
+          ]
+        }
+      ],
+      "definition": "CM is an evidence-based psychosocial intervention that prospectively defines a measurable target, verification method, reward, timing, and reset or escalation rules, then delivers the reward consistently and promptly when the target is met. Vouchers, prizes, or other permissible incentives may be used. In stimulant use disorder, CM should be a primary component of the treatment plan together with other psychosocial treatment.",
+      "pathology": "CM has no pathology of its own. It changes the immediate consequences around a target behavior because the delayed health benefits of recovery may be outweighed by the immediate reinforcing effects of a substance or by severe practical barriers. It does not claim addiction is simply a reward problem or moral failure.",
+      "pathophysiology": [
+        "Substances can produce powerful immediate reinforcement, while benefits of abstinence or attendance may feel delayed and uncertain.",
+        "A prompt, predictable reward adds an immediate positive consequence to a recovery behavior and can increase repetition of that behavior.",
+        "Consistency, meaningful reward magnitude, achievable targets, and reliable verification influence effectiveness; arbitrary or delayed rewards weaken the learning link."
+      ],
+      "etiology": "Not applicable as a disease cause. CM is most strongly associated with stimulant use disorder and may target other substance-use treatment behaviors in supported programs; diagnosis, target, population, setting, funding, and local rules determine appropriateness.",
+      "riskFactors": [
+        "Stimulant use disorder with ongoing use, high overdose or medical risk, or difficulty remaining engaged in treatment",
+        "Repeated missed appointments, medication nonadherence, or other measurable behavior when a supported CM protocol exists",
+        "Coexisting opioid use, alcohol use, psychosis, depression, suicide risk, infectious disease, housing instability, or legal needs requiring comprehensive parallel care",
+        "Program barriers such as transportation, schedule, childcare, identification, digital access, or testing windows that can make the target inequitable"
+      ],
+      "signsSymptoms": [
+        "The treatment target is an observable behavior or result, not a personality judgment, attitude, or staff impression.",
+        "The patient knows before the attempt exactly what qualifies, how it will be verified, what reward follows, and what happens after a missed target.",
+        "Progress may include more stimulant-free samples, better attendance or retention, reduced risky behavior, and connection to broader treatment and recovery goals."
+      ],
+      "diagnostics": [
+        "Confirm substance use disorder and assess substances, route, frequency, last use, prescribed products, overdose, withdrawal, cardiovascular and neurologic symptoms, psychosis, suicidality, pregnancy, infections, and coexisting illness.",
+        "Define one clinically meaningful and feasible target, a valid verification method, timing, incentive schedule, reset rules, duration, and how errors or disputed results are handled.",
+        "Monitor the target plus broader outcomes: use pattern, retention, medical and psychiatric status, overdose risk, function, patient experience, equity, and unintended effects.",
+        "A positive or negative toxicology result does not by itself diagnose a disorder, prove impairment, determine intent, or explain symptoms."
+      ],
+      "labs": [
+        "Urine, oral-fluid, breath, or other testing has substance-specific detection windows, false-positive and false-negative risks, specimen-validity issues, and limits for prescribed medicines; use the protocol's validated method and confirm disputed results when required.",
+        "Observed specimen collection must follow consent, privacy, trauma-informed, chain-of-custody, and program rules; more intrusive collection is not automatically more therapeutic.",
+        "Medical testing for chest pain, hyperthermia, infection, pregnancy, kidney or liver injury, or other complications is separate from CM target verification and follows clinical need.",
+        "Attendance or medication records may be targets only when they are accurate, accessible, and do not penalize system failures."
+      ],
+      "assessment": "Explain the evidence and program rules in plain language, ask what recovery goals matter to the patient, choose a target the patient can understand and realistically meet, identify transportation, schedule, childcare, disability, privacy, and testing barriers, obtain informed agreement, and document verification, reward delivery, clinical outcomes, and a pathway for missed or disputed targets without loss of essential care.",
+      "differential": [
+        "Motivational interviewing explores ambivalence; CBT changes cognitive-behavioral patterns; community reinforcement builds rewarding sober activities; CM links an immediate reward to one verified target. They may be combined but are not interchangeable.",
+        "A reward differs from a bribe because the rule is transparent, prospective, clinically linked, and available consistently; a punishment removes or imposes something after failure and is not the core CM mechanism.",
+        "Toxicology findings may reflect prescribed medicine, remote exposure, contamination, assay cross-reactivity, or a detection window and require interpretation rather than accusation."
+      ],
+      "treatments": [
+        "Use a written evidence-based CM protocol with a clearly defined target, frequent and reliable verification, prompt tangible reinforcement, consistent delivery, adequate duration, and quality monitoring.",
+        "For stimulant use disorder, make CM a primary component and combine it with other psychosocial care such as CBT, community reinforcement, or the Matrix Model when appropriate.",
+        "Continue harm reduction, overdose education and naloxone when opioid exposure is possible, infectious-disease care, psychiatric treatment, housing support, and recovery services regardless of reward status.",
+        "There is no FDA-approved medication that substitutes for CM in stimulant use disorder. Medications such as buprenorphine for coexisting opioid use disorder or naltrexone for selected alcohol or opioid use disorder contexts treat those specific conditions and should not be withheld after a missed CM target."
+      ],
+      "contraindications": [
+        "Do not use punishment, shame, public ranking, threats, food deprivation, loss of essential care, or withdrawal of indicated medication as the contingency.",
+        "Do not choose a target the patient cannot meet because of disability, pregnancy, prescribed medicine, transportation, work, housing, childcare, or program failures.",
+        "Do not base rewards on subjective staff judgments such as being cooperative, motivated, or deserving.",
+        "Do not delay emergency care for overdose, chest pain, stroke symptoms, hyperthermia, severe agitation, psychosis, suicidality, violence, intoxication or withdrawal, or pregnancy-related emergency."
+      ],
+      "safetyConsiderations": [
+        "Maintain care and respectful contact after missed targets; the treatment consequence is governed by the protocol, not retaliation.",
+        "Protect privacy around diagnoses, tests, earnings, and reward delivery and avoid incentives that create unsafe gambling, substance, or exploitation risk.",
+        "Assess stimulant-related cardiovascular, neurologic, psychiatric, sleep, nutrition, dental, infectious, and overdose complications throughout treatment.",
+        "Audit access and outcomes for disability, race and ethnicity, language, geography, income, pregnancy, and other groups so program design does not create hidden exclusion."
+      ],
+      "nursingPriorities": [
+        "Explain the target, verification, reward, schedule, and dispute process using teach-back before participation.",
+        "Collect and document specimens or behavioral records according to privacy, validity, timing, and chain-of-custody rules without accusation.",
+        "Deliver the earned reinforcement promptly and consistently and record it accurately; report system errors rather than attributing them to the patient.",
+        "Continue direct assessment of overdose, chest pain, psychosis, suicide risk, sleep deprivation, nutrition, infection, pregnancy, and co-occurring substance use."
+      ],
+      "redFlags": [
+        "Chest pain, severe hypertension, arrhythmia symptoms, hyperthermia, seizure, focal neurologic deficit, severe agitation, delirium, or altered consciousness",
+        "Current suicidal or violent intent, stimulant-induced psychosis, inability to maintain basic safety, or dangerous sleep deprivation",
+        "Suspected opioid-contaminated stimulant exposure, overdose, depressed breathing, pregnancy-related emergency, or serious infection",
+        "Program coercion, falsified testing, privacy breach, discriminatory access, withheld essential treatment, or staff-controlled subjective rewards"
+      ],
+      "complications": [
+        "Loss of trust and treatment dropout from inconsistent rewards, unclear rules, delayed delivery, or punitive responses",
+        "False reward denial or inappropriate reward from assay, timing, specimen, record, or identity error",
+        "Inequity when patients are penalized for structural barriers or inaccessible testing and attendance requirements",
+        "Missed overdose, cardiovascular injury, psychosis, suicidality, infection, pregnancy need, or coexisting substance-use disorder when the target becomes the only focus"
+      ],
+      "prognosis": "CM has the best demonstrated effectiveness among studied interventions for stimulant use disorder and is considered a current standard-of-care behavioral component, but it does not cure every patient and should be integrated with other psychosocial, medical, psychiatric, and recovery supports. Benefits may fade if the program ends without a continuity plan.",
+      "prevention": [
+        "Connect the reinforced target to longer-term recovery goals, meaningful activities, social support, housing, and continuing treatment.",
+        "Plan the transition before incentives end and identify how attendance, recovery behavior, and care access will continue.",
+        "Keep naloxone, overdose education, safer-use counseling, infection prevention, and rapid re-entry to care available after return to use or missed targets."
+      ],
+      "patientEducation": [
+        "The program should tell you in advance exactly what earns a reward and how the target is checked.",
+        "Missing a target should not end essential medical care, medication, dignity, or the chance to continue treatment.",
+        "Ask how prescribed medicines, disputed tests, transportation problems, privacy, taxes or benefit rules, and the end of incentives are handled.",
+        "Seek emergency help for chest pain, stroke symptoms, severe overheating, seizure, psychosis with danger, suicidal intent, or suspected overdose."
+      ],
+      "specialPopulations": [
+        "Pregnant patients need nonpunitive prenatal and substance-use treatment, protection from inappropriate reporting assumptions, and targets that do not block obstetric care.",
+        "Adolescents require developmentally appropriate assent, caregiver and confidentiality planning, safeguarding, and a protocol supported for the age group.",
+        "People with disabilities, rural residence, unstable housing, limited transportation, or work and caregiving duties need accessible verification and attendance options.",
+        "Patients taking prescribed controlled medicines need expert interpretation so legitimate treatment does not trigger an incorrect failed target."
+      ],
+      "nclexTraps": [
+        "CM uses positive reinforcement after a predefined target; it is not punishment after substance use.",
+        "A missed or positive result does not justify withholding emergency care, MOUD, or other indicated treatment.",
+        "Toxicology is objective data with limitations, not proof of character, impairment, or diagnosis.",
+        "For stimulant use disorder, CM should be a primary component but still belongs within comprehensive care."
+      ],
+      "relatedTopics": [
+        "Stimulant use disorder",
+        "Cocaine use disorder",
+        "Methamphetamine use disorder",
+        "Substance use disorders",
+        "Motivational interviewing",
+        "Cognitive behavioral therapy",
+        "Harm reduction",
+        "Urine drug testing",
+        "Opioid overdose",
+        "Stimulant-induced psychosis"
+      ],
+      "sourceKeys": [
+        "asam-aaap-stimulant-cpg-2024",
+        "samhsa-tip35-mi-2019",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. ASAM/AAAP defines CM as tangible reinforcement for treatment-related behavior, identifies it as the most effective studied intervention and current standard of care for stimulant use disorder, and recommends it as a primary component with other psychosocial treatment. SAMHSA TIP 35 supports engagement and autonomy principles that complement but do not replace CM. SAFE-T supports direct suicide assessment and triage independent of reward status.",
+      "provenance": [
+        {
+          "authority": "American Society of Addiction Medicine and American Academy of Addiction Psychiatry",
+          "url": "https://downloads.asam.org/sitefinity-production-blobs/docs/default-source/guidelines/stimulant-gudie/stud_guideline_document_final.pdf?sfvrsn=f7f872f5_1",
+          "documentVersion": "Stimulant Use Disorder CPG; published 2024; accessed 2026-08-15",
+          "fieldsSupported": [
+            "CM definition",
+            "standard-of-care status",
+            "primary treatment component",
+            "combination with psychosocial care",
+            "stimulant assessment",
+            "medical and psychiatric safety"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/tip-35-enhancing-motivation-change-substance-use-disorder-treatment/pep19-02-01-003",
+          "documentVersion": "TIP 35, October 2019; accessed 2026-08-15",
+          "fieldsSupported": [
+            "engagement",
+            "autonomy",
+            "nonconfrontational communication",
+            "substance-use treatment participation"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T, 2024; accessed 2026-08-15",
+          "fieldsSupported": [
+            "suicide assessment",
+            "risk factors",
+            "protective factors",
+            "safety planning",
+            "triage"
+          ]
+        }
+      ],
+      "directTargetId": "concept.contingency-management",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-15.25"
     }
   ]
 };
@@ -30257,7 +37021,7 @@
     else { db.sourceReferences.push({ ...reference }); referenceByKey.set(key, db.sourceReferences[db.sourceReferences.length - 1]); }
   });
   db.reviewedExpansion = { schemaVersion: payload.schemaVersion, builderVersion: payload.builderVersion, domainVersion: payload.domainVersion, sourceSha256: payload.sourceSha256, cardCount: payload.cards.length };
-  db.version = [db.version, "reviewed-pathology-2026-08-15.22"].filter(Boolean).join("+");
+  db.version = [db.version, "reviewed-pathology-2026-08-15.25"].filter(Boolean).join("+");
   window.ANI_PATHOLOGY_DATABASE = db;
   window.ANI_PATHOLOGY_REVIEWED_EXPANSION = payload;
 }());

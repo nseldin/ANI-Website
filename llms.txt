@@ -1,0 +1,18 @@
+# ANI Medical Encyclopedia
+
+> ANI is a public nursing-focused medical encyclopedia with structured disease, medication, laboratory, procedure, clinical-reference, microbiology, and holistic-remedy content.
+
+## Public content
+
+- [ANI home](https://aniapp.ai/): Search and browse the encyclopedia.
+- [Encyclopedia topic index](https://aniapp.ai/encyclopedia/): Browse 4817 public topics.
+- [XML sitemap](https://aniapp.ai/sitemap.xml): Discover every public topic URL.
+- [Medical Updates](https://aniapp.ai/data/medical-updates.json): Public official-publication update feed.
+
+## Content-use signals
+
+Public search indexing and real-time AI retrieval are allowed. AI model training is not permitted. See robots.txt for protected paths and crawler directives.
+
+## Safety
+
+ANI is educational and does not replace patient-specific assessment, diagnosis, prescribing, emergency evaluation, or current local clinical guidance.
