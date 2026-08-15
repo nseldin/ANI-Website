@@ -6,6 +6,7 @@
 
 - [ANI home](https://aniapp.ai/): Search and browse the encyclopedia.
 - [Encyclopedia topic index](https://aniapp.ai/encyclopedia/): Browse 4817 public topics.
+- [Public topic discovery index](https://aniapp.ai/encyclopedia/search-index.json): Discover topics by canonical title, authored alias or abbreviation, runtime search term, category, subcategory, collection, and type without JavaScript.
 - [XML sitemap](https://aniapp.ai/sitemap.xml): Discover every public topic URL.
 - [Medical Updates](https://aniapp.ai/data/medical-updates.json): Public official-publication update feed.
 
