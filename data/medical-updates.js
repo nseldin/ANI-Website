@@ -5,6 +5,27 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "drug-approval",
+      "contentHash": "003eaf8d1d7c8dbb99e22224d6db8b70ed97a1c14b84fd7ee499043589793844",
+      "description": "On June 12, 2026, the U.S. Food and Drug Administration granted accelerated approval to Tzield (teplizumab) for a new indication, to delay the decline of insulin production in pediatric patients ages 8 through 17 years who have been recently diagnosed with Stage 3 type 1 diabetes (T1D).",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/news-events/press-announcements/fda-approves-new-indication-tzield-teplizumab-certain-pediatric-patients-recently-diagnosed-stage-3",
+      "id": "medical-update:fda-press-releases:9af173ef45e814b27b020543",
+      "publishedAt": "2026-06-15T20:44:15.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Teplizumab",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [],
+      "sourceId": "fda-press-releases",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
+      "title": "FDA Approves New Indication for Tzield (teplizumab) for Certain Pediatric Patients with Recently Diagnosed Stage 3 Type 1 Diabetes",
+      "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-new-indication-tzield-teplizumab-certain-pediatric-patients-recently-diagnosed-stage-3"
+    },
+    {
       "category": "guideline-public-health",
       "contentHash": "061f18257f5b9df3d69763824b70aeb45382d54bc9e16c1de9385ed1355952f6",
       "description": "This report describes the risk posed by the current Ebola outbreak to the general U.S. population.",
@@ -1780,9 +1801,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-14T20:04:15.091Z",
+  "generatedAt": "2026-08-15T03:08:02.582Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "951f7a3cba6798bbd078059ccb6f4d30a1bff5aecd68559c0128b9118a45987b",
+      "description": "The Hampton Grocers, Inc. of Montauk, NY is recalling Lacnola Lactation Granola, 8oz, because it has the potential to be contaminated with Salmonella, an organism which can cause serious and sometimes fatal infections in young children, frail or elderly people, and others with weakened immune system",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/hampton-grocers-inc-recalls-its-8-ounce-packages-lacnola-lactation-granola-because-possible-health",
+      "id": "medical-update:fda-recalls:9712e429fe25430597984756",
+      "publishedAt": "2026-08-14T23:07:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-15T03:08:02.582Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "The Hampton Grocers, Inc . Recalls It’s 8 Ounce Packages of “Lacnola Lactation Granola” Because of Possible Health Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/hampton-grocers-inc-recalls-its-8-ounce-packages-lacnola-lactation-granola-because-possible-health"
+    },
     {
       "category": "drug-approval",
       "contentHash": "f949f5f49a82b038875f6c41bf664b62117d65deeaee145161751a48d5c7628f",
@@ -1830,6 +1867,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "title": "FDA grants accelerated approval to iberdomide with daratumumab and hyaluronidase-fihj and dexamethasone for multiple myeloma",
       "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-iberdomide-daratumumab-and-hyaluronidase-fihj-and-dexamethasone"
+    },
+    {
+      "category": "recall",
+      "contentHash": "ea3f5b338cc76cf80be1080deae4f993261c055838f5c58948f00fcb3ee8c610",
+      "description": "August 12, 2026, Grand Central Bakery of Seattle, WA is recalling loaves of Potato Sourdough because they may contain the presence of pieces of metal.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/grand-central-bakery-recalls-potato-sourdough-bread-due-possible-foreign-object",
+      "id": "medical-update:fda-recalls:8d5c668588785b67fbe69457",
+      "publishedAt": "2026-08-13T18:49:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-15T03:08:02.582Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Grand Central Bakery Recalls Potato Sourdough Bread Due to Possible Foreign Object",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/grand-central-bakery-recalls-potato-sourdough-bread-due-possible-foreign-object"
     },
     {
       "category": "drug-approval",
@@ -1985,6 +2038,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Update on Alert: Convenience Kit Issue from Medline",
       "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/update-alert-convenience-kit-issue-medline"
+    },
+    {
+      "category": "recall",
+      "contentHash": "3f209387add20fdf9107dfafb657384938ed22f729cd8a2e5e62a88b22f2bb4a",
+      "description": "HOUSTON, TX (August 11, 2026) – Salata Dressings of Houston, TX, is recalling its Jalapeno Avocado Dressing because it had the potential to be contaminated with Salmonella, an organism which can cause serious and sometimes fatal infections in young children, frail or elderly people, and others with",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/recall-jalapeno-avocado-dressing-because-possible-health-risk",
+      "id": "medical-update:fda-recalls:95a297fba3c07d4822e19225",
+      "publishedAt": "2026-08-11T23:21:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-15T03:08:02.582Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Recall of Jalapeno Avocado Dressing Because of Possible Health Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/recall-jalapeno-avocado-dressing-because-possible-health-risk"
     },
     {
       "category": "recall",
@@ -3461,27 +3530,6 @@
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "title": "Surveillance Summaries: Foodborne Disease Outbreaks Associated with Marine Toxins - Foodborne Disease Outbreak Surveillance System, United States, 2011-2023",
       "url": "https://www.cdc.gov/mmwr/volumes/75/ss/ss7503a1.htm"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "003eaf8d1d7c8dbb99e22224d6db8b70ed97a1c14b84fd7ee499043589793844",
-      "description": "On June 12, 2026, the U.S. Food and Drug Administration granted accelerated approval to Tzield (teplizumab) for a new indication, to delay the decline of insulin production in pediatric patients ages 8 through 17 years who have been recently diagnosed with Stage 3 type 1 diabetes (T1D).",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/news-events/press-announcements/fda-approves-new-indication-tzield-teplizumab-certain-pediatric-patients-recently-diagnosed-stage-3",
-      "id": "medical-update:fda-press-releases:9af173ef45e814b27b020543",
-      "publishedAt": "2026-06-15T20:44:15.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Teplizumab",
-          "collection": "pharmDrugs"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [],
-      "sourceId": "fda-press-releases",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
-      "title": "FDA Approves New Indication for Tzield (teplizumab) for Certain Pediatric Patients with Recently Diagnosed Stage 3 Type 1 Diabetes",
-      "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-new-indication-tzield-teplizumab-certain-pediatric-patients-recently-diagnosed-stage-3"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -3494,7 +3542,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 5,
-      "retrievedAt": "2026-08-14T20:04:15.091Z",
+      "retrievedAt": "2026-08-15T03:08:02.582Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3505,7 +3553,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 6,
-      "retrievedAt": "2026-08-14T20:04:15.091Z",
+      "retrievedAt": "2026-08-15T03:08:02.582Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -3516,7 +3564,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 8,
-      "retrievedAt": "2026-08-14T20:04:15.091Z",
+      "retrievedAt": "2026-08-15T03:08:02.582Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -3527,7 +3575,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-08-14T20:04:15.091Z",
+      "retrievedAt": "2026-08-15T03:08:02.582Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -3538,7 +3586,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-14T20:04:15.091Z",
+      "retrievedAt": "2026-08-15T03:08:02.582Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -3549,7 +3597,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-14T20:04:15.091Z",
+      "retrievedAt": "2026-08-15T03:08:02.582Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -3560,7 +3608,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-08-14T20:04:15.091Z",
+      "retrievedAt": "2026-08-15T03:08:02.582Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -3571,7 +3619,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-14T20:04:15.091Z",
+      "retrievedAt": "2026-08-15T03:08:02.582Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -3582,7 +3630,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-14T20:04:15.091Z",
+      "retrievedAt": "2026-08-15T03:08:02.582Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
