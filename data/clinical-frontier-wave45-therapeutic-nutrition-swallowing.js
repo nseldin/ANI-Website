@@ -290,6 +290,29 @@
     if (![THERAPEUTIC_ID, SWALLOWING_ID].includes(subcategoryId)) {
       throw new Error("Invalid Wave45 Holistic subcategory: " + spec.name);
     }
+    const relatedTopics = unique(spec.relatedTopics || []);
+    const clinicalConnections = Array.isArray(spec.clinicalConnections)
+      ? spec.clinicalConnections.map((connection) => ({
+        topic: String(connection && connection.topic || "").trim(),
+        explanation: String(connection && connection.explanation || "").trim()
+      }))
+      : [];
+    let sections = Array.isArray(spec.sections) ? spec.sections.slice() : [];
+    if (subcategoryId === THERAPEUTIC_ID) {
+      if (!String(spec.whyItMatters || "").trim()) {
+        throw new Error("Therapeutic nutrition card lacks a direct clinical why: " + spec.name);
+      }
+      if (clinicalConnections.length !== relatedTopics.length
+        || clinicalConnections.some((connection) => !connection.topic || !connection.explanation)
+        || clinicalConnections.some((connection, index) => normalize(connection.topic) !== normalize(relatedTopics[index]))) {
+        throw new Error("Therapeutic nutrition connections must explain every related topic in source order: " + spec.name);
+      }
+      sections = sections.filter((section) => normalize(Array.isArray(section) ? section[0] : section && (section.label || section.heading || section.title)) !== "connected topics");
+      sections.push([
+        "Why these topics are connected",
+        clinicalConnections.map((connection) => `${connection.topic}: ${connection.explanation}`)
+      ]);
+    }
     return {
       type: "foundation",
       educationalArticle: true,
@@ -312,7 +335,9 @@
       aliases: unique(spec.aliases || []),
       abbreviations: unique(spec.abbreviations || []),
       commonMisspellings: unique(spec.commonMisspellings || []),
-      relatedTopics: unique(spec.relatedTopics || []),
+      relatedTopics,
+      clinicalConnections,
+      sections,
       tags: unique(["wave45", "holistic", subcategoryId, ...(spec.tags || [])]),
       sourceKeys,
       evidenceNote: "Evidence anchors: " + sourceNoteFor(sourceKeys),
@@ -373,6 +398,7 @@
       abbreviations: ["DASH"],
       summary: "DASH—Dietary Approaches to Stop Hypertension—is a flexible eating pattern that lowers blood-pressure risk by emphasizing vegetables, fruits, whole grains, beans, nuts, fish, poultry, low-fat dairy, and unsaturated plant oils while limiting sodium, saturated fat, sugar-sweetened drinks, and sweets. It is a broad pattern, not a list of forbidden foods.",
       quickAnswer: "DASH teaches both pattern and numbers. NHLBI's common plan uses no more than 2,300 mg sodium/day; a 1,500 mg/day option can lower blood pressure further for selected people. Serving examples shown for 2,000 kcal are examples, not universal prescriptions, and potassium-rich DASH foods may need modification in kidney disease or hyperkalemia.",
+      whyItMatters: "DASH is commonly used to help prevent or treat hypertension and reduce overall cardiovascular risk. Lower sodium plus a food pattern rich in potassium, calcium, magnesium, and fiber supports blood-pressure control, but kidney disease, hyperkalemia, potassium-altering medicines, energy needs, and tolerance can require modification rather than automatic use of every DASH feature.",
       sections: [
         ["Purpose and pattern", "DASH supports prevention and treatment of hypertension and an overall heart-healthy style. It emphasizes minimally processed plant foods, low-fat dairy, beans and nuts, fish and poultry, and vegetable oils; it limits fatty meats, full-fat dairy, tropical oils, sweets, and sugar-sweetened beverages."],
         ["Objective anchors", "NHLBI's standard DASH sodium target is 2,300 mg/day, with a 1,500 mg/day pattern that can lower blood pressure further. NHLBI's sample servings—such as 4-5 vegetable and 4-5 fruit servings/day—are based on a 2,000-kcal plan and must be adjusted for energy needs."],
@@ -382,6 +408,12 @@
         ["Connected topics", "Connect DASH Diet with Hypertension, Low-Sodium Diet, Heart-Healthy Nutrition, Chronic kidney disease, and medication-related potassium monitoring."]
       ],
       relatedTopics: ["Hypertension", "Low-Sodium Diet", "Heart-Healthy Nutrition", "Chronic kidney disease"],
+      clinicalConnections: [
+        { topic: "Hypertension", explanation: "DASH is used most directly for high blood pressure because its overall nutrient pattern and lower sodium intake can reduce blood pressure; the sodium level and medication plan still remain individualized." },
+        { topic: "Low-Sodium Diet", explanation: "Sodium reduction is one part of DASH, but a condition-specific low-sodium order may use a different target and does not automatically require the full DASH pattern." },
+        { topic: "Heart-Healthy Nutrition", explanation: "DASH is one heart-healthy pattern because it emphasizes minimally processed plant foods, lean proteins, and unsaturated fats while limiting saturated fat and added sugar; it complements rather than replaces other cardiovascular treatment." },
+        { topic: "Chronic kidney disease", explanation: "Blood-pressure and sodium control can support CKD management, but potassium-rich foods, protein, phosphorus, and fluid may need stage-, laboratory-, and dialysis-specific modification, so standard DASH is not universal in CKD." }
+      ],
       tags: ["DASH", "hypertension", "blood pressure", "2300 mg sodium", "1500 mg sodium", "patient teaching"],
       sourceKeys: ["w45-nhlbi-dash", "w45-nhlbi-dash-living", "w45-kdigo-ckd-2024"]
     }),
@@ -395,6 +427,7 @@
       searchTerms: ["low sodium"],
       summary: "A low-sodium diet reduces sodium intake to support blood-pressure and fluid-volume management in selected hypertension, heart-failure, kidney, and liver-disease plans. Sodium is present in table salt, but much intake comes from processed, prepared, restaurant, cured, pickled, and packaged foods.",
       quickAnswer: "The exact target belongs to the condition-specific plan. Common adult anchors include DASH's 2,300 mg/day and KDIGO's below 2,000 mg/day for many adults with CKD; these are not interchangeable universal orders. On labels, 'low sodium' means 140 mg or less per serving, while 'reduced sodium' means at least 25% less than a reference food and may still be high.",
+      whyItMatters: "A low-sodium diet is ordered when excess sodium can worsen high blood pressure, thirst, or fluid retention—commonly in selected hypertension, symptomatic heart failure, CKD or dialysis, and cirrhotic ascites plans. Lower sodium reduces water retention and can make blood-pressure and congestion management easier, but the target must match the condition; sodium-wasting states, major losses, poor intake, pregnancy, age, and medicines can make aggressive restriction inappropriate.",
       sections: [
         ["Purpose and indications", "Reducing excess sodium can lower blood pressure and reduce thirst or fluid retention in selected patients. The benefit, target, and urgency differ among uncomplicated hypertension, heart failure, CKD, dialysis, cirrhotic ascites, sodium-wasting disorders, pregnancy, and pediatric care."],
         ["Objective label language", "Per serving, sodium free means under 5 mg, very low sodium means 35 mg or less, low sodium means 140 mg or less, and reduced sodium means at least 25% less than the reference product. 'No salt added' does not guarantee a sodium-free food. Always compare serving size and milligrams per serving."],
@@ -405,6 +438,14 @@
         ["Connected topics", "Connect Low-Sodium Diet with DASH Diet, Hypertension, Heart failure, Renal Nutrition, Fluid Restriction, and cirrhotic ascites."]
       ],
       relatedTopics: ["DASH Diet", "Hypertension", "Heart failure", "Renal Nutrition", "Fluid Restriction", "Cirrhosis"],
+      clinicalConnections: [
+        { topic: "DASH Diet", explanation: "DASH includes sodium reduction within a broader blood-pressure-lowering food pattern; a low-sodium order can be used without prescribing every DASH feature, and its numeric target may differ." },
+        { topic: "Hypertension", explanation: "Reducing excess sodium can lower blood pressure and improve the response to the overall treatment plan, although the exact target depends on the patient's risk, intake, medicines, and tolerance." },
+        { topic: "Heart failure", explanation: "Avoiding excessive sodium may reduce thirst and fluid retention in symptomatic heart failure, helping congestion management; very strict sodium or fluid limits are not automatic for every patient." },
+        { topic: "Renal Nutrition", explanation: "Sodium reduction is often the first renal-nutrition adjustment because it can support blood-pressure and edema control, while potassium, phosphorus, protein, and fluid remain separate laboratory- and stage-dependent decisions." },
+        { topic: "Fluid Restriction", explanation: "Sodium and fluid limits may be paired when volume overload or dilutional hyponatremia is clinically important because sodium increases thirst and retained water, but one restriction does not automatically require the other." },
+        { topic: "Cirrhosis", explanation: "Moderate sodium restriction is commonly used when cirrhosis causes ascites or edema to limit additional water retention; fluid restriction is usually reserved for selected circumstances such as clinically important hyponatremia." }
+      ],
       tags: ["sodium restriction", "salt restriction", "label reading", "140 mg", "2300 mg", "2000 mg", "fluid balance"],
       sourceKeys: ["w45-nhlbi-dash-living", "w45-aha-food-claims", "w45-kdigo-ckd-2024", "w45-aha-hf-2022", "w45-aasld-ascites"]
     }),
@@ -414,6 +455,7 @@
       aliases: ["heart healthy diet", "heart-healthy diet", "cardiac diet", "cardiovascular diet", "cardiac nutrition"],
       summary: "Heart-healthy nutrition is an overall eating pattern for cardiovascular risk reduction: vegetables and fruits, whole grains, beans, nuts, fish, lean or plant proteins, low-fat dairy when used, and unsaturated plant oils replace many refined, highly processed, sodium-rich, added-sugar, saturated-fat, and trans-fat foods.",
       quickAnswer: "Teach substitutions, not a vague 'cardiac diet': beans or fish in place of processed meat, whole grains in place of refined grains, and liquid plant oils in place of butter or tropical oils. The exact sodium, calorie, carbohydrate, potassium, and fluid targets still depend on the patient's diseases and treatment plan.",
+      whyItMatters: "Heart-healthy nutrition is used to prevent or manage cardiovascular disease and major risk factors such as hypertension, dyslipidemia, and type 2 diabetes. Replacing saturated and trans fats, excess sodium, added sugars, and highly processed foods with unsaturated fats and fiber-rich foods supports lipid, blood-pressure, glucose, and weight goals; it is not one standardized 'cardiac diet,' and kidney, heart-failure, diabetes, swallowing, or malnutrition needs can change the plan.",
       sections: [
         ["Clinical purpose", "The pattern supports blood-pressure, lipid, glucose, weight, and vascular-risk management. It complements medication and activity plans rather than replacing them."],
         ["Foods emphasized", "Use a wide variety of vegetables and fruits, whole grains, beans, peas, lentils, nuts, fish and seafood, lean unprocessed poultry or meat when chosen, low-fat dairy, and non-tropical liquid plant oils."],
@@ -423,6 +465,14 @@
         ["Connected topics", "Connect Heart-Healthy Nutrition with DASH Diet, Low-Sodium Diet, Mediterranean Diet, Hypertension, diabetes, dyslipidemia, and heart failure."]
       ],
       relatedTopics: ["DASH Diet", "Low-Sodium Diet", "Mediterranean Diet", "Hypertension", "Heart failure", "Type 2 diabetes mellitus"],
+      clinicalConnections: [
+        { topic: "DASH Diet", explanation: "DASH is a specific heart-healthy pattern with strong blood-pressure emphasis; it can be chosen when hypertension is a major goal but still needs patient-specific modification." },
+        { topic: "Low-Sodium Diet", explanation: "Lower sodium supports blood-pressure and selected congestion goals within heart-healthy care, but a formal sodium restriction is condition-specific rather than a required feature for every person." },
+        { topic: "Mediterranean Diet", explanation: "Mediterranean-style eating is another heart-healthy pattern that uses plant foods, fish, and unsaturated oils; it is an adaptable option, not the only cardiovascular diet." },
+        { topic: "Hypertension", explanation: "Reducing sodium and improving the overall food pattern can help lower blood pressure alongside medicines, activity, and weight management when appropriate." },
+        { topic: "Heart failure", explanation: "Heart-healthy choices can address ischemic risk and hypertension in heart failure, while sodium, fluid, calorie, and potassium targets must follow symptoms, medicines, kidney function, and the individualized plan." },
+        { topic: "Type 2 diabetes mellitus", explanation: "Minimally processed, fiber-rich foods and less added sugar support glucose and cardiovascular-risk management in type 2 diabetes, but carbohydrate timing and medication safety still require a diabetes-specific plan." }
+      ],
       tags: ["cardiac diet", "cardiovascular risk", "unsaturated fat", "saturated fat", "whole grains", "plant protein"],
       sourceKeys: ["w45-aha-heart-diet", "w45-nhlbi-dash"]
     }),
@@ -432,6 +482,7 @@
       aliases: ["Mediterranean eating pattern", "Mediterranean-style diet", "Mediterranean nutrition"],
       summary: "The Mediterranean diet is not one fixed menu. It is a family of culturally adaptable, plant-forward patterns that emphasize vegetables, fruits, whole grains, beans, nuts, seeds, and olive or other unsaturated plant oils, with fish and seafood commonly included and less processed meat, refined food, added sugar, and saturated fat.",
       quickAnswer: "Teach the shared pattern rather than claiming one authentic plate or a cure. It can support cardiovascular and metabolic health, but portions, energy needs, allergies, diabetes therapy, kidney function, and food access still individualize the plan. Wine is not required, and a person who does not drink should not start.",
+      whyItMatters: "A Mediterranean-style pattern is used as one evidence-based option for long-term cardiovascular risk reduction and can support metabolic health. Its benefit comes from the overall pattern—more minimally processed plant foods, fish, and unsaturated fats and less processed meat, refined food, added sugar, and saturated fat—not from one food or alcohol; kidney disease, diabetes treatment, allergies, energy needs, and access can require adaptation.",
       sections: [
         ["Overall pattern", "Meals center on minimally processed plant foods, whole grains, legumes, nuts, seeds, vegetables, fruits, and unsaturated oils. Fish and seafood are common; poultry, eggs, and dairy vary; red and processed meats and sweets are less frequent."],
         ["Clinical relevance", "The pattern aligns with cardiovascular risk reduction and can be adapted for metabolic goals. Benefit reflects the whole pattern and long-term adherence, not olive oil or one food in isolation."],
@@ -440,6 +491,11 @@
         ["Connected topics", "Connect Mediterranean Diet with Heart-Healthy Nutrition, Low-Sodium Diet, diabetes nutrition, and cardiovascular prevention."]
       ],
       relatedTopics: ["Heart-Healthy Nutrition", "Low-Sodium Diet", "Consistent-Carbohydrate / Diabetes Nutrition"],
+      clinicalConnections: [
+        { topic: "Heart-Healthy Nutrition", explanation: "Mediterranean-style eating is one practical heart-healthy pattern because it favors fiber-rich plant foods and unsaturated fats; it is an option rather than a mandatory or curative menu." },
+        { topic: "Low-Sodium Diet", explanation: "A Mediterranean pattern can be prepared with less sodium, but olives, cheese, cured foods, and restaurant meals may still be salty, so a prescribed sodium target needs separate label and portion planning." },
+        { topic: "Consistent-Carbohydrate / Diabetes Nutrition", explanation: "Whole grains, legumes, vegetables, and minimally processed foods can support metabolic goals, while carbohydrate amount, meal timing, and medicines must still be coordinated for the individual with diabetes." }
+      ],
       tags: ["Mediterranean", "plant forward", "olive oil", "legumes", "fish", "cardiovascular prevention"],
       sourceKeys: ["w45-aha-mediterranean", "w45-aha-heart-diet"]
     }),
@@ -449,6 +505,7 @@
       aliases: ["diabetic diet", "diabetes diet", "consistent carbohydrate", "consistent-carbohydrate diet", "carb controlled diet", "carbohydrate-controlled diet", "calculated carbohydrate diet", "diabetes meal plan"],
       summary: "Diabetes nutrition coordinates carbohydrate amount and quality, meal timing, medicines, activity, and the person's metabolic and nutrition goals. A consistent-carbohydrate plan delivers a reasonably predictable carbohydrate amount at corresponding meals; it is one useful strategy, especially with fixed mealtime insulin, not a universal diet for every person with diabetes.",
       quickAnswer: "No single 'diabetic diet' fits everyone. Use an individualized plan rich in nonstarchy vegetables, whole fruit, legumes, whole grains, nuts and seeds, lean proteins, and minimally processed foods. ADA anchors include at least 14 g fiber per 1,000 kcal and, when appropriate, sodium below 2,300 mg/day. Match prandial insulin to actual carbohydrate delivery and respond safely to delayed or missed meals.",
+      whyItMatters: "A consistent-carbohydrate plan is used when diabetes treatment benefits from predictable carbohydrate delivery, especially with fixed mealtime insulin or insulin-secretagogue therapy and in structured inpatient meals. Coordinating carbohydrate amount and timing with medication helps reduce severe glucose swings and hypoglycemia from a delayed, missed, or smaller meal; it is not a universal diet, and carbohydrate-ratio therapy, pregnancy, CKD, gastroparesis, nutrition status, and patient goals can require a different approach.",
       sections: [
         ["Carbohydrate relationship", "Carbohydrate has the most direct meal-related glucose effect, but protein, fat, fiber, gastric emptying, illness, activity, and medicines alter timing and magnitude. Consistency means predictable amounts and timing when the treatment plan needs predictability; it does not mean zero carbohydrate."],
         ["Meal planning", "Use plate, carbohydrate-counting, exchange, or other culturally acceptable methods chosen with the patient and dietitian. Favor nutrient-dense carbohydrates and pair them with protein, healthy fat, or fiber when appropriate. The goal may be stable intake, weight change, cardiovascular risk reduction, kidney protection, or prevention of malnutrition."],
@@ -460,6 +517,14 @@
         ["Connected topics", "Connect diabetes nutrition with Type 1 diabetes mellitus, Type 2 diabetes mellitus, hypoglycemia, insulin therapy, gastroparesis, CKD, NPO, enteral nutrition, and PN."]
       ],
       relatedTopics: ["Type 1 diabetes mellitus", "Type 2 diabetes mellitus", "Hypoglycemia", "NPO — Nothing by Mouth", "Enteral Nutrition / Tube Feeding", "Parenteral Nutrition (PN/TPN)"],
+      clinicalConnections: [
+        { topic: "Type 1 diabetes mellitus", explanation: "Meal carbohydrate must be coordinated with prandial insulin to prevent marked hyperglycemia or hypoglycemia; people using carbohydrate-to-insulin ratios may vary intake rather than follow fixed carbohydrate amounts." },
+        { topic: "Type 2 diabetes mellitus", explanation: "Carbohydrate quality, portions, and timing can support glucose and cardiovascular goals, but the plan changes with medicines, weight or nutrition goals, kidney function, and food access." },
+        { topic: "Hypoglycemia", explanation: "A delayed, refused, or smaller meal after insulin or an insulin secretagogue can cause hypoglycemia, so nurses coordinate tray delivery, actual intake, glucose, and medication instead of relying on a diet label alone." },
+        { topic: "NPO — Nothing by Mouth", explanation: "Stopping oral carbohydrate changes the safety of insulin and other glucose-lowering medicines; NPO requires an explicit glucose-monitoring, medication, and alternate-nutrition plan rather than automatic dose assumptions." },
+        { topic: "Enteral Nutrition / Tube Feeding", explanation: "When enteral formulas deliver carbohydrate continuously or intermittently, insulin timing must match the feeding schedule and an interruption plan is needed to reduce hypoglycemia risk." },
+        { topic: "Parenteral Nutrition (PN/TPN)", explanation: "PN delivers intravenous dextrose that can raise glucose and may require scheduled monitoring and insulin; abrupt interruption can also change glucose delivery, so the institution's plan controls." }
+      ],
       tags: ["diabetes nutrition", "consistent carbohydrate", "carbohydrate counting", "fiber", "prandial insulin", "hypoglycemia"],
       sourceKeys: ["w45-ada-nutrition-2026", "w45-ada-hospital-2026"]
     })
@@ -473,6 +538,7 @@
       abbreviations: ["NPO"],
       summary: "NPO—nil per os, or nothing by mouth—is an order to withhold oral intake for a defined clinical reason such as anesthesia preparation, unsafe swallowing, GI obstruction or bleeding, or a procedure. The exact order determines what is withheld; NPO alone does not automatically answer whether oral medicines, sips, ice chips, gum, tube feeds, tube medicines, or oral care are permitted.",
       quickAnswer: "Verify the indication, start and stop time, what counts, medication and alternate-route plan, glucose and IV-fluid needs, and restart criteria. Do not independently give or withhold time-critical medication based only on the letters NPO. Provide safe oral care and explain the reason and expected reassessment.",
+      whyItMatters: "NPO is used temporarily when eating or drinking could increase aspiration, anesthesia, procedure, bleeding, obstruction, or diagnostic risk. Withholding oral intake protects the airway or gastrointestinal plan while the underlying risk is assessed or treated, but NPO does not by itself define medication, ice, water, tube-feeding, or oral-care instructions and can cause dehydration, hypoglycemia, and malnutrition if continued without reassessment and alternate support.",
       sections: [
         ["Meaning and common reasons", "NPO protects a patient when oral intake could increase aspiration, procedural, surgical, bleeding, obstruction, or diagnostic risk. The order should be tied to a reason and reassessment plan rather than continued by habit."],
         ["What the order includes", "Clarify food, clear liquids, water, ice chips, gum, candy, oral medicines, enteral formula, tube water and medicine, and oral-care products. Different orders and protocols define these differently; do not infer permission from a generic fasting handout."],
@@ -484,6 +550,15 @@
         ["Connected topics", "Connect NPO with aspiration prevention, Dysphagia, post-stroke dysphagia screening, anesthesia fasting, bowel obstruction, enteral nutrition, parenteral nutrition, and diabetes medication timing."]
       ],
       relatedTopics: ["Aspiration prevention", "Dysphagia", "Post-stroke dysphagia screening", "Bowel obstruction", "Enteral Nutrition / Tube Feeding", "Parenteral Nutrition (PN/TPN)", "Consistent-Carbohydrate / Diabetes Nutrition"],
+      clinicalConnections: [
+        { topic: "Aspiration prevention", explanation: "Oral intake may be withheld when alertness, airway protection, or a procedure makes aspiration risk unacceptable, but NPO does not eliminate aspiration from saliva or reflux and does not replace oral care." },
+        { topic: "Dysphagia", explanation: "NPO can protect a patient with suspected unsafe swallowing until comprehensive assessment establishes a safe route, texture, liquid, and medication plan; dysphagia does not automatically mean permanent NPO." },
+        { topic: "Post-stroke dysphagia screening", explanation: "After acute stroke, food, fluid, and oral medication are withheld until the validated screening pathway establishes safety or triggers specialist assessment; the screen identifies risk rather than diagnosing the exact impairment." },
+        { topic: "Bowel obstruction", explanation: "NPO may reduce oral loading while obstruction is evaluated and treated, but it does not relieve ischemia, strangulation, perforation, or the mechanical blockage by itself." },
+        { topic: "Enteral Nutrition / Tube Feeding", explanation: "When swallowing is unsafe but the GI tract is usable, enteral nutrition can meet needs through a prescribed tube route; an NPO order does not automatically mean tube feeding or tube medicines must stop." },
+        { topic: "Parenteral Nutrition (PN/TPN)", explanation: "PN may be considered when a prolonged inability to use oral or enteral routes prevents adequate nutrition, but brief NPO status alone is not an indication for central-line nutrition." },
+        { topic: "Consistent-Carbohydrate / Diabetes Nutrition", explanation: "Removing oral carbohydrate changes insulin and secretagogue safety, so NPO requires glucose monitoring and an explicit medicine, IV-fluid, and nutrition plan rather than automatic continuation or withholding." }
+      ],
       tags: ["NPO", "nil per os", "nothing by mouth", "medication safety", "oral care", "procedure fasting"],
       sourceKeys: ["w45-asa-fasting", "w45-asha-swallow-screening", "w45-aha-stroke-screen", "w45-cdc-oral-care-pneumonia"]
     }),
@@ -494,6 +569,7 @@
       abbreviations: ["EN"],
       summary: "Enteral nutrition delivers formula through the gastrointestinal tract when oral intake is inadequate or unsafe but the stomach or intestine is functional and accessible. Routes include nasogastric or orogastric, gastrostomy, and postpyloric or jejunal access; route and access duration are not interchangeable.",
       quickAnswer: "Verify the patient, formula, route, access, tube position according to device and facility policy, rate, water plan, and compatibility before use. Keep the prescribed positioning, monitor tolerance and glucose/electrolytes, protect connections, and remember that a feeding tube does not eliminate aspiration because saliva or refluxed gastric contents can still enter the airway.",
+      whyItMatters: "Enteral nutrition is used when oral intake is unsafe or cannot meet needs but the stomach or intestine is functional and accessible—commonly with dysphagia, neurologic illness, critical illness, or prolonged poor intake. Delivering formula through the GI tract supplies energy, protein, fluid, and micronutrients while avoiding some catheter risks of PN, but route, aspiration risk, hemodynamic stability, obstruction or ischemia, refeeding risk, and goals of care determine whether and how it is appropriate.",
       sections: [
         ["Indications and routes", "EN is considered when intake is inadequate or swallowing is unsafe and the GI tract can be used. Gastric access may be nasal/oral or through a gastrostomy; postpyloric access reaches duodenum or jejunum. Short- and long-term choices depend on prognosis, anatomy, aspiration risk, goals, and informed consent."],
         ["Before starting or using", "Confirm the complete order and route, assess abdomen and hemodynamic stability, identify refeeding risk, and verify initial and ongoing tube position with the approved device-specific method. Do not use air insufflation and auscultation as the sole proof of placement."],
@@ -505,6 +581,14 @@
         ["Connected topics", "Connect EN with Dysphagia, Aspiration prevention, Safe Feeding, NPO, refeeding syndrome, diabetes nutrition, and parenteral nutrition."]
       ],
       relatedTopics: ["Dysphagia", "Aspiration prevention", "Safe Feeding and Mealtime Assistance", "NPO — Nothing by Mouth", "Refeeding syndrome", "Parenteral Nutrition (PN/TPN)"],
+      clinicalConnections: [
+        { topic: "Dysphagia", explanation: "A feeding tube can provide nutrition when swallowing is unsafe or inadequate while rehabilitation and goals are assessed; it does not treat the swallowing disorder or automatically prevent aspiration." },
+        { topic: "Aspiration prevention", explanation: "Positioning, tube-position checks, secretion and reflux assessment, and tolerance monitoring reduce avoidable risk, but saliva or refluxed contents can still be aspirated despite a feeding tube." },
+        { topic: "Safe Feeding and Mealtime Assistance", explanation: "Some patients receive both tube nutrition and carefully prescribed oral intake, so mealtime assistance must follow the current route and swallowing plan rather than assuming tube access means permanent NPO." },
+        { topic: "NPO — Nothing by Mouth", explanation: "Enteral feeding may support a patient who cannot safely take anything orally, but whether formula, water flushes, or tube medicines continue depends on the exact NPO indication and order." },
+        { topic: "Refeeding syndrome", explanation: "Starting carbohydrate-containing formula in a severely malnourished patient can trigger dangerous phosphorus, potassium, magnesium, fluid, and thiamine-related shifts, so risk-based initiation and monitoring are required." },
+        { topic: "Parenteral Nutrition (PN/TPN)", explanation: "Enteral nutrition is generally used when the GI tract is functional and safely accessible; PN is reserved for situations in which oral and enteral routes are inadequate, unsafe, inaccessible, or nonfunctional." }
+      ],
       tags: ["enteral nutrition", "tube feeding", "feeding tube", "aspiration", "placement", "refeeding"],
       sourceKeys: ["w45-aspen-en-safe", "w45-nice-nutrition-support", "w45-asha-adult-dysphagia"]
     }),
@@ -515,6 +599,7 @@
       abbreviations: ["PN", "TPN"],
       summary: "Parenteral nutrition supplies amino acids, dextrose, lipids, electrolytes, vitamins, minerals, and fluid intravenously when oral and enteral routes are inadequate, unsafe, inaccessible, or the gastrointestinal tract is nonfunctional. Central PN can deliver more concentrated solutions; peripheral PN has osmolarity and duration limitations.",
       quickAnswer: "PN is high-alert nutrition therapy, not simply an IV bag. Verify the formulation, patient, access and lumen, rate, tubing/filter policy, compatibility, glucose plan, and daily laboratory and fluid goals. Major risks include central-line bloodstream infection, thrombosis, glucose and electrolyte disturbance, refeeding syndrome, fluid imbalance, hypertriglyceridemia, and liver complications.",
+      whyItMatters: "Parenteral nutrition is used when oral and enteral routes cannot safely or adequately meet needs because the GI tract is inaccessible, nonfunctional, or severely intolerant—for example in selected obstruction, ischemia, severe malabsorption, or high-output fistula. It supplies nutrients directly into the bloodstream and can prevent progressive undernutrition, but central-line infection, thrombosis, glucose, electrolyte, fluid, triglyceride, and liver risks make daily reassessment and transition toward the gut important whenever feasible.",
       sections: [
         ["Indications and route", "Use PN when needs cannot be met safely through the GI tract, such as selected obstruction, ischemia, severe malabsorption, high-output fistula, or prolonged intolerance. The team should reassess daily whether oral or enteral nutrition can begin or advance."],
         ["Safe administration", "Use standardized prescribing and independent checks, confirm central versus peripheral access and dedicated-lumen policy, trace the line from bag to patient, use the ordered pump and filter, protect asepsis, and avoid unreviewed admixtures or piggyback compatibility."],
@@ -526,6 +611,14 @@
         ["Connected topics", "Connect PN with NPO, enteral nutrition, refeeding syndrome, central venous access, bloodstream infection prevention, glucose monitoring, and electrolyte replacement."]
       ],
       relatedTopics: ["NPO — Nothing by Mouth", "Enteral Nutrition / Tube Feeding", "Refeeding syndrome", "Central venous catheter", "Bedside capillary glucose testing", "Hypophosphatemia"],
+      clinicalConnections: [
+        { topic: "NPO — Nothing by Mouth", explanation: "Prolonged inability to use oral intake may contribute to a PN indication, but short NPO intervals do not automatically justify PN and the expected duration and GI function must be assessed." },
+        { topic: "Enteral Nutrition / Tube Feeding", explanation: "Enteral nutrition is preferred when the GI tract is functional and safely accessible; PN is used when that route remains inadequate, unsafe, inaccessible, or nonfunctional and should be reduced as enteral intake becomes adequate." },
+        { topic: "Refeeding syndrome", explanation: "Dextrose and calories in PN can trigger intracellular electrolyte shifts in a severely malnourished patient, so risk identification, cautious advancement, thiamine, and phosphorus, potassium, magnesium, glucose, and fluid monitoring follow the prescribed pathway." },
+        { topic: "Central venous catheter", explanation: "Concentrated PN commonly requires central venous access, which enables delivery but creates bloodstream-infection, thrombosis, occlusion, and line-placement risks requiring dedicated aseptic care." },
+        { topic: "Bedside capillary glucose testing", explanation: "PN dextrose can cause hyperglycemia and insulin may be part of the plan; scheduled glucose checks and an interruption protocol help detect both high and low glucose, with frequency based on stability." },
+        { topic: "Hypophosphatemia", explanation: "A falling phosphorus level can be a key sign of refeeding-related intracellular shift and can impair muscle, respiratory, and cardiac function, but interpretation and replacement must include the complete electrolyte and clinical picture." }
+      ],
       tags: ["parenteral nutrition", "TPN", "central line", "glucose", "electrolytes", "refeeding syndrome"],
       sourceKeys: ["w45-aspen-pn-overview", "w45-aspen-pn-safe", "w45-nice-nutrition-support"]
     })
@@ -602,6 +695,7 @@
       abbreviations: [],
       summary: "A clear liquid diet provides transparent liquids without pulp or solid particles and leaves little gastrointestinal residue. Gelatin and ice pops are included because they become liquid when consumed, but room-temperature melting alone is a broader full-liquid concept. The diet can support hydration and limited carbohydrate for short procedural, postoperative, or GI intervals, but it is nutritionally incomplete and is not the same as a dysphagia-safe liquid consistency.",
       quickAnswer: "Examples may include water, clear broth, pulp-free juice, plain gelatin, ice pops without milk or solids, and clear tea or coffee if permitted. The exact order may prohibit red, purple, blue, carbonated, caffeinated, or other items for a particular procedure. 'Clear' describes GI diet composition, not IDDSI thickness or airway safety.",
+      whyItMatters: "A clear liquid diet is used for short, defined intervals such as selected bowel preparation, peri-procedure instructions, early postoperative progression, or recovery from acute nausea and vomiting. Transparent, low-residue liquids help provide some fluid and carbohydrate while minimizing solid material in the GI tract, but the diet is nutritionally incomplete, does not treat the underlying disorder, and is inappropriate as prolonged nutrition or as an assumed dysphagia-safe plan.",
       sections: [
         ["Clinical use", "Common uses include selected bowel preparation, short postoperative progression, acute nausea or vomiting recovery, or a temporary step when solids are not tolerated. Follow the procedure or condition-specific instructions rather than a generic list."],
         ["Included and excluded examples", "Permitted examples are transparent liquids without pulp or solid particles. Milk, cream, smoothies, opaque supplements, pudding, and soups containing solids are not clear liquids. Color and ingredient restrictions vary by procedure."],
@@ -611,6 +705,12 @@
         ["Connected topics", "Connect Clear Liquid Diet with Full Liquid Diet, NPO, bowel preparation, postoperative nutrition, diabetes medication timing, and IDDSI Level 0 Thin."]
       ],
       relatedTopics: ["Full Liquid Diet", "NPO — Nothing by Mouth", "IDDSI Level 0 — Thin", "Consistent-Carbohydrate / Diabetes Nutrition"],
+      clinicalConnections: [
+        { topic: "Full Liquid Diet", explanation: "Full liquids add milk-based, strained, or smooth foods and may be the next temporary progression when GI or oral tolerance improves; progression follows the specific procedure, symptoms, and nutrition plan rather than a fixed schedule." },
+        { topic: "NPO — Nothing by Mouth", explanation: "Clear liquids may be permitted during part of selected elective fasting pathways, but an active NPO order overrides a generic clear-liquid list and the procedure team's timing and ingredient rules control." },
+        { topic: "IDDSI Level 0 — Thin", explanation: "Many clear liquids such as water or broth are Level 0 Thin, but 'clear' describes GI composition rather than flow; a patient with dysphagia may need a tested modified consistency instead." },
+        { topic: "Consistent-Carbohydrate / Diabetes Nutrition", explanation: "Juice, gelatin, and sweetened beverages can deliver substantial carbohydrate, so glucose and medication plans must be coordinated during a clear-liquid interval; sugar-free choices are not automatically correct if carbohydrate is needed." }
+      ],
       tags: ["clear liquids", "procedural diet", "short term", "nutritionally incomplete", "GI progression"],
       sourceKeys: ["w45-medlineplus-clear-liquid", "w45-asa-fasting", "w45-iddsi-framework-v2"]
     }),
@@ -621,6 +721,7 @@
       abbreviations: [],
       summary: "A full liquid diet includes clear liquids plus foods that are liquid or become liquid at room temperature, such as milk, strained cream soup, yogurt without pieces, pudding, custard, and prescribed nutrition drinks. It can bridge a short period when chewing or solids are limited, but it may not meet fiber or all nutrient needs without planning.",
       quickAnswer: "Full liquid is broader and generally more nourishing than clear liquid, but it is not automatically appropriate for dysphagia. Mixed viscosity, melting foods, thin milk, and supplements must still match the prescribed IDDSI level and swallowing plan.",
+      whyItMatters: "A full liquid diet is used temporarily when a patient can swallow and digest liquids but cannot yet chew or tolerate solid foods, such as after selected oral or GI procedures or during short recovery. Its broader liquids can provide more energy and protein than clear liquids while reducing chewing and solid-food demands, but it may still be inadequate in fiber or micronutrients, is not automatically safe for dysphagia, and needs fortification or another route if prolonged intake cannot meet needs.",
       sections: [
         ["Clinical use", "It may be used temporarily after selected procedures, during oral or GI recovery, or when a patient cannot chew solids. The diagnosis, tolerance, nutrition needs, and expected duration determine whether it is appropriate."],
         ["Examples", "Possible items include milk, smooth yogurt, pudding, custard, strained soup, smooth hot cereal, ice cream, and liquid supplements. The exact institution list and restrictions determine whether seeds, pulp, pieces, or melting foods are allowed."],
@@ -629,6 +730,11 @@
         ["Connected topics", "Connect Full Liquid Diet with Clear Liquid Diet, NPO, oral or GI surgery recovery, nutrition supplements, and IDDSI liquid consistency."]
       ],
       relatedTopics: ["Clear Liquid Diet", "NPO — Nothing by Mouth", "Liquid Consistency and Thickened Liquids"],
+      clinicalConnections: [
+        { topic: "Clear Liquid Diet", explanation: "Full liquids include clear liquids plus opaque or smooth foods and can serve as a later progression when clinically tolerated; a patient may instead advance differently based on the procedure and GI function." },
+        { topic: "NPO — Nothing by Mouth", explanation: "A patient remains NPO until the responsible team authorizes intake, then full liquids may be one temporary option; the diet name does not itself cancel fasting, obstruction, or aspiration precautions." },
+        { topic: "Liquid Consistency and Thickened Liquids", explanation: "Full-liquid composition does not define flow: milk, melted ice cream, pudding, and supplements have different consistencies, so dysphagia care requires the exact tested IDDSI plan rather than the full-liquid label." }
+      ],
       tags: ["full liquids", "diet progression", "oral surgery", "nutrition supplement", "dysphagia distinction"],
       sourceKeys: ["w45-medlineplus-full-liquid", "w45-iddsi-framework-v2"]
     }),
@@ -639,6 +745,7 @@
       searchTerms: ["GI soft low residue"],
       summary: "Low-fiber nutrition temporarily reduces poorly digested plant material and stool bulk for selected bowel flares, narrowing, obstruction-risk plans, or postoperative intervals. 'Low residue' is older, variably defined language and is not perfectly identical to a measured low-fiber prescription.",
       quickAnswer: "Use the indication, duration, and progression plan. Refined grains, tender proteins, and selected cooked or canned produce without skins or seeds may be used; whole grains, nuts, seeds, legumes, raw fibrous produce, and tough skins may be limited. Do not prescribe lifelong low fiber for every person with IBD or diverticular disease.",
+      whyItMatters: "Low-fiber nutrition is used mainly as a temporary bowel-rest strategy during selected Crohn disease or ulcerative colitis flares, acute diverticulitis, postoperative bowel healing, or a clinician-directed stricture or obstruction-risk plan. Restricting poorly digested plant material reduces stool bulk and the mechanical workload passing through an inflamed, narrowed, or healing bowel; it does not treat inflammation, infection, ischemia, perforation, or obstruction itself, and fiber should be reassessed and usually advanced when the acute reason resolves unless a persistent narrowing requires a longer plan.",
       sections: [
         ["Why it is used", "Reducing fiber may reduce stool volume and mechanical workload during selected acute GI conditions or healing. Some patient instructions operationalize a low-fiber interval as about 10-15 g/day, but the current order and clinical indication control; 'low residue' remains variably defined. It does not treat infection, ischemia, perforation, or obstruction by itself."],
         ["Food examples", "Plans often favor white bread or rice, refined cereals, tender meats or eggs, smooth nut-free products if allowed, and cooked or canned produce without skins or seeds. Exact tolerated foods vary by diagnosis and institutional definition."],
@@ -647,6 +754,13 @@
         ["Connected topics", "Connect Low-Fiber Nutrition with bowel obstruction, selected Crohn disease or ulcerative colitis flares, diverticulitis, postoperative bowel care, and High-Fiber Nutrition."]
       ],
       relatedTopics: ["Bowel obstruction", "Crohn disease", "Ulcerative colitis", "Diverticulitis", "High-Fiber Nutrition"],
+      clinicalConnections: [
+        { topic: "Bowel obstruction", explanation: "Reducing bulky residue may be part of a clinician-directed plan for partial narrowing or after treatment, but suspected complete obstruction, ischemia, perforation, worsening pain, distention, or vomiting needs urgent medical or surgical management rather than tighter food restriction." },
+        { topic: "Crohn disease", explanation: "Low fiber may temporarily reduce stool bulk and mechanical symptoms during a selected flare or when Crohn disease has a stricture, but it does not suppress inflammation and is not a lifelong diet for every person with Crohn disease." },
+        { topic: "Ulcerative colitis", explanation: "A short low-fiber interval may reduce stool volume during a severe symptomatic flare when ordered, but it does not treat colonic inflammation and should not replace anti-inflammatory therapy or become a universal maintenance diet." },
+        { topic: "Diverticulitis", explanation: "During acute diverticulitis, a clinician may temporarily reduce fiber and advance intake as pain and tolerance improve; this acute strategy is different from longer-term fiber advice used after recovery and is not appropriate for every presentation." },
+        { topic: "High-Fiber Nutrition", explanation: "High fiber supports stool bulk and long-term bowel health when the gut is stable, whereas low fiber temporarily reduces bulk during selected acute or narrowing states; the transition depends on symptoms, anatomy, output, and the treatment plan." }
+      ],
       tags: ["low fiber", "low residue", "GI diet", "stricture", "postoperative"],
       sourceKeys: ["w45-medlineplus-low-fiber"]
     }),
@@ -656,6 +770,7 @@
       aliases: ["high fiber diet", "high-fiber diet", "fiber rich diet", "increase dietary fiber"],
       summary: "High-fiber nutrition increases plant carbohydrates that are not fully digested, supporting stool bulk, bowel regularity, satiety, and cardiometabolic health in appropriate patients. It should be increased gradually and paired with fluid permitted by the patient's plan.",
       quickAnswer: "A useful NIDDK adult anchor is about 22-34 g fiber/day depending on age and sex. Increase gradually to reduce gas and bloating. Foods include beans, lentils, whole grains, vegetables, fruits, nuts, and seeds—but severe stricture, obstruction, acute intolerance, dysphagia texture limits, or renal electrolyte plans may require modification.",
+      whyItMatters: "High-fiber nutrition is commonly used to prevent or manage constipation and to support cardiometabolic and long-term bowel-health goals when the GI tract is stable. Fiber adds stool bulk, holds water, and is fermented in ways that can support bowel regularity, satiety, glucose response, and lipid goals, but it should be increased gradually with only the fluid allowed by the care plan and may be inappropriate during obstruction, severe stricture, marked distention or vomiting, acute intolerance, or a prescribed low-fiber interval.",
       sections: [
         ["Types and effects", "Soluble and fermentable fibers can affect stool water and gut microbiota, while less fermentable insoluble fibers add bulk. Whole foods provide different mixtures; response varies by bowel disorder and medication."],
         ["Objective anchor", "Adults commonly need about 22-34 g/day by age and sex. Food labels list grams per serving; add portions across the day rather than judging a food by a 'whole grain' claim alone."],
@@ -664,6 +779,13 @@
         ["Connected topics", "Connect High-Fiber Nutrition with constipation, diverticular disease prevention, diabetes nutrition, heart-healthy nutrition, Low-Fiber Nutrition, and Fluid Restriction."]
       ],
       relatedTopics: ["Constipation", "Low-Fiber Nutrition", "Consistent-Carbohydrate / Diabetes Nutrition", "Heart-Healthy Nutrition", "Fluid Restriction"],
+      clinicalConnections: [
+        { topic: "Constipation", explanation: "Fiber can increase and soften stool when bowel transit is intact, especially with gradual intake, permitted fluid, and activity; impaction, obstruction, severe pain, or vomiting requires assessment before adding bulk." },
+        { topic: "Low-Fiber Nutrition", explanation: "Low fiber serves the opposite short-term goal of reducing stool bulk during selected inflammation, narrowing, or healing states; switching back to higher fiber follows clinical recovery and tolerance rather than a preset date." },
+        { topic: "Consistent-Carbohydrate / Diabetes Nutrition", explanation: "Fiber-rich carbohydrate foods can slow post-meal glucose rise and improve diet quality, but their carbohydrate amount still counts and gastroparesis, medications, kidney disease, or GI symptoms may require modification." },
+        { topic: "Heart-Healthy Nutrition", explanation: "Whole grains, legumes, vegetables, fruits, nuts, and seeds contribute fiber within a heart-healthy pattern and can support lipid and satiety goals; portions and nutrient restrictions remain individualized." },
+        { topic: "Fluid Restriction", explanation: "Fiber works best with adequate permitted fluid, but a patient on a fluid allowance should not be told to drink without limit; the team balances stool goals against heart, kidney, sodium, and volume status." }
+      ],
       tags: ["fiber", "22-34 g", "constipation", "whole grains", "legumes"],
       sourceKeys: ["w45-niddk-constipation-nutrition", "w45-ada-nutrition-2026"]
     }),
@@ -673,6 +795,7 @@
       aliases: ["gluten free", "gluten-free diet", "celiac diet", "coeliac diet"],
       summary: "A gluten-free diet excludes gluten from wheat, barley, rye, triticale, and contaminated foods. It is lifelong treatment for confirmed celiac disease, where gluten triggers immune injury to the small intestine; it is not automatically healthier for people without a clinical indication.",
       quickAnswer: "For celiac disease, strict avoidance includes hidden ingredients, medicines or supplements when relevant, shared fryers, crumbs, utensils, and other cross-contact. In the United States, an FDA-labeled gluten-free food must contain less than 20 parts per million gluten. Complete diagnostic testing before starting the diet when possible because avoidance can make testing less informative.",
+      whyItMatters: "A strict gluten-free diet is lifelong treatment for confirmed celiac disease because gluten exposure triggers immune injury to the small-intestinal lining, causing malabsorption even when symptoms are mild. Removing wheat, barley, rye, triticale, and cross-contact allows intestinal healing and helps prevent anemia, poor growth, and bone complications, but it should not be presented as universally healthier or started before diagnostic testing when celiac disease is still being evaluated.",
       sections: [
         ["What is excluded", "Avoid wheat and wheat varieties, barley, rye, triticale, and foods or products containing them unless specifically processed and labeled as gluten free. Oats should be verified gluten free because contamination is common, and individual tolerance or specialty advice can vary."],
         ["Why it matters", "Continued exposure in celiac disease can sustain villous injury, malabsorption, anemia, bone disease, poor growth, infertility, neurologic symptoms, and other complications even when symptoms seem mild."],
@@ -682,6 +805,11 @@
         ["Connected topics", "Connect Gluten-Free Diet strongly with Celiac disease, malabsorption, iron deficiency, osteoporosis risk, and label reading."]
       ],
       relatedTopics: ["Celiac disease", "Iron deficiency anemia", "Osteoporosis"],
+      clinicalConnections: [
+        { topic: "Celiac disease", explanation: "Gluten is the disease trigger, so strict lifelong avoidance is the core treatment after diagnosis; symptom improvement alone does not prove celiac disease, and testing is ideally completed before avoidance changes the results." },
+        { topic: "Iron deficiency anemia", explanation: "Small-intestinal injury can reduce iron absorption and chronic GI loss or poor intake may contribute, so gluten avoidance supports healing while blood counts, iron studies, and clinician-directed replacement are monitored separately." },
+        { topic: "Osteoporosis", explanation: "Celiac-related malabsorption can reduce calcium and vitamin D availability and harm bone health, so strict treatment, nutrient assessment, and bone evaluation when indicated work together rather than assuming the diet alone reverses established osteoporosis." }
+      ],
       tags: ["celiac", "gluten", "wheat", "barley", "rye", "20 ppm", "cross contact"],
       sourceKeys: ["w45-niddk-celiac"]
     }),
@@ -691,6 +819,7 @@
       aliases: ["lactose restricted diet", "lactose-free diet", "lactose free", "low lactose diet", "lactose intolerance diet"],
       summary: "Lactose-reduced or lactose-free nutrition lowers the milk sugar lactose to the amount an individual can tolerate. Many people with lactose intolerance can consume some lactose, especially with meals, yogurt, hard cheese, lactose-free dairy, or lactase products; complete dairy avoidance is not always necessary.",
       quickAnswer: "Lactose intolerance is reduced lactose digestion causing symptoms such as bloating, gas, pain, or diarrhea; it is not the same as milk-protein allergy. Preserve calcium, vitamin D, protein, and energy through tolerated dairy or fortified alternatives, and verify that plant beverages meet the patient's nutrient needs.",
+      whyItMatters: "Lactose reduction is used when lactose intolerance causes bloating, gas, abdominal pain, or diarrhea after dairy. Lowering the dose of unabsorbed lactose reduces the water drawn into the bowel and the gas produced by bacterial fermentation, but restriction should match individual tolerance—many people can use smaller portions, yogurt, hard cheese, lactose-free dairy, or lactase—and it must not be mistaken for treatment of a milk-protein allergy.",
       sections: [
         ["Individual tolerance", "Symptoms depend on lactase activity, dose, food matrix, gut transit, and other GI disorders. NIDDK notes that many people tolerate about 12 g of lactose—the amount in roughly 1 cup (240 mL) of milk—with no or only mild symptoms, but this is an observation, not a required challenge dose. A patient may tolerate smaller portions, yogurt, or hard cheese even when a larger milk serving causes symptoms."],
         ["Practical options", "Use lactose-free milk, lactase-treated products or tablets when appropriate, smaller portions with meals, and tolerated yogurt or cheese. Read labels for milk solids, whey, and other ingredients when strict reduction is needed."],
@@ -699,6 +828,11 @@
         ["Connected topics", "Connect this diet with lactose intolerance, diarrhea, calcium and vitamin D, osteoporosis prevention, and food allergy distinctions."]
       ],
       relatedTopics: ["Diarrhea", "Vitamin D deficiency", "Osteoporosis"],
+      clinicalConnections: [
+        { topic: "Diarrhea", explanation: "Poorly absorbed lactose can retain water in the intestine and be fermented, producing diarrhea, gas, and cramping; persistent diarrhea needs evaluation for other causes rather than automatic lifelong lactose avoidance." },
+        { topic: "Vitamin D deficiency", explanation: "Avoiding dairy without a replacement plan can reduce vitamin D intake, so tolerated dairy, fortified alternatives, laboratory assessment, or supplementation may be needed based on the patient's diet and risk." },
+        { topic: "Osteoporosis", explanation: "Long-term loss of calcium- and vitamin-D-rich foods can undermine bone health, so the goal is symptom control while preserving these nutrients rather than unnecessary complete dairy exclusion." }
+      ],
       tags: ["lactose", "lactase", "milk sugar", "calcium", "vitamin D", "milk allergy distinction"],
       sourceKeys: ["w45-niddk-lactose"]
     }),
@@ -708,6 +842,7 @@
       aliases: ["low fat diet", "low-fat diet", "fat restricted diet", "fat restriction"],
       summary: "Low-fat nutrition reduces total or selected fat for a defined indication while preserving essential fatty acids, fat-soluble vitamins, energy, and palatability. It may be used in selected pancreatitis, fat-malabsorption, severe hypertriglyceridemia, gallbladder, or other plans, but 'low fat' is not one universal gram cutoff.",
       quickAnswer: "For pancreatitis, NIDDK describes a clinician-directed healthy low-fat pattern with small frequent meals after intake is resumed and no alcohol. The actual amount and route depend on severity, tolerance, nutrition status, pancreatic function, triglycerides, and specialist guidance; prolonged underfeeding is harmful.",
+      whyItMatters: "Low-fat nutrition is used for a defined reason when fat worsens symptoms or physiologic burden, such as selected pancreatitis, fat-malabsorption, severe hypertriglyceridemia, or pancreatobiliary plans. Reducing the relevant fat load or meal size can lessen steatorrhea and post-meal symptoms and may support triglyceride management, but the goal is not a fat-free diet; acute severity, enzyme therapy, enteral needs, essential fats, fat-soluble vitamins, energy intake, and malnutrition risk determine the amount and duration.",
       sections: [
         ["Clinical purpose", "Reducing fat can lessen symptoms or physiologic burden in selected fat-malabsorption, pancreatobiliary, or triglyceride-related conditions. The diagnosis determines whether total fat, saturated fat, long-chain triglyceride, or meal size is the relevant target."],
         ["Food pattern", "Favor lean proteins, low-fat dairy when tolerated, grains, fruits and vegetables appropriate to the GI plan, and smaller amounts of unsaturated fats. Fried foods, fatty meats, high-fat dairy, rich sauces, and large high-fat meals are common targets."],
@@ -716,6 +851,12 @@
         ["Connected topics", "Connect Low-Fat Nutrition with pancreatitis, hypertriglyceridemia, fat malabsorption, gallbladder disease, enteral nutrition, and Heart-Healthy Nutrition."]
       ],
       relatedTopics: ["Acute pancreatitis", "Chronic pancreatitis", "Enteral Nutrition / Tube Feeding", "Heart-Healthy Nutrition"],
+      clinicalConnections: [
+        { topic: "Acute pancreatitis", explanation: "A clinician-directed low-fat pattern may be used after oral intake resumes, but prolonged fasting is not a universal treatment and severity, pain, nausea, triglycerides, and tolerance determine the timing and route." },
+        { topic: "Chronic pancreatitis", explanation: "Smaller lower-fat meals may reduce symptoms or steatorrhea for some patients, while pancreatic-enzyme therapy and adequate calories are often crucial; aggressive restriction can worsen weight loss and malnutrition." },
+        { topic: "Enteral Nutrition / Tube Feeding", explanation: "When oral intake cannot meet needs, enteral nutrition may provide a controlled formula and route, but formula composition and delivery are selected from GI function, tolerance, and specialist assessment rather than the label 'low fat' alone." },
+        { topic: "Heart-Healthy Nutrition", explanation: "Cardiovascular nutrition usually replaces saturated fat with unsaturated fat instead of eliminating all fat, so its mechanism and long-term goal differ from a temporary disease-specific fat restriction." }
+      ],
       tags: ["low fat", "pancreatitis", "malabsorption", "triglycerides", "small frequent meals"],
       sourceKeys: ["w45-niddk-pancreatitis", "w45-aha-heart-diet"]
     }),
@@ -725,6 +866,7 @@
       aliases: ["high protein diet", "high-protein diet", "protein enriched diet"],
       summary: "High-protein nutrition increases protein density for selected malnutrition, wound-healing, recent critical-illness, sarcopenia, or dialysis needs. The class of intervention includes protein-rich foods, fortified meals, oral nutrition supplements, and modular protein products; the amount must be calculated rather than assumed.",
       quickAnswer: "Use dietitian assessment, because protein need depends on body size, energy intake, illness, wounds, dialysis, kidney or liver function, and tolerance. Examples include eggs, dairy or fortified alternatives, fish, poultry, beans, soy foods, meat, oral nutrition supplements, and prescribed modular protein—not one supplement for everyone.",
+      whyItMatters: "High-protein nutrition is used when protein needs or losses rise, commonly with malnutrition, pressure injuries or other wounds, sarcopenia, recovery from critical illness, or dialysis. Adequate amino acids support muscle maintenance and tissue repair only when energy, perfusion, and the overall treatment plan are also adequate; the amount must be calculated because predialysis CKD, some metabolic disorders, severe organ dysfunction, allergies, swallowing limits, or poor tolerance can make indiscriminate supplementation harmful.",
       sections: [
         ["Indications", "A higher-protein plan may support muscle preservation, pressure-injury or wound healing, recovery after illness, and dialysis-related losses when energy intake is also adequate."],
         ["Assessment and monitoring", "Assess intake, weight and muscle trend, functional strength, wounds, inflammation, hydration, kidney and liver status, swallowing safety, allergies, and the patient's ability to prepare or afford the plan."],
@@ -733,6 +875,13 @@
         ["Connected topics", "Connect High-Protein Nutrition with malnutrition, pressure injury, sarcopenia, dialysis, wounds, enteral nutrition, and Protein Considerations in Kidney Disease."]
       ],
       relatedTopics: ["Malnutrition", "Pressure injuries", "Hemodialysis", "Enteral Nutrition / Tube Feeding", "Protein Considerations in Kidney Disease"],
+      clinicalConnections: [
+        { topic: "Malnutrition", explanation: "Protein-dense foods or supplements can help rebuild or preserve lean tissue when intake is inadequate, but sufficient calories and treatment of inflammation, chewing, swallowing, access, and disease causes are also necessary." },
+        { topic: "Pressure injuries", explanation: "Protein supplies amino acids for tissue repair in a patient with a pressure injury, but healing also depends on adequate energy, perfusion, pressure redistribution, moisture control, infection management, and wound care." },
+        { topic: "Hemodialysis", explanation: "Dialysis and illness can increase protein losses or needs, so many hemodialysis patients need more protein than predialysis patients; potassium, phosphorus, sodium, and fluid content still require renal planning." },
+        { topic: "Enteral Nutrition / Tube Feeding", explanation: "A higher-protein formula or modular product can supplement needs when oral intake is unsafe or inadequate, but route, renal function, volume, tolerance, and complete nutrient delivery must be reviewed." },
+        { topic: "Protein Considerations in Kidney Disease", explanation: "Predialysis metabolically stable CKD may call for moderate rather than high protein, whereas dialysis, wounds, catabolism, or malnutrition can increase need; kidney diagnosis alone cannot select one protein target." }
+      ],
       tags: ["high protein", "malnutrition", "wound healing", "dialysis", "oral nutrition supplement"],
       sourceKeys: ["w45-aspen-protein-ltc", "w45-nkf-hemodialysis-diet"]
     })
@@ -747,6 +896,7 @@
       abbreviations: [],
       summary: "Renal nutrition is individualized medical nutrition therapy for kidney disease. It may modify sodium, potassium, phosphorus, protein, fluid, energy, or carbohydrate, but CKD does not mean restricting everything: stage, serial laboratory values, dialysis status, residual urine, fluid and blood-pressure status, medicines, comorbidities, appetite, and malnutrition risk determine the plan.",
       quickAnswer: "A renal diet, also called renal nutrition, is an individualized kidney-friendly eating plan. It often reduces sodium and may adjust protein, phosphorus, potassium, and fluid intake based on kidney function, blood tests, urine output, and whether the person receives dialysis. The goal is to limit waste and fluid buildup without causing poor nutrition; it is not one universal menu.",
+      whyItMatters: "Renal nutrition is used in chronic kidney disease, kidney failure, and dialysis to help manage blood pressure, swelling, waste products, potassium, phosphorus, acid-base balance, and fluid while preserving enough energy and protein for health and healing. Damaged kidneys may not remove water and dissolved wastes normally, while dialysis changes losses and protein needs; therefore stage, serial laboratory values, urine output, dialysis, medicines, diabetes, appetite, and malnutrition risk determine what is restricted, increased, or left unchanged.",
       sections: [
         ["Clinical reasoning", "Reduced filtration and tubular regulation can impair removal of potassium, phosphorus, acid, sodium, and water, but the pattern varies. Dialysis removes some solute and amino acids, medicines alter electrolytes, and a patient with poor intake may be harmed by unnecessary restriction."],
         ["Assessment before restriction", "Review CKD stage and trend, potassium, bicarbonate, phosphate, calcium and parathyroid context, albumin only as a contextual marker, blood pressure, edema, daily weight when ordered, urine output, dialysis modality and schedule, residual kidney function, diabetes, medicines, appetite, weight change, food access, and dietitian/nephrology recommendations."],
@@ -758,6 +908,14 @@
         ["Connected topics", "Connect Renal Nutrition with Chronic kidney disease, dialysis, hyperkalemia, CKD-mineral and bone disorder, Low-Sodium Diet, Fluid Restriction, and the three nutrient-specific kidney cards."]
       ],
       relatedTopics: ["Chronic kidney disease", "Potassium Considerations in Kidney Disease", "Phosphorus Considerations in Kidney Disease", "Protein Considerations in Kidney Disease", "Fluid Restriction", "Low-Sodium Diet"],
+      clinicalConnections: [
+        { topic: "Chronic kidney disease", explanation: "CKD is the main disease context: declining filtration and regulation can change waste, mineral, blood-pressure, and volume handling, but stage and laboratory trends—not the diagnosis alone—determine the nutrition plan." },
+        { topic: "Potassium Considerations in Kidney Disease", explanation: "Potassium may rise when kidney excretion is impaired or fall with losses, medicines, or dialysis, so food changes follow serial potassium, causes, symptoms, ECG context, and treatment rather than a blanket low-potassium list." },
+        { topic: "Phosphorus Considerations in Kidney Disease", explanation: "Persistent phosphate retention can contribute to CKD-mineral and bone disorder, so the plan may reduce highly absorbable phosphate additives and coordinate binders while protecting protein and calorie intake." },
+        { topic: "Protein Considerations in Kidney Disease", explanation: "Moderate protein may reduce nitrogenous waste in selected stable predialysis CKD, whereas dialysis, catabolism, wounds, pregnancy, growth, or malnutrition can increase need; one renal protein target is unsafe." },
+        { topic: "Fluid Restriction", explanation: "A fluid allowance may be needed when low urine output, dialysis, congestion, or dilutional hyponatremia causes water accumulation, but preserved urine, treatment schedule, losses, and volume findings can make restriction unnecessary or harmful." },
+        { topic: "Low-Sodium Diet", explanation: "Lower sodium commonly supports blood-pressure and edema control and reduces thirst, but the numeric target follows the renal plan and exceptions such as sodium-wasting states, major losses, or poor intake." }
+      ],
       tags: ["renal diet", "CKD", "dialysis", "individualized nutrition", "electrolytes", "malnutrition"],
       sourceKeys: ["w45-kdigo-ckd-2024", "w45-kdoqi-ckd-nutrition-2020", "w45-nkf-kidney-plate", "w45-nkf-hemodialysis-diet"]
     }),
@@ -767,6 +925,7 @@
       aliases: ["potassium restricted diet", "low potassium diet", "potassium restriction", "renal potassium diet", "hyperkalemia diet", "kidney potassium foods"],
       summary: "Potassium modification in kidney disease aims to keep serum potassium in a safe range without unnecessarily removing nutritious foods. Some patients need restriction, some need no change, and others can become hypokalemic; the prescription follows serial values, kidney function, dialysis, medicines, acid-base and glucose status, bowel function, and intake.",
       quickAnswer: "Do not prescribe a low-potassium diet solely because CKD exists. Confirm the result and cause, review potassium-raising or lowering medicines and supplements, assess ECG and symptoms when potassium is substantially abnormal, and use dietitian-guided portions or substitutions only when the clinical pattern supports them. Guideline thresholds describe hyperkalemia urgency; they do not prescribe one diet for every patient.",
+      whyItMatters: "Potassium intake is modified in kidney disease when serial blood levels and the complete clinical picture show a risk of potassium becoming too high or too low. Keeping potassium in a safe range protects nerve, skeletal-muscle, and cardiac electrical function, but diet is only one contributor—kidney injury, acid-base and glucose shifts, medicines, tissue breakdown, constipation, GI loss, and dialysis can dominate—and food restriction is never the acute treatment for dangerous hyperkalemia.",
       sections: [
         ["Why potassium changes", "Kidneys normally excrete potassium, but impaired filtration or distal secretion, acidosis, insulin deficiency, tissue breakdown, constipation, missed dialysis, and medicines can raise serum potassium. Diuretics, GI losses, poor intake, and dialysis can lower it."],
         ["Assessment", "Trend potassium with creatinine/eGFR, bicarbonate, glucose, magnesium, medication changes, dialysis adherence, bowel pattern, symptoms, and ECG when indicated. Consider hemolysis or collection artifact when the result conflicts with the patient."],
@@ -777,6 +936,13 @@
         ["Connected topics", "Connect potassium nutrition with Renal Nutrition, hyperkalemia, hypokalemia, Chronic kidney disease, dialysis, and RAAS- or mineralocorticoid-receptor medicines."]
       ],
       relatedTopics: ["Renal Nutrition", "Hyperkalemia", "Hypokalemia", "Chronic kidney disease", "Hemodialysis"],
+      clinicalConnections: [
+        { topic: "Renal Nutrition", explanation: "Potassium is one adjustable part of the renal plan, considered alongside sodium, phosphorus, protein, fluid, energy, and nutrition status; it is changed only when the patient's pattern supports it." },
+        { topic: "Hyperkalemia", explanation: "When potassium is persistently high, portions, substitutions, additives, and salt substitutes may need adjustment, but symptoms, ECG changes, rapid rise, or severe values require urgent medical treatment rather than diet alone." },
+        { topic: "Hypokalemia", explanation: "Overrestriction, poor intake, GI losses, diuretics, or dialysis can contribute to low potassium and dysrhythmia risk, so a low-potassium plan must be reduced or reversed when the clinical pattern changes." },
+        { topic: "Chronic kidney disease", explanation: "Reduced excretion can raise potassium as CKD advances, yet many people with CKD have normal or low values; CKD by itself is not an indication to remove all higher-potassium foods." },
+        { topic: "Hemodialysis", explanation: "Hemodialysis removes potassium intermittently, so intake, residual kidney function, missed treatments, bowel function, medicines, and the time between sessions shape the plan; postdialysis or low values can require a different approach." }
+      ],
       tags: ["potassium restriction", "hyperkalemia", "hypokalemia", "CKD", "salt substitute"],
       sourceKeys: ["w45-kdoqi-ckd-nutrition-2020", "w45-nkf-kidney-plate", "w45-nkf-hemodialysis-diet", "w45-ukka-hyperkalemia-2023"]
     }),
@@ -786,6 +952,7 @@
       aliases: ["phosphorus restricted diet", "low phosphorus diet", "phosphate restriction", "renal phosphorus diet", "CKD phosphorus foods"],
       summary: "Phosphorus modification in CKD helps manage persistently abnormal phosphate and CKD-mineral and bone disorder while preserving adequate nutrition. The plan follows laboratory trends, dialysis, parathyroid and bone-mineral context, medicines and binders, food source, and nutritional status—not one universal milligram limit.",
       quickAnswer: "Teach source and bioavailability. Inorganic phosphate additives are highly absorbable and often appear as ingredients containing 'phos'; animal and plant phosphorus are not absorbed identically. KDOQI does not support teaching one evidence-based 800-1,000 mg/day limit to every CKD patient.",
+      whyItMatters: "Phosphorus intake is modified when CKD causes persistent phosphate imbalance or contributes to CKD-mineral and bone disorder, especially in advanced disease or dialysis. Reducing highly absorbable phosphate additives and coordinating prescribed binders with meals can lower absorbed phosphorus and support bone and vascular health, but one value or the CKD label does not justify removing every dairy, bean, nut, whole-grain, or protein food because source bioavailability, dialysis, parathyroid context, and malnutrition risk matter.",
       sections: [
         ["Why phosphorus matters", "As kidney function declines, phosphate retention and hormonal adaptation can contribute to CKD-mineral and bone disorder, vascular calcification risk, bone disease, and pruritus. A single phosphate value does not fully describe the process."],
         ["Assessment", "Trend phosphate with calcium, parathyroid hormone context, alkaline phosphatase when relevant, dialysis adequacy, medicines, binders, vitamin D therapy, dietary intake, weight and protein status. Look for hidden additives before removing major protein sources."],
@@ -795,6 +962,12 @@
         ["Connected topics", "Connect phosphorus nutrition with Renal Nutrition, Chronic kidney disease-mineral and bone disorder, dialysis, calcium, parathyroid hormone, and phosphate binders."]
       ],
       relatedTopics: ["Renal Nutrition", "Chronic kidney disease-mineral and bone disorder", "Hemodialysis", "Hyperphosphatemia"],
+      clinicalConnections: [
+        { topic: "Renal Nutrition", explanation: "Phosphorus is one laboratory-directed renal adjustment, balanced against protein, calories, potassium, sodium, fluid, and food quality rather than managed as an isolated banned-food list." },
+        { topic: "Chronic kidney disease-mineral and bone disorder", explanation: "Phosphate retention and hormonal changes can disrupt bone and mineral metabolism, so nutrition, dialysis, binders, vitamin D-related therapy, and serial calcium, phosphate, and parathyroid information are interpreted together." },
+        { topic: "Hemodialysis", explanation: "Dialysis removes some phosphorus but often not all absorbed between treatments; patients may need additive reduction and prescribed binders while also meeting higher dialysis-related protein needs." },
+        { topic: "Hyperphosphatemia", explanation: "Persistently elevated phosphate can prompt lower-absorbable food choices and binder review, but a single result should be interpreted with adherence, dialysis, medicines, nutrition, and the full CKD-mineral and bone picture." }
+      ],
       tags: ["phosphorus restriction", "phosphate", "CKD-MBD", "phosphate additives", "binders"],
       sourceKeys: ["w45-kdoqi-ckd-nutrition-2020", "w45-nkf-hemodialysis-diet"]
     }),
@@ -805,6 +978,7 @@
       searchTerms: ["protein restricted diet", "protein restriction", "low protein diet", "protein-modified diet"],
       summary: "Protein in kidney disease is modified to balance uremic burden and possible progression risk against muscle, wound-healing, immune, and nutrition needs. Predialysis metabolically stable CKD and dialysis are different states; a universal low-protein order is unsafe.",
       quickAnswer: "KDIGO's adult anchor is about 0.8 g/kg/day for metabolically stable CKD G3-G5 and avoidance of high intake above 1.3 g/kg/day in adults at progression risk. Those numbers do not automatically apply to dialysis, pregnancy, children, acute catabolism, critical illness, wounds, or malnutrition; dialysis commonly increases protein need.",
+      whyItMatters: "Protein is adjusted in kidney disease to balance two competing risks: moderating protein can reduce nitrogenous waste and support selected predialysis CKD goals, while too little can accelerate muscle loss, poor healing, frailty, and malnutrition. A moderate plan may be used in metabolically stable predialysis CKD, whereas dialysis-related losses, growth, pregnancy, wounds, infection, critical illness, or existing malnutrition can require more protein, so body size, energy intake, clinical state, and treatment stage must drive the prescription.",
       sections: [
         ["Predialysis reasoning", "For selected metabolically stable adults with CKD G3-G5, moderate protein intake may reduce nitrogenous burden while maintaining nutrition. More aggressive restriction requires close dietitian and specialty supervision and adequate energy intake."],
         ["Dialysis and catabolism", "Hemodialysis and peritoneal dialysis can increase amino-acid and protein losses; infection, surgery, wounds, burns, cancer, and critical illness can increase needs further. Do not continue a predialysis low-protein plan automatically after dialysis begins."],
@@ -815,6 +989,13 @@
         ["Connected topics", "Connect protein considerations with Renal Nutrition, Chronic kidney disease, dialysis, malnutrition, pressure injury, critical illness, and cirrhosis."]
       ],
       relatedTopics: ["Renal Nutrition", "Chronic kidney disease", "Hemodialysis", "Malnutrition", "Cirrhosis"],
+      clinicalConnections: [
+        { topic: "Renal Nutrition", explanation: "Protein is coordinated with the complete kidney plan because lowering it without enough calories can worsen catabolism, while higher-protein foods may also change phosphorus, potassium, sodium, and fluid intake." },
+        { topic: "Chronic kidney disease", explanation: "Selected metabolically stable adults with predialysis CKD G3-G5 may use moderate protein to reduce waste burden and avoid excessive intake, but the guideline population and weight basis must be respected." },
+        { topic: "Hemodialysis", explanation: "Hemodialysis increases amino-acid and protein losses, so patients commonly need more protein than in stable predialysis CKD; the prescription changes when dialysis starts and with illness or wounds." },
+        { topic: "Malnutrition", explanation: "Weight loss, muscle loss, poor appetite, or functional decline can make protein restriction dangerous, so nutrition rehabilitation and adequate energy may take priority over a routine predialysis target." },
+        { topic: "Cirrhosis", explanation: "Cirrhosis commonly causes sarcopenia and malnutrition, and routine protein restriction is not treatment for hepatic encephalopathy; combined liver-kidney disease requires specialist balancing rather than carrying forward an old restriction." }
+      ],
       tags: ["protein restriction", "0.8 g/kg", "1.3 g/kg", "dialysis protein", "malnutrition"],
       sourceKeys: ["w45-kdigo-ckd-2024", "w45-nkf-hemodialysis-diet", "w45-aspen-protein-ltc", "w45-aasld-cirrhosis-nutrition"]
     }),
@@ -824,6 +1005,7 @@
       aliases: ["fluid restricted diet", "fluid restriction diet", "restricted fluids", "daily fluid allowance", "fluid limit"],
       summary: "A fluid restriction limits total fluid intake to manage selected excess-volume or dilutional states. It is an individualized order used in some kidney failure, dialysis, heart failure, cirrhosis, or hyponatremia contexts—not a routine rule for every patient with those diagnoses.",
       quickAnswer: "The written allowance must define the amount and what counts. An order such as 1,500 mL per 24 hours is an example, not a default. Water, coffee, milk, soup, gelatin, ice, frozen desserts, enteral water flushes, liquid medicines, and IV fluids may contribute; ice is counted by its melted volume under local practice. Trend weight, intake/output, edema, lung findings, sodium, kidney function, urine output, thirst, and adherence.",
+      whyItMatters: "A fluid restriction is ordered when the body cannot safely remove or redistribute water and extra intake can worsen pulmonary congestion, edema, ascites, hypertension, or dilutional hyponatremia—commonly in selected dialysis, kidney failure, advanced heart failure, or cirrhosis plans. Limiting total fluid helps match intake to excretion and treatment, but it is not routine for every patient with these diagnoses; urine output, dialysis schedule, sodium intake, fever, weather, GI losses, medicines, perfusion, and thirst determine the allowance, and excessive restriction can cause dehydration or hypotension.",
       sections: [
         ["Why fluids are limited", "When kidneys cannot excrete water or when effective circulation and hormones retain water, excess intake can worsen edema, pulmonary congestion, hypertension, ascites, or dilutional hyponatremia. Restriction treats a fluid-balance problem; it does not directly correct every cause."],
         ["Who may need it", "Some patients receiving in-center dialysis with little residual urine, selected advanced heart-failure patients, cirrhotic patients with clinically important hyponatremia, and other ordered conditions may need a limit. Home dialysis, preserved urine, medications, weather, fever, GI loss, and sodium intake can change needs."],
@@ -834,6 +1016,14 @@
         ["Connected topics", "Connect Fluid Restriction with heart failure, dialysis, Chronic kidney disease, hyponatremia, cirrhotic ascites, Low-Sodium Diet, and daily weight monitoring."]
       ],
       relatedTopics: ["Heart failure", "Chronic kidney disease", "Hemodialysis", "Hyponatremia", "Cirrhosis", "Low-Sodium Diet"],
+      clinicalConnections: [
+        { topic: "Heart failure", explanation: "A fluid limit may help selected patients with advanced congestion or dilutional hyponatremia, but evidence does not support making the same restriction routine for every heart-failure patient; symptoms, medicines, kidney function, and volume status control." },
+        { topic: "Chronic kidney disease", explanation: "Advanced CKD with low urine output can allow water to accumulate, but people with preserved excretion or active losses may not need restriction and can be harmed by an automatic limit." },
+        { topic: "Hemodialysis", explanation: "Between treatments, fluid can accumulate when residual urine is low, increasing weight, blood pressure, edema, and pulmonary congestion; allowance varies with urine output, treatment frequency, sodium intake, and the dialysis prescription." },
+        { topic: "Hyponatremia", explanation: "Fluid restriction can help selected dilutional hyponatremia by reducing excess free-water intake, but sodium can also be low from depletion or other mechanisms in which restriction may be ineffective or inappropriate." },
+        { topic: "Cirrhosis", explanation: "Fluid restriction may be used when cirrhosis includes clinically important dilutional hyponatremia, while sodium restriction is more commonly tied to ascites; routine fluid limitation for every patient with cirrhosis is inappropriate." },
+        { topic: "Low-Sodium Diet", explanation: "Reducing excess sodium can lessen thirst and retained water and may make a prescribed fluid allowance easier, but sodium and fluid are separate orders chosen from the condition and volume pattern." }
+      ],
       tags: ["fluid allowance", "volume overload", "daily weight", "intake and output", "hyponatremia", "dialysis"],
       sourceKeys: ["w45-nkf-hemodialysis-diet", "w45-aha-hf-2022", "w45-aasld-ascites"]
     })

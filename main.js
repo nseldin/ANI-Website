@@ -35012,12 +35012,46 @@ function appendEvidenceSourceSection(container, database = {}, entity = {}) {
   return true;
 }
 
+const PATHOLOGY_CLINICAL_CONCEPT_PRESENTATION_BY_STATUS = Object.freeze({
+  NOT_A_MENTAL_DISORDER: Object.freeze({
+    banner: "CLINICAL CONCEPT | NOT A DIAGNOSIS",
+    entityKind: "clinical concept (not a diagnosis)",
+    callout: ""
+  }),
+  CLINICAL_PHENOMENON_NOT_STANDALONE: Object.freeze({
+    banner: "CLINICAL PHENOMENON | NOT A STANDALONE DIAGNOSIS",
+    entityKind: "clinical phenomenon (not a standalone diagnosis)",
+    callout: "Not a standalone DSM-5-TR or ICD-11 diagnosis"
+  })
+});
+
+function pathologyClinicalConceptPresentation(disease = {}) {
+  const stableId = safeText(disease.id || disease.directTargetId);
+  if (!/^concept\.[a-z0-9]+(?:-[a-z0-9]+)*$/.test(stableId)
+    || safeText(disease.entryType) !== "clinical-concept"
+    || disease.isDiagnosis !== false) return null;
+  return PATHOLOGY_CLINICAL_CONCEPT_PRESENTATION_BY_STATUS[safeText(disease.diagnosisStatus)] || null;
+}
+
+function isExplicitPathologyClinicalConcept(disease = {}) {
+  return Boolean(pathologyClinicalConceptPresentation(disease));
+}
+
+function pathologyClinicalConceptBanner(disease = {}) {
+  return pathologyClinicalConceptPresentation(disease)?.banner || "";
+}
+
+function pathologyClinicalConceptEntityKind(disease = {}) {
+  return pathologyClinicalConceptPresentation(disease)?.entityKind || "";
+}
+
 function createPathologyIndexRow(disease = {}) {
+  const isClinicalConcept = isExplicitPathologyClinicalConcept(disease);
   const row = document.createElement("div");
   row.className = "pharm-pathology-row";
   row.tabIndex = 0;
   row.setAttribute("role", "button");
-  row.setAttribute("aria-label", `Open ${safeText(disease.name)} pathology details`);
+  row.setAttribute("aria-label", `Open ${safeText(disease.name)} ${isClinicalConcept ? "clinical concept" : "pathology"} details`);
 
   const openDisease = (event) => {
     event?.preventDefault?.();
@@ -35035,7 +35069,9 @@ function createPathologyIndexRow(disease = {}) {
   const name = document.createElement("strong");
   name.textContent = safeText(disease.name);
   const category = document.createElement("span");
-  category.textContent = safeText(disease.category);
+  category.textContent = isClinicalConcept
+    ? pathologyClinicalConceptBanner(disease)
+    : safeText(disease.category);
   const summary = document.createElement("small");
   appendPharmEmphasizedText(summary, disease.pathology);
   row.append(name, category, summary);
@@ -36981,14 +37017,18 @@ function pathologyVisibleLearnerDetail(disease = {}) {
   const remainingPathologyText = pathologySectionValueWithoutOpeningDuplicate(pathologyText, firstGlanceText, disease);
   const remainingPathophysiologyText = pathologySectionValueWithoutOpeningDuplicate(pathophysiologyText, firstGlanceText, disease);
   const categoryText = normalizePharmText(disease.category || "");
+  const isClinicalConcept = isExplicitPathologyClinicalConcept(disease);
   const isMechanismConceptCard = /\b(pharmacology foundations|antibiotic pharmacology|diagnostic reasoning)\b/i.test(categoryText);
-  const coreMechanismHeading = isMechanismConceptCard ? "Mechanism / concept - what is happening" : "Pathology - what is happening";
-  const whyMechanismHeading = isMechanismConceptCard ? "Why this matters clinically" : "Pathophysiology - why it happens";
-  const driverHeading = isMechanismConceptCard ? "What changes interpretation" : "Etiology / risk factors";
+  const definitionHeading = isClinicalConcept ? "Clinical meaning / assessment frame" : "Clinical definition / diagnostic frame";
+  const coreMechanismHeading = isClinicalConcept
+    ? "Observed pattern / assessment context"
+    : (isMechanismConceptCard ? "Mechanism / concept - what is happening" : "Pathology - what is happening");
+  const whyMechanismHeading = (isClinicalConcept || isMechanismConceptCard) ? "Why this matters clinically" : "Pathophysiology - why it happens";
+  const driverHeading = (isClinicalConcept || isMechanismConceptCard) ? "What changes interpretation" : "Etiology / risk factors";
   const driverText = [safeText(disease.etiology), pathologyListText(disease.riskFactors)].filter(Boolean).join(" ");
   const sections = [
     ["Crash-course definition", firstGlanceText],
-    ["Clinical definition / diagnostic frame", remainingDefinitionText],
+    [definitionHeading, remainingDefinitionText],
     ["Isolation precautions", pathologyIsolationPrecautionText(disease)],
     ["Priority nursing actions", pathologyListText(disease.nursingPriorities)],
     ["Urgent red flags / when to escalate", pathologyListText(disease.redFlags)],
@@ -37027,16 +37067,27 @@ function renderPathologyDetail(disease = activePathologyResults[0]) {
     renderPharmDrugDetail(null);
     return;
   }
+  const isClinicalConcept = isExplicitPathologyClinicalConcept(disease);
 
   const title = document.createElement("div");
   title.className = `pharm-detail-title ${isHolisticPathology ? "pharm-holistic-title" : "pharm-pathology-title"}`;
   const name = document.createElement("h2");
   name.textContent = safeText(disease.name);
   const category = document.createElement("span");
-  category.textContent = safeText(`${disease.nclexEssential ? "NCLEX ESSENTIAL | " : ""}${isHolisticPathology ? "Holistic | " : ""}${disease.category || "Pathology"} | DISEASE/PATHOLOGY CARD`);
+  category.textContent = isClinicalConcept
+    ? pathologyClinicalConceptBanner(disease)
+    : safeText(`${disease.nclexEssential ? "NCLEX ESSENTIAL | " : ""}${isHolisticPathology ? "Holistic | " : ""}${disease.category || "Pathology"} | DISEASE/PATHOLOGY CARD`);
   title.append(name, category);
   appendPharmFavoriteButton(title, "diseases", disease);
   pharmDrugDetail.append(title);
+
+  const clinicalConceptCallout = pathologyClinicalConceptPresentation(disease)?.callout || "";
+  if (clinicalConceptCallout) {
+    const statusCallout = document.createElement("p");
+    statusCallout.className = "pharm-pathology-status-callout";
+    statusCallout.textContent = clinicalConceptCallout;
+    pharmDrugDetail.append(statusCallout);
+  }
 
   const aliases = Array.from(new Set([
     ...(Array.isArray(disease.abbreviations) ? disease.abbreviations : []),
@@ -39410,7 +39461,9 @@ function renderPharmResults(options = {}) {
       const name = document.createElement("strong");
       name.textContent = safeText(disease.name);
       const meta = document.createElement("span");
-      meta.textContent = safeText(`${disease.nclexEssential ? "NCLEX ESSENTIAL | " : ""}${isHolisticPathology ? "Holistic | " : ""}${disease.category || "Pathology"} | Disease/pathology`);
+      meta.textContent = isExplicitPathologyClinicalConcept(disease)
+        ? pathologyClinicalConceptBanner(disease)
+        : safeText(`${disease.nclexEssential ? "NCLEX ESSENTIAL | " : ""}${isHolisticPathology ? "Holistic | " : ""}${disease.category || "Pathology"} | Disease/pathology`);
       const summary = document.createElement("small");
       appendPharmEmphasizedText(summary, disease.pathology);
       const priority = document.createElement("small");
@@ -40815,10 +40868,13 @@ function makeOfflinePathologyResponseFromDisease(disease = {}) {
   if (!disease) return "";
   currentTopic = disease.name;
   updateFocus();
+  const isClinicalConcept = isExplicitPathologyClinicalConcept(disease);
 
   return [
     `**${disease.name}**`,
-    `**Pathology - what is happening:** ${disease.pathology}`,
+    isClinicalConcept ? `**${pathologyClinicalConceptBanner(disease)}**` : "",
+    pathologyClinicalConceptPresentation(disease)?.callout || "",
+    `**${isClinicalConcept ? "Clinical meaning / assessment frame" : "Pathology - what is happening"}:** ${disease.pathology}`,
     `**Etiology / risk factors:** ${disease.etiology}`,
     `**Signs and symptoms:** ${pathologyListText(disease.signsSymptoms)}`,
     `**Diagnostics / assessment clues:** ${pathologyListText(disease.diagnostics)}`,
@@ -41244,7 +41300,9 @@ function offlineLookupEntityKey(candidate = {}) {
 function offlineLookupEntityKind(candidate = {}) {
   if (candidate.type === "drug") return "medication";
   if (candidate.type === "lab") return "lab/reference";
-  if (candidate.type === "pathology") return "disease/pathology";
+  if (candidate.type === "pathology") return isExplicitPathologyClinicalConcept(candidate.item)
+    ? pathologyClinicalConceptEntityKind(candidate.item)
+    : "disease/pathology";
   if (candidate.type === "holistic") return "herbal/holistic safety card";
   if (candidate.type === "update") return "official medical update";
   if (candidate.type === "reference") {
