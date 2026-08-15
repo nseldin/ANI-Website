@@ -5,6 +5,44 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "guideline-public-health",
+      "contentHash": "677b052495a2f159f44fb0fafefe8c15e165b7d5480a95e2c4ff68e93105b47a",
+      "description": "During 2010-2024, 54 U.S. jurisdictions reported 1,796 confirmed and probable brucellosis cases. A total of 71-165 cases were reported annually.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765690&_=39C35DBD1975B62D71D095137193CE902C1079284C56D3C6BDB500BD70E8EF03",
+      "id": "medical-update:cdc-mmwr:b3af24aaa7c264322fef59d0",
+      "publishedAt": "2026-06-16T17:13:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Surveillance Summaries: Brucellosis Surveillance - United States, 2010-2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/ss/ss7502a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "d66889607b14ebd4b933041df1e4a8f68e5214176b4fa2d6712e7b073973b383",
+      "description": "This report describes 402 foodborne disease outbreaks caused by marine toxins were reported to FDOSS. These outbreaks resulted in 1,280 illnesses, 96 hospitalizations, and one death.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765851&_=4FAE36E13A791E5CA1F1A81D8AEBBA679278743DCB38FC02272CB7AC51DD4281",
+      "id": "medical-update:cdc-mmwr:650a2a84a46f86c04ae7d579",
+      "publishedAt": "2026-06-16T17:10:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Surveillance Summaries: Foodborne Disease Outbreaks Associated with Marine Toxins - Foodborne Disease Outbreak Surveillance System, United States, 2011-2023",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/ss/ss7503a1.htm"
+    },
+    {
       "category": "drug-approval",
       "contentHash": "003eaf8d1d7c8dbb99e22224d6db8b70ed97a1c14b84fd7ee499043589793844",
       "description": "On June 12, 2026, the U.S. Food and Drug Administration granted accelerated approval to Tzield (teplizumab) for a new indication, to delay the decline of insulin production in pediatric patients ages 8 through 17 years who have been recently diagnosed with Stage 3 type 1 diabetes (T1D).",
@@ -1801,7 +1839,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-15T13:45:20.129Z",
+  "generatedAt": "2026-08-15T19:04:46.691Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -3492,44 +3530,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "title": "FDA Approves First Single-Dose Generic Treatment for Influenza",
       "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-first-single-dose-generic-treatment-influenza"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "677b052495a2f159f44fb0fafefe8c15e165b7d5480a95e2c4ff68e93105b47a",
-      "description": "During 2010-2024, 54 U.S. jurisdictions reported 1,796 confirmed and probable brucellosis cases. A total of 71-165 cases were reported annually.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765690&_=39C35DBD1975B62D71D095137193CE902C1079284C56D3C6BDB500BD70E8EF03",
-      "id": "medical-update:cdc-mmwr:b3af24aaa7c264322fef59d0",
-      "publishedAt": "2026-06-16T17:13:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Surveillance Summaries: Brucellosis Surveillance - United States, 2010-2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/ss/ss7502a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "d66889607b14ebd4b933041df1e4a8f68e5214176b4fa2d6712e7b073973b383",
-      "description": "This report describes 402 foodborne disease outbreaks caused by marine toxins were reported to FDOSS. These outbreaks resulted in 1,280 illnesses, 96 hospitalizations, and one death.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765851&_=4FAE36E13A791E5CA1F1A81D8AEBBA679278743DCB38FC02272CB7AC51DD4281",
-      "id": "medical-update:cdc-mmwr:650a2a84a46f86c04ae7d579",
-      "publishedAt": "2026-06-16T17:10:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Surveillance Summaries: Foodborne Disease Outbreaks Associated with Marine Toxins - Foodborne Disease Outbreak Surveillance System, United States, 2011-2023",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/ss/ss7503a1.htm"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -3542,7 +3542,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 5,
-      "retrievedAt": "2026-08-15T13:45:20.129Z",
+      "retrievedAt": "2026-08-15T19:04:46.691Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3553,7 +3553,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 6,
-      "retrievedAt": "2026-08-15T13:45:20.129Z",
+      "retrievedAt": "2026-08-15T19:04:46.691Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -3564,7 +3564,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 8,
-      "retrievedAt": "2026-08-15T13:45:20.129Z",
+      "retrievedAt": "2026-08-15T19:04:46.691Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -3575,7 +3575,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-08-15T13:45:20.129Z",
+      "retrievedAt": "2026-08-15T19:04:46.691Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -3586,7 +3586,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-15T13:45:20.129Z",
+      "retrievedAt": "2026-08-15T19:04:46.691Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -3597,7 +3597,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-15T13:45:20.129Z",
+      "retrievedAt": "2026-08-15T19:04:46.691Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -3608,7 +3608,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-08-15T13:45:20.129Z",
+      "retrievedAt": "2026-08-15T19:04:46.691Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -3619,7 +3619,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-15T13:45:20.129Z",
+      "retrievedAt": "2026-08-15T19:04:46.691Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -3630,7 +3630,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-15T13:45:20.129Z",
+      "retrievedAt": "2026-08-15T19:04:46.691Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
