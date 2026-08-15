@@ -7,7 +7,7 @@
 })(typeof window !== "undefined" ? window : (typeof globalThis !== "undefined" ? globalThis : null), function () {
   "use strict";
 
-  const VERSION = "2026-08-13.2";
+  const VERSION = "2026-08-14.1";
   const SCHEMA_VERSION = 1;
   const CLINICAL_REFERENCE_OPENING_STANDARD = Object.freeze({
     schemaVersion: "ani-clinical-reference-opening-v1",
@@ -124,6 +124,60 @@
     routineNursingContextGate: true,
     longSentenceMinimumWords: 40,
     longSentenceMinimumDifficultTerms: 2
+  });
+  const FRONT_DOOR_DISEASE_DEFINITION_STANDARD = Object.freeze({
+    schemaVersion: "ani-front-door-disease-definition-standard-v1",
+    evidenceSchemaVersion: "ani-front-door-disease-definition-review-evidence-v1",
+    reviewStage: "exact-runtime-visible-pathology-opening",
+    runtimeCollection: "pathologyDiseases",
+    firstVisibleBlockIndex: 0,
+    optionalLeadingArticles: Object.freeze(["a", "an", "the"]),
+    acceptedLeadVerbs: Object.freeze([
+      "refers to",
+      "occurs when",
+      "describes",
+      "causes",
+      "means",
+      "are",
+      "is"
+    ]),
+    genericIdentityTerms: Object.freeze([
+      "a", "an", "the", "condition", "disease", "disorder", "syndrome"
+    ]),
+    minimumSubstantiveEssenceWords: 3,
+    maximumFirstSentenceWords: 55,
+    taxonomyFirstPatterns: Object.freeze([
+      "^(?:a |an |the )?(?:dsm(?: 5 tr)?|icd(?: 10| 11)?)(?:\\b| )",
+      "^(?:a |an |the )?(?:diagnosis|diagnostic entity|classification|category|code|name|term|label) (?:in|under|from) (?:the )?(?:dsm|icd)\\b",
+      "^(?:classified|listed|coded|named) (?:by|in|under) (?:the )?(?:dsm|icd)\\b"
+    ]),
+    manifestationOrBodyEffectApplicabilityStatus: "NOT_ASSESSED",
+    clinicalAccuracyStatus: "NOT_ASSESSED",
+    reviewClass: "Class C",
+    reviewDispositions: Object.freeze([
+      "AUTHOR_DIRECT_PLAIN_LANGUAGE_OPENING",
+      "MOVE_TAXONOMY_AFTER_CLINICAL_ESSENCE",
+      "EXPAND_CIRCULAR_IDENTITY_ONLY_OPENING",
+      "SHORTEN_FIRST_SENTENCE_PRESERVE_DETAIL_AFTERWARD",
+      "OPENING_ALREADY_DIRECT",
+      "NOT_APPLICABLE",
+      "NEEDS_AUTHORITATIVE_SOURCE_REVIEW"
+    ]),
+    policy: Object.freeze({
+      signalOnly: true,
+      automaticRewrite: false,
+      medicalReviewRequired: true,
+      blocking: false,
+      severity: "Warning",
+      zeroAi: true,
+      clinicalAccuracyInferred: false,
+      manifestationOrBodyEffectInferred: false,
+      medicalRelationshipInferenceAllowed: false,
+      aliasOrFuzzyIdentityActivationAllowed: false,
+      exactRuntimeVisibleProjectionOnly: true,
+      mutationTargetAuthorized: false,
+      runtimeScannerEnabled: false
+    })
   });
   const CLINICAL_MEASURABILITY_REVIEW_STANDARD = Object.freeze({
     schemaVersion: "ani-clinical-measurability-review-standard-v1",
@@ -1400,6 +1454,7 @@
     clinicalReferenceStructuredSectionStandard: CLINICAL_REFERENCE_STRUCTURED_SECTION_STANDARD,
     labStructuredSectionStandard: LAB_STRUCTURED_SECTION_STANDARD,
     visibleLearnerSupportStandard: VISIBLE_LEARNER_SUPPORT_STANDARD,
+    frontDoorDiseaseDefinitionStandard: FRONT_DOOR_DISEASE_DEFINITION_STANDARD,
     clinicalMeasurabilityReviewStandard: CLINICAL_MEASURABILITY_REVIEW_STANDARD,
     clinicalSignificanceInterpretationReviewStandard: CLINICAL_SIGNIFICANCE_INTERPRETATION_REVIEW_STANDARD,
     broadToSpecificEducationStandard: BROAD_TO_SPECIFIC_EDUCATION_STANDARD,

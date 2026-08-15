@@ -36822,6 +36822,10 @@ function pathologyOpeningSentencePieces(value = "", limit = 2) {
 }
 
 function pathologyFirstGlanceText(disease = {}) {
+  const reviewedPlainLanguage = safeText(
+    disease.plainLanguage || disease.plainMeaning || disease.termMeaning || disease.literalMeaning
+  ).replace(/\s+/g, " ").trim();
+  if (reviewedPlainLanguage) return reviewedPlainLanguage;
   const pieces = [];
   const seen = new Set();
   const labelKeys = [disease.name, ...(Array.isArray(disease.aliases) ? disease.aliases : [])]
@@ -36962,7 +36966,18 @@ function pathologyVisibleLearnerDetail(disease = {}) {
   const diagnosticAlterations = pathologyDiagnosticAlterations(disease);
   const pathophysiologyText = pathologyListText(disease.pathophysiology);
   const pathologyText = safeText(disease.pathology);
+  const reviewedPlainLanguage = safeText(
+    disease.plainLanguage || disease.plainMeaning || disease.termMeaning || disease.literalMeaning
+  ).replace(/\s+/g, " ").trim();
   const firstGlanceText = pathologyFirstGlanceText(disease);
+  const definitionText = safeText(disease.definition).replace(/\s+/g, " ").trim();
+  const openingComparable = window.ANI_LEARNER_LANGUAGE_STANDARD
+    && typeof window.ANI_LEARNER_LANGUAGE_STANDARD.openingOwnershipComparable === "function"
+    ? window.ANI_LEARNER_LANGUAGE_STANDARD.openingOwnershipComparable
+    : normalizePharmText;
+  const remainingDefinitionText = reviewedPlainLanguage
+    ? (openingComparable(definitionText) === openingComparable(firstGlanceText) ? "" : definitionText)
+    : pathologySectionValueWithoutOpeningDuplicate(definitionText, firstGlanceText, disease);
   const remainingPathologyText = pathologySectionValueWithoutOpeningDuplicate(pathologyText, firstGlanceText, disease);
   const remainingPathophysiologyText = pathologySectionValueWithoutOpeningDuplicate(pathophysiologyText, firstGlanceText, disease);
   const categoryText = normalizePharmText(disease.category || "");
@@ -36973,6 +36988,7 @@ function pathologyVisibleLearnerDetail(disease = {}) {
   const driverText = [safeText(disease.etiology), pathologyListText(disease.riskFactors)].filter(Boolean).join(" ");
   const sections = [
     ["Crash-course definition", firstGlanceText],
+    ["Clinical definition / diagnostic frame", remainingDefinitionText],
     ["Isolation precautions", pathologyIsolationPrecautionText(disease)],
     ["Priority nursing actions", pathologyListText(disease.nursingPriorities)],
     ["Urgent red flags / when to escalate", pathologyListText(disease.redFlags)],
@@ -36991,6 +37007,7 @@ function pathologyVisibleLearnerDetail(disease = {}) {
   ];
   return {
     diagnosticAlterations,
+    firstGlanceUsesPlainLanguage: Boolean(reviewedPlainLanguage),
     learnerSections: sections.map(([label, value], index) => ({
       id: `pathology-visible-section-${index + 1}`,
       label,
@@ -37057,7 +37074,8 @@ function renderPathologyDetail(disease = activePathologyResults[0]) {
       appendLearnerLanguageSupport(pharmDrugDetail, disease, {
         currentLabel: disease.name,
         projectedBlock: learnerBlock,
-        includePlainLanguage: learnerBlock.id === firstLearnerBlockId,
+        includePlainLanguage: learnerBlock.id === firstLearnerBlockId
+          && visibleDetail.firstGlanceUsesPlainLanguage !== true,
         heading: learnerBlock.id === firstLearnerBlockId ? "Medical terms explained" : "Terms in this section"
       });
     }

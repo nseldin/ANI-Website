@@ -4,8 +4,8 @@
   const payload = {
   "schemaVersion": "ani-pathology-reviewed-runtime-v1",
   "builderVersion": "ani-pathology-builder-2026-08-02.2",
-  "domainVersion": "2026-08-14.12",
-  "sourceSha256": "dbe951484f89b08e0a300171fd4707a6d5fc8fa6f77e36c4ffd69c34ed45f36f",
+  "domainVersion": "2026-08-14.13",
+  "sourceSha256": "28f69331f08f7e4c62e1c1e0ccac40190c9157e381967cfb1d8dc0c030011a67",
   "sourceReferences": [
     {
       "key": "ninds-migraine",
@@ -1263,6 +1263,128 @@
         "renal dosing boundary",
         "patientEducation"
       ]
+    },
+    {
+      "key": "apa-dsm5tr-update-2025",
+      "label": "DSM-5-TR Update: Supplement to the Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition, Text Revision, September 2025",
+      "authority": "American Psychiatric Association",
+      "url": "https://www.psychiatry.org/getmedia/b68a5776-f88c-45c7-9535-fd219d7aa5cb/APA-DSM5TR-Update-September-2025.pdf",
+      "fieldsSupported": [
+        "DSM cumulative updates",
+        "delusional disorder differential",
+        "obsessive-compulsive-related absent-insight boundary"
+      ]
+    },
+    {
+      "key": "nice-cg178-psychosis-adults",
+      "label": "Psychosis and schizophrenia in adults: prevention and management",
+      "authority": "National Institute for Health and Care Excellence",
+      "url": "https://www.nice.org.uk/Guidance/CG178/chapter/recommendations",
+      "fieldsSupported": [
+        "comprehensive psychosis assessment",
+        "medical and substance differential",
+        "mood-psychosis differential",
+        "first-episode referral",
+        "antipsychotic shared decision making",
+        "baseline monitoring",
+        "adverse-effect monitoring",
+        "psychotherapy",
+        "family intervention",
+        "neuroimaging boundary",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "va-vhl-psychosis-communication-2025",
+      "label": "Tips for Helping a Loved One Living with Schizophrenia",
+      "authority": "U.S. Department of Veterans Affairs Veterans Health Library",
+      "url": "https://www.veteranshealthlibrary.va.gov/RelatedItems/142%2Cug5103_va",
+      "fieldsSupported": [
+        "calm supportive communication",
+        "empathy",
+        "non-confrontational response",
+        "crisis preparation",
+        "family support",
+        "patientEducation"
+      ]
+    },
+    {
+      "key": "samhsa-tip42-cooccurring-2020",
+      "label": "TIP 42: Substance Use Disorder Treatment for People With Co-Occurring Disorders",
+      "authority": "Substance Abuse and Mental Health Services Administration",
+      "url": "https://library.samhsa.gov/sites/default/files/SAMHSA_Digital_Download/PEP20-02-01-004_Final_508.pdf",
+      "fieldsSupported": [
+        "substance-induced psychosis",
+        "exposure timeline",
+        "induced versus independent disorder",
+        "co-occurring treatment",
+        "reassessment",
+        "recovery support"
+      ]
+    },
+    {
+      "key": "asam-aaap-stimulant-cpg-2024",
+      "label": "The ASAM/AAAP Clinical Practice Guideline on the Management of Stimulant Use Disorder",
+      "authority": "American Society of Addiction Medicine and American Academy of Addiction Psychiatry",
+      "url": "https://downloads.asam.org/sitefinity-production-blobs/docs/default-source/guidelines/stimulant-gudie/stud_guideline_document_final.pdf?sfvrsn=f7f872f5_1",
+      "fieldsSupported": [
+        "stimulant-induced psychosis",
+        "agitation and delirium differential",
+        "de-escalation",
+        "antipsychotic class",
+        "chlorpromazine and clozapine avoidance boundary",
+        "emergency escalation",
+        "suicide monitoring",
+        "level-of-care decision"
+      ]
+    },
+    {
+      "key": "asam-alcohol-withdrawal-cpg-2020",
+      "label": "The ASAM Clinical Practice Guideline on Alcohol Withdrawal Management",
+      "authority": "American Society of Addiction Medicine",
+      "url": "https://www.asam.org/docs/default-source/quality-science/the_asam_clinical_practice_guideline_on_alcohol-1.pdf?sfvrsn=ba255c2_2%2C13%2C17%2C38",
+      "fieldsSupported": [
+        "alcohol withdrawal delirium",
+        "alcohol-induced psychotic disorder",
+        "benzodiazepine first-line boundary",
+        "antipsychotic adjunct-only boundary",
+        "diazepam example",
+        "seizure risk",
+        "close nursing observation",
+        "cardiorespiratory monitoring"
+      ]
+    },
+    {
+      "key": "asam-benzodiazepine-tapering-2025",
+      "label": "Joint Clinical Practice Guideline on Benzodiazepine Tapering: Considerations When Benzodiazepine Risks Outweigh Benefits",
+      "authority": "American Society of Addiction Medicine and partner professional societies",
+      "url": "https://downloads.asam.org/sitefinity-production-blobs/docs/default-source/guidelines/benzodiazepine-tapering-2025/bzd-tapering-document---final-approved-version-for-distribution-02-28-25.pdf?sfvrsn=5bdf9c81_2",
+      "fieldsSupported": [
+        "benzodiazepine physical dependence",
+        "withdrawal risk",
+        "abrupt-discontinuation prohibition",
+        "individualized supervised taper",
+        "shared decision making",
+        "withdrawal monitoring"
+      ]
+    },
+    {
+      "key": "nice-cg103-delirium",
+      "label": "Delirium: prevention, diagnosis and management in hospital and long-term care",
+      "authority": "National Institute for Health and Care Excellence",
+      "url": "https://www.nice.org.uk/guidance/cg103/chapter/Recommendations",
+      "fieldsSupported": [
+        "acute and fluctuating presentation",
+        "delirium indicators",
+        "4AT assessment",
+        "CAM-ICU and ICDSC boundary",
+        "underlying-cause evaluation",
+        "delirium-first boundary",
+        "reorientation",
+        "de-escalation",
+        "short-term antipsychotic boundary",
+        "patientEducation"
+      ]
     }
   ],
   "cards": [
@@ -1429,7 +1551,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.obesity-hypoventilation-syndrome",
@@ -1576,7 +1698,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.immunoglobulin-a-nephropathy",
@@ -1729,7 +1851,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.acute-promyelocytic-leukemia",
@@ -1883,7 +2005,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.antiphospholipid-syndrome",
@@ -2045,7 +2167,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.autoimmune-encephalitis",
@@ -2201,7 +2323,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.microscopic-colitis",
@@ -2348,7 +2470,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.common-variable-immunodeficiency",
@@ -2512,7 +2634,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.cluster-headache",
@@ -2657,7 +2779,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.focal-segmental-glomerulosclerosis",
@@ -2807,7 +2929,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.pituitary-apoplexy",
@@ -2959,7 +3081,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.meningococcemia",
@@ -3114,7 +3236,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.diffuse-large-b-cell-lymphoma",
@@ -3281,7 +3403,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.burkitt-lymphoma",
@@ -3435,7 +3557,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.babesiosis",
@@ -3587,7 +3709,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.pemphigus-vulgaris",
@@ -3739,7 +3861,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.alport-syndrome",
@@ -3894,7 +4016,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.primary-ciliary-dyskinesia",
@@ -4047,7 +4169,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.autoimmune-hepatitis",
@@ -4202,7 +4324,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.primary-sclerosing-cholangitis",
@@ -4357,7 +4479,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.ergotism",
@@ -4535,7 +4657,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.venous-thromboembolism",
@@ -4717,7 +4839,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.chronic-traumatic-encephalopathy",
@@ -4894,7 +5016,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.social-anxiety-disorder",
@@ -5079,7 +5201,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.persistent-depressive-disorder",
@@ -5265,7 +5387,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.cyclothymic-disorder",
@@ -5449,7 +5571,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.oppositional-defiant-disorder",
@@ -5642,7 +5764,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.conduct-disorder",
@@ -5834,7 +5956,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.personality-disorders-overview",
@@ -6039,7 +6161,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.obsessive-compulsive-personality-disorder",
@@ -6261,7 +6383,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.borderline-personality-disorder",
@@ -6483,7 +6605,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.somatic-symptom-disorder",
@@ -6668,7 +6790,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.illness-anxiety-disorder",
@@ -6854,7 +6976,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.functional-neurological-symptom-disorder",
@@ -7060,7 +7182,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.narcissistic-personality-disorder",
@@ -7292,7 +7414,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.dependent-personality-disorder",
@@ -7523,7 +7645,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.histrionic-personality-disorder",
@@ -7754,7 +7876,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.ptsd",
@@ -7994,7 +8116,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.acute-stress-disorder",
@@ -8231,7 +8353,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.adjustment-disorder",
@@ -8466,7 +8588,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.prolonged-grief-disorder",
@@ -8679,7 +8801,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.complex-ptsd",
@@ -8930,7 +9052,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.reactive-attachment-disorder",
@@ -9212,7 +9334,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.disinhibited-social-engagement-disorder",
@@ -9504,7 +9626,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.schizophrenia",
@@ -9777,7 +9899,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.schizophreniform-disorder",
@@ -10028,7 +10150,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.brief-psychotic-disorder",
@@ -10285,7 +10407,7 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
     },
     {
       "id": "disease.schizoaffective-disorder",
@@ -10574,7 +10696,940 @@
       "expandedIndex": false,
       "confidenceTier": "Curated full study card",
       "templateKey": "curated full study card",
-      "pathologyDomainVersion": "2026-08-14.12"
+      "pathologyDomainVersion": "2026-08-14.13"
+    },
+    {
+      "id": "disease.delusional-disorder",
+      "name": "Delusional disorder",
+      "displayName": "Delusional disorder",
+      "category": "Mental health",
+      "aliases": [
+        "persistent delusional disorder"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-14",
+      "plainLanguage": "Delusional disorder means one or more fixed beliefs remain firmly held despite strong evidence against them, while thinking and everyday function may be relatively preserved outside the belief's effects. It is not ordinary mistrust, a culturally shared belief, or the same diagnosis as schizophrenia.",
+      "whyItMatters": "The belief may drive fear, isolation, stalking, retaliation, unsafe refusal of food or treatment, self-harm, or harm to another person; careful content-and-action assessment can identify urgent risk while preserving dignity and avoiding confrontation.",
+      "plainLanguageGlosses": [
+        {
+          "term": "delusion",
+          "plainLanguage": "a firmly held belief that is not changed by clear contrary evidence and is not better explained by the person's culture or faith",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "apa-dsm5tr-2022"
+          ]
+        },
+        {
+          "term": "relatively preserved function",
+          "plainLanguage": "daily abilities may remain fairly intact except where the belief changes relationships, safety, work, health decisions, or behavior",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "apa-dsm5tr-2022"
+          ]
+        },
+        {
+          "term": "reality-based communication",
+          "plainLanguage": "acknowledging the person's fear or distress without agreeing with the belief, then stating what the nurse observes in a calm neutral way",
+          "sourceKeys": [
+            "va-vhl-psychosis-communication-2025",
+            "nice-ng10-violence-aggression"
+          ]
+        },
+        {
+          "term": "absent insight",
+          "plainLanguage": "being unable to recognize that a belief or concern may be caused by a health condition, which can also occur in OCD-related disorders",
+          "sourceKeys": [
+            "apa-dsm5tr-update-2025"
+          ]
+        }
+      ],
+      "definition": "Delusional disorder is a primary psychotic disorder in which one or more delusions are the central persistent symptom, the broader schizophrenia pattern has not occurred, and functioning is not markedly impaired apart from the delusion and its consequences. DSM-5-TR and ICD-11 use different duration wording, so ANI identifies each system separately. The diagnosis also requires exclusion of mood, obsessive-compulsive-related, substance, medication, delirium, neurologic, and other medical explanations.",
+      "pathology": "No single lesion, neurotransmitter value, scan, or psychological test explains delusional disorder. The clinical pattern may involve altered interpretation of threat, salience, social information, and prior experience, but these mechanisms are not diagnostic biomarkers. Risk and disability arise mainly from what the person believes, how certain the belief feels, and what actions follow; a single unusual belief does not diagnose the disorder by itself.",
+      "pathophysiology": [
+        "A strongly fixed interpretation may become resistant to corrective evidence while other thought organization and cognition remain comparatively intact. This helps explain why a person can function well in many areas yet make high-risk decisions around one belief.",
+        "Persecutory, jealous, erotomanic, grandiose, somatic, mixed, or unspecified themes describe content rather than separate diseases. Content may influence the pattern of risk, but a theme alone never establishes the diagnosis.",
+        "Sensory impairment, neurocognitive change, mood episodes, trauma, sleep loss, culture, substances, medicines, and medical illness can shape similar experiences and must be assessed before a primary disorder is assigned."
+      ],
+      "etiology": "Etiology is not established by one cause. Vulnerability may reflect interacting biologic, cognitive, interpersonal, sensory, cultural, and stress factors. New late-onset, rapidly changing, or atypical beliefs require especially careful review for delirium, dementia, seizure, endocrine or metabolic disease, neurologic illness, prescribed or nonprescribed agents, intoxication, and withdrawal.",
+      "riskFactors": [
+        "Prior psychotic illness or family vulnerability, while family history alone does not diagnose the disorder",
+        "Social isolation, migration or language barriers, hearing or vision loss, trauma, and chronic interpersonal stress that can affect interpretation and access to care",
+        "Sleep deprivation, substance exposure, medication changes, or medical and neurologic illness that may cause or amplify delusional thinking",
+        "Older or atypical age of onset, cognitive change, or functional decline, which increase the need to search for neurocognitive and medical causes",
+        "Persecutory or jealous content, prior threats, access to weapons, escalating grievance, severe hopelessness, and substance use may increase immediate risk in context; the diagnosis alone does not predict violence"
+      ],
+      "signsSymptoms": [
+        "One or more persistent delusions, such as persecutory, jealous, erotomanic, grandiose, somatic, mixed, or unspecified themes",
+        "Speech and behavior may remain organized, and function may be relatively preserved outside the belief and its direct consequences",
+        "Hallucinations, when present in the DSM pattern, are not prominent and are related to the delusional theme rather than forming a broad hallucination syndrome",
+        "Anger, fear, shame, anxiety, depression, insomnia, avoidance, repeated checking, complaints, legal action, stalking, confrontation, or refusal of care may follow the belief",
+        "A broader schizophrenia pattern, fluctuating attention, prominent mood episode, intoxication or withdrawal, or progressive cognitive decline points toward another explanation"
+      ],
+      "diagnostics": [
+        "DSM-5-TR requires one or more delusions for at least 1 month, with schizophrenia Criterion A never met; apart from the delusion's impact, functioning is not markedly impaired and behavior is not obviously bizarre or odd. Hallucinations, if present, are not prominent and relate to the delusional theme.",
+        "ICD-11 describes delusional disorder with persistent delusions typically present for at least 3 months and without the characteristic persistent hallucinations, thought disorder, negative symptoms, or other core schizophrenia pattern. Do not merge the DSM and ICD durations into one cutoff.",
+        "Assess the exact belief, onset, degree of conviction, evidence the person considers, cultural and spiritual context, emotional response, intended actions, function, mood episodes, cognition, sleep, trauma, substances, medicines, medical illness, and longitudinal course.",
+        "Obtain collateral history with consent or lawful authority because changes in behavior, threats, spending, surveillance, stalking, food refusal, treatment refusal, or cognitive decline may not be visible in one interview.",
+        "No single belief, rating scale, blood test, toxicology result, scan, or response to medication diagnoses delusional disorder; targeted testing addresses plausible causes and treatment safety."
+      ],
+      "labs": [
+        "For new or changing psychosis, check vital signs, oxygenation, point-of-care glucose, temperature, attention and arousal, neurologic findings, pregnancy or postpartum context, medication exposure, intoxication, and withdrawal before assuming a primary disorder.",
+        "Select CBC, electrolytes, renal and liver tests, thyroid studies, toxicology, infection studies, ECG, imaging, EEG, lumbar puncture, or autoimmune testing only when history, examination, age, tempo, or treatment choice supports them; there is no universal panel.",
+        "Before and during an antipsychotic trial, monitor weight or BMI, blood pressure and orthostasis, glucose or HbA1c, lipids, movement symptoms, sedation and falls, prolactin effects, constipation, and ECG or QT risk when indicated."
+      ],
+      "assessment": "Begin with medical stability and ask directly about suicide or self-harm, homicidal thoughts, a named target, threats, stalking, retaliation, weapon or lethal-means access, command hallucinations, refusal of food, fluids, medicine, shelter or essential care, self-neglect, dependents, exploitation, and ability to accept help. Ask what the person believes will happen and what they plan to do about it. Document the person's words, observable behavior, collateral timeline, culture, mood, cognition, substances, medicines, function, and protective factors. Diagnosis alone does not predict violence.",
+      "differential": [
+        "Schizophrenia or schizophreniform disorder when hallucinations, disorganization, negative symptoms, cognitive change, and functional decline form the broader characteristic pattern",
+        "Bipolar disorder or major depressive disorder with psychotic features when psychosis occurs exclusively during qualifying mood episodes; under DSM-5-TR, delusional disorder can include mood episodes only when their total duration is brief relative to the delusional periods. Schizoaffective disorder requires its own longitudinal mood-psychosis relationship.",
+        "Obsessive-compulsive disorder, body dysmorphic disorder, or hoarding disorder with absent insight or delusional beliefs, distinguished by the underlying obsession, appearance concern, or saving pattern",
+        "Delirium or major neurocognitive disorder when attention, awareness, cognition, or arousal is acute, fluctuating, or progressively impaired",
+        "Substance/medication-induced psychotic disorder, intoxication, withdrawal, and psychotic disorder due to another medical condition",
+        "Trauma-related hypervigilance, culturally or spiritually shared beliefs, misinformation, personality patterns, sensory impairment, and ordinary mistrust that do not meet the full disorder pattern"
+      ],
+      "treatments": [
+        "Build a therapeutic alliance through consistent, respectful, nonjudgmental engagement. Address the person's stated distress, sleep, safety, function, housing, relationships, and health goals without requiring agreement about the belief before care begins.",
+        "Cognitive behavioral and supportive psychotherapy may help the person examine interpretations, reduce distress, improve coping, and choose safer actions. Do not force direct confrontation of the belief or imply that psychotherapy proves the diagnosis.",
+        "A psychiatric clinician may offer an individualized antipsychotic trial when distress, impairment, or risk warrants it. Direct delusional-disorder comparative evidence is limited, so no universal preferred agent or fixed duration should be taught; choice and continuation require shared decision making and reassessment.",
+        "Use shared decision making and document the target symptom, expected benefit, adverse effects the person most wants to avoid, medical risks, interactions, formulation, adherence barriers, and a time for reassessment rather than prescribing indefinitely by default.",
+        "Treat depression, anxiety, substance use, sensory impairment, sleep disorder, neurocognitive illness, and medical causes on their own evidence and coordinate social, legal, safeguarding, and family supports with consent."
+      ],
+      "contraindications": [
+        "Do not argue, ridicule, trick, test, endorse, or reinforce the delusion; validate the emotion without validating the belief and state reality briefly and neutrally.",
+        "Do not diagnose from one fixed belief, relationship conflict, culturally shared belief, legal complaint, jealousy, somatic concern, or refusal of one recommendation.",
+        "Do not use an antipsychotic automatically, promise a specific response, or impose one fixed duration; selection and continuation are individualized and reassessed.",
+        "Do not use diagnosis alone to set an observation interval or justify involuntary care, seclusion, or restraint. Use current risk, law, orders, policy, and the least restrictive effective response.",
+        "Do not increase dopamine-blocking treatment reflexively when catatonia or neuroleptic malignant syndrome is possible; obtain urgent medical and psychiatric review."
+      ],
+      "safetyConsiderations": [
+        "Use one calm speaker, personal space, simple concrete statements, low stimulation, clear choices, and predictable limits. Avoid whispering nearby, joking about the belief, sudden touch, crowding, false reassurance, and promises of secrecy.",
+        "Validate distress without validating the belief: for example, acknowledge that the fear feels real, state that you do not share the same observation, and focus on what would help the person remain safe now.",
+        "Assess the link from belief to action: a persecutory or jealous belief may require questions about a named target, surveillance, stalking, confrontation, retaliation, weapons, children or dependents, and ability to delay action.",
+        "If an antipsychotic is used, monitor acute dystonia, akathisia that may resemble agitation or worsen suicidality, parkinsonism, tardive dyskinesia or AIMS findings, metabolic effects, QT risk, orthostasis, sedation, prolactin effects, constipation, and NMS.",
+        "Use de-escalation and voluntary care first. Restrictive intervention is for immediate danger under applicable law and policy, with airway, circulation, vital signs, hydration, toileting, documentation, and debriefing protected."
+      ],
+      "nursingPriorities": [
+        "Establish airway, breathing, circulation, vital signs, glucose, oxygenation, temperature, attention, neurologic status, nutrition, hydration, sleep, medication exposure, intoxication, withdrawal, and acute medical threats.",
+        "Ask directly about suicide, self-harm, homicide, target, commands, weapons or lethal means, retaliation, stalking, food or medication refusal, self-care, shelter, dependents, and protective factors; a no-harm contract is not a substitute for assessment and safety planning.",
+        "Use calm reality-based communication, validate emotion without validating the belief, do not argue, reduce stimulation, offer simple choices, and tell the person what will happen next.",
+        "Trend belief intensity, distress, intended action, sleep, function, adherence, substance exposure, benefit, and adverse effects rather than charting only that the patient is delusional.",
+        "Coordinate psychiatric and medical follow-up, psychotherapy, physical-health monitoring, family or caregiver teaching with consent, housing and practical support, and a written crisis and lethal-means safety plan."
+      ],
+      "redFlags": [
+        "Suicidal or homicidal intent, a plan or named target, dangerous commands, weapon or lethal-means access, stalking, escalating retaliation, or inability to delay action",
+        "Refusal of food, fluids, shelter, essential medicine, or urgent medical care because of the belief; severe self-neglect, exposure, exploitation, or inability to protect dependents",
+        "Acute or fluctuating attention, fever, hypoxia, hypoglycemia, focal neurologic deficit, seizure, severe headache, intoxication, withdrawal, rapid cognitive decline, pregnancy or postpartum onset",
+        "Catatonic stupor, mutism, posturing, refusal, purposeless excitement, dehydration, aspiration risk, fever, rigidity, altered consciousness, or autonomic instability",
+        "NMS, airway-threatening dystonia, severe akathisia with suicidality, syncope, dangerous arrhythmia symptoms, or another serious medication reaction"
+      ],
+      "complications": [
+        "Suicide, assault or retaliation in a specific high-risk context, stalking, legal conflict, relationship loss, social isolation, job or housing loss, and disrupted care",
+        "Malnutrition, dehydration, untreated illness, medication refusal, unsafe self-treatment, financial exploitation, or harm to dependents when the belief drives decisions",
+        "Depression, anxiety, insomnia, substance harm, victimization, stigma, and coercion",
+        "Metabolic, movement, cardiovascular, prolactin, sedation, fall, constipation, and other adverse effects when antipsychotic treatment is used",
+        "Delayed recognition of delirium, neurocognitive disorder, mood illness, substance or medication effect, seizure, autoimmune disease, or another medical cause"
+      ],
+      "prognosis": "Course varies from a single episode to a persistent or relapsing pattern. Outcomes improve when engagement is respectful, risk is assessed from belief content and intended action, medical and substance causes are revisited, psychotherapy addresses distress and function, any medication trial has explicit targets and monitoring, and housing, relationships, sensory needs, and physical health are supported. A persistent belief does not erase recovery goals or autonomy.",
+      "prevention": [
+        "Identify personal warning signs such as sleep loss, increasing checking, isolation, escalating grievance, missed care, substance use, or renewed certainty and action planning.",
+        "Maintain consistent follow-up and address adverse effects, access, cost, transportation, sensory impairment, housing, and trust before they cause disengagement.",
+        "Use a written plan for crisis contacts, lethal-means safety, safe support people, medication questions, and what to do if the belief begins driving risky action.",
+        "Review new medicines, substances, cognitive changes, and medical symptoms promptly rather than assuming every recurrence is the primary disorder."
+      ],
+      "patientEducation": [
+        "Delusional disorder is more than being stubborn or mistrustful. Diagnosis requires a persistent clinical pattern, classification-specific duration, functional context, and exclusion of other causes.",
+        "You can tell staff what you are experiencing without being mocked or forced to agree. The care team can acknowledge distress and focus on safety even when people interpret the belief differently.",
+        "If a medicine is offered, ask which symptom it targets, what improvement to watch for, when it will be reviewed, and how weight, glucose, lipids, movement symptoms, QT risk, orthostasis, prolactin effects, constipation, and NMS will be monitored.",
+        "Seek urgent help if the belief creates a plan to confront or harm someone, suicidal intent, weapon access, dangerous food or medicine refusal, inability to care for basic needs, confusion, seizure, fever with rigidity, or rapid neurologic change."
+      ],
+      "specialPopulations": [
+        "Older adults and new late-onset presentations require careful sensory, cognitive, neurologic, medication, infection, endocrine, and metabolic assessment before a primary delusional disorder is accepted.",
+        "Pregnancy and postpartum onset require urgent obstetric and psychiatric assessment and individualized medication-risk review.",
+        "Children and adolescents require developmental, family, trauma, substance, neurologic, and cultural assessment; adult diagnostic assumptions and medication plans should not simply be copied.",
+        "Cultural, spiritual, migration, language, hearing, vision, autism, intellectual, trauma, and community context must be assessed so a shared belief or communication difference is not mislabeled psychosis.",
+        "People facing homelessness, prior coercion, justice involvement, or limited access need rights protection, practical continuity, and recovery-oriented goals rather than risk-only care."
+      ],
+      "nclexTraps": [
+        "DSM-5-TR uses at least 1 month; ICD-11 typically uses at least 3 months. Do not combine them into one universal duration.",
+        "Relatively preserved function outside the belief and nonprominent theme-related hallucinations help distinguish this disorder from the broader schizophrenia pattern.",
+        "One unusual belief, cultural difference, or positive test does not diagnose delusional disorder. Assess mood, cognition, delirium, substances, medicines, and medical causes.",
+        "Validate distress without validating the belief, do not argue, and ask what action the person plans. Diagnosis alone does not predict violence.",
+        "There is no universally preferred antipsychotic or fixed treatment duration; build trust, use psychotherapy, monitor any individualized trial, and protect least-restrictive rights."
+      ],
+      "relatedTopics": [
+        "Schizophrenia",
+        "Schizophreniform disorder",
+        "Brief psychotic disorder",
+        "Schizoaffective disorder",
+        "Bipolar disorder",
+        "Major depressive disorder",
+        "Substance/medication-induced psychotic disorder",
+        "Psychotic disorder due to another medical condition",
+        "Delirium",
+        "Obsessive-compulsive disorder",
+        "Antipsychotic medications",
+        "Suicidal ideation"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "apa-dsm5tr-2022",
+        "apa-dsm5tr-update-2025",
+        "va-dod-schizophrenia-cpg-2023",
+        "nice-cg178-psychosis-adults",
+        "va-vhl-psychosis-communication-2025",
+        "nice-ng10-violence-aggression",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. DSM-5-TR and WHO ICD-11 duration and symptom requirements are labeled separately. The APA 2025 update supports the obsessive-compulsive-related differential. VA/DoD and NICE CG178 support general psychosis assessment and monitored treatment but are not presented as delusional-disorder-specific efficacy guidelines. VA Veterans Health Library, NICE NG10, and SAFE-T support communication, de-escalation, and individualized safety care. No commercial-reference prose was copied.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024, Delusional disorder 6A24; accessed 2026-08-14",
+          "fieldsSupported": [
+            "identity",
+            "ICD classification",
+            "duration",
+            "symptom pattern",
+            "functional boundary",
+            "differential"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022, Delusional Disorder; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "DSM classification",
+            "duration",
+            "function",
+            "hallucination boundary",
+            "subtypes",
+            "differential"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://www.psychiatry.org/getmedia/b68a5776-f88c-45c7-9535-fd219d7aa5cb/APA-DSM5TR-Update-September-2025.pdf",
+          "documentVersion": "DSM-5-TR cumulative update September 2025; accessed 2026-08-14",
+          "fieldsSupported": [
+            "delusional disorder differential",
+            "obsessive-compulsive-related absent-insight boundary"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/scz/VA-DoD-CPG-Schizophrenia-CPG_Finalv231924.pdf",
+          "documentVersion": "VA/DoD first-episode psychosis and schizophrenia CPG 2023; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "general psychosis assessment",
+            "medical and substance differential",
+            "urgent referral",
+            "antipsychotic monitoring",
+            "catatonia and NMS escalation"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/Guidance/CG178/chapter/recommendations",
+          "documentVersion": "NICE CG178 recommendations, updated links 2024; accessed 2026-08-14",
+          "fieldsSupported": [
+            "comprehensive assessment",
+            "shared treatment choice",
+            "baseline and adverse-effect monitoring",
+            "psychotherapy",
+            "family and recovery care"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs Veterans Health Library",
+          "url": "https://www.veteranshealthlibrary.va.gov/RelatedItems/142%2Cug5103_va",
+          "documentVersion": "Veterans Health Library reviewed 2025; accessed 2026-08-14",
+          "fieldsSupported": [
+            "calm supportive communication",
+            "empathy",
+            "nonconfrontation",
+            "family support",
+            "crisis preparation"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/NG10/chapter/recommendations",
+          "documentVersion": "NICE NG10 recommendations; accessed 2026-08-14",
+          "fieldsSupported": [
+            "risk assessment",
+            "de-escalation",
+            "observation",
+            "least-restrictive care",
+            "restrictive-intervention limits",
+            "dignity",
+            "documentation"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; accessed 2026-08-14",
+          "fieldsSupported": [
+            "suicide inquiry",
+            "risk factors",
+            "protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.delusional-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.13"
+    },
+    {
+      "id": "disease.substance-medication-induced-psychotic-disorder",
+      "name": "Substance/medication-induced psychotic disorder",
+      "displayName": "Substance/medication-induced psychotic disorder",
+      "category": "Mental health",
+      "aliases": [
+        "substance- or medication-induced psychotic disorder",
+        "substance-induced psychotic disorder",
+        "medication-induced psychotic disorder",
+        "substance-induced psychosis",
+        "medication-induced psychosis"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-14",
+      "plainLanguage": "Substance/medication-induced psychotic disorder means hallucinations or delusions are caused by intoxication, withdrawal, or a medicine. The key is a compatible timeline and an agent capable of causing the syndrome; a positive drug screen or medication list alone does not prove the cause.",
+      "whyItMatters": "The same symptoms can signal stimulant toxicity, dangerous alcohol or sedative withdrawal, delirium, a serious medication reaction, or an independent psychotic or mood disorder, so rapid cause-specific assessment can prevent seizure, arrhythmia, hyperthermia, suicide, violence, and delayed treatment.",
+      "plainLanguageGlosses": [
+        {
+          "term": "intoxication",
+          "plainLanguage": "the clinical effects occurring while a substance is active in the body, which may include agitation, paranoia, hallucinations, or dangerous changes in vital signs",
+          "sourceKeys": [
+            "samhsa-tip42-cooccurring-2020",
+            "asam-aaap-stimulant-cpg-2024"
+          ]
+        },
+        {
+          "term": "withdrawal",
+          "plainLanguage": "symptoms that occur after reducing or stopping an agent the body has adapted to; some withdrawals can cause seizures or delirium and require urgent treatment",
+          "sourceKeys": [
+            "asam-alcohol-withdrawal-cpg-2020",
+            "asam-benzodiazepine-tapering-2025"
+          ]
+        },
+        {
+          "term": "causal timeline",
+          "plainLanguage": "evidence that symptoms began in a time pattern compatible with a capable substance or medication and change as the exposure or withdrawal changes",
+          "sourceKeys": [
+            "apa-dsm5tr-2022",
+            "samhsa-tip42-cooccurring-2020"
+          ]
+        },
+        {
+          "term": "toxicology screen",
+          "plainLanguage": "a test that detects only certain exposures for a limited time; a result can support the history but cannot by itself prove or exclude the cause",
+          "sourceKeys": [
+            "samhsa-tip42-cooccurring-2020",
+            "va-dod-schizophrenia-cpg-2023"
+          ]
+        }
+      ],
+      "definition": "Substance/medication-induced psychotic disorder is a clinically significant syndrome of delusions and/or hallucinations that develops during or soon after intoxication, withdrawal, or exposure to a medication known to be capable of causing the symptoms. The disturbance is not better explained by an independent psychotic disorder and does not occur exclusively during delirium. Exact timing and persistence depend on the agent, dose, route, metabolism, withdrawal pattern, and classification system rather than one universal window.",
+      "pathology": "A substance or medicine can alter dopamine, glutamate, serotonin, acetylcholine, stress, sleep, autonomic, or other neural systems enough to impair reality testing. Withdrawal can create a different mechanism from intoxication. Clinical causation is established from the whole pattern: exposure, timing, capable agent, toxidrome or withdrawal findings, symptom course, and competing causes. Temporal association alone is insufficient, and a toxicology result is neither a diagnosis nor proof of physiologic causality.",
+      "pathophysiology": [
+        "Stimulant intoxication can increase catecholaminergic signaling and produce hypervigilance, paranoia, hallucinations, agitation, hyperthermia, hypertension, tachycardia, seizure, and cardiovascular complications.",
+        "Alcohol or sedative-hypnotic withdrawal reduces inhibitory tone after physiologic adaptation and may progress to hallucinations, seizures, autonomic instability, or withdrawal delirium; this is not safely treated as antipsychotic-only psychosis.",
+        "Medication effects can arise after starting, increasing, interacting, accumulating, or withdrawing an agent. Organ function, age, dose, route, metabolism, coexposures, and sleep influence the presentation.",
+        "Symptoms that preceded the exposure, persist well beyond its expected course, recur without it, or include a strong independent longitudinal pattern require reassessment for primary psychotic, mood, neurologic, or medical illness."
+      ],
+      "etiology": [
+        "Intoxication with a substance capable of producing delusions or hallucinations, including stimulants, cannabis-related products, hallucinogens, inhalants, or multiple agents",
+        "Withdrawal from alcohol, sedative-hypnotic or anxiolytic agents, or another substance with a compatible syndrome",
+        "A prescribed, over-the-counter, or nonprescribed medication effect, interaction, accumulation, dose change, or withdrawal",
+        "Combined exposure, sleep deprivation, dehydration, infection, metabolic illness, or organ dysfunction that changes toxicity or unmasks an independent vulnerability",
+        "Misattribution is possible: a person can have both a substance use disorder and an independent psychotic or mood disorder, and the working diagnosis may change with longitudinal observation"
+      ],
+      "riskFactors": [
+        "High dose, rapid use, binge pattern, potent formulation, injection or inhalation route, multiple substances, adulterants, or uncertain product contents",
+        "Prior stimulant or substance-induced psychosis, primary psychotic or bipolar illness, family vulnerability, severe sleep deprivation, trauma, or repeated exposure",
+        "Abrupt reduction of alcohol or benzodiazepines after physiologic dependence, prior withdrawal seizure or delirium, and concurrent illness",
+        "Older age, pregnancy, liver or kidney impairment, neurologic disease, drug interactions, and medicines with anticholinergic, dopaminergic, corticosteroid, stimulant, or other psychosis-producing effects",
+        "Suicidality may increase as stimulant intoxication wanes or withdrawal begins; agitation, commands, persecutory fear, weapons, and inability to meet basic needs require direct assessment rather than prediction from diagnosis alone"
+      ],
+      "signsSymptoms": [
+        "Delusions, often persecutory or referential, and auditory, visual, tactile, or other hallucinations that exceed the expected simple perceptual disturbance of intoxication or withdrawal",
+        "Agitation, fear, insomnia, hypervigilance, disorganization, impulsivity, aggression, depression, or suicidal thinking, with severity and course linked to the agent and context",
+        "Toxidrome findings such as abnormal pupils, sweating, dry skin, tremor, rigidity, clonus, altered bowel sounds, hypertension, hypotension, tachycardia, bradycardia, hyperthermia, or respiratory depression",
+        "Withdrawal findings such as tremor, diaphoresis, nausea, anxiety, insomnia, autonomic activation, hallucinations, seizure, or fluctuating attention and awareness",
+        "Persistent symptoms after the expected intoxication or withdrawal period, negative symptoms, functional decline, or episodes without exposure suggest an independent psychotic or mood disorder"
+      ],
+      "diagnostics": [
+        "Build an exact timeline: agent and formulation, amount, route, frequency, last use or dose, recent start, stop or change, adherence, access, interactions, sleep, nutrition, prior episodes, baseline function, and symptom onset and resolution. Obtain collateral, pharmacy, prescription-monitoring, and emergency records when lawful and clinically relevant.",
+        "DSM-5-TR requires delusions and/or hallucinations with evidence that symptoms developed during or soon after intoxication or withdrawal or after medication exposure and that the agent is capable of causing them; an independent disorder and occurrence exclusively during delirium must be excluded.",
+        "ICD-11 organizes psychotic disorders by specific substance classes and requires psychotic symptoms beyond the characteristic intoxication or withdrawal disturbance, with a compatible causal relationship and exclusion of a primary disorder and delirium.",
+        "Assess attention and arousal repeatedly. Fluctuating inattention, altered awareness, disorientation, or an acute medical change requires delirium evaluation first rather than diagnosing primary or induced psychosis outside delirium.",
+        "A positive toxicology or drug screen does not prove causal attribution, and a negative routine screen does not exclude every substance, medication, novel compound, timing window, or exposure. No blood, urine, or toxicology test independently diagnoses the disorder."
+      ],
+      "labs": [
+        "Immediately assess vital signs, oxygen saturation, temperature, point-of-care glucose, ECG or rhythm, mental status, attention, pupils, skin, secretions, bowel sounds, muscle tone, clonus, neurologic findings, trauma, hydration, pregnancy possibility, and respiratory status.",
+        "Use electrolytes, renal and liver tests, CK, troponin, acid-base studies, CBC, pregnancy testing, targeted toxicology, acetaminophen or salicylate levels, infection testing, imaging, EEG, or other studies only when the exposure, toxidrome, examination, or protocol supports them.",
+        "Routine immunoassays have detection gaps and false positive or negative results. Confirmatory testing may clarify exposure but still does not prove that the detected agent caused psychosis.",
+        "When an antipsychotic is used, monitor ECG or QT risk, temperature, hydration, orthostasis, sedation, movement symptoms, glucose and metabolic risk, seizure risk, and interactions according to the agent and clinical setting."
+      ],
+      "assessment": "Stabilize airway, breathing, circulation, oxygenation, glucose, temperature, and severe agitation before a detailed interview. Ask directly about suicide, self-harm, homicide, a target, commands, ability to resist, weapons or lethal means, last use or dose, route, withdrawal, coexposures, prescribed and over-the-counter medicines, supplements, abrupt changes, sleep, food and fluids, chest pain, seizure, trauma, pregnancy, self-care, shelter, dependents, and ability to accept help. Document toxidrome and withdrawal findings, attention and fluctuation, the collateral timeline, and protective factors. Diagnosis alone does not predict violence.",
+      "differential": [
+        "Substance intoxication with perceptual disturbance but without a clinically significant psychotic disorder",
+        "Alcohol, benzodiazepine, or other withdrawal; withdrawal delirium and seizure risk require syndrome-specific treatment rather than an antipsychotic-only plan",
+        "Delirium from toxicity, withdrawal, infection, hypoxia, metabolic disturbance, organ failure, or medication effect when attention and awareness fluctuate",
+        "Schizophrenia, schizophreniform disorder, brief psychotic disorder, delusional disorder, bipolar disorder, major depression with psychotic features, or schizoaffective disorder based on the independent longitudinal pattern",
+        "Psychotic disorder due to another medical condition, autoimmune encephalitis, seizure, endocrine or metabolic illness, infection, structural neurologic disease, and neurocognitive disorder",
+        "Medication adverse effect, serotonin or anticholinergic toxicity, NMS, severe hyperactive delirium or extreme agitation with physiologic instability, trauma, sleep deprivation, and culturally contextual experiences"
+      ],
+      "treatments": [
+        "Stabilize the exposure-specific emergency: protect airway and ventilation, correct glucose and temperature threats, treat seizure and cardiovascular complications, reduce stimulation, use verbal de-escalation, and involve poison control or medical toxicology when appropriate.",
+        "When physiologic dependence on alcohol or benzodiazepines is likely, do not advise unsupervised abrupt cessation; arrange medical withdrawal assessment and an individualized plan. A suspected causal prescription medicine requires prompt, drug-specific prescriber or toxicology guidance about holding, reducing, tapering, or changing it.",
+        "For stimulant-induced psychosis, an antipsychotic may be used while severity, seizure risk, temperature, cardiovascular status, and level of care are assessed. Agent choice and duration are individualized; no universal preferred antipsychotic or fixed course should be taught.",
+        "Alcohol-withdrawal delirium and severe alcohol withdrawal require benzodiazepine-centered treatment; diazepam is one protocol-dependent example. An antipsychotic may be an adjunct for hallucinations or agitation not controlled by withdrawal treatment, but it is not monotherapy and can lower seizure threshold.",
+        "Treat co-occurring substance use disorder and independent psychiatric illness together, reassess diagnosis after intoxication or withdrawal resolves, and provide naloxone, infection prevention, harm reduction, sleep, housing, and recovery support when applicable."
+      ],
+      "contraindications": [
+        "Do not assume a positive screen proves causation or a negative screen excludes exposure; interpret results with timing, assay limits, clinical pattern, and collateral evidence.",
+        "Do not treat alcohol or benzodiazepine withdrawal psychosis with antipsychotic monotherapy or allow psychosis to distract from seizure, delirium, airway, respiratory, and autonomic risk.",
+        "Do not abruptly stop a potentially dependence-forming or rebound-producing prescribed medicine without prescriber-led assessment and a supervised plan.",
+        "Avoid chlorpromazine and clozapine for stimulant-induced psychosis because they may increase seizure risk; agent selection must account for QT, temperature, seizure, hypotension, and interaction risks.",
+        "Do not use diagnosis alone to justify a universal observation interval, involuntary care, seclusion, or restraint; use current risk, law, orders, policy, and the least restrictive effective response."
+      ],
+      "safetyConsiderations": [
+        "Use one calm speaker, personal space, low stimulation, short concrete statements, and clear choices. Validate distress without validating the delusion, do not argue, and ask directly what voices say and what action the person intends.",
+        "Monitor airway, respiratory rate and depth, oxygenation, ECG rhythm, blood pressure, pulse, temperature, glucose, hydration, urine output, muscle injury, neurologic status, seizure activity, attention, and agitation according to the toxidrome or withdrawal syndrome.",
+        "Suicide risk can intensify as stimulant intoxication wanes. Reassess suicidal and homicidal intent, commands, means, impulsivity, depression, exhaustion, and capacity rather than assuming improvement when agitation falls.",
+        "If an antipsychotic is used, monitor acute dystonia, akathisia, parkinsonism, tardive dyskinesia or AIMS findings, metabolic effects, QT risk, orthostasis, sedation, constipation, seizure threshold, and NMS.",
+        "Use de-escalation and voluntary care first. Restrictive intervention is reserved for immediate danger and requires lawful oversight, airway and circulation monitoring, documentation, basic-needs protection, and debriefing."
+      ],
+      "nursingPriorities": [
+        "Stabilize airway, breathing, circulation, oxygenation, glucose, temperature, seizure, chest pain, arrhythmia, severe hypertension or hypotension, hyperthermia, respiratory depression, trauma, and extreme agitation.",
+        "Complete medication reconciliation and an exact exposure timeline, assess toxidrome and withdrawal signs, obtain collateral, secure the environment, and use targeted ECG and laboratory testing rather than a universal panel.",
+        "Assess suicide, self-harm, homicide, target, commands, weapons or lethal means, self-care, food and fluids, shelter, dependents, exploitation, and ability to collaborate; a no-harm contract is not a substitute for assessment or safety planning.",
+        "Use calm reality-based communication, validate emotion without validating the belief, do not argue, reduce stimulation, offer choices, and maintain the least restrictive effective care.",
+        "Coordinate poison control or toxicology, withdrawal treatment, addiction care, psychiatric reassessment, harm reduction, physical-health follow-up, family teaching with consent, and a written relapse and crisis plan."
+      ],
+      "redFlags": [
+        "Respiratory depression, hypoxia, airway compromise, cyanosis, severe sedation, or suspected opioid or mixed overdose",
+        "Hyperthermia, chest pain, severe hypertension, arrhythmia, seizure, rhabdomyolysis, severe agitation, rigidity, clonus, collapse, or acute neurologic deficit",
+        "Alcohol or sedative withdrawal with seizure, fluctuating attention, disorientation, hallucinations, severe autonomic activation, or delirium",
+        "Suicidal or homicidal intent, dangerous commands, weapon or lethal-means access, escalating violence, extreme impulsivity, or inability to meet food, fluid, shelter, or self-care needs",
+        "Catatonia, NMS, pregnancy or postpartum rapid change, infection, head injury, severe headache, or symptoms persisting beyond the expected exposure course"
+      ],
+      "complications": [
+        "Seizure, withdrawal delirium, hyperthermia, rhabdomyolysis, kidney injury, arrhythmia, myocardial ischemia, stroke, trauma, aspiration, respiratory failure, and death",
+        "Suicide, assault in a specific high-risk context, impulsive injury, victimization, legal harm, self-neglect, and harm to dependents",
+        "Persistent or recurrent psychosis, depression, cognitive or functional difficulty, substance relapse, and emergence or recognition of an independent psychiatric disorder",
+        "Metabolic, movement, cardiovascular, seizure, sedation, fall, constipation, and NMS risks from symptom-control medicines",
+        "Delayed treatment when a positive test is mistaken for causation or when psychosis obscures delirium, withdrawal, infection, neurologic disease, or another medical emergency"
+      ],
+      "prognosis": "Many episodes improve as intoxication, withdrawal, or the medication effect resolves and the causal exposure is addressed, but course varies widely by agent and individual. Persistent or recurrent symptoms require renewed medical and longitudinal psychiatric assessment rather than automatic continuation of the label. Outcomes improve with cause-specific acute care, integrated substance and mental-health treatment, safe medication changes, sleep and housing support, and a plan to prevent re-exposure and dangerous withdrawal.",
+      "prevention": [
+        "Review all prescribed, over-the-counter, supplement, and nonprescribed agents at every transition of care and teach which changes require prescriber guidance.",
+        "Avoid abrupt alcohol or benzodiazepine cessation after dependence; use individualized medically supervised withdrawal or tapering when indicated.",
+        "Use harm-reduction strategies, avoid mixing agents, test supplies where services exist, carry naloxone when opioid exposure is possible, and seek help early for hallucinations, severe insomnia, chest pain, fever, or agitation.",
+        "Treat the substance use disorder and co-occurring psychiatric illness, protect sleep and nutrition, and document the agent, syndrome, response, and safer future alternatives."
+      ],
+      "patientEducation": [
+        "A positive drug test does not prove why psychosis occurred, and a negative routine test cannot rule out every exposure. The history, timing, examination, and course matter.",
+        "When alcohol or benzodiazepine dependence is possible, do not attempt unsupervised abrupt cessation; seek medical withdrawal assessment and an individualized plan. Ask a prescriber or toxicology clinician how to hold, reduce, taper, or change a suspected causal medicine safely.",
+        "Ask which cause is being treated and why each medicine is used. Stimulant psychosis may warrant an antipsychotic, while alcohol-withdrawal delirium requires benzodiazepine-centered care and an antipsychotic is only an adjunct.",
+        "Seek emergency help for seizure, chest pain, high fever, severe agitation, fainting, breathing difficulty, confusion, dangerous commands, suicidal or homicidal intent, or inability to eat, drink, or stay safe."
+      ],
+      "specialPopulations": [
+        "Pregnancy and lactation require urgent maternal-fetal or infant risk review, toxicology and obstetric coordination, and product-specific treatment decisions.",
+        "Children and adolescents require developmental assessment, weight-appropriate emergency care, caregiver and access review, and protection from assuming experimentation proves a disorder.",
+        "Older adults have increased delirium, interaction, fall, QT, anticholinergic, organ-clearance, and polypharmacy risk; new psychosis is medical until carefully evaluated.",
+        "People with liver, kidney, cardiac, seizure, respiratory, or neurologic disease may have altered toxicity and medication risk and need condition-specific monitoring.",
+        "People facing homelessness, stigma, justice involvement, or limited access need nonpunitive harm reduction, withdrawal safety, integrated treatment, and continuity rather than exclusion from care."
+      ],
+      "nclexTraps": [
+        "Compatible timing matters, but timing alone does not establish causality. A capable agent, clinical syndrome, course, and exclusion of better explanations are required.",
+        "A positive toxicology result cannot prove the cause, and a negative routine screen cannot rule out every substance or medicine.",
+        "Fluctuating attention or awareness means evaluate delirium first. Do not diagnose the psychotic disorder exclusively during delirium.",
+        "Stimulant psychosis may be treated with an antipsychotic; alcohol-withdrawal delirium is benzodiazepine centered, and antipsychotics are adjuncts rather than monotherapy.",
+        "Never advise abrupt cessation of a dependence-forming or rebound-producing medicine. Stabilize the cause, reassess longitudinally, and use individualized monitoring rather than a fixed regimen."
+      ],
+      "relatedTopics": [
+        "Schizophrenia",
+        "Schizophreniform disorder",
+        "Brief psychotic disorder",
+        "Schizoaffective disorder",
+        "Delusional disorder",
+        "Psychotic disorder due to another medical condition",
+        "Bipolar disorder",
+        "Delirium",
+        "Substance use disorders",
+        "Substance withdrawal syndromes",
+        "Antipsychotic medications",
+        "Suicidal ideation"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "apa-dsm5tr-2022",
+        "samhsa-tip42-cooccurring-2020",
+        "asam-aaap-stimulant-cpg-2024",
+        "asam-alcohol-withdrawal-cpg-2020",
+        "asam-benzodiazepine-tapering-2025",
+        "va-dod-schizophrenia-cpg-2023",
+        "nice-cg103-delirium",
+        "nice-ng10-violence-aggression",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. WHO and DSM support classification and causal boundaries; SAMHSA TIP 42 supports induced-versus-independent longitudinal assessment. ASAM/AAAP supports stimulant psychosis care, ASAM supports alcohol-withdrawal and benzodiazepine-withdrawal safety, and VA/DoD and NICE CG103 support medical and delirium exclusion. NICE NG10 and SAFE-T support de-escalation and individualized safety. No toxicology result is treated as causation, and no one medication plan is generalized across agents.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024, disorders due to substance use; accessed 2026-08-14",
+          "fieldsSupported": [
+            "identity",
+            "ICD classification",
+            "causal relationship",
+            "substance-class categories",
+            "delirium and primary-disorder exclusions"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022, Substance/Medication-Induced Psychotic Disorder; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "DSM identity",
+            "hallucinations and delusions",
+            "exposure timing",
+            "capable-agent requirement",
+            "independent-disorder and delirium exclusions"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/sites/default/files/SAMHSA_Digital_Download/PEP20-02-01-004_Final_508.pdf",
+          "documentVersion": "TIP 42, updated 2020; accessed 2026-08-14",
+          "fieldsSupported": [
+            "substance-induced disorders",
+            "temporal attribution",
+            "intoxication and withdrawal differential",
+            "longitudinal reassessment",
+            "integrated treatment"
+          ]
+        },
+        {
+          "authority": "American Society of Addiction Medicine and American Academy of Addiction Psychiatry",
+          "url": "https://downloads.asam.org/sitefinity-production-blobs/docs/default-source/guidelines/stimulant-gudie/stud_guideline_document_final.pdf?sfvrsn=f7f872f5_1",
+          "documentVersion": "ASAM/AAAP stimulant use disorder CPG 2024; accessed 2026-08-14",
+          "fieldsSupported": [
+            "stimulant-induced psychosis",
+            "de-escalation",
+            "antipsychotic class",
+            "seizure-risk exclusions",
+            "emergency escalation",
+            "suicide monitoring"
+          ]
+        },
+        {
+          "authority": "American Society of Addiction Medicine",
+          "url": "https://www.asam.org/docs/default-source/quality-science/the_asam_clinical_practice_guideline_on_alcohol-1.pdf?sfvrsn=ba255c2_2%2C13%2C17%2C38",
+          "documentVersion": "ASAM alcohol withdrawal management CPG 2020; accessed 2026-08-14",
+          "fieldsSupported": [
+            "withdrawal delirium",
+            "withdrawal psychosis",
+            "benzodiazepine-centered treatment",
+            "antipsychotic adjunct boundary",
+            "diazepam example",
+            "seizure and cardiorespiratory monitoring"
+          ]
+        },
+        {
+          "authority": "American Society of Addiction Medicine and partner professional societies",
+          "url": "https://downloads.asam.org/sitefinity-production-blobs/docs/default-source/guidelines/benzodiazepine-tapering-2025/bzd-tapering-document---final-approved-version-for-distribution-02-28-25.pdf?sfvrsn=5bdf9c81_2",
+          "documentVersion": "Joint benzodiazepine tapering CPG 2025; accessed 2026-08-14",
+          "fieldsSupported": [
+            "physical dependence",
+            "withdrawal risk",
+            "abrupt-discontinuation prohibition",
+            "individualized supervised taper",
+            "monitoring"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/scz/VA-DoD-CPG-Schizophrenia-CPG_Finalv231924.pdf",
+          "documentVersion": "VA/DoD first-episode psychosis and schizophrenia CPG 2023; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "general psychosis assessment",
+            "medical substance and delirium differential",
+            "urgent referral",
+            "antipsychotic monitoring",
+            "catatonia and NMS escalation"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/cg103/chapter/Recommendations",
+          "documentVersion": "NICE CG103 recommendations, updated 2023; accessed 2026-08-14",
+          "fieldsSupported": [
+            "acute fluctuation",
+            "attention and arousal",
+            "delirium assessment",
+            "underlying cause",
+            "delirium-first boundary",
+            "de-escalation"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/NG10/chapter/recommendations",
+          "documentVersion": "NICE NG10 recommendations; accessed 2026-08-14",
+          "fieldsSupported": [
+            "risk assessment",
+            "de-escalation",
+            "observation",
+            "least-restrictive care",
+            "restrictive-intervention limits",
+            "dignity",
+            "documentation"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; accessed 2026-08-14",
+          "fieldsSupported": [
+            "suicide inquiry",
+            "risk factors",
+            "protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.substance-medication-induced-psychotic-disorder",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.13"
+    },
+    {
+      "id": "disease.psychotic-disorder-due-to-another-medical-condition",
+      "name": "Psychotic disorder due to another medical condition",
+      "displayName": "Psychotic disorder due to another medical condition",
+      "category": "Mental health",
+      "aliases": [
+        "psychosis due to another medical condition",
+        "psychosis due to a medical condition"
+      ],
+      "reviewStatus": "APPROVED",
+      "reviewedAt": "2026-08-14",
+      "plainLanguage": "Psychotic disorder due to another medical condition means hallucinations or delusions are caused directly by a medical or neurologic condition, not simply by the stress of being ill. New psychosis may be an emergency because delirium, seizure, infection, autoimmune disease, endocrine problems, or other treatable causes can look similar.",
+      "whyItMatters": "A delayed medical evaluation can miss hypoxia, hypoglycemia, seizure, encephalitis, endocrine crisis, infection, stroke, medication toxicity, or delirium; finding and treating the cause can improve the psychosis and prevent permanent injury, suicide, unsafe behavior, and unnecessary psychiatric treatment.",
+      "plainLanguageGlosses": [
+        {
+          "term": "direct physiological consequence",
+          "plainLanguage": "the medical condition itself changes brain function in a way that causes hallucinations or delusions; merely having both problems at the same time is not enough",
+          "sourceKeys": [
+            "who-icd11-cddr-mental-2024",
+            "apa-dsm5tr-2022"
+          ]
+        },
+        {
+          "term": "delirium",
+          "plainLanguage": "an acute brain-failure syndrome with impaired attention or awareness that often fluctuates and requires the underlying medical cause to be found",
+          "sourceKeys": [
+            "nice-cg103-delirium",
+            "va-dod-schizophrenia-cpg-2023"
+          ]
+        },
+        {
+          "term": "targeted workup",
+          "plainLanguage": "tests chosen from the onset, examination, age, exposures, and suspected cause rather than the same laboratory panel or scan for everyone",
+          "sourceKeys": [
+            "va-dod-schizophrenia-cpg-2023",
+            "nice-cg178-psychosis-adults"
+          ]
+        },
+        {
+          "term": "reality-based communication",
+          "plainLanguage": "responding calmly to distress, not arguing or agreeing with the hallucination or delusion, and explaining what the nurse observes and will do next",
+          "sourceKeys": [
+            "va-vhl-psychosis-communication-2025",
+            "nice-ng10-violence-aggression"
+          ]
+        }
+      ],
+      "definition": "Psychotic disorder due to another medical condition is a syndrome of prominent hallucinations and/or delusions for which history, examination, or laboratory evidence shows a direct physiological consequence of a medical or neurologic disease. The symptoms are not better explained by a primary psychotic or mood disorder and do not occur exclusively during delirium. A temporal association, abnormal test, or known diagnosis alone is insufficient to establish causality.",
+      "pathology": "Many medical processes can disrupt cortical, limbic, thalamic, endocrine, immune, metabolic, electrical, or neurotransmitter function and impair reality testing. The route differs by cause: seizure activity, inflammation, autoantibodies, infection, hypoxia, glucose or electrolyte disturbance, hormone excess or deficiency, structural brain disease, and neurodegeneration are examples. There is no single psychosis biomarker, and one abnormality does not prove that it caused the symptoms.",
+      "pathophysiology": [
+        "Neurologic disease can disturb networks involved in perception, salience, memory, language, and threat processing. Seizures, autoimmune encephalitis, structural lesions, stroke, and neurodegeneration may produce distinct tempos and associated examination findings.",
+        "Endocrine, metabolic, infectious, inflammatory, hepatic, renal, respiratory, or cardiovascular illness can change brain function through hormones, toxins, cytokines, perfusion, oxygenation, glucose, electrolytes, or organ failure.",
+        "Delirium also causes hallucinations and delusions, but its defining acute disturbance of attention and awareness takes priority; this diagnosis is not assigned when psychosis occurs exclusively during delirium.",
+        "The medical disease and a primary psychotic, mood, substance-related, medication-induced, or neurocognitive disorder can coexist, so the formulation must be revisited as the cause is treated and the course becomes clearer."
+      ],
+      "etiology": [
+        "Neurologic and structural conditions such as epilepsy, autoimmune encephalitis, stroke, tumor, traumatic brain injury, demyelinating disease, or neurodegeneration",
+        "Endocrine and metabolic conditions such as hyperthyroidism, hypothyroidism, adrenal disturbance, glucose or electrolyte abnormality, hepatic or renal failure, or nutritional deficiency",
+        "Infectious, inflammatory, and autoimmune illness affecting the brain or systemic physiology, including encephalitis and systemic lupus erythematosus",
+        "Hypoxia, hypercapnia, severe cardiovascular illness, temperature disturbance, and other acute physiologic threats",
+        "A substance or medication effect belongs in the induced-psychosis differential rather than being relabeled a medical-condition cause without classification-specific evidence"
+      ],
+      "riskFactors": [
+        "New or atypical age of onset, rapid symptom change, cognitive decline, focal neurologic findings, seizure, severe headache, movement disorder, or altered consciousness",
+        "Known neurologic, endocrine, autoimmune, infectious, metabolic, hepatic, renal, respiratory, cardiovascular, or neurocognitive disease",
+        "Pregnancy or postpartum state, immune suppression, cancer, recent infection, head injury, surgery, medication change, or toxic exposure",
+        "Older age, sensory impairment, polypharmacy, and limited physiologic reserve, which increase delirium and medication sensitivity",
+        "Suicidal thinking, dangerous commands, persecutory fear, access to weapons, inability to meet basic needs, or severe agitation require direct current-risk assessment; diagnosis alone does not predict violence"
+      ],
+      "signsSymptoms": [
+        "Prominent hallucinations or delusions with onset or course plausibly linked to a medical or neurologic condition",
+        "Visual, olfactory, tactile, or unusual multisensory hallucinations, late onset, cognitive change, seizure, focal findings, autonomic change, or abnormal movement may increase concern for a medical cause but are not diagnostic alone",
+        "Associated fever, headache, neck stiffness, weakness, speech change, movement disorder, endocrine symptoms, sleep disruption, weight change, rash, pain, organ-failure signs, or systemic decline depend on the cause",
+        "Fluctuating attention, altered awareness, disorientation, or a rapid hours-to-days course indicates possible delirium and requires delirium-first evaluation",
+        "Mood episodes, negative symptoms, disorganization, substance exposure, medication changes, and longitudinal function help distinguish primary, induced, mood, and neurocognitive disorders"
+      ],
+      "diagnostics": [
+        "Require evidence from history, physical and neurologic examination, or laboratory findings that the psychosis is a direct physiological consequence of the medical condition. Timing alone does not establish the diagnosis, and temporal association is insufficient without a plausible mechanism and clinical evidence.",
+        "DSM-5-TR uses Psychotic Disorder Due to Another Medical Condition. ICD-11 uses Secondary psychotic syndrome (6E61), requires evidence that the syndrome is a direct pathophysiological consequence rather than merely a psychological response to illness, and directs that the underlying condition also be coded.",
+        "Assess onset and tempo, attention and arousal, cognition, full neurologic findings, medical symptoms, pregnancy or postpartum status, medication and substance exposures, sleep, mood episodes, prior psychosis, baseline function, collateral history, and response as the condition is treated.",
+        "If attention or awareness fluctuates, use a validated delirium assessment such as 4AT or the setting-appropriate critical-care tool and pursue the cause; a positive screen supports further assessment but does not independently diagnose the medical condition.",
+        "Choose laboratory, imaging, EEG, lumbar puncture, autoimmune, infectious, endocrine, metabolic, or toxicology studies from the history, examination, age, onset, and differential. Routine structural imaging is not required for every first episode, but focal findings, seizure, atypical course, or suspected structural disease change the threshold.",
+        "No single blood, laboratory, imaging, EEG, or screening test diagnoses medical-condition psychosis. An abnormal result must fit the syndrome and causal pathway, and normal results do not prove a primary psychiatric disorder."
+      ],
+      "labs": [
+        "Immediately check vital signs, oxygen saturation, point-of-care glucose, temperature, attention, arousal, orientation, hydration, full neurologic examination, pregnancy or postpartum context, medication exposure, intoxication or withdrawal, and trauma.",
+        "Target CBC, electrolytes, calcium, renal and liver tests, thyroid studies, inflammatory or infection tests, urinalysis, toxicology, pregnancy testing, ECG, arterial or venous blood gas, or nutritional studies to the presentation rather than ordering a universal psychosis panel.",
+        "Use brain imaging, EEG, lumbar puncture, autoimmune or paraneoplastic testing, cultures, endocrine studies, or other specialized evaluation when focal findings, seizure, headache, fever, rapid cognitive change, cancer risk, movement disorder, or another clue supports it.",
+        "If an antipsychotic is used, monitor weight or BMI, glucose or HbA1c, lipids, blood pressure and orthostasis, movement symptoms, sedation, falls, constipation, prolactin effects, and ECG or QT risk, modified for the causal illness and organ function."
+      ],
+      "assessment": "Treat new or rapidly changing psychosis as a medical presentation until immediate threats are addressed. Assess airway, breathing, circulation, oxygenation, glucose, temperature, attention and fluctuation, consciousness, full neurologic findings, seizure, severe headache, neck stiffness, infection, endocrine and metabolic symptoms, medication and substance exposure, pregnancy or postpartum change, baseline cognition, and collateral tempo. Ask directly about suicide, self-harm, homicide, a target, commands, weapons or lethal means, food, fluids, self-care, shelter, dependents, exploitation, and ability to accept help. Diagnosis alone does not predict violence.",
+      "differential": [
+        "Delirium when psychosis occurs with acute or fluctuating inattention or altered awareness; identify and treat the underlying cause before assigning a psychotic-disorder diagnosis",
+        "Major or mild neurocognitive disorder when cognitive decline is the central progressive syndrome rather than an isolated psychotic presentation",
+        "Substance/medication-induced psychotic disorder, intoxication, withdrawal, medication toxicity, and interactions",
+        "Schizophrenia, schizophreniform disorder, brief psychotic disorder, delusional disorder, schizoaffective disorder, bipolar disorder, and major depression with psychotic features",
+        "Seizure or epilepsy, autoimmune encephalitis, infection, stroke, tumor, neurodegeneration, endocrine or metabolic illness, hypoxia, organ failure, and systemic autoimmune disease",
+        "Trauma-related, obsessive-compulsive, sleep-related, sensory, developmental, cultural, and spiritual experiences that need their own complete context"
+      ],
+      "treatments": [
+        "Treat the underlying medical condition urgently and specifically: restore oxygenation or glucose, treat infection or seizure, correct endocrine or metabolic disturbance safely, manage inflammation or autoimmune disease with specialist guidance, or address structural and organ-failure causes.",
+        "Use supportive nursing care, reorientation, sleep-wake support, hearing and vision aids, hydration, nutrition, mobility, pain control, and medication review while avoiding preventable delirium triggers.",
+        "An antipsychotic may be used for severe distress or dangerous psychosis when individually indicated. No universal preferred agent is supported; organ function, neurologic disease, seizure threshold, QT risk, interactions, pregnancy, and sensitivity guide selection and duration.",
+        "Psychotherapy, family education, rehabilitation, and recovery support can help after stabilization, but symptom-control treatment does not replace medical evaluation or cause-directed treatment.",
+        "Reassess the diagnosis as the medical condition improves. Persistent symptoms may require evaluation for an independent psychotic, mood, neurocognitive, substance-related, or medication-induced disorder."
+      ],
+      "contraindications": [
+        "Do not diagnose from timing alone, one abnormal laboratory result, one scan finding, one neurologic diagnosis, or response to treatment; require a plausible direct physiological relationship and exclusion of better explanations.",
+        "Do not assign this disorder when psychosis occurs exclusively during delirium; fluctuating attention or awareness requires delirium-first medical evaluation.",
+        "Do not let an antipsychotic replace treatment of hypoxia, hypoglycemia, seizure, infection, endocrine crisis, autoimmune encephalitis, intoxication, withdrawal, or another causal condition.",
+        "Do not apply one antipsychotic or dose automatically. Parkinsonism, Lewy-body disease, seizure risk, QT prolongation, organ dysfunction, interactions, and pregnancy may substantially change harm.",
+        "Do not use diagnosis alone to justify a universal observation interval, involuntary care, seclusion, or restraint; use current risk, law, orders, policy, and the least restrictive effective response."
+      ],
+      "safetyConsiderations": [
+        "Use one calm speaker, personal space, low stimulation, simple statements, and clear choices. Validate distress without validating the belief, do not argue, and explain each examination or procedure before touching the patient.",
+        "Trend attention, arousal, vital signs, oxygenation, glucose, temperature, neurologic findings, seizure activity, intake and output, mobility, skin, aspiration risk, and the specific medical syndrome; deterioration may be mislabeled psychiatric agitation.",
+        "Ask what hallucinations or delusions direct the person to do, whether a target or weapon exists, and whether fear is causing refusal of food, medicine, imaging, or other urgent care. Use supported decision making and lawful capacity processes.",
+        "If an antipsychotic is used, monitor acute dystonia, akathisia, parkinsonism, tardive dyskinesia or AIMS findings, metabolic effects, QT risk, orthostasis, sedation, falls, constipation, prolactin effects, seizure threshold, and NMS.",
+        "Use de-escalation and voluntary care first. Restrictive intervention is reserved for immediate danger, with lawful oversight, airway and circulation monitoring, documentation, basic-needs protection, and debriefing."
+      ],
+      "nursingPriorities": [
+        "Stabilize airway, breathing, circulation, oxygenation, glucose, temperature, seizure, acute neurologic deficit, infection, endocrine or metabolic crisis, trauma, hydration, and nutrition before psychiatric labeling.",
+        "Trend attention and fluctuation, complete a focused neurologic and medical assessment, obtain the collateral baseline and tempo, reconcile medicines and substances, and carry out targeted tests and consultations.",
+        "Assess suicide, self-harm, homicide, target, commands, weapons or lethal means, food, fluids, self-care, shelter, dependents, exploitation, and ability to collaborate; a no-harm contract is not a substitute for assessment and safety planning.",
+        "Use calm reality-based communication, validate emotion without validating the belief, do not argue, reduce stimulation, preserve orientation, and use the least restrictive effective care.",
+        "Coordinate the causal-condition team with psychiatry, neurology, toxicology, infectious disease, endocrinology, obstetrics, rehabilitation, family teaching with consent, physical-health monitoring, and a written crisis plan as indicated."
+      ],
+      "redFlags": [
+        "Fluctuating attention or awareness, fever, hypoxia, hypoglycemia, hypotension, severe hypertension, autonomic instability, or rapid cognitive decline",
+        "Seizure, focal neurologic deficit, severe or sudden headache, neck stiffness, new movement disorder, head injury, stroke symptoms, or suspected autoimmune encephalitis",
+        "Pregnancy or postpartum rapid change, severe endocrine or metabolic symptoms, organ failure, infection, intoxication, withdrawal, or a serious medication reaction",
+        "Suicidal or homicidal intent, dangerous commands, weapon or lethal-means access, escalating violence, elopement into danger, or inability to eat, drink, shelter, or perform essential self-care",
+        "Catatonia, NMS, airway-threatening dystonia, severe akathisia with suicidality, syncope, dangerous arrhythmia symptoms, aspiration, or respiratory failure"
+      ],
+      "complications": [
+        "Permanent neurologic injury, seizure-related harm, stroke, organ failure, infection progression, endocrine or metabolic decompensation, respiratory failure, and death when the underlying cause is missed",
+        "Suicide, accidental injury, unsafe wandering, assault in a specific high-risk context, self-neglect, victimization, and harm to dependents",
+        "Aspiration, malnutrition, dehydration, immobility, pressure injury, venous thromboembolism, falls, and hospital-associated delirium",
+        "Metabolic, movement, cardiovascular, seizure, sedation, fall, constipation, prolactin, and NMS risks from symptom-control medication",
+        "Diagnostic anchoring, stigma, coercion, and prolonged psychiatric treatment when a medical cause or co-occurring disorder is overlooked"
+      ],
+      "prognosis": "Outcome depends mainly on the causal condition, speed of recognition, reversibility, neurologic injury, age, comorbidity, and whether delirium or an independent psychiatric illness also exists. Psychosis may resolve when the condition is treated, persist after injury, or reveal a separate disorder. Repeated causal reassessment, coordinated medical and psychiatric follow-up, rehabilitation, monitored symptom treatment, and practical support improve safety and function without promising universal recovery.",
+      "prevention": [
+        "Review new neurologic, cognitive, endocrine, infectious, or systemic symptoms promptly when behavior or perception changes, especially in older adults and atypical onset.",
+        "Reconcile medicines, substances, organ function, interactions, hearing and vision, sleep, hydration, nutrition, and infection risk at transitions of care.",
+        "Create a written plan describing the causal condition, personal warning signs, emergency symptoms, responsible clinicians, medicines to avoid or monitor, and when family should seek help.",
+        "Use physical-health screening and follow-up alongside psychiatric care so recurrent psychosis is not automatically assumed to be a primary disorder."
+      ],
+      "patientEducation": [
+        "This diagnosis means the medical condition directly affects brain function; it is not simply emotional stress about being ill. One abnormal test or diagnosis does not prove the cause by itself.",
+        "New confusion, fluctuating attention, seizure, weakness, severe headache, fever, breathing difficulty, low glucose symptoms, or rapid postpartum change needs urgent medical assessment.",
+        "If an antipsychotic is offered, ask what symptom it targets, how the causal condition and organ function affect the choice, when it will be reassessed, and how movement, metabolic, QT, orthostatic, constipation, seizure, and NMS risks will be monitored.",
+        "Seek emergency help for dangerous commands, suicidal or homicidal intent, weapon access, inability to eat or drink, severe confusion, seizure, focal deficit, fever with rigidity, or a serious medication reaction."
+      ],
+      "specialPopulations": [
+        "Older adults have high delirium, neurocognitive, polypharmacy, sensory, fall, QT, orthostasis, and medication-sensitivity risk; new psychosis requires comprehensive medical evaluation.",
+        "Pregnancy and postpartum onset require urgent obstetric and psychiatric assessment and individualized maternal, fetal or infant and medication-risk review.",
+        "Children and adolescents require developmental, neurologic, metabolic, toxic, infection, family, and safeguarding assessment; adult workups and medicine plans should not be copied automatically.",
+        "People with Parkinson disease, Lewy-body disease, epilepsy, liver or kidney impairment, cardiovascular disease, or respiratory disease may have unusually high antipsychotic or sedation risk.",
+        "Cultural, spiritual, language, hearing, vision, autism, intellectual, trauma, housing, and prior-coercion contexts shape presentation and access and must not be mistaken for physiologic causation."
+      ],
+      "nclexTraps": [
+        "The medical condition must be a direct physiological cause. Timing alone or one abnormal test does not diagnose the disorder.",
+        "Psychosis exclusively during delirium is diagnosed and treated through the delirium and its cause; fluctuating attention or awareness is the priority clue.",
+        "No universal laboratory panel, scan, EEG, or antipsychotic applies to every case. Target the workup and treatment to onset, examination, suspected cause, and organ function.",
+        "Treat the underlying condition first; an antipsychotic may control severe symptoms but must not replace medical or cause-directed care.",
+        "Validate distress without validating the belief, do not argue, assess commands, suicide, violence, weapons, and basic needs directly, and use least restrictive care."
+      ],
+      "relatedTopics": [
+        "Schizophrenia",
+        "Schizophreniform disorder",
+        "Brief psychotic disorder",
+        "Schizoaffective disorder",
+        "Delusional disorder",
+        "Substance/medication-induced psychotic disorder",
+        "Bipolar disorder",
+        "Delirium",
+        "Autoimmune encephalitis",
+        "Epilepsy",
+        "Hyperthyroidism",
+        "Hypothyroidism",
+        "Antipsychotic medications",
+        "Suicidal ideation"
+      ],
+      "sourceKeys": [
+        "who-icd11-cddr-mental-2024",
+        "apa-dsm5tr-2022",
+        "va-dod-schizophrenia-cpg-2023",
+        "nice-cg103-delirium",
+        "nice-cg178-psychosis-adults",
+        "va-vhl-psychosis-communication-2025",
+        "nice-ng10-violence-aggression",
+        "samhsa-safe-t-2024"
+      ],
+      "sourceNote": "Original ANI nursing synthesis. WHO and DSM support identity and direct-physiological-cause boundaries. VA/DoD and NICE CG178 support comprehensive medical, substance, mood, and treatment-safety assessment; NICE CG103 controls the delirium-first boundary. VA Veterans Health Library, NICE NG10, and SAFE-T support communication, de-escalation, and individualized safety. General psychosis guidance is not presented as a disorder-specific medication ranking, and no test is treated as proof of causality.",
+      "provenance": [
+        {
+          "authority": "World Health Organization",
+          "url": "https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf",
+          "documentVersion": "ICD-11 CDDR 2024, secondary mental or behavioural syndromes; accessed 2026-08-14",
+          "fieldsSupported": [
+            "identity",
+            "ICD classification",
+            "causal medical relationship",
+            "differential",
+            "delirium boundary"
+          ]
+        },
+        {
+          "authority": "American Psychiatric Association",
+          "url": "https://doi.org/10.1176/appi.books.9780890425787",
+          "documentVersion": "DSM-5-TR 2022, Psychotic Disorder Due to Another Medical Condition; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "DSM identity",
+            "hallucinations and delusions",
+            "direct physiological consequence",
+            "delirium and primary-disorder exclusions",
+            "clinical significance"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs and U.S. Department of Defense",
+          "url": "https://www.healthquality.va.gov/HEALTHQUALITY/guidelines/MH/scz/VA-DoD-CPG-Schizophrenia-CPG_Finalv231924.pdf",
+          "documentVersion": "VA/DoD first-episode psychosis and schizophrenia CPG 2023; reviewed 2026-08-14",
+          "fieldsSupported": [
+            "medical neurologic substance and mood differential",
+            "physical and neurologic assessment",
+            "targeted testing",
+            "urgent referral",
+            "antipsychotic monitoring",
+            "catatonia and NMS escalation"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/cg103/chapter/Recommendations",
+          "documentVersion": "NICE CG103 recommendations, updated 2023; accessed 2026-08-14",
+          "fieldsSupported": [
+            "acute fluctuation",
+            "attention and arousal",
+            "delirium assessment tools",
+            "underlying cause",
+            "delirium-first boundary",
+            "reorientation"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/Guidance/CG178/chapter/recommendations",
+          "documentVersion": "NICE CG178 recommendations, updated links 2024; accessed 2026-08-14",
+          "fieldsSupported": [
+            "comprehensive psychosis assessment",
+            "medical and substance differential",
+            "neuroimaging boundary",
+            "shared antipsychotic choice",
+            "baseline and adverse-effect monitoring",
+            "psychological and family care"
+          ]
+        },
+        {
+          "authority": "U.S. Department of Veterans Affairs Veterans Health Library",
+          "url": "https://www.veteranshealthlibrary.va.gov/RelatedItems/142%2Cug5103_va",
+          "documentVersion": "Veterans Health Library reviewed 2025; accessed 2026-08-14",
+          "fieldsSupported": [
+            "calm supportive communication",
+            "empathy",
+            "nonconfrontation",
+            "family support",
+            "crisis preparation"
+          ]
+        },
+        {
+          "authority": "National Institute for Health and Care Excellence",
+          "url": "https://www.nice.org.uk/guidance/NG10/chapter/recommendations",
+          "documentVersion": "NICE NG10 recommendations; accessed 2026-08-14",
+          "fieldsSupported": [
+            "risk assessment",
+            "de-escalation",
+            "observation",
+            "least-restrictive care",
+            "restrictive-intervention limits",
+            "dignity",
+            "documentation"
+          ]
+        },
+        {
+          "authority": "Substance Abuse and Mental Health Services Administration",
+          "url": "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+          "documentVersion": "SAFE-T 2024; accessed 2026-08-14",
+          "fieldsSupported": [
+            "suicide inquiry",
+            "risk factors",
+            "protective factors",
+            "safety planning",
+            "triage",
+            "documentation"
+          ]
+        }
+      ],
+      "entryType": "disease",
+      "directTargetId": "disease.psychotic-disorder-due-to-another-medical-condition",
+      "studentFacing": true,
+      "hidden": false,
+      "expandedIndex": false,
+      "confidenceTier": "Curated full study card",
+      "templateKey": "curated full study card",
+      "pathologyDomainVersion": "2026-08-14.13"
     }
   ]
 };
@@ -10595,7 +11650,7 @@
     else { db.sourceReferences.push({ ...reference }); referenceByKey.set(key, db.sourceReferences[db.sourceReferences.length - 1]); }
   });
   db.reviewedExpansion = { schemaVersion: payload.schemaVersion, builderVersion: payload.builderVersion, domainVersion: payload.domainVersion, sourceSha256: payload.sourceSha256, cardCount: payload.cards.length };
-  db.version = [db.version, "reviewed-pathology-2026-08-14.12"].filter(Boolean).join("+");
+  db.version = [db.version, "reviewed-pathology-2026-08-14.13"].filter(Boolean).join("+");
   window.ANI_PATHOLOGY_DATABASE = db;
   window.ANI_PATHOLOGY_REVIEWED_EXPANSION = payload;
 }());
