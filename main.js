@@ -46859,11 +46859,27 @@ function normalizeOfflineSegmentIntentText(input = "") {
 }
 
 function offlineSegmentIdentityQuery(input = "") {
-  return normalizeOfflineSegmentIntentText(input)
+  const tokens = normalizeOfflineSegmentIntentText(input)
     .split(" ")
-    .filter((token) => token && !OFFLINE_SEGMENT_IDENTITY_DROP_WORDS.has(token))
+    .filter(Boolean);
+  const ordinaryCore = tokens
+    .filter((token) => !OFFLINE_SEGMENT_IDENTITY_DROP_WORDS.has(token))
     .join(" ")
     .trim();
+  const discriminatorCore = tokens
+    .filter((token, index) => {
+      if (!OFFLINE_SEGMENT_IDENTITY_DROP_WORDS.has(token)) return true;
+      if (token !== "a") return false;
+      return tokens.slice(0, index)
+        .some((priorToken) => !OFFLINE_SEGMENT_IDENTITY_DROP_WORDS.has(priorToken));
+    })
+    .join(" ")
+    .trim();
+  if (discriminatorCore !== ordinaryCore
+    && fastVoiceIdentityCandidates(discriminatorCore).length > 0) {
+    return discriminatorCore;
+  }
+  return ordinaryCore;
 }
 
 function offlineSegmentIdentityCandidate(input = "") {
