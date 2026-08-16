@@ -1,6 +1,8 @@
 window.ANI_CONFIG = {
   "apiBaseUrl": "",
   "apiBaseUrls": [],
+  "feedbackApiUrl": "https://feedback.aniapp.ai",
+  "appVersion": "1.0.92",
   "launchProfile": "encyclopedia",
   "features": {
     "backendServices": false,
@@ -9,7 +11,7 @@ window.ANI_CONFIG = {
     "sync": false,
     "installPrompt": false,
     "localAnswerMetrics": false,
-    "problemReports": false,
+    "problemReports": true,
     "onlineAi": false,
     "serverTranscription": false,
     "serverImageAnalysis": false,

@@ -13,7 +13,7 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" type="image/png" href="./assets/ani-avatar.png">
   <link rel="apple-touch-icon" href="./assets/ani-avatar.png">
-  <link rel="stylesheet" href="./styles.css?v=ani368">
+  <link rel="stylesheet" href="./styles.css?v=ani370">
   <link rel="stylesheet" href="./web/ani-website-responsive.css?v=1e74625a9add" data-ani-website-only="responsive">
   <link rel="canonical" href="https://aniapp.ai/">
   <link rel="sitemap" type="application/xml" href="https://aniapp.ai/sitemap.xml">
@@ -516,7 +516,7 @@
           <button id="onlineServicesButton" class="online-services-button" type="button" hidden data-ani-feature="accountMembership" aria-label="Account, membership, AI practice, and sync">Account, Membership, AI Practice &amp; Sync</button>
           <button id="pharmDatabaseButton" class="pharm-database-button" type="button" aria-label="Open the medical encyclopedia">Medical Encyclopedia</button>
           <button id="lectureModeButton" class="lecture-mode-button" type="button">Lecture mode</button>
-          <button id="reportProblemButton" class="report-problem-button" type="button" hidden data-ani-feature="problemReports">Report problem</button>
+          <button id="reportProblemButton" class="report-problem-button" type="button" data-ani-feature="problemReports">Report issue or missing content</button>
           <div id="chatHistoryPanel" class="chat-history-panel" hidden>
             <div class="chat-history-heading">
               <strong>Previous chats</strong>
@@ -576,14 +576,51 @@
         </div>
         <button id="closeReportProblemButton" type="button" aria-label="Close report form">Close</button>
       </header>
-      <p>Tell us what went wrong. ANI will attach safe app context so the issue is easier to fix.</p>
-      <label class="field-label" for="reportProblemText">What happened?</label>
-      <textarea id="reportProblemText" rows="6" maxlength="4000" spellcheck="true" placeholder="Example: ANI opened the wrong encyclopedia entry when I asked about trazodone."></textarea>
+      <p>Tell ANI what is missing or incorrect. Your report enters a review queue; it never changes medical content automatically.</p>
+      <p class="report-data-note">ANI may also submit a bounded anonymous record when an explicit encyclopedia search has no plausible match. It sends the search phrase, zero-result reason, app/catalog version, and coarse device type only—not chat history, account details, or URL query strings.</p>
+      <label class="field-label" for="reportProblemType">What kind of report is this?</label>
+      <select id="reportProblemType">
+        <option value="missing_content">Missing topic or content</option>
+        <option value="incorrect_information">Information may be incorrect</option>
+        <option value="wrong_search_result">Search opened or ranked the wrong result</option>
+        <option value="broken_link">Broken or incorrect link</option>
+        <option value="app_problem">Website or app problem</option>
+        <option value="other">Other</option>
+      </select>
+      <label class="field-label" for="reportProblemSubject">Topic, search, or screen</label>
+      <input id="reportProblemSubject" type="text" maxlength="180" spellcheck="true" placeholder="Example: newborn bilirubin or a broken Search result">
+      <label class="field-label" for="reportProblemText">What happened, and what did you expect?</label>
+      <textarea id="reportProblemText" rows="6" maxlength="4000" spellcheck="true" placeholder="Example: ANI opened the wrong encyclopedia entry when I searched for trazodone."></textarea>
+      <section class="report-attachment" aria-label="Optional screenshot evidence">
+        <div class="report-attachment-heading">
+          <strong>Optional screenshot</strong>
+          <span>PNG, JPEG, or WebP; one image.</span>
+        </div>
+        <input id="reportProblemImage" type="file" accept="image/png,image/jpeg,image/webp">
+        <div id="reportProblemImagePreview" class="report-image-preview" hidden>
+          <img id="reportProblemImagePreviewPicture" alt="Selected report screenshot preview">
+          <div>
+            <span id="reportProblemImageSummary"></span>
+            <button id="removeReportProblemImageButton" type="button">Remove screenshot</button>
+          </div>
+        </div>
+      </section>
+      <label class="report-consent-row" for="reportProblemConsent">
+        <input id="reportProblemConsent" type="checkbox">
+        <span>I removed names, faces, medical-record numbers, messages, and other patient-identifying information from my report and screenshot.</span>
+      </label>
+      <label class="report-context-row" for="reportProblemIncludeContext">
+        <input id="reportProblemIncludeContext" type="checkbox" checked>
+        <span>Include the current public page/card identifier, app version, and anonymous device type. ANI never attaches chat history or account details.</span>
+      </label>
+      <div id="reportProblemChallenge" class="report-problem-challenge" hidden aria-live="polite"></div>
       <div class="report-problem-actions">
-        <button id="sendReportProblemButton" type="button">Send report</button>
+        <button id="sendReportProblemButton" type="button">Send or queue report</button>
         <button id="cancelReportProblemButton" type="button">Cancel</button>
       </div>
       <p id="reportProblemStatus" class="report-problem-status" aria-live="polite"></p>
+      <p id="reportProblemOutboxStatus" class="report-problem-outbox-status" aria-live="polite"></p>
+      <div id="reportProblemOutboxList" class="report-problem-outbox-list" hidden aria-label="Reports waiting on this device"></div>
     </div>
   </section>
 
@@ -761,7 +798,7 @@
     </div>
   </section>
 
-  <script src="./app-config.js?v=ani318"></script>
+  <script src="./app-config.js?v=ani370"></script>
   <script src="./data/pharm-database.js?v=ani358"></script>
   <script src="./data/pharm-expansion.js?v=ani261"></script>
   <script src="./data/pharm-drug-bible-supplement.js?v=ani04"></script>
@@ -876,7 +913,9 @@
   <script src="./data/mnemonic-library.js?v=ani318"></script>
   <script src="./data/learner-language-standard.js?v=ani368"></script>
   <script src="./data/medical-updates.js?v=ani332"></script>
-  <script src="./main.js?v=ani369"></script>
+  <script src="./data/ani-content-manifest.js?v=ani001"></script>
+  <script src="./src/ani/feedback-runtime.js?v=ani001"></script>
+  <script src="./main.js?v=ani370"></script>
   <script src="./data/pharm-frontier-wave21-antiseizure-routing.js?v=ani02"></script>
   <script src="./data/pharm-frontier-wave22-parkinson-routing.js?v=ani01"></script>
   <script src="./data/pharm-frontier-wave24-opioid-routing.js?v=ani01"></script>
@@ -890,7 +929,7 @@
   <script src="./data/pharm-frontier-wave33-antidote-routing.js?v=ani221"></script>
   <script src="./data/pharm-frontier-wave34-antidote-routing.js?v=ani221"></script>
   <script src="./data/clinical-frontier-wave23-stroke-routing.js?v=ani01"></script>
-  <script src="./data/clinical-frontier-wave35-intelligent-search-routing.js?v=ani358"></script>
+  <script src="./data/clinical-frontier-wave35-intelligent-search-routing.js?v=ani370"></script>
   <nav aria-label="Public ANI encyclopedia resources" data-ani-public-crawl-entry="root">
     <a href="/encyclopedia/">Browse the public ANI encyclopedia</a>
     <a href="/encyclopedia/search-index.json">Public encyclopedia discovery index</a>

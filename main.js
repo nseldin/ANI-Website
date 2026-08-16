@@ -92,8 +92,20 @@ const reportProblemPanel = document.querySelector("#reportProblemPanel");
 const closeReportProblemButton = document.querySelector("#closeReportProblemButton");
 const cancelReportProblemButton = document.querySelector("#cancelReportProblemButton");
 const sendReportProblemButton = document.querySelector("#sendReportProblemButton");
+const reportProblemType = document.querySelector("#reportProblemType");
+const reportProblemSubject = document.querySelector("#reportProblemSubject");
 const reportProblemText = document.querySelector("#reportProblemText");
+const reportProblemImage = document.querySelector("#reportProblemImage");
+const reportProblemImagePreview = document.querySelector("#reportProblemImagePreview");
+const reportProblemImagePreviewPicture = document.querySelector("#reportProblemImagePreviewPicture");
+const reportProblemImageSummary = document.querySelector("#reportProblemImageSummary");
+const removeReportProblemImageButton = document.querySelector("#removeReportProblemImageButton");
+const reportProblemConsent = document.querySelector("#reportProblemConsent");
+const reportProblemIncludeContext = document.querySelector("#reportProblemIncludeContext");
+const reportProblemChallenge = document.querySelector("#reportProblemChallenge");
 const reportProblemStatus = document.querySelector("#reportProblemStatus");
+const reportProblemOutboxStatus = document.querySelector("#reportProblemOutboxStatus");
+const reportProblemOutboxList = document.querySelector("#reportProblemOutboxList");
 const accountButton = document.querySelector("#accountButton");
 const authPanel = document.querySelector("#authPanel");
 const closeAuthButton = document.querySelector("#closeAuthButton");
@@ -328,6 +340,10 @@ const ANI_ONLINE_AI_ENABLED = ANI_BACKEND_SERVICES_ENABLED && aniFeatureEnabled(
 const ANI_SERVER_TRANSCRIPTION_ENABLED = ANI_BACKEND_SERVICES_ENABLED && aniFeatureEnabled("serverTranscription");
 const ANI_SERVER_IMAGE_ANALYSIS_ENABLED = ANI_BACKEND_SERVICES_ENABLED && aniFeatureEnabled("serverImageAnalysis");
 const ANI_SERVER_LECTURE_AUDIO_ENABLED = ANI_BACKEND_SERVICES_ENABLED && aniFeatureEnabled("serverLectureAudio");
+const ANI_FEEDBACK_ENABLED = aniFeatureEnabled("problemReports");
+const ANI_FEEDBACK_API_URL = String(window.ANI_CONFIG?.feedbackApiUrl || "https://feedback.aniapp.ai")
+  .trim()
+  .replace(/\/$/, "");
 
 const ANI_UI_TIMING_SCHEMA_VERSION = 1;
 const ANI_UI_TIMING_RUNTIME_VERSION = "lane1-ui-performance-v1";
@@ -474,7 +490,12 @@ function applyAniLaunchFeatureGates() {
   document.body.dataset.aniLaunchProfile = ANI_LAUNCH_PROFILE;
   document.querySelectorAll("[data-ani-feature]").forEach((element) => {
     const feature = element.getAttribute("data-ani-feature") || "";
-    if (aniFeatureEnabled(feature)) return;
+    if (aniFeatureEnabled(feature)) {
+      element.hidden = false;
+      element.removeAttribute("aria-hidden");
+      element.inert = false;
+      return;
+    }
     element.hidden = true;
     element.setAttribute("aria-hidden", "true");
     element.inert = true;
@@ -5876,6 +5897,7 @@ let activePathologyResults = [];
 let activeHolisticResults = [];
 let activeClinicalReferenceResults = [];
 let pharmSearchRenderTimer = null;
+let pharmSearchMissTimer = null;
 let pharmSearchRequestGeneration = 0;
 let pharmSearchRenderFrame = null;
 let pharmResultRenderGeneration = 0;
@@ -5942,6 +5964,8 @@ const lectureState = {
 };
 let lectureModePrimed = false;
 let pendingOfflineLookupSuggestions = [];
+let pendingOfflineLookupContext = null;
+let offlineMissQueuedForCurrentMessage = false;
 let lastOfflineListContext = null;
 let lastOfflineLookupTarget = null;
 const OFFLINE_LOOKUP_TARGET_MEMORY_MS = 10 * 60 * 1000;
@@ -10942,6 +10966,174 @@ function setReportProblemStatus(message = "", isError = false) {
   reportProblemStatus.classList.toggle("error", Boolean(isError));
 }
 
+let reportProblemScreenshot = null;
+let reportProblemScreenshotPreviewUrl = "";
+let reportProblemChallengeFrame = null;
+let reportProblemChallengeRequest = null;
+let feedbackVerificationUserInitiated = false;
+
+function aniFeedbackRuntime() {
+  return ANI_FEEDBACK_ENABLED && window.ANIFeedback && typeof window.ANIFeedback === "object"
+    ? window.ANIFeedback
+    : null;
+}
+
+function feedbackCatalogContext() {
+  const manifest = window.ANI_CONTENT_MANIFEST || {};
+  return {
+    content_sha256: safeText(manifest.contentSha256),
+    content_version: safeText(manifest.shortVersion),
+    topic_count: Number.isInteger(Number(manifest.topicCount)) ? Number(manifest.topicCount) : 0
+  };
+}
+
+function currentFeedbackTopicContext() {
+  if (!currentPharmDetailCandidate?.item) return null;
+  return {
+    stable_id: offlineLookupEntityKey(currentPharmDetailCandidate) || pharmDetailCandidateKey(currentPharmDetailCandidate),
+    label: offlineLookupEntityLabel(currentPharmDetailCandidate),
+    type: safeText(currentPharmDetailCandidate.type)
+  };
+}
+
+function feedbackCoarseDeviceType() {
+  if (isNativeShell) return "android-app";
+  if (document.documentElement.dataset.deviceMode === "phone") return "mobile-web";
+  return "desktop-web";
+}
+
+function clearReportProblemScreenshot() {
+  reportProblemScreenshot = null;
+  if (reportProblemImage) reportProblemImage.value = "";
+  if (reportProblemScreenshotPreviewUrl) URL.revokeObjectURL(reportProblemScreenshotPreviewUrl);
+  reportProblemScreenshotPreviewUrl = "";
+  if (reportProblemImagePreviewPicture) reportProblemImagePreviewPicture.removeAttribute("src");
+  if (reportProblemImageSummary) reportProblemImageSummary.textContent = "";
+  if (reportProblemImagePreview) reportProblemImagePreview.hidden = true;
+}
+
+function clearReportProblemChallenge() {
+  if (reportProblemChallengeRequest) {
+    window.clearTimeout(reportProblemChallengeRequest.timeoutId);
+    reportProblemChallengeRequest.reject(new Error("Verification was canceled."));
+    reportProblemChallengeRequest = null;
+  }
+  reportProblemChallengeFrame?.remove();
+  reportProblemChallengeFrame = null;
+  if (reportProblemChallenge) {
+    reportProblemChallenge.textContent = "";
+    reportProblemChallenge.hidden = true;
+  }
+}
+
+function createFeedbackChallengeNonce() {
+  if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
+  return createApiIdempotencyKey();
+}
+
+function requestAniFeedbackVerificationToken({ clientEventId = "" } = {}) {
+  if (!navigator.onLine) return Promise.reject(new Error("Verification will resume when this device is online."));
+  if (!feedbackVerificationUserInitiated || reportProblemPanel?.hidden !== false) {
+    return Promise.reject(new Error("Open the report panel and select Retry to complete verification."));
+  }
+  if (!reportProblemChallenge) return Promise.reject(new Error("Verification surface is unavailable."));
+  clearReportProblemChallenge();
+  const nonce = createFeedbackChallengeNonce();
+  const parentOrigin = location.origin === "null" ? "https://ani.local" : location.origin;
+  const source = new URL(`${ANI_FEEDBACK_API_URL}/v1/challenge`);
+  source.searchParams.set("origin", parentOrigin);
+  source.searchParams.set("nonce", nonce);
+  if (clientEventId) source.searchParams.set("event_id", safeText(clientEventId).slice(0, 80));
+  const frame = document.createElement("iframe");
+  frame.title = "Verify ANI feedback submission";
+  frame.src = source.href;
+  frame.referrerPolicy = "no-referrer";
+  frame.setAttribute("sandbox", "allow-scripts allow-forms allow-same-origin");
+  reportProblemChallenge.textContent = "";
+  reportProblemChallenge.append(frame);
+  reportProblemChallenge.hidden = false;
+  reportProblemChallengeFrame = frame;
+  setReportProblemStatus("Complete the verification if Cloudflare asks, then ANI will send the queued report.");
+  return new Promise((resolve, reject) => {
+    const timeoutId = window.setTimeout(() => {
+      if (reportProblemChallengeRequest?.nonce !== nonce) return;
+      reportProblemChallengeRequest = null;
+      reject(new Error("Verification timed out. The report remains queued for retry."));
+    }, 115000);
+    reportProblemChallengeRequest = { nonce, resolve, reject, timeoutId, frame };
+  });
+}
+
+window.addEventListener("message", (event) => {
+  if (!reportProblemChallengeRequest || event.origin !== ANI_FEEDBACK_API_URL) return;
+  if (event.source !== reportProblemChallengeRequest.frame?.contentWindow) return;
+  const data = event.data && typeof event.data === "object" ? event.data : {};
+  if (data.type !== "ani-feedback-turnstile" || data.nonce !== reportProblemChallengeRequest.nonce) return;
+  const token = safeText(data.token);
+  if (!token || token.length > 4096) return;
+  const pending = reportProblemChallengeRequest;
+  reportProblemChallengeRequest = null;
+  window.clearTimeout(pending.timeoutId);
+  pending.resolve({ token, challengeNonce: pending.nonce });
+  reportProblemChallengeFrame?.remove();
+  reportProblemChallengeFrame = null;
+  if (reportProblemChallenge) {
+    reportProblemChallenge.textContent = "Verified. Sending securely...";
+  }
+});
+
+async function updateReportProblemOutboxStatus() {
+  if (!reportProblemOutboxStatus) return;
+  const runtime = aniFeedbackRuntime();
+  if (!runtime?.listOutbox) {
+    reportProblemOutboxStatus.textContent = "Feedback delivery is unavailable in this build.";
+    return;
+  }
+  try {
+    const items = await runtime.listOutbox();
+    const pending = (Array.isArray(items) ? items : []).filter((item) => !["sent", "deleted"].includes(item.status));
+    reportProblemOutboxStatus.textContent = pending.length
+      ? `${pending.length} ${pending.length === 1 ? "report is" : "reports are"} safely queued on this device and will retry when online.`
+      : "No reports are waiting on this device.";
+    reportProblemButton?.setAttribute("data-pending-reports", String(pending.length));
+    if (reportProblemOutboxList) {
+      reportProblemOutboxList.textContent = "";
+      reportProblemOutboxList.hidden = pending.length === 0;
+      pending
+        .slice()
+        .sort((left, right) => safeText(right.updated_at || right.created_at).localeCompare(safeText(left.updated_at || left.created_at)))
+        .slice(0, 5)
+        .forEach((item) => {
+          const row = document.createElement("div");
+          row.className = "report-outbox-item";
+          const summary = document.createElement("span");
+          const typeLabel = item.type === "search_miss_batch" ? "Missing-search evidence" : "User report";
+          const stateLabel = safeText(item.status || "queued").replace(/[-_]+/g, " ");
+          const shortId = safeText(item.client_event_id).slice(-12) || "local";
+          summary.textContent = `${typeLabel} | ${stateLabel} | ${shortId}`;
+          const actions = document.createElement("div");
+          actions.className = "report-outbox-actions";
+          const retry = document.createElement("button");
+          retry.type = "button";
+          retry.dataset.feedbackAction = "retry";
+          retry.dataset.feedbackEventId = safeText(item.client_event_id);
+          retry.textContent = "Retry";
+          const remove = document.createElement("button");
+          remove.type = "button";
+          remove.dataset.feedbackAction = "remove";
+          remove.dataset.feedbackEventId = safeText(item.client_event_id);
+          remove.textContent = "Delete";
+          actions.append(retry, remove);
+          row.append(summary, actions);
+          reportProblemOutboxList.append(row);
+        });
+    }
+  } catch {
+    reportProblemOutboxStatus.textContent = "ANI could not read the local report queue.";
+    if (reportProblemOutboxList) reportProblemOutboxList.hidden = true;
+  }
+}
+
 function setReportProblemOpen(isOpen) {
   if (!reportProblemPanel) {
     return;
@@ -10950,48 +11142,54 @@ function setReportProblemOpen(isOpen) {
   document.body.classList.toggle("report-panel-open", Boolean(isOpen));
   if (isOpen) {
     setReportProblemStatus("");
-  } else if (reportProblemText) {
-    reportProblemText.value = "";
+    updateReportProblemOutboxStatus();
+    window.setTimeout(() => reportProblemSubject?.focus(), 0);
+  } else {
+    if (reportProblemText) reportProblemText.value = "";
+    if (reportProblemSubject) reportProblemSubject.value = "";
+    if (reportProblemType) reportProblemType.value = "missing_content";
+    if (reportProblemConsent) reportProblemConsent.checked = false;
+    if (reportProblemIncludeContext) reportProblemIncludeContext.checked = true;
+    clearReportProblemScreenshot();
+    clearReportProblemChallenge();
   }
 }
 
-function recentReportMessages() {
-  const activeChat = getActiveChat();
-  return (activeChat.messages || [])
-    .filter((message) => !isHiddenStoredMessage(message))
-    .slice(-10)
-    .map((message) => ({
-      role: message.role || "",
-      text: String(message.text || "").slice(0, 600),
-      at: message.at || ""
-    }));
+function openMissingContentReportDraft(query = "", options = {}) {
+  const normalizedQuery = safeText(query).trim().slice(0, 180) || "Missing ANI content";
+  if (reportProblemType) {
+    reportProblemType.value = options.category === "technical" ? "app_problem" : "missing_content";
+  }
+  if (reportProblemSubject) reportProblemSubject.value = normalizedQuery;
+  if (reportProblemText) {
+    reportProblemText.value = options.category === "technical"
+      ? `ANI became unable to finish this request: ${normalizedQuery}\n\nWhat I expected instead: `
+      : `I searched for "${normalizedQuery}", but ANI could not find a confident encyclopedia match.\n\nWhat I was trying to find: `;
+  }
+  if (reportProblemConsent) reportProblemConsent.checked = false;
+  if (reportProblemIncludeContext) reportProblemIncludeContext.checked = true;
+  setReportProblemOpen(true);
+  setReportProblemStatus("Review and edit this draft, then confirm the privacy notice before sending. Nothing has been submitted yet.");
 }
 
 function buildReportPayload(message = "") {
-  const activeChat = getActiveChat();
+  const includeContext = reportProblemIncludeContext?.checked !== false;
+  const subject = safeText(reportProblemSubject?.value).slice(0, 180);
+  const topic = includeContext ? currentFeedbackTopicContext() : null;
   return {
-    message: message.trim(),
-    page_url: location.href,
-    app_mode: document.body.classList.contains("lecture-mode-active") ? "lecture" : "chat",
-    device_mode: document.documentElement.dataset.deviceMode || "desktop",
-    backend_label: activeBackendLabel(),
-    current_focus: focusLabel?.textContent || "",
-    active_chat_id: activeChat.id || "",
-    active_chat_title: activeChat.title || "",
-    recent_messages: recentReportMessages(),
-    user_agent: navigator.userAgent || "",
-    screen: {
-      width: window.innerWidth || 0,
-      height: window.innerHeight || 0,
-      devicePixelRatio: window.devicePixelRatio || 1
-    },
-    account: currentUser
+    kind: "user_report",
+    category: safeText(reportProblemType?.value || "other"),
+    severity: "normal",
+    subject,
+    message: message.trim().slice(0, 4000),
+    privacy_confirmed: reportProblemConsent?.checked === true,
+    context: includeContext
       ? {
-        id: currentUser.id || currentUser.user_id || "",
-        uuid: currentUser.uuid || currentUser.user_uuid || "",
-        role: currentUser.role || "",
-        subscription_plan: currentUser.subscription_plan || "",
-        subscription_status: currentUser.subscription_status || ""
+        route_path: location.pathname || "/",
+        topic_id: safeText(topic?.stable_id),
+        topic_title: safeText(topic?.label),
+        feature: currentPharmDetailCandidate ? "encyclopedia-card" : "ani-shell",
+        app_mode: document.body.classList.contains("lecture-mode-active") ? "lecture" : "chat"
       }
       : null
   };
@@ -11003,32 +11201,112 @@ async function submitProblemReport() {
     setReportProblemStatus("Write what went wrong first.", true);
     return;
   }
+  if (!reportProblemSubject?.value?.trim()) {
+    setReportProblemStatus("Name the topic, search, or screen first.", true);
+    return;
+  }
+  if (!reportProblemConsent?.checked) {
+    setReportProblemStatus("Confirm that the report and screenshot contain no patient-identifying information.", true);
+    return;
+  }
+  const runtime = aniFeedbackRuntime();
+  if (!runtime?.queueManualReport) {
+    setReportProblemStatus("Feedback delivery is unavailable in this build.", true);
+    return;
+  }
 
   if (sendReportProblemButton) {
     sendReportProblemButton.disabled = true;
   }
-  setReportProblemStatus("Sending report...");
+  setReportProblemStatus(navigator.onLine ? "Securing and sending report..." : "Saving report safely until this device is online...");
 
   try {
-    const response = await fetchApi("/api/reports", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(buildReportPayload(message))
+    const result = await runtime.queueManualReport({
+      ...buildReportPayload(message),
+      screenshot: reportProblemScreenshot
     });
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok) {
-      throw new Error(data.error || "Report could not be saved.");
+    const trackingId = safeText(result?.reportId || result?.report_id || result?.clientEventId || result?.client_event_id);
+    if (!trackingId) throw new Error("ANI could not create a safe local tracking ID for this report.");
+    let flushResult = null;
+    if (navigator.onLine) {
+      feedbackVerificationUserInitiated = true;
+      try {
+        flushResult = await runtime.flush?.({ trigger: "manual-submit", force: true, ids: [trackingId] });
+      } finally {
+        feedbackVerificationUserInitiated = false;
+      }
     }
-    setReportProblemStatus(`Report sent. Tracking ID: ${data.report_id || "saved"}.`);
-    window.setTimeout(() => setReportProblemOpen(false), 900);
+    const remainingItems = await runtime.listOutbox?.();
+    const remaining = (Array.isArray(remainingItems) ? remainingItems : [])
+      .find((item) => safeText(item.client_event_id) === trackingId);
+    const delivered = !remaining && (flushResult?.sent > 0
+      || flushResult?.results?.some?.((entry) => entry.client_event_id === trackingId && entry.status === "sent"));
+    setReportProblemStatus(delivered
+      ? `Report sent for review. Tracking ID: ${trackingId || "accepted"}.`
+      : remaining?.status === "needs-verification"
+      ? `Report queued safely (${trackingId}). Complete the verification above, or select Retry when ready.`
+      : `Report queued safely (${trackingId}). ANI will retry whenever this device has internet.`);
+    await updateReportProblemOutboxStatus();
+    if (delivered) window.setTimeout(() => setReportProblemOpen(false), 1200);
   } catch (error) {
-    setReportProblemStatus(error.message || `ANI could not reach the report server at ${activeBackendLabel()}.`, true);
+    setReportProblemStatus(error.message || "ANI could not queue this report safely.", true);
   } finally {
     if (sendReportProblemButton) {
       sendReportProblemButton.disabled = false;
     }
+  }
+}
+
+async function selectReportProblemScreenshot(file) {
+  clearReportProblemScreenshot();
+  if (!file) return;
+  const runtime = aniFeedbackRuntime();
+  if (!runtime?.sanitizeScreenshot) {
+    setReportProblemStatus("Screenshot processing is unavailable in this build.", true);
+    return;
+  }
+  setReportProblemStatus("Removing image metadata and preparing a private screenshot...");
+  try {
+    const sanitized = await runtime.sanitizeScreenshot(file);
+    const blob = sanitized?.blob || sanitized;
+    if (!(blob instanceof Blob)) throw new Error("ANI could not prepare this image.");
+    reportProblemScreenshot = { ...sanitized, blob };
+    reportProblemScreenshotPreviewUrl = URL.createObjectURL(blob);
+    if (reportProblemImagePreviewPicture) reportProblemImagePreviewPicture.src = reportProblemScreenshotPreviewUrl;
+    if (reportProblemImageSummary) {
+      const width = Number(sanitized?.width || 0);
+      const height = Number(sanitized?.height || 0);
+      const dimensions = width && height ? `${width} x ${height}, ` : "";
+      reportProblemImageSummary.textContent = `${dimensions}${Math.ceil(blob.size / 1024)} KiB, metadata removed`;
+    }
+    if (reportProblemImagePreview) reportProblemImagePreview.hidden = false;
+    setReportProblemStatus("Screenshot prepared. Verify that it contains no patient-identifying information.");
+  } catch (error) {
+    clearReportProblemScreenshot();
+    setReportProblemStatus(error.message || "Use one PNG, JPEG, or WebP screenshot under the accepted size limit.", true);
+  }
+}
+
+async function initializeAniFeedback() {
+  if (!ANI_FEEDBACK_ENABLED) return;
+  const runtime = aniFeedbackRuntime();
+  if (!runtime?.configure) {
+    setReportProblemStatus("Feedback delivery did not load in this build.", true);
+    return;
+  }
+  runtime.configure({
+    feedbackApiUrl: ANI_FEEDBACK_API_URL,
+    catalogFingerprint: feedbackCatalogContext().content_sha256,
+    appVersion: safeText(window.ANI_CONFIG?.appVersion || feedbackCatalogContext().content_version),
+    surface: isNativeShell ? "android" : "web",
+    verificationTokenProvider: requestAniFeedbackVerificationToken
+  });
+  runtime.onStatus?.(() => updateReportProblemOutboxStatus());
+  try {
+    await runtime.flush?.({ reason: "application-start" });
+    await updateReportProblemOutboxStatus();
+  } catch {
+    await updateReportProblemOutboxStatus();
   }
 }
 
@@ -12173,6 +12451,21 @@ function addMessage(role, text, editable = false, shouldSpeak = true, shouldReme
   const bubble = document.createElement("div");
   bubble.className = "bubble";
   setBubbleText(bubble, role, text, editable, options);
+  if (role === "assistant" && options?.reportProblemDraft?.query) {
+    const action = document.createElement("div");
+    action.className = "chat-report-action";
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "chat-report-action-button";
+    button.textContent = options.reportProblemDraft.label || "Report missing content";
+    button.addEventListener("click", () => {
+      openMissingContentReportDraft(options.reportProblemDraft.query, {
+        category: options.reportProblemDraft.category || "missing_content"
+      });
+    });
+    action.append(button);
+    bubble.append(action);
+  }
   if (editable) {
     bubble.contentEditable = "true";
     bubble.spellcheck = true;
@@ -21797,10 +22090,14 @@ function medicalSearchAssistCandidates(input = "", limit = 6) {
       ? "reviewed-route"
       : candidate.clinicalClueMatch === true
       ? "clinical-clue"
+      : candidate.phoneticMatch === true || identity.matchKind === "phonetic-suggestions"
+      ? "phonetic-suggestion"
       : candidate === identity.preferred || identity.suppressUnrelatedMatches === true
       ? identity.matchKind
       : "prefix-suggestion",
-    mayAutoOpen: candidate.reviewedRoute === true
+    mayAutoOpen: candidate.phoneticMatch === true
+      ? false
+      : candidate.reviewedRoute === true
       ? candidate.mayAutoOpen === true
       : candidate.clinicalClueMatch === true
       ? candidate.mayAutoOpen === true
@@ -38932,6 +39229,60 @@ function finishPharmSearchRender(querySnapshot = "", requestGeneration = pharmSe
   }
 }
 
+function clearAniSearchMissTimer() {
+  if (!pharmSearchMissTimer) return;
+  window.clearTimeout(pharmSearchMissTimer);
+  pharmSearchMissTimer = null;
+}
+
+function scheduleAniSearchMissEvidence({
+  rawQuery = "",
+  requestGeneration = pharmSearchRequestGeneration,
+  committed = false,
+  favoritesOnly = false,
+  tinySearch = false,
+  microbiologyBrowseMode = false,
+  resultCounts = {},
+  clinicalSearch = null
+} = {}) {
+  clearAniSearchMissTimer();
+  const runtime = aniFeedbackRuntime();
+  if (!runtime?.queueSearchMiss || !rawQuery.trim()) return;
+  const totalResults = Object.values(resultCounts).reduce((sum, value) => sum + Math.max(0, Number(value) || 0), 0);
+  const observation = {
+    query: rawQuery.slice(0, 240),
+    trigger: committed ? "enter" : "stable",
+    entered: committed,
+    stable: !committed,
+    stableForMs: committed ? 0 : 1500,
+    explicitZeroResults: totalResults === 0,
+    totalResults,
+    resultCounts,
+    isSearchMode: Boolean(rawQuery.trim()),
+    renderComplete: true,
+    requestGenerationMatches: requestGeneration === pharmSearchRequestGeneration,
+    transient: requestGeneration !== pharmSearchRequestGeneration,
+    isComposing: false,
+    favoritesOnly,
+    tinyPhoneSearch: tinySearch,
+    categoryOnly: false,
+    browseMode: microbiologyBrowseMode,
+    correctedQuery: safeText(clinicalSearch?.correctedQuery),
+    phoneticQuery: safeText(clinicalSearch?.phoneticQuery),
+    unmatchedClues: Array.isArray(clinicalSearch?.unmatchedClues)
+      ? clinicalSearch.unmatchedClues.map((value) => safeText(value)).filter(Boolean).slice(0, 6)
+      : []
+  };
+  if (totalResults !== 0 || runtime.shouldQueueSearchMiss?.(observation) === false) return;
+  const submit = () => {
+    pharmSearchMissTimer = null;
+    if (requestGeneration !== pharmSearchRequestGeneration || (pharmSearchInput?.value || "") !== rawQuery) return;
+    Promise.resolve(runtime.queueSearchMiss(observation)).catch(() => {});
+  };
+  if (committed) submit();
+  else pharmSearchMissTimer = window.setTimeout(submit, 1500);
+}
+
 function pharmResultOpenOptions(renderedQuery = "", currentQuery = pharmSearchInput?.value || "") {
   const focusQuery = currentQuery === renderedQuery ? renderedQuery : "";
   return { intent: focusQuery, highlightQuery: focusQuery };
@@ -39661,6 +40012,22 @@ function renderPharmResults(options = {}) {
         : `Browsing ${activePharmLabResults.length} lab references, ${activePathologyResults.length} pathology cards, ${microbiologyReferenceCount} Microbiology references, ${foundationCount} clinical foundations, ${surgeryProcedureCount} surgery/procedure cards, ${diagnosticReferenceCount} diagnostic/test references, ${holisticTotalCount} Holistic topics, and ${drugPool.length} installed pharmacy entries${letterText}. Use the category buttons to focus the list.`;
     }
   }
+  scheduleAniSearchMissEvidence({
+    rawQuery,
+    requestGeneration,
+    committed: options.searchCommitted === true,
+    favoritesOnly,
+    tinySearch: isTinyPhoneSearch,
+    microbiologyBrowseMode,
+    resultCounts: {
+      drugs: activePharmResults.length,
+      labs: activePharmLabResults.length,
+      pathology: activePathologyResults.length,
+      references: activeClinicalReferenceResults.length,
+      holistic: activeHolisticResults.length
+    },
+    clinicalSearch: responsiveSearchMatches?.clinicalSearch || null
+  });
   finishPharmSearchRender(rawQuery, requestGeneration);
 }
 
@@ -39711,6 +40078,7 @@ function schedulePharmResultChunks(items = [], startIndex = 0, renderItem, gener
 
 function queuePharmSearchRender() {
   lastAniInteractiveInputAt = Date.now();
+  clearAniSearchMissTimer();
   clearPharmSearchRenderTimer();
   const querySnapshot = pharmSearchInput?.value || "";
   const queryLength = normalizePharmText(querySnapshot).length;
@@ -45158,6 +45526,10 @@ function isOfflineLookupRejection(input = "") {
   return /^(no|nope|nah|not that|wrong|try again|guess again|different one)$/i.test(input.trim());
 }
 
+function isOfflineLookupRejectAll(input = "") {
+  return /^(?:none|neither|none of (?:these|those)|neither of (?:these|those)|not (?:these|those)|none of them|not any of (?:these|those|them))$/i.test(input.trim());
+}
+
 function shouldUseOfflineLookupCore() {
   return !aniBackendReachable || !aniModelAvailable;
 }
@@ -47810,16 +48182,87 @@ function makeOfflineAmbiguityPrompt(candidates = []) {
     : "I found more than one close encyclopedia match. Add one more specific word so I do not open the wrong card.";
 }
 
+function clearPendingOfflineLookup() {
+  pendingOfflineLookupSuggestions = [];
+  pendingOfflineLookupContext = null;
+}
+
+function beginPendingOfflineLookup(input = "", candidates = [], options = {}) {
+  pendingOfflineLookupSuggestions = Array.isArray(candidates) ? candidates.slice() : [];
+  pendingOfflineLookupContext = pendingOfflineLookupSuggestions.length
+    ? {
+      originalQuery: safeText(input).trim().slice(0, 180),
+      promptCount: 1,
+      ambiguous: options.ambiguous === true
+    }
+    : null;
+  return pendingOfflineLookupSuggestions;
+}
+
+function missingOfflineContentResponse(query = "") {
+  const originalQuery = safeText(query).trim().slice(0, 180) || "that topic";
+  clearPendingOfflineLookup();
+  const runtime = aniFeedbackRuntime();
+  if (!offlineMissQueuedForCurrentMessage && runtime?.queueSearchMiss) {
+    offlineMissQueuedForCurrentMessage = true;
+    Promise.resolve(runtime.queueSearchMiss({
+      query: originalQuery,
+      trigger: "entered",
+      entered: true,
+      stable: false,
+      stableForMs: 0,
+      explicitZeroResults: true,
+      totalResults: 0,
+      resultCounts: {
+        drugs: 0,
+        labs: 0,
+        pathology: 0,
+        references: 0,
+        holistic: 0,
+        warnings: 0,
+        procedures: 0,
+        "search-miss": 0
+      },
+      isSearchMode: true,
+      renderComplete: true,
+      requestGenerationMatches: true,
+      transient: false,
+      isComposing: false,
+      favoritesOnly: false,
+      tinyPhoneSearch: false,
+      categoryOnly: false,
+      browseMode: false,
+      correctedQuery: "",
+      phoneticQuery: "",
+      unmatchedClues: []
+    })).catch(() => {});
+  }
+  return {
+    type: "missing-content",
+    query: originalQuery,
+    text: `I am not sure ANI has a reviewed encyclopedia card for **${originalQuery}** yet. I do not want to guess. Would you like to report this missing topic so it can be evaluated?`
+  };
+}
+
 function handleOfflineLookupFlow(input = "", options = {}) {
   const force = Boolean(options.force);
   const allowPrompt = options.allowPrompt !== false;
   const trimmed = input.trim();
   if (pendingOfflineLookupSuggestions.length && isOfflineLookupConfirmation(trimmed)) {
     if (pendingOfflineLookupSuggestions.some((candidate) => candidate?.ambiguousIdentity === true)) {
+      pendingOfflineLookupContext = pendingOfflineLookupContext || {
+        originalQuery: trimmed,
+        promptCount: 1,
+        ambiguous: true
+      };
+      if (pendingOfflineLookupContext.promptCount >= 2) {
+        return missingOfflineContentResponse(pendingOfflineLookupContext.originalQuery);
+      }
+      pendingOfflineLookupContext.promptCount += 1;
       return makeOfflineAmbiguityPrompt(pendingOfflineLookupSuggestions);
     }
     const candidate = pendingOfflineLookupSuggestions[0];
-    pendingOfflineLookupSuggestions = [];
+    clearPendingOfflineLookup();
     rememberOfflineLookupTarget(candidate, trimmed);
     return {
       type: "pharm-database",
@@ -47832,12 +48275,35 @@ function handleOfflineLookupFlow(input = "", options = {}) {
     };
   }
 
+  if (pendingOfflineLookupSuggestions.length && isOfflineLookupRejectAll(trimmed)) {
+    return missingOfflineContentResponse(pendingOfflineLookupContext?.originalQuery || trimmed);
+  }
+
   if (pendingOfflineLookupSuggestions.length && isOfflineLookupRejection(trimmed)) {
+    const originalQuery = pendingOfflineLookupContext?.originalQuery || trimmed;
     pendingOfflineLookupSuggestions.shift();
-    if (pendingOfflineLookupSuggestions.length) {
+    pendingOfflineLookupContext = pendingOfflineLookupContext || {
+      originalQuery,
+      promptCount: 1,
+      ambiguous: false
+    };
+    if (pendingOfflineLookupSuggestions.length && pendingOfflineLookupContext.promptCount < 2) {
+      pendingOfflineLookupContext.promptCount += 1;
       return makeOfflineDidYouMean(pendingOfflineLookupSuggestions[0]);
     }
-    return "Okay, not that one. Try a shorter phrase, a brand/generic name, a lab nickname like mag or MAP, or the main symptom, and I will search the clinical reference again.";
+    return missingOfflineContentResponse(originalQuery);
+  }
+
+  if (!pendingOfflineLookupSuggestions.length
+    && (isOfflineLookupConfirmation(trimmed)
+      || isOfflineLookupRejection(trimmed)
+      || isOfflineLookupRejectAll(trimmed))) {
+    clearPendingOfflineLookup();
+    return "";
+  }
+
+  if (pendingOfflineLookupSuggestions.length) {
+    clearPendingOfflineLookup();
   }
   const normalizedHeartBlockQuery = normalizePharmText(trimmed);
   if (["heart block", "av block", "atrioventricular block"].includes(normalizedHeartBlockQuery)) {
@@ -47866,7 +48332,7 @@ function handleOfflineLookupFlow(input = "", options = {}) {
   }
   const reviewedResolution = fastReviewedSearchResolution(trimmed);
   if (reviewedResolution?.ambiguousIdentity === true) {
-    pendingOfflineLookupSuggestions = reviewedResolution.ambiguityCandidates || [];
+    beginPendingOfflineLookup(trimmed, reviewedResolution.ambiguityCandidates || [], { ambiguous: true });
     return makeOfflineAmbiguityPrompt(pendingOfflineLookupSuggestions);
   }
   if (reviewedResolution) {
@@ -48118,7 +48584,7 @@ function handleOfflineLookupFlow(input = "", options = {}) {
 
   const top = suggestions[0];
   if (top?.ambiguousIdentity === true) {
-    pendingOfflineLookupSuggestions = suggestions;
+    beginPendingOfflineLookup(trimmed, suggestions, { ambiguous: true });
     return makeOfflineAmbiguityPrompt(suggestions);
   }
   const directEnough = offlineLookupIsDirectEnough(input, top);
@@ -48136,7 +48602,7 @@ function handleOfflineLookupFlow(input = "", options = {}) {
   }
 
   if (allowPrompt && (force || shouldUseOfflineLookupCore() || allowOfflinePrompt)) {
-    pendingOfflineLookupSuggestions = suggestions;
+    beginPendingOfflineLookup(trimmed, suggestions);
     return makeOfflineDidYouMean(top);
   }
 
@@ -50004,6 +50470,7 @@ function renderLane4MetricsDiagnostics() {
 }
 
 async function makeModelEnhancedResponse(input = "", images = [], resources = []) {
+  offlineMissQueuedForCurrentMessage = false;
   if (explicitMemoryRequest(input)) {
     return makeTeachingResponse(input, images, resources);
   }
@@ -50551,7 +51018,8 @@ function sendUserMessage(text, options = {}) {
     return;
   }
   const finishUserMessage = async () => {
-    const response = await makeModelEnhancedResponse(outgoingText, images, resources);
+    try {
+      const response = await makeModelEnhancedResponse(outgoingText, images, resources);
     if (response?.preface && response?.type !== "pharm-database") {
       addMessage("assistant", response.preface, false, response?.type !== "pharm-database");
     }
@@ -50577,6 +51045,14 @@ function sendUserMessage(text, options = {}) {
     } else if (response?.type === "encyclopedia-segment") {
       addMessage("assistant", response.text, false, true, true, {
         boundEncyclopediaTarget: response.target
+      });
+    } else if (response?.type === "missing-content") {
+      addMessage("assistant", response.text, false, true, true, {
+        reportProblemDraft: {
+          query: response.query || outgoingText,
+          category: "missing_content",
+          label: "Report this missing topic"
+        }
       });
     } else if (response?.type === "pharm-database") {
       const userOpenedEncyclopediaWhileWaiting = !encyclopediaWasOpenWhenSent
@@ -50615,8 +51091,26 @@ function sendUserMessage(text, options = {}) {
     } else {
       addMessage("assistant", response);
     }
-    if (voiceStatus) {
-      voiceStatus.textContent = "Voice ready";
+    } catch (error) {
+      console.error("ANI could not finish the local response", error);
+      addMessage(
+        "assistant",
+        "I could not finish that request, but the page is still ready. You can try a shorter phrase, or report the problem so it can be evaluated.",
+        false,
+        false,
+        true,
+        {
+          reportProblemDraft: {
+            query: safeText(outgoingText).slice(0, 180) || "ANI response error",
+            category: "technical",
+            label: "Report this problem"
+          }
+        }
+      );
+    } finally {
+      if (voiceStatus) {
+        voiceStatus.textContent = "Voice ready";
+      }
     }
   };
   const queueResponseWork = () => window.setTimeout(finishUserMessage, 0);
@@ -52605,6 +53099,7 @@ messageInput?.addEventListener("input", () => {
 });
 pharmSearchInput?.addEventListener("input", (event) => {
   lastAniInteractiveInputAt = Date.now();
+  clearAniSearchMissTimer();
   if (event.isComposing) {
     return;
   }
@@ -52625,10 +53120,11 @@ pharmSearchInput?.addEventListener("keydown", (event) => {
   if (event.key !== "Enter" || event.defaultPrevented) return;
   event.preventDefault();
   clearPharmSearchRenderTimer();
+  clearAniSearchMissTimer();
   const querySnapshot = pharmSearchInput.value || "";
   const requestGeneration = ++pharmSearchRequestGeneration;
   pharmResultsList?.setAttribute("aria-busy", "true");
-  renderPharmResults({ expectedQuery: querySnapshot, requestGeneration });
+  renderPharmResults({ expectedQuery: querySnapshot, requestGeneration, searchCommitted: true });
   pharmSearchInput.blur();
   window.setTimeout(() => {
     pharmResultsList?.scrollIntoView({ block: "start", behavior: "smooth" });
@@ -52986,6 +53482,43 @@ sendReportProblemButton?.addEventListener("click", () => {
   submitProblemReport();
 });
 
+reportProblemImage?.addEventListener("change", () => {
+  selectReportProblemScreenshot(reportProblemImage.files?.[0] || null);
+});
+
+removeReportProblemImageButton?.addEventListener("click", () => {
+  clearReportProblemScreenshot();
+  setReportProblemStatus("Screenshot removed.");
+});
+
+reportProblemOutboxList?.addEventListener("click", async (event) => {
+  const button = event.target.closest?.("button[data-feedback-action][data-feedback-event-id]");
+  if (!button) return;
+  const runtime = aniFeedbackRuntime();
+  const eventId = safeText(button.dataset.feedbackEventId);
+  if (!runtime || !eventId) return;
+  button.disabled = true;
+  try {
+    if (button.dataset.feedbackAction === "retry") {
+      feedbackVerificationUserInitiated = true;
+      try {
+        await runtime.retry?.(eventId);
+      } finally {
+        feedbackVerificationUserInitiated = false;
+      }
+      setReportProblemStatus(navigator.onLine ? "Retry started." : "The report remains queued until this device is online.");
+    } else if (button.dataset.feedbackAction === "remove") {
+      await runtime.remove?.(eventId);
+      setReportProblemStatus("Queued report deleted from this device.");
+    }
+  } catch (error) {
+    setReportProblemStatus(error.message || "ANI could not update that queued report.", true);
+  } finally {
+    await updateReportProblemOutboxStatus();
+    button.disabled = false;
+  }
+});
+
 function updateChatHistorySearch() {
   chatHistorySearchTerm = chatHistorySearch.value || "";
   renderChatHistory();
@@ -53144,6 +53677,7 @@ renderActiveChat();
 startNursingFactTicker();
 refreshAniModelStatus();
 refreshMedicalUpdatesRuntime();
+initializeAniFeedback();
 registerServiceWorker();
 updateInstallUi();
 hideAppSplash();

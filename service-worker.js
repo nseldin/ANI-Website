@@ -1,4 +1,4 @@
-const CACHE_VERSION = "ani-pwa-v369-web-1e74625a9add";
+const CACHE_VERSION = "ani-pwa-v370-web-1e74625a9add";
 const APP_SHELL = [
   "/",
   "/index.html",
@@ -15,6 +15,9 @@ const APP_SHELL = [
   "/data/learner-language-standard.js",
   "/data/medical-updates.js",
   "/data/medical-updates.json",
+  "/data/ani-content-manifest.js",
+  "/data/ani-content-manifest.json",
+  "/src/ani/feedback-runtime.js",
   "/main.js",
   "/src/lane4/runtime-efficiency.js",
   "/data/pharm-database.js",

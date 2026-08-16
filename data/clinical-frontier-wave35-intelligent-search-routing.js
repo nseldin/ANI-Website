@@ -1090,9 +1090,9 @@
 
   if (baseHandleOfflineLookupFlow) {
     handleOfflineLookupFlow = function (input, options) {
-      if (pendingOfflineLookupSuggestions.length
-        && ((typeof isOfflineLookupConfirmation === "function" && isOfflineLookupConfirmation(input))
-          || (typeof isOfflineLookupRejection === "function" && isOfflineLookupRejection(input)))) {
+      if ((typeof isOfflineLookupConfirmation === "function" && isOfflineLookupConfirmation(input))
+        || (typeof isOfflineLookupRejection === "function" && isOfflineLookupRejection(input))
+        || (typeof isOfflineLookupRejectAll === "function" && isOfflineLookupRejectAll(input))) {
         return baseHandleOfflineLookupFlow(input, options);
       }
       if (["heart blocks", "heart block", "av block", "atrioventricular block"].includes(normalize(input))) {
@@ -1107,8 +1107,13 @@
         ? resolveTopicRequest(input, { mode: "navigate", limit: 8 })
         : null;
       if (sharedTopicRequest?.resolutionKind === "ambiguous-reviewed-route") {
-        pendingOfflineLookupSuggestions = safeArray(sharedTopicRequest.candidates)
+        const ambiguityCandidates = safeArray(sharedTopicRequest.candidates)
           .map((candidate) => ({ ...candidate, ambiguousIdentity: true }));
+        if (typeof beginPendingOfflineLookup === "function") {
+          beginPendingOfflineLookup(input, ambiguityCandidates, { ambiguous: true });
+        } else {
+          pendingOfflineLookupSuggestions = ambiguityCandidates;
+        }
         return typeof makeOfflineAmbiguityPrompt === "function"
           ? makeOfflineAmbiguityPrompt(pendingOfflineLookupSuggestions)
           : "I found more than one reviewed encyclopedia destination. Add one more specific word so I do not open the wrong card.";
@@ -1140,8 +1145,13 @@
         }
       }
       if (reviewedSearchSafetyOwner?.ambiguousIdentity === true) {
-        pendingOfflineLookupSuggestions = safeArray(reviewedSearchSafetyOwner.ambiguityCandidates)
+        const ambiguityCandidates = safeArray(reviewedSearchSafetyOwner.ambiguityCandidates)
           .map((candidate) => ({ ...candidate, ambiguousIdentity: true }));
+        if (typeof beginPendingOfflineLookup === "function") {
+          beginPendingOfflineLookup(input, ambiguityCandidates, { ambiguous: true });
+        } else {
+          pendingOfflineLookupSuggestions = ambiguityCandidates;
+        }
         return reviewedAmbiguityPrompt({ ambiguityCandidates: pendingOfflineLookupSuggestions });
       }
       const strictCanonicalOwner = typeof strictCanonicalEncyclopediaCandidate === "function"
