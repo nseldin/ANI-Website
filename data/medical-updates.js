@@ -5,6 +5,54 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "guideline-public-health",
+      "contentHash": "d9d3826d3066331bcc3d1ae5ca3cbe4b8d1e5e9bbaf0b7a71a9ff4bb84ccb7bc",
+      "description": "This report describes a case of Legionnaires disease in an infant who drank formula prepared using a formula mixing device and tap water.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765859&_=F8FEA88B2EC5B38BE7699F7F9EB25D9F20768BE02E6591B8FE20E86D89B555AD",
+      "id": "medical-update:cdc-mmwr:19a6f38e09042e67cb420320",
+      "publishedAt": "2026-06-18T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Legionnaires disease",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Notes from the Field: Case of Legionnaires Disease Associated with a Home Device Used to Mix Powdered Infant Formula - United States, 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7523a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "162c869aefb4340d10e04e5950582ff77aeb52850e2cc0cf0727c685a2cb8783",
+      "description": "This report describes the public health response to a measles outbreak in a Texas community.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765860&_=75173014B2AE23CC6F6F32619597AD6E1BFE65B51A086805CD0306721A6B31CE",
+      "id": "medical-update:cdc-mmwr:151306f9562055ae375da62b",
+      "publishedAt": "2026-06-18T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Measles",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Notes from the Field: Initial Public Health Response to a Measles Outbreak in a Close-Knit West Texas Community - January−February 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7523a2.htm"
+    },
+    {
       "category": "drug-approval",
       "contentHash": "731d68d5c7da7f68f3acba0162b11437451faeb1c2dce2c5d61a5d64f56a3a40",
       "description": "The U.S. Food and Drug Administration today approved the first generic of Xofluza (baloxavir marboxil) tablets, the first single-dose treatment for acute uncomplicated influenza and prophylaxis in patients 5 years of age and older.",
@@ -1864,9 +1912,110 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-17T03:29:32.079Z",
+  "generatedAt": "2026-08-17T19:43:47.717Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "f128a96486049d4475b4cdd0c4a55329915d3455ffbd15cc46eb833cead2b6c4",
+      "description": "Oma's Pride of Avon, Connecticut, is voluntarily recalling one lot of Woof Complete Canine Chicken Recipe, 6 lb bag (Lot BB012729) because it is contaminated with Salmonella.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/updated-omas-pride-voluntarily-recalls-one-lot-woof-complete-canine-chicken-recipe-6-lb-bag-because",
+      "id": "medical-update:fda-recalls:78808b3116b316de652e67e9",
+      "publishedAt": "2026-08-17T21:55:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-17T19:43:47.717Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "UPDATED: Oma's Pride Voluntarily Recalls One Lot of Woof Complete Canine Chicken Recipe (6 Lb Bag) Because of Possible Salmonella Health Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/updated-omas-pride-voluntarily-recalls-one-lot-woof-complete-canine-chicken-recipe-6-lb-bag-because"
+    },
+    {
+      "category": "drug-approval",
+      "contentHash": "37a1a2a497cace7d0c7842ee1d94ab3468de2ae8ed1692169801f9596d002afe",
+      "description": "By clarifying FDA’s regulatory expectations for new entrants and experienced drug developers alike, FDA is supporting prospective generic drug developers and improving the overall quality of ANDAs submitted to the Agency for approval.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/guidance-compliance-regulatory-information/fda-drug-competition-action-plan-improving-efficiency-generic-drug-development-review-and-approval",
+      "id": "medical-update:fda-drugs:363e251320732f4f0014b958",
+      "publishedAt": "2026-08-17T18:42:40.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-17T19:43:47.717Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "FDA Drug Competition Action Plan | Improving the efficiency of the generic drug development, review, and approval process",
+      "url": "https://www.fda.gov/drugs/guidance-compliance-regulatory-information/fda-drug-competition-action-plan-improving-efficiency-generic-drug-development-review-and-approval"
+    },
+    {
+      "category": "vaccine-biologic",
+      "contentHash": "2ed95baf1dc55be5e6b066a05a2b8fdeb1036266a2ac1c9b686fb301d5a976c0",
+      "description": "VAERS is a national vaccine safety surveillance program created as an outgrowth of the National Childhood Vaccine Injury Act of 1986 (NCVIA) and is administered by the Food and Drug Administration (FDA) and Centers for Disease Control and Prevention (CDC).",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/vaccines-blood-biologics/vaccine-adverse-events/vaccine-adverse-event-reporting-system-vaers-questions-and-answers",
+      "id": "medical-update:fda-biologics:a15698c919a7eada9ed16bb7",
+      "publishedAt": "2026-08-17T15:36:53.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-17T19:43:47.717Z",
+      "sourceCategories": [],
+      "sourceId": "fda-biologics",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
+      "title": "Vaccine Adverse Event Reporting System (VAERS) Questions and Answers",
+      "url": "https://www.fda.gov/vaccines-blood-biologics/vaccine-adverse-events/vaccine-adverse-event-reporting-system-vaers-questions-and-answers"
+    },
+    {
+      "category": "vaccine-biologic",
+      "contentHash": "0275c2a72d09f57585eca97445dffe91eebb22a59ff3af56bc0836eb1d132f35",
+      "description": "Information about the Vaccine Adverse Event Reporting System (VAERS), which is a national vaccine safety surveillance program co-sponsored by the Food and Drug Administration (FDA) and the Centers for Disease Control and Prevention (CDC) to detect possible signals of adverse events associated with v",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/vaccines-blood-biologics/report-problem-center-biologics-evaluation-research/vaccine-adverse-events",
+      "id": "medical-update:fda-biologics:f24d7f9c6f855fd5abaca5ac",
+      "publishedAt": "2026-08-17T15:31:15.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-17T19:43:47.717Z",
+      "sourceCategories": [],
+      "sourceId": "fda-biologics",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
+      "title": "Vaccine Adverse Events",
+      "url": "https://www.fda.gov/vaccines-blood-biologics/report-problem-center-biologics-evaluation-research/vaccine-adverse-events"
+    },
+    {
+      "category": "recall",
+      "contentHash": "94f8c98474523ebbfada6c5686e8a061f6f17bc49442f2914147e37bb27be3da",
+      "description": "July 24, 2026 – Shirley, NY, American Regent, Inc. is conducting a nationwide voluntary recall of a single lot of Papaverine Hydrochloride Injection, USP, 60 mg/2 mL single dose vial to the consumer level. The product is being recalled due to the presence of particulate matter identified as glass an",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/american-regent-inc-issues-voluntary-nationwide-recall-one-lot-papaverine-hydrochloride-injection",
+      "id": "medical-update:fda-drugs:7d052ca98a37e5402597b3cf",
+      "publishedAt": "2026-08-17T14:40:19.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-17T19:43:47.717Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "American Regent, Inc. Issues Voluntary Nationwide Recall of One Lot of Papaverine Hydrochloride Injection, USP 60 mg/ 2 mL Due to the Presence of Visible Particulate Matter",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/american-regent-inc-issues-voluntary-nationwide-recall-one-lot-papaverine-hydrochloride-injection"
+    },
+    {
+      "category": "recall",
+      "contentHash": "c0ffdd39d1a4f74798a8c9555819d20607f0d360789c0c4b79561b9df2860037",
+      "description": "July 24, 2026 - Taoyuan City, Taiwan - Sunny Pharmtech, Inc is voluntarily recalling three lots of Cyclophosphamide for Injection, USP, 1g/vial and 2g/vial, to the User Level due to the presence of particulate matter identified as steel. To date, no adverse events or injuries associated with this pa",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/sunny-pharmtech-inc-issues-voluntary-nationwide-recall-cyclophosphamide-injection-usp-user-level-due",
+      "id": "medical-update:fda-drugs:4c7e6164e1f945b88840cd6f",
+      "publishedAt": "2026-08-17T14:09:47.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Cyclophosphamide",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-17T19:43:47.717Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Sunny Pharmtech, Inc. Issues Voluntary Nationwide Recall of Cyclophosphamide for Injection, USP to the User Level Due to the Presence of Particulate Matter",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/sunny-pharmtech-inc-issues-voluntary-nationwide-recall-cyclophosphamide-injection-usp-user-level-due"
+    },
     {
       "category": "recall",
       "contentHash": "951f7a3cba6798bbd078059ccb6f4d30a1bff5aecd68559c0128b9118a45987b",
@@ -2929,22 +3078,6 @@
       "url": "https://www.cdc.gov/mmwr/volumes/75/ss/ss7505a1.htm"
     },
     {
-      "category": "recall",
-      "contentHash": "70253704ccbebb075570b3ef2e336623453db20dd4db826d1ac0b09d4e28388e",
-      "description": "July 24, 2026 – Shirley, NY, American Regent, Inc. is conducting a nationwide voluntary recall of a single lot of Papaverine Hydrochloride Injection, USP, 60 mg/2 mL single dose vial to the consumer level. The product is being recalled due to the presence of particulate matter identified as glass an",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/american-regent-inc-issues-voluntary-nationwide-recall-one-lot-papaverine-hydrochloride-injection",
-      "id": "medical-update:fda-medwatch:6d07bcc84cb4a6c607409554",
-      "publishedAt": "2026-07-27T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-medwatch",
-      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
-      "title": "American Regent, Inc. Issues Voluntary Nationwide Recall of One Lot of Papaverine Hydrochloride Injection, USP 60 mg/ 2 mL Due to the Presence of Visible Particulate Matter",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/american-regent-inc-issues-voluntary-nationwide-recall-one-lot-papaverine-hydrochloride-injection"
-    },
-    {
       "category": "safety-alert",
       "contentHash": "1ebc3cc2caee335b5bd1a8dcaee064f3418ab9a9b4e0d2d7e09062ba2d8387b3",
       "description": "ENROUTE Transcarotid Neuroprotection Systems may have arterial sheath tip separation or partial tip separation during use",
@@ -2959,27 +3092,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Early Alert: Percutaneous Catheter Issue from Boston Scientific",
       "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-percutaneous-catheter-issue-boston-scientific"
-    },
-    {
-      "category": "recall",
-      "contentHash": "4b543219bf951d9a64e55f931c5b7e6efcac5424ea03030b4a77baadd65c8b92",
-      "description": "July 24, 2026 - Taoyuan City, Taiwan - Sunny Pharmtech, Inc is voluntarily recalling three lots of Cyclophosphamide for Injection, USP, 1g/vial and 2g/vial, to the User Level due to the presence of particulate matter identified as steel. To date, no adverse events or injuries associated with this pa",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/sunny-pharmtech-inc-issues-voluntary-nationwide-recall-cyclophosphamide-injection-usp-user-level-due",
-      "id": "medical-update:fda-medwatch:6d25d4958889a335826b5811",
-      "publishedAt": "2026-07-24T04:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Cyclophosphamide",
-          "collection": "pharmDrugs"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [],
-      "sourceId": "fda-medwatch",
-      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
-      "title": "Sunny Pharmtech, Inc. Issues Voluntary Nationwide Recall of Cyclophosphamide for Injection, USP to the User Level Due to the Presence of Particulate Matter",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/sunny-pharmtech-inc-issues-voluntary-nationwide-recall-cyclophosphamide-injection-usp-user-level-due"
     },
     {
       "category": "recall",
@@ -3482,54 +3594,6 @@
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "title": "Notes from the Field: Drug Overdose Deaths in Hotels and Motels - United States, 2022-2024",
       "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7524a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "d9d3826d3066331bcc3d1ae5ca3cbe4b8d1e5e9bbaf0b7a71a9ff4bb84ccb7bc",
-      "description": "This report describes a case of Legionnaires disease in an infant who drank formula prepared using a formula mixing device and tap water.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765859&_=F8FEA88B2EC5B38BE7699F7F9EB25D9F20768BE02E6591B8FE20E86D89B555AD",
-      "id": "medical-update:cdc-mmwr:19a6f38e09042e67cb420320",
-      "publishedAt": "2026-06-18T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Legionnaires disease",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Notes from the Field: Case of Legionnaires Disease Associated with a Home Device Used to Mix Powdered Infant Formula - United States, 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7523a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "162c869aefb4340d10e04e5950582ff77aeb52850e2cc0cf0727c685a2cb8783",
-      "description": "This report describes the public health response to a measles outbreak in a Texas community.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765860&_=75173014B2AE23CC6F6F32619597AD6E1BFE65B51A086805CD0306721A6B31CE",
-      "id": "medical-update:cdc-mmwr:151306f9562055ae375da62b",
-      "publishedAt": "2026-06-18T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Measles",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Notes from the Field: Initial Public Health Response to a Measles Outbreak in a Close-Knit West Texas Community - January−February 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7523a2.htm"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -3542,7 +3606,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 5,
-      "retrievedAt": "2026-08-17T03:29:32.079Z",
+      "retrievedAt": "2026-08-17T19:43:47.717Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3552,30 +3616,30 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 6,
-      "retrievedAt": "2026-08-17T03:29:32.079Z",
+      "retainedItemCount": 7,
+      "retrievedAt": "2026-08-17T19:43:47.717Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 3,
+      "itemCount": 4,
       "rawItemCount": 20,
-      "rejectedItemCount": 17,
-      "retainedItemCount": 8,
-      "retrievedAt": "2026-08-17T03:29:32.079Z",
+      "rejectedItemCount": 16,
+      "retainedItemCount": 10,
+      "retrievedAt": "2026-08-17T19:43:47.717Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 3,
+      "itemCount": 2,
       "rawItemCount": 20,
-      "rejectedItemCount": 17,
-      "retainedItemCount": 1,
-      "retrievedAt": "2026-08-17T03:29:32.079Z",
+      "rejectedItemCount": 18,
+      "retainedItemCount": 4,
+      "retrievedAt": "2026-08-17T19:43:47.717Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -3586,7 +3650,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-17T03:29:32.079Z",
+      "retrievedAt": "2026-08-17T19:43:47.717Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -3597,7 +3661,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-17T03:29:32.079Z",
+      "retrievedAt": "2026-08-17T19:43:47.717Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -3608,7 +3672,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-08-17T03:29:32.079Z",
+      "retrievedAt": "2026-08-17T19:43:47.717Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -3619,7 +3683,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-17T03:29:32.079Z",
+      "retrievedAt": "2026-08-17T19:43:47.717Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -3630,7 +3694,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-17T03:29:32.079Z",
+      "retrievedAt": "2026-08-17T19:43:47.717Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
