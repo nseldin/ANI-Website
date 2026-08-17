@@ -5,6 +5,31 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "drug-approval",
+      "contentHash": "731d68d5c7da7f68f3acba0162b11437451faeb1c2dce2c5d61a5d64f56a3a40",
+      "description": "The U.S. Food and Drug Administration today approved the first generic of Xofluza (baloxavir marboxil) tablets, the first single-dose treatment for acute uncomplicated influenza and prophylaxis in patients 5 years of age and older.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-single-dose-generic-treatment-influenza",
+      "id": "medical-update:fda-press-releases:66911ca5165a0a907bb96fc5",
+      "publishedAt": "2026-06-17T21:32:27.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        },
+        {
+          "canonicalTitle": "Baloxavir",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [],
+      "sourceId": "fda-press-releases",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
+      "title": "FDA Approves First Single-Dose Generic Treatment for Influenza",
+      "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-first-single-dose-generic-treatment-influenza"
+    },
+    {
       "category": "guideline-public-health",
       "contentHash": "677b052495a2f159f44fb0fafefe8c15e165b7d5480a95e2c4ff68e93105b47a",
       "description": "During 2010-2024, 54 U.S. jurisdictions reported 1,796 confirmed and probable brucellosis cases. A total of 71-165 cases were reported annually.",
@@ -1839,7 +1864,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-15T19:04:46.691Z",
+  "generatedAt": "2026-08-17T03:29:32.079Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -3505,31 +3530,6 @@
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "title": "Notes from the Field: Initial Public Health Response to a Measles Outbreak in a Close-Knit West Texas Community - January−February 2025",
       "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7523a2.htm"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "731d68d5c7da7f68f3acba0162b11437451faeb1c2dce2c5d61a5d64f56a3a40",
-      "description": "The U.S. Food and Drug Administration today approved the first generic of Xofluza (baloxavir marboxil) tablets, the first single-dose treatment for acute uncomplicated influenza and prophylaxis in patients 5 years of age and older.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-single-dose-generic-treatment-influenza",
-      "id": "medical-update:fda-press-releases:66911ca5165a0a907bb96fc5",
-      "publishedAt": "2026-06-17T21:32:27.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Influenza",
-          "collection": "pathologyDiseases"
-        },
-        {
-          "canonicalTitle": "Baloxavir",
-          "collection": "pharmDrugs"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [],
-      "sourceId": "fda-press-releases",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
-      "title": "FDA Approves First Single-Dose Generic Treatment for Influenza",
-      "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-first-single-dose-generic-treatment-influenza"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -3542,7 +3542,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 5,
-      "retrievedAt": "2026-08-15T19:04:46.691Z",
+      "retrievedAt": "2026-08-17T03:29:32.079Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3553,7 +3553,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 6,
-      "retrievedAt": "2026-08-15T19:04:46.691Z",
+      "retrievedAt": "2026-08-17T03:29:32.079Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -3564,7 +3564,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 8,
-      "retrievedAt": "2026-08-15T19:04:46.691Z",
+      "retrievedAt": "2026-08-17T03:29:32.079Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -3575,7 +3575,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-08-15T19:04:46.691Z",
+      "retrievedAt": "2026-08-17T03:29:32.079Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -3586,7 +3586,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-15T19:04:46.691Z",
+      "retrievedAt": "2026-08-17T03:29:32.079Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -3597,7 +3597,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-15T19:04:46.691Z",
+      "retrievedAt": "2026-08-17T03:29:32.079Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -3608,7 +3608,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-08-15T19:04:46.691Z",
+      "retrievedAt": "2026-08-17T03:29:32.079Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -3619,7 +3619,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-15T19:04:46.691Z",
+      "retrievedAt": "2026-08-17T03:29:32.079Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -3630,7 +3630,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-15T19:04:46.691Z",
+      "retrievedAt": "2026-08-17T03:29:32.079Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
