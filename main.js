@@ -11228,7 +11228,9 @@ async function submitProblemReport() {
     const trackingId = safeText(result?.reportId || result?.report_id || result?.clientEventId || result?.client_event_id);
     if (!trackingId) throw new Error("ANI could not create a safe local tracking ID for this report.");
     let flushResult = null;
-    if (navigator.onLine) {
+    if (isNativeShell) {
+      flushResult = await runtime.flush?.({ trigger: "android-workmanager-submit", ids: [trackingId] });
+    } else if (navigator.onLine) {
       feedbackVerificationUserInitiated = true;
       try {
         flushResult = await runtime.flush?.({ trigger: "manual-submit", force: true, ids: [trackingId] });
@@ -11299,7 +11301,7 @@ async function initializeAniFeedback() {
     catalogFingerprint: feedbackCatalogContext().content_sha256,
     appVersion: safeText(window.ANI_CONFIG?.appVersion || feedbackCatalogContext().content_version),
     surface: isNativeShell ? "android" : "web",
-    verificationTokenProvider: requestAniFeedbackVerificationToken
+    verificationTokenProvider: isNativeShell ? null : requestAniFeedbackVerificationToken
   });
   runtime.onStatus?.(() => updateReportProblemOutboxStatus());
   try {

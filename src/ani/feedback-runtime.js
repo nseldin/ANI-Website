@@ -15,7 +15,7 @@
   const SEARCH_DEDUPE_KEY = "search-dedupe-v1";
   const ALLOWED_IMAGE_TYPES = new Set(["image/png", "image/jpeg", "image/webp"]);
   const ITEM_TYPES = new Set(["manual_report", "search_miss_batch"]);
-  const ITEM_STATUSES = new Set(["queued", "sending", "retry-wait", "needs-verification", "failed"]);
+  const ITEM_STATUSES = new Set(["queued", "sending", "retry-wait", "needs-verification", "failed", "acknowledged-purge-pending"]);
   const DEFAULTS = Object.freeze({
     feedbackApiUrl: "",
     catalogFingerprint: "",
@@ -97,7 +97,9 @@
   }
 
   function redactSensitiveText(value, maximum) {
-    let text = cleanText(value, maximum);
+    const boundedMaximum = Math.max(0, Number(maximum) || 0);
+    const scanLimit = Math.max(boundedMaximum, Math.min(16384, boundedMaximum + 4096));
+    let text = cleanText(value, scanLimit);
     let redactions = 0;
     const replace = (pattern, label) => {
       text = text.replace(pattern, () => {
@@ -109,7 +111,17 @@
     replace(/\b(?:\+?1[\s.-]?)?(?:\(?\d{3}\)?[\s.-]?)\d{3}[\s.-]?\d{4}\b/g, "[redacted-phone]");
     replace(/\b\d{3}-\d{2}-\d{4}\b/g, "[redacted-identifier]");
     replace(/\b(?:mrn|medical\s+record(?:\s+number)?|patient\s+id)\s*[:#-]?\s*[a-z0-9-]{4,}\b/gi, "[redacted-medical-identifier]");
-    return { text, redactions };
+    replace(/\b(?:\d{1,3}\.){3}\d{1,3}\b/g, "[redacted-ip]");
+    replace(/(?<![a-f0-9:])(?:(?:[a-f0-9]{1,4}:){7}[a-f0-9]{1,4}|(?:[a-f0-9]{1,4}:){1,7}:[a-f0-9:]*|::(?:[a-f0-9]{1,4}:){0,6}[a-f0-9]{1,4})(?![a-f0-9:])/gi, "[redacted-ip]");
+    replace(/\b(?:(?:account|user|member|customer|profile)[ _-]?(?:id|identifier|number)|(?:user[ _-]?name|username|login))\s*[:#=/-]?\s*[a-z0-9][a-z0-9._-]{2,}\b/gi, "[redacted-account-identifier]");
+    replace(/\b(?:\d[ -]?){12,18}\d\b/g, "[redacted-payment-card]");
+    replace(/\b\d{1,6}\s+(?:[a-z0-9.'-]+\s+){0,5}(?:street|st|avenue|ave|road|rd|boulevard|blvd|lane|ln|drive|dr|court|ct|circle|cir|parkway|pkwy|highway|hwy|place|pl|terrace|ter|way)\b(?:[ ,]+(?:apt|apartment|unit|suite|#)\s*[a-z0-9-]+)?(?:,\s*(?:[a-z][a-z .'-]{1,40},\s*)?[a-z]{2}\s+\d{5}(?:-\d{4})?)?/gi, "[redacted-postal-address]");
+    replace(/\bp\.?\s*o\.?\s+box\s+\d{1,10}\b/gi, "[redacted-postal-address]");
+    replace(/^[ \t]*(?:>\s*)?(?:user|assistant|system|developer|bot|chatgpt|ani)[ \t]*:[^\r\n]*/gim, "[redacted-chat-history]");
+    replace(/^[ \t]*(?:chat|conversation|message)[ _-]?(?:history|transcript)[ \t]*[:=-]?[^\r\n]*/gim, "[redacted-chat-history]");
+    replace(/\bbearer\s+[a-z0-9._~+/-]{8,}={0,2}\b/gi, "[redacted-secret]");
+    replace(/\b(?:api[ _-]?key|access[ _-]?token|refresh[ _-]?token|authorization|cookie|session[ _-]?id|password)\s*[:=]\s*[^\s,;]{4,}/gi, "[redacted-secret]");
+    return { text: cleanText(text, boundedMaximum), redactions };
   }
 
   function normalizeSearchQuery(value, maximum = DEFAULTS.maxSearchQueryChars) {
@@ -136,7 +148,9 @@
     const query = normalizeSearchQuery(rawQuery, maximumQueryChars);
     if (!query) return { accepted: false, reason: "empty-query", query };
     if (query.length <= 1 || input.tinyPhoneSearch === true) return { accepted: false, reason: "query-too-short", query };
-    if (personalLikeQuery(query)) return { accepted: false, reason: "personal-like-query", query };
+    if (personalLikeQuery(query) || redactSensitiveText(query, maximumQueryChars).redactions > 0) {
+      return { accepted: false, reason: "personal-like-query", query };
+    }
     if (input.isSearchMode !== true) return { accepted: false, reason: "not-search-mode", query };
     if (input.renderComplete !== true) return { accepted: false, reason: "render-incomplete", query };
     if (input.requestGenerationMatches !== true || input.transient === true || input.isComposing === true) {
@@ -219,6 +233,29 @@
     return value;
   }
 
+  function canonicalStableJson(value) {
+    if (value === null) return "null";
+    if (Array.isArray(value)) {
+      return `[${Array.from({ length: value.length }, (_, index) => value[index] === undefined ? "null" : canonicalStableJson(value[index])).join(",")}]`;
+    }
+    if (value && typeof value === "object") {
+      const keys = Object.keys(value).filter((key) => value[key] !== undefined).sort();
+      return `{${keys.map((key) => `${JSON.stringify(key)}:${canonicalStableJson(value[key])}`).join(",")}}`;
+    }
+    if (typeof value === "number" && !Number.isFinite(value)) return "null";
+    const encoded = JSON.stringify(value);
+    if (encoded === undefined) throw new TypeError("ANI feedback request contains an unsupported JSON value.");
+    return encoded;
+  }
+
+  function requestHashObject(value, omitRootKeys = []) {
+    if (!value || typeof value !== "object" || Array.isArray(value)) {
+      throw new TypeError("ANI feedback request hashing requires an object.");
+    }
+    const omitted = new Set(omitRootKeys);
+    return Object.fromEntries(Object.entries(value).filter(([key]) => !omitted.has(key)));
+  }
+
   function memoryStore() {
     const items = new Map();
     const meta = new Map();
@@ -243,12 +280,11 @@
   }
 
   function indexedDbStore(host) {
-    const memory = memoryStore();
-    let disabled = !host || !host.indexedDB;
+    const unavailable = !host || !host.indexedDB;
     let openPromise = null;
 
     function open() {
-      if (disabled) return Promise.reject(new Error("IndexedDB is unavailable."));
+      if (unavailable) return Promise.reject(new Error("Durable IndexedDB feedback storage is unavailable."));
       if (openPromise) return openPromise;
       openPromise = new Promise((resolve, reject) => {
         const request = host.indexedDB.open(DATABASE_NAME, DATABASE_VERSION);
@@ -263,11 +299,7 @@
         request.onsuccess = () => resolve(request.result);
         request.onerror = () => reject(request.error || new Error("ANI feedback storage could not open."));
         request.onblocked = () => reject(new Error("ANI feedback storage upgrade is blocked."));
-      }).catch((error) => {
-        disabled = true;
-        openPromise = null;
-        throw error;
-      });
+      }).catch((error) => { openPromise = null; throw error; });
       return openPromise;
     }
 
@@ -284,76 +316,40 @@
       return result;
     }
 
-    async function withFallback(operation, fallback) {
-      if (disabled) return fallback();
-      try { return await operation(); } catch (_error) {
-        disabled = true;
-        return fallback();
-      }
-    }
-
     return {
       async list() {
-        const records = await withFallback(
-          () => transaction(OUTBOX_STORE, "readonly", (store) => requestResult(store.getAll())),
-          () => memory.list()
-        );
-        records.forEach((item) => memory.put(item));
-        return records.map(cloneValue);
+        const records = await transaction(OUTBOX_STORE, "readonly", (store) => requestResult(store.getAll()));
+        return (records || []).map(cloneValue);
       },
       async get(id) {
-        const value = await withFallback(
-          () => transaction(OUTBOX_STORE, "readonly", (store) => requestResult(store.get(id))),
-          () => memory.get(id)
-        );
-        if (value) await memory.put(value);
+        const value = await transaction(OUTBOX_STORE, "readonly", (store) => requestResult(store.get(id)));
         return cloneValue(value || null);
       },
       async put(item) {
-        await memory.put(item);
-        await withFallback(
-          () => transaction(OUTBOX_STORE, "readwrite", (store) => requestResult(store.put(item))),
-          async () => item
-        );
+        await transaction(OUTBOX_STORE, "readwrite", (store) => requestResult(store.put(item)));
         return cloneValue(item);
       },
       async remove(id) {
-        await memory.remove(id);
-        return withFallback(
-          () => transaction(OUTBOX_STORE, "readwrite", (store) => requestResult(store.delete(id))),
-          async () => undefined
-        );
+        await transaction(OUTBOX_STORE, "readwrite", (store) => requestResult(store.delete(id)));
+        const remaining = await transaction(OUTBOX_STORE, "readonly", (store) => requestResult(store.get(id)));
+        if (remaining !== undefined) throw new Error("ANI feedback storage did not confirm deletion.");
       },
       async getMeta(key) {
-        const record = await withFallback(
-          () => transaction(META_STORE, "readonly", (store) => requestResult(store.get(key))),
-          async () => ({ key, value: await memory.getMeta(key) })
-        );
-        if (record && Object.prototype.hasOwnProperty.call(record, "value")) await memory.setMeta(key, record.value);
+        const record = await transaction(META_STORE, "readonly", (store) => requestResult(store.get(key)));
         return cloneValue(record && record.value);
       },
       async setMeta(key, value) {
-        await memory.setMeta(key, value);
-        return withFallback(
-          () => transaction(META_STORE, "readwrite", (store) => requestResult(store.put({ key, value }))),
-          async () => undefined
-        );
+        await transaction(META_STORE, "readwrite", (store) => requestResult(store.put({ key, value })));
       },
       async removeMeta(key) {
-        await memory.removeMeta(key);
-        return withFallback(
-          () => transaction(META_STORE, "readwrite", (store) => requestResult(store.delete(key))),
-          async () => undefined
-        );
+        await transaction(META_STORE, "readwrite", (store) => requestResult(store.delete(key)));
       },
-      putRaw: (value) => memory.putRaw(value),
+      async putRaw(value) {
+        await transaction(OUTBOX_STORE, "readwrite", (store) => requestResult(store.put(value)));
+      },
       clear: async () => {
-        await memory.clear();
-        if (disabled) return;
-        await withFallback(async () => {
-          await transaction(OUTBOX_STORE, "readwrite", (store) => requestResult(store.clear()));
-          await transaction(META_STORE, "readwrite", (store) => requestResult(store.clear()));
-        }, async () => undefined);
+        await transaction(OUTBOX_STORE, "readwrite", (store) => requestResult(store.clear()));
+        await transaction(META_STORE, "readwrite", (store) => requestResult(store.clear()));
       }
     };
   }
@@ -368,6 +364,110 @@
     let flushPromise = null;
     let scheduledTimer = null;
     let destroyed = false;
+    let nativeReadyPromise = Promise.resolve(null);
+    let nativeMigrationPromise = Promise.resolve();
+
+    function nativeQueuePlugin() {
+      const capacitor = host && host.Capacitor;
+      const plugin = capacitor && capacitor.Plugins && capacitor.Plugins.AniFeedbackQueue;
+      return plugin && typeof plugin === "object" ? plugin : null;
+    }
+
+    function requiresNativeQueue() {
+      return currentConfig.surface === "android";
+    }
+
+    async function requireNativeQueue() {
+      if (!requiresNativeQueue()) return null;
+      const plugin = await nativeReadyPromise;
+      if (!plugin || typeof plugin.enqueue !== "function") {
+        throw new Error("ANI's encrypted Android feedback queue is unavailable in this build.");
+      }
+      return plugin;
+    }
+
+    function base64Bytes(bytes) {
+      const encode = host && host.btoa || (typeof btoa === "function" ? btoa : null);
+      if (typeof encode !== "function") throw new Error("Android feedback attachment encoding is unavailable.");
+      let output = "";
+      const view = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes);
+      for (let offset = 0; offset < view.length; offset += 0x8000) {
+        output += String.fromCharCode(...view.subarray(offset, Math.min(view.length, offset + 0x8000)));
+      }
+      return encode(output);
+    }
+
+    async function nativeSerializableItem(item) {
+      const attachment = item && item.attachment;
+      const serializedAttachment = attachment ? {
+        media_type: attachment.media_type,
+        size_bytes: attachment.size_bytes,
+        width: attachment.width,
+        height: attachment.height,
+        sha256: attachment.sha256,
+        filename: attachment.filename,
+        blob_base64: base64Bytes(await attachment.blob.arrayBuffer())
+      } : null;
+      return {
+        schema_version: item.schema_version,
+        client_event_id: item.client_event_id,
+        type: item.type,
+        status: "queued",
+        created_at: item.created_at,
+        updated_at: item.updated_at,
+        attempts: Number(item.attempts || 0),
+        last_error: "",
+        payload: cloneValue(item.payload),
+        attachment: serializedAttachment
+      };
+    }
+
+    async function nativeEnqueue(item) {
+      const plugin = await requireNativeQueue();
+      const result = await plugin.enqueue({ item: await nativeSerializableItem(item) });
+      if (!result || result.queued !== true || result.durable !== true
+        || cleanText(result.client_event_id, 160) !== item.client_event_id) {
+        throw new Error("ANI did not confirm durable Android feedback storage.");
+      }
+      emit(result.deduped ? "deduped" : "queued", item, { durable: true, native: true });
+      return {
+        queued: true,
+        deduped: result.deduped === true,
+        durable: true,
+        client_event_id: item.client_event_id,
+        item: cloneValue(result.item || {
+          client_event_id: item.client_event_id,
+          type: item.type,
+          status: "queued",
+          created_at: item.created_at,
+          updated_at: item.updated_at
+        })
+      };
+    }
+
+    async function migrateLegacyNativeOutbox(plugin) {
+      if (!plugin || typeof plugin.enqueue !== "function") return;
+      let legacy;
+      try { legacy = await store.list(); } catch (_error) { return; }
+      for (const item of Array.isArray(legacy) ? legacy : []) {
+        if (!validStoredItem(item)) continue;
+        if (item.status === "acknowledged-purge-pending") {
+          try { await store.remove(item.client_event_id); } catch (_error) {}
+          continue;
+        }
+        try {
+          const result = await plugin.enqueue({ item: await nativeSerializableItem(item) });
+          if (result && result.queued === true && result.durable === true
+            && cleanText(result.client_event_id, 160) === item.client_event_id) {
+            await store.remove(item.client_event_id);
+            emit("migrated-native", item, { durable: true });
+          }
+        } catch (_error) {
+          // The original IndexedDB record remains authoritative until the native
+          // plugin confirms its own durable atomic write.
+        }
+      }
+    }
 
     function identifier(prefix = "ani-feedback") {
       const randomUuid = host && host.crypto && typeof host.crypto.randomUUID === "function"
@@ -445,7 +545,7 @@
           ? normalizeApiBase(merged.feedbackApiUrl || merged.apiBaseUrl)
           : currentConfig.feedbackApiUrl,
         catalogFingerprint: catalogFingerprint(merged.catalogFingerprint ?? merged.contentVersion ?? catalog.content_sha256 ?? catalog.contentSha256 ?? currentConfig.catalogFingerprint),
-        appVersion: cleanText(merged.appVersion ?? currentConfig.appVersion, 80),
+        appVersion: cleanText(merged.appVersion ?? currentConfig.appVersion, 40),
         surface: normalizedSurface(merged.surface ?? merged.platform ?? currentConfig.surface),
         manualReportPath: cleanPath(merged.manualReportPath ?? currentConfig.manualReportPath, 160) || DEFAULTS.manualReportPath,
         searchMissPath: cleanPath(merged.searchMissPath ?? currentConfig.searchMissPath, 160) || DEFAULTS.searchMissPath,
@@ -468,6 +568,20 @@
         fetch: typeof merged.fetch === "function" ? merged.fetch : currentConfig.fetch
       };
       emit("configured", null, { enabled: Boolean(currentConfig.feedbackApiUrl) });
+      if (requiresNativeQueue()) {
+        const plugin = nativeQueuePlugin();
+        nativeReadyPromise = plugin && typeof plugin.configure === "function"
+          ? Promise.resolve(plugin.configure({ feedbackApiUrl: currentConfig.feedbackApiUrl })).then((result) => {
+            if (!result || result.available !== true || result.durable !== true) {
+              throw new Error("ANI did not confirm the encrypted Android feedback queue.");
+            }
+            return plugin;
+          })
+          : Promise.reject(new Error("ANI's encrypted Android feedback queue is unavailable in this build."));
+        nativeMigrationPromise = nativeReadyPromise.then((readyPlugin) => migrateLegacyNativeOutbox(readyPlugin));
+        nativeReadyPromise.catch((error) => emit("native-unavailable", null, { error: errorMessage(error) }));
+        nativeMigrationPromise.catch(() => {});
+      }
       if (currentConfig.autoStart && currentConfig.feedbackApiUrl) scheduleFlush("configure", 0);
       return publicConfig();
     }
@@ -479,6 +593,7 @@
     }
 
     function itemSize(item) {
+      if (item && item.status === "acknowledged-purge-pending") return byteLength(item);
       const attachmentBytes = Number(item && item.attachment && item.attachment.size_bytes || 0);
       const copy = { ...item, attachment: item && item.attachment ? { ...item.attachment, blob: undefined } : null };
       return byteLength(copy) + attachmentBytes;
@@ -488,9 +603,13 @@
       if (!item || typeof item !== "object") return false;
       if (item.schema_version !== SCHEMA_VERSION) return false;
       if (!ITEM_TYPES.has(item.type) || !ITEM_STATUSES.has(item.status)) return false;
-      if (!cleanText(item.client_event_id, 160) || !item.payload || typeof item.payload !== "object") return false;
+      if (!cleanText(item.client_event_id, 160)) return false;
       if (!Number.isFinite(Date.parse(item.created_at)) || !Number.isFinite(Number(item.attempts))) return false;
       if (!Number.isFinite(Number(item.byte_size)) || Number(item.byte_size) < 0) return false;
+      if (item.status === "acknowledged-purge-pending") {
+        return !item.payload && !item.attachment;
+      }
+      if (!item.payload || typeof item.payload !== "object") return false;
       if (item.attachment) {
         if (!ALLOWED_IMAGE_TYPES.has(item.attachment.media_type)) return false;
         if (!Number.isFinite(Number(item.attachment.size_bytes)) || Number(item.attachment.size_bytes) <= 0) return false;
@@ -519,7 +638,7 @@
           emit("corrupt-dropped", record || null);
           continue;
         }
-        if (now() - Date.parse(record.created_at) > currentConfig.maxItemAgeMs) {
+        if (record.type === "search_miss_batch" && now() - Date.parse(record.created_at) > currentConfig.maxItemAgeMs) {
           await store.remove(record.client_event_id);
           await dropSearchDedupeForItem(record);
           emit("expired-dropped", record);
@@ -610,8 +729,10 @@
       if (!redacted.text) throw new Error("Report text is required.");
       const attachment = validatedAttachment(input.screenshot || input.attachment || null);
       const clientEventId = clientEventIdentifier(report.client_event_id || input.client_event_id, "ani-feedback", identifier);
-      const existing = await store.get(clientEventId);
-      if (existing) return { queued: true, deduped: true, client_event_id: clientEventId, item: cloneValue(existing) };
+      if (!requiresNativeQueue()) {
+        const existing = await store.get(clientEventId);
+        if (existing) return { queued: true, deduped: true, client_event_id: clientEventId, item: cloneValue(existing) };
+      }
       const payload = {
         schema_version: SCHEMA_VERSION,
         client_event_id: clientEventId,
@@ -652,6 +773,7 @@
         payload,
         attachment
       };
+      if (requiresNativeQueue()) return nativeEnqueue(item);
       if (!await enforceBounds(item)) return { queued: false, reason: "capacity" };
       await store.put(item);
       emit("queued", item, { hasAttachment: Boolean(attachment) });
@@ -683,6 +805,13 @@
       return digestBytes(new Encoder().encode(text), true);
     }
 
+    async function requestSha256(value, omitRootKeys = []) {
+      const Encoder = host && host.TextEncoder || (typeof TextEncoder !== "undefined" ? TextEncoder : null);
+      if (!Encoder) throw new Error("Text encoding is unavailable.");
+      const canonical = canonicalStableJson(requestHashObject(value, omitRootKeys));
+      return digestBytes(new Encoder().encode(canonical), true);
+    }
+
     async function searchDedupeEntries() {
       const cutoff = now() - currentConfig.searchDedupeWindowMs;
       const stored = await store.getMeta(SEARCH_DEDUPE_KEY);
@@ -705,7 +834,10 @@
         ? inputs.slice(0, currentConfig.maxSearchBatchSize).map((input) => normalizeSearchMissObservation(input, currentConfig.minStableSearchMs))
         : [];
       if (!candidates.length) return { queued: false, reason: "empty-batch", accepted: 0, rejected: 0 };
-      const dedupe = await searchDedupeEntries();
+      // Android's encrypted no-backup store is the authoritative outbox. Its
+      // availability must never depend on WebView IndexedDB; the latter is read
+      // only by the best-effort legacy migration performed during configure.
+      const dedupe = requiresNativeQueue() ? [] : await searchDedupeEntries();
       const fingerprints = new Set(dedupe.map((entry) => entry.fingerprint));
       const events = [];
       const rejections = [];
@@ -774,6 +906,7 @@
         payload,
         attachment: null
       };
+      if (requiresNativeQueue()) return nativeEnqueue(item);
       if (!await enforceBounds(item)) {
         emit("capacity-rejected", item);
         return { queued: false, reason: "capacity", accepted: 0, rejected: candidates.length };
@@ -836,6 +969,52 @@
       try { return await response.json(); } catch (_error) { return {}; }
     }
 
+    function validUuid(value) {
+      return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(cleanText(value, 40));
+    }
+
+    function validSha256(value) {
+      return /^[a-f0-9]{64}$/i.test(cleanText(value, 64));
+    }
+
+    function requireDurableReceipt(data) {
+      const collectionState = cleanText(data && data.collection_state, 32);
+      const isDurableState = collectionState === "regular"
+        || (data && data.duplicate === true && ["trash", "trash_deleted"].includes(collectionState));
+      if (!data || data.accepted !== true || data.durable !== true || !isDurableState) {
+        const error = new Error("ANI did not return a proven durable collection receipt.");
+        error.retryable = true;
+        throw error;
+      }
+    }
+
+    function validateManualReceipt(item, data, expectedRequestSha256) {
+      requireDurableReceipt(data);
+      if (cleanText(data.client_event_id, 160) !== item.client_event_id || !validUuid(data.report_id)
+        || !validSha256(data.payload_sha256) || !validSha256(data.request_sha256)
+        || cleanText(data.request_sha256, 64).toLowerCase() !== expectedRequestSha256) {
+        const error = new Error("ANI returned a mismatched report receipt.");
+        error.retryable = true;
+        throw error;
+      }
+      return data;
+    }
+
+    function validateBatchReceipt(item, data, expectedRequestSha256) {
+      requireDurableReceipt(data);
+      const expected = Array.isArray(item.payload && item.payload.events) ? item.payload.events.length : 0;
+      const reportIds = Array.isArray(data.report_ids) ? data.report_ids : [];
+      if (cleanText(data.batch_id, 160) !== item.client_event_id || reportIds.length !== expected
+        || reportIds.some((value) => !validUuid(value)) || new Set(reportIds.map((value) => value.toLowerCase())).size !== reportIds.length
+        || !validSha256(data.payload_sha256) || !validSha256(data.request_sha256)
+        || cleanText(data.request_sha256, 64).toLowerCase() !== expectedRequestSha256) {
+        const error = new Error("ANI returned a mismatched search-batch receipt.");
+        error.retryable = true;
+        throw error;
+      }
+      return data;
+    }
+
     function verificationFailure(error, response, data) {
       const text = `${errorMessage(error)} ${cleanText(data && (data.code || data.error), 300)}`;
       return /verification|turnstile|challenge|captcha/i.test(text)
@@ -886,6 +1065,16 @@
         error.retryable = [401, 403, 408, 410, 425, 429].includes(Number(response.status)) || Number(response.status) >= 500;
         throw error;
       }
+      const data = await responseData(response);
+      if (data.accepted !== true || cleanText(data.report_id, 40) !== cleanText(receipt.report_id, 40)
+        || data.attachment_state !== "ready" || data.storage_backend !== "r2") {
+        const error = new Error("ANI did not return a durable attachment receipt.");
+        error.response = response;
+        error.data = data;
+        error.retryable = true;
+        throw error;
+      }
+      return data;
     }
 
     async function sendManualReport(item) {
@@ -895,6 +1084,7 @@
         verification_token: verification.token,
         challenge_nonce: verification.challengeNonce
       };
+      const expectedRequestSha256 = await requestSha256(body, ["verification_token", "challenge_nonce", "submission_permit"]);
       const response = await fetchWithTimeout(endpoint(currentConfig.manualReportPath), {
         method: "POST",
         headers: { "Content-Type": "application/json", "Idempotency-Key": item.client_event_id },
@@ -907,11 +1097,13 @@
         error.data = data;
         throw error;
       }
-      await uploadAttachment(item, data);
-      return { response, data };
+      const receipt = validateManualReceipt(item, data, expectedRequestSha256);
+      await uploadAttachment(item, receipt);
+      return { response, data: receipt };
     }
 
     async function sendSearchMissBatch(item) {
+      const expectedRequestSha256 = await requestSha256(item.payload);
       const response = await fetchWithTimeout(endpoint(currentConfig.searchMissPath), {
         method: "POST",
         headers: { "Content-Type": "application/json", "Idempotency-Key": item.client_event_id },
@@ -924,7 +1116,7 @@
         error.data = data;
         throw error;
       }
-      return { response, data };
+      return { response, data: validateBatchReceipt(item, data, expectedRequestSha256) };
     }
 
     async function updateFailure(item, error) {
@@ -946,7 +1138,7 @@
       item.updated_at = timestamp();
       const permanentHttpFailure = !error.retryable && response && response.status >= 400 && response.status < 500
         && ![408, 409, 425, 429].includes(response.status);
-      if (permanentHttpFailure || item.attempts >= currentConfig.maxAttempts) {
+      if (item.type !== "manual_report" && (permanentHttpFailure || item.attempts >= currentConfig.maxAttempts)) {
         item.status = "failed";
         item.next_attempt_at = null;
         await store.put(item);
@@ -961,15 +1153,50 @@
     }
 
     async function sendItem(item) {
+      if (item.status === "acknowledged-purge-pending") {
+        try {
+          await store.remove(item.client_event_id);
+          emit("purged", item);
+          return { client_event_id: item.client_event_id, status: "purged" };
+        } catch (error) {
+          emit("purge-pending", item, { error: errorMessage(error) });
+          return { client_event_id: item.client_event_id, status: "acknowledged-purge-pending", error: errorMessage(error) };
+        }
+      }
       item.status = "sending";
       item.updated_at = timestamp();
       await store.put(item);
       emit("sending", item);
       try {
         const result = item.type === "manual_report" ? await sendManualReport(item) : await sendSearchMissBatch(item);
-        await store.remove(item.client_event_id);
-        emit("sent", item, { reportId: cleanText(result.data && result.data.report_id, 160) });
-        return { client_event_id: item.client_event_id, status: "sent" };
+        const receiptSha256 = await digestHex(JSON.stringify(result.data || {}));
+        const tombstone = {
+          schema_version: SCHEMA_VERSION,
+          client_event_id: item.client_event_id,
+          type: item.type,
+          status: "acknowledged-purge-pending",
+          created_at: item.created_at,
+          updated_at: timestamp(),
+          attempts: Number(item.attempts || 0),
+          next_attempt_at: null,
+          last_error: "",
+          last_http_status: Number(result.response && result.response.status || 0),
+          receipt_sha256: receiptSha256,
+          payload: null,
+          attachment: null,
+          byte_size: 0
+        };
+        tombstone.byte_size = itemSize(tombstone);
+        await store.put(tombstone);
+        emit("acknowledged", tombstone, { reportId: cleanText(result.data && result.data.report_id, 160) });
+        try {
+          await store.remove(item.client_event_id);
+          emit("sent", tombstone, { reportId: cleanText(result.data && result.data.report_id, 160) });
+          return { client_event_id: item.client_event_id, status: "sent" };
+        } catch (purgeError) {
+          emit("purge-pending", tombstone, { error: errorMessage(purgeError) });
+          return { client_event_id: item.client_event_id, status: "acknowledged-purge-pending", error: errorMessage(purgeError) };
+        }
       } catch (error) {
         await updateFailure(item, error);
         return { client_event_id: item.client_event_id, status: item.status, error: errorMessage(error) };
@@ -997,6 +1224,21 @@
 
     async function performFlush(options = {}) {
       if (!currentConfig.feedbackApiUrl) return { status: "disabled", sent: 0, pending: (await pruneOutbox()).length, results: [] };
+      if (requiresNativeQueue()) {
+        await nativeMigrationPromise;
+        const plugin = await requireNativeQueue();
+        const result = await plugin.flush({ trigger: cleanText(options.trigger, 40) });
+        if (!result || result.durable !== true || !["scheduled", "complete"].includes(result.status)) {
+          throw new Error("ANI did not confirm durable Android feedback scheduling.");
+        }
+        emit("flush-complete", null, { trigger: cleanText(options.trigger, 40), pending: Number(result.pending || 0), native: true });
+        return {
+          status: result.status,
+          sent: 0,
+          pending: Number(result.pending || 0),
+          results: []
+        };
+      }
       if (!online()) {
         const records = await pruneOutbox();
         emit("offline", null, { pending: records.length });
@@ -1030,10 +1272,25 @@
     }
 
     async function listOutbox() {
+      if (requiresNativeQueue()) {
+        await nativeMigrationPromise;
+        const plugin = await requireNativeQueue();
+        const result = await plugin.list();
+        if (!result || result.durable !== true || !Array.isArray(result.items)) {
+          throw new Error("ANI could not verify the encrypted Android report queue.");
+        }
+        return result.items.map(cloneValue);
+      }
       return (await pruneOutbox()).map(cloneValue);
     }
 
     async function retry(clientEventId, options = {}) {
+      if (requiresNativeQueue()) {
+        const plugin = await requireNativeQueue();
+        const result = await plugin.retry({ clientEventId: cleanText(clientEventId, 160) });
+        if (!result || result.durable !== true) throw new Error("ANI did not confirm the encrypted retry request.");
+        return { found: result.found === true, client_event_id: cleanText(clientEventId, 160), flush: { status: "scheduled", sent: 0 } };
+      }
       const item = await store.get(cleanText(clientEventId, 160));
       if (!validStoredItem(item)) return { found: false, client_event_id: cleanText(clientEventId, 160) };
       item.status = "queued";
@@ -1051,6 +1308,13 @@
 
     async function remove(clientEventId) {
       const id = cleanText(clientEventId, 160);
+      if (requiresNativeQueue()) {
+        const plugin = await requireNativeQueue();
+        const result = await plugin.remove({ clientEventId: id });
+        if (!result || result.durable !== true) throw new Error("ANI did not confirm secure Android report deletion.");
+        emit("removed", { client_event_id: id, type: "", status: "removed" });
+        return { removed: result.removed === true, client_event_id: id };
+      }
       const item = await store.get(id);
       if (!item) return { removed: false, client_event_id: id };
       await store.remove(id);
@@ -1225,7 +1489,7 @@
       getConfig: publicConfig,
       start: () => flush({ trigger: "startup" }),
       destroy,
-      __testing: Object.freeze({ store, pruneOutbox, digestHex, digestBytes, redactSensitiveText, itemSize, createRuntime })
+      __testing: Object.freeze({ store, pruneOutbox, digestHex, digestBytes, requestSha256, canonicalStableJson, redactSensitiveText, itemSize, createRuntime, memoryStore })
     });
   }
 
