@@ -2,7 +2,7 @@ window.ANI_CONFIG = {
   "apiBaseUrl": "",
   "apiBaseUrls": [],
   "feedbackApiUrl": "https://feedback.aniapp.ai",
-  "appVersion": "1.0.94",
+  "appVersion": "1.0.95",
   "legal": {
     "termsVersion": "2026-08-18.1",
     "dataUseVersion": "2026-08-18.1",

@@ -375,19 +375,17 @@ button:disabled {
   background: #f3faf9;
 }
 
-.ani-legal-summary > strong {
-  display: block;
-  margin-bottom: 6px;
+.ani-legal-intro-copy {
+  display: grid;
+  gap: 7px;
+  margin: 0 0 9px;
+  color: #304749;
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
 
-.ani-legal-trust-points {
-  display: grid;
-  gap: 4px;
-  margin: 0 0 9px;
-  padding-left: 20px;
-  color: #304749;
-  font-size: 0.87rem;
-  line-height: 1.4;
+.ani-legal-intro-copy p {
+  margin: 0;
 }
 
 .ani-legal-summary-disclosure {
@@ -9639,17 +9637,11 @@ html[data-device-mode="phone"] .ani-legal-summary {
   padding: 7px 10px 8px;
 }
 
-html[data-device-mode="phone"] .ani-legal-summary > strong {
-  margin-bottom: 3px;
-  font-size: 0.8rem;
-}
-
-html[data-device-mode="phone"] .ani-legal-trust-points {
-  gap: 1px;
+html[data-device-mode="phone"] .ani-legal-intro-copy {
+  gap: 4px;
   margin-bottom: 5px;
-  padding-left: 17px;
   font-size: 0.76rem;
-  line-height: 1.18;
+  line-height: 1.24;
 }
 
 html[data-device-mode="phone"] .ani-legal-summary-disclosure {
