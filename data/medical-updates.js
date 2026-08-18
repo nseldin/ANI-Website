@@ -1912,9 +1912,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-18T03:12:54.335Z",
+  "generatedAt": "2026-08-18T08:04:20.812Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "4c759540d225a8787e9276e4535601c427293cca8d7251acb83374b0780aa56d",
+      "description": "L-Nutra of Culver City, California is recalling Prolon brand Apulian Almond & Cocoa Spread because it contains undeclared cashew, pistachio, and hazelnut. People who have an allergy or severe sensitivity to cashew, pistachio, and/or hazelnut run the risk of serious or life-threatening allergic react",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/l-nutra-issues-allergy-alert-undeclared-tree-nuts-prolon-brand-apulian-almond-cocoa-spread",
+      "id": "medical-update:fda-recalls:21b0bd7d371a95792874fbff",
+      "publishedAt": "2026-08-18T00:02:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-18T08:04:20.812Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "L-Nutra Issues Allergy Alert on Undeclared Tree Nuts in Prolon Brand Apulian Almond & Cocoa Spread",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/l-nutra-issues-allergy-alert-undeclared-tree-nuts-prolon-brand-apulian-almond-cocoa-spread"
+    },
     {
       "category": "recall",
       "contentHash": "f128a96486049d4475b4cdd0c4a55329915d3455ffbd15cc46eb833cead2b6c4",
@@ -2197,6 +2213,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "title": "Kettle Cuisine Recalls Marketside Tomato Bisque Soup Kit – Sold Exclusively at Walmart Stores Because of Possible Health Risk",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/kettle-cuisine-recalls-marketside-tomato-bisque-soup-kit-sold-exclusively-walmart-stores-because"
+    },
+    {
+      "category": "recall",
+      "contentHash": "2ee6d956259b0d294ba32b3708a757fffd27f1bd52394566614b9373f91d5c58",
+      "description": "Dairyland Produce, LLC, dba Hardie’s Fresh Foods of Houston, TX and Dallas, TX are recalling PEPPER JALAPENO 5#, because it has the potential to be contaminated with Salmonella, an organism which can cause serious and sometimes fatal infections in young children, frail or elderly people, and others",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/hardies-fresh-foods-recalls-jalapenos-because-possible-health-risk",
+      "id": "medical-update:fda-recalls:747fac7f4f0f996ca2a2e9dd",
+      "publishedAt": "2026-08-12T19:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-18T08:04:20.812Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Hardie’s Fresh Foods Recalls Jalapenos Because of Possible Health Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/hardies-fresh-foods-recalls-jalapenos-because-possible-health-risk"
     },
     {
       "category": "recall",
@@ -3606,7 +3638,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 4,
-      "retrievedAt": "2026-08-18T03:12:54.335Z",
+      "retrievedAt": "2026-08-18T08:04:20.812Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3616,8 +3648,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 7,
-      "retrievedAt": "2026-08-18T03:12:54.335Z",
+      "retainedItemCount": 9,
+      "retrievedAt": "2026-08-18T08:04:20.812Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -3628,7 +3660,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 10,
-      "retrievedAt": "2026-08-18T03:12:54.335Z",
+      "retrievedAt": "2026-08-18T08:04:20.812Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -3639,7 +3671,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 4,
-      "retrievedAt": "2026-08-18T03:12:54.335Z",
+      "retrievedAt": "2026-08-18T08:04:20.812Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -3650,7 +3682,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-18T03:12:54.335Z",
+      "retrievedAt": "2026-08-18T08:04:20.812Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -3661,7 +3693,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-18T03:12:54.335Z",
+      "retrievedAt": "2026-08-18T08:04:20.812Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -3672,7 +3704,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-08-18T03:12:54.335Z",
+      "retrievedAt": "2026-08-18T08:04:20.812Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -3683,7 +3715,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-18T03:12:54.335Z",
+      "retrievedAt": "2026-08-18T08:04:20.812Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -3694,7 +3726,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-18T03:12:54.335Z",
+      "retrievedAt": "2026-08-18T08:04:20.812Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
