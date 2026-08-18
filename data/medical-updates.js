@@ -1912,9 +1912,41 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-18T08:04:20.812Z",
+  "generatedAt": "2026-08-18T14:09:10.395Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "vaccine-biologic",
+      "contentHash": "3f43ec69970c2cb0177b1087bcfef17a29fccb81d12bbc3bd85cd186dd08a8d7",
+      "description": "The FDA’s Center for Biologics Evaluation and Research (CBER) Office of Therapeutic Products (OTP) is hosting its next virtual town hall on Tuesday, April 25, 2023.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/news-events/fda-meetings-conferences-and-workshops/otp-town-hall-gene-therapy-chemistry-manufacturing-and-controls-april-2023-04252023",
+      "id": "medical-update:fda-biologics:bd83cd4c729e1327c8dae662",
+      "publishedAt": "2026-08-18T11:13:26.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-18T14:09:10.395Z",
+      "sourceCategories": [],
+      "sourceId": "fda-biologics",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
+      "title": "OTP Town Hall: Gene Therapy Chemistry, Manufacturing, and Controls – April 2023 - 04/25/2023",
+      "url": "https://www.fda.gov/news-events/fda-meetings-conferences-and-workshops/otp-town-hall-gene-therapy-chemistry-manufacturing-and-controls-april-2023-04252023"
+    },
+    {
+      "category": "vaccine-biologic",
+      "contentHash": "1a7858884a8f59bfbffcfd341d059ad4e6c2e91bd19c3632fb10e04ce78c99c6",
+      "description": "This event will focus on cell therapy chemistry, manufacturing, and controls (CMC), including tissue-engineered medical products regulated by OTP, and will be a continuation of the December 2022 virtual town hall.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/news-events/fda-meetings-conferences-and-workshops/otp-town-hall-cell-therapy-chemistry-manufacturing-and-controls-june-2023-06082023",
+      "id": "medical-update:fda-biologics:1d780e96f2ce4dfa825f11cf",
+      "publishedAt": "2026-08-18T11:10:22.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-18T14:09:10.395Z",
+      "sourceCategories": [],
+      "sourceId": "fda-biologics",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
+      "title": "OTP Town Hall: Cell Therapy Chemistry, Manufacturing, and Controls – June 2023 - 06/08/2023",
+      "url": "https://www.fda.gov/news-events/fda-meetings-conferences-and-workshops/otp-town-hall-cell-therapy-chemistry-manufacturing-and-controls-june-2023-06082023"
+    },
     {
       "category": "recall",
       "contentHash": "4c759540d225a8787e9276e4535601c427293cca8d7251acb83374b0780aa56d",
@@ -2031,6 +2063,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "title": "Sunny Pharmtech, Inc. Issues Voluntary Nationwide Recall of Cyclophosphamide for Injection, USP to the User Level Due to the Presence of Particulate Matter",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/sunny-pharmtech-inc-issues-voluntary-nationwide-recall-cyclophosphamide-injection-usp-user-level-due"
+    },
+    {
+      "category": "recall",
+      "contentHash": "ca4e0d02cf67210ded781563d9f09a1dfbe3b64ab8b88c7d83a4f82bb5c59800",
+      "description": "BD is recalling certain BD Intraosseous Vascular Access System Needle Sets due to difficulty removing the obturator (stylet) following placement.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/intraosseous-needle-set-recall-becton-dickinson-removes-certain-intraosseous-vascular-access-system",
+      "id": "medical-update:fda-medwatch:ed85f2399694437227391ef8",
+      "publishedAt": "2026-08-17T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-18T14:09:10.395Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Intraosseous Needle Set Recall: Becton Dickinson Removes Certain Intraosseous Vascular Access System Needle Sets",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/intraosseous-needle-set-recall-becton-dickinson-removes-certain-intraosseous-vascular-access-system"
     },
     {
       "category": "recall",
@@ -3637,8 +3685,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 4,
-      "retrievedAt": "2026-08-18T08:04:20.812Z",
+      "retainedItemCount": 5,
+      "retrievedAt": "2026-08-18T14:09:10.395Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3649,7 +3697,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 9,
-      "retrievedAt": "2026-08-18T08:04:20.812Z",
+      "retrievedAt": "2026-08-18T14:09:10.395Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -3660,18 +3708,18 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 10,
-      "retrievedAt": "2026-08-18T08:04:20.812Z",
+      "retrievedAt": "2026-08-18T14:09:10.395Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 2,
+      "itemCount": 4,
       "rawItemCount": 20,
-      "rejectedItemCount": 18,
+      "rejectedItemCount": 16,
       "retainedItemCount": 4,
-      "retrievedAt": "2026-08-18T08:04:20.812Z",
+      "retrievedAt": "2026-08-18T14:09:10.395Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -3682,7 +3730,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-18T08:04:20.812Z",
+      "retrievedAt": "2026-08-18T14:09:10.395Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -3693,7 +3741,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-18T08:04:20.812Z",
+      "retrievedAt": "2026-08-18T14:09:10.395Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -3704,7 +3752,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-08-18T08:04:20.812Z",
+      "retrievedAt": "2026-08-18T14:09:10.395Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -3715,7 +3763,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-18T08:04:20.812Z",
+      "retrievedAt": "2026-08-18T14:09:10.395Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -3726,7 +3774,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-18T08:04:20.812Z",
+      "retrievedAt": "2026-08-18T14:09:10.395Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
