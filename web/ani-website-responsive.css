@@ -21,6 +21,15 @@ html[data-ani-surface="website"] {
   --pharm-clinical-sign-soft: #edf5f5;
 }
 
+/*
+ * Keep crawler discovery links in the generated root HTML while removing the
+ * infrastructure-only navigation from the learner-facing website. The URLs,
+ * sitemap, robots policy, llms.txt, and ordinary hrefs remain unchanged.
+ */
+html[data-ani-surface="website"] [data-ani-public-crawl-entry="root"] {
+  display: none !important;
+}
+
 html[data-ani-surface="website"] :where(
   .app-shell,
   .instructor-stage,

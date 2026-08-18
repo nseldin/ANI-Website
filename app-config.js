@@ -2,11 +2,11 @@ window.ANI_CONFIG = {
   "apiBaseUrl": "",
   "apiBaseUrls": [],
   "feedbackApiUrl": "https://feedback.aniapp.ai",
-  "appVersion": "1.0.93",
+  "appVersion": "1.0.94",
   "legal": {
-    "termsVersion": "2026-08-17.1",
-    "dataUseVersion": "2026-08-17.1",
-    "documentSha256": "bb04d1f144713330cff2211e47b06c5147499fcd8bf2cb834a59cef580f9ceea",
+    "termsVersion": "2026-08-18.1",
+    "dataUseVersion": "2026-08-18.1",
+    "documentSha256": "6f5f8076b5eb245ce39a126c55d8a3f68d2d0ab4187a217f19ec040f09b631f9",
     "minimumAge": 18,
     "improvementDataDefault": false
   },

@@ -1092,7 +1092,8 @@
     handleOfflineLookupFlow = function (input, options) {
       if ((typeof isOfflineLookupConfirmation === "function" && isOfflineLookupConfirmation(input))
         || (typeof isOfflineLookupRejection === "function" && isOfflineLookupRejection(input))
-        || (typeof isOfflineLookupRejectAll === "function" && isOfflineLookupRejectAll(input))) {
+        || (typeof isOfflineLookupRejectAll === "function" && isOfflineLookupRejectAll(input))
+        || (typeof isOfflineLookupReportIntent === "function" && isOfflineLookupReportIntent(input))) {
         return baseHandleOfflineLookupFlow(input, options);
       }
       if (["heart blocks", "heart block", "av block", "atrioventricular block"].includes(normalize(input))) {
@@ -1211,6 +1212,13 @@
   if (baseMakeModelEnhancedResponse) {
     makeModelEnhancedResponse = function (input) {
       const args = Array.prototype.slice.call(arguments, 1);
+      const lookupDisposition = (typeof isOfflineLookupConfirmation === "function" && isOfflineLookupConfirmation(input))
+        || (typeof isOfflineLookupRejection === "function" && isOfflineLookupRejection(input))
+        || (typeof isOfflineLookupRejectAll === "function" && isOfflineLookupRejectAll(input))
+        || (typeof isOfflineLookupReportIntent === "function" && isOfflineLookupReportIntent(input));
+      if (lookupDisposition) {
+        return baseMakeModelEnhancedResponse.apply(this, [input, ...args]);
+      }
       if (priorActiveEmergency(input)) return baseMakeModelEnhancedResponse.apply(this, [input, ...args]);
       if (unreviewedLegacyRouteShapedInput(input)) return "";
       const sharedTopicRequest = typeof resolveTopicRequest === "function"

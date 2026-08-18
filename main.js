@@ -5982,6 +5982,7 @@ const lectureState = {
 let lectureModePrimed = false;
 let pendingOfflineLookupSuggestions = [];
 let pendingOfflineLookupContext = null;
+let lastMissingOfflineContentQuery = "";
 let offlineMissQueuedForCurrentMessage = false;
 let lastOfflineListContext = null;
 let lastOfflineLookupTarget = null;
@@ -10988,6 +10989,8 @@ let reportProblemScreenshotPreviewUrl = "";
 let reportProblemChallengeFrame = null;
 let reportProblemChallengeRequest = null;
 let feedbackVerificationUserInitiated = false;
+let reportProblemDraftTrackingId = "";
+let reportProblemReviewSource = null;
 let aniLegalReviewMode = false;
 let aniFeedbackStatusSubscribed = false;
 
@@ -11264,9 +11267,17 @@ async function updateReportProblemOutboxStatus() {
   try {
     const items = await runtime.listOutbox();
     const pending = (Array.isArray(items) ? items : []).filter((item) => !["sent", "deleted"].includes(item.status));
-    reportProblemOutboxStatus.textContent = pending.length
-      ? `${pending.length} ${pending.length === 1 ? "report is" : "reports are"} safely queued on this device and will retry when online.`
-      : "No reports are waiting on this device.";
+    const waitingForReview = pending.filter((item) => item.consent_review_required === true).length;
+    const waitingForVerification = pending.filter((item) => item.status === "needs-verification").length;
+    reportProblemOutboxStatus.textContent = !pending.length
+      ? "No reports are waiting on this device."
+      : waitingForReview
+        ? `${waitingForReview} ${waitingForReview === 1 ? "report needs" : "reports need"} review under ANI's current privacy terms. Select Review & resubmit; nothing will be sent automatically.`
+      : !navigator.onLine
+        ? `${pending.length} ${pending.length === 1 ? "report is" : "reports are"} saved on this device and will send when internet returns.`
+        : waitingForVerification
+          ? `${waitingForVerification} ${waitingForVerification === 1 ? "report needs" : "reports need"} verification. Select Retry to verify and send.`
+          : `${pending.length} ${pending.length === 1 ? "report is" : "reports are"} saved on this device. Select Retry to finish secure delivery.`;
     reportProblemButton?.setAttribute("data-pending-reports", String(pending.length));
     if (reportProblemOutboxList) {
       reportProblemOutboxList.textContent = "";
@@ -11280,16 +11291,19 @@ async function updateReportProblemOutboxStatus() {
           row.className = "report-outbox-item";
           const summary = document.createElement("span");
           const typeLabel = item.type === "search_miss_batch" ? "Missing-search evidence" : "User report";
-          const stateLabel = safeText(item.status || "queued").replace(/[-_]+/g, " ");
+          const needsReview = item.consent_review_required === true;
+          const stateLabel = needsReview
+            ? "review needed"
+            : safeText(item.status || "queued").replace(/[-_]+/g, " ");
           const shortId = safeText(item.client_event_id).slice(-12) || "local";
           summary.textContent = `${typeLabel} | ${stateLabel} | ${shortId}`;
           const actions = document.createElement("div");
           actions.className = "report-outbox-actions";
           const retry = document.createElement("button");
           retry.type = "button";
-          retry.dataset.feedbackAction = "retry";
+          retry.dataset.feedbackAction = needsReview ? "review" : "retry";
           retry.dataset.feedbackEventId = safeText(item.client_event_id);
-          retry.textContent = "Retry";
+          retry.textContent = needsReview ? "Review & resubmit" : "Retry";
           const remove = document.createElement("button");
           remove.type = "button";
           remove.dataset.feedbackAction = "remove";
@@ -11317,6 +11331,8 @@ function setReportProblemOpen(isOpen) {
     updateReportProblemOutboxStatus();
     window.setTimeout(() => reportProblemSubject?.focus(), 0);
   } else {
+    reportProblemDraftTrackingId = "";
+    reportProblemReviewSource = null;
     if (reportProblemText) reportProblemText.value = "";
     if (reportProblemSubject) reportProblemSubject.value = "";
     if (reportProblemType) reportProblemType.value = "missing_content";
@@ -11330,6 +11346,8 @@ function setReportProblemOpen(isOpen) {
 }
 
 function openMissingContentReportDraft(query = "", options = {}) {
+  reportProblemDraftTrackingId = "";
+  reportProblemReviewSource = null;
   const normalizedQuery = safeText(query).trim().slice(0, 180) || "Missing ANI content";
   if (reportProblemType) {
     reportProblemType.value = options.category === "technical" ? "app_problem" : "missing_content";
@@ -11348,10 +11366,63 @@ function openMissingContentReportDraft(query = "", options = {}) {
   setReportProblemStatus("Review and edit this draft, then confirm the privacy notice before sending. Nothing has been submitted yet.");
 }
 
+function openQueuedManualReportReviewDraft(draft = {}) {
+  const sourceId = safeText(draft.source_client_event_id).slice(0, 160);
+  if (!draft.available || !sourceId) {
+    setReportProblemStatus(draft.guidance || "This queued report cannot be reopened safely. Delete it and create a new report instead.", true);
+    return false;
+  }
+  setReportProblemOpen(true);
+  reportProblemDraftTrackingId = "";
+  reportProblemReviewSource = {
+    clientEventId: sourceId,
+    context: draft.context && typeof draft.context === "object" ? { ...draft.context } : null
+  };
+  const category = safeText(draft.category || "other");
+  if (reportProblemType) {
+    const supported = Array.from(reportProblemType.options || []).some((option) => option.value === category);
+    reportProblemType.value = supported ? category : "other";
+  }
+  if (reportProblemSubject) reportProblemSubject.value = safeText(draft.subject).slice(0, 180);
+  if (reportProblemText) reportProblemText.value = safeText(draft.message).slice(0, 4000);
+  if (reportProblemIncludeContext) reportProblemIncludeContext.checked = Boolean(reportProblemReviewSource.context);
+  if (reportProblemConsent) reportProblemConsent.checked = false;
+  if (reportProblemDataConsent) reportProblemDataConsent.checked = false;
+  if (reportProblemSharingConsent) reportProblemSharingConsent.checked = false;
+  clearReportProblemScreenshot();
+  if (draft.attachment?.blob instanceof Blob) {
+    const runtime = aniFeedbackRuntime();
+    try {
+      reportProblemScreenshot = { ...draft.attachment };
+      reportProblemScreenshotPreviewUrl = runtime?.createScreenshotPreview?.(reportProblemScreenshot) || "";
+      if (reportProblemImagePreviewPicture && reportProblemScreenshotPreviewUrl) {
+        reportProblemImagePreviewPicture.src = reportProblemScreenshotPreviewUrl;
+      }
+      if (reportProblemImageSummary) {
+        const width = Number(draft.attachment.width || 0);
+        const height = Number(draft.attachment.height || 0);
+        const dimensions = width && height ? `${width} x ${height}, ` : "";
+        reportProblemImageSummary.textContent = `${dimensions}${Math.ceil(Number(draft.attachment.size_bytes || draft.attachment.blob.size) / 1024)} KiB, previously sanitized`;
+      }
+      if (reportProblemImagePreview) reportProblemImagePreview.hidden = false;
+    } catch (_error) {
+      clearReportProblemScreenshot();
+    }
+  }
+  const attachmentNote = draft.attachment_unavailable
+    ? " The old screenshot cannot be reopened; attach a newly reviewed screenshot if needed."
+    : "";
+  setReportProblemStatus(`Review and edit this saved report under ANI's current privacy terms. Reconfirm all three choices before resubmitting; nothing has been sent.${attachmentNote}`);
+  return true;
+}
+
 function buildReportPayload(message = "") {
   const includeContext = reportProblemIncludeContext?.checked !== false;
   const subject = safeText(reportProblemSubject?.value).slice(0, 180);
   const topic = includeContext ? currentFeedbackTopicContext() : null;
+  const reviewedContext = reportProblemReviewSource?.context && typeof reportProblemReviewSource.context === "object"
+    ? { ...reportProblemReviewSource.context }
+    : null;
   return {
     kind: "user_report",
     category: safeText(reportProblemType?.value || "other"),
@@ -11361,7 +11432,7 @@ function buildReportPayload(message = "") {
     privacy_confirmed: reportProblemConsent?.checked === true,
     consent: currentAniManualReportConsentProof(),
     context: includeContext
-      ? {
+      ? reviewedContext || {
         route_path: location.pathname || "/",
         topic_id: safeText(topic?.stable_id),
         topic_title: safeText(topic?.label),
@@ -11406,12 +11477,22 @@ async function submitProblemReport() {
   setReportProblemStatus(navigator.onLine ? "Securing and sending report..." : "Saving report safely until this device is online...");
 
   try {
-    const result = await runtime.queueManualReport({
+    const reviewSourceId = safeText(reportProblemReviewSource?.clientEventId).slice(0, 160);
+    const queuedPayload = {
       ...buildReportPayload(message),
       screenshot: reportProblemScreenshot
-    });
+    };
+    if (reportProblemDraftTrackingId && !reviewSourceId) {
+      queuedPayload.client_event_id = reportProblemDraftTrackingId;
+    }
+    const result = reviewSourceId
+      ? await runtime.replaceManualReport?.(reviewSourceId, { ...queuedPayload }, { autoFlush: false })
+      : await runtime.queueManualReport({ ...queuedPayload }, { autoFlush: false });
+    if (!result) throw new Error("This build cannot safely replace the saved report. Delete it and create a new report instead.");
     const trackingId = safeText(result?.reportId || result?.report_id || result?.clientEventId || result?.client_event_id);
     if (!trackingId) throw new Error("ANI could not create a safe local tracking ID for this report.");
+    if (reviewSourceId) reportProblemReviewSource = null;
+    reportProblemDraftTrackingId = trackingId;
     let flushResult = null;
     if (isNativeShell) {
       flushResult = await runtime.flush?.({ trigger: "android-workmanager-submit", ids: [trackingId] });
@@ -11428,11 +11509,16 @@ async function submitProblemReport() {
       .find((item) => safeText(item.client_event_id) === trackingId);
     const delivered = !remaining && (flushResult?.sent > 0
       || flushResult?.results?.some?.((entry) => entry.client_event_id === trackingId && entry.status === "sent"));
-    setReportProblemStatus(delivered
-      ? `Report sent for review. Tracking ID: ${trackingId || "accepted"}.`
-      : remaining?.status === "needs-verification"
-      ? `Report queued safely (${trackingId}). Complete the verification above, or select Retry when ready.`
-      : `Report queued safely (${trackingId}). ANI will retry whenever this device has internet.`);
+    if (delivered) {
+      reportProblemDraftTrackingId = "";
+      setReportProblemStatus(`Report sent for review. Tracking ID: ${trackingId || "accepted"}.`);
+    } else if (!navigator.onLine) {
+      setReportProblemStatus(`Report saved safely (${trackingId}). ANI will send it when this device is online.`);
+    } else if (remaining?.status === "needs-verification") {
+      setReportProblemStatus(`Verification was not accepted for report ${trackingId}. Select Retry to verify and send.`, true);
+    } else {
+      setReportProblemStatus(`Secure delivery did not finish for report ${trackingId}. It is saved; select Retry to try again.`, true);
+    }
     await updateReportProblemOutboxStatus();
     if (delivered) window.setTimeout(() => setReportProblemOpen(false), 1200);
   } catch (error) {
@@ -21821,7 +21907,10 @@ const RESPONSIVE_ENCYCLOPEDIA_EXACT_PRIORITIES = Object.freeze({
   hb1: { type: "pathology", identity: "first degree av block" },
   "heart block 3": { type: "pathology", identity: "third degree av block" },
   "bipolar 2": { type: "pathology", identity: "bipolar ii disorder" },
-  cte: { type: "pathology", identity: "chronic traumatic encephalopathy" }
+  cte: { type: "pathology", identity: "chronic traumatic encephalopathy" },
+  itp: { type: "pathology", identity: "immune thrombocytopenic purpura" },
+  "immune thrombocytopenia": { type: "pathology", identity: "immune thrombocytopenic purpura" },
+  "immune thrombocytopenia itp": { type: "pathology", identity: "immune thrombocytopenic purpura" }
 });
 
 const RESPONSIVE_ENCYCLOPEDIA_FAMILY_QUERIES = Object.freeze({
@@ -45421,6 +45510,14 @@ function fastReviewedSearchSafetySuggestion(input = "") {
   if (!normalized) return null;
   const routeCore = fastReviewedSearchRouteCore(fixed);
 
+  if (["itp", "immune thrombocytopenia", "immune thrombocytopenia itp"].includes(routeCore)) {
+    return fastReviewedOwnerCandidate(
+      "pathology",
+      "Immune thrombocytopenic purpura",
+      "reviewed-itp-disease-owner"
+    );
+  }
+
   if (routeCore === "iron overload") {
     return fastReviewedOwnerCandidate("pathology", "Hemochromatosis", "reviewed-iron-overload-disease-owner");
   }
@@ -45717,16 +45814,31 @@ function offlineLookupSuggestions(input = "") {
   return cloneOfflineLookupSuggestions(suggestions);
 }
 
+function offlineLookupReplyText(input = "") {
+  return safeText(input)
+    .toLowerCase()
+    .replace(/[\u2018\u2019]/g, "'")
+    .replace(/[^a-z0-9'\s-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function isOfflineLookupConfirmation(input = "") {
-  return /^(yes|yeah|yep|correct|right|that'?s it|thats it|open it|show it|that one|exactly|please)$/i.test(input.trim());
+  return /^(yes|yeah|yep|correct|right|that'?s it|thats it|open it|show it|that one|exactly|please)$/i.test(offlineLookupReplyText(input));
 }
 
 function isOfflineLookupRejection(input = "") {
-  return /^(no|nope|nah|not that|wrong|try again|guess again|different one)$/i.test(input.trim());
+  return /^(no|nope|nah|not that|wrong|try again|guess again|different one)$/i.test(offlineLookupReplyText(input));
 }
 
 function isOfflineLookupRejectAll(input = "") {
-  return /^(?:none|neither|none of (?:these|those)|neither of (?:these|those)|not (?:these|those)|none of them|not any of (?:these|those|them))$/i.test(input.trim());
+  return /^(?:none|neither|none of (?:these|those)|neither of (?:these|those)|not (?:these|those)|none of them|not any of (?:these|those|them))$/i.test(offlineLookupReplyText(input));
+}
+
+function isOfflineLookupReportIntent(input = "") {
+  const reply = offlineLookupReplyText(input);
+  return /^(?:(?:no|nope|nah|wrong|not that|none|none of (?:these|those|them))\s+)?(?:i\s+)?(?:want|would like|need)\s+to\s+report(?:\s+(?:this|it|that|a problem|an issue|the issue|missing content|the missing topic))?$/i.test(reply)
+    || /^(?:report this|report it|report that|open (?:the )?report)$/i.test(reply);
 }
 
 function shouldUseOfflineLookupCore() {
@@ -48388,6 +48500,7 @@ function clearPendingOfflineLookup() {
 
 function beginPendingOfflineLookup(input = "", candidates = [], options = {}) {
   pendingOfflineLookupSuggestions = Array.isArray(candidates) ? candidates.slice() : [];
+  lastMissingOfflineContentQuery = "";
   pendingOfflineLookupContext = pendingOfflineLookupSuggestions.length
     ? {
       originalQuery: safeText(input).trim().slice(0, 180),
@@ -48399,11 +48512,13 @@ function beginPendingOfflineLookup(input = "", candidates = [], options = {}) {
 }
 
 function missingOfflineContentResponse(query = "") {
+  const options = arguments[1] && typeof arguments[1] === "object" ? arguments[1] : {};
   const originalQuery = safeText(query).trim().slice(0, 180) || "that topic";
   clearPendingOfflineLookup();
+  lastMissingOfflineContentQuery = originalQuery;
   const runtime = aniFeedbackRuntime();
   const consent = currentAniSearchConsentProof();
-  if (!offlineMissQueuedForCurrentMessage && runtime?.queueSearchMiss && consent) {
+  if (options.queueSignal !== false && !offlineMissQueuedForCurrentMessage && runtime?.queueSearchMiss && consent) {
     offlineMissQueuedForCurrentMessage = true;
     Promise.resolve(runtime.queueSearchMiss({
       query: originalQuery,
@@ -48449,6 +48564,14 @@ function handleOfflineLookupFlow(input = "", options = {}) {
   const force = Boolean(options.force);
   const allowPrompt = options.allowPrompt !== false;
   const trimmed = input.trim();
+  if (isOfflineLookupReportIntent(trimmed)) {
+    const originalQuery = pendingOfflineLookupContext?.originalQuery
+      || lastMissingOfflineContentQuery
+      || "the topic you were looking for";
+    return missingOfflineContentResponse(originalQuery, {
+      queueSignal: Boolean(pendingOfflineLookupContext?.originalQuery)
+    });
+  }
   if (pendingOfflineLookupSuggestions.length && isOfflineLookupConfirmation(trimmed)) {
     if (pendingOfflineLookupSuggestions.some((candidate) => candidate?.ambiguousIdentity === true)) {
       pendingOfflineLookupContext = pendingOfflineLookupContext || {
@@ -48463,6 +48586,7 @@ function handleOfflineLookupFlow(input = "", options = {}) {
       return makeOfflineAmbiguityPrompt(pendingOfflineLookupSuggestions);
     }
     const candidate = pendingOfflineLookupSuggestions[0];
+    lastMissingOfflineContentQuery = "";
     clearPendingOfflineLookup();
     rememberOfflineLookupTarget(candidate, trimmed);
     return {
@@ -50672,6 +50796,24 @@ function renderLane4MetricsDiagnostics() {
 
 async function makeModelEnhancedResponse(input = "", images = [], resources = []) {
   offlineMissQueuedForCurrentMessage = false;
+  if (!images.length && !resources.length) {
+    const hasPendingLookupReply = pendingOfflineLookupSuggestions.length > 0
+      && (isOfflineLookupConfirmation(input)
+        || isOfflineLookupRejection(input)
+        || isOfflineLookupRejectAll(input));
+    const standaloneLookupReply = isOfflineLookupConfirmation(input)
+      || isOfflineLookupRejection(input)
+      || isOfflineLookupRejectAll(input);
+    if (hasPendingLookupReply || isOfflineLookupReportIntent(input) || standaloneLookupReply) {
+      const lookupReply = handleOfflineLookupFlow(input, {
+        force: true,
+        allowPrompt: true,
+        preferDatabaseRedirect: true
+      });
+      if (lookupReply) return lookupReply;
+      return "I do not have a pending encyclopedia choice to confirm or reject. Tell me the topic you want ANI to find.";
+    }
+  }
   if (explicitMemoryRequest(input)) {
     return makeTeachingResponse(input, images, resources);
   }
@@ -53771,16 +53913,43 @@ reportProblemOutboxList?.addEventListener("click", async (event) => {
   if (!runtime || !eventId) return;
   button.disabled = true;
   try {
-    if (button.dataset.feedbackAction === "retry") {
+    if (button.dataset.feedbackAction === "review") {
+      const draft = await runtime.getManualReportReviewDraft?.(eventId);
+      if (!draft?.available) {
+        setReportProblemStatus(draft?.guidance || "This saved report cannot be reopened safely. Delete it, then create a new report from information you still control. Nothing was sent.", true);
+      } else {
+        openQueuedManualReportReviewDraft(draft);
+      }
+    } else if (button.dataset.feedbackAction === "retry") {
       feedbackVerificationUserInitiated = true;
+      let retryResult = null;
       try {
-        await runtime.retry?.(eventId);
+        retryResult = await runtime.retry?.(eventId);
       } finally {
         feedbackVerificationUserInitiated = false;
       }
-      setReportProblemStatus(navigator.onLine ? "Retry started." : "The report remains queued until this device is online.");
+      const remainingItems = await runtime.listOutbox?.();
+      const remaining = (Array.isArray(remainingItems) ? remainingItems : [])
+        .find((item) => safeText(item.client_event_id) === eventId);
+      const delivered = !remaining && retryResult?.flush?.results?.some?.(
+        (entry) => entry.client_event_id === eventId && entry.status === "sent"
+      );
+      if (delivered) {
+        if (reportProblemDraftTrackingId === eventId) reportProblemDraftTrackingId = "";
+        setReportProblemStatus(`Report sent for review. Tracking ID: ${eventId}.`);
+      } else if (isNativeShell && retryResult?.flush?.status === "scheduled") {
+        setReportProblemStatus("Report delivery is scheduled and will run when Android has a network connection.");
+      } else if (!navigator.onLine) {
+        setReportProblemStatus("The report remains saved until this device is online.");
+      } else if (remaining?.status === "needs-verification") {
+        setReportProblemStatus("Verification was not accepted. Select Retry to verify again.", true);
+      } else {
+        setReportProblemStatus("Secure delivery did not finish. The report is saved; select Retry to try again.", true);
+      }
     } else if (button.dataset.feedbackAction === "remove") {
       await runtime.remove?.(eventId);
+      if (reportProblemDraftTrackingId === eventId) reportProblemDraftTrackingId = "";
+      if (safeText(reportProblemReviewSource?.clientEventId) === eventId) reportProblemReviewSource = null;
       setReportProblemStatus("Queued report deleted from this device.");
     }
   } catch (error) {

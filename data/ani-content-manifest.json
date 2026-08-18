@@ -6,8 +6,8 @@
   "loaders": [
     {
       "path": "src/ani/legal-consent.js",
-      "bytes": 15479,
-      "sha256": "c996f9c054e59364f975666148a47946aa436732335ac9d6648971d7dd14fed6"
+      "bytes": 29414,
+      "sha256": "67d17cac2f4d63144dce8b51785242ae42eefd653edae8e41c127dc35b41d58b"
     },
     {
       "path": "data/pharm-database.js",
@@ -581,13 +581,13 @@
     },
     {
       "path": "src/ani/feedback-runtime.js",
-      "bytes": 82103,
-      "sha256": "3f22e16e60bf589cf46a03840a853a518f25a28fdb97b18be9ea0c18a4c0e21d"
+      "bytes": 93892,
+      "sha256": "e7006f74c510f73d1a230616904d9d085cea4e0b4b2b96a3e2d6c9802da3c9e0"
     },
     {
       "path": "main.js",
-      "bytes": 3062067,
-      "sha256": "980a838ccee3d78ece3c0a96038fa46cd3be31b7a1cf91393b6d7d80cb1cbc7a"
+      "bytes": 3071558,
+      "sha256": "5f492182efd68ea270e7dee65f5322ff082d86b929a857a66a72fee4a1cf4c6d"
     },
     {
       "path": "data/pharm-frontier-wave21-antiseizure-routing.js",
@@ -656,10 +656,10 @@
     },
     {
       "path": "data/clinical-frontier-wave35-intelligent-search-routing.js",
-      "bytes": 85612,
-      "sha256": "d214cb34b87420f9657fe0e4a431d9cdfb6a4d038a8f2ef59bf900125b2ceef7"
+      "bytes": 86242,
+      "sha256": "b70103bad6c518e8b6d8f44cc33d8714fe5e561ce5c0a68c41fcea5bbc547f3b"
     }
   ],
-  "contentSha256": "26a6faf2f1bba23d03eb7333c418f5d51de84c4555f3a12267b5319d2caa84da",
-  "shortVersion": "26a6faf2f1bb"
+  "contentSha256": "61539f436770106d4b57a9fa92b0c2ddbbb12506365feddb1fbe72c3eb7795b0",
+  "shortVersion": "61539f436770"
 }

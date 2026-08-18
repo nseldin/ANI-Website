@@ -16,9 +16,22 @@
   const ALLOWED_IMAGE_TYPES = new Set(["image/png", "image/jpeg", "image/webp"]);
   const ITEM_TYPES = new Set(["manual_report", "search_miss_batch"]);
   const ITEM_STATUSES = new Set(["queued", "sending", "retry-wait", "needs-verification", "failed", "acknowledged-purge-pending"]);
-  const LEGAL_TERMS_VERSION = "2026-08-17.1";
-  const LEGAL_DATA_USE_VERSION = "2026-08-17.1";
-  const LEGAL_DOCUMENT_SHA256 = "bb04d1f144713330cff2211e47b06c5147499fcd8bf2cb834a59cef580f9ceea";
+  const LEGAL_TERMS_VERSION = "2026-08-18.1";
+  const LEGAL_DATA_USE_VERSION = "2026-08-18.1";
+  const LEGAL_DOCUMENT_SHA256 = "6f5f8076b5eb245ce39a126c55d8a3f68d2d0ab4187a217f19ec040f09b631f9";
+  // One tightly bounded upgrade bridge preserves manual reports created under
+  // the immediately previous reviewed policy so the user can inspect and
+  // explicitly resubmit them. These records are never eligible for delivery,
+  // and the exception never applies to automatic search-miss batches.
+  const PREVIOUS_REVIEWABLE_MANUAL_CONSENT = Object.freeze({
+    terms_version: "2026-08-17.1",
+    notice_version: "2026-08-17.1",
+    document_sha256: "bb04d1f144713330cff2211e47b06c5147499fcd8bf2cb834a59cef580f9ceea",
+    data_use_version: "2026-08-17.1"
+  });
+  const MANUAL_TERMS_BINDING_KEYS = Object.freeze([
+    "terms_version", "notice_version", "document_sha256", "terms_accepted_at", "data_use_version"
+  ]);
   const DEFAULTS = Object.freeze({
     feedbackApiUrl: "",
     catalogFingerprint: "",
@@ -122,6 +135,31 @@
       proof.data_consent_at = null;
     }
     return proof;
+  }
+
+  function exactPreviousManualConsentProof(value) {
+    if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+    const exactKeys = [
+      "terms_version", "notice_version", "document_sha256", "terms_accepted_at",
+      "data_use_version", "data_collection_confirmed", "data_sharing_confirmed", "data_consent_at"
+    ].sort();
+    const keys = Object.keys(value).sort();
+    return keys.length === exactKeys.length
+      && exactKeys.every((key, index) => keys[index] === key)
+      && cleanText(value.terms_version, 40) === PREVIOUS_REVIEWABLE_MANUAL_CONSENT.terms_version
+      && cleanText(value.notice_version, 40) === PREVIOUS_REVIEWABLE_MANUAL_CONSENT.notice_version
+      && cleanText(value.data_use_version, 40) === PREVIOUS_REVIEWABLE_MANUAL_CONSENT.data_use_version
+      && cleanText(value.document_sha256, 64).toLowerCase() === PREVIOUS_REVIEWABLE_MANUAL_CONSENT.document_sha256
+      && value.data_collection_confirmed === true
+      && value.data_sharing_confirmed === true
+      && validConsentTimestamp(value.terms_accepted_at)
+      && validConsentTimestamp(value.data_consent_at);
+  }
+
+  function exactPreviousReviewableManualItem(item) {
+    return item?.type === "manual_report"
+      && item?.payload?.privacy_confirmed === true
+      && exactPreviousManualConsentProof(item?.payload?.consent);
   }
 
   function clientEventIdentifier(value, prefix, createIdentifier) {
@@ -507,6 +545,13 @@
           emit("corrupt-dropped", item || null, { reason: "stale-or-invalid-consent" });
           continue;
         }
+        if (exactPreviousReviewableManualItem(item)) {
+          // The native trust boundary accepts only the current proof. Keep the
+          // prior-policy record in its original durable store for explicit
+          // user review instead of repeatedly attempting an impossible move.
+          emit("review-required", item, { reason: "previous-policy-manual-report" });
+          continue;
+        }
         if (item.status === "acknowledged-purge-pending") {
           try { await store.remove(item.client_event_id); } catch (_error) {}
           continue;
@@ -673,7 +718,11 @@
       try {
         normalizeConsentProof(item.payload.consent, { requireDataConsent: true });
       } catch (_error) {
-        return false;
+        // Preserve only the exact immediately previous reviewed manual proof.
+        // It remains non-deliverable and must be explicitly reviewed under the
+        // current policy. Every stale/legacy automatic search batch still
+        // fails validation and is removed.
+        if (!exactPreviousReviewableManualItem(item)) return false;
       }
       if (item.attachment) {
         if (!ALLOWED_IMAGE_TYPES.has(item.attachment.media_type)) return false;
@@ -784,7 +833,7 @@
       };
     }
 
-    async function queueManualReport(input = {}) {
+    async function queueManualReport(input = {}, options = {}) {
       const report = input.report && typeof input.report === "object" ? input.report : input;
       if (report.privacy_confirmed !== true) {
         throw new Error("Confirm that the report and screenshot contain no patient-identifying information before sending.");
@@ -844,7 +893,10 @@
       if (!await enforceBounds(item)) return { queued: false, reason: "capacity" };
       await store.put(item);
       emit("queued", item, { hasAttachment: Boolean(attachment) });
-      if (currentConfig.autoStart) scheduleFlush("manual-report", 0);
+      // A visible foreground submit acquires Turnstile only after the durable
+      // local record exists. Let that caller suppress this background flush so
+      // a non-interactive attempt cannot race and consume the exact-ID submit.
+      if (currentConfig.autoStart && options.autoFlush !== false) scheduleFlush("manual-report", 0);
       return { queued: true, deduped: false, client_event_id: clientEventId, item: cloneValue(item) };
     }
 
@@ -1303,10 +1355,7 @@
         }
         return current;
       }
-      const termsBindingKeys = [
-        "terms_version", "notice_version", "document_sha256", "terms_accepted_at", "data_use_version"
-      ];
-      if (termsBindingKeys.some((key) => supplied[key] !== current[key])) {
+      if (MANUAL_TERMS_BINDING_KEYS.some((key) => supplied[key] !== current[key])) {
         throw new Error("ANI refused a manual report whose Terms acceptance is not current.");
       }
       // A manual report carries its own explicit collection/sharing choice. The
@@ -1324,6 +1373,10 @@
         const current = currentLegalConsent(item && item.type);
         if (item && item.type === "search_miss_batch"
             && canonicalStableJson(queued) !== canonicalStableJson(current)) {
+          return false;
+        }
+        if (item && item.type === "manual_report"
+            && MANUAL_TERMS_BINDING_KEYS.some((key) => queued[key] !== current[key])) {
           return false;
         }
         return true;
@@ -1392,9 +1445,69 @@
     }
 
     async function flush(options = {}) {
-      if (flushPromise) return flushPromise;
+      if (flushPromise) {
+        const exactForegroundRetry = options.force === true
+          && Array.isArray(options.ids)
+          && options.ids.length > 0;
+        if (!exactForegroundRetry) return flushPromise;
+        // A foreground, user-authorized verification attempt must not inherit
+        // an older background flush result. Wait for the current owner, then
+        // run the requested exact IDs with the fresh token/nonce provider.
+        try {
+          await flushPromise;
+        } catch (_error) {
+          // performFlush normally returns per-item failures. If an unexpected
+          // infrastructure error escaped, the exact foreground attempt still
+          // gets one independent chance below.
+        }
+        return flush(options);
+      }
       flushPromise = performFlush(options).finally(() => { flushPromise = null; });
       return flushPromise;
+    }
+
+    function manualConsentReviewState(item, { nativeSummary = false } = {}) {
+      if (!item || item.type !== "manual_report") return { required: false, reason: "" };
+      if (item.status === "needs-reconsent") {
+        return { required: true, reason: "previous-policy-manual-report" };
+      }
+      if (!nativeSummary && item.payload?.consent) {
+        try {
+          const queued = normalizeConsentProof(item.payload.consent, { requireDataConsent: true });
+          const current = currentLegalConsent("manual_report");
+          const bindingChanged = MANUAL_TERMS_BINDING_KEYS.some((key) => queued[key] !== current[key]);
+          return bindingChanged
+            ? { required: true, reason: "terms-acceptance-changed" }
+            : { required: false, reason: "" };
+        } catch (_error) {
+          return exactPreviousReviewableManualItem(item)
+            ? { required: true, reason: "previous-policy-manual-report" }
+            : { required: false, reason: "invalid-unreviewable-record" };
+        }
+      }
+      // The Android bridge deliberately exposes content-free summaries. An
+      // encrypted manual item created before the current Terms acceptance can
+      // no longer match that acceptance and must not be retried blindly.
+      try {
+        const current = currentLegalConsent("manual_report");
+        const createdAt = Date.parse(item.created_at);
+        const acceptedAt = Date.parse(current.terms_accepted_at);
+        if (Number.isFinite(createdAt) && Number.isFinite(acceptedAt) && createdAt < acceptedAt) {
+          return { required: true, reason: "android-terms-acceptance-changed" };
+        }
+      } catch (_error) {}
+      return { required: false, reason: "" };
+    }
+
+    function outboxPresentationItem(item, { nativeSummary = false } = {}) {
+      const copy = cloneValue(item);
+      const review = manualConsentReviewState(item, { nativeSummary });
+      if (review.required) {
+        copy.consent_review_required = true;
+        copy.consent_review_reason = review.reason;
+        copy.review_payload_available = !nativeSummary && Boolean(item?.payload);
+      }
+      return copy;
     }
 
     async function listOutbox() {
@@ -1405,9 +1518,117 @@
         if (!result || result.durable !== true || !Array.isArray(result.items)) {
           throw new Error("ANI could not verify the encrypted Android report queue.");
         }
-        return result.items.map(cloneValue);
+        const nativeItems = result.items.map((item) => outboxPresentationItem(item, { nativeSummary: true }));
+        // A prior-policy IndexedDB report may remain after a native migration
+        // correctly rejects its obsolete proof. Surface it for explicit review
+        // without moving or transmitting it.
+        const nativeIds = new Set(nativeItems.map((item) => cleanText(item.client_event_id, 160)));
+        const reviewableLegacy = (await pruneOutbox())
+          .filter((item) => exactPreviousReviewableManualItem(item) && !nativeIds.has(cleanText(item.client_event_id, 160)))
+          .map((item) => outboxPresentationItem(item));
+        return nativeItems.concat(reviewableLegacy);
       }
-      return (await pruneOutbox()).map(cloneValue);
+      return (await pruneOutbox()).map((item) => outboxPresentationItem(item));
+    }
+
+    function manualReviewDraftFromStoredItem(item, storage = "web") {
+      const review = manualConsentReviewState(item);
+      if (!review.required || !item?.payload) {
+        return {
+          available: false,
+          reason: review.reason || "review-not-required",
+          guidance: "This queued report cannot be reopened safely. Delete it, then create a new report from information you still control. ANI will not send or rebind it automatically."
+        };
+      }
+      const subject = redactSensitiveText(item.payload.subject, 180);
+      const message = redactSensitiveText(item.payload.message, currentConfig.maxManualMessageChars);
+      if (!message.text) {
+        return {
+          available: false,
+          reason: "review-message-unavailable",
+          guidance: "This queued report cannot be reopened safely. Delete it, then create a new report from information you still control. ANI will not send or rebind it automatically."
+        };
+      }
+      let attachment = null;
+      if (item.attachment) {
+        try { attachment = validatedAttachment(item.attachment); } catch (_error) { attachment = null; }
+      }
+      return {
+        available: true,
+        source_client_event_id: cleanText(item.client_event_id, 160),
+        storage,
+        category: cleanToken(item.payload.category || "other", 60) || "other",
+        subject: subject.text,
+        message: message.text,
+        context: manualContext({ context: item.payload.context }),
+        attachment,
+        attachment_unavailable: Boolean(item.payload.attachment?.requested) && !attachment,
+        reason: review.reason
+      };
+    }
+
+    async function getManualReportReviewDraft(clientEventId) {
+      const id = cleanText(clientEventId, 160);
+      if (!id) throw new Error("ANI could not identify that queued report.");
+      const localItem = await store.get(id);
+      if (localItem) return manualReviewDraftFromStoredItem(localItem, requiresNativeQueue() ? "legacy-web" : "web");
+      if (requiresNativeQueue()) {
+        await nativeMigrationPromise;
+        const plugin = await requireNativeQueue();
+        const result = await plugin.list();
+        const summary = result?.durable === true && Array.isArray(result.items)
+          ? result.items.find((item) => cleanText(item.client_event_id, 160) === id)
+          : null;
+        if (summary) {
+          return {
+            available: false,
+            source_client_event_id: id,
+            storage: "android-encrypted",
+            reason: "android-payload-not-exposed",
+            guidance: "This encrypted Android report cannot be reopened in this build. Delete it, then create a new report from information or a safely exported screenshot you still control. ANI will not send or rebind the old report automatically."
+          };
+        }
+      }
+      return { available: false, reason: "not-found", guidance: "That queued report is no longer available on this device." };
+    }
+
+    async function replaceManualReport(previousClientEventId, input = {}, options = {}) {
+      const previousId = cleanText(previousClientEventId, 160);
+      const draft = await getManualReportReviewDraft(previousId);
+      if (!draft.available) throw new Error(draft.guidance || "That queued report cannot be reviewed safely.");
+      const replacement = { ...(input && typeof input === "object" ? input : {}) };
+      delete replacement.client_event_id;
+      if (replacement.report && typeof replacement.report === "object") {
+        replacement.report = { ...replacement.report };
+        delete replacement.report.client_event_id;
+      }
+      const queued = await queueManualReport(replacement, { ...options, autoFlush: false });
+      const replacementId = cleanText(queued?.client_event_id, 160);
+      if (queued?.queued !== true || !replacementId || replacementId === previousId) {
+        throw new Error("ANI could not durably queue a new report before replacing the stale one.");
+      }
+      let removed = false;
+      try {
+        if (requiresNativeQueue() && draft.storage === "legacy-web") {
+          const existing = await store.get(previousId);
+          if (existing) await store.remove(previousId);
+          removed = !await store.get(previousId);
+        } else {
+          removed = (await remove(previousId)).removed === true;
+        }
+      } catch (_error) {
+        removed = false;
+      }
+      if (!removed) {
+        // Roll back the not-yet-sent replacement when the stale source cannot
+        // be retired. The old report remains untouched and non-deliverable.
+        try { await remove(replacementId); } catch (_error) {}
+        throw new Error("ANI preserved the original report because it could not safely complete the replacement. Try again or delete the old report first.");
+      }
+      emit("replaced-after-review", { client_event_id: replacementId, type: "manual_report", status: "queued" }, {
+        previousClientEventId: previousId
+      });
+      return { ...queued, replaced_client_event_id: previousId };
     }
 
     async function retry(clientEventId, options = {}) {
@@ -1627,6 +1848,8 @@
       purgeUnsentSearchMisses,
       flush,
       listOutbox,
+      getManualReportReviewDraft,
+      replaceManualReport,
       retry,
       remove,
       sanitizeScreenshot,

@@ -9,15 +9,18 @@
 
   const STORAGE_KEY = "ani-legal-consent-v1";
   const SCHEMA_VERSION = 1;
-  const TERMS_VERSION = "2026-08-17.1";
-  const DATA_USE_VERSION = "2026-08-17.1";
+  const TERMS_VERSION = "2026-08-18.1";
+  const DATA_USE_VERSION = "2026-08-18.1";
   // Stable SHA-256 of the three reviewed, ordered legal-document text blocks.
   // Any wording change deliberately invalidates prior acceptance and requires re-consent.
-  const DOCUMENT_SHA256 = "bb04d1f144713330cff2211e47b06c5147499fcd8bf2cb834a59cef580f9ceea";
+  const DOCUMENT_SHA256 = "6f5f8076b5eb245ce39a126c55d8a3f68d2d0ab4187a217f19ec040f09b631f9";
   const CHANGE_EVENT = "ani-legal-consent-changed";
   const READY_EVENT = "ani-legal-consent-ready";
   const REVIEW_EVENT = "ani-legal-consent-review-requested";
   const NATIVE_FAILURE_EVENT = "ani-legal-consent-native-sync-failed";
+  const INDEXED_DB_NAME = "ani-device-consent-v1";
+  const INDEXED_DB_STORE = "legal-acceptance";
+  const DURABLE_STORAGE_TIMEOUT_MS = 1500;
   const POLICY = Object.freeze({
     schemaVersion: SCHEMA_VERSION,
     termsVersion: TERMS_VERSION,
@@ -49,6 +52,71 @@
     return record ? { ...record } : null;
   }
 
+  function createIndexedDbStorage(host) {
+    const indexedDb = host && host.indexedDB;
+    if (!indexedDb || typeof indexedDb.open !== "function") return null;
+
+    function openDatabase() {
+      return new Promise((resolve, reject) => {
+        let request;
+        try {
+          request = indexedDb.open(INDEXED_DB_NAME, 1);
+        } catch (error) {
+          reject(error);
+          return;
+        }
+        request.onupgradeneeded = () => {
+          const database = request.result;
+          if (!database.objectStoreNames.contains(INDEXED_DB_STORE)) {
+            database.createObjectStore(INDEXED_DB_STORE);
+          }
+        };
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error || new Error("indexed-db-open-failed"));
+        request.onblocked = () => reject(new Error("indexed-db-open-blocked"));
+      });
+    }
+
+    async function transact(mode, operation) {
+      const database = await openDatabase();
+      try {
+        return await new Promise((resolve, reject) => {
+          let request;
+          let settled = false;
+          const transaction = database.transaction(INDEXED_DB_STORE, mode);
+          transaction.onabort = () => {
+            if (!settled) reject(transaction.error || new Error("indexed-db-transaction-aborted"));
+          };
+          transaction.onerror = () => {
+            if (!settled) reject(transaction.error || new Error("indexed-db-transaction-failed"));
+          };
+          try {
+            request = operation(transaction.objectStore(INDEXED_DB_STORE));
+          } catch (error) {
+            reject(error);
+            return;
+          }
+          request.onsuccess = () => {
+            settled = true;
+            resolve(request.result);
+          };
+          request.onerror = () => {
+            settled = true;
+            reject(request.error || new Error("indexed-db-request-failed"));
+          };
+        });
+      } finally {
+        database.close();
+      }
+    }
+
+    return Object.freeze({
+      getItem: (key) => transact("readonly", (store) => store.get(key)),
+      setItem: (key, value) => transact("readwrite", (store) => store.put(String(value), key)),
+      removeItem: (key) => transact("readwrite", (store) => store.delete(key))
+    });
+  }
+
   function createRuntime(dependencies = {}) {
     const host = dependencies.host || defaultHost || globalThis;
     const now = typeof dependencies.now === "function" ? dependencies.now : () => Date.now();
@@ -56,11 +124,18 @@
     let storageOverride = Object.prototype.hasOwnProperty.call(dependencies, "storage")
       ? dependencies.storage
       : undefined;
+    let durableStorageOverride = Object.prototype.hasOwnProperty.call(dependencies, "durableStorage")
+      ? dependencies.durableStorage
+      : undefined;
+    let indexedDbStorage;
     let initialized = false;
     let reviewHandler = null;
+    let legalTargetLinksBound = false;
     let configuredSurface = "";
     let configuredAppVersion = "";
     let sessionRevoked = false;
+    let hydratedRecord = null;
+    let useHydratedFallback = false;
     let nativeSyncChain = Promise.resolve({ available: false });
 
     function storage() {
@@ -70,6 +145,31 @@
       } catch (_error) {
         return null;
       }
+    }
+
+    function durableStorage() {
+      if (durableStorageOverride !== undefined) return durableStorageOverride;
+      if (indexedDbStorage === undefined) indexedDbStorage = createIndexedDbStorage(host);
+      return indexedDbStorage;
+    }
+
+    function bounded(operation) {
+      const timeoutMs = Number.isFinite(dependencies.durableStorageTimeoutMs)
+        ? Math.max(10, dependencies.durableStorageTimeoutMs)
+        : DURABLE_STORAGE_TIMEOUT_MS;
+      return new Promise((resolve, reject) => {
+        const timer = setTimeout(() => reject(new Error("durable-storage-timeout")), timeoutMs);
+        Promise.resolve(operation).then(
+          (value) => {
+            clearTimeout(timer);
+            resolve(value);
+          },
+          (error) => {
+            clearTimeout(timer);
+            reject(error);
+          }
+        );
+      });
     }
 
     function currentSurface() {
@@ -98,6 +198,28 @@
       return true;
     }
 
+    function isCurrentRevocation(value) {
+      return Boolean(value && typeof value === "object" && !Array.isArray(value)
+        && value.schemaVersion === SCHEMA_VERSION
+        && value.termsVersion === TERMS_VERSION
+        && value.dataUseVersion === DATA_USE_VERSION
+        && value.documentSha256 === DOCUMENT_SHA256
+        && value.revoked === true
+        && validTimestamp(value.revokedAt));
+    }
+
+    function revocationRecord(reason) {
+      return {
+        schemaVersion: SCHEMA_VERSION,
+        termsVersion: TERMS_VERSION,
+        dataUseVersion: DATA_USE_VERSION,
+        documentSha256: DOCUMENT_SHA256,
+        revoked: true,
+        revokedAt: new Date(now()).toISOString(),
+        reason: cleanText(reason, 60)
+      };
+    }
+
     function removeInvalidRecord(targetStorage) {
       try {
         targetStorage && targetStorage.removeItem(STORAGE_KEY);
@@ -109,44 +231,145 @@
     function readRecord() {
       if (sessionRevoked) return null;
       const targetStorage = storage();
-      if (!targetStorage || typeof targetStorage.getItem !== "function") return null;
+      if (!targetStorage || typeof targetStorage.getItem !== "function") {
+        return useHydratedFallback && isCurrentRecord(hydratedRecord) ? cloneRecord(hydratedRecord) : null;
+      }
       let raw = null;
       try {
         raw = targetStorage.getItem(STORAGE_KEY);
+      } catch (_error) {
+        return useHydratedFallback && isCurrentRecord(hydratedRecord) ? cloneRecord(hydratedRecord) : null;
+      }
+      if (!raw) return useHydratedFallback && isCurrentRecord(hydratedRecord) ? cloneRecord(hydratedRecord) : null;
+      try {
+        const parsed = JSON.parse(raw);
+        if (isCurrentRevocation(parsed)) {
+          hydratedRecord = null;
+          useHydratedFallback = false;
+          sessionRevoked = true;
+          return null;
+        }
+        if (isCurrentRecord(parsed)) {
+          hydratedRecord = cloneRecord(parsed);
+          useHydratedFallback = false;
+          return cloneRecord(parsed);
+        }
+      } catch (_error) {
+        // Fall through to fail-closed invalidation.
+      }
+      removeInvalidRecord(targetStorage);
+      hydratedRecord = null;
+      useHydratedFallback = false;
+      return null;
+    }
+
+    function persistLocalRecord(record) {
+      const targetStorage = storage();
+      if (!targetStorage || typeof targetStorage.setItem !== "function" || typeof targetStorage.getItem !== "function") {
+        return false;
+      }
+      try {
+        targetStorage.setItem(STORAGE_KEY, JSON.stringify(record));
+        const stored = JSON.parse(targetStorage.getItem(STORAGE_KEY) || "null");
+        return isCurrentRecord(stored)
+          && stored.acceptedAt === record.acceptedAt
+          && stored.improvementDataOptIn === record.improvementDataOptIn
+          && stored.improvementDataChoiceAt === record.improvementDataChoiceAt
+          && stored.improvementDataConsentAt === record.improvementDataConsentAt;
+      } catch (_error) {
+        removeInvalidRecord(targetStorage);
+        return false;
+      }
+    }
+
+    function persistLocalRevocation(record) {
+      const targetStorage = storage();
+      if (!targetStorage || typeof targetStorage.setItem !== "function" || typeof targetStorage.getItem !== "function") {
+        return false;
+      }
+      try {
+        targetStorage.setItem(STORAGE_KEY, JSON.stringify(record));
+        return isCurrentRevocation(JSON.parse(targetStorage.getItem(STORAGE_KEY) || "null"));
+      } catch (_error) {
+        return false;
+      }
+    }
+
+    async function persistDurableRecord(record) {
+      const target = durableStorage();
+      if (!target || typeof target.setItem !== "function" || typeof target.getItem !== "function") return false;
+      try {
+        await bounded(target.setItem(STORAGE_KEY, JSON.stringify(record)));
+        const raw = await bounded(target.getItem(STORAGE_KEY));
+        const stored = JSON.parse(raw || "null");
+        return isCurrentRecord(stored)
+          && stored.acceptedAt === record.acceptedAt
+          && stored.improvementDataOptIn === record.improvementDataOptIn
+          && stored.improvementDataChoiceAt === record.improvementDataChoiceAt
+          && stored.improvementDataConsentAt === record.improvementDataConsentAt;
+      } catch (_error) {
+        return false;
+      }
+    }
+
+    async function persistDurableRevocation(record) {
+      const target = durableStorage();
+      if (!target || typeof target.setItem !== "function" || typeof target.getItem !== "function") return false;
+      try {
+        await bounded(target.setItem(STORAGE_KEY, JSON.stringify(record)));
+        const raw = await bounded(target.getItem(STORAGE_KEY));
+        return isCurrentRevocation(JSON.parse(raw || "null"));
+      } catch (_error) {
+        return false;
+      }
+    }
+
+    async function removeDurableRecord() {
+      const target = durableStorage();
+      if (!target || typeof target.removeItem !== "function") return false;
+      try {
+        await bounded(target.removeItem(STORAGE_KEY));
+        return true;
+      } catch (_error) {
+        return false;
+      }
+    }
+
+    async function readDurableRecord() {
+      const target = durableStorage();
+      if (!target || typeof target.getItem !== "function") return null;
+      let raw;
+      try {
+        raw = await bounded(target.getItem(STORAGE_KEY));
       } catch (_error) {
         return null;
       }
       if (!raw) return null;
       try {
         const parsed = JSON.parse(raw);
+        if (isCurrentRevocation(parsed)) {
+          sessionRevoked = true;
+          hydratedRecord = null;
+          useHydratedFallback = false;
+          return null;
+        }
         if (isCurrentRecord(parsed)) return cloneRecord(parsed);
       } catch (_error) {
-        // Fall through to fail-closed invalidation.
+        // Stale or malformed durable consent must never unlock ANI.
       }
-      removeInvalidRecord(targetStorage);
+      await removeDurableRecord();
       return null;
     }
 
-    function persistRecord(record) {
+    async function persistRecord(record) {
       if (!isCurrentRecord(record)) throw new Error("ANI refused an invalid legal acceptance record.");
-      const targetStorage = storage();
-      if (!targetStorage || typeof targetStorage.setItem !== "function" || typeof targetStorage.getItem !== "function") {
+      const localStored = persistLocalRecord(record);
+      const durableStored = await persistDurableRecord(record);
+      if (!localStored && !durableStored) {
         throw new Error("ANI legal acceptance could not be stored on this device.");
       }
-      try {
-        targetStorage.setItem(STORAGE_KEY, JSON.stringify(record));
-        const stored = JSON.parse(targetStorage.getItem(STORAGE_KEY) || "null");
-        if (!isCurrentRecord(stored)
-            || stored.acceptedAt !== record.acceptedAt
-            || stored.improvementDataOptIn !== record.improvementDataOptIn
-            || stored.improvementDataChoiceAt !== record.improvementDataChoiceAt
-            || stored.improvementDataConsentAt !== record.improvementDataConsentAt) {
-          throw new Error("legal-acceptance-readback-failed");
-        }
-      } catch (_error) {
-        removeInvalidRecord(targetStorage);
-        throw new Error("ANI legal acceptance could not be stored on this device.");
-      }
+      hydratedRecord = cloneRecord(record);
+      useHydratedFallback = !localStored && durableStored;
       sessionRevoked = false;
       return cloneRecord(record);
     }
@@ -217,6 +440,66 @@
       return plugin && typeof plugin === "object" ? plugin : null;
     }
 
+    function recordFromNativeSummary(summary) {
+      if (!summary || typeof summary !== "object" || summary.terms_accepted !== true) return null;
+      const collection = summary.data_collection_confirmed === true;
+      const sharing = summary.data_sharing_confirmed === true;
+      if (collection !== sharing
+          || summary.terms_version !== TERMS_VERSION
+          || summary.notice_version !== DATA_USE_VERSION
+          || summary.data_use_version !== DATA_USE_VERSION
+          || summary.document_sha256 !== DOCUMENT_SHA256) return null;
+      const acceptedAt = validTimestamp(summary.terms_accepted_at);
+      const consentAt = collection ? validTimestamp(summary.data_consent_at) : "";
+      if (!acceptedAt || (collection && !consentAt)) return null;
+      const record = {
+        schemaVersion: SCHEMA_VERSION,
+        termsVersion: TERMS_VERSION,
+        dataUseVersion: DATA_USE_VERSION,
+        documentSha256: DOCUMENT_SHA256,
+        termsAccepted: true,
+        acceptedAt,
+        surface: "android",
+        appVersion: cleanText(configuredAppVersion, 40),
+        improvementDataOptIn: collection,
+        improvementDataChoiceAt: consentAt || acceptedAt,
+        improvementDataConsentAt: consentAt || null
+      };
+      return isCurrentRecord(record) ? record : null;
+    }
+
+    async function readNativeRecord(reason) {
+      const plugin = nativeQueuePlugin();
+      if (!plugin || typeof plugin.getLegalAcceptance !== "function") return null;
+      try {
+        const result = await plugin.getLegalAcceptance();
+        return recordFromNativeSummary(result && result.legal_acceptance);
+      } catch (error) {
+        dispatch(NATIVE_FAILURE_EVENT, {
+          reason: cleanText(reason, 60),
+          message: cleanText(error && error.message, 200)
+        });
+        return null;
+      }
+    }
+
+    async function restoreDurableAcceptance() {
+      let record = await readDurableRecord();
+      if (!record && !sessionRevoked && currentSurface() === "android") {
+        record = await readNativeRecord("restore-on-initialization");
+      }
+      if (!record) return null;
+
+      const localStored = persistLocalRecord(record);
+      if (!localStored) {
+        hydratedRecord = cloneRecord(record);
+        useHydratedFallback = true;
+      }
+      await persistDurableRecord(record);
+      sessionRevoked = false;
+      return cloneRecord(record);
+    }
+
     function nativeConsentPayload(record) {
       const proof = consentProof("search_miss");
       return {
@@ -275,7 +558,7 @@
         ? options.improvementDataChoice
         : options.improvementDataOptIn);
       const timestamp = new Date(now()).toISOString();
-      const record = persistRecord({
+      const record = await persistRecord({
         schemaVersion: SCHEMA_VERSION,
         termsVersion: TERMS_VERSION,
         dataUseVersion: DATA_USE_VERSION,
@@ -302,7 +585,7 @@
         return cloneRecord(current);
       }
       const timestamp = new Date(now()).toISOString();
-      const updated = persistRecord({
+      const updated = await persistRecord({
         ...current,
         improvementDataOptIn: optIn,
         improvementDataChoiceAt: timestamp,
@@ -315,14 +598,18 @@
 
     async function clearAcceptance(reason = "declined") {
       const previous = readRecord();
+      const revocation = revocationRecord(reason);
       sessionRevoked = true;
-      const targetStorage = storage();
-      if (targetStorage && typeof targetStorage.removeItem === "function") {
-        try { targetStorage.removeItem(STORAGE_KEY); } catch (_error) { /* Session remains locked. */ }
-      }
+      const localRevoked = persistLocalRevocation(revocation);
+      const durableRevoked = await persistDurableRevocation(revocation);
+      hydratedRecord = null;
+      useHydratedFallback = false;
       emitChange(reason, null);
-      await syncNative(null, reason);
-      return { cleared: true, previouslyAccepted: Boolean(previous) };
+      const nativeResult = await syncNative(null, reason);
+      const durable = localRevoked || durableRevoked
+        || Boolean(nativeResult && nativeResult.available && nativeResult.synchronized);
+      if (!durable) throw new Error("ANI could not securely save withdrawal on this device.");
+      return { cleared: true, durable: true, previouslyAccepted: Boolean(previous) };
     }
 
     async function init(options = {}) {
@@ -330,8 +617,13 @@
       if (Object.prototype.hasOwnProperty.call(options, "surface")) configuredSurface = normalizeSurface(options.surface);
       if (Object.prototype.hasOwnProperty.call(options, "appVersion")) configuredAppVersion = cleanText(options.appVersion, 40);
       initialized = true;
-      const record = readRecord();
-      await syncNative(record, "initialized");
+      bindLegalTargetLinks();
+      let record = readRecord();
+      if (record) await persistDurableRecord(record);
+      else if (!sessionRevoked) record = await restoreDurableAcceptance();
+      // Absence of a WebView/local record is not a withdrawal instruction.
+      // Only an explicit decline/clear may erase the encrypted Android latch.
+      if (record) await syncNative(record, "initialized");
       const detail = eventDetail("initialized", record);
       dispatch(READY_EVENT, detail);
       return detail;
@@ -351,6 +643,64 @@
       return detail;
     }
 
+    function legalTargetId(value) {
+      const id = cleanText(value, 128).replace(/^#/, "");
+      return /^[A-Za-z][A-Za-z0-9_.:-]{0,127}$/.test(id) ? id : "";
+    }
+
+    function revealLegalTarget(value) {
+      const document = host && host.document;
+      const id = legalTargetId(value);
+      if (!document || !id || typeof document.getElementById !== "function") return false;
+      const target = document.getElementById(id);
+      if (!target) return false;
+      const containingDetails = typeof target.closest === "function" ? target.closest("details") : null;
+      const fullDocuments = document.getElementById("aniLegalFullDocuments");
+      if (containingDetails && "open" in containingDetails) containingDetails.open = true;
+      if (fullDocuments && "open" in fullDocuments) fullDocuments.open = true;
+      if (typeof target.hasAttribute === "function" && typeof target.setAttribute === "function"
+          && !target.hasAttribute("tabindex")) {
+        target.setAttribute("tabindex", "-1");
+      }
+      const schedule = host && typeof host.setTimeout === "function" ? host.setTimeout.bind(host) : setTimeout;
+      schedule(() => {
+        try {
+          if (typeof target.focus === "function") target.focus({ preventScroll: true });
+          if (typeof target.scrollIntoView === "function") target.scrollIntoView({ block: "start" });
+        } catch (_error) {
+          // A missing focus/scroll API cannot prevent the legal review from opening.
+        }
+      }, 0);
+      return true;
+    }
+
+    function openDocument(options = {}) {
+      const target = legalTargetId(options.target || options.targetId);
+      const detail = openReview({
+        mode: readRecord() ? "review" : "mandatory",
+        trigger: cleanText(options.trigger || "legal-document-link", 80)
+      });
+      return { ...detail, target, revealed: revealLegalTarget(target) };
+    }
+
+    function bindLegalTargetLinks() {
+      const document = host && host.document;
+      if (legalTargetLinksBound || !document || typeof document.addEventListener !== "function") return false;
+      document.addEventListener("click", (event) => {
+        const source = event && event.target;
+        const control = source && typeof source.closest === "function"
+          ? source.closest("[data-ani-legal-target]")
+          : null;
+        if (!control || typeof control.getAttribute !== "function") return;
+        const target = legalTargetId(control.getAttribute("data-ani-legal-target"));
+        if (!target) return;
+        if (event && typeof event.preventDefault === "function") event.preventDefault();
+        openDocument({ target, trigger: "legal-document-link" });
+      });
+      legalTargetLinksBound = true;
+      return true;
+    }
+
     function onChange(listener) {
       if (typeof listener !== "function") return () => {};
       listeners.add(listener);
@@ -360,6 +710,8 @@
     function setStorageForTesting(value) {
       storageOverride = value;
       sessionRevoked = false;
+      hydratedRecord = null;
+      useHydratedFallback = false;
     }
 
     return Object.freeze({
@@ -372,6 +724,7 @@
       getRecord: () => cloneRecord(readRecord()),
       consentProof,
       openReview,
+      openDocument,
       accept,
       setImprovementDataChoice,
       decline: () => clearAcceptance("declined"),
@@ -380,6 +733,8 @@
       currentPolicy: () => ({ ...POLICY }),
       __testing: Object.freeze({
         isCurrentRecord,
+        isCurrentRevocation,
+        recordFromNativeSummary,
         setStorageForTesting,
         storageKey: STORAGE_KEY,
         initialized: () => initialized,
