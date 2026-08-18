@@ -2,8 +2,13 @@ window.ANI_CONTENT_MANIFEST = Object.freeze({
   "schemaVersion": 1,
   "manifestKind": "ani-shared-web-apk-content-fingerprint",
   "topicCount": 4817,
-  "loaderCount": 130,
+  "loaderCount": 131,
   "loaders": [
+    {
+      "path": "src/ani/legal-consent.js",
+      "bytes": 15479,
+      "sha256": "c996f9c054e59364f975666148a47946aa436732335ac9d6648971d7dd14fed6"
+    },
     {
       "path": "data/pharm-database.js",
       "bytes": 200824,
@@ -576,13 +581,13 @@ window.ANI_CONTENT_MANIFEST = Object.freeze({
     },
     {
       "path": "src/ani/feedback-runtime.js",
-      "bytes": 74879,
-      "sha256": "27a2c502e7418ae898d42c2d9ce086abc9d693f5ddae7c73234907ecfaa260a9"
+      "bytes": 82103,
+      "sha256": "3f22e16e60bf589cf46a03840a853a518f25a28fdb97b18be9ea0c18a4c0e21d"
     },
     {
       "path": "main.js",
-      "bytes": 3049898,
-      "sha256": "10bf96fe053981cb7f56378fa1a61006cda7f36b71540ce0090721e801d5947d"
+      "bytes": 3062067,
+      "sha256": "980a838ccee3d78ece3c0a96038fa46cd3be31b7a1cf91393b6d7d80cb1cbc7a"
     },
     {
       "path": "data/pharm-frontier-wave21-antiseizure-routing.js",
@@ -655,6 +660,6 @@ window.ANI_CONTENT_MANIFEST = Object.freeze({
       "sha256": "d214cb34b87420f9657fe0e4a431d9cdfb6a4d038a8f2ef59bf900125b2ceef7"
     }
   ],
-  "contentSha256": "25ca8f630d072dc1293cfc67f00b967b88be5554a0a90fd771995ee58030f360",
-  "shortVersion": "25ca8f630d07"
+  "contentSha256": "26a6faf2f1bba23d03eb7333c418f5d51de84c4555f3a12267b5319d2caa84da",
+  "shortVersion": "26a6faf2f1bb"
 });

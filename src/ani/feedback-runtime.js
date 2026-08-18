@@ -16,6 +16,9 @@
   const ALLOWED_IMAGE_TYPES = new Set(["image/png", "image/jpeg", "image/webp"]);
   const ITEM_TYPES = new Set(["manual_report", "search_miss_batch"]);
   const ITEM_STATUSES = new Set(["queued", "sending", "retry-wait", "needs-verification", "failed", "acknowledged-purge-pending"]);
+  const LEGAL_TERMS_VERSION = "2026-08-17.1";
+  const LEGAL_DATA_USE_VERSION = "2026-08-17.1";
+  const LEGAL_DOCUMENT_SHA256 = "bb04d1f144713330cff2211e47b06c5147499fcd8bf2cb834a59cef580f9ceea";
   const DEFAULTS = Object.freeze({
     feedbackApiUrl: "",
     catalogFingerprint: "",
@@ -42,7 +45,8 @@
     maxScreenshotBytes: 768 * 1024,
     maxScreenshotDimension: 1600,
     maxScreenshotSourcePixels: 40 * 1000 * 1000,
-    autoStart: true,
+    autoStart: false,
+    legalConsentProvider: null,
     verificationTokenProvider: null,
     fetch: null
   });
@@ -70,6 +74,54 @@
   function catalogFingerprint(value) {
     const fingerprint = cleanText(value, 65).toLowerCase();
     return /^[a-f0-9]{64}$/.test(fingerprint) ? fingerprint : "";
+  }
+
+  function validConsentTimestamp(value) {
+    const text = cleanText(value, 40);
+    return /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(text)
+      && Number.isFinite(Date.parse(text));
+  }
+
+  function normalizeConsentProof(value, { requireDataConsent = true } = {}) {
+    if (!value || typeof value !== "object" || Array.isArray(value)) {
+      throw new Error("Current ANI Terms and data-use consent are required before feedback can be collected.");
+    }
+    const exactKeys = [
+      "terms_version", "notice_version", "document_sha256", "terms_accepted_at",
+      "data_use_version", "data_collection_confirmed", "data_sharing_confirmed", "data_consent_at"
+    ];
+    const keys = Object.keys(value).sort();
+    if (keys.length !== exactKeys.length || exactKeys.slice().sort().some((key, index) => keys[index] !== key)) {
+      throw new Error("ANI refused an invalid consent proof.");
+    }
+    const proof = {
+      terms_version: cleanText(value.terms_version, 40),
+      notice_version: cleanText(value.notice_version, 40),
+      document_sha256: cleanText(value.document_sha256, 64).toLowerCase(),
+      terms_accepted_at: cleanText(value.terms_accepted_at, 40),
+      data_use_version: cleanText(value.data_use_version, 40),
+      data_collection_confirmed: value.data_collection_confirmed === true,
+      data_sharing_confirmed: value.data_sharing_confirmed === true,
+      data_consent_at: value.data_consent_at == null ? null : cleanText(value.data_consent_at, 40)
+    };
+    if (proof.terms_version !== LEGAL_TERMS_VERSION
+        || proof.notice_version !== LEGAL_DATA_USE_VERSION
+        || proof.data_use_version !== LEGAL_DATA_USE_VERSION
+        || proof.document_sha256 !== LEGAL_DOCUMENT_SHA256
+        || !validConsentTimestamp(proof.terms_accepted_at)) {
+      throw new Error("Current ANI Terms and data-use consent are required before feedback can be collected.");
+    }
+    if (requireDataConsent && (!proof.data_collection_confirmed
+        || !proof.data_sharing_confirmed
+        || !validConsentTimestamp(proof.data_consent_at))) {
+      throw new Error("Separate data-collection and restricted-sharing consent are required before feedback can be collected.");
+    }
+    if (!requireDataConsent) {
+      proof.data_collection_confirmed = false;
+      proof.data_sharing_confirmed = false;
+      proof.data_consent_at = null;
+    }
+    return proof;
   }
 
   function clientEventIdentifier(value, prefix, createIdentifier) {
@@ -450,7 +502,11 @@
       let legacy;
       try { legacy = await store.list(); } catch (_error) { return; }
       for (const item of Array.isArray(legacy) ? legacy : []) {
-        if (!validStoredItem(item)) continue;
+        if (!validStoredItem(item)) {
+          try { await store.remove(item && item.client_event_id || ""); } catch (_error) {}
+          emit("corrupt-dropped", item || null, { reason: "stale-or-invalid-consent" });
+          continue;
+        }
         if (item.status === "acknowledged-purge-pending") {
           try { await store.remove(item.client_event_id); } catch (_error) {}
           continue;
@@ -511,7 +567,8 @@
         maxOutboxBytes: currentConfig.maxOutboxBytes,
         maxItemAgeMs: currentConfig.maxItemAgeMs,
         maxSearchBatchSize: currentConfig.maxSearchBatchSize,
-        maxScreenshotBytes: currentConfig.maxScreenshotBytes
+        maxScreenshotBytes: currentConfig.maxScreenshotBytes,
+        autoStart: currentConfig.autoStart
       });
     }
 
@@ -562,6 +619,9 @@
         minStableSearchMs: positiveNumber(merged.minStableSearchMs, currentConfig.minStableSearchMs, 250, 10000),
         maxScreenshotBytes: positiveNumber(merged.maxScreenshotBytes, currentConfig.maxScreenshotBytes, 64 * 1024, Math.floor(1.5 * 1024 * 1024)),
         autoStart: merged.autoStart === undefined ? currentConfig.autoStart : merged.autoStart !== false,
+        legalConsentProvider: typeof merged.legalConsentProvider === "function"
+          ? merged.legalConsentProvider
+          : (merged.legalConsentProvider === null ? null : currentConfig.legalConsentProvider),
         verificationTokenProvider: typeof merged.verificationTokenProvider === "function"
           ? merged.verificationTokenProvider
           : (merged.verificationTokenProvider === null ? null : currentConfig.verificationTokenProvider),
@@ -610,6 +670,11 @@
         return !item.payload && !item.attachment;
       }
       if (!item.payload || typeof item.payload !== "object") return false;
+      try {
+        normalizeConsentProof(item.payload.consent, { requireDataConsent: true });
+      } catch (_error) {
+        return false;
+      }
       if (item.attachment) {
         if (!ALLOWED_IMAGE_TYPES.has(item.attachment.media_type)) return false;
         if (!Number.isFinite(Number(item.attachment.size_bytes)) || Number(item.attachment.size_bytes) <= 0) return false;
@@ -727,6 +792,7 @@
       const redacted = redactSensitiveText(report.message, currentConfig.maxManualMessageChars);
       const redactedSubject = redactSensitiveText(report.subject, 180);
       if (!redacted.text) throw new Error("Report text is required.");
+      const consent = consentForQueue("manual_report", report.consent || input.consent);
       const attachment = validatedAttachment(input.screenshot || input.attachment || null);
       const clientEventId = clientEventIdentifier(report.client_event_id || input.client_event_id, "ani-feedback", identifier);
       if (!requiresNativeQueue()) {
@@ -743,6 +809,7 @@
         message: redacted.text,
         privacy_redactions: redacted.redactions + redactedSubject.redactions,
         privacy_confirmed: report.privacy_confirmed === true,
+        consent,
         app: {
           surface: currentConfig.surface,
           version: currentConfig.appVersion,
@@ -826,13 +893,16 @@
     }
 
     async function queueSearchMissBatch(inputs = []) {
+      const rawInputs = Array.isArray(inputs) ? inputs.slice(0, currentConfig.maxSearchBatchSize) : [];
+      const consent = consentForQueue("search_miss_batch", rawInputs[0] && rawInputs[0].consent);
+      if (rawInputs.some((input) => canonicalStableJson(input && input.consent) !== canonicalStableJson(rawInputs[0] && rawInputs[0].consent))) {
+        throw new Error("ANI refused a search batch with inconsistent consent proof.");
+      }
       if (!currentConfig.catalogFingerprint) {
         emit("rejected", null, { reason: "catalog-fingerprint-unavailable", rejected: Array.isArray(inputs) ? inputs.length : 0 });
         return { queued: false, reason: "catalog-fingerprint-unavailable", accepted: 0, rejected: Array.isArray(inputs) ? inputs.length : 0 };
       }
-      const candidates = Array.isArray(inputs)
-        ? inputs.slice(0, currentConfig.maxSearchBatchSize).map((input) => normalizeSearchMissObservation(input, currentConfig.minStableSearchMs))
-        : [];
+      const candidates = rawInputs.map((input) => normalizeSearchMissObservation(input, currentConfig.minStableSearchMs));
       if (!candidates.length) return { queued: false, reason: "empty-batch", accepted: 0, rejected: 0 };
       // Android's encrypted no-backup store is the authoritative outbox. Its
       // availability must never depend on WebView IndexedDB; the latter is read
@@ -890,6 +960,7 @@
           version: currentConfig.appVersion,
           catalog_fingerprint: currentConfig.catalogFingerprint
         },
+        consent,
         events
       };
       const item = {
@@ -1212,6 +1283,55 @@
       }, Math.max(0, delay));
     }
 
+    function currentLegalConsent(itemType) {
+      if (typeof currentConfig.legalConsentProvider !== "function") {
+        throw new Error("ANI feedback remains locked until the current Terms and data-use choice are available.");
+      }
+      const search = itemType === "search_miss_batch";
+      return normalizeConsentProof(
+        currentConfig.legalConsentProvider(search ? "search_miss" : "manual_report"),
+        { requireDataConsent: search }
+      );
+    }
+
+    function consentForQueue(itemType, suppliedValue) {
+      const supplied = normalizeConsentProof(suppliedValue, { requireDataConsent: true });
+      const current = currentLegalConsent(itemType);
+      if (itemType === "search_miss_batch") {
+        if (canonicalStableJson(supplied) !== canonicalStableJson(current)) {
+          throw new Error("ANI refused a search report whose consent proof is not the current full consent choice.");
+        }
+        return current;
+      }
+      const termsBindingKeys = [
+        "terms_version", "notice_version", "document_sha256", "terms_accepted_at", "data_use_version"
+      ];
+      if (termsBindingKeys.some((key) => supplied[key] !== current[key])) {
+        throw new Error("ANI refused a manual report whose Terms acceptance is not current.");
+      }
+      // A manual report carries its own explicit collection/sharing choice. The
+      // authoritative legal provider binds the Terms acceptance, but must not
+      // overwrite that separate report-specific data-consent proof.
+      return supplied;
+    }
+
+    function canDeliverItem(item) {
+      // Content-free acknowledgement tombstones require only local deletion;
+      // they contain no feedback to transmit and must remain purgeable.
+      if (item && item.status === "acknowledged-purge-pending") return true;
+      try {
+        const queued = normalizeConsentProof(item && item.payload && item.payload.consent, { requireDataConsent: true });
+        const current = currentLegalConsent(item && item.type);
+        if (item && item.type === "search_miss_batch"
+            && canonicalStableJson(queued) !== canonicalStableJson(current)) {
+          return false;
+        }
+        return true;
+      } catch (_error) {
+        return false;
+      }
+    }
+
     async function scheduleNextDue(records) {
       if (!currentConfig.autoStart || destroyed) return;
       const dueTimes = records
@@ -1225,6 +1345,11 @@
     async function performFlush(options = {}) {
       if (!currentConfig.feedbackApiUrl) return { status: "disabled", sent: 0, pending: (await pruneOutbox()).length, results: [] };
       if (requiresNativeQueue()) {
+        try {
+          currentLegalConsent("manual_report");
+        } catch (_error) {
+          return { status: "legal-locked", sent: 0, pending: 0, results: [] };
+        }
         await nativeMigrationPromise;
         const plugin = await requireNativeQueue();
         const result = await plugin.flush({ trigger: cleanText(options.trigger, 40) });
@@ -1248,6 +1373,7 @@
       const force = options.force === true;
       const records = await pruneOutbox();
       const due = records.filter((item) => {
+        if (!canDeliverItem(item)) return false;
         if (allowedIds && !allowedIds.has(item.client_event_id)) return false;
         if (item.status === "needs-verification" || item.status === "failed") return force;
         if (item.status === "sending") return true;
@@ -1321,6 +1447,25 @@
       await dropSearchDedupeForItem(item);
       emit("removed", item);
       return { removed: true, client_event_id: id };
+    }
+
+    async function purgeUnsentSearchMisses() {
+      if (requiresNativeQueue()) {
+        // ANILegalConsent synchronizes the exact opt-out to the native plugin,
+        // whose encrypted store performs the authoritative purge.
+        return { removed: 0, native: true, delegated: true };
+      }
+      const records = await store.list();
+      let removed = 0;
+      for (const item of records) {
+        if (item && item.type === "search_miss_batch" && item.status !== "acknowledged-purge-pending") {
+          await store.remove(item.client_event_id);
+          removed += 1;
+          emit("removed", item, { reason: "improvement-data-withdrawn" });
+        }
+      }
+      await store.setMeta(SEARCH_DEDUPE_KEY, []);
+      return { removed, native: false };
     }
 
     async function canvasBlob(canvas, type, quality) {
@@ -1452,7 +1597,11 @@
         feedbackApiUrl: initial.feedbackApiUrl || initial.feedback && initial.feedback.apiUrl || "",
         catalogFingerprint: initial.catalogFingerprint || initial.feedback && initial.feedback.catalogFingerprint || "",
         appVersion: initial.appVersion || initial.feedback && initial.feedback.appVersion || "",
-        surface: initial.feedback && initial.feedback.surface || (host && host.Capacitor && typeof host.Capacitor.isNativePlatform === "function" && host.Capacitor.isNativePlatform() ? "android" : "web")
+        surface: initial.feedback && initial.feedback.surface || (host && host.Capacitor && typeof host.Capacitor.isNativePlatform === "function" && host.Capacitor.isNativePlatform() ? "android" : "web"),
+        autoStart: false,
+        legalConsentProvider: (kind) => host && host.ANILegalConsent && typeof host.ANILegalConsent.consentProof === "function"
+          ? host.ANILegalConsent.consentProof(kind)
+          : null
       });
     } catch (_error) {}
 
@@ -1475,6 +1624,7 @@
       queueManualReport,
       queueSearchMiss,
       queueSearchMissBatch,
+      purgeUnsentSearchMisses,
       flush,
       listOutbox,
       retry,

@@ -71,6 +71,21 @@ const stageAvatar = document.querySelector(".avatar");
 const settingsButton = document.querySelector("#settingsButton");
 const settingsPanel = document.querySelector("#settingsPanel");
 const closeSettingsButton = document.querySelector("#closeSettingsButton");
+const appShell = document.querySelector("#appShell");
+const aniLegalGate = document.querySelector("#aniLegalGate");
+const aniLegalCloseButton = document.querySelector("#aniLegalCloseButton");
+const aniLegalSettingsSummary = document.querySelector("#aniLegalSettingsSummary");
+const aniLegalReviewButton = document.querySelector("#aniLegalReviewButton");
+const aniTermsAgreement = document.querySelector("#aniTermsAgreement");
+const aniPrivacyAcknowledgement = document.querySelector("#aniPrivacyAcknowledgement");
+const aniImprovementDataDecline = document.querySelector("#aniImprovementDataDecline");
+const aniImprovementDataAllow = document.querySelector("#aniImprovementDataAllow");
+const aniImprovementSharingRow = document.querySelector("#aniImprovementSharingRow");
+const aniImprovementSharingConsent = document.querySelector("#aniImprovementSharingConsent");
+const aniLegalAgreeButton = document.querySelector("#aniLegalAgreeButton");
+const aniLegalSaveChoicesButton = document.querySelector("#aniLegalSaveChoicesButton");
+const aniLegalDeclineButton = document.querySelector("#aniLegalDeclineButton");
+const aniLegalStatus = document.querySelector("#aniLegalStatus");
 const lane4MetricsPanel = document.querySelector("#lane4MetricsPanel");
 const lane4MetricsSummary = document.querySelector("#lane4MetricsSummary");
 const lane4MetricsLatency = document.querySelector("#lane4MetricsLatency");
@@ -101,6 +116,8 @@ const reportProblemImagePreviewPicture = document.querySelector("#reportProblemI
 const reportProblemImageSummary = document.querySelector("#reportProblemImageSummary");
 const removeReportProblemImageButton = document.querySelector("#removeReportProblemImageButton");
 const reportProblemConsent = document.querySelector("#reportProblemConsent");
+const reportProblemDataConsent = document.querySelector("#reportProblemDataConsent");
+const reportProblemSharingConsent = document.querySelector("#reportProblemSharingConsent");
 const reportProblemIncludeContext = document.querySelector("#reportProblemIncludeContext");
 const reportProblemChallenge = document.querySelector("#reportProblemChallenge");
 const reportProblemStatus = document.querySelector("#reportProblemStatus");
@@ -10971,6 +10988,161 @@ let reportProblemScreenshotPreviewUrl = "";
 let reportProblemChallengeFrame = null;
 let reportProblemChallengeRequest = null;
 let feedbackVerificationUserInitiated = false;
+let aniLegalReviewMode = false;
+let aniFeedbackStatusSubscribed = false;
+
+function aniLegalConsentRuntime() {
+  return window.ANILegalConsent && typeof window.ANILegalConsent === "object"
+    ? window.ANILegalConsent
+    : null;
+}
+
+function setAniLegalStatus(message = "", isError = false) {
+  if (!aniLegalStatus) return;
+  aniLegalStatus.textContent = message;
+  aniLegalStatus.classList.toggle("error", Boolean(isError));
+}
+
+function selectedAniImprovementDataChoice() {
+  if (aniImprovementDataAllow?.checked) return "opt-in";
+  if (aniImprovementDataDecline?.checked) return "opt-out";
+  return "";
+}
+
+function updateAniLegalControls() {
+  const choice = selectedAniImprovementDataChoice();
+  const allow = choice === "opt-in";
+  if (aniImprovementSharingRow) aniImprovementSharingRow.hidden = !allow;
+  if (!allow && aniImprovementSharingConsent) aniImprovementSharingConsent.checked = false;
+  const choiceComplete = Boolean(choice) && (!allow || aniImprovementSharingConsent?.checked === true);
+  if (aniLegalReviewMode) {
+    if (aniLegalSaveChoicesButton) aniLegalSaveChoicesButton.disabled = !choiceComplete;
+  } else if (aniLegalAgreeButton) {
+    aniLegalAgreeButton.disabled = !(aniTermsAgreement?.checked
+      && aniPrivacyAcknowledgement?.checked
+      && choiceComplete);
+  }
+}
+
+function updateAniLegalSettingsSummary(record = aniLegalConsentRuntime()?.getRecord?.()) {
+  if (!aniLegalSettingsSummary) return;
+  if (!record) {
+    aniLegalSettingsSummary.textContent = "Current Terms are not accepted. ANI remains locked until you review them.";
+    return;
+  }
+  aniLegalSettingsSummary.textContent = record.improvementDataOptIn
+    ? `Terms ${record.termsVersion} accepted. Privacy-minimized missing-topic improvement data is on.`
+    : `Terms ${record.termsVersion} accepted. Missing-topic improvement data is off.`;
+}
+
+function setAniInteractiveAccess(allowed) {
+  document.body.classList.toggle("ani-legal-pending", !allowed);
+  if (appShell) {
+    appShell.inert = !allowed;
+    if (allowed) appShell.removeAttribute("aria-hidden");
+    else appShell.setAttribute("aria-hidden", "true");
+  }
+}
+
+function openAniLegalGate({ mode = "mandatory", trigger = "" } = {}) {
+  const runtime = aniLegalConsentRuntime();
+  const record = runtime?.getRecord?.() || null;
+  aniLegalReviewMode = mode === "review" && Boolean(record);
+  if (aniLegalGate) aniLegalGate.hidden = false;
+  setAniInteractiveAccess(false);
+  if (aniLegalCloseButton) aniLegalCloseButton.hidden = !aniLegalReviewMode;
+  if (aniLegalAgreeButton) aniLegalAgreeButton.hidden = aniLegalReviewMode;
+  if (aniLegalSaveChoicesButton) aniLegalSaveChoicesButton.hidden = !aniLegalReviewMode;
+  if (aniTermsAgreement) {
+    aniTermsAgreement.checked = aniLegalReviewMode;
+    aniTermsAgreement.disabled = aniLegalReviewMode;
+  }
+  if (aniPrivacyAcknowledgement) {
+    aniPrivacyAcknowledgement.checked = aniLegalReviewMode;
+    aniPrivacyAcknowledgement.disabled = aniLegalReviewMode;
+  }
+  if (aniImprovementDataAllow) aniImprovementDataAllow.checked = Boolean(record?.improvementDataOptIn);
+  if (aniImprovementDataDecline) aniImprovementDataDecline.checked = aniLegalReviewMode && !record?.improvementDataOptIn;
+  if (!aniLegalReviewMode && !record) {
+    if (aniImprovementDataAllow) aniImprovementDataAllow.checked = false;
+    if (aniImprovementDataDecline) aniImprovementDataDecline.checked = false;
+  }
+  if (aniImprovementSharingConsent) aniImprovementSharingConsent.checked = Boolean(record?.improvementDataOptIn);
+  setAniLegalStatus(trigger === "policy-changed" ? "ANI's legal terms changed. Review and agree to continue." : "");
+  updateAniLegalControls();
+  window.setTimeout(() => document.querySelector("#aniLegalDocuments")?.focus(), 0);
+}
+
+function closeAniLegalReview() {
+  if (!aniLegalConsentRuntime()?.hasAcceptedTerms?.()) return;
+  aniLegalReviewMode = false;
+  if (aniLegalGate) aniLegalGate.hidden = true;
+  setAniInteractiveAccess(true);
+  settingsButton?.focus();
+}
+
+function currentAniSearchConsentProof() {
+  const runtime = aniLegalConsentRuntime();
+  if (!runtime?.hasAcceptedTerms?.() || !runtime?.allowsImprovementData?.()) return null;
+  const proof = runtime.consentProof?.("search_miss");
+  return proof?.data_collection_confirmed === true && proof?.data_sharing_confirmed === true ? proof : null;
+}
+
+function currentAniManualReportConsentProof() {
+  const runtime = aniLegalConsentRuntime();
+  if (!runtime?.hasAcceptedTerms?.()) throw new Error("Agree to ANI's current Terms before submitting a report.");
+  const base = runtime.consentProof?.("manual_report");
+  if (!base?.terms_accepted_at) throw new Error("ANI could not verify the current Terms acceptance.");
+  return {
+    ...base,
+    data_collection_confirmed: true,
+    data_sharing_confirmed: true,
+    data_consent_at: new Date().toISOString()
+  };
+}
+
+async function initializeAniLegalConsent() {
+  const runtime = aniLegalConsentRuntime();
+  if (!runtime?.init) {
+    openAniLegalGate({ mode: "mandatory", trigger: "runtime-unavailable" });
+    setAniLegalStatus("ANI could not load the legal agreement. Refresh or update the app before continuing.", true);
+    return false;
+  }
+  const detail = await runtime.init({
+    surface: isNativeShell ? "android" : "web",
+    appVersion: safeText(window.ANI_CONFIG?.appVersion || ""),
+    onOpenReview: ({ mode, trigger }) => openAniLegalGate({ mode, trigger })
+  });
+  runtime.onChange?.(async (change) => {
+    updateAniLegalSettingsSummary(change.record);
+    if (!change.accepted) {
+      aniFeedbackRuntime()?.configure?.({ autoStart: false });
+      try {
+        await aniFeedbackRuntime()?.purgeUnsentSearchMisses?.();
+      } catch (_error) {
+        // The native legal latch performs its own authoritative purge.
+      }
+      openAniLegalGate({ mode: "mandatory", trigger: change.reason });
+      return;
+    }
+    if (!change.improvementDataOptIn) {
+      try {
+        await aniFeedbackRuntime()?.purgeUnsentSearchMisses?.();
+      } catch (_error) {
+        // The native legal latch performs its own authoritative purge.
+      }
+    }
+    initializeAniFeedback();
+  });
+  updateAniLegalSettingsSummary(detail.record);
+  if (detail.accepted) {
+    if (aniLegalGate) aniLegalGate.hidden = true;
+    setAniInteractiveAccess(true);
+    return true;
+  }
+  openAniLegalGate({ mode: "mandatory", trigger: "cold-start" });
+  return false;
+}
 
 function aniFeedbackRuntime() {
   return ANI_FEEDBACK_ENABLED && window.ANIFeedback && typeof window.ANIFeedback === "object"
@@ -11149,7 +11321,9 @@ function setReportProblemOpen(isOpen) {
     if (reportProblemSubject) reportProblemSubject.value = "";
     if (reportProblemType) reportProblemType.value = "missing_content";
     if (reportProblemConsent) reportProblemConsent.checked = false;
-    if (reportProblemIncludeContext) reportProblemIncludeContext.checked = true;
+    if (reportProblemDataConsent) reportProblemDataConsent.checked = false;
+    if (reportProblemSharingConsent) reportProblemSharingConsent.checked = false;
+    if (reportProblemIncludeContext) reportProblemIncludeContext.checked = false;
     clearReportProblemScreenshot();
     clearReportProblemChallenge();
   }
@@ -11167,7 +11341,9 @@ function openMissingContentReportDraft(query = "", options = {}) {
       : `I searched for "${normalizedQuery}", but ANI could not find a confident encyclopedia match.\n\nWhat I was trying to find: `;
   }
   if (reportProblemConsent) reportProblemConsent.checked = false;
-  if (reportProblemIncludeContext) reportProblemIncludeContext.checked = true;
+  if (reportProblemDataConsent) reportProblemDataConsent.checked = false;
+  if (reportProblemSharingConsent) reportProblemSharingConsent.checked = false;
+  if (reportProblemIncludeContext) reportProblemIncludeContext.checked = false;
   setReportProblemOpen(true);
   setReportProblemStatus("Review and edit this draft, then confirm the privacy notice before sending. Nothing has been submitted yet.");
 }
@@ -11183,6 +11359,7 @@ function buildReportPayload(message = "") {
     subject,
     message: message.trim().slice(0, 4000),
     privacy_confirmed: reportProblemConsent?.checked === true,
+    consent: currentAniManualReportConsentProof(),
     context: includeContext
       ? {
         route_path: location.pathname || "/",
@@ -11207,6 +11384,14 @@ async function submitProblemReport() {
   }
   if (!reportProblemConsent?.checked) {
     setReportProblemStatus("Confirm that the report and screenshot contain no patient-identifying information.", true);
+    return;
+  }
+  if (!reportProblemDataConsent?.checked) {
+    setReportProblemStatus("Agree to ANI's report collection and improvement use before sending.", true);
+    return;
+  }
+  if (!reportProblemSharingConsent?.checked) {
+    setReportProblemStatus("Choose the separate Cloudflare processing and restricted-email sharing consent before sending.", true);
     return;
   }
   const runtime = aniFeedbackRuntime();
@@ -11296,14 +11481,22 @@ async function initializeAniFeedback() {
     setReportProblemStatus("Feedback delivery did not load in this build.", true);
     return;
   }
+  const legal = aniLegalConsentRuntime();
+  const accepted = Boolean(legal?.hasAcceptedTerms?.());
   runtime.configure({
     feedbackApiUrl: ANI_FEEDBACK_API_URL,
     catalogFingerprint: feedbackCatalogContext().content_sha256,
     appVersion: safeText(window.ANI_CONFIG?.appVersion || feedbackCatalogContext().content_version),
     surface: isNativeShell ? "android" : "web",
-    verificationTokenProvider: isNativeShell ? null : requestAniFeedbackVerificationToken
+    verificationTokenProvider: isNativeShell ? null : requestAniFeedbackVerificationToken,
+    legalConsentProvider: (kind) => legal?.consentProof?.(kind) || null,
+    autoStart: accepted
   });
-  runtime.onStatus?.(() => updateReportProblemOutboxStatus());
+  if (!aniFeedbackStatusSubscribed) {
+    runtime.onStatus?.(() => updateReportProblemOutboxStatus());
+    aniFeedbackStatusSubscribed = true;
+  }
+  if (!accepted) return;
   try {
     await runtime.flush?.({ reason: "application-start" });
     await updateReportProblemOutboxStatus();
@@ -39249,7 +39442,8 @@ function scheduleAniSearchMissEvidence({
 } = {}) {
   clearAniSearchMissTimer();
   const runtime = aniFeedbackRuntime();
-  if (!runtime?.queueSearchMiss || !rawQuery.trim()) return;
+  const consent = currentAniSearchConsentProof();
+  if (!runtime?.queueSearchMiss || !rawQuery.trim() || !consent) return;
   const totalResults = Object.values(resultCounts).reduce((sum, value) => sum + Math.max(0, Number(value) || 0), 0);
   const observation = {
     query: rawQuery.slice(0, 240),
@@ -39273,13 +39467,16 @@ function scheduleAniSearchMissEvidence({
     phoneticQuery: safeText(clinicalSearch?.phoneticQuery),
     unmatchedClues: Array.isArray(clinicalSearch?.unmatchedClues)
       ? clinicalSearch.unmatchedClues.map((value) => safeText(value)).filter(Boolean).slice(0, 6)
-      : []
+      : [],
+    consent
   };
   if (totalResults !== 0 || runtime.shouldQueueSearchMiss?.(observation) === false) return;
   const submit = () => {
     pharmSearchMissTimer = null;
     if (requestGeneration !== pharmSearchRequestGeneration || (pharmSearchInput?.value || "") !== rawQuery) return;
-    Promise.resolve(runtime.queueSearchMiss(observation)).catch(() => {});
+    const currentConsent = currentAniSearchConsentProof();
+    if (!currentConsent) return;
+    Promise.resolve(runtime.queueSearchMiss({ ...observation, consent: currentConsent })).catch(() => {});
   };
   if (committed) submit();
   else pharmSearchMissTimer = window.setTimeout(submit, 1500);
@@ -48205,7 +48402,8 @@ function missingOfflineContentResponse(query = "") {
   const originalQuery = safeText(query).trim().slice(0, 180) || "that topic";
   clearPendingOfflineLookup();
   const runtime = aniFeedbackRuntime();
-  if (!offlineMissQueuedForCurrentMessage && runtime?.queueSearchMiss) {
+  const consent = currentAniSearchConsentProof();
+  if (!offlineMissQueuedForCurrentMessage && runtime?.queueSearchMiss && consent) {
     offlineMissQueuedForCurrentMessage = true;
     Promise.resolve(runtime.queueSearchMiss({
       query: originalQuery,
@@ -48236,7 +48434,8 @@ function missingOfflineContentResponse(query = "") {
       browseMode: false,
       correctedQuery: "",
       phoneticQuery: "",
-      unmatchedClues: []
+      unmatchedClues: [],
+      consent
     })).catch(() => {});
   }
   return {
@@ -53311,6 +53510,77 @@ closeSettingsButton?.addEventListener("click", () => {
   settingsPanel.hidden = true;
 });
 
+aniLegalReviewButton?.addEventListener("click", () => {
+  settingsPanel.hidden = true;
+  aniLegalConsentRuntime()?.openReview?.({ mode: "review", trigger: "settings" });
+});
+
+aniLegalCloseButton?.addEventListener("click", closeAniLegalReview);
+
+[aniTermsAgreement, aniPrivacyAcknowledgement, aniImprovementDataDecline,
+  aniImprovementDataAllow, aniImprovementSharingConsent]
+  .forEach((control) => control?.addEventListener("change", updateAniLegalControls));
+
+aniLegalAgreeButton?.addEventListener("click", async () => {
+  const runtime = aniLegalConsentRuntime();
+  const choice = selectedAniImprovementDataChoice();
+  if (!runtime?.accept || !aniTermsAgreement?.checked || !aniPrivacyAcknowledgement?.checked
+      || !choice || (choice === "opt-in" && !aniImprovementSharingConsent?.checked)) {
+    setAniLegalStatus("Review the documents, confirm you are 18 or older, and make a separate data choice.", true);
+    return;
+  }
+  aniLegalAgreeButton.disabled = true;
+  setAniLegalStatus("Saving your agreement on this device...");
+  try {
+    await runtime.accept({
+      termsAccepted: true,
+      improvementDataChoice: choice,
+      surface: isNativeShell ? "android" : "web",
+      appVersion: safeText(window.ANI_CONFIG?.appVersion || "")
+    });
+    if (aniLegalGate) aniLegalGate.hidden = true;
+    setAniInteractiveAccess(true);
+    updateAniLegalSettingsSummary(runtime.getRecord?.());
+    await initializeAniFeedback();
+  } catch (error) {
+    setAniLegalStatus(error.message || "ANI could not securely save this agreement.", true);
+  } finally {
+    updateAniLegalControls();
+  }
+});
+
+aniLegalSaveChoicesButton?.addEventListener("click", async () => {
+  const runtime = aniLegalConsentRuntime();
+  const choice = selectedAniImprovementDataChoice();
+  if (!runtime?.setImprovementDataChoice || !choice
+      || (choice === "opt-in" && !aniImprovementSharingConsent?.checked)) {
+    setAniLegalStatus("Choose one data option. Sharing consent is required only when improvement data is on.", true);
+    return;
+  }
+  aniLegalSaveChoicesButton.disabled = true;
+  try {
+    await runtime.setImprovementDataChoice(choice);
+    updateAniLegalSettingsSummary(runtime.getRecord?.());
+    closeAniLegalReview();
+  } catch (error) {
+    setAniLegalStatus(error.message || "ANI could not save that data choice.", true);
+  } finally {
+    updateAniLegalControls();
+  }
+});
+
+aniLegalDeclineButton?.addEventListener("click", async () => {
+  try {
+    await aniLegalConsentRuntime()?.decline?.();
+  } catch (_error) {
+    // A failed native sync cannot unlock the app; the local session remains locked.
+  }
+  aniLegalReviewMode = false;
+  setAniInteractiveAccess(false);
+  openAniLegalGate({ mode: "mandatory", trigger: "declined" });
+  setAniLegalStatus("ANI remains locked because the current Terms were not accepted. You can review and agree whenever you are ready.", true);
+});
+
 lane4MetricsRefreshButton?.addEventListener("click", renderLane4MetricsDiagnostics);
 
 voiceStyleSelect?.addEventListener("change", () => {
@@ -53679,7 +53949,12 @@ renderActiveChat();
 startNursingFactTicker();
 refreshAniModelStatus();
 refreshMedicalUpdatesRuntime();
-initializeAniFeedback();
+initializeAniLegalConsent()
+  .then(() => initializeAniFeedback())
+  .catch((error) => {
+    openAniLegalGate({ mode: "mandatory", trigger: "initialization-failed" });
+    setAniLegalStatus(error.message || "ANI could not verify the legal agreement on this device.", true);
+  });
 registerServiceWorker();
 updateInstallUi();
 hideAppSplash();

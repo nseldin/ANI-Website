@@ -65,6 +65,10 @@ body.app-booting {
   background: #fff;
 }
 
+body.ani-legal-pending {
+  overflow: hidden;
+}
+
 body.app-booting .app-shell {
   visibility: hidden;
   opacity: 0;
@@ -262,6 +266,253 @@ button:disabled {
 
 .settings-panel[hidden] {
   display: none;
+}
+
+.legal-settings-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid rgba(18, 125, 122, 0.2);
+  border-radius: 10px;
+  padding: 12px;
+  background: #f4fbfa;
+}
+
+.legal-settings-panel p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+.legal-settings-panel button {
+  white-space: nowrap;
+}
+
+.ani-legal-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  display: grid;
+  place-items: center;
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+  background: rgba(10, 29, 31, 0.72);
+  backdrop-filter: blur(10px);
+}
+
+.ani-legal-gate[hidden] {
+  display: none;
+}
+
+.ani-legal-card {
+  display: grid;
+  grid-template-rows: auto auto minmax(180px, 1fr) auto;
+  width: min(900px, 100%);
+  max-height: calc(100dvh - 32px);
+  overflow: hidden;
+  border: 1px solid rgba(18, 125, 122, 0.28);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 32px 90px rgba(4, 18, 20, 0.42);
+}
+
+.ani-legal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.ani-legal-header span {
+  color: var(--teal-dark);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ani-legal-header h2 {
+  margin: 3px 0 0;
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  line-height: 1.12;
+}
+
+.ani-legal-summary {
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--line);
+  background: #f3faf9;
+}
+
+.ani-legal-summary > strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.ani-legal-summary ul {
+  display: grid;
+  gap: 4px;
+  margin: 0 0 9px;
+  padding-left: 20px;
+  color: #304749;
+  font-size: 0.87rem;
+  line-height: 1.4;
+}
+
+.ani-legal-summary nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+
+.ani-legal-summary a,
+.ani-legal-documents a {
+  color: var(--teal-dark);
+  font-weight: 800;
+}
+
+.ani-legal-documents {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 16px 20px 26px;
+  scroll-padding-top: 16px;
+}
+
+.ani-legal-documents:focus-visible {
+  outline: 3px solid rgba(18, 125, 122, 0.24);
+  outline-offset: -3px;
+}
+
+.ani-legal-documents article + article {
+  margin-top: 30px;
+  border-top: 2px solid rgba(18, 125, 122, 0.18);
+  padding-top: 24px;
+}
+
+.ani-legal-documents h3 {
+  margin: 0 0 12px;
+  color: var(--teal-dark);
+  font-size: 1.35rem;
+}
+
+.ani-legal-documents h4 {
+  margin: 19px 0 6px;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.ani-legal-documents p {
+  margin: 0 0 10px;
+  color: #304345;
+  line-height: 1.58;
+}
+
+.ani-legal-controls {
+  display: grid;
+  gap: 10px;
+  max-height: min(43dvh, 390px);
+  overflow-y: auto;
+  border-top: 1px solid var(--line);
+  padding: 14px 18px 16px;
+  background: #fff;
+}
+
+.ani-legal-check,
+.ani-data-choice label {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 9px;
+  align-items: start;
+  color: var(--ink);
+  font-size: 0.88rem;
+  line-height: 1.42;
+}
+
+.ani-legal-check input,
+.ani-data-choice input {
+  margin-top: 3px;
+}
+
+.ani-legal-check {
+  border: 1px solid rgba(18, 125, 122, 0.18);
+  border-radius: 9px;
+  padding: 9px 10px;
+  background: #f9fcfc;
+}
+
+.ani-sharing-consent {
+  border-color: rgba(65, 105, 168, 0.28);
+  background: #f5f8fd;
+}
+
+.ani-sharing-consent[hidden] {
+  display: none;
+}
+
+.ani-data-choice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 0;
+  border: 1px solid rgba(18, 125, 122, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.ani-data-choice legend {
+  padding: 0 5px;
+  font-weight: 900;
+}
+
+.ani-data-choice label {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 9px;
+  background: #fff;
+}
+
+.ani-data-choice label:has(input:checked) {
+  border-color: var(--teal);
+  background: #eefaf8;
+  box-shadow: 0 0 0 2px rgba(18, 125, 122, 0.1);
+}
+
+.ani-legal-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.ani-legal-actions button {
+  min-height: 44px;
+}
+
+#aniLegalAgreeButton,
+#aniLegalSaveChoicesButton {
+  border-color: rgba(18, 125, 122, 0.45);
+  background: var(--teal);
+  color: #fff;
+}
+
+#aniLegalDeclineButton {
+  border-color: rgba(95, 108, 110, 0.4);
+  background: #fff;
+  color: #35494b;
+}
+
+.ani-legal-status {
+  min-height: 1.25em;
+  margin: 0;
+  color: var(--teal-dark);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.ani-legal-status.error {
+  color: #9f4239;
 }
 
 .settings-header,
@@ -9094,6 +9345,43 @@ html[data-device-mode="phone"] .settings-panel {
   padding: 16px 16px 18px;
   border-radius: 12px;
   transform: none;
+}
+
+html[data-device-mode="phone"] .legal-settings-panel,
+html[data-device-mode="phone"] .ani-data-choice,
+html[data-device-mode="phone"] .ani-legal-actions {
+  grid-template-columns: 1fr;
+}
+
+html[data-device-mode="phone"] .legal-settings-panel button {
+  width: 100%;
+}
+
+html[data-device-mode="phone"] .ani-legal-gate {
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+
+html[data-device-mode="phone"] .ani-legal-card {
+  width: 100%;
+  max-height: 100dvh;
+  border-radius: 0;
+}
+
+html[data-device-mode="phone"] .ani-legal-summary {
+  padding: 11px 14px;
+}
+
+html[data-device-mode="phone"] .ani-legal-summary ul {
+  font-size: 0.82rem;
+}
+
+html[data-device-mode="phone"] .ani-legal-documents {
+  padding: 14px 16px 22px;
+}
+
+html[data-device-mode="phone"] .ani-legal-controls {
+  max-height: 46dvh;
+  padding: 12px 14px max(14px, env(safe-area-inset-bottom, 0px));
 }
 
 html[data-device-mode="phone"] .settings-header {
