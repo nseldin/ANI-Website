@@ -586,8 +586,8 @@
     },
     {
       "path": "main.js",
-      "bytes": 3071558,
-      "sha256": "5f492182efd68ea270e7dee65f5322ff082d86b929a857a66a72fee4a1cf4c6d"
+      "bytes": 3071340,
+      "sha256": "a7440be3629c182b8ea791df35534039cd993be83ad3882ad0e4415573ecd606"
     },
     {
       "path": "data/pharm-frontier-wave21-antiseizure-routing.js",
@@ -660,6 +660,6 @@
       "sha256": "b70103bad6c518e8b6d8f44cc33d8714fe5e561ce5c0a68c41fcea5bbc547f3b"
     }
   ],
-  "contentSha256": "61539f436770106d4b57a9fa92b0c2ddbbb12506365feddb1fbe72c3eb7795b0",
-  "shortVersion": "61539f436770"
+  "contentSha256": "8abd77df07d6bc7885413c100da97d672b926e52f5d130889d68ca2e4cfc3ab0",
+  "shortVersion": "8abd77df07d6"
 }

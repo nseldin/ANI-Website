@@ -11065,11 +11065,7 @@ function openAniLegalGate({ mode = "mandatory", trigger = "" } = {}) {
     aniPrivacyAcknowledgement.disabled = aniLegalReviewMode;
   }
   if (aniImprovementDataAllow) aniImprovementDataAllow.checked = Boolean(record?.improvementDataOptIn);
-  if (aniImprovementDataDecline) aniImprovementDataDecline.checked = aniLegalReviewMode && !record?.improvementDataOptIn;
-  if (!aniLegalReviewMode && !record) {
-    if (aniImprovementDataAllow) aniImprovementDataAllow.checked = false;
-    if (aniImprovementDataDecline) aniImprovementDataDecline.checked = false;
-  }
+  if (aniImprovementDataDecline) aniImprovementDataDecline.checked = !record?.improvementDataOptIn;
   if (aniImprovementSharingConsent) aniImprovementSharingConsent.checked = Boolean(record?.improvementDataOptIn);
   setAniLegalStatus(trigger === "policy-changed" ? "ANI's legal terms changed. Review and agree to continue." : "");
   updateAniLegalControls();
