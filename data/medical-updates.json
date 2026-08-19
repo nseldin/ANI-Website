@@ -1909,9 +1909,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-18T19:39:59.307Z",
+  "generatedAt": "2026-08-19T03:26:00.365Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "440df452f42820d0139e9df3ca8307f084fadf5153dd4377543de5d16548c9da",
+      "description": "August 18, 2026 - Dreyer’s Grand Ice Cream, Inc. is voluntarily recalling a limited number of select flavors of Outshine Fruit Bars due to possible foreign material contamination with glass. Products affected include Outshine Strawberry, Watermelon, Grape, Tangerine and Black Cherry 6-Count 2.5 ounc",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/updated-dreyers-grand-ice-cream-inc-issues-voluntary-recall-select-outshine-fruit-bars-due-possible",
+      "id": "medical-update:fda-recalls:b5d40307d96a29b2e7f39d6e",
+      "publishedAt": "2026-08-18T22:35:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-19T03:26:00.365Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Updated – Dreyer’s Grand Ice Cream, Inc. Issues Voluntary Recall on Select Outshine Fruit Bars Due to Possible Foreign Matter Contamination",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/updated-dreyers-grand-ice-cream-inc-issues-voluntary-recall-select-outshine-fruit-bars-due-possible"
+    },
     {
       "category": "drug-approval",
       "contentHash": "6426aacdb4c4b34c4e9227d4964b91f7a995adc00afebac87d3a22a2739077ce",
@@ -1991,6 +2007,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "title": "OTP Town Hall: Cell Therapy Chemistry, Manufacturing, and Controls – June 2023 - 06/08/2023",
       "url": "https://www.fda.gov/news-events/fda-meetings-conferences-and-workshops/otp-town-hall-cell-therapy-chemistry-manufacturing-and-controls-june-2023-06082023"
+    },
+    {
+      "category": "safety-alert",
+      "contentHash": "8fbb2c484dda4bcc859d142c240ea89e5af1b803ed57647eca76c4fb2c2e143c",
+      "description": "BD is correcting convenience kits and procedural trays containing recalled Huons Co. sodium chloride ampules",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-convenience-kit-issue-becton-dickinson",
+      "id": "medical-update:fda-medwatch:15aedaec818af6f79b22355f",
+      "publishedAt": "2026-08-18T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-19T03:26:00.365Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Early Alert: Convenience Kit Issue from Becton Dickinson",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-convenience-kit-issue-becton-dickinson"
     },
     {
       "category": "recall",
@@ -3698,8 +3730,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 5,
-      "retrievedAt": "2026-08-18T19:39:59.307Z",
+      "retainedItemCount": 6,
+      "retrievedAt": "2026-08-19T03:26:00.365Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3710,18 +3742,18 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 9,
-      "retrievedAt": "2026-08-18T19:39:59.307Z",
+      "retrievedAt": "2026-08-19T03:26:00.365Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 2,
+      "itemCount": 1,
       "rawItemCount": 20,
-      "rejectedItemCount": 18,
-      "retainedItemCount": 12,
-      "retrievedAt": "2026-08-18T19:39:59.307Z",
+      "rejectedItemCount": 19,
+      "retainedItemCount": 13,
+      "retrievedAt": "2026-08-19T03:26:00.365Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -3732,7 +3764,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 15,
       "retainedItemCount": 4,
-      "retrievedAt": "2026-08-18T19:39:59.307Z",
+      "retrievedAt": "2026-08-19T03:26:00.365Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -3743,7 +3775,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-18T19:39:59.307Z",
+      "retrievedAt": "2026-08-19T03:26:00.365Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -3754,7 +3786,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-18T19:39:59.307Z",
+      "retrievedAt": "2026-08-19T03:26:00.365Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -3765,7 +3797,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-08-18T19:39:59.307Z",
+      "retrievedAt": "2026-08-19T03:26:00.365Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -3776,7 +3808,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-18T19:39:59.307Z",
+      "retrievedAt": "2026-08-19T03:26:00.365Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -3787,7 +3819,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-18T19:39:59.307Z",
+      "retrievedAt": "2026-08-19T03:26:00.365Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
