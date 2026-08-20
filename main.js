@@ -3664,6 +3664,12 @@ function explicitClinicalGuideIdentityMatch(input = "") {
     .find((drug) => drug && normalizePharmText(drug.entryType) === "clinical guide") || null;
 }
 
+const PHARM_FUZZY_IDENTITY_LOW_INFORMATION_TOKENS = new Set([
+  "again", "another", "different", "else", "guess", "heart", "looking", "meant",
+  "neither", "none", "nope", "not", "one", "rate", "slow", "something", "that",
+  "these", "those", "try", "what", "wrong", "your"
+]);
+
 function exactPharmIdentityMatch(input = "") {
   const explicitClinicalGuide = explicitClinicalGuideIdentityMatch(input);
   if (explicitClinicalGuide) return explicitClinicalGuide;
@@ -3674,6 +3680,8 @@ function exactPharmIdentityMatch(input = "") {
   const indexedExactMatch = getPharmIdentityExactIndex().get(clean);
   if (indexedExactMatch) return indexedExactMatch;
   const queryTokens = clean.split(" ").filter((token) => token.length >= 3);
+  const discriminativeQueryTokens = queryTokens
+    .filter((token) => !PHARM_FUZZY_IDENTITY_LOW_INFORMATION_TOKENS.has(token));
   let bestMatch = null;
   let bestScore = 0;
   for (const drug of pharmDrugs) {
@@ -3687,12 +3695,17 @@ function exactPharmIdentityMatch(input = "") {
       let score = 0;
       if (term === clean) {
         score = 520;
+      } else if (!discriminativeQueryTokens.length) {
+        // Descriptive aliases may contain conversational rejection words.
+        // Those words cannot become a fuzzy medication identity by substring
+        // or token overlap; only a literal indexed identity above may pass.
+        continue;
       } else if (term.length >= 4 && (` ${clean} `).includes(` ${term} `)) {
         if (isGenericMedicationReferenceEntry(drug) && term.split(" ").length < queryTokens.length) continue;
         score = 360 + Math.min(term.length, 80);
       } else if (clean.length >= 4 && term.includes(clean)) {
         score = 260 + Math.min(clean.length, 80);
-      } else if (queryTokens.length && queryTokens.every((token) =>
+      } else if (queryTokens.every((token) =>
         term.split(" ").some((word) => word === token || word.startsWith(token))
       )) {
         score = 210;
@@ -45837,15 +45850,16 @@ function isOfflineLookupConfirmation(input = "") {
 }
 
 function isOfflineLookupRejection(input = "") {
+  const detector = window.ANIGapDetector;
+  if (typeof detector?.isClearRejection === "function") {
+    return detector.isClearRejection(input);
+  }
   return /^(no|nope|nah|not that|wrong|try again|guess again|different one)$/i.test(offlineLookupReplyText(input));
 }
 
 function isPendingOfflineLookupRejection(input = "") {
   if (!pendingOfflineLookupSuggestions.length) return false;
-  const detector = window.ANIGapDetector;
-  return typeof detector?.isClearRejection === "function"
-    ? detector.isClearRejection(input)
-    : isOfflineLookupRejection(input);
+  return isOfflineLookupRejection(input);
 }
 
 function isOfflineLookupRejectAll(input = "") {
@@ -48060,6 +48074,54 @@ function makeOfflineSegmentResponse(input = "") {
   };
 }
 
+function makeColdExactOfflineSegmentResponse(input = "") {
+  if (wantsOfflineListExpansionFollowup(input)
+    || wantsOfflineBroadCauseList(input)
+    || wantsBinaryRelationshipAnswer(input)
+    || wantsAiGeneratedStudyWork(input)
+    || wantsLecture(input)
+    || offlineSegmentHasPersonalClinicalContext(input)
+    || wantsOfflineLabComparison(input)) return null;
+  // A clear section cue permits the existing bounded fast-identity resolver,
+  // including its reviewed spelling correction. A bare unknown topic never
+  // enters even that resolver on a cold interactive turn.
+  if (!offlineSegmentIntents(input).length) return null;
+  const candidate = offlineSegmentCandidate(input);
+  if (!candidate) return null;
+  const intents = offlineSegmentIntents(input, candidate);
+  if (!intents.length) return null;
+  const text = buildOfflineSegmentAnswer(input, candidate, intents);
+  if (!text) return null;
+  return {
+    type: "encyclopedia-segment",
+    text,
+    target: offlineSegmentTargetDescriptor(candidate)
+  };
+}
+
+function makeColdReviewedPrefixRedirect(input = "") {
+  const core = fastCanonicalLookupCore(input) || normalizePharmText(input);
+  const reviewed = REVIEWED_ENCYCLOPEDIA_PREFIX_PRIORITIES[core] || null;
+  if (!reviewed) return null;
+  // The table lookup happens before any pool scan, so an unknown cold phrase
+  // cannot enter identity resolution. Only a specifically reviewed prefix may
+  // bind its one canonical runtime owner here.
+  const candidate = fastReviewedOwnerCandidate(
+    reviewed.type,
+    reviewed.identity,
+    `reviewed-prefix-${core}`,
+    { score: 3900, exactIdentity: false }
+  );
+  return runtimeTopicRequestCandidateIsBound(candidate)
+    ? offlineLookupDatabaseRedirect(candidate, input)
+    : null;
+}
+
+function automaticGapVerificationIndexesReady() {
+  return pharmContentIndexStatus().complete === true
+    && Boolean(medicalPhoneticIdentityIndex);
+}
+
 function installEncyclopediaSegmentResponsePriority() {
   const baseMakeModelEnhancedResponse = makeModelEnhancedResponse;
   if (typeof baseMakeModelEnhancedResponse !== "function"
@@ -48068,12 +48130,39 @@ function installEncyclopediaSegmentResponsePriority() {
     const hasAttachments = (Array.isArray(args[0]) && args[0].length > 0)
       || (Array.isArray(args[1]) && args[1].length > 0);
     if (!hasAttachments) {
+      // Shared rejection phrases belong to the pending/standalone context
+      // handler. Delegate before any late segment, smart-answer, or cold-C
+      // owner can reinterpret the reply as a new medical request.
+      if (isOfflineLookupRejection(input)) {
+        return baseMakeModelEnhancedResponse.apply(this, [input, ...args]);
+      }
       const emergencyHyperkalemiaAnswer = makeOfflineEmergencyHyperkalemiaAnswer(input);
       if (emergencyHyperkalemiaAnswer) return emergencyHyperkalemiaAnswer;
+      // Keep the reviewed bedside meaning/value builders ahead of the generic
+      // exact-card segment extractor. This preserves focused interpretations
+      // such as positive D-dimer while leaving all other smart answers behind
+      // the structured segment path that carries an exact canonical target.
+      const bedsideValueInterpretationAnswer = makeOfflineBedsideValueInterpretationAnswer(input);
+      if (bedsideValueInterpretationAnswer) return bedsideValueInterpretationAnswer;
+      const gapVerificationIndexesReady = automaticGapVerificationIndexesReady();
+      const segmentResponse = gapVerificationIndexesReady
+        ? makeOfflineSegmentResponse(input)
+        : makeColdExactOfflineSegmentResponse(input);
+      if (segmentResponse) return segmentResponse;
       const smartDatabaseAnswer = makeOfflineSmartDatabaseAnswer(input);
       if (smartDatabaseAnswer) return smartDatabaseAnswer;
-      const segmentResponse = makeOfflineSegmentResponse(input);
-      if (segmentResponse) return segmentResponse;
+      const reviewedPrefixRedirect = makeColdReviewedPrefixRedirect(input);
+      if (reviewedPrefixRedirect) return reviewedPrefixRedirect;
+      // This final wrapper sits outside late specialty routers. Keep a cold,
+      // ownerless topic from reaching their deep synchronous identity passes;
+      // absence remains C until every negative-search layer is ready.
+      if (!gapVerificationIndexesReady && explicitAutomaticGapLookupIntent(input)) {
+        schedulePharmContentIndexBuild();
+        return ambiguousOfflineGapResponse(input, {
+          classification: "AMBIGUOUS",
+          reason: "index-not-ready"
+        });
+      }
     }
     return baseMakeModelEnhancedResponse.apply(this, [input, ...args]);
   };
@@ -48097,12 +48186,15 @@ if (document.readyState === "loading") {
 function makeOfflineSegmentAnswer(input = "") {
   const emergencyHyperkalemiaAnswer = makeOfflineEmergencyHyperkalemiaAnswer(input);
   if (emergencyHyperkalemiaAnswer) return emergencyHyperkalemiaAnswer;
-  const smartDatabaseAnswer = makeOfflineSmartDatabaseAnswer(input);
-  if (smartDatabaseAnswer) return smartDatabaseAnswer;
   const populationRiskAnswer = makeOfflinePopulationRiskAnswer(input);
   if (populationRiskAnswer) return populationRiskAnswer;
-  const response = makeOfflineSegmentResponse(input);
-  return response?.text || "";
+  const bedsideValueInterpretationAnswer = makeOfflineBedsideValueInterpretationAnswer(input);
+  if (bedsideValueInterpretationAnswer) return bedsideValueInterpretationAnswer;
+  const response = automaticGapVerificationIndexesReady()
+    ? makeOfflineSegmentResponse(input)
+    : makeColdExactOfflineSegmentResponse(input);
+  if (response?.text) return response.text;
+  return makeOfflineSmartDatabaseAnswer(input) || "";
 }
 
 function makeOfflineReferenceAnswerInChat(input = "") {
@@ -48647,7 +48739,7 @@ function strictCanonicalExistingGapProposal(verification = {}) {
   const normalize = window.ANIGapDetector?.normalizeConcept;
   if (!proposal || !boundPrimary || !primary || typeof normalize !== "function"
     || proposal.classification !== "EXISTING_DISCOVERY_FAILURE"
-    || proposal.indexComplete !== true
+    || (proposal.indexComplete !== true && verification?.responseBoundExact !== true)
     || proposal.concept !== boundPrimary.canonicalTitle
     || proposal.normalizedConcept !== normalize(boundPrimary.canonicalTitle)
     || !Array.isArray(proposal.appliedVariants)
@@ -48686,14 +48778,15 @@ function armAnswerGapContext(originalQuery = "", response = null, requestTurn = 
   const verificationContext = {
     rejectionCount: 0,
     attemptCount: 1,
-    attemptedCandidates: [],
-    offeredDestinationKeys: []
+    attemptedCandidates: attemptedCandidates.slice(0, 1),
+    offeredDestinationKeys: attemptedCandidates.slice(0, 1).map(offlineLookupEntityKey).filter(Boolean)
   };
   let verification = verifyOfflineGapSignal(originalQuery, verificationContext, {
     detectionOrigin: "repeated_rejection"
   });
   const privateContext = automaticGapHasPersonalClinicalContext(originalQuery);
   let canonicalExistingProposal = strictCanonicalExistingGapProposal(verification);
+  let boundExistingConcept = "";
   if (!canonicalExistingProposal && privateContext && attemptedCandidates.length === 1) {
     // A private-looking educational phrase may contain a legitimate eponym.
     // Recheck only the exact public runtime object ANI actually answered with;
@@ -48710,14 +48803,27 @@ function armAnswerGapContext(originalQuery = "", response = null, requestTurn = 
       canonicalExistingProposal = responseProposal;
     }
   }
+  if (!canonicalExistingProposal
+    && verification?.reason === "index-not-ready"
+    && attemptedCandidates.length === 1) {
+    // The response itself is already bound to one real runtime card. Retain
+    // only that card's public canonical title so two immediate rejections can
+    // prove an A-class discovery failure even while negative-search indexes
+    // are cold. This shortcut never authorizes B or stores request wording.
+    boundExistingConcept = offlineGapDestination(attemptedCandidates[0])?.canonicalTitle || "";
+  }
   const eligibleExisting = Boolean(canonicalExistingProposal);
+  const eligibleBoundExistingTracking = Boolean(boundExistingConcept);
   const eligiblePotentialAbsence = !privateContext
     && verification.classification === "VERIFIED_MISSING"
     && explicitAutomaticGapLookupIntent(originalQuery);
   const eligibleTrackingOnlyAmbiguity = !privateContext
     && verification.classification === "AMBIGUOUS"
     && explicitAutomaticGapLookupIntent(originalQuery);
-  if (!eligibleExisting && !eligiblePotentialAbsence && !eligibleTrackingOnlyAmbiguity) return false;
+  if (!eligibleExisting
+    && !eligibleBoundExistingTracking
+    && !eligiblePotentialAbsence
+    && !eligibleTrackingOnlyAmbiguity) return false;
   const offeredDestinationKeys = attemptedCandidates
     .slice(0, 1)
     .map(offlineLookupEntityKey)
@@ -48725,6 +48831,8 @@ function armAnswerGapContext(originalQuery = "", response = null, requestTurn = 
   pendingAnswerGapContext = {
     originalQuery: eligibleExisting
       ? canonicalExistingProposal.concept
+      : eligibleBoundExistingTracking
+        ? boundExistingConcept
       : safeText(originalQuery).trim().slice(0, 180),
     createdAt: Date.now(),
     responseKind: responseType,
@@ -48851,7 +48959,83 @@ function verifyOfflineGapSignal(query = "", context = {}, options = {}) {
     || fastCanonicalLookupCore(originalQuery).slice(0, 180);
   const indexStatus = pharmContentIndexStatus();
   const phoneticIndexComplete = Boolean(medicalPhoneticIdentityIndex);
-  if (!phoneticIndexComplete) scheduleMedicalPhoneticIdentityIndex();
+  const detectionOrigin = safeText(options.detectionOrigin || "repeated_rejection");
+  const reasonCode = detectionOrigin === "explicit_search"
+    ? "zero_results"
+    : detectionOrigin === "answer_abstained"
+      ? "answer_abstained_missing_topic"
+      : "user_rejected_suggestions";
+  const attemptedCandidates = Array.isArray(context?.attemptedCandidates)
+    ? context.attemptedCandidates.slice(0, 8)
+    : [];
+  const responseBoundCandidate = attemptedCandidates.length === 1
+    && runtimeTopicRequestCandidateIsBound(attemptedCandidates[0])
+    ? attemptedCandidates[0]
+    : null;
+  const responseBoundDestination = responseBoundCandidate
+    ? offlineGapDestination(responseBoundCandidate)
+    : null;
+  const responseBoundExact = Boolean(responseBoundDestination)
+    && normalizePharmText(originalQuery) === normalizePharmText(responseBoundDestination.canonicalTitle);
+  if ((!indexStatus.complete || !phoneticIndexComplete) && responseBoundExact) {
+    const resultCounts = {
+      drug: 0,
+      lab: 0,
+      pathology: 0,
+      reference: 0,
+      holistic: 0,
+      identity: 1,
+      reviewedRoutes: 0,
+      clinicalCandidates: 0,
+      wholeEncyclopedia: 1
+    };
+    resultCounts[responseBoundDestination.collection] = 1;
+    const result = detector.classify({
+      concept: responseBoundDestination.canonicalTitle,
+      normalizedConcept: normalizePharmText(responseBoundDestination.canonicalTitle),
+      privacySafe: true,
+      ambiguous: false,
+      identityAmbiguous: false,
+      insufficientClues: false,
+      existingMatchVerified: true,
+      existingDestinationCount: 1,
+      identityMatchFound: true,
+      reviewedRouteFound: false,
+      // For A, the relevant proof is complete once the response is bound to
+      // one real runtime owner and its public canonical title is rechecked.
+      // B still requires the complete negative-search layers below.
+      indexComplete: true,
+      detectionOrigin,
+      reasonCode,
+      rejectionCount: Number(context?.rejectionCount || 0),
+      attemptCount: Number(context?.attemptCount || 1),
+      checkedLayers: ["response-bound-runtime-card", "canonical-title"],
+      resultCounts,
+      matchStatus: "RESPONSE_BOUND_EXACT",
+      appliedVariants: [],
+      destinations: [responseBoundDestination],
+      categoryHint: responseBoundDestination.collection
+    });
+    return {
+      ...result,
+      responseBoundExact: true,
+      candidates: [{ type: responseBoundCandidate.type, item: responseBoundCandidate.item }],
+      indexStatus: { ...indexStatus, phoneticComplete: phoneticIndexComplete }
+    };
+  }
+  if (!indexStatus.complete || !phoneticIndexComplete) {
+    // A cold index is classification C, not evidence that content is absent.
+    // Continue the existing bounded content-index warmup, but do not start the
+    // all-at-once phonetic build from an interactive rejection turn.
+    schedulePharmContentIndexBuild();
+    return {
+      classification: "AMBIGUOUS",
+      proposal: null,
+      candidates: [],
+      reason: "index-not-ready",
+      indexStatus: { ...indexStatus, phoneticComplete: phoneticIndexComplete }
+    };
+  }
   const topicResolution = resolveTopicRequest(originalQuery, { mode: "suggest", limit: 12 });
   const identity = topicResolution.identity || {};
   const searchMatches = responsiveEncyclopediaSearchMatches(originalQuery);
@@ -48877,9 +49061,6 @@ function verifyOfflineGapSignal(query = "", context = {}, options = {}) {
     ? reviewedGapTerminologyOwner(originalQuery) || requestedConcept
     : requestedConcept;
 
-  const attemptedCandidates = Array.isArray(context?.attemptedCandidates)
-    ? context.attemptedCandidates.slice(0, 8)
-    : [];
   const destinations = strongCandidates
     .map(offlineGapDestination)
     .filter(Boolean);
@@ -48914,7 +49095,6 @@ function verifyOfflineGapSignal(query = "", context = {}, options = {}) {
   const appliedVariants = [concept, requestedConcept, identity.core, fixedVariant, identity.preferred?.nearIdentityQuery]
     .map((value) => safeText(value).slice(0, 120))
     .filter(Boolean);
-  const detectionOrigin = safeText(options.detectionOrigin || "repeated_rejection");
   const result = detector.classify({
     concept,
     normalizedConcept: normalizePharmText(concept),
@@ -48928,11 +49108,7 @@ function verifyOfflineGapSignal(query = "", context = {}, options = {}) {
     reviewedRouteFound: topicResolution.resolutionKind === "reviewed-route",
     indexComplete: indexStatus.complete === true && phoneticIndexComplete,
     detectionOrigin,
-    reasonCode: detectionOrigin === "explicit_search"
-      ? "zero_results"
-      : detectionOrigin === "answer_abstained"
-        ? "answer_abstained_missing_topic"
-        : "user_rejected_suggestions",
+    reasonCode,
     rejectionCount: Number(context?.rejectionCount || 0),
     attemptCount: Number(context?.attemptCount || attemptedCandidates.length || 0),
     checkedLayers: [
@@ -51373,7 +51549,9 @@ async function makeModelEnhancedResponse(input = "", images = [], resources = []
       && (isOfflineLookupConfirmation(input)
         || isPendingOfflineLookupRejection(input)
         || isOfflineLookupRejectAll(input));
+    const detectorRejectsStandalone = window.ANIGapDetector?.isClearRejection?.(input) === true;
     const standaloneLookupReply = isOfflineLookupConfirmation(input)
+      || detectorRejectsStandalone
       || isOfflineLookupRejection(input)
       || isOfflineLookupRejectAll(input);
     if (hasPendingLookupReply || isOfflineLookupReportIntent(input)) {
@@ -51437,14 +51615,7 @@ async function makeModelEnhancedResponse(input = "", images = [], resources = []
   const explicitLectureRequest = lectureModePrimed
     || lectureState.active
     || /\b(lecture|lecture mode|full lecture|audio lecture)\b/i.test(normalizeIntentText(input));
-  const sharedTopicRequest = !images.length && !resources.length
-    ? resolveTopicRequest(input, { mode: "navigate", limit: 8 })
-    : null;
-  const sharedClinicalClueOwnsRequest = sharedTopicRequest?.resolutionKind === "clinical-clue";
-  const sharedReviewedRouteOwnsRequest = ["reviewed-route", "ambiguous-reviewed-route"]
-    .includes(sharedTopicRequest?.resolutionKind);
-  const sharedNonIdentityRouteOwnsRequest = sharedClinicalClueOwnsRequest
-    || sharedReviewedRouteOwnsRequest;
+  const gapVerificationIndexesReady = automaticGapVerificationIndexesReady();
   if (!images.length && !resources.length && wantsOfflineAbgInterpretationAnswer(input)) {
     return makeOfflineAbgInterpretationAnswer(input);
   }
@@ -51460,8 +51631,6 @@ async function makeModelEnhancedResponse(input = "", images = [], resources = []
     // requests before the generic card/section extractor. Otherwise a query
     // such as "sodium 118 with confusion" can be flattened into the broad
     // Sodium card even though ANI has a safer, more specific bedside answer.
-    const smartDatabaseAnswer = makeOfflineSmartDatabaseAnswer(input);
-    if (smartDatabaseAnswer) return smartDatabaseAnswer;
     const focusedSafetyAnswer = makeOfflineSeizureFirstActionAnswer(input)
       || makeOfflineAnaphylaxisFirstActionAnswer(input);
     if (focusedSafetyAnswer) return focusedSafetyAnswer;
@@ -51471,11 +51640,32 @@ async function makeModelEnhancedResponse(input = "", images = [], resources = []
     // already supplied enough intent to answer locally. Resolve that stable
     // card/section pair before broader answer-engine routing can substitute an
     // associated medication, complication, or similarly worded topic.
-    const focusedSegmentResponse = makeOfflineSegmentResponse(input);
+    const focusedSegmentResponse = gapVerificationIndexesReady
+      ? makeOfflineSegmentResponse(input)
+      : makeColdExactOfflineSegmentResponse(input);
     if (focusedSegmentResponse) return focusedSegmentResponse;
+    const smartDatabaseAnswer = makeOfflineSmartDatabaseAnswer(input);
+    if (smartDatabaseAnswer) return smartDatabaseAnswer;
+    if (!gapVerificationIndexesReady
+      && !explicitLectureRequest
+      && explicitAutomaticGapLookupIntent(input)) {
+      schedulePharmContentIndexBuild();
+      return ambiguousOfflineGapResponse(input, {
+        classification: "AMBIGUOUS",
+        reason: "index-not-ready"
+      });
+    }
     const lane4LocalAnswer = tryLane4RuntimeAnswer(input);
     if (lane4LocalAnswer) return lane4LocalAnswer;
   }
+  const sharedTopicRequest = !images.length && !resources.length
+    ? resolveTopicRequest(input, { mode: "navigate", limit: 8 })
+    : null;
+  const sharedClinicalClueOwnsRequest = sharedTopicRequest?.resolutionKind === "clinical-clue";
+  const sharedReviewedRouteOwnsRequest = ["reviewed-route", "ambiguous-reviewed-route"]
+    .includes(sharedTopicRequest?.resolutionKind);
+  const sharedNonIdentityRouteOwnsRequest = sharedClinicalClueOwnsRequest
+    || sharedReviewedRouteOwnsRequest;
   if (!images.length && !resources.length && !wantsExplicitGeneratedStudyArtifact && !explicitLectureRequest) {
     const immediateExactPathologyTitle = exactUnambiguousPathologyTitleMatch(input);
     if (immediateExactPathologyTitle && !wantsMedicationClassLookup(input)) {
