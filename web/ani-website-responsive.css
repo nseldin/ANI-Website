@@ -238,7 +238,8 @@ html[data-ani-surface="website"] .learner-language-support > strong {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     grid-template-areas:
       "new history clinical lecture"
-      "encyclopedia encyclopedia encyclopedia encyclopedia";
+      "encyclopedia encyclopedia encyclopedia encyclopedia"
+      "report report report report";
     gap: 8px;
   }
 
@@ -502,8 +503,9 @@ html[data-ani-surface="website"] .learner-language-support > strong {
     grid-template-areas:
       "new history"
       "clinical lecture"
-      "encyclopedia encyclopedia";
-    gap: 7px;
+      "encyclopedia encyclopedia"
+      "report report";
+    gap: 6px;
     min-width: 0;
   }
 

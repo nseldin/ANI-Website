@@ -9,11 +9,11 @@
 
   const STORAGE_KEY = "ani-legal-consent-v1";
   const SCHEMA_VERSION = 1;
-  const TERMS_VERSION = "2026-08-18.1";
-  const DATA_USE_VERSION = "2026-08-18.1";
+  const TERMS_VERSION = "2026-08-19.1";
+  const DATA_USE_VERSION = "2026-08-19.1";
   // Stable SHA-256 of the three reviewed, ordered legal-document text blocks.
   // Any wording change deliberately invalidates prior acceptance and requires re-consent.
-  const DOCUMENT_SHA256 = "6f5f8076b5eb245ce39a126c55d8a3f68d2d0ab4187a217f19ec040f09b631f9";
+  const DOCUMENT_SHA256 = "10fa2d07a4cbdd31138384dc6a630fdc7d9333d0c3ea6461850727fcb131a73c";
   const CHANGE_EVENT = "ani-legal-consent-changed";
   const READY_EVENT = "ani-legal-consent-ready";
   const REVIEW_EVENT = "ani-legal-consent-review-requested";
@@ -377,7 +377,7 @@
     function improvementChoice(value) {
       if (value === true || value === "opt-in") return true;
       if (value === false || value === "opt-out") return false;
-      throw new Error("Choose whether ANI may collect bounded no-match search improvement data.");
+      throw new Error("Choose whether ANI may collect bounded encyclopedia-improvement diagnostics.");
     }
 
     function eventDetail(reason, record = readRecord()) {
@@ -421,16 +421,23 @@
 
     function consentProof(kind) {
       const record = readRecord();
-      const searchMissAllowed = kind === "search_miss" && Boolean(record && record.improvementDataOptIn);
+      const improvementDiagnosticAllowed = new Set([
+        "search_miss",
+        "search_miss_batch",
+        "gap_signal",
+        "gap_signal_batch"
+      ])
+        .has(cleanText(kind, 32).toLowerCase())
+        && Boolean(record && record.improvementDataOptIn);
       return {
         terms_version: TERMS_VERSION,
         notice_version: DATA_USE_VERSION,
         document_sha256: DOCUMENT_SHA256,
         terms_accepted_at: record ? record.acceptedAt : null,
         data_use_version: DATA_USE_VERSION,
-        data_collection_confirmed: searchMissAllowed,
-        data_sharing_confirmed: searchMissAllowed,
-        data_consent_at: searchMissAllowed ? record.improvementDataConsentAt : null
+        data_collection_confirmed: improvementDiagnosticAllowed,
+        data_sharing_confirmed: improvementDiagnosticAllowed,
+        data_consent_at: improvementDiagnosticAllowed ? record.improvementDataConsentAt : null
       };
     }
 

@@ -5982,11 +5982,16 @@ const lectureState = {
 let lectureModePrimed = false;
 let pendingOfflineLookupSuggestions = [];
 let pendingOfflineLookupContext = null;
-let lastMissingOfflineContentQuery = "";
+let pendingAnswerGapContext = null;
+let pendingManualReportContext = null;
+let aniUserTurnSequence = 0;
+let aniGapNavigationEpoch = 0;
 let offlineMissQueuedForCurrentMessage = false;
 let lastOfflineListContext = null;
 let lastOfflineLookupTarget = null;
 const OFFLINE_LOOKUP_TARGET_MEMORY_MS = 10 * 60 * 1000;
+const OFFLINE_LOOKUP_CONTEXT_MS = 2 * 60 * 1000;
+const ANSWER_GAP_CONTEXT_MS = 2 * 60 * 1000;
 
 const NCLEX_ESSENTIAL_PHARM_OVERRIDES = new Set([
   "acetaminophen",
@@ -8118,6 +8123,7 @@ function requestPharmIndexNavigation(options = {}) {
 }
 
 function requestClosePharmDatabase() {
+  invalidatePendingGapContextsForNavigation();
   const route = pharmUsesBrowserHistory() ? currentPharmBrowserRoute() : null;
   if (route) {
     const steps = route.view === "detail" ? Math.max(1, Number(route.depth || 1)) + 1 : 1;
@@ -8339,6 +8345,7 @@ function resetPharmDetailCard() {
 }
 
 function setLectureModeActive(active = false) {
+  clearPendingGapContexts();
   lectureModePrimed = Boolean(active);
   if (!lectureModePrimed) {
     lectureState.active = false;
@@ -9900,6 +9907,7 @@ function openChatSession(id) {
     return;
   }
   activeChatId = id;
+  invalidatePendingGapContextsForNavigation();
   localStorage.setItem(ACTIVE_CHAT_ID_KEY, activeChatId);
   clearActiveExamContext();
   renderActiveChat();
@@ -9911,6 +9919,7 @@ function startNewChat() {
   const session = createChatSession();
   chatSessions.unshift(session);
   activeChatId = session.id;
+  invalidatePendingGapContextsForNavigation();
   activeLearningContext = {};
   clearActiveExamContext();
   lectureState.originalTopic = "";
@@ -9926,6 +9935,7 @@ function startNewChat() {
 }
 
 function deleteChatSession(id) {
+  invalidatePendingGapContextsForNavigation();
   const deletingActive = id === activeChatId;
   chatSessions = chatSessions.filter((session) => session.id !== id);
   if (!chatSessions.length) {
@@ -11034,8 +11044,8 @@ function updateAniLegalSettingsSummary(record = aniLegalConsentRuntime()?.getRec
     return;
   }
   aniLegalSettingsSummary.textContent = record.improvementDataOptIn
-    ? `Terms ${record.termsVersion} accepted. Privacy-minimized missing-topic improvement data is on.`
-    : `Terms ${record.termsVersion} accepted. Missing-topic improvement data is off.`;
+    ? `Terms ${record.termsVersion} accepted. Privacy-minimized encyclopedia-improvement diagnostics are on.`
+    : `Terms ${record.termsVersion} accepted. Privacy-minimized encyclopedia-improvement diagnostics are off.`;
 }
 
 function setAniInteractiveAccess(allowed) {
@@ -11323,6 +11333,7 @@ function setReportProblemOpen(isOpen) {
   reportProblemPanel.hidden = !isOpen;
   document.body.classList.toggle("report-panel-open", Boolean(isOpen));
   if (isOpen) {
+    invalidatePendingGapContextsForNavigation();
     setReportProblemStatus("");
     updateReportProblemOutboxStatus();
     window.setTimeout(() => reportProblemSubject?.focus(), 0);
@@ -12642,6 +12653,7 @@ function linkOpeningReferencePreface(bubble, sourceText = "") {
     link.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
+      invalidatePendingGapContextsForNavigation();
       openPharmDatabase(offlineLookupQuery(target.candidate), {
         openDetail: true,
         expandDetail: true,
@@ -12680,6 +12692,7 @@ function linkBoundEncyclopediaTargetInBubble(bubble, target = null) {
   link.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
+    invalidatePendingGapContextsForNavigation();
     openPharmDatabase(offlineLookupQuery(candidate), {
       openDetail: true,
       expandDetail: true,
@@ -19860,6 +19873,20 @@ function medicalAbbreviationSearchTermsForText(value = "") {
       : [entry.short, entry.full, ...(entry.aliases || [])])
     .map((term) => normalizePharmText(term))
     .filter(Boolean);
+}
+
+function reviewedGapTerminologyOwner(value = "") {
+  const normalized = normalizePharmText(value);
+  if (!normalized) return "";
+  const matches = medicalAbbreviationEntriesForText(value, 20)
+    .filter((entry) => entry.contextRequired !== true
+      && Array.isArray(entry.searchTerms)
+      && entry.searchTerms.includes(normalized));
+  const owners = Array.from(new Map(matches.map((entry) => {
+    const owner = safeText(entry.full).replace(/\s+/g, " ").trim().slice(0, 180);
+    return [normalizePharmText(owner), owner];
+  }).filter(([key]) => Boolean(key))).values());
+  return owners.length === 1 ? owners[0] : "";
 }
 
 const LAB_LOOKUP_INTENT_PATTERN = /\b(lab|labs|range|ranges|normal|value|values|level|levels|therapeutic|serum|blood level|peak|trough|toxicity|toxic|output|urine|urine output|map|mean arterial|anion gap|lactate|troponin|myoglobin|mag|magnesium|potassium|sodium|calcium|chloride|phosphorus|phosphate|albumin|bilirubin|ammonia|lipase|amylase|glucose|ketone|ketones|beta hydroxybutyrate|creatinine|creatinine clearance|bun|gfr|egfr|glomerular|glomerular filtration|glomerular filtration rate|kidney function|renal function|renal labs|kidney labs|platelet|platelets|hemoglobin|hematocrit|hgb|hct|wbc|rbc|anc|inr|pt|ptt|aptt|d dimer|fibrinogen|bnp|nt probnp|ck|ckmb|ck mb|creatine kinase|a1c|hba1c|ast|alt|alp|ggt|lft|lfts|tsh|t3|t4|ph|paco2|pao2|hco3|bicarbonate|abg|vbg|spo2|osmolality|specific gravity|crp|c reactive|c reactive protein|esr|erythrocyte sedimentation|erythrocyte sedimentation rate|hdl|ldl|mcv|mch|mchc|rdw|scr|serum creatinine|tibc|tg|triglyceride|triglycerides)\b/i;
@@ -35102,6 +35129,7 @@ function appendPharmDetailText(parent, value = "", options = {}) {
     link.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
+      invalidatePendingGapContextsForNavigation();
       openPharmDatabase(range.candidate.query, {
         openDetail: true,
         autoFocus: false,
@@ -35263,6 +35291,7 @@ function appendExploreRelatedConcepts(container, values = [], currentLabel = "")
     button.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
+      invalidatePendingGapContextsForNavigation();
       openPharmDatabase(candidate.query, {
         openDetail: true,
         autoFocus: false,
@@ -35378,6 +35407,7 @@ function linkEncyclopediaTermsInBubble(root, sourceText = "", options = {}) {
       link.addEventListener("click", (event) => {
         event.preventDefault();
         event.stopPropagation();
+        invalidatePendingGapContextsForNavigation();
         openPharmDatabase(range.candidate.query, {
           openDetail: true,
           expandDetail: true,
@@ -36898,6 +36928,7 @@ function buildClinicalReferenceTimelineVisual(entry = {}, visual = {}) {
           chip.addEventListener("click", (event) => {
             event.preventDefault();
             event.stopPropagation();
+            invalidatePendingGapContextsForNavigation();
             openPharmDatabase(label, {
               openDetail: true,
               autoFocus: false,
@@ -39528,40 +39559,22 @@ function scheduleAniSearchMissEvidence({
   clearAniSearchMissTimer();
   const runtime = aniFeedbackRuntime();
   const consent = currentAniSearchConsentProof();
-  if (!runtime?.queueSearchMiss || !rawQuery.trim() || !consent) return;
+  if (!runtime?.queueGapSignal || !rawQuery.trim() || !consent) return;
   const totalResults = Object.values(resultCounts).reduce((sum, value) => sum + Math.max(0, Number(value) || 0), 0);
-  const observation = {
-    query: rawQuery.slice(0, 240),
-    trigger: committed ? "enter" : "stable",
-    entered: committed,
-    stable: !committed,
-    stableForMs: committed ? 0 : 1500,
-    explicitZeroResults: totalResults === 0,
-    totalResults,
-    resultCounts,
-    isSearchMode: Boolean(rawQuery.trim()),
-    renderComplete: true,
-    requestGenerationMatches: requestGeneration === pharmSearchRequestGeneration,
-    transient: requestGeneration !== pharmSearchRequestGeneration,
-    isComposing: false,
-    favoritesOnly,
-    tinyPhoneSearch: tinySearch,
-    categoryOnly: false,
-    browseMode: microbiologyBrowseMode,
-    correctedQuery: safeText(clinicalSearch?.correctedQuery),
-    phoneticQuery: safeText(clinicalSearch?.phoneticQuery),
-    unmatchedClues: Array.isArray(clinicalSearch?.unmatchedClues)
-      ? clinicalSearch.unmatchedClues.map((value) => safeText(value)).filter(Boolean).slice(0, 6)
-      : [],
-    consent
-  };
-  if (totalResults !== 0 || runtime.shouldQueueSearchMiss?.(observation) === false) return;
+  if (totalResults !== 0 || favoritesOnly || tinySearch || microbiologyBrowseMode) return;
   const submit = () => {
     pharmSearchMissTimer = null;
     if (requestGeneration !== pharmSearchRequestGeneration || (pharmSearchInput?.value || "") !== rawQuery) return;
     const currentConsent = currentAniSearchConsentProof();
     if (!currentConsent) return;
-    Promise.resolve(runtime.queueSearchMiss({ ...observation, consent: currentConsent })).catch(() => {});
+    const gapResult = verifyOfflineGapSignal(rawQuery.slice(0, 180), {
+      rejectionCount: 0,
+      attemptCount: 1,
+      attemptedCandidates: [],
+      offeredDestinationKeys: []
+    }, { detectionOrigin: "explicit_search" });
+    if (!gapResult?.proposal || !["EXISTING_DISCOVERY_FAILURE", "VERIFIED_MISSING"].includes(gapResult.classification)) return;
+    Promise.resolve(runtime.queueGapSignal(gapResult.proposal, { consent: currentConsent })).catch(() => {});
   };
   if (committed) submit();
   else pharmSearchMissTimer = window.setTimeout(submit, 1500);
@@ -45827,6 +45840,14 @@ function isOfflineLookupRejection(input = "") {
   return /^(no|nope|nah|not that|wrong|try again|guess again|different one)$/i.test(offlineLookupReplyText(input));
 }
 
+function isPendingOfflineLookupRejection(input = "") {
+  if (!pendingOfflineLookupSuggestions.length) return false;
+  const detector = window.ANIGapDetector;
+  return typeof detector?.isClearRejection === "function"
+    ? detector.isClearRejection(input)
+    : isOfflineLookupRejection(input);
+}
+
 function isOfflineLookupRejectAll(input = "") {
   return /^(?:none|neither|none of (?:these|those)|neither of (?:these|those)|not (?:these|those)|none of them|not any of (?:these|those|them))$/i.test(offlineLookupReplyText(input));
 }
@@ -48012,6 +48033,12 @@ function offlineSegmentHasPersonalClinicalContext(input = "") {
   return isPersonalClinicalNarrative(withoutEducationalRequestObject);
 }
 
+function automaticGapHasPersonalClinicalContext(input = "") {
+  const text = safeText(input);
+  return offlineSegmentHasPersonalClinicalContext(text)
+    || window.ANIGapDetector?.isObviousPersonalGapNarrative?.(text) === true;
+}
+
 function makeOfflineSegmentResponse(input = "") {
   if (wantsOfflineListExpansionFollowup(input)
     || wantsOfflineBroadCauseList(input)
@@ -48494,95 +48521,562 @@ function clearPendingOfflineLookup() {
   pendingOfflineLookupContext = null;
 }
 
+function clearPendingAnswerGapContext() {
+  pendingAnswerGapContext = null;
+}
+
+function clearPendingManualReportContext() {
+  pendingManualReportContext = null;
+}
+
+function clearPendingGapContexts() {
+  clearPendingOfflineLookup();
+  clearPendingAnswerGapContext();
+  clearPendingManualReportContext();
+}
+
+function invalidatePendingGapContextsForNavigation() {
+  aniGapNavigationEpoch += 1;
+  clearPendingGapContexts();
+}
+
+function gapRequestIsCurrent(requestTurn = 0, navigationEpoch = null) {
+  const boundedTurn = Number(requestTurn || 0);
+  const navigationIsBound = Number.isSafeInteger(navigationEpoch);
+  return (boundedTurn < 1 || boundedTurn === aniUserTurnSequence)
+    && (!navigationIsBound || navigationEpoch === aniGapNavigationEpoch);
+}
+
+function offlineLookupContextIsCurrent(context = pendingOfflineLookupContext) {
+  const ageMs = Date.now() - Number(context?.createdAt || 0);
+  return Boolean(context)
+    && pendingOfflineLookupSuggestions.length > 0
+    && context.expectedUserTurn === aniUserTurnSequence
+    && ageMs >= 0
+    && ageMs <= OFFLINE_LOOKUP_CONTEXT_MS;
+}
+
+function preparePendingOfflineLookupForUserTurn(input = "", options = {}) {
+  const immediateReply = options.hasAttachments !== true
+    && offlineLookupContextIsCurrent()
+    && (isOfflineLookupConfirmation(input)
+      || isPendingOfflineLookupRejection(input)
+      || isOfflineLookupRejectAll(input)
+      || isOfflineLookupReportIntent(input));
+  if (pendingOfflineLookupSuggestions.length && !immediateReply) {
+    clearPendingOfflineLookup();
+  }
+  return immediateReply;
+}
+
+function answerGapContextIsCurrent(context = pendingAnswerGapContext) {
+  const ageMs = Date.now() - Number(context?.createdAt || 0);
+  return Boolean(context)
+    && context.expectedUserTurn === aniUserTurnSequence
+    && ageMs >= 0
+    && ageMs <= ANSWER_GAP_CONTEXT_MS;
+}
+
+function manualReportContextIsCurrent(context = pendingManualReportContext) {
+  const ageMs = Date.now() - Number(context?.createdAt || 0);
+  return Boolean(context)
+    && context.expectedUserTurn === aniUserTurnSequence
+    && ageMs >= 0
+    && ageMs <= ANSWER_GAP_CONTEXT_MS;
+}
+
+function armPendingManualReportContext(query = "") {
+  const boundedQuery = safeText(query).trim().slice(0, 180);
+  pendingManualReportContext = boundedQuery
+    ? {
+      query: boundedQuery,
+      createdAt: Date.now(),
+      expectedUserTurn: aniUserTurnSequence + 1
+    }
+    : null;
+  return Boolean(pendingManualReportContext);
+}
+
+function preparePendingManualReportForUserTurn(input = "", options = {}) {
+  const immediateReportIntent = options.hasAttachments !== true
+    && isOfflineLookupReportIntent(input);
+  const retainContext = immediateReportIntent && manualReportContextIsCurrent();
+  if (!retainContext) clearPendingManualReportContext();
+  return retainContext;
+}
+
+function explicitAutomaticGapLookupIntent(input = "") {
+  const text = safeText(input).trim();
+  if (!text || automaticGapHasPersonalClinicalContext(text)) return false;
+  if (wantsAiGeneratedStudyWork(text)
+    || wantsLecture(text)
+    || explicitMemoryRequest(text)
+    || /\b(?:quiz|practice\s+questions?|test\s+questions?|case\s+study|diagram|flowchart|concept\s+map|image|picture)\b/i.test(normalizeIntentText(text))) {
+    return false;
+  }
+  return offlineLookupIntent(text)
+    || wantsPharmDatabase(text)
+    || isConciseOfflineLookupQuery(text);
+}
+
+function responseGapCandidates(response = null) {
+  const output = [];
+  const add = (candidate) => {
+    const normalized = candidate?.candidate?.item
+      ? candidate.candidate
+      : candidate?.item && candidate?.type ? candidate : null;
+    if (!runtimeTopicRequestCandidateIsBound(normalized)) return;
+    const key = offlineLookupEntityKey(normalized);
+    if (!key || output.some((entry) => offlineLookupEntityKey(entry) === key)) return;
+    output.push({ type: normalized.type, item: normalized.item });
+  };
+  add(response?.targetCandidate);
+  add(response?.target?.candidate);
+  return output.slice(0, 8);
+}
+
+function strictCanonicalExistingGapProposal(verification = {}) {
+  if (verification?.classification !== "EXISTING_DISCOVERY_FAILURE") return null;
+  const proposal = verification?.proposal;
+  const primaryCandidate = Array.isArray(verification?.candidates)
+    ? verification.candidates[0]
+    : null;
+  const boundPrimary = offlineGapDestination(primaryCandidate);
+  const destinations = Array.isArray(proposal?.destinations) ? proposal.destinations : [];
+  const primary = destinations.length === 1 ? destinations[0] : null;
+  const normalize = window.ANIGapDetector?.normalizeConcept;
+  if (!proposal || !boundPrimary || !primary || typeof normalize !== "function"
+    || proposal.classification !== "EXISTING_DISCOVERY_FAILURE"
+    || proposal.indexComplete !== true
+    || proposal.concept !== boundPrimary.canonicalTitle
+    || proposal.normalizedConcept !== normalize(boundPrimary.canonicalTitle)
+    || !Array.isArray(proposal.appliedVariants)
+    || proposal.appliedVariants.length !== 0
+    || proposal.categoryHint !== boundPrimary.collection
+    || primary.collection !== boundPrimary.collection
+    || primary.canonicalTitle !== boundPrimary.canonicalTitle
+    || (primary.populationKey || "") !== (boundPrimary.populationKey || "")) {
+    return null;
+  }
+  return proposal;
+}
+
+function armAnswerGapContext(originalQuery = "", response = null, requestTurn = 0, options = {}) {
+  const responseText = typeof response === "string"
+    ? response
+    : safeText(response?.text || response?.message || response?.preface || "");
+  const backendOrModelFailure = looksLikeBackendUnavailableText(responseText)
+    || responseText === aiUnavailableMessage()
+    || responseText === OPENAI_REQUIRED_MESSAGE
+    || responseText === ANI_BACKEND_UNREACHABLE_MESSAGE;
+  if (!gapRequestIsCurrent(requestTurn, options.gapNavigationEpoch)
+    || options.hasAttachments === true
+    || backendOrModelFailure
+    || window.ANIGapDetector?.isClearRejection?.(originalQuery) === true
+    || isOfflineLookupReportIntent(originalQuery)) {
+    return false;
+  }
+  const responseType = safeText(response?.type || (typeof response === "string" ? "text" : "unknown"));
+  if ([
+    "cje-case", "advanced-item", "standard-question", "unfolding-case", "concept-diagram",
+    "test-format-picker", "manual-report-request", "missing-content", "gap-ambiguous",
+    "gap-discovery-failure", "gap-clarification"
+  ].includes(responseType)) return false;
+  const attemptedCandidates = responseGapCandidates(response);
+  const verificationContext = {
+    rejectionCount: 0,
+    attemptCount: 1,
+    attemptedCandidates: [],
+    offeredDestinationKeys: []
+  };
+  let verification = verifyOfflineGapSignal(originalQuery, verificationContext, {
+    detectionOrigin: "repeated_rejection"
+  });
+  const privateContext = automaticGapHasPersonalClinicalContext(originalQuery);
+  let canonicalExistingProposal = strictCanonicalExistingGapProposal(verification);
+  if (!canonicalExistingProposal && privateContext && attemptedCandidates.length === 1) {
+    // A private-looking educational phrase may contain a legitimate eponym.
+    // Recheck only the exact public runtime object ANI actually answered with;
+    // never reuse or transmit the raw phrase as automatic evidence.
+    const responseCandidate = attemptedCandidates[0];
+    const canonicalQuery = offlineLookupEntityLabel(responseCandidate);
+    const responseVerification = verifyOfflineGapSignal(canonicalQuery, verificationContext, {
+      detectionOrigin: "repeated_rejection"
+    });
+    const responseProposal = strictCanonicalExistingGapProposal(responseVerification);
+    if (responseProposal
+      && offlineLookupEntityKey(responseVerification.candidates?.[0]) === offlineLookupEntityKey(responseCandidate)) {
+      verification = responseVerification;
+      canonicalExistingProposal = responseProposal;
+    }
+  }
+  const eligibleExisting = Boolean(canonicalExistingProposal);
+  const eligiblePotentialAbsence = !privateContext
+    && verification.classification === "VERIFIED_MISSING"
+    && explicitAutomaticGapLookupIntent(originalQuery);
+  const eligibleTrackingOnlyAmbiguity = !privateContext
+    && verification.classification === "AMBIGUOUS"
+    && explicitAutomaticGapLookupIntent(originalQuery);
+  if (!eligibleExisting && !eligiblePotentialAbsence && !eligibleTrackingOnlyAmbiguity) return false;
+  const offeredDestinationKeys = attemptedCandidates
+    .slice(0, 1)
+    .map(offlineLookupEntityKey)
+    .filter(Boolean);
+  pendingAnswerGapContext = {
+    originalQuery: eligibleExisting
+      ? canonicalExistingProposal.concept
+      : safeText(originalQuery).trim().slice(0, 180),
+    createdAt: Date.now(),
+    responseKind: responseType,
+    rejectionCount: 0,
+    attemptCount: 1,
+    attemptedCandidates: attemptedCandidates.slice(0, 1),
+    offeredDestinationKeys,
+    offerProvenanceKnown: attemptedCandidates.length > 0,
+    expectedUserTurn: requestTurn + 1
+  };
+  return true;
+}
+
+function handlePendingAnswerGapRejection(input = "") {
+  const detector = window.ANIGapDetector;
+  if (typeof detector?.isClearRejection !== "function"
+    || !detector.isClearRejection(input)
+    || !answerGapContextIsCurrent()) return null;
+  const context = pendingAnswerGapContext;
+  context.rejectionCount = Math.min(3, Number(context.rejectionCount || 0) + 1);
+  const verification = verifyOfflineGapSignal(context.originalQuery, context, {
+    detectionOrigin: "repeated_rejection"
+  });
+  if (context.rejectionCount >= 2) {
+    clearPendingAnswerGapContext();
+    return resolveTerminalOfflineGap(context.originalQuery, context, {
+      detectionOrigin: "repeated_rejection"
+    });
+  }
+
+  // Count ANI attempts, not user rejection turns. The second rejection only
+  // triggers final classification; it does not represent a third suggestion.
+  context.attemptCount = Math.max(2, Math.min(4, Number(context.attemptCount || 1) + 1));
+
+  const offeredKeys = new Set(context.offeredDestinationKeys || []);
+  const differentCandidate = context.offerProvenanceKnown === true
+    ? (verification.candidates || [])
+      .find((candidate) => !offeredKeys.has(offlineLookupEntityKey(candidate)))
+    : null;
+  if (differentCandidate) {
+    const candidateKey = offlineLookupEntityKey(differentCandidate);
+    if (candidateKey) context.offeredDestinationKeys.push(candidateKey);
+    context.attemptedCandidates.push(differentCandidate);
+    context.expectedUserTurn = aniUserTurnSequence + 1;
+    rememberOfflineLookupTarget(differentCandidate, context.originalQuery);
+    const redirect = offlineLookupDatabaseRedirect(differentCandidate, context.originalQuery);
+    return {
+      ...redirect,
+      preface: `I checked the current encyclopedia more deeply and found a different reviewed destination: **${offlineLookupEntityLabel(differentCandidate)}**. I will not repeat the result you rejected.`
+    };
+  }
+
+  context.expectedUserTurn = aniUserTurnSequence + 1;
+  const foundNoMatch = verification.classification === "VERIFIED_MISSING";
+  return {
+    type: "gap-clarification",
+    classification: verification.classification,
+    query: context.originalQuery,
+    gapSignalProposal: null,
+    text: foundNoMatch
+      ? `I checked the current encyclopedia and still found no confident match for **${context.originalQuery}**. Add one more specific medical term if you can. If this is still the same failed request, one more clear rejection will trigger the final internal check.`
+      : `I will not repeat that answer. Add one distinguishing medical term for **${context.originalQuery}**. If this is still the same failed request, one more clear rejection will trigger the final internal check.`
+  };
+}
+
 function beginPendingOfflineLookup(input = "", candidates = [], options = {}) {
-  pendingOfflineLookupSuggestions = Array.isArray(candidates) ? candidates.slice() : [];
-  lastMissingOfflineContentQuery = "";
+  const seen = new Set();
+  clearPendingManualReportContext();
+  pendingOfflineLookupSuggestions = (Array.isArray(candidates) ? candidates : []).filter((candidate) => {
+    const key = offlineLookupEntityKey(candidate);
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+  const initiallyOffered = options.ambiguous === true
+    ? pendingOfflineLookupSuggestions.slice(0, 8)
+    : pendingOfflineLookupSuggestions.slice(0, 1);
   pendingOfflineLookupContext = pendingOfflineLookupSuggestions.length
     ? {
       originalQuery: safeText(input).trim().slice(0, 180),
+      createdAt: Date.now(),
+      expectedUserTurn: aniUserTurnSequence + 1,
       promptCount: 1,
-      ambiguous: options.ambiguous === true
+      rejectionCount: 0,
+      attemptCount: initiallyOffered.length,
+      ambiguous: options.ambiguous === true,
+      offerProvenanceKnown: true,
+      offeredDestinationKeys: initiallyOffered.map((candidate) => offlineLookupEntityKey(candidate)).filter(Boolean),
+      attemptedCandidates: initiallyOffered
     }
     : null;
   return pendingOfflineLookupSuggestions;
 }
 
-function missingOfflineContentResponse(query = "") {
-  const options = arguments[1] && typeof arguments[1] === "object" ? arguments[1] : {};
-  const originalQuery = safeText(query).trim().slice(0, 180) || "that topic";
-  clearPendingOfflineLookup();
-  lastMissingOfflineContentQuery = originalQuery;
-  const runtime = aniFeedbackRuntime();
-  const consent = currentAniSearchConsentProof();
-  if (options.queueSignal !== false && !offlineMissQueuedForCurrentMessage && runtime?.queueSearchMiss && consent) {
-    offlineMissQueuedForCurrentMessage = true;
-    Promise.resolve(runtime.queueSearchMiss({
-      query: originalQuery,
-      trigger: "entered",
-      entered: true,
-      stable: false,
-      stableForMs: 0,
-      explicitZeroResults: true,
-      totalResults: 0,
-      resultCounts: {
-        drugs: 0,
-        labs: 0,
-        pathology: 0,
-        references: 0,
-        holistic: 0,
-        warnings: 0,
-        procedures: 0,
-        "search-miss": 0
-      },
-      isSearchMode: true,
-      renderComplete: true,
-      requestGenerationMatches: true,
-      transient: false,
-      isComposing: false,
-      favoritesOnly: false,
-      tinyPhoneSearch: false,
-      categoryOnly: false,
-      browseMode: false,
-      correctedQuery: "",
-      phoneticQuery: "",
-      unmatchedClues: [],
-      consent
-    })).catch(() => {});
-  }
+function offlineGapDestination(candidate = {}) {
+  if (!runtimeTopicRequestCandidateIsBound(candidate)) return null;
+  const collection = safeText(candidate.type).trim();
+  const canonicalTitle = safeText(offlineLookupEntityLabel(candidate)).replace(/\s+/g, " ").trim().slice(0, 120);
+  if (!canonicalTitle || !["drug", "lab", "pathology", "reference", "holistic"].includes(collection)) return null;
   return {
-    type: "missing-content",
-    query: originalQuery,
-    text: `I am not sure ANI has a reviewed encyclopedia card for **${originalQuery}** yet. I do not want to guess. Would you like to report this missing topic so it can be evaluated?`
+    collection,
+    canonicalTitle,
+    populationKey: collection === "lab" ? safeText(labPopulationKey(candidate.item)).slice(0, 60) : ""
   };
 }
 
+function queueOfflineGapSignalProposal(proposal = null) {
+  if (!proposal || typeof proposal !== "object" || offlineMissQueuedForCurrentMessage) return false;
+  const runtime = aniFeedbackRuntime();
+  const consent = currentAniSearchConsentProof();
+  if (typeof runtime?.queueGapSignal !== "function" || !consent) return false;
+  offlineMissQueuedForCurrentMessage = true;
+  Promise.resolve(runtime.queueGapSignal(proposal, { consent })).catch(() => {});
+  return true;
+}
+
+function verifyOfflineGapSignal(query = "", context = {}, options = {}) {
+  const detector = window.ANIGapDetector;
+  if (typeof detector?.classify !== "function") {
+    return { classification: "AMBIGUOUS", proposal: null, candidates: [], reason: "detector-unavailable" };
+  }
+  const originalQuery = safeText(query).trim().slice(0, 180);
+  const requestedConcept = normalizeOfflineLookupText(originalQuery).slice(0, 180)
+    || fastCanonicalLookupCore(originalQuery).slice(0, 180);
+  const indexStatus = pharmContentIndexStatus();
+  const phoneticIndexComplete = Boolean(medicalPhoneticIdentityIndex);
+  if (!phoneticIndexComplete) scheduleMedicalPhoneticIdentityIndex();
+  const topicResolution = resolveTopicRequest(originalQuery, { mode: "suggest", limit: 12 });
+  const identity = topicResolution.identity || {};
+  const searchMatches = responsiveEncyclopediaSearchMatches(originalQuery);
+  const exactPriority = responsiveEncyclopediaExactPriority(originalQuery);
+  const strongCandidates = [];
+  const addStrongCandidate = (candidate) => {
+    if (!runtimeTopicRequestCandidateIsBound(candidate)) return;
+    const key = offlineLookupEntityKey(candidate);
+    if (!key || strongCandidates.some((entry) => offlineLookupEntityKey(entry) === key)) return;
+    strongCandidates.push({ type: candidate.type, item: candidate.item });
+  };
+  if (identity.unique === true && identity.preferred) addStrongCandidate(identity.preferred);
+  if (topicResolution.resolutionKind === "reviewed-route"
+    && topicResolution.reviewed?.ambiguousIdentity !== true) {
+    addStrongCandidate(topicResolution.reviewed?.preferred);
+  }
+  addStrongCandidate(exactPriority);
+  if (runtimeTopicRequestCandidateIsBound(searchMatches.preferred)
+    && inputDirectlyNamesOfflineCandidate(originalQuery, searchMatches.preferred)) {
+    addStrongCandidate(searchMatches.preferred);
+  }
+  const concept = strongCandidates.length === 0
+    ? reviewedGapTerminologyOwner(originalQuery) || requestedConcept
+    : requestedConcept;
+
+  const attemptedCandidates = Array.isArray(context?.attemptedCandidates)
+    ? context.attemptedCandidates.slice(0, 8)
+    : [];
+  const destinations = strongCandidates
+    .map(offlineGapDestination)
+    .filter(Boolean);
+  const resultCounts = {
+    drug: Array.isArray(searchMatches.drug) ? searchMatches.drug.length : 0,
+    lab: Array.isArray(searchMatches.lab) ? searchMatches.lab.length : 0,
+    pathology: Array.isArray(searchMatches.pathology) ? searchMatches.pathology.length : 0,
+    reference: Array.isArray(searchMatches.reference) ? searchMatches.reference.length : 0,
+    holistic: Array.isArray(searchMatches.holistic) ? searchMatches.holistic.length : 0,
+    identity: Array.isArray(identity.candidates) ? identity.candidates.length : 0,
+    reviewedRoutes: Array.isArray(topicResolution.reviewed?.candidates) ? topicResolution.reviewed.candidates.length : 0,
+    clinicalCandidates: Array.isArray(topicResolution.clinical?.candidates) ? topicResolution.clinical.candidates.length : 0,
+    wholeEncyclopedia: Number(searchMatches.candidateCount || 0)
+  };
+  const identitySuggestionOnly = strongCandidates.length === 0
+    && Array.isArray(identity.candidates)
+    && identity.candidates.length > 0;
+  const clinicalStatus = safeText(topicResolution.clinical?.status || topicResolution.status || "NO_MATCH");
+  const reviewedExistingOwner = identity.unique === true
+    || runtimeTopicRequestCandidateIsBound(exactPriority)
+    || (topicResolution.resolutionKind === "reviewed-route"
+      && topicResolution.reviewed?.ambiguousIdentity !== true
+      && runtimeTopicRequestCandidateIsBound(topicResolution.reviewed?.preferred));
+  const identityAmbiguous = context?.ambiguous === true || (!reviewedExistingOwner && (
+    topicResolution.ambiguousIdentity === true
+      || identity.suppressUnrelatedMatches === true
+      || identitySuggestionOnly
+      || topicResolution.reviewed?.ambiguousIdentity === true
+      || (topicResolution.resolutionKind === "clinical-clue" && Boolean(topicResolution.clinical?.preferred))
+  ));
+  const fixedVariant = normalizePharmText(applyClinicalSpeechFixups(originalQuery) || originalQuery);
+  const appliedVariants = [concept, requestedConcept, identity.core, fixedVariant, identity.preferred?.nearIdentityQuery]
+    .map((value) => safeText(value).slice(0, 120))
+    .filter(Boolean);
+  const detectionOrigin = safeText(options.detectionOrigin || "repeated_rejection");
+  const result = detector.classify({
+    concept,
+    normalizedConcept: normalizePharmText(concept),
+    privacySafe: Boolean(concept) && !automaticGapHasPersonalClinicalContext(originalQuery),
+    ambiguous: identityAmbiguous,
+    identityAmbiguous,
+    insufficientClues: clinicalStatus === "INSUFFICIENT_CLUES",
+    existingMatchVerified: strongCandidates.length > 0,
+    existingDestinationCount: strongCandidates.length,
+    identityMatchFound: Boolean(identity.preferred),
+    reviewedRouteFound: topicResolution.resolutionKind === "reviewed-route",
+    indexComplete: indexStatus.complete === true && phoneticIndexComplete,
+    detectionOrigin,
+    reasonCode: detectionOrigin === "explicit_search"
+      ? "zero_results"
+      : detectionOrigin === "answer_abstained"
+        ? "answer_abstained_missing_topic"
+        : "user_rejected_suggestions",
+    rejectionCount: Number(context?.rejectionCount || 0),
+    attemptCount: Number(context?.attemptCount || attemptedCandidates.length || 0),
+    checkedLayers: [
+      "canonical-title",
+      "aliases",
+      "abbreviations",
+      "spelling-variants",
+      "near-identity",
+      ...(phoneticIndexComplete ? ["phonetic-variants"] : []),
+      "reviewed-routes",
+      "whole-encyclopedia",
+      "clinical-search"
+    ],
+    resultCounts,
+    matchStatus: strongCandidates.length
+      ? `${safeText(topicResolution.status || "MATCHED")}:${safeText(identity.matchKind || topicResolution.resolutionKind || "bound")}`
+      : clinicalStatus,
+    appliedVariants,
+    destinations,
+    categoryHint: strongCandidates[0]?.type || "unknown"
+  });
+  return {
+    ...result,
+    candidates: strongCandidates,
+    indexStatus: { ...indexStatus, phoneticComplete: phoneticIndexComplete }
+  };
+}
+
+function ambiguousOfflineGapResponse(query = "", gapResult = null) {
+  const originalQuery = safeText(query).trim().slice(0, 180) || "that topic";
+  clearPendingOfflineLookup();
+  armPendingManualReportContext(originalQuery);
+  return {
+    type: "gap-ambiguous",
+    classification: gapResult?.classification || "AMBIGUOUS",
+    query: originalQuery,
+    gapSignalProposal: null,
+    text: `I still cannot tell exactly which encyclopedia topic you mean by **${originalQuery}**. Add one more specific medical term, abbreviation expansion, or category. You can also use ANI's normal Report option.`
+  };
+}
+
+function manualOfflineReportResponse(query = "") {
+  const originalQuery = safeText(query).trim().slice(0, 180) || "the topic you were looking for";
+  clearPendingGapContexts();
+  return {
+    type: "manual-report-request",
+    query: originalQuery,
+    manualReportRequested: true,
+    gapSignalProposal: null,
+    text: `You can report **${originalQuery}** for review. Check the prefilled draft, remove any identifying information, and send it only if you choose.`
+  };
+}
+
+function missingOfflineContentResponse(query = "", options = {}) {
+  const proposal = options?.gapResult?.proposal || null;
+  const originalQuery = safeText(proposal?.concept || query).trim().slice(0, 180) || "that topic";
+  clearPendingOfflineLookup();
+  armPendingManualReportContext(originalQuery);
+  queueOfflineGapSignalProposal(proposal);
+  return {
+    type: "missing-content",
+    classification: options?.gapResult?.classification || "VERIFIED_MISSING",
+    query: originalQuery,
+    gapSignalProposal: proposal,
+    text: `ANI checked the current encyclopedia and could not find a reviewed card for **${originalQuery}**. You can still use Report if you want to add context for the review team.`
+  };
+}
+
+function resolveTerminalOfflineGap(query = "", context = {}, options = {}) {
+  const requestTurn = Number(options.requestTurn || 0);
+  if (!gapRequestIsCurrent(requestTurn, options.gapNavigationEpoch)) return null;
+  const gapResult = verifyOfflineGapSignal(query, context, options);
+  const offeredKeys = new Set(Array.isArray(context?.offeredDestinationKeys)
+    ? context.offeredDestinationKeys
+    : []);
+  if (gapResult.classification === "EXISTING_DISCOVERY_FAILURE") {
+    queueOfflineGapSignalProposal(gapResult.proposal);
+    const mayOpenVerifiedDestination = context?.allowVerifiedDestinationOpen === true
+      || context?.offerProvenanceKnown === true;
+    const unoffered = mayOpenVerifiedDestination
+      ? (gapResult.candidates || [])
+        .find((candidate) => !offeredKeys.has(offlineLookupEntityKey(candidate)))
+      : null;
+    clearPendingOfflineLookup();
+    clearPendingManualReportContext();
+    if (unoffered) {
+      rememberOfflineLookupTarget(unoffered, query);
+      const response = offlineLookupDatabaseRedirect(unoffered, query);
+      return {
+        ...response,
+        classification: gapResult.classification,
+        gapSignalProposal: gapResult.proposal,
+        preface: `ANI found **${offlineLookupEntityLabel(unoffered)}** in the current encyclopedia. The earlier suggestions were a search/discovery failure, not missing content.`
+      };
+    }
+    return {
+      type: "gap-discovery-failure",
+      classification: gapResult.classification,
+      query: safeText(gapResult.proposal?.concept || query),
+      gapSignalProposal: gapResult.proposal,
+      text: "ANI confirmed that this topic already exists, but the search or recommendation path did not present it correctly. I will not repeat the rejected destination. Add one distinguishing term or open the encyclopedia search."
+    };
+  }
+  if (gapResult.classification === "VERIFIED_MISSING") {
+    return missingOfflineContentResponse(query, { gapResult });
+  }
+  return ambiguousOfflineGapResponse(query, gapResult);
+}
+
 function handleOfflineLookupFlow(input = "", options = {}) {
+  const requestTurn = Number(options.requestTurn || 0);
+  const gapNavigationEpoch = Number.isSafeInteger(options.gapNavigationEpoch)
+    ? options.gapNavigationEpoch
+    : null;
+  if (!gapRequestIsCurrent(requestTurn, gapNavigationEpoch)) return "";
   const force = Boolean(options.force);
   const allowPrompt = options.allowPrompt !== false;
   const trimmed = input.trim();
   if (isOfflineLookupReportIntent(trimmed)) {
-    const originalQuery = pendingOfflineLookupContext?.originalQuery
-      || lastMissingOfflineContentQuery
+    const originalQuery = (offlineLookupContextIsCurrent() ? pendingOfflineLookupContext?.originalQuery : "")
+      || (answerGapContextIsCurrent() ? pendingAnswerGapContext?.originalQuery : "")
+      || (manualReportContextIsCurrent() ? pendingManualReportContext?.query : "")
       || "the topic you were looking for";
-    return missingOfflineContentResponse(originalQuery, {
-      queueSignal: Boolean(pendingOfflineLookupContext?.originalQuery)
-    });
+    return manualOfflineReportResponse(originalQuery);
   }
   if (pendingOfflineLookupSuggestions.length && isOfflineLookupConfirmation(trimmed)) {
     if (pendingOfflineLookupSuggestions.some((candidate) => candidate?.ambiguousIdentity === true)) {
       pendingOfflineLookupContext = pendingOfflineLookupContext || {
         originalQuery: trimmed,
+        createdAt: Date.now(),
+        expectedUserTurn: aniUserTurnSequence + 1,
         promptCount: 1,
-        ambiguous: true
+        ambiguous: true,
+        offerProvenanceKnown: true
       };
       if (pendingOfflineLookupContext.promptCount >= 2) {
-        return missingOfflineContentResponse(pendingOfflineLookupContext.originalQuery);
+        return ambiguousOfflineGapResponse(pendingOfflineLookupContext.originalQuery);
       }
       pendingOfflineLookupContext.promptCount += 1;
+      pendingOfflineLookupContext.expectedUserTurn = aniUserTurnSequence + 1;
       return makeOfflineAmbiguityPrompt(pendingOfflineLookupSuggestions);
     }
     const candidate = pendingOfflineLookupSuggestions[0];
-    lastMissingOfflineContentQuery = "";
+    clearPendingManualReportContext();
     clearPendingOfflineLookup();
     rememberOfflineLookupTarget(candidate, trimmed);
     return {
@@ -48597,22 +49091,98 @@ function handleOfflineLookupFlow(input = "", options = {}) {
   }
 
   if (pendingOfflineLookupSuggestions.length && isOfflineLookupRejectAll(trimmed)) {
-    return missingOfflineContentResponse(pendingOfflineLookupContext?.originalQuery || trimmed);
+    const context = pendingOfflineLookupContext || {
+      originalQuery: trimmed,
+      createdAt: Date.now(),
+      expectedUserTurn: aniUserTurnSequence + 1,
+      promptCount: 1,
+      rejectionCount: 0,
+      attemptCount: pendingOfflineLookupSuggestions.length,
+      offerProvenanceKnown: true,
+      attemptedCandidates: pendingOfflineLookupSuggestions.slice(0, 8),
+      offeredDestinationKeys: pendingOfflineLookupSuggestions.map(offlineLookupEntityKey).filter(Boolean)
+    };
+    context.rejectionCount = Math.min(3, Number(context.rejectionCount || 0) + 1);
+    pendingOfflineLookupContext = context;
+    if (context.rejectionCount < 2) {
+      context.promptCount = Math.max(2, Number(context.promptCount || 1) + 1);
+      context.attemptCount = Math.max(2, Number(context.attemptCount || 1));
+      context.expectedUserTurn = aniUserTurnSequence + 1;
+      return {
+        type: "gap-clarification",
+        classification: "AMBIGUOUS",
+        query: context.originalQuery || trimmed,
+        gapSignalProposal: null,
+        text: "I will not repeat those suggestions. Add one distinguishing medical term if you can. A second clear rejection of this same request will trigger ANI's final full-index classification."
+      };
+    }
+    return resolveTerminalOfflineGap(context.originalQuery || trimmed, context, {
+      detectionOrigin: "repeated_rejection",
+      requestTurn,
+      gapNavigationEpoch
+    });
   }
 
-  if (pendingOfflineLookupSuggestions.length && isOfflineLookupRejection(trimmed)) {
+  if (pendingOfflineLookupSuggestions.length && isPendingOfflineLookupRejection(trimmed)) {
     const originalQuery = pendingOfflineLookupContext?.originalQuery || trimmed;
-    pendingOfflineLookupSuggestions.shift();
     pendingOfflineLookupContext = pendingOfflineLookupContext || {
       originalQuery,
+      createdAt: Date.now(),
+      expectedUserTurn: aniUserTurnSequence + 1,
       promptCount: 1,
-      ambiguous: false
+      rejectionCount: 0,
+      attemptCount: 1,
+      ambiguous: false,
+      offerProvenanceKnown: true,
+      offeredDestinationKeys: [offlineLookupEntityKey(pendingOfflineLookupSuggestions[0])].filter(Boolean),
+      attemptedCandidates: pendingOfflineLookupSuggestions.slice(0, 1)
     };
-    if (pendingOfflineLookupSuggestions.length && pendingOfflineLookupContext.promptCount < 2) {
+    pendingOfflineLookupContext.rejectionCount = Math.min(
+      3,
+      Number(pendingOfflineLookupContext.rejectionCount || 0) + 1
+    );
+    const offeredKeys = new Set(pendingOfflineLookupContext.offeredDestinationKeys || []);
+    pendingOfflineLookupSuggestions = pendingOfflineLookupSuggestions
+      .filter((candidate) => !offeredKeys.has(offlineLookupEntityKey(candidate)));
+    if (pendingOfflineLookupSuggestions.length && pendingOfflineLookupContext.rejectionCount < 2) {
+      const next = pendingOfflineLookupSuggestions[0];
+      const nextKey = offlineLookupEntityKey(next);
+      if (nextKey && !offeredKeys.has(nextKey)) {
+        pendingOfflineLookupContext.offeredDestinationKeys.push(nextKey);
+        pendingOfflineLookupContext.attemptedCandidates.push(next);
+        pendingOfflineLookupContext.attemptCount = Math.min(
+          8,
+          Number(pendingOfflineLookupContext.attemptCount || 0) + 1
+        );
+      }
       pendingOfflineLookupContext.promptCount += 1;
-      return makeOfflineDidYouMean(pendingOfflineLookupSuggestions[0]);
+      pendingOfflineLookupContext.expectedUserTurn = aniUserTurnSequence + 1;
+      return makeOfflineDidYouMean(next);
     }
-    return missingOfflineContentResponse(originalQuery);
+    if (pendingOfflineLookupContext.rejectionCount < 2) {
+      pendingOfflineLookupContext.attemptCount = Math.max(
+        2,
+        Number(pendingOfflineLookupContext.attemptCount || 1)
+      );
+      pendingAnswerGapContext = {
+        ...pendingOfflineLookupContext,
+        responseKind: "gap-clarification",
+        expectedUserTurn: aniUserTurnSequence + 1
+      };
+      clearPendingOfflineLookup();
+      return {
+        type: "gap-clarification",
+        classification: "AMBIGUOUS",
+        query: originalQuery,
+        gapSignalProposal: null,
+        text: "I will not repeat that suggestion. Add one distinguishing medical term if you can. A second clear rejection of this same request will trigger ANI's final full-index classification."
+      };
+    }
+    return resolveTerminalOfflineGap(originalQuery, pendingOfflineLookupContext, {
+      detectionOrigin: "repeated_rejection",
+      requestTurn,
+      gapNavigationEpoch
+    });
   }
 
   if (!pendingOfflineLookupSuggestions.length
@@ -50790,24 +51360,38 @@ function renderLane4MetricsDiagnostics() {
   setText(lane4MetricsLatency, `Average latency — local ${view.averageLatencyMs.local} ms; cache ${view.averageLatencyMs.cache} ms; AI ${view.averageLatencyMs.ai} ms; fallback ${view.averageLatencyMs.fallback} ms. Aggregate-only; no prompt or account data.`);
 }
 
-async function makeModelEnhancedResponse(input = "", images = [], resources = []) {
+async function makeModelEnhancedResponse(input = "", images = [], resources = [], options = {}) {
+  const requestTurn = Number(options.requestTurn || 0);
+  const gapNavigationEpoch = Number.isSafeInteger(options.gapNavigationEpoch)
+    ? options.gapNavigationEpoch
+    : null;
+  const requestTurnIsCurrent = () => gapRequestIsCurrent(requestTurn, gapNavigationEpoch);
+  if (!requestTurnIsCurrent()) return { type: "stale-response", text: "" };
   offlineMissQueuedForCurrentMessage = false;
   if (!images.length && !resources.length) {
     const hasPendingLookupReply = pendingOfflineLookupSuggestions.length > 0
       && (isOfflineLookupConfirmation(input)
-        || isOfflineLookupRejection(input)
+        || isPendingOfflineLookupRejection(input)
         || isOfflineLookupRejectAll(input));
     const standaloneLookupReply = isOfflineLookupConfirmation(input)
       || isOfflineLookupRejection(input)
       || isOfflineLookupRejectAll(input);
-    if (hasPendingLookupReply || isOfflineLookupReportIntent(input) || standaloneLookupReply) {
+    if (hasPendingLookupReply || isOfflineLookupReportIntent(input)) {
       const lookupReply = handleOfflineLookupFlow(input, {
         force: true,
         allowPrompt: true,
-        preferDatabaseRedirect: true
+        preferDatabaseRedirect: true,
+        requestTurn,
+        gapNavigationEpoch
       });
       if (lookupReply) return lookupReply;
       return "I do not have a pending encyclopedia choice to confirm or reject. Tell me the topic you want ANI to find.";
+    }
+    const answerGapReply = handlePendingAnswerGapRejection(input);
+    if (answerGapReply) return answerGapReply;
+    if (standaloneLookupReply) {
+      clearPendingAnswerGapContext();
+      return "I do not have a recent ANI answer or encyclopedia choice to confirm or reject. Tell me the topic you want ANI to find.";
     }
   }
   if (explicitMemoryRequest(input)) {
@@ -51019,7 +51603,9 @@ async function makeModelEnhancedResponse(input = "", images = [], resources = []
   if (!images.length && !resources.length) {
     const offlineFlow = handleOfflineLookupFlow(input, {
       force: shouldUseOfflineLookupCore() || !shouldUseAiForUserRequest(input),
-      preferDatabaseRedirect: true
+      preferDatabaseRedirect: true,
+      requestTurn,
+      gapNavigationEpoch
     });
     if (offlineFlow) {
       return offlineFlow;
@@ -51268,14 +51854,44 @@ async function makeModelEnhancedResponse(input = "", images = [], resources = []
     return adaptiveResponse || aiUnavailableMessage();
   }
 
+  // This is a structured local abstention: every reviewed local router above
+  // declined the explicit topic lookup, and no network/backend failure has
+  // occurred. Only the full-index verifier may now classify A/B/C.
+  if (!images.length
+    && !resources.length
+    && !shouldUseAiForUserRequest(input)
+    && explicitAutomaticGapLookupIntent(input)) {
+    const abstainedGap = verifyOfflineGapSignal(input, {
+      rejectionCount: 0,
+      attemptCount: 1,
+      attemptedCandidates: [],
+      offeredDestinationKeys: []
+    }, { detectionOrigin: "answer_abstained" });
+    if (["EXISTING_DISCOVERY_FAILURE", "VERIFIED_MISSING"].includes(abstainedGap.classification)) {
+      return resolveTerminalOfflineGap(input, {
+        rejectionCount: 0,
+        attemptCount: 1,
+        attemptedCandidates: [],
+        offeredDestinationKeys: [],
+        allowVerifiedDestinationOpen: true
+      }, { detectionOrigin: "answer_abstained", requestTurn, gapNavigationEpoch });
+    }
+    if (abstainedGap.classification === "AMBIGUOUS") {
+      return ambiguousOfflineGapResponse(input, abstainedGap);
+    }
+  }
+
   const adaptiveResponse = await requestAdaptiveTextResponse(input, images, resources, imageLocalDraft, {
     allowFallbackText: true
   });
+  if (!requestTurnIsCurrent()) return { type: "stale-response", text: "" };
   if (!images.length && !resources.length && looksLikeBackendUnavailableText(adaptiveResponse)) {
     const offlineFallback = handleOfflineLookupFlow(input, {
       force: true,
       allowPrompt: false,
-      preferDatabaseRedirect: true
+      preferDatabaseRedirect: true,
+      requestTurn,
+      gapNavigationEpoch
     });
     if (offlineFallback) {
       return offlineFallback;
@@ -51298,6 +51914,22 @@ function sendUserMessage(text, options = {}) {
   if (!cleaned && !images.length && !resources.length) {
     return;
   }
+  const requestTurn = ++aniUserTurnSequence;
+  const gapNavigationEpoch = aniGapNavigationEpoch;
+  const hasRequestAttachments = Boolean(images.length || resources.length);
+  preparePendingOfflineLookupForUserTurn(cleaned, {
+    hasAttachments: hasRequestAttachments
+  });
+  const immediateManualReportIntent = !hasRequestAttachments
+    && isOfflineLookupReportIntent(cleaned);
+  preparePendingManualReportForUserTurn(cleaned, {
+    hasAttachments: hasRequestAttachments
+  });
+  const immediateTrackedGapReply = !hasRequestAttachments
+    && answerGapContextIsCurrent()
+    && (window.ANIGapDetector?.isClearRejection?.(cleaned) === true
+      || immediateManualReportIntent);
+  if (!immediateTrackedGapReply) clearPendingAnswerGapContext();
 
   const bypassLectureForQuestion = lectureModePrimed
     && cleaned
@@ -51354,11 +51986,19 @@ function sendUserMessage(text, options = {}) {
     if (voiceStatus) {
       voiceStatus.textContent = "Voice ready";
     }
+    armAnswerGapContext(outgoingText, {
+      type: "pharm-database",
+      targetCandidate: directEncyclopediaTarget
+    }, requestTurn, { hasAttachments: false, gapNavigationEpoch });
     return;
   }
   const finishUserMessage = async () => {
     try {
-      const response = await makeModelEnhancedResponse(outgoingText, images, resources);
+      const response = await makeModelEnhancedResponse(outgoingText, images, resources, {
+        requestTurn,
+        gapNavigationEpoch
+      });
+    if (!gapRequestIsCurrent(requestTurn, gapNavigationEpoch)) return;
     if (response?.preface && response?.type !== "pharm-database") {
       addMessage("assistant", response.preface, false, response?.type !== "pharm-database");
     }
@@ -51384,6 +52024,16 @@ function sendUserMessage(text, options = {}) {
     } else if (response?.type === "encyclopedia-segment") {
       addMessage("assistant", response.text, false, true, true, {
         boundEncyclopediaTarget: response.target
+      });
+    } else if (["gap-ambiguous", "gap-discovery-failure", "gap-clarification"].includes(response?.type)) {
+      addMessage("assistant", response.text, false, true, true);
+    } else if (response?.type === "manual-report-request") {
+      addMessage("assistant", response.text, false, true, true, {
+        reportProblemDraft: {
+          query: response.query || outgoingText,
+          category: "missing_content",
+          label: "Open report draft"
+        }
       });
     } else if (response?.type === "missing-content") {
       addMessage("assistant", response.text, false, true, true, {
@@ -51430,7 +52080,13 @@ function sendUserMessage(text, options = {}) {
     } else {
       addMessage("assistant", response);
     }
+    armAnswerGapContext(outgoingText, response, requestTurn, {
+      hasAttachments: images.length > 0 || resources.length > 0,
+      gapNavigationEpoch
+    });
     } catch (error) {
+      if (!gapRequestIsCurrent(requestTurn, gapNavigationEpoch)) return;
+      clearPendingAnswerGapContext();
       console.error("ANI could not finish the local response", error);
       addMessage(
         "assistant",
@@ -51447,7 +52103,7 @@ function sendUserMessage(text, options = {}) {
         }
       );
     } finally {
-      if (voiceStatus) {
+      if (gapRequestIsCurrent(requestTurn, gapNavigationEpoch) && voiceStatus) {
         voiceStatus.textContent = "Voice ready";
       }
     }
@@ -52059,6 +52715,7 @@ function setClinicalTranscript(text = "") {
 }
 
 function enterClinicalMode() {
+  invalidatePendingGapContextsForNavigation();
   clinicalModeActive = true;
   if (micActive) {
     stopMicrophoneInput();
@@ -53144,8 +53801,12 @@ micButton?.addEventListener("click", () => {
 });
 
 clinicalModeButton?.addEventListener("click", enterClinicalMode);
-pharmDatabaseButton?.addEventListener("click", () => openPharmDatabase());
+pharmDatabaseButton?.addEventListener("click", () => {
+  invalidatePendingGapContextsForNavigation();
+  openPharmDatabase();
+});
 lectureModeButton?.addEventListener("click", () => {
+  invalidatePendingGapContextsForNavigation();
   if (lectureModePrimed) {
     setLectureModeActive(false);
     messageInput?.focus();
@@ -53588,6 +54249,7 @@ pharmDatabaseScreen?.addEventListener("click", (event) => {
   }
 });
 window.addEventListener("popstate", (event) => {
+  invalidatePendingGapContextsForNavigation();
   applyPharmBrowserRoute(event.state);
 });
 if (pharmUsesBrowserHistory() && currentPharmBrowserRoute()) {
@@ -53867,6 +54529,7 @@ newChatButton?.addEventListener("click", () => {
 });
 
 toggleChatHistoryButton?.addEventListener("click", () => {
+  invalidatePendingGapContextsForNavigation();
   toggleChatHistoryPanel();
 });
 

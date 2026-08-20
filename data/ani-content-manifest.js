@@ -2,12 +2,12 @@ window.ANI_CONTENT_MANIFEST = Object.freeze({
   "schemaVersion": 1,
   "manifestKind": "ani-shared-web-apk-content-fingerprint",
   "topicCount": 4817,
-  "loaderCount": 131,
+  "loaderCount": 132,
   "loaders": [
     {
       "path": "src/ani/legal-consent.js",
-      "bytes": 29414,
-      "sha256": "67d17cac2f4d63144dce8b51785242ae42eefd653edae8e41c127dc35b41d58b"
+      "bytes": 29615,
+      "sha256": "5f9aa14db63994cedeebfc75eeacfb3df255f3ea9ef3783862c5264a7fbe2297"
     },
     {
       "path": "data/pharm-database.js",
@@ -580,14 +580,19 @@ window.ANI_CONTENT_MANIFEST = Object.freeze({
       "sha256": "4cfacf99cd633441144125f468a527765daa6174bb6f4368da2db1bb67cef2b0"
     },
     {
+      "path": "src/ani/gap-detector.js",
+      "bytes": 21170,
+      "sha256": "db0e68d7ca97cc9ff9d2c6362bd2ef6e4a510ef3666c1885bea28c289ac0eb49"
+    },
+    {
       "path": "src/ani/feedback-runtime.js",
-      "bytes": 93892,
-      "sha256": "e7006f74c510f73d1a230616904d9d085cea4e0b4b2b96a3e2d6c9802da3c9e0"
+      "bytes": 124358,
+      "sha256": "a1bc1990c04c2a17fcf102a91e7fed1917b2e7123f0425f1790c11f2a0ccaaaf"
     },
     {
       "path": "main.js",
-      "bytes": 3071340,
-      "sha256": "a7440be3629c182b8ea791df35534039cd993be83ad3882ad0e4415573ecd606"
+      "bytes": 3102508,
+      "sha256": "f17e1c7868f032e5087d7299683f0cc88af1e4a7f586c920e238f435948cfa0e"
     },
     {
       "path": "data/pharm-frontier-wave21-antiseizure-routing.js",
@@ -660,6 +665,6 @@ window.ANI_CONTENT_MANIFEST = Object.freeze({
       "sha256": "b70103bad6c518e8b6d8f44cc33d8714fe5e561ce5c0a68c41fcea5bbc547f3b"
     }
   ],
-  "contentSha256": "8abd77df07d6bc7885413c100da97d672b926e52f5d130889d68ca2e4cfc3ab0",
-  "shortVersion": "8abd77df07d6"
+  "contentSha256": "bba075d7c92dc67bcde8d334fc42b5beef1bac3afba75750b9b5054041f1c316",
+  "shortVersion": "bba075d7c92d"
 });

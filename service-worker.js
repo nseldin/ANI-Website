@@ -1,4 +1,4 @@
-const CACHE_VERSION = "ani-pwa-v374-web-429b7eb85153";
+const CACHE_VERSION = "ani-pwa-v375-web-f4156e95c8d9";
 const APP_SHELL = [
   "/",
   "/index.html",
@@ -18,6 +18,7 @@ const APP_SHELL = [
   "/src/ani/legal-consent.js",
   "/data/ani-content-manifest.js",
   "/data/ani-content-manifest.json",
+  "/src/ani/gap-detector.js",
   "/src/ani/feedback-runtime.js",
   "/main.js",
   "/src/lane4/runtime-efficiency.js",

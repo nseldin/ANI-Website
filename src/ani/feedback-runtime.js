@@ -8,29 +8,79 @@
   "use strict";
 
   const SCHEMA_VERSION = 1;
+  const GAP_SCHEMA_VERSION = 2;
   const DATABASE_NAME = "ani-feedback-outbox-v1";
   const DATABASE_VERSION = 1;
   const OUTBOX_STORE = "outbox";
   const META_STORE = "meta";
   const SEARCH_DEDUPE_KEY = "search-dedupe-v1";
+  const GAP_DEDUPE_KEY = "gap-dedupe-v1";
   const ALLOWED_IMAGE_TYPES = new Set(["image/png", "image/jpeg", "image/webp"]);
-  const ITEM_TYPES = new Set(["manual_report", "search_miss_batch"]);
+  const ITEM_TYPES = new Set(["manual_report", "search_miss_batch", "gap_signal_batch"]);
   const ITEM_STATUSES = new Set(["queued", "sending", "retry-wait", "needs-verification", "failed", "acknowledged-purge-pending"]);
-  const LEGAL_TERMS_VERSION = "2026-08-18.1";
-  const LEGAL_DATA_USE_VERSION = "2026-08-18.1";
-  const LEGAL_DOCUMENT_SHA256 = "6f5f8076b5eb245ce39a126c55d8a3f68d2d0ab4187a217f19ec040f09b631f9";
-  // One tightly bounded upgrade bridge preserves manual reports created under
-  // the immediately previous reviewed policy so the user can inspect and
-  // explicitly resubmit them. These records are never eligible for delivery,
-  // and the exception never applies to automatic search-miss batches.
-  const PREVIOUS_REVIEWABLE_MANUAL_CONSENT = Object.freeze({
-    terms_version: "2026-08-17.1",
-    notice_version: "2026-08-17.1",
-    document_sha256: "bb04d1f144713330cff2211e47b06c5147499fcd8bf2cb834a59cef580f9ceea",
-    data_use_version: "2026-08-17.1"
-  });
+  const LEGAL_TERMS_VERSION = "2026-08-19.1";
+  const LEGAL_DATA_USE_VERSION = "2026-08-19.1";
+  const LEGAL_DOCUMENT_SHA256 = "10fa2d07a4cbdd31138384dc6a630fdc7d9333d0c3ea6461850727fcb131a73c";
+  // A tightly bounded upgrade bridge preserves manual reports created under
+  // the two preceding reviewed policies so the user can inspect
+  // and explicitly resubmit them. These records are never eligible for
+  // delivery, and the exception never applies to either automatic item type.
+  const PREVIOUS_REVIEWABLE_MANUAL_CONSENTS = Object.freeze([
+    Object.freeze({
+      terms_version: "2026-08-18.1",
+      notice_version: "2026-08-18.1",
+      document_sha256: "6f5f8076b5eb245ce39a126c55d8a3f68d2d0ab4187a217f19ec040f09b631f9",
+      data_use_version: "2026-08-18.1"
+    }),
+    Object.freeze({
+      terms_version: "2026-08-17.1",
+      notice_version: "2026-08-17.1",
+      document_sha256: "bb04d1f144713330cff2211e47b06c5147499fcd8bf2cb834a59cef580f9ceea",
+      data_use_version: "2026-08-17.1"
+    })
+  ]);
   const MANUAL_TERMS_BINDING_KEYS = Object.freeze([
     "terms_version", "notice_version", "document_sha256", "terms_accepted_at", "data_use_version"
+  ]);
+  const GAP_CLASSIFICATIONS = new Set(["existing_discovery_failure", "verified_missing"]);
+  const GAP_DETECTION_ORIGINS = new Set(["repeated_rejection", "explicit_search", "answer_abstained"]);
+  const GAP_REASON_CODES = new Set([
+    "zero_results", "no_confident_destination", "user_rejected_suggestions", "answer_abstained_missing_topic"
+  ]);
+  const GAP_CHECKED_LAYERS = new Set([
+    "canonical-title", "aliases", "abbreviations", "reviewed-routes", "spelling-variants",
+    "phonetic-variants", "near-identity", "whole-encyclopedia", "clinical-search"
+  ]);
+  const GAP_MATCH_STATUSES = new Set(["existing-bound-destination", "no-confident-match"]);
+  const GAP_CATEGORY_HINTS = new Set(["drug", "lab", "pathology", "reference", "holistic", "unknown"]);
+  const GAP_CONFIDENCE_LEVELS = new Set(["medium", "high"]);
+  const GAP_CONCEPT_MAX_CHARS = 180;
+  const GAP_OUT_OF_SCOPE_PATTERN = /\b(?:pizza|recipe|cooking|baking|weather|forecast|sports?\s+(?:score|result)|lottery|stock\s+(?:price|market|ticker)|cryptocurrency|bitcoin|movie|song|lyrics|celebrity|hotel|flight|travel\s+itinerary|shopping|coupon|video\s+game|javascript|python\s+code|computer\s+code|coding|heart\s+emoji|blood\s+moon|brain\s+teaser|drug\s+cartel|medical\s+billing|patient\s+schedul(?:e|es|ed|ing))\b/i;
+  const GAP_CLINICAL_MORPHOLOGY_PATTERN = /\b[a-z][a-z0-9'-]{3,}(?:itis|osis|iasis|emia|aemia|oma|opathy|pathy|plegia|paresis|uria|penia|cytosis|ectomy|otomy|ostomy|plasty|scopy|graphy|gram|genic|cyte|blast|trophy|megaly|phagia|pnea|rrhea|algia|lepsy|mab|nib|vir|cillin|pril|sartan|olol|statin)\b/i;
+  const GAP_CLINICAL_SIGNAL_TERMS = new Set([
+    "acute", "chronic", "clinical", "diagnosis", "diagnostic", "disease", "syndrome", "disorder",
+    "infection", "infectious", "cancer", "tumor", "tumour", "neoplasm", "injury", "fracture", "wound",
+    "pain", "fever", "symptom", "sign", "drug", "medication", "medicine", "dose", "dosage", "pharmacology",
+    "laboratory", "lab", "test", "assay", "procedure", "surgery", "therapy", "treatment", "nursing", "medical",
+    "patient", "blood", "platelet", "cardiac", "heart", "failure", "pulmonary", "lung", "respiratory", "renal",
+    "kidney", "hepatic", "liver", "neurologic", "brain", "nerve", "immune", "immunologic", "endocrine",
+    "gastrointestinal", "sepsis", "shock", "pregnancy", "pediatric", "neonatal", "geriatric",
+    "thrombocytopenia", "thrombocytopenic", "purpura", "metabolic"
+  ]);
+  const GAP_HIGH_SPECIFICITY_MEDICAL_PATTERN = /\b(?:diagnosis|diagnostic|disease|disorder|infection|infectious|cancer|tumou?r|neoplasm|fracture|wound|fever|symptom|medication|dosage|pharmacology|laboratory|assay|surgery|therapy|treatment|nursing|platelet|cardiac|pulmonary|respiratory|renal|hepatic|neurologic|immune|immunologic|endocrine|gastrointestinal|metabolic|sepsis|pregnancy|pediatric|neonatal|geriatric|stroke|asthma|diabetes|delirium|dementia|seizure|epilepsy|hypertension|hypotension|arrhythmia|anaphylaxis|thrombosis|embolism|infarction|h(?:a)?emorrhage|nociception)\b/i;
+  const GAP_TOPIC_STOPWORDS = new Set(["a", "an", "and", "or", "of", "in", "on", "for", "to", "with", "without", "due", "by", "the", "versus", "vs"]);
+  const GAP_TOPIC_CONNECTORS = new Set([
+    "associated", "related", "induced", "mediated", "dependent", "resistant", "sensitive",
+    "signaling", "signalling", "deficiency", "toxicity", "modulation", "regulation", "pathway", "pathways",
+    "type", "stage", "grade", "adult", "childhood", "familial", "congenital", "acquired", "primary",
+    "secondary", "idiopathic", "refractory", "recurrent", "localized", "localised", "systemic", "endogenous", "exogenous"
+  ]);
+  const GAP_PERSON_NAME_STOPWORDS = new Set([
+    ...GAP_TOPIC_STOPWORDS, ...GAP_TOPIC_CONNECTORS,
+    "has", "had", "is", "was", "reports", "reported", "developed", "started", "needs", "takes", "feels",
+    "experiences", "experienced", "experiencing", "suffers", "suffered", "suffering", "presented", "presenting",
+    "complains", "complained", "complaining", "diagnosed", "diagnosing", "from", "about", "regarding", "concerning",
+    "i", "ii", "iii", "iv", "v", "vi", "rare"
   ]);
   const DEFAULTS = Object.freeze({
     feedbackApiUrl: "",
@@ -39,6 +89,7 @@
     surface: "web",
     manualReportPath: "/v1/reports",
     searchMissPath: "/v1/search-misses/batch",
+    gapSignalPath: "/v1/gap-signals/batch",
     maxItems: 100,
     maxOutboxBytes: 16 * 1024 * 1024,
     maxItemAgeMs: 30 * 24 * 60 * 60 * 1000,
@@ -51,6 +102,7 @@
     searchDedupeWindowMs: 24 * 60 * 60 * 1000,
     maxSearchDedupeEntries: 500,
     maxSearchBatchSize: 10,
+    maxGapBatchSize: 5,
     minStableSearchMs: 1000,
     maxManualMessageChars: 4000,
     maxSearchQueryChars: 240,
@@ -146,10 +198,12 @@
     const keys = Object.keys(value).sort();
     return keys.length === exactKeys.length
       && exactKeys.every((key, index) => keys[index] === key)
-      && cleanText(value.terms_version, 40) === PREVIOUS_REVIEWABLE_MANUAL_CONSENT.terms_version
-      && cleanText(value.notice_version, 40) === PREVIOUS_REVIEWABLE_MANUAL_CONSENT.notice_version
-      && cleanText(value.data_use_version, 40) === PREVIOUS_REVIEWABLE_MANUAL_CONSENT.data_use_version
-      && cleanText(value.document_sha256, 64).toLowerCase() === PREVIOUS_REVIEWABLE_MANUAL_CONSENT.document_sha256
+      && PREVIOUS_REVIEWABLE_MANUAL_CONSENTS.some((policy) => (
+        cleanText(value.terms_version, 40) === policy.terms_version
+        && cleanText(value.notice_version, 40) === policy.notice_version
+        && cleanText(value.data_use_version, 40) === policy.data_use_version
+        && cleanText(value.document_sha256, 64).toLowerCase() === policy.document_sha256
+      ))
       && value.data_collection_confirmed === true
       && value.data_sharing_confirmed === true
       && validConsentTimestamp(value.terms_accepted_at)
@@ -228,7 +282,80 @@
       || /\b\d{1,3}\s*(?:years?\s*old|y\/?o)\b/i.test(text)
       || /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i.test(text)
       || /(?:https?:\/\/|www\.)/i.test(text)
-      || /(?:\D|^)\d(?:[\s().-]*\d){6,}(?:\D|$)/.test(text);
+      || /(?:\D|^)\d(?:[\s().-]*\d){6,}(?:\D|$)/.test(text)
+      || isObviousPersonalGapNarrative(text);
+  }
+
+  function isObviousPersonalGapNarrative(value) {
+    const original = String(value || "").normalize("NFKC").trim();
+    if (!original) return false;
+    const capitalizedNameNarrative = /^\s*(?:(?:mr|mrs|ms|miss|dr)\.?\s+)?[A-Z][A-Za-z'’\-]{1,39}\s+[A-Z][A-Za-z'’\-]{1,39}\s+(?:has|had|is|was|reports?|developed?|started?|needs?|takes?|feels?|experienc(?:es|ed|ing)|with)\b/;
+    const honorificNarrative = /^\s*(?:mr|mrs|ms|miss|dr)\.?\s+[A-Z][A-Za-z'’\-]{1,39}\s+(?:has|had|is|was|reports?|developed?|started?|needs?|takes?|feels?|experienc(?:es|ed|ing)|with)\b/i;
+    const explicitlyNamedPerson = /\b(?:patient|client|child|baby|toddler)\s+(?:named|called)\s+[A-Z][A-Za-z'’\-]{1,39}(?:\s+[A-Z][A-Za-z'’\-]{1,39})?\b/;
+    const personRole = "(?:patient|client|person|man|woman|boy|girl|child|baby|toddler|mother|father|mom|dad|friend|neighbor|neighbour|relative|family\\s+member)";
+    const relationshipNarrative = new RegExp(`\\b(?:my|our|his|her|their|this|the)\\s+${personRole}\\b`, "i");
+    const leadingPersonRole = new RegExp(`^\\s*(?:(?:my|our|his|her|their|this|the|a|an)\\s+)?${personRole}(?:\\s+[a-z][a-z'’-]{1,39}){0,4}\\s+(?:has|had|is|was|reports?|developed?|started?|needs?|takes?|feels?|experienc(?:es|ed|ing)|with)\\b`, "i");
+    const lowercaseNarrativeShape = /^(?:[a-z][a-z'-]{1,24}\s+){1,3}(?:has|had|reports?|developed?|started?|needs?|takes?|feels?|experienc(?:es|ed|ing)|suffers?|suffered|suffering|presented?|presenting|complains?|complained|complaining|diagnosed?|diagnosing|with)\b/i;
+    const tokens = normalizeGapConcept(original).split(" ").map(normalizeGapToken).filter(Boolean);
+    const hasClinicalTokenOutside = (leftIndex, rightIndex) => tokens.some((token, index) => (
+      (index < leftIndex || index > rightIndex) && isGapClinicalToken(token)
+    ));
+    const containsNamePair = tokens.some((token, index) => index + 1 < tokens.length
+      && isPlausiblePersonalNameToken(token)
+      && isPlausiblePersonalNameToken(tokens[index + 1])
+      && hasClinicalTokenOutside(index, index + 1));
+    const containsNameWithMiddleInitial = tokens.some((token, index) => index + 2 < tokens.length
+      && isPlausiblePersonalNameToken(token)
+      && /^[a-z]$/.test(tokens[index + 1])
+      && isPlausiblePersonalNameToken(tokens[index + 2])
+      && hasClinicalTokenOutside(index, index + 2));
+    const capitalizedNameAnywhere = Array.from(original.matchAll(/\b([A-Z][A-Za-z'’\-]{1,24})\s+(?:[A-Z]\.\s*)?([A-Z][A-Za-z'’\-]{1,24})\b/g))
+      .some((match) => isPlausiblePersonalNameToken(match[1]) && isPlausiblePersonalNameToken(match[2]));
+    const relationshipNameAnywhere = Array.from(original.matchAll(/\b(?:for|about|regarding|concerning)\s+(?:mr|mrs|ms|miss|dr)?\.?\s*([a-z][a-z'’\-]{1,24})\s+(?:[a-z]\.\s*)?([a-z][a-z'’\-]{1,24})\b/gi))
+      .some((match) => isPlausiblePersonalNameToken(match[1]) && isPlausiblePersonalNameToken(match[2]));
+    const relationshipSingleName = Array.from(original.matchAll(/\b(?:for|about|regarding|concerning)\s+(?:mr|mrs|ms|miss|dr)?\.?\s*([a-z][a-z'’\-]{1,24})\b/gi))
+      .some((match) => isPlausiblePersonalNameToken(match[1]));
+    const possessiveNameAnywhere = Array.from(original.matchAll(/\b([a-z][a-z'’\-]{1,24})\s+(?:[a-z]\.\s*)?([a-z][a-z'’\-]{1,24})['’]s\b/gi))
+      .some((match) => isPlausiblePersonalNameToken(match[1]) && isPlausiblePersonalNameToken(match[2]));
+    const possessiveSingleName = Array.from(original.matchAll(/\b([a-z][a-z'’\-]{1,24})['’]s\b/gi))
+      .some((match) => isPlausiblePersonalNameToken(match[1]));
+    return capitalizedNameNarrative.test(original)
+      || honorificNarrative.test(original)
+      || explicitlyNamedPerson.test(original)
+      || relationshipNarrative.test(original)
+      || leadingPersonRole.test(original)
+      || lowercaseNarrativeShape.test(original)
+      || containsNamePair
+      || containsNameWithMiddleInitial
+      || capitalizedNameAnywhere
+      || relationshipNameAnywhere
+      || relationshipSingleName
+      || possessiveNameAnywhere
+      || possessiveSingleName;
+  }
+
+  function medicalTopicShapeIsBounded(value) {
+    const tokens = normalizeGapConcept(value).split(" ").map(normalizeGapToken).filter(Boolean);
+    if (!tokens.length || !(GAP_HIGH_SPECIFICITY_MEDICAL_PATTERN.test(tokens[0])
+      || GAP_CLINICAL_MORPHOLOGY_PATTERN.test(tokens[0]))) return false;
+    return tokens.slice(1).every((token) => GAP_TOPIC_STOPWORDS.has(token)
+      || GAP_TOPIC_CONNECTORS.has(token)
+      || isGapClinicalToken(token));
+  }
+
+  function isPlausibleMissingMedicalConcept(concept, appliedVariants = []) {
+    const original = String(concept || "").normalize("NFKC").trim();
+    const variants = Array.isArray(appliedVariants) ? appliedVariants : [];
+    const transmittedPhrases = [original, ...variants].map((value) => String(value || "").normalize("NFKC").trim());
+    if (transmittedPhrases.some((value) => /\d/.test(value)
+      || /\b(?:for|about|regarding|concerning)\b/i.test(value))) return false;
+    const combined = [original, ...variants].join(" ");
+    if (!/[A-Za-z]/.test(combined) || GAP_OUT_OF_SCOPE_PATTERN.test(combined)) return false;
+    if (/(?:qwerty|asdfgh|zxcvb|hjkl|poiuy|lkjhg)|([a-z0-9])\1{4,}/i.test(combined)) return false;
+    const tokens = normalizeGapConcept(original).split(" ").filter(Boolean);
+    if (tokens.length === 1 && tokens[0].length >= 7 && !/[aeiouy]/.test(tokens[0])
+      && !/^[A-Z][A-Z0-9+./-]{1,5}$/.test(original)) return false;
+    return medicalTopicShapeIsBounded(original);
   }
 
   function searchMissDecision(input = {}, options = {}) {
@@ -307,6 +434,184 @@
 
   function shouldQueueSearchMiss(input = {}, options = {}) {
     return searchMissDecision(normalizeSearchMissObservation(input, options.minStableSearchMs), options).accepted;
+  }
+
+  function boundedInteger(value, minimum, maximum) {
+    const number = Number(value);
+    return Number.isSafeInteger(number) && number >= minimum && number <= maximum ? number : null;
+  }
+
+  function normalizeGapConcept(value) {
+    return cleanText(value, GAP_CONCEPT_MAX_CHARS)
+      .toLowerCase()
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[\u2018\u2019]/g, "'")
+      .replace(/[^a-z0-9'+./ -]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function normalizeGapToken(value) {
+    return normalizeGapConcept(value).replace(/^[^a-z]+|[^a-z]+$/g, "");
+  }
+
+  function isGapClinicalToken(value) {
+    const token = normalizeGapToken(value);
+    const singular = token.length > 3 && token.endsWith("s") ? token.slice(0, -1) : token;
+    return Boolean(token) && (GAP_CLINICAL_SIGNAL_TERMS.has(token) || GAP_CLINICAL_SIGNAL_TERMS.has(singular)
+      || GAP_HIGH_SPECIFICITY_MEDICAL_PATTERN.test(token) || GAP_HIGH_SPECIFICITY_MEDICAL_PATTERN.test(singular)
+      || GAP_CLINICAL_MORPHOLOGY_PATTERN.test(token) || GAP_CLINICAL_MORPHOLOGY_PATTERN.test(singular));
+  }
+
+  function isPlausiblePersonalNameToken(value) {
+    const token = normalizeGapToken(value).replace(/['’]s$/i, "");
+    return /^[a-z][a-z'-]{1,24}$/.test(token)
+      && !GAP_PERSON_NAME_STOPWORDS.has(token)
+      && !isGapClinicalToken(token);
+  }
+
+  function normalizeGapDestination(value = {}) {
+    if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+    const collection = cleanToken(value.collection, 24);
+    const canonicalTitle = privacySafeText(value.canonicalTitle || value.canonical_title, 160);
+    const populationKey = cleanToken(value.populationKey || value.population_key, 80);
+    if (!new Set(["drug", "lab", "pathology", "reference", "holistic"]).has(collection) || !canonicalTitle) return null;
+    return {
+      collection,
+      canonical_title: canonicalTitle,
+      population_key: collection === "lab" ? populationKey : ""
+    };
+  }
+
+  function gapSignalDecision(input = {}) {
+    const source = input && typeof input === "object" && !Array.isArray(input) ? input : {};
+    const classification = cleanToken(source.classification, 48).replace(/-/g, "_");
+    if (!GAP_CLASSIFICATIONS.has(classification)) return { accepted: false, reason: "invalid-classification" };
+    const rawConcept = cleanText(source.concept, GAP_CONCEPT_MAX_CHARS + 1);
+    if (rawConcept.length > GAP_CONCEPT_MAX_CHARS) return { accepted: false, reason: "concept-too-long" };
+    const concept = privacySafeText(rawConcept, GAP_CONCEPT_MAX_CHARS);
+    if (!concept || concept.length < 2) return { accepted: false, reason: "invalid-concept" };
+    if (personalLikeQuery(concept)) return { accepted: false, reason: "personal-like-query" };
+    const normalizedConcept = normalizeGapConcept(source.normalizedConcept || source.normalized_concept || concept);
+    if (!normalizedConcept || normalizedConcept !== normalizeGapConcept(concept)
+        || privacySafeText(normalizedConcept, GAP_CONCEPT_MAX_CHARS) !== normalizedConcept) {
+      return { accepted: false, reason: "invalid-normalized-concept" };
+    }
+    if (source.indexComplete !== true && source.index_complete !== true) {
+      return { accepted: false, reason: "index-incomplete" };
+    }
+    const detectionOrigin = cleanToken(source.detectionOrigin || source.detection_origin, 40).replace(/-/g, "_");
+    if (!GAP_DETECTION_ORIGINS.has(detectionOrigin)) return { accepted: false, reason: "invalid-detection-origin" };
+    const reasonCode = cleanToken(source.reasonCode || source.reason_code, 48).replace(/-/g, "_");
+    if (!GAP_REASON_CODES.has(reasonCode)) return { accepted: false, reason: "invalid-reason-code" };
+    const rejectionCount = boundedInteger(source.rejectionCount ?? source.rejection_count ?? 0, 0, 3);
+    const attemptCount = boundedInteger(source.attemptCount ?? source.attempt_count ?? 0, 1, 4);
+    if (rejectionCount === null || attemptCount === null) return { accepted: false, reason: "invalid-attempt-count" };
+    if (detectionOrigin === "repeated_rejection" && (rejectionCount < 2 || attemptCount < 2)) {
+      return { accepted: false, reason: "insufficient-rejections" };
+    }
+    const verifierVersion = cleanToken(source.verifierVersion || source.verifier_version, 48);
+    if (!verifierVersion) return { accepted: false, reason: "verifier-version-missing" };
+    const checkedLayers = Array.from(new Set((Array.isArray(source.checkedLayers || source.checked_layers)
+      ? (source.checkedLayers || source.checked_layers)
+      : []).map((value) => cleanToken(value, 40)).filter((value) => GAP_CHECKED_LAYERS.has(value)))).sort();
+    if (!checkedLayers.length) return { accepted: false, reason: "checks-missing" };
+    const countsSource = source.resultCounts && typeof source.resultCounts === "object" && !Array.isArray(source.resultCounts)
+      ? source.resultCounts
+      : (source.result_counts && typeof source.result_counts === "object" && !Array.isArray(source.result_counts)
+        ? source.result_counts : {});
+    const resultCounts = {};
+    for (const [rawKey, rawValue] of Object.entries(countsSource).slice(0, 12)) {
+      const key = cleanToken(rawKey, 40);
+      const count = boundedInteger(rawValue, 0, 100000);
+      if (!key || count === null || Object.prototype.hasOwnProperty.call(resultCounts, key)) {
+        return { accepted: false, reason: "invalid-result-counts" };
+      }
+      resultCounts[key] = count;
+    }
+    if (!Object.keys(resultCounts).length) return { accepted: false, reason: "result-counts-missing" };
+    const matchStatus = cleanToken(source.matchStatus || source.match_status, 40);
+    if (!GAP_MATCH_STATUSES.has(matchStatus)) return { accepted: false, reason: "invalid-match-status" };
+    const rawAppliedVariants = Array.isArray(source.appliedVariants || source.applied_variants)
+      ? (source.appliedVariants || source.applied_variants)
+      : [];
+    if (rawAppliedVariants.length > 8) return { accepted: false, reason: "invalid-variants" };
+    const cleanAppliedVariants = rawAppliedVariants.map((value) => privacySafeText(value, 120));
+    if (cleanAppliedVariants.some((value, index) => !value && cleanText(rawAppliedVariants[index], 120))) {
+      return { accepted: false, reason: "personal-like-variant" };
+    }
+    const appliedVariantByIdentity = new Map();
+    cleanAppliedVariants.filter(Boolean).forEach((value) => {
+      const identity = normalizeGapConcept(value);
+      if (identity && !appliedVariantByIdentity.has(identity)) appliedVariantByIdentity.set(identity, value);
+    });
+    const appliedVariants = Array.from(appliedVariantByIdentity.entries())
+      .sort(([left], [right]) => left < right ? -1 : left > right ? 1 : 0)
+      .map(([, value]) => value);
+    const destinationSource = Array.isArray(source.destinations) ? source.destinations : [];
+    if (destinationSource.length > 5) return { accepted: false, reason: "invalid-destinations" };
+    const destinations = destinationSource.map(normalizeGapDestination);
+    if (destinations.some((value) => !value)) return { accepted: false, reason: "invalid-destinations" };
+    const destinationKeys = new Set();
+    for (const destination of destinations) {
+      const key = `${destination.collection}\0${destination.canonical_title.toLowerCase()}\0${destination.population_key}`;
+      if (destinationKeys.has(key)) return { accepted: false, reason: "duplicate-destination" };
+      destinationKeys.add(key);
+    }
+    const categoryHint = cleanToken(source.categoryHint || source.category_hint || "unknown", 24);
+    if (!GAP_CATEGORY_HINTS.has(categoryHint)) return { accepted: false, reason: "invalid-category-hint" };
+    const confidence = cleanToken(source.confidence, 16);
+    if (!GAP_CONFIDENCE_LEVELS.has(confidence)) return { accepted: false, reason: "invalid-confidence" };
+    if (classification === "existing_discovery_failure") {
+      const primaryDestination = destinations[0] || null;
+      if (destinations.length !== 1 || matchStatus !== "existing-bound-destination") {
+        return { accepted: false, reason: "existing-destination-required" };
+      }
+      if (concept !== primaryDestination.canonical_title
+        || normalizedConcept !== normalizeGapConcept(primaryDestination.canonical_title)
+        || appliedVariants.length !== 0
+        || categoryHint !== primaryDestination.collection) {
+        return { accepted: false, reason: "existing-primary-identity-required" };
+      }
+    } else {
+      const requiredChecks = [
+        "canonical-title", "aliases", "abbreviations", "reviewed-routes", "spelling-variants",
+        "phonetic-variants", "near-identity", "whole-encyclopedia", "clinical-search"
+      ];
+      if (destinations.length || matchStatus !== "no-confident-match"
+        || Object.values(resultCounts).some((value) => value !== 0)
+        || requiredChecks.some((value) => !checkedLayers.includes(value))
+        || !isPlausibleMissingMedicalConcept(concept, appliedVariants)) {
+        return { accepted: false, reason: "missing-topic-not-verified" };
+      }
+    }
+    return {
+      accepted: true,
+      reason: "accepted",
+      proposal: {
+        concept,
+        normalized_concept: normalizedConcept,
+        classification,
+        detection_origin: detectionOrigin,
+        reason_code: reasonCode,
+        rejection_count: rejectionCount,
+        attempt_count: attemptCount,
+        verifier_version: verifierVersion,
+        index_complete: true,
+        checked_layers: checkedLayers,
+        result_counts: resultCounts,
+        match_status: matchStatus,
+        applied_variants: appliedVariants,
+        destinations,
+        category_hint: categoryHint,
+        confidence
+      }
+    };
+  }
+
+  function shouldQueueGapSignal(input = {}) {
+    return gapSignalDecision(input).accepted;
   }
 
   function cloneValue(value) {
@@ -612,6 +917,7 @@
         maxOutboxBytes: currentConfig.maxOutboxBytes,
         maxItemAgeMs: currentConfig.maxItemAgeMs,
         maxSearchBatchSize: currentConfig.maxSearchBatchSize,
+        maxGapBatchSize: currentConfig.maxGapBatchSize,
         maxScreenshotBytes: currentConfig.maxScreenshotBytes,
         autoStart: currentConfig.autoStart
       });
@@ -651,6 +957,7 @@
         surface: normalizedSurface(merged.surface ?? merged.platform ?? currentConfig.surface),
         manualReportPath: cleanPath(merged.manualReportPath ?? currentConfig.manualReportPath, 160) || DEFAULTS.manualReportPath,
         searchMissPath: cleanPath(merged.searchMissPath ?? currentConfig.searchMissPath, 160) || DEFAULTS.searchMissPath,
+        gapSignalPath: cleanPath(merged.gapSignalPath ?? currentConfig.gapSignalPath, 160) || DEFAULTS.gapSignalPath,
         maxItems: positiveNumber(merged.maxItems, currentConfig.maxItems, 1, 1000),
         maxOutboxBytes: positiveNumber(merged.maxOutboxBytes, currentConfig.maxOutboxBytes, 64 * 1024, 64 * 1024 * 1024),
         maxItemAgeMs: positiveNumber(merged.maxItemAgeMs, currentConfig.maxItemAgeMs, 60 * 1000, 180 * 24 * 60 * 60 * 1000),
@@ -661,6 +968,7 @@
         requestTimeoutMs: positiveNumber(merged.requestTimeoutMs, currentConfig.requestTimeoutMs, 500, 120 * 1000),
         searchDedupeWindowMs: positiveNumber(merged.searchDedupeWindowMs, currentConfig.searchDedupeWindowMs, 1000, 30 * 24 * 60 * 60 * 1000),
         maxSearchBatchSize: positiveNumber(merged.maxSearchBatchSize, currentConfig.maxSearchBatchSize, 1, DEFAULTS.maxSearchBatchSize),
+        maxGapBatchSize: positiveNumber(merged.maxGapBatchSize, currentConfig.maxGapBatchSize, 1, DEFAULTS.maxGapBatchSize),
         minStableSearchMs: positiveNumber(merged.minStableSearchMs, currentConfig.minStableSearchMs, 250, 10000),
         maxScreenshotBytes: positiveNumber(merged.maxScreenshotBytes, currentConfig.maxScreenshotBytes, 64 * 1024, Math.floor(1.5 * 1024 * 1024)),
         autoStart: merged.autoStart === undefined ? currentConfig.autoStart : merged.autoStart !== false,
@@ -718,7 +1026,7 @@
       try {
         normalizeConsentProof(item.payload.consent, { requireDataConsent: true });
       } catch (_error) {
-        // Preserve only the exact immediately previous reviewed manual proof.
+        // Preserve only an exact bounded previous reviewed manual proof.
         // It remains non-deliverable and must be explicitly reviewed under the
         // current policy. Every stale/legacy automatic search batch still
         // fails validation and is removed.
@@ -732,15 +1040,16 @@
       return true;
     }
 
-    async function dropSearchDedupeForItem(item) {
+    async function dropAutomaticDedupeForItem(item) {
       const fingerprints = (item && item.payload && Array.isArray(item.payload.events) ? item.payload.events : [])
         .map((event) => cleanText(event.dedupe_fingerprint, 160))
         .filter(Boolean);
       if (!fingerprints.length) return;
-      const stored = await store.getMeta(SEARCH_DEDUPE_KEY);
+      const metaKey = item && item.type === "gap_signal_batch" ? GAP_DEDUPE_KEY : SEARCH_DEDUPE_KEY;
+      const stored = await store.getMeta(metaKey);
       const entries = Array.isArray(stored) ? stored : [];
       const filtered = entries.filter((entry) => !fingerprints.includes(entry.fingerprint));
-      await store.setMeta(SEARCH_DEDUPE_KEY, filtered);
+      await store.setMeta(metaKey, filtered);
     }
 
     async function pruneOutbox() {
@@ -752,9 +1061,10 @@
           emit("corrupt-dropped", record || null);
           continue;
         }
-        if (record.type === "search_miss_batch" && now() - Date.parse(record.created_at) > currentConfig.maxItemAgeMs) {
+        if (["search_miss_batch", "gap_signal_batch"].includes(record.type)
+            && now() - Date.parse(record.created_at) > currentConfig.maxItemAgeMs) {
           await store.remove(record.client_event_id);
-          await dropSearchDedupeForItem(record);
+          await dropAutomaticDedupeForItem(record);
           emit("expired-dropped", record);
           continue;
         }
@@ -772,15 +1082,15 @@
       const fits = () => records.length + 1 <= currentConfig.maxItems
         && records.reduce((sum, item) => sum + Number(item.byte_size || itemSize(item)), 0) + candidateBytes <= currentConfig.maxOutboxBytes;
       while (!fits()) {
-        const evictIndex = records.findIndex((item) => item.type === "search_miss_batch");
+        const evictIndex = records.findIndex((item) => ["search_miss_batch", "gap_signal_batch"].includes(item.type));
         if (evictIndex < 0) break;
         const evicted = records.splice(evictIndex, 1)[0];
         await store.remove(evicted.client_event_id);
-        await dropSearchDedupeForItem(evicted);
+        await dropAutomaticDedupeForItem(evicted);
         emit("capacity-dropped", evicted);
       }
       if (!fits()) {
-        if (candidate.type === "search_miss_batch") return false;
+        if (["search_miss_batch", "gap_signal_batch"].includes(candidate.type)) return false;
         throw new Error("ANI's offline feedback outbox is full. Retry or remove an older report first.");
       }
       candidate.byte_size = candidateBytes;
@@ -940,6 +1250,15 @@
         .slice(0, currentConfig.maxSearchDedupeEntries);
     }
 
+    async function gapDedupeEntries() {
+      const cutoff = now() - currentConfig.searchDedupeWindowMs;
+      const stored = await store.getMeta(GAP_DEDUPE_KEY);
+      return (Array.isArray(stored) ? stored : [])
+        .filter((entry) => entry && cleanText(entry.fingerprint, 160) && Number(entry.at) >= cutoff)
+        .sort((left, right) => Number(right.at) - Number(left.at))
+        .slice(0, currentConfig.maxSearchDedupeEntries);
+    }
+
     async function queueSearchMiss(input = {}) {
       return queueSearchMissBatch([input]);
     }
@@ -1042,6 +1361,123 @@
       return { queued: true, client_event_id: batchId, accepted: events.length, rejected: rejections.length, item: cloneValue(item) };
     }
 
+    async function queueGapSignal(input = {}, options = {}) {
+      const suppliedConsent = options && Object.prototype.hasOwnProperty.call(options, "consent")
+        ? options.consent
+        : input && input.consent;
+      return queueGapSignalBatch([{ ...input, consent: suppliedConsent }]);
+    }
+
+    async function queueGapSignalBatch(inputs = [], options = {}) {
+      const suppliedConsent = options && Object.prototype.hasOwnProperty.call(options, "consent")
+        ? options.consent
+        : undefined;
+      const rawInputs = Array.isArray(inputs)
+        ? inputs.slice(0, currentConfig.maxGapBatchSize).map((input) => ({
+          ...(input && typeof input === "object" ? input : {}),
+          consent: suppliedConsent === undefined ? input && input.consent : suppliedConsent
+        }))
+        : [];
+      if (!rawInputs.length) return { queued: false, reason: "empty-batch", accepted: 0, rejected: 0 };
+      const consent = consentForQueue("gap_signal_batch", rawInputs[0] && rawInputs[0].consent);
+      if (rawInputs.some((input) => canonicalStableJson(input && input.consent) !== canonicalStableJson(rawInputs[0] && rawInputs[0].consent))) {
+        throw new Error("ANI refused an internal gap-signal batch with inconsistent consent proof.");
+      }
+      if (!currentConfig.catalogFingerprint) {
+        emit("rejected", null, { reason: "catalog-fingerprint-unavailable", rejected: rawInputs.length });
+        return { queued: false, reason: "catalog-fingerprint-unavailable", accepted: 0, rejected: rawInputs.length };
+      }
+      const dedupe = requiresNativeQueue() ? [] : await gapDedupeEntries();
+      const fingerprints = new Set(dedupe.map((entry) => entry.fingerprint));
+      const events = [];
+      const rejections = [];
+      for (const candidate of rawInputs) {
+        const decision = gapSignalDecision(candidate);
+        if (!decision.accepted) {
+          rejections.push({ reason: decision.reason });
+          continue;
+        }
+        const proposal = decision.proposal;
+        const destinationIdentity = proposal.destinations
+          .map((destination) => `${destination.collection}:${destination.canonical_title.toLowerCase()}:${destination.population_key}`)
+          .sort()
+          .join("|");
+        const fingerprintSource = proposal.classification === "existing_discovery_failure"
+          ? `${proposal.classification}\n${destinationIdentity}\n${currentConfig.catalogFingerprint}`
+          : `${proposal.classification}\n${proposal.normalized_concept}\n${currentConfig.catalogFingerprint}`;
+        const fingerprint = await digestHex(fingerprintSource);
+        if (fingerprints.has(fingerprint)) {
+          rejections.push({ reason: "deduped" });
+          continue;
+        }
+        fingerprints.add(fingerprint);
+        events.push({
+          schema_version: GAP_SCHEMA_VERSION,
+          client_event_id: clientEventIdentifier(candidate.client_event_id, "ani-gap-signal", identifier),
+          concept: proposal.concept,
+          normalized_concept: proposal.normalized_concept,
+          dedupe_fingerprint: fingerprint,
+          classification: proposal.classification,
+          detection_origin: proposal.detection_origin,
+          reason_code: proposal.reason_code,
+          rejection_count: proposal.rejection_count,
+          attempt_count: proposal.attempt_count,
+          verifier_version: proposal.verifier_version,
+          index_complete: true,
+          checked_layers: proposal.checked_layers,
+          result_counts: proposal.result_counts,
+          match_status: proposal.match_status,
+          applied_variants: proposal.applied_variants,
+          destinations: proposal.destinations,
+          category_hint: proposal.category_hint,
+          confidence: proposal.confidence,
+          occurred_at: timestamp()
+        });
+      }
+      if (!events.length) {
+        const reason = rejections.some((entry) => entry.reason === "deduped") ? "deduped" : rejections[0] && rejections[0].reason || "rejected";
+        emit(reason === "deduped" ? "deduped" : "rejected", null, { reason, rejected: rejections.length });
+        return { queued: false, reason, accepted: 0, rejected: rejections.length };
+      }
+      const batchId = identifier("ani-gap-batch");
+      const payload = {
+        schema_version: GAP_SCHEMA_VERSION,
+        batch_id: batchId,
+        app: {
+          surface: currentConfig.surface,
+          version: currentConfig.appVersion,
+          catalog_fingerprint: currentConfig.catalogFingerprint
+        },
+        consent,
+        events
+      };
+      const item = {
+        schema_version: SCHEMA_VERSION,
+        client_event_id: batchId,
+        type: "gap_signal_batch",
+        status: "queued",
+        created_at: timestamp(),
+        updated_at: timestamp(),
+        attempts: 0,
+        next_attempt_at: now(),
+        last_error: "",
+        last_http_status: 0,
+        payload,
+        attachment: null
+      };
+      if (requiresNativeQueue()) return nativeEnqueue(item);
+      if (!await enforceBounds(item)) {
+        emit("capacity-rejected", item);
+        return { queued: false, reason: "capacity", accepted: 0, rejected: rawInputs.length };
+      }
+      await store.put(item);
+      const additions = events.map((event) => ({ fingerprint: event.dedupe_fingerprint, at: now(), client_event_id: event.client_event_id }));
+      await store.setMeta(GAP_DEDUPE_KEY, [...additions, ...dedupe].slice(0, currentConfig.maxSearchDedupeEntries));
+      emit("queued", item, { accepted: events.length, rejected: rejections.length });
+      if (currentConfig.autoStart) scheduleFlush("gap-signal", 0);
+      return { queued: true, client_event_id: batchId, accepted: events.length, rejected: rejections.length, item: cloneValue(item) };
+    }
+
     function online() {
       return !(host && host.navigator && host.navigator.onLine === false);
     }
@@ -1132,6 +1568,48 @@
         || !validSha256(data.payload_sha256) || !validSha256(data.request_sha256)
         || cleanText(data.request_sha256, 64).toLowerCase() !== expectedRequestSha256) {
         const error = new Error("ANI returned a mismatched search-batch receipt.");
+        error.retryable = true;
+        throw error;
+      }
+      return data;
+    }
+
+    function validateGapBatchReceipt(item, data, expectedRequestSha256) {
+      requireDurableReceipt(data);
+      const events = Array.isArray(item.payload && item.payload.events) ? item.payload.events : [];
+      const results = Array.isArray(data && data.results) ? data.results : [];
+      const reportIds = Array.isArray(data && data.report_ids) ? data.report_ids : [];
+      const expectedReportIds = [];
+      if (cleanText(data && data.batch_id, 160) !== item.client_event_id || results.length !== events.length
+        || !validSha256(data && data.payload_sha256) || !validSha256(data && data.request_sha256)
+        || cleanText(data && data.request_sha256, 64).toLowerCase() !== expectedRequestSha256) {
+        const error = new Error("ANI returned a mismatched gap-signal receipt.");
+        error.retryable = true;
+        throw error;
+      }
+      for (let index = 0; index < results.length; index += 1) {
+        const result = results[index];
+        const event = events[index];
+        const reportId = cleanText(result && result.report_id, 40).toLowerCase();
+        const createdNew = result && result.created_new;
+        const coalesced = result && result.coalesced;
+        if (!result || cleanText(result.client_event_id, 160) !== cleanText(event.client_event_id, 160)
+          || !validUuid(reportId) || typeof createdNew !== "boolean" || typeof coalesced !== "boolean"
+          || createdNew === coalesced
+          || !Number.isSafeInteger(result.occurrence_count) || result.occurrence_count < 1
+          || !Number.isSafeInteger(result.priority_score) || result.priority_score < 1
+          || result.classification !== event.classification
+          || !validSha256(result.group_key_sha256)) {
+          const error = new Error("ANI returned invalid gap aggregation evidence.");
+          error.retryable = true;
+          throw error;
+        }
+        if (!expectedReportIds.includes(reportId)) expectedReportIds.push(reportId);
+      }
+      if (reportIds.length !== expectedReportIds.length
+        || reportIds.some((value, index) => cleanText(value, 40).toLowerCase() !== expectedReportIds[index])
+        || reportIds.some((value) => !validUuid(value))) {
+        const error = new Error("ANI returned mismatched gap aggregation report IDs.");
         error.retryable = true;
         throw error;
       }
@@ -1242,6 +1720,23 @@
       return { response, data: validateBatchReceipt(item, data, expectedRequestSha256) };
     }
 
+    async function sendGapSignalBatch(item) {
+      const expectedRequestSha256 = await requestSha256(item.payload);
+      const response = await fetchWithTimeout(endpoint(currentConfig.gapSignalPath), {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Idempotency-Key": item.client_event_id },
+        body: JSON.stringify(item.payload)
+      });
+      const data = await responseData(response);
+      if (!response.ok) {
+        const error = new Error(cleanText(data.error, 300) || `Gap-signal submission failed with HTTP ${response.status}.`);
+        error.response = response;
+        error.data = data;
+        throw error;
+      }
+      return { response, data: validateGapBatchReceipt(item, data, expectedRequestSha256) };
+    }
+
     async function updateFailure(item, error) {
       const response = error && error.response;
       const data = error && error.data || {};
@@ -1291,7 +1786,13 @@
       await store.put(item);
       emit("sending", item);
       try {
-        const result = item.type === "manual_report" ? await sendManualReport(item) : await sendSearchMissBatch(item);
+        const result = item.type === "manual_report"
+          ? await sendManualReport(item)
+          : item.type === "search_miss_batch"
+            ? await sendSearchMissBatch(item)
+            : item.type === "gap_signal_batch"
+              ? await sendGapSignalBatch(item)
+              : (() => { throw new Error("ANI refused an unsupported feedback outbox item."); })();
         const receiptSha256 = await digestHex(JSON.stringify(result.data || {}));
         const tombstone = {
           schema_version: SCHEMA_VERSION,
@@ -1339,19 +1840,20 @@
       if (typeof currentConfig.legalConsentProvider !== "function") {
         throw new Error("ANI feedback remains locked until the current Terms and data-use choice are available.");
       }
-      const search = itemType === "search_miss_batch";
+      const automatic = itemType === "search_miss_batch" || itemType === "gap_signal_batch";
+      const consentKind = itemType === "gap_signal_batch" ? "gap_signal" : (automatic ? "search_miss" : "manual_report");
       return normalizeConsentProof(
-        currentConfig.legalConsentProvider(search ? "search_miss" : "manual_report"),
-        { requireDataConsent: search }
+        currentConfig.legalConsentProvider(consentKind),
+        { requireDataConsent: automatic }
       );
     }
 
     function consentForQueue(itemType, suppliedValue) {
       const supplied = normalizeConsentProof(suppliedValue, { requireDataConsent: true });
       const current = currentLegalConsent(itemType);
-      if (itemType === "search_miss_batch") {
+      if (itemType === "search_miss_batch" || itemType === "gap_signal_batch") {
         if (canonicalStableJson(supplied) !== canonicalStableJson(current)) {
-          throw new Error("ANI refused a search report whose consent proof is not the current full consent choice.");
+          throw new Error("ANI refused automatic feedback whose consent proof is not the current full consent choice.");
         }
         return current;
       }
@@ -1371,7 +1873,7 @@
       try {
         const queued = normalizeConsentProof(item && item.payload && item.payload.consent, { requireDataConsent: true });
         const current = currentLegalConsent(item && item.type);
-        if (item && item.type === "search_miss_batch"
+        if (item && ["search_miss_batch", "gap_signal_batch"].includes(item.type)
             && canonicalStableJson(queued) !== canonicalStableJson(current)) {
           return false;
         }
@@ -1665,7 +2167,7 @@
       const item = await store.get(id);
       if (!item) return { removed: false, client_event_id: id };
       await store.remove(id);
-      await dropSearchDedupeForItem(item);
+      await dropAutomaticDedupeForItem(item);
       emit("removed", item);
       return { removed: true, client_event_id: id };
     }
@@ -1679,13 +2181,14 @@
       const records = await store.list();
       let removed = 0;
       for (const item of records) {
-        if (item && item.type === "search_miss_batch" && item.status !== "acknowledged-purge-pending") {
+        if (item && ["search_miss_batch", "gap_signal_batch"].includes(item.type) && item.status !== "acknowledged-purge-pending") {
           await store.remove(item.client_event_id);
           removed += 1;
           emit("removed", item, { reason: "improvement-data-withdrawn" });
         }
       }
       await store.setMeta(SEARCH_DEDUPE_KEY, []);
+      await store.setMeta(GAP_DEDUPE_KEY, []);
       return { removed, native: false };
     }
 
@@ -1845,6 +2348,8 @@
       queueManualReport,
       queueSearchMiss,
       queueSearchMissBatch,
+      queueGapSignal,
+      queueGapSignalBatch,
       purgeUnsentSearchMisses,
       flush,
       listOutbox,
@@ -1858,11 +2363,13 @@
       shouldQueueSearchMiss,
       shouldCaptureSearchMiss: shouldQueueSearchMiss,
       searchMissDecision,
+      shouldQueueGapSignal,
+      gapSignalDecision,
       onStatus,
       getConfig: publicConfig,
       start: () => flush({ trigger: "startup" }),
       destroy,
-      __testing: Object.freeze({ store, pruneOutbox, digestHex, digestBytes, requestSha256, canonicalStableJson, redactSensitiveText, itemSize, createRuntime, memoryStore })
+      __testing: Object.freeze({ store, pruneOutbox, digestHex, digestBytes, requestSha256, canonicalStableJson, redactSensitiveText, itemSize, createRuntime, memoryStore, validateGapBatchReceipt })
     });
   }
 
