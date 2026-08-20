@@ -1912,9 +1912,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-20T08:07:52.667Z",
+  "generatedAt": "2026-08-20T14:20:37.495Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "vaccine-biologic",
+      "contentHash": "ecdeb31bdd4e3556e49859ed78af7a9fa2cf10c613d55ae4181708aa925bfd61",
+      "description": "This is the guidance Frequently Asked Questions — Developing Potential Cellular and Gene Therapy Products",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/regulatory-information/search-fda-guidance-documents/frequently-asked-questions-developing-potential-cellular-and-gene-therapy-products",
+      "id": "medical-update:fda-biologics:b554376a814ae039b2ada76c",
+      "publishedAt": "2026-08-20T13:53:03.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-19T19:35:58.259Z",
+      "sourceCategories": [],
+      "sourceId": "fda-biologics",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
+      "title": "Frequently Asked Questions — Developing Potential Cellular and Gene Therapy Products",
+      "url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/frequently-asked-questions-developing-potential-cellular-and-gene-therapy-products"
+    },
     {
       "category": "drug-approval",
       "contentHash": "8b5a160251161af1669a486c90403490a5a1055db3e6e82f2a98434a4f68175a",
@@ -2026,22 +2042,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "title": "Cellular & Gene Therapy Guidances",
       "url": "https://www.fda.gov/vaccines-blood-biologics/biologics-guidances/cellular-gene-therapy-guidances"
-    },
-    {
-      "category": "vaccine-biologic",
-      "contentHash": "62d43dba4b33ae59d941c12942190341fd0ece1d0060c43c06e53ce1f698c9f6",
-      "description": "This is the guidance Frequently Asked Questions — Developing Potential Cellular and Gene Therapy Products",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/regulatory-information/search-fda-guidance-documents/frequently-asked-questions-developing-potential-cellular-and-gene-therapy-products",
-      "id": "medical-update:fda-biologics:b554376a814ae039b2ada76c",
-      "publishedAt": "2026-08-19T12:49:25.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-19T19:35:58.259Z",
-      "sourceCategories": [],
-      "sourceId": "fda-biologics",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
-      "title": "Frequently Asked Questions — Developing Potential Cellular and Gene Therapy Products",
-      "url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/frequently-asked-questions-developing-potential-cellular-and-gene-therapy-products"
     },
     {
       "category": "recall",
@@ -3878,7 +3878,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 6,
-      "retrievedAt": "2026-08-20T08:07:52.667Z",
+      "retrievedAt": "2026-08-20T14:20:37.495Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3889,7 +3889,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 12,
-      "retrievedAt": "2026-08-20T08:07:52.667Z",
+      "retrievedAt": "2026-08-20T14:20:37.495Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -3900,7 +3900,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 13,
-      "retrievedAt": "2026-08-20T08:07:52.667Z",
+      "retrievedAt": "2026-08-20T14:20:37.495Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -3911,7 +3911,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 14,
       "retainedItemCount": 6,
-      "retrievedAt": "2026-08-20T08:07:52.667Z",
+      "retrievedAt": "2026-08-20T14:20:37.495Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -3922,7 +3922,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-08-20T08:07:52.667Z",
+      "retrievedAt": "2026-08-20T14:20:37.495Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -3933,18 +3933,18 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-20T08:07:52.667Z",
+      "retrievedAt": "2026-08-20T14:20:37.495Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
     },
     {
-      "error": "Partial item routing failure: 44 of 100 eligible feed items failed deterministic normalization; last-good source items were retained.",
-      "itemCount": 56,
+      "error": "Partial item routing failure: 6 of 100 eligible feed items failed deterministic normalization; last-good source items were retained.",
+      "itemCount": 94,
       "rawItemCount": 100,
-      "rejectedItemCount": 44,
-      "retainedItemCount": 46,
-      "retrievedAt": "2026-08-20T08:07:52.667Z",
+      "rejectedItemCount": 6,
+      "retainedItemCount": 8,
+      "retrievedAt": "2026-08-20T14:20:37.495Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "stale"
@@ -3955,7 +3955,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-20T08:07:52.667Z",
+      "retrievedAt": "2026-08-20T14:20:37.495Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -3966,7 +3966,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-20T08:07:52.667Z",
+      "retrievedAt": "2026-08-20T14:20:37.495Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
