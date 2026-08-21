@@ -1912,7 +1912,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-20T19:49:38.350Z",
+  "generatedAt": "2026-08-21T03:33:04.788Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -2019,6 +2019,27 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "title": "Frequently Asked Questions — Developing Potential Cellular and Gene Therapy Products",
       "url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/frequently-asked-questions-developing-potential-cellular-and-gene-therapy-products"
+    },
+    {
+      "category": "recall",
+      "contentHash": "858bced909c95013507c4fa23aad1b0e37d21bc20e5ebb6054b4d469fd8d016e",
+      "description": "Medline is correcting affected convenience kits by removing included B. Braun components containing Huons Bupivacaine Hydrochloride in Dextrose Injection, USP.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-recall-medline-issues-correction-convenience-kits-containing-b-braun-bupivacaine",
+      "id": "medical-update:fda-medwatch:1b9c7e24f556047950bcc85f",
+      "publishedAt": "2026-08-20T04:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Bupivacaine",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-21T03:33:04.788Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Convenience Kit Recall: Medline Issues Correction for Convenience Kits Containing B. Braun Bupivacaine Hydrochloride Components",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-recall-medline-issues-correction-convenience-kits-containing-b-braun-bupivacaine"
     },
     {
       "category": "drug-approval",
@@ -3950,8 +3971,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 7,
-      "retrievedAt": "2026-08-20T19:49:38.350Z",
+      "retainedItemCount": 8,
+      "retrievedAt": "2026-08-21T03:33:04.788Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3962,7 +3983,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 13,
-      "retrievedAt": "2026-08-20T19:49:38.350Z",
+      "retrievedAt": "2026-08-21T03:33:04.788Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -3973,7 +3994,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 15,
       "retainedItemCount": 13,
-      "retrievedAt": "2026-08-20T19:49:38.350Z",
+      "retrievedAt": "2026-08-21T03:33:04.788Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -3984,7 +4005,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 14,
       "retainedItemCount": 6,
-      "retrievedAt": "2026-08-20T19:49:38.350Z",
+      "retrievedAt": "2026-08-21T03:33:04.788Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -3995,7 +4016,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-08-20T19:49:38.350Z",
+      "retrievedAt": "2026-08-21T03:33:04.788Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -4006,18 +4027,18 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-20T19:49:38.350Z",
+      "retrievedAt": "2026-08-21T03:33:04.788Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
     },
     {
-      "error": "Partial item routing failure: 2 of 100 eligible feed items failed deterministic normalization; last-good source items were retained.",
-      "itemCount": 98,
+      "error": "Partial item routing failure: 67 of 100 eligible feed items failed deterministic normalization; last-good source items were retained.",
+      "itemCount": 33,
       "rawItemCount": 100,
-      "rejectedItemCount": 2,
-      "retainedItemCount": 7,
-      "retrievedAt": "2026-08-20T19:49:38.350Z",
+      "rejectedItemCount": 67,
+      "retainedItemCount": 72,
+      "retrievedAt": "2026-08-21T03:33:04.788Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "stale"
@@ -4028,7 +4049,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-20T19:49:38.350Z",
+      "retrievedAt": "2026-08-21T03:33:04.788Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -4039,7 +4060,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-20T19:49:38.350Z",
+      "retrievedAt": "2026-08-21T03:33:04.788Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
