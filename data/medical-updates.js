@@ -1912,9 +1912,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-21T08:09:00.397Z",
+  "generatedAt": "2026-08-21T14:09:51.841Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "drug-approval",
+      "contentHash": "16ced41d539190726d0151197a8fda920ebb90aef815b62e2a1727cf665ccf2e",
+      "description": "By clarifying FDA’s regulatory expectations for new entrants and experienced drug developers alike, FDA is supporting prospective generic drug developers and improving the overall quality of ANDAs submitted to the Agency for approval.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/guidance-compliance-regulatory-information/fda-drug-competition-action-plan-improving-efficiency-generic-drug-development-review-and-approval",
+      "id": "medical-update:fda-drugs:363e251320732f4f0014b958",
+      "publishedAt": "2026-08-21T13:53:45.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-17T19:43:47.717Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "FDA Drug Competition Action Plan | Improving the efficiency of the generic drug development, review, and approval process",
+      "url": "https://www.fda.gov/drugs/guidance-compliance-regulatory-information/fda-drug-competition-action-plan-improving-efficiency-generic-drug-development-review-and-approval"
+    },
     {
       "category": "guideline-public-health",
       "contentHash": "1cfe7e483a2c53a34251509205a8f698ddff39837b295f70d08df1b4cb0a5c1a",
@@ -2264,22 +2280,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "title": "UPDATED: Oma's Pride Voluntarily Recalls One Lot of Woof Complete Canine Chicken Recipe (6 Lb Bag) Because of Possible Salmonella Health Risk",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/updated-omas-pride-voluntarily-recalls-one-lot-woof-complete-canine-chicken-recipe-6-lb-bag-because"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "37a1a2a497cace7d0c7842ee1d94ab3468de2ae8ed1692169801f9596d002afe",
-      "description": "By clarifying FDA’s regulatory expectations for new entrants and experienced drug developers alike, FDA is supporting prospective generic drug developers and improving the overall quality of ANDAs submitted to the Agency for approval.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/drugs/guidance-compliance-regulatory-information/fda-drug-competition-action-plan-improving-efficiency-generic-drug-development-review-and-approval",
-      "id": "medical-update:fda-drugs:363e251320732f4f0014b958",
-      "publishedAt": "2026-08-17T18:42:40.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-17T19:43:47.717Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "FDA Drug Competition Action Plan | Improving the efficiency of the generic drug development, review, and approval process",
-      "url": "https://www.fda.gov/drugs/guidance-compliance-regulatory-information/fda-drug-competition-action-plan-improving-efficiency-generic-drug-development-review-and-approval"
     },
     {
       "category": "vaccine-biologic",
@@ -3962,7 +3962,7 @@
       "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7524a2.htm"
     }
   ],
-  "refreshStatus": "PARTIAL",
+  "refreshStatus": "CURRENT",
   "schemaVersion": "ani-medical-updates-runtime-v1",
   "sourceConfigSha256": "bcda90ac53015cf0b9744061bc08ad8442b6173b990e7125516874c39b76e0db",
   "sourceStatuses": [
@@ -3972,7 +3972,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 8,
-      "retrievedAt": "2026-08-21T08:09:00.397Z",
+      "retrievedAt": "2026-08-21T14:09:51.841Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -3983,18 +3983,18 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 13,
-      "retrievedAt": "2026-08-21T08:09:00.397Z",
+      "retrievedAt": "2026-08-21T14:09:51.841Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 5,
+      "itemCount": 6,
       "rawItemCount": 20,
-      "rejectedItemCount": 15,
-      "retainedItemCount": 13,
-      "retrievedAt": "2026-08-21T08:09:00.397Z",
+      "rejectedItemCount": 14,
+      "retainedItemCount": 12,
+      "retrievedAt": "2026-08-21T14:09:51.841Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -4005,7 +4005,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 14,
       "retainedItemCount": 6,
-      "retrievedAt": "2026-08-21T08:09:00.397Z",
+      "retrievedAt": "2026-08-21T14:09:51.841Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -4016,7 +4016,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-08-21T08:09:00.397Z",
+      "retrievedAt": "2026-08-21T14:09:51.841Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -4027,21 +4027,21 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-21T08:09:00.397Z",
+      "retrievedAt": "2026-08-21T14:09:51.841Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
     },
     {
-      "error": "Partial item routing failure: 80 of 100 eligible feed items failed deterministic normalization; last-good source items were retained.",
-      "itemCount": 20,
+      "error": null,
+      "itemCount": 100,
       "rawItemCount": 100,
-      "rejectedItemCount": 80,
-      "retainedItemCount": 85,
-      "retrievedAt": "2026-08-21T08:09:00.397Z",
+      "rejectedItemCount": 0,
+      "retainedItemCount": 5,
+      "retrievedAt": "2026-08-21T14:09:51.841Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "status": "stale"
+      "status": "current"
     },
     {
       "error": null,
@@ -4049,7 +4049,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-21T08:09:00.397Z",
+      "retrievedAt": "2026-08-21T14:09:51.841Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -4060,7 +4060,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-21T08:09:00.397Z",
+      "retrievedAt": "2026-08-21T14:09:51.841Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
