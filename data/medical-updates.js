@@ -6,6 +6,44 @@
   "archive": [
     {
       "category": "guideline-public-health",
+      "contentHash": "b9b50d961cf08a466630c1986bd79fc04de0bb1b1edc177687e250fabb4feaaa",
+      "description": "This report describes numbers of emergency department visits for suspected suicide attempts during 2021-2025.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765893&_=2F719373AFEC87F2CB3F48659F0ADA7A1B8D02155A5BDB64E8FF6401782CE377",
+      "id": "medical-update:cdc-mmwr:deccbabe84e40128f0124a47",
+      "publishedAt": "2026-06-25T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Emergency Department Visits for Suspected Suicide Attempts - United States, 2021-2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7524a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "5bf119d8eea1455b587646a5276b7f4e508a52efb4e92f48a136db62d673c216",
+      "description": "This report describes the number of drug overdose deaths that occurred in U.S. hotels and motels during 2022-2024.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765894&_=7D64FF03F8C8C47F3E43ADFF12B907D16E78CFBF461951A9EC699988FB9E32E8",
+      "id": "medical-update:cdc-mmwr:7f1cd526d4217c14f84e24d0",
+      "publishedAt": "2026-06-25T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Notes from the Field: Drug Overdose Deaths in Hotels and Motels - United States, 2022-2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7524a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
       "contentHash": "d9d3826d3066331bcc3d1ae5ca3cbe4b8d1e5e9bbaf0b7a71a9ff4bb84ccb7bc",
       "description": "This report describes a case of Legionnaires disease in an infant who drank formula prepared using a formula mixing device and tap water.",
       "descriptionOrigin": "source-provided",
@@ -1912,9 +1950,41 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-24T14:27:57.689Z",
+  "generatedAt": "2026-08-24T19:48:14.134Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "drug-approval",
+      "contentHash": "5da027c253bbecb6af449e2c3d66854bc1aa287dd25c6436b82ca3f627e314f7",
+      "description": "This page describes recent rare disease drug approvals that received a CDER or FDA communication. This is not an exhaustive list of all rare disease drug approvals.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/about-fda/accelerating-rare-disease-cures-arc-program/rare-disease-drug-approvals",
+      "id": "medical-update:fda-drugs:8169638d4fa47bcfbbad0213",
+      "publishedAt": "2026-08-24T19:34:45.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-24T19:48:14.134Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Rare Disease Drug Approvals",
+      "url": "https://www.fda.gov/about-fda/accelerating-rare-disease-cures-arc-program/rare-disease-drug-approvals"
+    },
+    {
+      "category": "recall",
+      "contentHash": "1f7f6ee2a7eb1744e84cecac4613c9922cd8692ef44a15b329ed6dc632e6d953",
+      "description": "AUBURN, Ala. (August 21, 2026) – Vitruvias Therapeutics, Inc. is voluntarily recalling one lot (Lot. No. 504950) of Thyroid Tablets, USP 30 mg to the consumer level. The product is being recalled because testing confirmed the potential for the product to be superpotent.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/vitruvias-therapeutics-inc-issues-nationwide-recall-one-lot-thyroid-tablets-usp-30-mg-due-potential",
+      "id": "medical-update:fda-drugs:b97065d85474e2d26698bf91",
+      "publishedAt": "2026-08-24T19:05:15.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-24T19:48:14.134Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Vitruvias Therapeutics, Inc Issues Nationwide Recall of One Lot of Thyroid Tablets, USP 30 mg Due to Potential Super Potency",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/vitruvias-therapeutics-inc-issues-nationwide-recall-one-lot-thyroid-tablets-usp-30-mg-due-potential"
+    },
     {
       "category": "safety-alert",
       "contentHash": "e97382ff7ce0695aeb70bb74b8977cb20e2856a137d84427a2249c0b477cc2ca",
@@ -1946,6 +2016,38 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Early Alert: Convenience Kit Issue from Medline",
       "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-convenience-kit-issue-medline"
+    },
+    {
+      "category": "safety-alert",
+      "contentHash": "e49606126b127ee196bb4f8657fb32c07788d4911fc70b0cb88dd327cdaf8aee",
+      "description": "The NOxBOX NOxBOXi System may leak oxygen during inhaled nitric oxide therapy",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-nitric-oxide-delivery-system-issue-noxbox",
+      "id": "medical-update:fda-medwatch:5ff49308344b27f0966fc71d",
+      "publishedAt": "2026-08-24T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-24T19:48:14.134Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Early Alert: Nitric Oxide Delivery System Issue from NOxBOX",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-nitric-oxide-delivery-system-issue-noxbox"
+    },
+    {
+      "category": "safety-alert",
+      "contentHash": "31c31f0b9616359d641c65ee0d1bee672031a303a3eb9de1f741cb84fa6ef405",
+      "description": "The cannula sets may exhibit a loose connection between the flexible tubing and the nasal cannula resulting in reduced effectiveness and decreased oxygenation.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-ventilator-issue-coopersurgical",
+      "id": "medical-update:fda-medwatch:277bc348d88bdaba8ac64bd9",
+      "publishedAt": "2026-08-24T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-24T19:48:14.134Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Early Alert: Ventilator Issue from CooperSurgical",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-ventilator-issue-coopersurgical"
     },
     {
       "category": "recall",
@@ -4087,47 +4189,9 @@
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "title": "Surveillance Summaries: Surveillance for Candida auris - United States, 2022-2024",
       "url": "https://www.cdc.gov/mmwr/volumes/75/ss/ss7504a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "b9b50d961cf08a466630c1986bd79fc04de0bb1b1edc177687e250fabb4feaaa",
-      "description": "This report describes numbers of emergency department visits for suspected suicide attempts during 2021-2025.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765893&_=2F719373AFEC87F2CB3F48659F0ADA7A1B8D02155A5BDB64E8FF6401782CE377",
-      "id": "medical-update:cdc-mmwr:deccbabe84e40128f0124a47",
-      "publishedAt": "2026-06-25T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Emergency Department Visits for Suspected Suicide Attempts - United States, 2021-2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7524a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "5bf119d8eea1455b587646a5276b7f4e508a52efb4e92f48a136db62d673c216",
-      "description": "This report describes the number of drug overdose deaths that occurred in U.S. hotels and motels during 2022-2024.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765894&_=7D64FF03F8C8C47F3E43ADFF12B907D16E78CFBF461951A9EC699988FB9E32E8",
-      "id": "medical-update:cdc-mmwr:7f1cd526d4217c14f84e24d0",
-      "publishedAt": "2026-06-25T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Notes from the Field: Drug Overdose Deaths in Hotels and Motels - United States, 2022-2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7524a2.htm"
     }
   ],
-  "refreshStatus": "PARTIAL",
+  "refreshStatus": "CURRENT",
   "schemaVersion": "ani-medical-updates-runtime-v1",
   "sourceConfigSha256": "bcda90ac53015cf0b9744061bc08ad8442b6173b990e7125516874c39b76e0db",
   "sourceStatuses": [
@@ -4136,8 +4200,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 13,
-      "retrievedAt": "2026-08-24T14:27:57.689Z",
+      "retainedItemCount": 15,
+      "retrievedAt": "2026-08-24T19:48:14.134Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -4147,19 +4211,19 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 15,
-      "retrievedAt": "2026-08-24T14:27:57.689Z",
+      "retainedItemCount": 16,
+      "retrievedAt": "2026-08-24T19:48:14.134Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 4,
+      "itemCount": 2,
       "rawItemCount": 20,
-      "rejectedItemCount": 16,
-      "retainedItemCount": 17,
-      "retrievedAt": "2026-08-24T14:27:57.689Z",
+      "rejectedItemCount": 18,
+      "retainedItemCount": 21,
+      "retrievedAt": "2026-08-24T19:48:14.134Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -4170,7 +4234,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 8,
-      "retrievedAt": "2026-08-24T14:27:57.689Z",
+      "retrievedAt": "2026-08-24T19:48:14.134Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -4181,7 +4245,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-08-24T14:27:57.689Z",
+      "retrievedAt": "2026-08-24T19:48:14.134Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -4192,21 +4256,21 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-24T14:27:57.689Z",
+      "retrievedAt": "2026-08-24T19:48:14.134Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
     },
     {
-      "error": "Partial item routing failure: 4 of 100 eligible feed items failed deterministic normalization; last-good source items were retained.",
-      "itemCount": 96,
+      "error": null,
+      "itemCount": 100,
       "rawItemCount": 100,
-      "rejectedItemCount": 4,
-      "retainedItemCount": 9,
-      "retrievedAt": "2026-08-24T14:27:57.689Z",
+      "rejectedItemCount": 0,
+      "retainedItemCount": 5,
+      "retrievedAt": "2026-08-24T19:48:14.134Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "status": "stale"
+      "status": "current"
     },
     {
       "error": null,
@@ -4214,7 +4278,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-24T14:27:57.689Z",
+      "retrievedAt": "2026-08-24T19:48:14.134Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -4225,7 +4289,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-24T14:27:57.689Z",
+      "retrievedAt": "2026-08-24T19:48:14.134Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
