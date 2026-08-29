@@ -3,6 +3,30 @@
   "archive": [
     {
       "category": "guideline-public-health",
+      "contentHash": "8b0adca3dec4024e383bc741154df323b2a7e9cb4fd06eb2ed02d2dcc1dc9d39",
+      "description": "During 2022-2024, a total of 13,507 clinical C. auris cases were reported to CDC, increasing from 2,882 in 2022 to 4,428 in 2023 and 6,197 in 2024, with smaller annual percentage increases over time.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765938&_=3E9502039D0C65E67E95B5574C72E9CDFA212CED42DE5D2C9A6A3D8970EBFF30",
+      "id": "medical-update:cdc-mmwr:7f2ccc06e30dedfff92c90d4",
+      "publishedAt": "2026-06-30T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Candida auris",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Surveillance Summaries: Surveillance for Candida auris - United States, 2022-2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/ss/ss7504a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
       "contentHash": "b9b50d961cf08a466630c1986bd79fc04de0bb1b1edc177687e250fabb4feaaa",
       "description": "This report describes numbers of emergency department visits for suspected suicide attempts during 2021-2025.",
       "descriptionOrigin": "source-provided",
@@ -1947,9 +1971,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-29T12:20:08.091Z",
+  "generatedAt": "2026-08-29T18:19:54.346Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "90cd2320b3cb0be7c5c40f9715f7d57df95543341c1002fca11dc44fe623c135",
+      "description": "Northwest Naturals of Portland, Oregon is voluntarily recalling 53 cases (1,272 lbs.) of Northwest Naturals Frozen Chicken Recipe (cat food 2 lbs. bag) and 19 cases (684 lbs.) of Northwest Naturals Frozen Raw Diet for Dogs Chicken Recipe (6 lbs. bag) in the two lots identified due to Salmonella and",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/northwest-naturals-voluntarily-recalls-two-raw-pet-food-products-because-possible-salmonella",
+      "id": "medical-update:fda-recalls:10f29fae328ac93fa34591a7",
+      "publishedAt": "2026-08-29T00:23:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-29T18:19:54.346Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Northwest Naturals Voluntarily Recalls Two Raw Pet Food Products Because of Possible Salmonella & Listeria Monocytogenes Health Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/northwest-naturals-voluntarily-recalls-two-raw-pet-food-products-because-possible-salmonella"
+    },
     {
       "category": "drug-approval",
       "contentHash": "0b94b49c5a1f3664d672a71401c55887c6429f1b46dbce7cc786c5fa50ded58c",
@@ -2013,6 +2053,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "title": "FDA Approves Stelara for Pediatric Ulcerative Colitis",
       "url": "https://www.fda.gov/drugs/news-events-human-drugs/fda-approves-stelara-pediatric-ulcerative-colitis"
+    },
+    {
+      "category": "recall",
+      "contentHash": "7ffc76548867d1cb77ad46876b4de04011bf4630eddecbaacbbc9d21a46c6059",
+      "description": "MAMARONECK, NY, AUG. 28, 2026 - Panorama Produce is recalling 302 boxes of size 9 (nine) mangoes because they may be contaminated with Salmonella, an organism which can cause serious and sometimes fatal infections in young children, frail or elderly people, and others with weakened immune systems. H",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/panorama-produce-recalls-mangoes-due-possible-salmonella-contamination",
+      "id": "medical-update:fda-recalls:29e1a1f4f314ecaad04a8ca8",
+      "publishedAt": "2026-08-28T16:15:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-29T18:19:54.346Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Panorama Produce Recalls Mangoes Due to Possible Salmonella Contamination",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/panorama-produce-recalls-mangoes-due-possible-salmonella-contamination"
     },
     {
       "category": "drug-approval",
@@ -4669,33 +4725,9 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "title": "FDA Approves New Treatment That Uses Donor Immune Cells to Prevent Serious Complications in Blood Cancer Patients",
       "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-new-treatment-uses-donor-immune-cells-prevent-serious-complications-blood-cancer"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "8b0adca3dec4024e383bc741154df323b2a7e9cb4fd06eb2ed02d2dcc1dc9d39",
-      "description": "During 2022-2024, a total of 13,507 clinical C. auris cases were reported to CDC, increasing from 2,882 in 2022 to 4,428 in 2023 and 6,197 in 2024, with smaller annual percentage increases over time.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765938&_=3E9502039D0C65E67E95B5574C72E9CDFA212CED42DE5D2C9A6A3D8970EBFF30",
-      "id": "medical-update:cdc-mmwr:7f2ccc06e30dedfff92c90d4",
-      "publishedAt": "2026-06-30T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Candida auris",
-          "collection": "clinicalReferenceEntries"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Surveillance Summaries: Surveillance for Candida auris - United States, 2022-2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/ss/ss7504a1.htm"
     }
   ],
-  "refreshStatus": "PARTIAL",
+  "refreshStatus": "CURRENT",
   "schemaVersion": "ani-medical-updates-dataset-v1",
   "sourceConfigSha256": "bcda90ac53015cf0b9744061bc08ad8442b6173b990e7125516874c39b76e0db",
   "sourceStatuses": [
@@ -4705,7 +4737,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 23,
-      "retrievedAt": "2026-08-29T12:20:08.091Z",
+      "retrievedAt": "2026-08-29T18:19:54.346Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -4715,8 +4747,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 23,
-      "retrievedAt": "2026-08-29T12:20:08.091Z",
+      "retainedItemCount": 25,
+      "retrievedAt": "2026-08-29T18:19:54.346Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -4727,7 +4759,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 31,
-      "retrievedAt": "2026-08-29T12:20:08.091Z",
+      "retrievedAt": "2026-08-29T18:19:54.346Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -4738,7 +4770,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 14,
-      "retrievedAt": "2026-08-29T12:20:08.091Z",
+      "retrievedAt": "2026-08-29T18:19:54.346Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -4749,7 +4781,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 7,
       "retainedItemCount": 3,
-      "retrievedAt": "2026-08-29T12:20:08.091Z",
+      "retrievedAt": "2026-08-29T18:19:54.346Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -4760,21 +4792,21 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-29T12:20:08.091Z",
+      "retrievedAt": "2026-08-29T18:19:54.346Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
     },
     {
-      "error": "Partial item routing failure: 1 of 100 eligible feed items failed deterministic normalization; last-good source items were retained.",
-      "itemCount": 99,
+      "error": null,
+      "itemCount": 100,
       "rawItemCount": 100,
-      "rejectedItemCount": 1,
-      "retainedItemCount": 8,
-      "retrievedAt": "2026-08-29T12:20:08.091Z",
+      "rejectedItemCount": 0,
+      "retainedItemCount": 7,
+      "retrievedAt": "2026-08-29T18:19:54.346Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "status": "stale"
+      "status": "current"
     },
     {
       "error": null,
@@ -4782,7 +4814,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-29T12:20:08.091Z",
+      "retrievedAt": "2026-08-29T18:19:54.346Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -4793,7 +4825,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-29T12:20:08.091Z",
+      "retrievedAt": "2026-08-29T18:19:54.346Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
