@@ -2,6 +2,22 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "drug-approval",
+      "contentHash": "a365449628123b9503a4df9a789a0f7acdaff2af8a6931605719ae096c01fe03",
+      "description": "The U.S. Food and Drug Administration today approved TREGZI, the first regulatory T (Treg) cell-based immunotherapy for improving chronic graft-versus-host disease (GVHD)-free survival in adult patients with blood cancers undergoing allogeneic hematopoietic stem cell transplantation (allo-HSCT).",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/news-events/press-announcements/fda-approves-new-treatment-uses-donor-immune-cells-prevent-serious-complications-blood-cancer",
+      "id": "medical-update:fda-press-releases:e977b75279a682179cd25152",
+      "publishedAt": "2026-06-30T21:29:30.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-press-releases",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
+      "title": "FDA Approves New Treatment That Uses Donor Immune Cells to Prevent Serious Complications in Blood Cancer Patients",
+      "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-new-treatment-uses-donor-immune-cells-prevent-serious-complications-blood-cancer"
+    },
+    {
       "category": "guideline-public-health",
       "contentHash": "8b0adca3dec4024e383bc741154df323b2a7e9cb4fd06eb2ed02d2dcc1dc9d39",
       "description": "During 2022-2024, a total of 13,507 clinical C. auris cases were reported to CDC, increasing from 2,882 in 2022 to 4,428 in 2023 and 6,197 in 2024, with smaller annual percentage increases over time.",
@@ -1971,9 +1987,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-29T18:19:54.346Z",
+  "generatedAt": "2026-08-30T00:20:04.101Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "3ae4fafe9c16344bbfe609d294fb3b073bf32f00fe4141693cff7e6017c27456",
+      "description": "FOR IMMEDIATE RELEASE – August 19, 2026– Bethlehem, PA, B. Braun Medical Inc (B. Braun) is voluntarily recalling three (3) lots of 0.9% Sodium Chloride Injection USP, 100 mL, in a 150 mL PAB® Container, to the hospital/healthcare facility/user level due to presence of particulate matter identified a",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/b-braun-medical-inc-issues-voluntary-nationwide-recall-09-sodium-chloride-injection-usp-100-ml-150",
+      "id": "medical-update:fda-drugs:33217089c35af5b5b741e04e",
+      "publishedAt": "2026-08-29T20:33:46.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-30T00:20:04.101Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "B. Braun Medical Inc. Issues Voluntary Nationwide Recall of 0.9% Sodium Chloride Injection USP, 100 mL, in a 150 mL PAB® Container Due to the Presence of Particulate Matter",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/b-braun-medical-inc-issues-voluntary-nationwide-recall-09-sodium-chloride-injection-usp-100-ml-150"
+    },
     {
       "category": "recall",
       "contentHash": "90cd2320b3cb0be7c5c40f9715f7d57df95543341c1002fca11dc44fe623c135",
@@ -2056,6 +2088,27 @@
     },
     {
       "category": "recall",
+      "contentHash": "1e2985ba90b5a6ab0e7e0739d1fe639e3537b3785ec699b658d086bbdcb46ace",
+      "description": "Everything Sprouts, LLC, based in Minneapolis, MN is expanding its voluntary recall of sprouts to include certain lots of Robust Radish Sprout Mix because it has the potential to be contaminated with Shiga toxin producing Escherichia coli (STEC) or Salmonella bacteria.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/everything-sprouts-llc-expands-voluntarily-recall-include-robust-radish-mix-due-potential-e-coli-and",
+      "id": "medical-update:fda-recalls:33fa8c02ab7a93c0c10f2c6a",
+      "publishedAt": "2026-08-28T18:30:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Escherichia coli",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-30T00:20:04.101Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Everything Sprouts, LLC Expands Voluntarily Recall to Include Robust Radish Mix Due to Potential E. Coli and Salmonella Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/everything-sprouts-llc-expands-voluntarily-recall-include-robust-radish-mix-due-potential-e-coli-and"
+    },
+    {
+      "category": "recall",
       "contentHash": "7ffc76548867d1cb77ad46876b4de04011bf4630eddecbaacbbc9d21a46c6059",
       "description": "MAMARONECK, NY, AUG. 28, 2026 - Panorama Produce is recalling 302 boxes of size 9 (nine) mangoes because they may be contaminated with Salmonella, an organism which can cause serious and sometimes fatal infections in young children, frail or elderly people, and others with weakened immune systems. H",
       "descriptionOrigin": "source-provided",
@@ -2133,22 +2186,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Early Alert: IV Start Kit Issue from Avid Medical",
       "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-iv-start-kit-issue-avid-medical"
-    },
-    {
-      "category": "recall",
-      "contentHash": "73ed8b452a5079890cadda3f73592103843ac7180592c707ced0f007a55acfd7",
-      "description": "FOR IMMEDIATE RELEASE – August 19, 2026– Bethlehem, PA, B. Braun Medical Inc (B. Braun) is voluntarily recalling three (3) lots of 0.9% Sodium Chloride Injection USP, 100 mL, in a 150 mL PAB® Container, to the hospital/healthcare facility/user level due to presence of particulate matter identified a",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/b-braun-medical-inc-issues-voluntary-nationwide-recall-09-sodium-chloride-injection-usp-100-ml-150",
-      "id": "medical-update:fda-medwatch:97d7cc6747518bcecc9f64df",
-      "publishedAt": "2026-08-28T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-28T21:56:32.733Z",
-      "sourceCategories": [],
-      "sourceId": "fda-medwatch",
-      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
-      "title": "B. Braun Medical Inc. Issues Voluntary Nationwide Recall of 0.9% Sodium Chloride Injection USP, 100 mL, in a 150 mL PAB® Container Due to the Presence of Particulate Matter",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/b-braun-medical-inc-issues-voluntary-nationwide-recall-09-sodium-chloride-injection-usp-100-ml-150"
     },
     {
       "category": "drug-approval",
@@ -4709,22 +4746,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "title": "FDA Approves First Gene Therapy for Young Children with Sickle Cell Disease",
       "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapy-young-children-sickle-cell-disease"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "a365449628123b9503a4df9a789a0f7acdaff2af8a6931605719ae096c01fe03",
-      "description": "The U.S. Food and Drug Administration today approved TREGZI, the first regulatory T (Treg) cell-based immunotherapy for improving chronic graft-versus-host disease (GVHD)-free survival in adult patients with blood cancers undergoing allogeneic hematopoietic stem cell transplantation (allo-HSCT).",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/news-events/press-announcements/fda-approves-new-treatment-uses-donor-immune-cells-prevent-serious-complications-blood-cancer",
-      "id": "medical-update:fda-press-releases:e977b75279a682179cd25152",
-      "publishedAt": "2026-06-30T21:29:30.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-press-releases",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
-      "title": "FDA Approves New Treatment That Uses Donor Immune Cells to Prevent Serious Complications in Blood Cancer Patients",
-      "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-new-treatment-uses-donor-immune-cells-prevent-serious-complications-blood-cancer"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -4737,7 +4758,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 23,
-      "retrievedAt": "2026-08-29T18:19:54.346Z",
+      "retrievedAt": "2026-08-30T00:20:04.101Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -4747,19 +4768,19 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 25,
-      "retrievedAt": "2026-08-29T18:19:54.346Z",
+      "retainedItemCount": 26,
+      "retrievedAt": "2026-08-30T00:20:04.101Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 4,
+      "itemCount": 5,
       "rawItemCount": 20,
-      "rejectedItemCount": 16,
+      "rejectedItemCount": 15,
       "retainedItemCount": 31,
-      "retrievedAt": "2026-08-29T18:19:54.346Z",
+      "retrievedAt": "2026-08-30T00:20:04.101Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -4770,7 +4791,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 14,
-      "retrievedAt": "2026-08-29T18:19:54.346Z",
+      "retrievedAt": "2026-08-30T00:20:04.101Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -4781,7 +4802,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 7,
       "retainedItemCount": 3,
-      "retrievedAt": "2026-08-29T18:19:54.346Z",
+      "retrievedAt": "2026-08-30T00:20:04.101Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -4792,7 +4813,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-29T18:19:54.346Z",
+      "retrievedAt": "2026-08-30T00:20:04.101Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -4803,7 +4824,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-08-29T18:19:54.346Z",
+      "retrievedAt": "2026-08-30T00:20:04.101Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -4814,7 +4835,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-29T18:19:54.346Z",
+      "retrievedAt": "2026-08-30T00:20:04.101Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -4825,7 +4846,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-29T18:19:54.346Z",
+      "retrievedAt": "2026-08-30T00:20:04.101Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
