@@ -5,6 +5,63 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "guideline-public-health",
+      "contentHash": "5bcd21b7c8b4f0bc29e6c476c4a06dca351a91da96dbedf1442e32c7abb84ff3",
+      "description": "This report describes seroprevalence of alpha-gal immunoglobulin E in blood donor samples collected during 2024-2025.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765940&_=C474735720BD8AABBA7A191BCB109A26362807FB87B9C7DC34D2E5761F344CD8",
+      "id": "medical-update:cdc-mmwr:025d81594987e834417bbcc5",
+      "publishedAt": "2026-07-02T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Alpha-gal Immunoglobulin E Seroprevalence Among Blood Donors - 10 States, 2024-2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7525a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "3ec83c999880200793f18988e5a5db0542d2419c66e1b20151642a2548f99a8c",
+      "description": "This report describes two outbreaks of legionellosis at two hotels in the U.S. Virgin Islands.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765941&_=30C70FF0BDB00B84452B6BA7140FF4DB0782412E53D229BC544667808C7601CF",
+      "id": "medical-update:cdc-mmwr:676e1fbb34f61222224b19e9",
+      "publishedAt": "2026-07-02T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Legionellosis Outbreaks Associated with Two Hotels - U.S. Virgin Islands, October 2024-April 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7525a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "77d33296e3c73021caa3412a33f739f0d55f241f8485648db6895dfa31b74863",
+      "description": "This report describes the percentage of births in which women received first trimester prenatal care.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765942&_=AC85E91BBDFEEF5CF6FE580F02B502DFEE4EDACAD27AE86824CBEC8EFA41B0D1",
+      "id": "medical-update:cdc-mmwr:386571517ab483a495719ff8",
+      "publishedAt": "2026-07-02T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "QuickStats: Percentage of Births in Which Women Received Prenatal Care in the First Trimester of Pregnancy, by State - United States, 2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7525a3.htm"
+    },
+    {
       "category": "drug-approval",
       "contentHash": "a47a832f7f0ff0945356f2b0887b60696f7cb272923c8b06fc0486079a2be1c9",
       "description": "The U.S. Food and Drug Administration today issued a supplemental approval for Casgevy (exagamglogene autotemcel) for patients aged 2 years and older with either sickle cell disease (SCD) with recurrent vaso-occlusive crises (VOCs) or transfusion-dependent β thalassemia (TDT).",
@@ -2011,9 +2068,73 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-08-31T00:20:02.366Z",
+  "generatedAt": "2026-08-31T18:20:05.742Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "4bbcbe2908d05e4fcbe096acf9e1270eeb4d92c823e039293d38baefb4e7fac0",
+      "description": "FOR IMMEDIATE RELEASE - August 27, 2026 - Davie, Florida – Ana Salazar Modela Tu Cuerpo Inc. is recalling Lipofit Extreme Fat Burner 2.0, Lot 25M12F, expiration date 09/2027, to the consumer level. The Food and Drug Administration (FDA) laboratory analysis has found Lipofit Extreme Fat Burner 2.0 to",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/ana-salazar-modela-tu-cuerpo-inc-issues-nationwide-voluntary-recall-lipofit-extreme-fat-burner-20",
+      "id": "medical-update:fda-drugs:2fbea06a367fea93dd9c8b8b",
+      "publishedAt": "2026-08-31T14:54:02.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-31T18:20:05.742Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Ana Salazar Modela Tu Cuerpo Inc. Issues Nationwide Voluntary Recall of Lipofit Extreme Fat Burner 2.0 Due to Presence of Undeclared Fluoxetine and 2,4-Dinitrophenol (DNP)",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/ana-salazar-modela-tu-cuerpo-inc-issues-nationwide-voluntary-recall-lipofit-extreme-fat-burner-20"
+    },
+    {
+      "category": "drug-approval",
+      "contentHash": "615dee83853008f3796bf7f2f4a5eef2b2904994ebd8bf5d1566f43368448977",
+      "description": "This page describes recent rare disease drug approvals that received a CDER or FDA communication. This is not an exhaustive list of all rare disease drug approvals.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/about-fda/accelerating-rare-disease-cures-arc-program/rare-disease-drug-approvals",
+      "id": "medical-update:fda-drugs:8169638d4fa47bcfbbad0213",
+      "publishedAt": "2026-08-31T14:31:16.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-24T19:48:14.134Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Rare Disease Drug Approvals",
+      "url": "https://www.fda.gov/about-fda/accelerating-rare-disease-cures-arc-program/rare-disease-drug-approvals"
+    },
+    {
+      "category": "drug-approval",
+      "contentHash": "6539edbb9f7d9c472e6ca8a6d126f51234281cd873291954e06cd2f4b2d3c1fc",
+      "description": "News about human drug-related approvals",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/news-events-human-drugs/notable-approvals-drugs",
+      "id": "medical-update:fda-drugs:a7183b849a4ca312c8d09a44",
+      "publishedAt": "2026-08-31T12:14:34.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-19T19:35:58.259Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Notable Approvals | Drugs",
+      "url": "https://www.fda.gov/drugs/news-events-human-drugs/notable-approvals-drugs"
+    },
+    {
+      "category": "drug-approval",
+      "contentHash": "b900347b416df4d774dd087aa6b261701322b73e3c6fc9531641c4e474935d42",
+      "description": "The U.S. Food and Drug Administration has approved Besremi (ropeginterferon alfa-2b-njft) injection for the treatment of adults with essential thrombocythemia.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/news-events-human-drugs/fda-approves-treatment-essential-thrombocythemia",
+      "id": "medical-update:fda-drugs:97dac7208d44989e79841188",
+      "publishedAt": "2026-08-31T12:12:44.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-31T18:20:05.742Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "FDA Approves Treatment for Essential Thrombocythemia",
+      "url": "https://www.fda.gov/drugs/news-events-human-drugs/fda-approves-treatment-essential-thrombocythemia"
+    },
     {
       "category": "recall",
       "contentHash": "3ae4fafe9c16344bbfe609d294fb3b073bf32f00fe4141693cff7e6017c27456",
@@ -2077,22 +2198,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "title": "FDA Approves First Drug of Its Kind for Polycythemia Vera, a Rare Blood Disorder",
       "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-first-drug-its-kind-polycythemia-vera-rare-blood-disorder"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "c387cdcb01522e0b9d0673094e97305a52f494d0c7f64fc98350bba2ffce9188",
-      "description": "News about human drug-related approvals",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/drugs/news-events-human-drugs/notable-approvals-drugs",
-      "id": "medical-update:fda-drugs:a7183b849a4ca312c8d09a44",
-      "publishedAt": "2026-08-28T20:29:42.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-19T19:35:58.259Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "Notable Approvals | Drugs",
-      "url": "https://www.fda.gov/drugs/news-events-human-drugs/notable-approvals-drugs"
     },
     {
       "category": "drug-approval",
@@ -2333,22 +2438,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Early Alert: Esophageal pH Monitoring Capsule Delivery Device Issue from Medtronic and Given Imaging",
       "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-esophageal-ph-monitoring-capsule-delivery-device-issue-medtronic-and-given-imaging"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "94c1f6fd98012066405acce892efc3ef4a97666a51387ad93ae84d4e1ab2e9dd",
-      "description": "This page describes recent rare disease drug approvals that received a CDER or FDA communication. This is not an exhaustive list of all rare disease drug approvals.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/about-fda/accelerating-rare-disease-cures-arc-program/rare-disease-drug-approvals",
-      "id": "medical-update:fda-drugs:8169638d4fa47bcfbbad0213",
-      "publishedAt": "2026-08-26T19:21:44.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-24T19:48:14.134Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "Rare Disease Drug Approvals",
-      "url": "https://www.fda.gov/about-fda/accelerating-rare-disease-cures-arc-program/rare-disease-drug-approvals"
     },
     {
       "category": "drug-approval",
@@ -4692,63 +4781,6 @@
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "title": "Norovirus, COVID-19, and Influenza Outbreaks Among Residents and Staff Members at the Eaton Wildfire Evacuation Shelter - Pasadena, California, January-February 2025",
       "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7526a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "5bcd21b7c8b4f0bc29e6c476c4a06dca351a91da96dbedf1442e32c7abb84ff3",
-      "description": "This report describes seroprevalence of alpha-gal immunoglobulin E in blood donor samples collected during 2024-2025.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765940&_=C474735720BD8AABBA7A191BCB109A26362807FB87B9C7DC34D2E5761F344CD8",
-      "id": "medical-update:cdc-mmwr:025d81594987e834417bbcc5",
-      "publishedAt": "2026-07-02T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Alpha-gal Immunoglobulin E Seroprevalence Among Blood Donors - 10 States, 2024-2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7525a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "3ec83c999880200793f18988e5a5db0542d2419c66e1b20151642a2548f99a8c",
-      "description": "This report describes two outbreaks of legionellosis at two hotels in the U.S. Virgin Islands.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765941&_=30C70FF0BDB00B84452B6BA7140FF4DB0782412E53D229BC544667808C7601CF",
-      "id": "medical-update:cdc-mmwr:676e1fbb34f61222224b19e9",
-      "publishedAt": "2026-07-02T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Legionellosis Outbreaks Associated with Two Hotels - U.S. Virgin Islands, October 2024-April 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7525a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "77d33296e3c73021caa3412a33f739f0d55f241f8485648db6895dfa31b74863",
-      "description": "This report describes the percentage of births in which women received first trimester prenatal care.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765942&_=AC85E91BBDFEEF5CF6FE580F02B502DFEE4EDACAD27AE86824CBEC8EFA41B0D1",
-      "id": "medical-update:cdc-mmwr:386571517ab483a495719ff8",
-      "publishedAt": "2026-07-02T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "QuickStats: Percentage of Births in Which Women Received Prenatal Care in the First Trimester of Pregnancy, by State - United States, 2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7525a3.htm"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -4761,7 +4793,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 23,
-      "retrievedAt": "2026-08-31T00:20:02.366Z",
+      "retrievedAt": "2026-08-31T18:20:05.742Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -4771,19 +4803,19 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 26,
-      "retrievedAt": "2026-08-31T00:20:02.366Z",
+      "retainedItemCount": 27,
+      "retrievedAt": "2026-08-31T18:20:05.742Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 5,
+      "itemCount": 8,
       "rawItemCount": 20,
-      "rejectedItemCount": 15,
-      "retainedItemCount": 31,
-      "retrievedAt": "2026-08-31T00:20:02.366Z",
+      "rejectedItemCount": 12,
+      "retainedItemCount": 30,
+      "retrievedAt": "2026-08-31T18:20:05.742Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -4794,7 +4826,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 14,
-      "retrievedAt": "2026-08-31T00:20:02.366Z",
+      "retrievedAt": "2026-08-31T18:20:05.742Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -4805,7 +4837,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 7,
       "retainedItemCount": 3,
-      "retrievedAt": "2026-08-31T00:20:02.366Z",
+      "retrievedAt": "2026-08-31T18:20:05.742Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -4816,7 +4848,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-31T00:20:02.366Z",
+      "retrievedAt": "2026-08-31T18:20:05.742Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -4827,7 +4859,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-08-31T00:20:02.366Z",
+      "retrievedAt": "2026-08-31T18:20:05.742Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -4838,7 +4870,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 9,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-31T00:20:02.366Z",
+      "retrievedAt": "2026-08-31T18:20:05.742Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -4849,7 +4881,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-08-31T00:20:02.366Z",
+      "retrievedAt": "2026-08-31T18:20:05.742Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
