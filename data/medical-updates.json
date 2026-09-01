@@ -2065,9 +2065,28 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-01T16:39:30.911Z",
+  "generatedAt": "2026-09-01T21:01:52.905Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "guideline-public-health",
+      "contentHash": "39d3bac4d6a8a5c711542e5b02f7e2c7c2466a4c937f74789428ca92dc45f589",
+      "description": "This report describes the ongoing Ebola outbreak caused by Bundibugyo virus in the Democratic Republic of the Congo.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766344&_=9A4D374E48D98604F9C94B16DF1D89427D41390A2C2DD507CB6334F878266EE8",
+      "id": "medical-update:cdc-mmwr:f2619850c4453ecd30b67200",
+      "publishedAt": "2026-09-01T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-01T21:01:52.905Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "EARLY RELEASE: Notes from the Field: Characteristics and Monitoring of the 2026 Outbreak of Ebola Disease Caused by Bundibugyo Virus - Democratic Republic of the Congo, August 2026",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7535e1.htm"
+    },
     {
       "category": "drug-approval",
       "contentHash": "26d3f7cdc9fd519676a9415e8831b0624c70637738e4924af4b1d7a2d7335ac3",
@@ -2131,6 +2150,27 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Breathing Circuit Recall: Medline Removes Neonatal and Infant Heated Wire Breathing Circuits",
       "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/breathing-circuit-recall-medline-removes-neonatal-and-infant-heated-wire-breathing-circuits"
+    },
+    {
+      "category": "medical-development",
+      "contentHash": "241c1bef0c786ba9c98799ca2d5591d89a777edcb47aa14ffa660d216c3bbacb",
+      "description": "The discovery, made through malaria research, is a breakthrough for allergic condition associated with tick bites that has no treatment or cure.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://www.nih.gov/news-events/news-releases/nih-researchers-identify-rare-antibodies-potential-combat-alpha-gal-syndrome",
+      "id": "medical-update:nih-news-releases:ebbd20a73ed82c0a9fd813f6",
+      "publishedAt": "2026-09-01T00:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Malaria",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-09-01T21:01:52.905Z",
+      "sourceCategories": [],
+      "sourceId": "nih-news-releases",
+      "sourceName": "U.S. National Institutes of Health (NIH)",
+      "title": "NIH researchers identify rare antibodies with potential to combat alpha-gal syndrome",
+      "url": "https://www.nih.gov/news-events/news-releases/nih-researchers-identify-rare-antibodies-potential-combat-alpha-gal-syndrome"
     },
     {
       "category": "drug-approval",
@@ -4886,7 +4926,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 25,
-      "retrievedAt": "2026-09-01T16:39:30.911Z",
+      "retrievedAt": "2026-09-01T21:01:52.905Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -4897,7 +4937,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 29,
-      "retrievedAt": "2026-09-01T16:39:30.911Z",
+      "retrievedAt": "2026-09-01T21:01:52.905Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -4908,7 +4948,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 37,
-      "retrievedAt": "2026-09-01T16:39:30.911Z",
+      "retrievedAt": "2026-09-01T21:01:52.905Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -4919,7 +4959,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 19,
       "retainedItemCount": 16,
-      "retrievedAt": "2026-09-01T16:39:30.911Z",
+      "retrievedAt": "2026-09-01T21:01:52.905Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -4930,7 +4970,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 7,
       "retainedItemCount": 3,
-      "retrievedAt": "2026-09-01T16:39:30.911Z",
+      "retrievedAt": "2026-09-01T21:01:52.905Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -4941,32 +4981,32 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-01T16:39:30.911Z",
+      "retrievedAt": "2026-09-01T21:01:52.905Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
     },
     {
-      "error": null,
-      "itemCount": 100,
+      "error": "Partial item routing failure: 1 of 100 eligible feed items failed deterministic normalization; last-good source items were retained.",
+      "itemCount": 99,
       "rawItemCount": 100,
-      "rejectedItemCount": 0,
-      "retainedItemCount": 7,
-      "retrievedAt": "2026-09-01T16:39:30.911Z",
+      "rejectedItemCount": 1,
+      "retainedItemCount": 9,
+      "retrievedAt": "2026-09-01T21:01:52.905Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "status": "current"
+      "status": "stale"
     },
     {
-      "error": "Official source returned HTTP 403.",
-      "itemCount": 0,
-      "rawItemCount": 0,
-      "rejectedItemCount": 0,
-      "retainedItemCount": 1,
-      "retrievedAt": "2026-09-01T00:36:13.691Z",
+      "error": null,
+      "itemCount": 2,
+      "rawItemCount": 10,
+      "rejectedItemCount": 8,
+      "retainedItemCount": 0,
+      "retrievedAt": "2026-09-01T21:01:52.905Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
-      "status": "stale"
+      "status": "current"
     },
     {
       "error": null,
@@ -4974,7 +5014,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-01T16:39:30.911Z",
+      "retrievedAt": "2026-09-01T21:01:52.905Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
