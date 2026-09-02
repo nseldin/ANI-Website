@@ -2068,9 +2068,41 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-02T04:32:56.118Z",
+  "generatedAt": "2026-09-02T16:34:07.410Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "safety-alert",
+      "contentHash": "25f45a6a03aa46c10d051b74e202d1ff98faf47726db4f4a7001d9111ccf249f",
+      "description": "AVID Medical is correcting convenience kits containing recalled Huons Co. sodium chloride ampules.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-convenience-kit-issue-avid-medical-0",
+      "id": "medical-update:fda-medwatch:edc656c1ab0c187a1f9a007a",
+      "publishedAt": "2026-09-02T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-02T16:34:07.410Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Early Alert: Convenience Kit Issue from AVID Medical",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-convenience-kit-issue-avid-medical-0"
+    },
+    {
+      "category": "medical-development",
+      "contentHash": "2dc7a526cdf2742a47b0774928fe435bc3cca81543093db90fa2327eca6fe52d",
+      "description": "Medication produced benefits beyond what was achieved by calorie restriction alone.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://www.nih.gov/news-events/news-releases/glp-1-treatment-late-life-extends-lifespan-animal-model",
+      "id": "medical-update:nih-news-releases:2e7e795f6cac532daf93942f",
+      "publishedAt": "2026-09-02T00:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-02T16:34:07.410Z",
+      "sourceCategories": [],
+      "sourceId": "nih-news-releases",
+      "sourceName": "U.S. National Institutes of Health (NIH)",
+      "title": "GLP-1 treatment late in life extends lifespan in animal model",
+      "url": "https://www.nih.gov/news-events/news-releases/glp-1-treatment-late-life-extends-lifespan-animal-model"
+    },
     {
       "category": "guideline-public-health",
       "contentHash": "39d3bac4d6a8a5c711542e5b02f7e2c7c2466a4c937f74789428ca92dc45f589",
@@ -4929,7 +4961,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 25,
-      "retrievedAt": "2026-09-02T04:32:56.118Z",
+      "retrievedAt": "2026-09-02T16:34:07.410Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -4940,7 +4972,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 29,
-      "retrievedAt": "2026-09-02T04:32:56.118Z",
+      "retrievedAt": "2026-09-02T16:34:07.410Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -4951,7 +4983,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 37,
-      "retrievedAt": "2026-09-02T04:32:56.118Z",
+      "retrievedAt": "2026-09-02T16:34:07.410Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -4962,7 +4994,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 19,
       "retainedItemCount": 16,
-      "retrievedAt": "2026-09-02T04:32:56.118Z",
+      "retrievedAt": "2026-09-02T16:34:07.410Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -4973,7 +5005,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 7,
       "retainedItemCount": 3,
-      "retrievedAt": "2026-09-02T04:32:56.118Z",
+      "retrievedAt": "2026-09-02T16:34:07.410Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -4984,7 +5016,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-02T04:32:56.118Z",
+      "retrievedAt": "2026-09-02T16:34:07.410Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -4995,18 +5027,18 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 8,
-      "retrievedAt": "2026-09-02T04:32:56.118Z",
+      "retrievedAt": "2026-09-02T16:34:07.410Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 2,
+      "itemCount": 3,
       "rawItemCount": 10,
-      "rejectedItemCount": 8,
+      "rejectedItemCount": 7,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-02T04:32:56.118Z",
+      "retrievedAt": "2026-09-02T16:34:07.410Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5017,7 +5049,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-02T04:32:56.118Z",
+      "retrievedAt": "2026-09-02T16:34:07.410Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
