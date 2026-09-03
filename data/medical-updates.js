@@ -2068,9 +2068,82 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-03T11:13:23.412Z",
+  "generatedAt": "2026-09-03T16:24:57.478Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "drug-approval",
+      "contentHash": "b2450614a69f821b5af4d1485d06c07da458c32efeaed524db518114e0093937",
+      "description": "The U.S. Food and Drug Administration today issued an Emergency Use Authorization (EUA) for Capstar (nitenpyram) tablets and revised the EUA for Nitenpyram Tablets, the generic version of Capstar",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/news-events/press-announcements/fda-issues-emergency-use-authorization-drugs-prevent-and-treat-new-world-screwworm-dogs-and-cats",
+      "id": "medical-update:fda-press-releases:da452b69ffcf05ee6ec914b3",
+      "publishedAt": "2026-09-03T15:01:02.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-03T16:24:57.478Z",
+      "sourceCategories": [],
+      "sourceId": "fda-press-releases",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
+      "title": "FDA Issues Emergency Use Authorization for Drugs to Prevent and Treat New World Screwworm in Dogs and Cats",
+      "url": "https://www.fda.gov/news-events/press-announcements/fda-issues-emergency-use-authorization-drugs-prevent-and-treat-new-world-screwworm-dogs-and-cats"
+    },
+    {
+      "category": "vaccine-biologic",
+      "contentHash": "085e539f32bf213794d3fc5b78520a876cded2870c31c50f28240a4806b3ab93",
+      "description": "FDA's Vaccines and Related Biological Products Advisory Committee (VRBPAC) met on March 12, 2026, to discuss and make recommendations on the selection of influenza viruses for the composition of influenza vaccines for the 2026-2027 U.S. influenza season.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/vaccines-blood-biologics/vaccines/influenza-vaccine-composition-2026-2027-us-influenza-season",
+      "id": "medical-update:fda-biologics:47e98a9b20ee5310f67ba3ef",
+      "publishedAt": "2026-09-03T13:15:08.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza vaccine",
+          "collection": "clinicalReferenceEntries"
+        },
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-09-03T16:24:57.478Z",
+      "sourceCategories": [],
+      "sourceId": "fda-biologics",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
+      "title": "Influenza Vaccine Composition for the 2026-2027 U.S. Influenza Season",
+      "url": "https://www.fda.gov/vaccines-blood-biologics/vaccines/influenza-vaccine-composition-2026-2027-us-influenza-season"
+    },
+    {
+      "category": "safety-alert",
+      "contentHash": "4056fc3cface1307fad998c93eba67c4e753f7ac4f15e352c6c6a9231df39659",
+      "description": "Removal of VentStar Resus Neo hoses due to the potential for cracks resulting in restricted ventilation or delayed therapy.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-breathing-circuit-issue-draeger",
+      "id": "medical-update:fda-medwatch:2c49140374c5c3ed5cd8c7f0",
+      "publishedAt": "2026-09-03T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-03T16:24:57.478Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Early Alert: Breathing Circuit Issue from Draeger",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-breathing-circuit-issue-draeger"
+    },
+    {
+      "category": "safety-alert",
+      "contentHash": "0e505cf19a5fc1b1220e036fae37b96991a31b36be382d87ab88db6c646945ed",
+      "description": "Patients monitored on Portrait Mobile devices may be discharged (removed) from the Portrait monitoring system during an update to the Portrait Core Services software.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/monitoring-system-correction-ge-healthcare-updates-use-instructions-portrait-core-services-software",
+      "id": "medical-update:fda-medwatch:9be03fac044e9ef4c0c0dcb4",
+      "publishedAt": "2026-09-03T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-03T16:24:57.478Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Monitoring System Correction: GE HealthCare Updates Use Instructions for Portrait Core Services Software",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/monitoring-system-correction-ge-healthcare-updates-use-instructions-portrait-core-services-software"
+    },
     {
       "category": "drug-approval",
       "contentHash": "7ae45ef75502cff614042e9fbf4bb56adfdbc5d0fea99e638172fb9dd433c1a2",
@@ -2118,6 +2191,27 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "title": "Withdrawn | Cancer Accelerated Approvals",
       "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/withdrawn-cancer-accelerated-approvals"
+    },
+    {
+      "category": "recall",
+      "contentHash": "23a620252668d237aa02e19fbc925791824891d98d69e82f5372e70104af28e4",
+      "description": "September 02, 2026. Frutas y Hortalizas del Sur S.A., San Carlos, Chile expands its July 3, 2026, recall of frozen organic IQF blueberries to include one lot of Great Value frozen Organic Triple Berry Blend 10 OZ because of potential contamination with Escherichia coli O145:H28 (E. coli O145).",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/frutas-y-hortalizas-del-sur-sa-expands-recall-include-one-lot-great-value-frozen-organic-triple",
+      "id": "medical-update:fda-recalls:82828a11fa51bdfb75bee796",
+      "publishedAt": "2026-09-02T14:45:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Escherichia coli",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-09-03T16:24:57.478Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Frutas y Hortalizas del Sur S.A. Expands Recall to Include One Lot of Great Value Frozen Organic Triple Berry Blend Because of Potential Contamination with Escherichia coli O145:H28 (E. coli O145)",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/frutas-y-hortalizas-del-sur-sa-expands-recall-include-one-lot-great-value-frozen-organic-triple"
     },
     {
       "category": "safety-alert",
@@ -4992,8 +5086,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 27,
-      "retrievedAt": "2026-09-03T11:13:23.412Z",
+      "retainedItemCount": 29,
+      "retrievedAt": "2026-09-03T16:24:57.478Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5003,19 +5097,19 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 29,
-      "retrievedAt": "2026-09-03T11:13:23.412Z",
+      "retainedItemCount": 30,
+      "retrievedAt": "2026-09-03T16:24:57.478Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 3,
+      "itemCount": 1,
       "rawItemCount": 20,
-      "rejectedItemCount": 17,
-      "retainedItemCount": 37,
-      "retrievedAt": "2026-09-03T11:13:23.412Z",
+      "rejectedItemCount": 19,
+      "retainedItemCount": 39,
+      "retrievedAt": "2026-09-03T16:24:57.478Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -5025,19 +5119,19 @@
       "itemCount": 1,
       "rawItemCount": 20,
       "rejectedItemCount": 19,
-      "retainedItemCount": 16,
-      "retrievedAt": "2026-09-03T11:13:23.412Z",
+      "retainedItemCount": 17,
+      "retrievedAt": "2026-09-03T16:24:57.478Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 13,
+      "itemCount": 12,
       "rawItemCount": 20,
-      "rejectedItemCount": 7,
-      "retainedItemCount": 3,
-      "retrievedAt": "2026-09-03T11:13:23.412Z",
+      "rejectedItemCount": 8,
+      "retainedItemCount": 5,
+      "retrievedAt": "2026-09-03T16:24:57.478Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5048,7 +5142,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-03T11:13:23.412Z",
+      "retrievedAt": "2026-09-03T16:24:57.478Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5059,7 +5153,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 8,
-      "retrievedAt": "2026-09-03T11:13:23.412Z",
+      "retrievedAt": "2026-09-03T16:24:57.478Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -5070,7 +5164,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 7,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-03T11:13:23.412Z",
+      "retrievedAt": "2026-09-03T16:24:57.478Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5081,7 +5175,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-03T11:13:23.412Z",
+      "retrievedAt": "2026-09-03T16:24:57.478Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
