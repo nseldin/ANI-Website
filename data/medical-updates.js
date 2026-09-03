@@ -2068,7 +2068,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-02T21:02:28.911Z",
+  "generatedAt": "2026-09-03T11:13:23.412Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -2150,6 +2150,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Early Alert: Convenience Kit Issue from AVID Medical",
       "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/early-alert-convenience-kit-issue-avid-medical-0"
+    },
+    {
+      "category": "recall",
+      "contentHash": "d512e3fdcb5b0408a6f8d683f69b895e43e127cd53156d02e86f33dd56f28ad4",
+      "description": "Certain reprocessed catheters may contain residual particulates that could cause infection, embolism, or thrombosis",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/catheter-recall-expansion-medline-industries-removes-reprocessed-electrophysiology-and-ultrasound",
+      "id": "medical-update:fda-medwatch:c743922d72d0fb537cf7a989",
+      "publishedAt": "2026-09-02T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-03T11:13:23.412Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Catheter Recall Expansion: Medline Industries Removes Reprocessed Electrophysiology and Ultrasound Catheters",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/catheter-recall-expansion-medline-industries-removes-reprocessed-electrophysiology-and-ultrasound"
     },
     {
       "category": "medical-development",
@@ -4976,8 +4992,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 26,
-      "retrievedAt": "2026-09-02T21:02:28.911Z",
+      "retainedItemCount": 27,
+      "retrievedAt": "2026-09-03T11:13:23.412Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -4988,7 +5004,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 29,
-      "retrievedAt": "2026-09-02T21:02:28.911Z",
+      "retrievedAt": "2026-09-03T11:13:23.412Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -4999,7 +5015,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 37,
-      "retrievedAt": "2026-09-02T21:02:28.911Z",
+      "retrievedAt": "2026-09-03T11:13:23.412Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -5010,7 +5026,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 19,
       "retainedItemCount": 16,
-      "retrievedAt": "2026-09-02T21:02:28.911Z",
+      "retrievedAt": "2026-09-03T11:13:23.412Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -5021,7 +5037,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 7,
       "retainedItemCount": 3,
-      "retrievedAt": "2026-09-02T21:02:28.911Z",
+      "retrievedAt": "2026-09-03T11:13:23.412Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5032,7 +5048,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-02T21:02:28.911Z",
+      "retrievedAt": "2026-09-03T11:13:23.412Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5043,7 +5059,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 8,
-      "retrievedAt": "2026-09-02T21:02:28.911Z",
+      "retrievedAt": "2026-09-03T11:13:23.412Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -5054,7 +5070,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 7,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-02T21:02:28.911Z",
+      "retrievedAt": "2026-09-03T11:13:23.412Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5065,7 +5081,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-02T21:02:28.911Z",
+      "retrievedAt": "2026-09-03T11:13:23.412Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
