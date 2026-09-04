@@ -2068,9 +2068,41 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-04T11:16:53.340Z",
+  "generatedAt": "2026-09-04T16:21:03.745Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "751349cbcd6f62bfe1231cdb61ed7c70d5361b8a9c9920797578432b620e8b8f",
+      "description": "Foods Alive Inc of Angola, IN, is recalling its 8-ounce packages of organic moringa leaf powder because they have the potential to be contaminated with Salmonella, an organism which can cause serious and sometimes fatal infections in young children, frail or elderly people, and others with weakened",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/foods-alive-recalls-organic-moringa-leaf-powder-because-possible-health-risk",
+      "id": "medical-update:fda-recalls:c42cb24981a35aa474f60e95",
+      "publishedAt": "2026-09-04T14:19:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-04T16:21:03.745Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Foods Alive Recalls Organic Moringa Leaf Powder Because of Possible Health Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/foods-alive-recalls-organic-moringa-leaf-powder-because-possible-health-risk"
+    },
+    {
+      "category": "vaccine-biologic",
+      "contentHash": "0f66d19f5b69e5fdb985bd2f8bab98a9e793f224ac29c86d551f44c044c3266d",
+      "description": "CBER provides oversight of clinical studies, proactive scientific and regulatory advice to medical researchers and manufacturers of cellular therapy products, human gene therapy products, and certain devices related to cell and gene therapy.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/vaccines-blood-biologics/cellular-gene-therapy-products",
+      "id": "medical-update:fda-biologics:56723017525053d5cd231f15",
+      "publishedAt": "2026-09-04T12:05:20.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-04T16:21:03.745Z",
+      "sourceCategories": [],
+      "sourceId": "fda-biologics",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
+      "title": "Cellular & Gene Therapy Products",
+      "url": "https://www.fda.gov/vaccines-blood-biologics/cellular-gene-therapy-products"
+    },
     {
       "category": "recall",
       "contentHash": "76b6d81cbd8000ce3cbeea513540fe43d2487402717f0262bfb3a31318c31b0c",
@@ -2248,6 +2280,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "title": "Influenza Vaccine Composition for the 2026-2027 U.S. Influenza Season",
       "url": "https://www.fda.gov/vaccines-blood-biologics/vaccines/influenza-vaccine-composition-2026-2027-us-influenza-season"
+    },
+    {
+      "category": "recall",
+      "contentHash": "798234e95d5ca0ce6743582cb72cdb172e44c6ae00f258eeeb561bcbf5ee57a1",
+      "description": "Grant-Valkaria, Florida - SUPPLX.com is voluntarily recalling Business Pill and Branch Manager for Men, products marketed as dietary supplements for male sexual enhancement, because FDA laboratory analysis confirmed that both products contain yohimbine that is not declared on the product labels.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/supplxcom-issues-voluntary-nationwide-recall-business-pill-and-branch-manager-men-due-undeclared",
+      "id": "medical-update:fda-recalls:d127426d6b48a14d8a2acee6",
+      "publishedAt": "2026-09-03T13:11:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-04T16:21:03.745Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "SUPPLX.com Issues Voluntary Nationwide Recall of Business Pill and Branch Manager for Men Due to Undeclared Yohimbine",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/supplxcom-issues-voluntary-nationwide-recall-business-pill-and-branch-manager-men-due-undeclared"
     },
     {
       "category": "safety-alert",
@@ -5192,7 +5240,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 29,
-      "retrievedAt": "2026-09-04T11:16:53.340Z",
+      "retrievedAt": "2026-09-04T16:21:03.745Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5202,8 +5250,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 30,
-      "retrievedAt": "2026-09-04T11:16:53.340Z",
+      "retainedItemCount": 31,
+      "retrievedAt": "2026-09-04T16:21:03.745Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -5214,18 +5262,18 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 37,
-      "retrievedAt": "2026-09-04T11:16:53.340Z",
+      "retrievedAt": "2026-09-04T16:21:03.745Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 1,
+      "itemCount": 2,
       "rawItemCount": 20,
-      "rejectedItemCount": 19,
+      "rejectedItemCount": 18,
       "retainedItemCount": 17,
-      "retrievedAt": "2026-09-04T11:16:53.340Z",
+      "retrievedAt": "2026-09-04T16:21:03.745Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -5236,7 +5284,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 7,
       "retainedItemCount": 5,
-      "retrievedAt": "2026-09-04T11:16:53.340Z",
+      "retrievedAt": "2026-09-04T16:21:03.745Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5247,7 +5295,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-04T11:16:53.340Z",
+      "retrievedAt": "2026-09-04T16:21:03.745Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5258,7 +5306,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 11,
-      "retrievedAt": "2026-09-04T11:16:53.340Z",
+      "retrievedAt": "2026-09-04T16:21:03.745Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -5269,7 +5317,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 7,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-04T11:16:53.340Z",
+      "retrievedAt": "2026-09-04T16:21:03.745Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5280,7 +5328,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-04T11:16:53.340Z",
+      "retrievedAt": "2026-09-04T16:21:03.745Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
