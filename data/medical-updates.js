@@ -2068,9 +2068,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-06T10:55:46.442Z",
+  "generatedAt": "2026-09-07T04:40:01.996Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "48e13e254a47c12e18d9b1418b6f10d04821e5e4405d72d89bc6b70a92c83bfa",
+      "description": "Made Fresh Salads Inc. of Bay Shore, NY is recalling all Ready to Eat Deli Style Salads and cream cheese, because they have the potential to be contaminated with Listeria monocytogenes, an organism which can cause serious and sometimes fatal infections in young children, frail or elderly people, and",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/made-fresh-salads-inc-recalls-ready-eat-deli-style-salads-and-cream-cheese-because-possible-health",
+      "id": "medical-update:fda-recalls:52735efddea72f5dfab8e69f",
+      "publishedAt": "2026-09-06T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-07T04:40:01.996Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Made Fresh Salads, Inc. Recalls Ready to Eat Deli Style Salads and Cream Cheese Because of Possible Health Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/made-fresh-salads-inc-recalls-ready-eat-deli-style-salads-and-cream-cheese-because-possible-health"
+    },
     {
       "category": "drug-approval",
       "contentHash": "420a5b63b66bd790c74359f5d296598a390587ad634c50d97447afd57e7e5be2",
@@ -5272,7 +5288,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 29,
-      "retrievedAt": "2026-09-06T10:55:46.442Z",
+      "retrievedAt": "2026-09-07T04:40:01.996Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5283,7 +5299,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 31,
-      "retrievedAt": "2026-09-06T10:55:46.442Z",
+      "retrievedAt": "2026-09-07T04:40:01.996Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -5294,7 +5310,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 13,
       "retainedItemCount": 36,
-      "retrievedAt": "2026-09-06T10:55:46.442Z",
+      "retrievedAt": "2026-09-07T04:40:01.996Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -5305,7 +5321,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 17,
-      "retrievedAt": "2026-09-06T10:55:46.442Z",
+      "retrievedAt": "2026-09-07T04:40:01.996Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -5316,7 +5332,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-06T10:55:46.442Z",
+      "retrievedAt": "2026-09-07T04:40:01.996Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5327,7 +5343,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-06T10:55:46.442Z",
+      "retrievedAt": "2026-09-07T04:40:01.996Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5338,7 +5354,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 11,
-      "retrievedAt": "2026-09-06T10:55:46.442Z",
+      "retrievedAt": "2026-09-07T04:40:01.996Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -5349,7 +5365,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 7,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-06T10:55:46.442Z",
+      "retrievedAt": "2026-09-07T04:40:01.996Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5360,7 +5376,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-06T10:55:46.442Z",
+      "retrievedAt": "2026-09-07T04:40:01.996Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
