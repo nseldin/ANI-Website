@@ -6,6 +6,57 @@
   "archive": [
     {
       "category": "guideline-public-health",
+      "contentHash": "d98bd421bf0248d90e10d36403fd341fc989b2d4786d6226ba1e60e74074bd30",
+      "description": "This report describes acute flaccid myelitis cases reported during 2020-2025.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765979&_=6012A8F4C5E2CA1DDA37EDA539A7C765FA9827A4131763CEDBE019DD1C416B0D",
+      "id": "medical-update:cdc-mmwr:38bf2a6937054e45393b579b",
+      "publishedAt": "2026-07-09T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Acute Flaccid Myelitis Surveillance - United States, January 2020-December 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7526a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "f22e33ef64e664b1c8be197b9b4fd04b5173399da806afcfc37f4502dc69394d",
+      "description": "This report describes illnesses and infection prevention and control protocols at a wildfire evacuation shelter during the Eaton wildfire in Pasadena, California.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765980&_=9F031091AF11219929050C7EB4B2587D67BC5DAB050BBE54BF178B61239E562B",
+      "id": "medical-update:cdc-mmwr:33517360d0a32ab5fefd0cd5",
+      "publishedAt": "2026-07-09T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Norovirus",
+          "collection": "clinicalReferenceEntries"
+        },
+        {
+          "canonicalTitle": "COVID-19",
+          "collection": "pathologyDiseases"
+        },
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Norovirus, COVID-19, and Influenza Outbreaks Among Residents and Staff Members at the Eaton Wildfire Evacuation Shelter - Pasadena, California, January-February 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7526a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
       "contentHash": "5bcd21b7c8b4f0bc29e6c476c4a06dca351a91da96dbedf1442e32c7abb84ff3",
       "description": "This report describes seroprevalence of alpha-gal immunoglobulin E in blood donor samples collected during 2024-2025.",
       "descriptionOrigin": "source-provided",
@@ -2068,7 +2119,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-07T12:31:25.020Z",
+  "generatedAt": "2026-09-07T21:30:29.635Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -5225,57 +5276,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "title": "FDA Issues Emergency Use Authorization for Drug for Short-Term Prevention of New World Screwworm in Horses",
       "url": "https://www.fda.gov/news-events/press-announcements/fda-issues-emergency-use-authorization-drug-short-term-prevention-new-world-screwworm-horses"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "d98bd421bf0248d90e10d36403fd341fc989b2d4786d6226ba1e60e74074bd30",
-      "description": "This report describes acute flaccid myelitis cases reported during 2020-2025.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765979&_=6012A8F4C5E2CA1DDA37EDA539A7C765FA9827A4131763CEDBE019DD1C416B0D",
-      "id": "medical-update:cdc-mmwr:38bf2a6937054e45393b579b",
-      "publishedAt": "2026-07-09T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Acute Flaccid Myelitis Surveillance - United States, January 2020-December 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7526a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "f22e33ef64e664b1c8be197b9b4fd04b5173399da806afcfc37f4502dc69394d",
-      "description": "This report describes illnesses and infection prevention and control protocols at a wildfire evacuation shelter during the Eaton wildfire in Pasadena, California.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=765980&_=9F031091AF11219929050C7EB4B2587D67BC5DAB050BBE54BF178B61239E562B",
-      "id": "medical-update:cdc-mmwr:33517360d0a32ab5fefd0cd5",
-      "publishedAt": "2026-07-09T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Norovirus",
-          "collection": "clinicalReferenceEntries"
-        },
-        {
-          "canonicalTitle": "COVID-19",
-          "collection": "pathologyDiseases"
-        },
-        {
-          "canonicalTitle": "Influenza",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Norovirus, COVID-19, and Influenza Outbreaks Among Residents and Staff Members at the Eaton Wildfire Evacuation Shelter - Pasadena, California, January-February 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7526a2.htm"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -5288,7 +5288,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 30,
-      "retrievedAt": "2026-09-07T12:31:25.020Z",
+      "retrievedAt": "2026-09-07T21:30:29.635Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5299,7 +5299,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 31,
-      "retrievedAt": "2026-09-07T12:31:25.020Z",
+      "retrievedAt": "2026-09-07T21:30:29.635Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -5310,7 +5310,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 13,
       "retainedItemCount": 36,
-      "retrievedAt": "2026-09-07T12:31:25.020Z",
+      "retrievedAt": "2026-09-07T21:30:29.635Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -5321,7 +5321,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 17,
-      "retrievedAt": "2026-09-07T12:31:25.020Z",
+      "retrievedAt": "2026-09-07T21:30:29.635Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -5332,7 +5332,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-07T12:31:25.020Z",
+      "retrievedAt": "2026-09-07T21:30:29.635Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5343,7 +5343,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-07T12:31:25.020Z",
+      "retrievedAt": "2026-09-07T21:30:29.635Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5354,7 +5354,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 11,
-      "retrievedAt": "2026-09-07T12:31:25.020Z",
+      "retrievedAt": "2026-09-07T21:30:29.635Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -5365,7 +5365,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 7,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-07T12:31:25.020Z",
+      "retrievedAt": "2026-09-07T21:30:29.635Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5376,7 +5376,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-07T12:31:25.020Z",
+      "retrievedAt": "2026-09-07T21:30:29.635Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
