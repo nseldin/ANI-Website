@@ -2068,7 +2068,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-07T04:40:01.996Z",
+  "generatedAt": "2026-09-07T12:31:25.020Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -5287,8 +5287,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 29,
-      "retrievedAt": "2026-09-07T04:40:01.996Z",
+      "retainedItemCount": 30,
+      "retrievedAt": "2026-09-07T12:31:25.020Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5299,7 +5299,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 31,
-      "retrievedAt": "2026-09-07T04:40:01.996Z",
+      "retrievedAt": "2026-09-07T12:31:25.020Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -5310,7 +5310,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 13,
       "retainedItemCount": 36,
-      "retrievedAt": "2026-09-07T04:40:01.996Z",
+      "retrievedAt": "2026-09-07T12:31:25.020Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -5321,7 +5321,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 17,
-      "retrievedAt": "2026-09-07T04:40:01.996Z",
+      "retrievedAt": "2026-09-07T12:31:25.020Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -5332,7 +5332,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-07T04:40:01.996Z",
+      "retrievedAt": "2026-09-07T12:31:25.020Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5343,7 +5343,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-07T04:40:01.996Z",
+      "retrievedAt": "2026-09-07T12:31:25.020Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5354,7 +5354,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 11,
-      "retrievedAt": "2026-09-07T04:40:01.996Z",
+      "retrievedAt": "2026-09-07T12:31:25.020Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -5365,7 +5365,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 7,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-07T04:40:01.996Z",
+      "retrievedAt": "2026-09-07T12:31:25.020Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5376,7 +5376,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-07T04:40:01.996Z",
+      "retrievedAt": "2026-09-07T12:31:25.020Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
