@@ -2119,9 +2119,76 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-08T16:37:39.712Z",
+  "generatedAt": "2026-09-08T21:08:57.643Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "drug-approval",
+      "contentHash": "3c8a9e026227857f38a8ec5aa2690df4f6a786b53bacbf413d4249da0fe7b004",
+      "description": "This listing includes accelerated approvals (AAs) for malignant hematology and oncology indications that have postmarketing requirement(s) for ongoing clinical trial(s) to verify clinical benefit.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/resources-information-approved-drugs/ongoing-cancer-accelerated-approvals",
+      "id": "medical-update:fda-drugs:5a4e0021e325d129a195e549",
+      "publishedAt": "2026-09-08T18:22:53.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Ongoing | Cancer Accelerated Approvals",
+      "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/ongoing-cancer-accelerated-approvals"
+    },
+    {
+      "category": "drug-approval",
+      "contentHash": "279d5a4021193a9b7db96252c5abd55fb311f2951f3d0771157e1c81f6d8fcac",
+      "description": "Explore the FDA’s Competitive Generic Therapy Approvals page, offering insights into the program designed to encourage generic drug competition. Access information about approved CGT products and find resources, including a downloadable CGT approvals spreadsheet.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/generic-drugs/competitive-generic-therapy-approvals",
+      "id": "medical-update:fda-drugs:e69026cda6636032fa8ab1a1",
+      "publishedAt": "2026-09-08T17:38:51.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-11T15:33:30.795Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Competitive Generic Therapy Approvals",
+      "url": "https://www.fda.gov/drugs/generic-drugs/competitive-generic-therapy-approvals"
+    },
+    {
+      "category": "drug-approval",
+      "contentHash": "c461c7fbadc89ab8c08645282c5ffef583c3effef2fa333f0720e3a52eec81f3",
+      "description": "FDA Novel Drug Therapy Approvals for 2026",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/novel-drug-approvals-fda/novel-drug-approvals-2026",
+      "id": "medical-update:fda-drugs:99c1f9f4efe8e69bf181158d",
+      "publishedAt": "2026-09-08T17:37:09.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-11T15:33:30.795Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Novel Drug Approvals for 2026",
+      "url": "https://www.fda.gov/drugs/novel-drug-approvals-fda/novel-drug-approvals-2026"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "738a510d9d586b0d27d132e9a78a31b93c8ab7f07d42f6cb4798559e10b58362",
+      "description": "This report escribes data from the child Health and Mortality Prevention Surveillance network during December 2016-December 2024",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766389&_=030E253FCA34F334EA3CC94ED2E83C5B8C6601FA519F4E6A505A08D79EB1DEC7",
+      "id": "medical-update:cdc-mmwr:4dafa7b45f0eb2714b57a562",
+      "publishedAt": "2026-09-08T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-08T21:08:57.643Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Surveillance Summaries: Causes of Death Among Stillbirths and Children Aged 5 Years in Africa and South Asia - Child Health and Mortality Prevention Surveillance, Seven Countries, 2016-2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/ss/ss7506a1.htm"
+    },
     {
       "category": "recall",
       "contentHash": "56ed4795018d2dd703238c691d3aa0f8ac1ffa3c63b467a6ff7f066c5f4b01fc",
@@ -2137,22 +2204,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "title": "BMC Medical Co., Ltd. Recalls Luna G3 APAP (Model LG3600) with Firmware G3-2.00.76 Due to Firmware Defect",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/bmc-medical-co-ltd-recalls-luna-g3-apap-model-lg3600-firmware-g3-20076-due-firmware-defect"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "15eef23adddf9771a9ddd14d60ebc225b4c34512d4b2fa5e01b90bcdef45cc05",
-      "description": "This listing includes accelerated approvals (AAs) for malignant hematology and oncology indications that have postmarketing requirement(s) for ongoing clinical trial(s) to verify clinical benefit.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/drugs/resources-information-approved-drugs/ongoing-cancer-accelerated-approvals",
-      "id": "medical-update:fda-drugs:5a4e0021e325d129a195e549",
-      "publishedAt": "2026-09-08T12:06:34.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "Ongoing | Cancer Accelerated Approvals",
-      "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/ongoing-cancer-accelerated-approvals"
     },
     {
       "category": "drug-approval",
@@ -2284,22 +2335,6 @@
     },
     {
       "category": "drug-approval",
-      "contentHash": "8d152f77e3bd5f9c36ed2d7d0a80c08a01ed251fcb6946a532fa29d89e3facbf",
-      "description": "FDA Novel Drug Therapy Approvals for 2026",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/drugs/novel-drug-approvals-fda/novel-drug-approvals-2026",
-      "id": "medical-update:fda-drugs:99c1f9f4efe8e69bf181158d",
-      "publishedAt": "2026-09-03T19:58:09.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-11T15:33:30.795Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "Novel Drug Approvals for 2026",
-      "url": "https://www.fda.gov/drugs/novel-drug-approvals-fda/novel-drug-approvals-2026"
-    },
-    {
-      "category": "drug-approval",
       "contentHash": "45387e05ae6d0bb875edb26c3acd0690277acafe7f2ad40f14b24966674d08c3",
       "description": "The U.S. Food and Drug Administration has approved Zanvastro (zilganersen) injection for the treatment of Alexander disease in pediatric and adult patients.",
       "descriptionOrigin": "source-provided",
@@ -2386,6 +2421,22 @@
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "title": "QuickStats: Percentage Distribution of Heat-Related Deaths, by Age Group - United States, 2024",
       "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7534a3.htm"
+    },
+    {
+      "category": "recall",
+      "contentHash": "c603cf875e5c43b4df60e9371e3c66289d53949838b1f869473748087422d837",
+      "description": "Fi, of New York, NY, is recalling the supplements for dogs listed below because they have the potential to be contaminated with Salmonella due to an ingredient supplied to Fi’s manufacturer. The manufacturer has suspended production while it investigates. Fi is promptly notifying all affected custom",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/fi-recalls-supplements-dogs-because-possible-salmonella-contamination",
+      "id": "medical-update:fda-recalls:310fdf4f1c8a42cd08d689e9",
+      "publishedAt": "2026-09-03T15:25:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-08T21:08:57.643Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Fi Recalls Supplements for Dogs Because of Possible Salmonella Contamination",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/fi-recalls-supplements-dogs-because-possible-salmonella-contamination"
     },
     {
       "category": "drug-approval",
@@ -3336,22 +3387,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "title": "Jaime’s Foods ATX Issues Allergy Alert on Undeclared Egg Allergen in Jaime’s Spanish Village Jalapeno Ranch",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/jaimes-foods-atx-issues-allergy-alert-undeclared-egg-allergen-jaimes-spanish-village-jalapeno-ranch"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "d8aed7ebe880a2a3ba04a53d232f910d39380fe7116c644bcc7cd69659644c59",
-      "description": "Explore the FDA’s Competitive Generic Therapy Approvals page, offering insights into the program designed to encourage generic drug competition. Access information about approved CGT products and find resources, including a downloadable CGT approvals spreadsheet.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/drugs/generic-drugs/competitive-generic-therapy-approvals",
-      "id": "medical-update:fda-drugs:e69026cda6636032fa8ab1a1",
-      "publishedAt": "2026-08-25T13:56:04.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-11T15:33:30.795Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "Competitive Generic Therapy Approvals",
-      "url": "https://www.fda.gov/drugs/generic-drugs/competitive-generic-therapy-approvals"
     },
     {
       "category": "recall",
@@ -5294,7 +5329,7 @@
       "url": "https://www.fda.gov/news-events/press-announcements/fda-issues-emergency-use-authorization-drug-short-term-prevention-new-world-screwworm-horses"
     }
   ],
-  "refreshStatus": "CURRENT",
+  "refreshStatus": "PARTIAL",
   "schemaVersion": "ani-medical-updates-runtime-v1",
   "sourceConfigSha256": "bcda90ac53015cf0b9744061bc08ad8442b6173b990e7125516874c39b76e0db",
   "sourceStatuses": [
@@ -5304,7 +5339,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 30,
-      "retrievedAt": "2026-09-08T16:37:39.712Z",
+      "retrievedAt": "2026-09-08T21:08:57.643Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5314,19 +5349,19 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 31,
-      "retrievedAt": "2026-09-08T16:37:39.712Z",
+      "retainedItemCount": 33,
+      "retrievedAt": "2026-09-08T21:08:57.643Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 6,
+      "itemCount": 7,
       "rawItemCount": 20,
-      "rejectedItemCount": 14,
-      "retainedItemCount": 38,
-      "retrievedAt": "2026-09-08T16:37:39.712Z",
+      "rejectedItemCount": 13,
+      "retainedItemCount": 37,
+      "retrievedAt": "2026-09-08T21:08:57.643Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -5337,7 +5372,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 17,
-      "retrievedAt": "2026-09-08T16:37:39.712Z",
+      "retrievedAt": "2026-09-08T21:08:57.643Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -5348,7 +5383,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-08T16:37:39.712Z",
+      "retrievedAt": "2026-09-08T21:08:57.643Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5359,7 +5394,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-08T16:37:39.712Z",
+      "retrievedAt": "2026-09-08T21:08:57.643Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5369,22 +5404,22 @@
       "itemCount": 100,
       "rawItemCount": 100,
       "rejectedItemCount": 0,
-      "retainedItemCount": 11,
-      "retrievedAt": "2026-09-08T16:37:39.712Z",
+      "retainedItemCount": 12,
+      "retrievedAt": "2026-09-08T21:08:57.643Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
     },
     {
-      "error": null,
-      "itemCount": 3,
-      "rawItemCount": 10,
-      "rejectedItemCount": 7,
-      "retainedItemCount": 0,
+      "error": "",
+      "itemCount": 0,
+      "rawItemCount": 0,
+      "rejectedItemCount": 0,
+      "retainedItemCount": 3,
       "retrievedAt": "2026-09-08T16:37:39.712Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
-      "status": "current"
+      "status": "stale"
     },
     {
       "error": null,
@@ -5392,7 +5427,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-08T16:37:39.712Z",
+      "retrievedAt": "2026-09-08T21:08:57.643Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
