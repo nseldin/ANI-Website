@@ -2119,9 +2119,41 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-08T11:18:00.417Z",
+  "generatedAt": "2026-09-08T16:37:39.712Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "56ed4795018d2dd703238c691d3aa0f8ac1ffa3c63b467a6ff7f066c5f4b01fc",
+      "description": "On July 15, 2026, BMC Medical Co., Ltd. (BMC), Beijing, China, retrospectively reported to the US Food and Drug Administration (FDA) a recall of 20,160 Luna G3 APAP (Model LG3600) devices distributed in the United States due to firmware defect. This corrective action was not reported to customers. O",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/bmc-medical-co-ltd-recalls-luna-g3-apap-model-lg3600-firmware-g3-20076-due-firmware-defect",
+      "id": "medical-update:fda-drugs:7c059f29719924765661ba7f",
+      "publishedAt": "2026-09-08T15:41:45.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-08T16:37:39.712Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "BMC Medical Co., Ltd. Recalls Luna G3 APAP (Model LG3600) with Firmware G3-2.00.76 Due to Firmware Defect",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/bmc-medical-co-ltd-recalls-luna-g3-apap-model-lg3600-firmware-g3-20076-due-firmware-defect"
+    },
+    {
+      "category": "drug-approval",
+      "contentHash": "15eef23adddf9771a9ddd14d60ebc225b4c34512d4b2fa5e01b90bcdef45cc05",
+      "description": "This listing includes accelerated approvals (AAs) for malignant hematology and oncology indications that have postmarketing requirement(s) for ongoing clinical trial(s) to verify clinical benefit.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/resources-information-approved-drugs/ongoing-cancer-accelerated-approvals",
+      "id": "medical-update:fda-drugs:5a4e0021e325d129a195e549",
+      "publishedAt": "2026-09-08T12:06:34.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Ongoing | Cancer Accelerated Approvals",
+      "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/ongoing-cancer-accelerated-approvals"
+    },
     {
       "category": "drug-approval",
       "contentHash": "9a33e46894bd380b1d3f6f9271484807ca5a440ddf9a7cb86ea5f974281d6403",
@@ -2475,22 +2507,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Spinal Cord Stimulator Recall: Boston Scientific Removes Infinion CX Lead",
       "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/spinal-cord-stimulator-recall-boston-scientific-removes-infinion-cx-lead"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "71f3ad7396fde2514b0d720fe13fa223a93ae6574cf528e870b4914d621dc2fa",
-      "description": "This listing includes accelerated approvals (AAs) for malignant hematology and oncology indications that have postmarketing requirement(s) for ongoing clinical trial(s) to verify clinical benefit.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/drugs/resources-information-approved-drugs/ongoing-cancer-accelerated-approvals",
-      "id": "medical-update:fda-drugs:5a4e0021e325d129a195e549",
-      "publishedAt": "2026-09-02T17:57:22.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "Ongoing | Cancer Accelerated Approvals",
-      "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/ongoing-cancer-accelerated-approvals"
     },
     {
       "category": "drug-approval",
@@ -5288,7 +5304,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 30,
-      "retrievedAt": "2026-09-08T11:18:00.417Z",
+      "retrievedAt": "2026-09-08T16:37:39.712Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5299,18 +5315,18 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 31,
-      "retrievedAt": "2026-09-08T11:18:00.417Z",
+      "retrievedAt": "2026-09-08T16:37:39.712Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 7,
+      "itemCount": 6,
       "rawItemCount": 20,
-      "rejectedItemCount": 13,
-      "retainedItemCount": 36,
-      "retrievedAt": "2026-09-08T11:18:00.417Z",
+      "rejectedItemCount": 14,
+      "retainedItemCount": 38,
+      "retrievedAt": "2026-09-08T16:37:39.712Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -5321,7 +5337,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 17,
-      "retrievedAt": "2026-09-08T11:18:00.417Z",
+      "retrievedAt": "2026-09-08T16:37:39.712Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -5332,7 +5348,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-08T11:18:00.417Z",
+      "retrievedAt": "2026-09-08T16:37:39.712Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5343,7 +5359,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-08T11:18:00.417Z",
+      "retrievedAt": "2026-09-08T16:37:39.712Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5354,7 +5370,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 11,
-      "retrievedAt": "2026-09-08T11:18:00.417Z",
+      "retrievedAt": "2026-09-08T16:37:39.712Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -5365,7 +5381,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 7,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-08T11:18:00.417Z",
+      "retrievedAt": "2026-09-08T16:37:39.712Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5376,7 +5392,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-08T11:18:00.417Z",
+      "retrievedAt": "2026-09-08T16:37:39.712Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
