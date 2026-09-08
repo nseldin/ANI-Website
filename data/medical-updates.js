@@ -2119,9 +2119,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-07T21:30:29.635Z",
+  "generatedAt": "2026-09-08T04:34:35.605Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "drug-approval",
+      "contentHash": "9a33e46894bd380b1d3f6f9271484807ca5a440ddf9a7cb86ea5f974281d6403",
+      "description": "This page describes recent rare disease drug approvals that received a CDER or FDA communication. This is not an exhaustive list of all rare disease drug approvals.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/about-fda/accelerating-rare-disease-cures-arc-program/rare-disease-drug-approvals",
+      "id": "medical-update:fda-drugs:8169638d4fa47bcfbbad0213",
+      "publishedAt": "2026-09-07T22:47:37.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-24T19:48:14.134Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Rare Disease Drug Approvals",
+      "url": "https://www.fda.gov/about-fda/accelerating-rare-disease-cures-arc-program/rare-disease-drug-approvals"
+    },
     {
       "category": "recall",
       "contentHash": "48e13e254a47c12e18d9b1418b6f10d04821e5e4405d72d89bc6b70a92c83bfa",
@@ -2233,22 +2249,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "title": "American Regent, Inc. Issues Voluntary Nationwide Recall of Three Lots of Epinephrine Injection, USP 30 mg/ 30 mL (1 mg/mL) Due to the Presence of Particulate Matter and Lack of Assurance of Sterility",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/american-regent-inc-issues-voluntary-nationwide-recall-three-lots-epinephrine-injection-usp-30-mg-30"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "61708a9ded023f580a2d64072a2fe3b588aadaf4ea9b9482bcb836db9c80362f",
-      "description": "This page describes recent rare disease drug approvals that received a CDER or FDA communication. This is not an exhaustive list of all rare disease drug approvals.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/about-fda/accelerating-rare-disease-cures-arc-program/rare-disease-drug-approvals",
-      "id": "medical-update:fda-drugs:8169638d4fa47bcfbbad0213",
-      "publishedAt": "2026-09-03T20:14:52.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-24T19:48:14.134Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "Rare Disease Drug Approvals",
-      "url": "https://www.fda.gov/about-fda/accelerating-rare-disease-cures-arc-program/rare-disease-drug-approvals"
     },
     {
       "category": "drug-approval",
@@ -5287,8 +5287,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 30,
-      "retrievedAt": "2026-09-07T21:30:29.635Z",
+      "retainedItemCount": 29,
+      "retrievedAt": "2026-09-08T04:34:35.605Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5299,7 +5299,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 31,
-      "retrievedAt": "2026-09-07T21:30:29.635Z",
+      "retrievedAt": "2026-09-08T04:34:35.605Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -5310,7 +5310,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 13,
       "retainedItemCount": 36,
-      "retrievedAt": "2026-09-07T21:30:29.635Z",
+      "retrievedAt": "2026-09-08T04:34:35.605Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -5321,7 +5321,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 17,
-      "retrievedAt": "2026-09-07T21:30:29.635Z",
+      "retrievedAt": "2026-09-08T04:34:35.605Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -5332,7 +5332,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-07T21:30:29.635Z",
+      "retrievedAt": "2026-09-08T04:34:35.605Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5343,7 +5343,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-07T21:30:29.635Z",
+      "retrievedAt": "2026-09-08T04:34:35.605Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5354,7 +5354,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 11,
-      "retrievedAt": "2026-09-07T21:30:29.635Z",
+      "retrievedAt": "2026-09-08T04:34:35.605Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -5365,7 +5365,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 7,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-07T21:30:29.635Z",
+      "retrievedAt": "2026-09-08T04:34:35.605Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5376,7 +5376,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-07T21:30:29.635Z",
+      "retrievedAt": "2026-09-08T04:34:35.605Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
