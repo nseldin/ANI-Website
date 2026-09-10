@@ -2116,9 +2116,98 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-10T16:23:51.883Z",
+  "generatedAt": "2026-09-10T20:51:25.947Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "vaccine-biologic",
+      "contentHash": "c0d73f20b74809e96b6b2d0a49238bc6517575ead70a66161bb484e614f9081f",
+      "description": "The FDA’s Center for Biologics Evaluation and Research (CBER) Office of Therapeutic Products (OTP) is hosting its next virtual town hall on Tuesday, June 4, 2024, to answer stakeholder questions regarding the chemistry, manufacturing, and controls (CMC) information submitted with biologics license applications (BLAs) for gene therapy products.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/vaccines-blood-biologics/workshops-meetings-conferences-biologics/otp-town-hall-cmc-readiness-gene-therapy-blas-06042024",
+      "id": "medical-update:fda-biologics:c677e51442ec9ea0fc43aa36",
+      "publishedAt": "2026-09-10T18:23:10.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-10T20:51:25.947Z",
+      "sourceCategories": [],
+      "sourceId": "fda-biologics",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
+      "title": "OTP Town Hall: CMC Readiness for Gene Therapy BLAs - 06/04/2024",
+      "url": "https://www.fda.gov/vaccines-blood-biologics/workshops-meetings-conferences-biologics/otp-town-hall-cmc-readiness-gene-therapy-blas-06042024"
+    },
+    {
+      "category": "vaccine-biologic",
+      "contentHash": "731c81786bd51a3ae454d3da386eb0d475fd9918b46070a706a58c8b106fd16b",
+      "description": "The FDA’s Center for Biologics Evaluation and Research (CBER) Office of Tissues and Advanced Therapies (OTAT) is hosting a virtual town hall to answer stakeholder questions related to gene therapy chemistry, manufacturing, and controls. This event is the first in a series to answer questions from stakeholders about a variety of topics.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/vaccines-blood-biologics/workshops-meetings-conferences-biologics/otat-town-hall-gene-therapy-chemistry-manufacturing-and-controls-09222022",
+      "id": "medical-update:fda-biologics:440d789f164285f699bf9c8d",
+      "publishedAt": "2026-09-10T18:10:05.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-10T20:51:25.947Z",
+      "sourceCategories": [],
+      "sourceId": "fda-biologics",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
+      "title": "OTAT Town Hall: Gene Therapy Chemistry, Manufacturing, and Controls - 09/22/2022",
+      "url": "https://www.fda.gov/vaccines-blood-biologics/workshops-meetings-conferences-biologics/otat-town-hall-gene-therapy-chemistry-manufacturing-and-controls-09222022"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "8fce632976aed570033e538fef11a3771af2b239a8dbb883b21dd0f5f522f269",
+      "description": "This report describes an analysis of registry data for sudden unexpected infant deaths during 2020-2024.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766397&_=33C0B5400BC33BBB895FB286D7BBFE2177DD755ED41C77A08A11E2A214A63478",
+      "id": "medical-update:cdc-mmwr:f11557e31bc16352293bbdda",
+      "publishedAt": "2026-09-10T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-10T20:51:25.947Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Characteristics of Sudden Unexpected Infant Deaths - United States, 2020-2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7535a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "d58e2d7a5c2bb68da1e8756df33cd0fb16a972177b0127154ee1bc4395b5f240",
+      "description": "This report describes the ongoing Ebola outbreak caused by Bundibugyo virus in the Democratic Republic of the Congo.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766344&_=0EC2AD2F681A8B726231FA53ECE4EF0A093E95D1ECF9FA282772152C1EC57E82",
+      "id": "medical-update:cdc-mmwr:f2619850c4453ecd30b67200",
+      "publishedAt": "2026-09-10T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-01T21:01:52.905Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Notes from the Field: Characteristics and Monitoring of the 2026 Outbreak of Ebola Disease Caused by Bundibugyo Virus - Democratic Republic of the Congo, August 2026",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7535e1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "a8007c7a2969a22c63e6c6b0f1ca4e5cbdc1288c7a52bbe2979daa9c14e16c3d",
+      "description": "This report describes characteristics of Ebola cases reported in Uganda during the 2025 outbreak.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766398&_=BA4E68316C9450016D07571B96934A8A77F72E293D06489EA8ECE77861A94010",
+      "id": "medical-update:cdc-mmwr:de6d2ff9adef050eebbf5ca1",
+      "publishedAt": "2026-09-10T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-10T20:51:25.947Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Notes from the Field: Clinical Characteristics of Patients with Ebola Disease Caused by Bundibugyo Virus - Uganda, 2026",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7535a2.htm"
+    },
     {
       "category": "drug-approval",
       "contentHash": "dfa180e424af5f37f1194502d1f7897db8171fb5cec61d8955ebe044db3f9705",
@@ -2134,6 +2223,27 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "title": "Meeting 1: Patient and Care Partner Perspectives on Safety Considerations for Approved Gene Therapy Treatments for Rare Diseases - 09/20/2024",
       "url": "https://www.fda.gov/vaccines-blood-biologics/workshops-meetings-conferences-biologics/meeting-1-patient-and-care-partner-perspectives-safety-considerations-approved-gene-therapy"
+    },
+    {
+      "category": "safety-alert",
+      "contentHash": "1079d11cedda0f393a2d3258532a492d2ea4c7a75e484a1291afce02098c27e9",
+      "description": "Medical Action Industries is correcting epidural kits containing recalled Huons Co. sodium chloride ampules.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/epidural-kit-correction-medical-action-industries-issues-correction-epidural-kits-containing-spectra",
+      "id": "medical-update:fda-medwatch:976440de2d2edd1be47e18fd",
+      "publishedAt": "2026-09-10T04:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Lidocaine",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-09-10T20:51:25.947Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Epidural Kit Correction: Medical Action Industries Issues Correction for Epidural Kits Containing Spectra Medical Devices Lidocaine Ampules",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/epidural-kit-correction-medical-action-industries-issues-correction-epidural-kits-containing-spectra"
     },
     {
       "category": "vaccine-biologic",
@@ -2768,25 +2878,6 @@
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "title": "GLP-1 treatment late in life extends lifespan in animal model",
       "url": "https://www.nih.gov/news-events/news-releases/glp-1-treatment-late-life-extends-lifespan-animal-model"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "39d3bac4d6a8a5c711542e5b02f7e2c7c2466a4c937f74789428ca92dc45f589",
-      "description": "This report describes the ongoing Ebola outbreak caused by Bundibugyo virus in the Democratic Republic of the Congo.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766344&_=9A4D374E48D98604F9C94B16DF1D89427D41390A2C2DD507CB6334F878266EE8",
-      "id": "medical-update:cdc-mmwr:f2619850c4453ecd30b67200",
-      "publishedAt": "2026-09-01T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-09-01T21:01:52.905Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "EARLY RELEASE: Notes from the Field: Characteristics and Monitoring of the 2026 Outbreak of Ebola Disease Caused by Bundibugyo Virus - Democratic Republic of the Congo, August 2026",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7535e1.htm"
     },
     {
       "category": "drug-approval",
@@ -5447,8 +5538,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 30,
-      "retrievedAt": "2026-09-10T16:23:51.883Z",
+      "retainedItemCount": 31,
+      "retrievedAt": "2026-09-10T20:51:25.947Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5459,29 +5550,29 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 34,
-      "retrievedAt": "2026-09-10T16:23:51.883Z",
+      "retrievedAt": "2026-09-10T20:51:25.947Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 3,
+      "itemCount": 2,
       "rawItemCount": 20,
-      "rejectedItemCount": 17,
-      "retainedItemCount": 42,
-      "retrievedAt": "2026-09-10T16:23:51.883Z",
+      "rejectedItemCount": 18,
+      "retainedItemCount": 43,
+      "retrievedAt": "2026-09-10T20:51:25.947Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 5,
+      "itemCount": 4,
       "rawItemCount": 20,
-      "rejectedItemCount": 15,
-      "retainedItemCount": 19,
-      "retrievedAt": "2026-09-10T16:23:51.883Z",
+      "rejectedItemCount": 16,
+      "retainedItemCount": 22,
+      "retrievedAt": "2026-09-10T20:51:25.947Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -5492,7 +5583,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-10T16:23:51.883Z",
+      "retrievedAt": "2026-09-10T20:51:25.947Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5503,7 +5594,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-10T16:23:51.883Z",
+      "retrievedAt": "2026-09-10T20:51:25.947Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5513,8 +5604,8 @@
       "itemCount": 100,
       "rawItemCount": 100,
       "rejectedItemCount": 0,
-      "retainedItemCount": 12,
-      "retrievedAt": "2026-09-10T16:23:51.883Z",
+      "retainedItemCount": 14,
+      "retrievedAt": "2026-09-10T20:51:25.947Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -5525,7 +5616,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 7,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-10T16:23:51.883Z",
+      "retrievedAt": "2026-09-10T20:51:25.947Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5536,7 +5627,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-10T16:23:51.883Z",
+      "retrievedAt": "2026-09-10T20:51:25.947Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
