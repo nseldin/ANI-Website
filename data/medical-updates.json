@@ -2116,9 +2116,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-11T04:39:12.520Z",
+  "generatedAt": "2026-09-11T11:20:09.335Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "bab73aacf2cb4bc3d024664420b8fa5f769484a39701d2e62aff0b0826d16d2d",
+      "description": "09/10/2026, Evergreen Fresh Sprouts LLC of Moyie Springs, IDAHO is recalling 215 cases (6/4oz bags per case) of Broccoli Sprouts, because it has the potential to be contaminated with Salmonella, an organism which can cause serious and sometimes fatal infections in young children, frail or elderly pe",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/evergreen-fresh-sprouts-llc-recalls-broccoli-sprouts-because-possible-health-risk",
+      "id": "medical-update:fda-recalls:68b6d1cd87b51fd869bfe087",
+      "publishedAt": "2026-09-10T20:37:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-11T11:20:09.335Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Evergreen Fresh Sprouts LLC Recalls Broccoli Sprouts Because of Possible Health Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/evergreen-fresh-sprouts-llc-recalls-broccoli-sprouts-because-possible-health-risk"
+    },
     {
       "category": "vaccine-biologic",
       "contentHash": "c0d73f20b74809e96b6b2d0a49238bc6517575ead70a66161bb484e614f9081f",
@@ -5529,7 +5545,7 @@
       "url": "https://www.fda.gov/news-events/press-announcements/fda-issues-emergency-use-authorization-drug-short-term-prevention-new-world-screwworm-horses"
     }
   ],
-  "refreshStatus": "PARTIAL",
+  "refreshStatus": "CURRENT",
   "schemaVersion": "ani-medical-updates-dataset-v1",
   "sourceConfigSha256": "bcda90ac53015cf0b9744061bc08ad8442b6173b990e7125516874c39b76e0db",
   "sourceStatuses": [
@@ -5539,7 +5555,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 31,
-      "retrievedAt": "2026-09-11T04:39:12.520Z",
+      "retrievedAt": "2026-09-11T11:20:09.335Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5549,8 +5565,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 34,
-      "retrievedAt": "2026-09-11T04:39:12.520Z",
+      "retainedItemCount": 35,
+      "retrievedAt": "2026-09-11T11:20:09.335Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -5561,21 +5577,21 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 43,
-      "retrievedAt": "2026-09-11T04:39:12.520Z",
+      "retrievedAt": "2026-09-11T11:20:09.335Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
     },
     {
-      "error": "Partial item routing failure: 1 of 5 eligible feed items failed deterministic normalization; last-good source items were retained.",
+      "error": null,
       "itemCount": 4,
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 22,
-      "retrievedAt": "2026-09-11T04:39:12.520Z",
+      "retrievedAt": "2026-09-11T11:20:09.335Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
-      "status": "stale"
+      "status": "current"
     },
     {
       "error": null,
@@ -5583,7 +5599,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-11T04:39:12.520Z",
+      "retrievedAt": "2026-09-11T11:20:09.335Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5594,7 +5610,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-11T04:39:12.520Z",
+      "retrievedAt": "2026-09-11T11:20:09.335Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5605,7 +5621,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 14,
-      "retrievedAt": "2026-09-11T04:39:12.520Z",
+      "retrievedAt": "2026-09-11T11:20:09.335Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -5616,7 +5632,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 7,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-11T04:39:12.520Z",
+      "retrievedAt": "2026-09-11T11:20:09.335Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5627,7 +5643,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-11T04:39:12.520Z",
+      "retrievedAt": "2026-09-11T11:20:09.335Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
