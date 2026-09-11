@@ -2119,7 +2119,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-11T16:27:59.430Z",
+  "generatedAt": "2026-09-11T20:57:36.941Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -2868,8 +2868,8 @@
     },
     {
       "category": "recall",
-      "contentHash": "23a620252668d237aa02e19fbc925791824891d98d69e82f5372e70104af28e4",
-      "description": "September 02, 2026. Frutas y Hortalizas del Sur S.A., San Carlos, Chile expands its July 3, 2026, recall of frozen organic IQF blueberries to include one lot of Great Value frozen Organic Triple Berry Blend 10 OZ because of potential contamination with Escherichia coli O145:H28 (E. coli O145).",
+      "contentHash": "f6bd112e470da8f802bed91e0d34614ad9bee323bab0f9cff450d953175e2d71",
+      "description": "[PRESSWIRE] San Carlos, Chile – 2 September 2026 — Frutas y Hortalizas del Sur S.A. expands its July 3, 2026, recall of frozen organic IQF blueberries to include one lot of Great Value frozen Organic Triple Berry Blend 10 OZ because of potential contamination with Escherichia coli O145 (E. coli O145",
       "descriptionOrigin": "source-provided",
       "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/frutas-y-hortalizas-del-sur-sa-expands-recall-include-one-lot-great-value-frozen-organic-triple",
       "id": "medical-update:fda-recalls:82828a11fa51bdfb75bee796",
@@ -2884,7 +2884,7 @@
       "sourceCategories": [],
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
-      "title": "Frutas y Hortalizas del Sur S.A. Expands Recall to Include One Lot of Great Value Frozen Organic Triple Berry Blend Because of Potential Contamination with Escherichia coli O145:H28 (E. coli O145)",
+      "title": "Frutas y Hortalizas Del Sur S.A. Expands Recall to Include One Lot of Great Value Frozen Organic Triple Berry Blend Because of Potential Contamination with Escherichia Coli 0145 (E. Coli O145)",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/frutas-y-hortalizas-del-sur-sa-expands-recall-include-one-lot-great-value-frozen-organic-triple"
     },
     {
@@ -5595,7 +5595,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 31,
-      "retrievedAt": "2026-09-11T16:27:59.430Z",
+      "retrievedAt": "2026-09-11T20:57:36.941Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5606,7 +5606,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 35,
-      "retrievedAt": "2026-09-11T16:27:59.430Z",
+      "retrievedAt": "2026-09-11T20:57:36.941Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -5617,18 +5617,18 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 44,
-      "retrievedAt": "2026-09-11T16:27:59.430Z",
+      "retrievedAt": "2026-09-11T20:57:36.941Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 4,
+      "itemCount": 3,
       "rawItemCount": 20,
-      "rejectedItemCount": 16,
-      "retainedItemCount": 23,
-      "retrievedAt": "2026-09-11T16:27:59.430Z",
+      "rejectedItemCount": 17,
+      "retainedItemCount": 24,
+      "retrievedAt": "2026-09-11T20:57:36.941Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -5639,7 +5639,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-11T16:27:59.430Z",
+      "retrievedAt": "2026-09-11T20:57:36.941Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5650,7 +5650,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-11T16:27:59.430Z",
+      "retrievedAt": "2026-09-11T20:57:36.941Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5661,18 +5661,18 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 14,
-      "retrievedAt": "2026-09-11T16:27:59.430Z",
+      "retrievedAt": "2026-09-11T20:57:36.941Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 3,
+      "itemCount": 2,
       "rawItemCount": 10,
-      "rejectedItemCount": 7,
-      "retainedItemCount": 0,
-      "retrievedAt": "2026-09-11T16:27:59.430Z",
+      "rejectedItemCount": 8,
+      "retainedItemCount": 1,
+      "retrievedAt": "2026-09-11T20:57:36.941Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5683,7 +5683,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-11T16:27:59.430Z",
+      "retrievedAt": "2026-09-11T20:57:36.941Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
