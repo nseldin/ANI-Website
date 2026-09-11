@@ -2116,9 +2116,62 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-11T11:20:09.335Z",
+  "generatedAt": "2026-09-11T16:27:59.430Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "drug-approval",
+      "contentHash": "f6c43a979cfa40a7b6b234265cad6b58d60c521b918d834649589abfe1135d9a",
+      "description": "News about human drug-related approvals",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/news-events-human-drugs/notable-approvals-drugs",
+      "id": "medical-update:fda-drugs:a7183b849a4ca312c8d09a44",
+      "publishedAt": "2026-09-11T15:55:42.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-19T19:35:58.259Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Notable Approvals | Drugs",
+      "url": "https://www.fda.gov/drugs/news-events-human-drugs/notable-approvals-drugs"
+    },
+    {
+      "category": "drug-approval",
+      "contentHash": "5c520ff659e51cf44ccbc7135a14838d602113636d470fcbda72bc5287620834",
+      "description": "FDA has approved Joenja (leniolisib) tablets as the first treatment for activated phosphoinositide 3-kinase delta syndrome in children 4-11 years who weigh at least 27 kg. Joenja was first approved in 2023 for the same indication in patients 12 years and older at a dose of 70 mg orally twice a day.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/news-events-human-drugs/fda-approves-first-treatment-children-aged-4-11-years-apds-rare-genetic-disorder-immune-system",
+      "id": "medical-update:fda-drugs:f67125a1650e1e3575f8881c",
+      "publishedAt": "2026-09-11T15:55:21.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-11T16:27:59.430Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "FDA approves first treatment for children aged 4-11 years with APDS, a rare genetic disorder of the immune system",
+      "url": "https://www.fda.gov/drugs/news-events-human-drugs/fda-approves-first-treatment-children-aged-4-11-years-apds-rare-genetic-disorder-immune-system"
+    },
+    {
+      "category": "vaccine-biologic",
+      "contentHash": "88ae5604181270c439c05958a85882addceffbb6769cf2d5402bb7b495f1d20d",
+      "description": "Influenza (flu) is a contagious respiratory disease that is caused by influenza viruses. Influenza viruses infect the respiratory tract (nose, throat, and lungs) in humans.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/vaccines-blood-biologics/safety-availability-biologics/influenza-virus-vaccine-safety-availability",
+      "id": "medical-update:fda-biologics:ae222794765df93cfc66045b",
+      "publishedAt": "2026-09-11T11:45:37.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Influenza",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-09-11T16:27:59.430Z",
+      "sourceCategories": [],
+      "sourceId": "fda-biologics",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
+      "title": "Influenza Virus Vaccine Safety & Availability",
+      "url": "https://www.fda.gov/vaccines-blood-biologics/safety-availability-biologics/influenza-virus-vaccine-safety-availability"
+    },
     {
       "category": "recall",
       "contentHash": "bab73aacf2cb4bc3d024664420b8fa5f769484a39701d2e62aff0b0826d16d2d",
@@ -3043,22 +3096,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "title": "Ana Salazar Modela Tu Cuerpo Inc. Issues Nationwide Voluntary Recall of Lipofit Extreme Fat Burner 2.0 Due to Presence of Undeclared Fluoxetine and 2,4-Dinitrophenol (DNP)",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/ana-salazar-modela-tu-cuerpo-inc-issues-nationwide-voluntary-recall-lipofit-extreme-fat-burner-20"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "6539edbb9f7d9c472e6ca8a6d126f51234281cd873291954e06cd2f4b2d3c1fc",
-      "description": "News about human drug-related approvals",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/drugs/news-events-human-drugs/notable-approvals-drugs",
-      "id": "medical-update:fda-drugs:a7183b849a4ca312c8d09a44",
-      "publishedAt": "2026-08-31T12:14:34.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-19T19:35:58.259Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "Notable Approvals | Drugs",
-      "url": "https://www.fda.gov/drugs/news-events-human-drugs/notable-approvals-drugs"
     },
     {
       "category": "drug-approval",
@@ -5555,7 +5592,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 31,
-      "retrievedAt": "2026-09-11T11:20:09.335Z",
+      "retrievedAt": "2026-09-11T16:27:59.430Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5566,7 +5603,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 35,
-      "retrievedAt": "2026-09-11T11:20:09.335Z",
+      "retrievedAt": "2026-09-11T16:27:59.430Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -5576,8 +5613,8 @@
       "itemCount": 2,
       "rawItemCount": 20,
       "rejectedItemCount": 18,
-      "retainedItemCount": 43,
-      "retrievedAt": "2026-09-11T11:20:09.335Z",
+      "retainedItemCount": 44,
+      "retrievedAt": "2026-09-11T16:27:59.430Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -5587,8 +5624,8 @@
       "itemCount": 4,
       "rawItemCount": 20,
       "rejectedItemCount": 16,
-      "retainedItemCount": 22,
-      "retrievedAt": "2026-09-11T11:20:09.335Z",
+      "retainedItemCount": 23,
+      "retrievedAt": "2026-09-11T16:27:59.430Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -5599,7 +5636,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-11T11:20:09.335Z",
+      "retrievedAt": "2026-09-11T16:27:59.430Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5610,7 +5647,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-11T11:20:09.335Z",
+      "retrievedAt": "2026-09-11T16:27:59.430Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5621,7 +5658,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 14,
-      "retrievedAt": "2026-09-11T11:20:09.335Z",
+      "retrievedAt": "2026-09-11T16:27:59.430Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -5632,7 +5669,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 7,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-11T11:20:09.335Z",
+      "retrievedAt": "2026-09-11T16:27:59.430Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5643,7 +5680,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-11T11:20:09.335Z",
+      "retrievedAt": "2026-09-11T16:27:59.430Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
