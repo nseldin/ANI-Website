@@ -5,6 +5,47 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "recall",
+      "contentHash": "0298f96f800432db86db382667506208c587a74130ecf382ad099f31f34589df",
+      "description": "Saline, Lidocaine and Bupivacaine from affected convenience kits should not be used.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-arrow-international-issues-correction-convenience-kits-containing",
+      "id": "medical-update:fda-medwatch:5eeba07d408aaa053116a14d",
+      "publishedAt": "2026-07-16T04:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Bupivacaine",
+          "collection": "pharmDrugs"
+        },
+        {
+          "canonicalTitle": "Lidocaine",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Convenience Kit Correction: Arrow International Issues Correction for Convenience Kits Containing Recalled Huons Lidocaine and Bupivacaine and Saline",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-arrow-international-issues-correction-convenience-kits-containing"
+    },
+    {
+      "category": "drug-approval",
+      "contentHash": "748a1575470d7dd58a217c80bd96e2af89eb3f7d24584f1669423d7fb356cd36",
+      "description": "The FDA today issued an Emergency Use Authorization (EUA) for Ivermectin Liquid for Horses (ivermectin oral solution) for the short-term prevention of New World screwworm (NWS) infestations (myiasis) in horses when administered within 24 hours of birth or at the time of initial wound care.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/news-events/press-announcements/fda-issues-emergency-use-authorization-drug-short-term-prevention-new-world-screwworm-horses",
+      "id": "medical-update:fda-press-releases:e8eaef1fda3ca394443ee2a0",
+      "publishedAt": "2026-07-15T21:04:45.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-press-releases",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
+      "title": "FDA Issues Emergency Use Authorization for Drug for Short-Term Prevention of New World Screwworm in Horses",
+      "url": "https://www.fda.gov/news-events/press-announcements/fda-issues-emergency-use-authorization-drug-short-term-prevention-new-world-screwworm-horses"
+    },
+    {
       "category": "guideline-public-health",
       "contentHash": "d98bd421bf0248d90e10d36403fd341fc989b2d4786d6226ba1e60e74074bd30",
       "description": "This report describes acute flaccid myelitis cases reported during 2020-2025.",
@@ -2119,9 +2160,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-12T10:45:08.074Z",
+  "generatedAt": "2026-09-14T04:55:06.870Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "2784f0b25f11f48b2d8c0952492be9fff7e8058f3c14a2ea42ad9f4ac607a8f3",
+      "description": "FOR IMMEDIATE RELEASE – 9/9/2026 – Houston, Texas, Centric Compounding is voluntarily recalling 6 lots of Glutathione 200mg/mL, Myer’s Cocktail, and Tri-Immune Boost injectable vials to the consumer level. The products have been found to be compounded with a Glutathione API containing elevated endot",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/centric-compounding-issues-nationwide-recall-glutathione-myers-cocktail-and-tri-immune-boost-due",
+      "id": "medical-update:fda-drugs:fe306e856b7e3d513475d1be",
+      "publishedAt": "2026-09-13T16:45:04.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-14T04:55:06.870Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Centric Compounding Issues Nationwide Recall of Glutathione, Myer’s Cocktail, and Tri-Immune Boost Due to Elevated Endotoxin Levels",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/centric-compounding-issues-nationwide-recall-glutathione-myers-cocktail-and-tri-immune-boost-due"
+    },
     {
       "category": "recall",
       "contentHash": "2b17f1ca69c49f2a42350f5a292cf2d0a97b6cb40a7e70991008baa7040cbb54",
@@ -5574,47 +5631,6 @@
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "title": "Increase in Disseminated Gonococcal Infections - Alaska, 2023-2024",
       "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7527a2.htm"
-    },
-    {
-      "category": "recall",
-      "contentHash": "0298f96f800432db86db382667506208c587a74130ecf382ad099f31f34589df",
-      "description": "Saline, Lidocaine and Bupivacaine from affected convenience kits should not be used.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-arrow-international-issues-correction-convenience-kits-containing",
-      "id": "medical-update:fda-medwatch:5eeba07d408aaa053116a14d",
-      "publishedAt": "2026-07-16T04:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Bupivacaine",
-          "collection": "pharmDrugs"
-        },
-        {
-          "canonicalTitle": "Lidocaine",
-          "collection": "pharmDrugs"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [],
-      "sourceId": "fda-medwatch",
-      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
-      "title": "Convenience Kit Correction: Arrow International Issues Correction for Convenience Kits Containing Recalled Huons Lidocaine and Bupivacaine and Saline",
-      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-arrow-international-issues-correction-convenience-kits-containing"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "748a1575470d7dd58a217c80bd96e2af89eb3f7d24584f1669423d7fb356cd36",
-      "description": "The FDA today issued an Emergency Use Authorization (EUA) for Ivermectin Liquid for Horses (ivermectin oral solution) for the short-term prevention of New World screwworm (NWS) infestations (myiasis) in horses when administered within 24 hours of birth or at the time of initial wound care.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/news-events/press-announcements/fda-issues-emergency-use-authorization-drug-short-term-prevention-new-world-screwworm-horses",
-      "id": "medical-update:fda-press-releases:e8eaef1fda3ca394443ee2a0",
-      "publishedAt": "2026-07-15T21:04:45.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-press-releases",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
-      "title": "FDA Issues Emergency Use Authorization for Drug for Short-Term Prevention of New World Screwworm in Horses",
-      "url": "https://www.fda.gov/news-events/press-announcements/fda-issues-emergency-use-authorization-drug-short-term-prevention-new-world-screwworm-horses"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -5627,7 +5643,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 31,
-      "retrievedAt": "2026-09-12T10:45:08.074Z",
+      "retrievedAt": "2026-09-14T04:55:06.870Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5638,18 +5654,18 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 35,
-      "retrievedAt": "2026-09-12T10:45:08.074Z",
+      "retrievedAt": "2026-09-14T04:55:06.870Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 5,
+      "itemCount": 6,
       "rawItemCount": 20,
-      "rejectedItemCount": 15,
+      "rejectedItemCount": 14,
       "retainedItemCount": 42,
-      "retrievedAt": "2026-09-12T10:45:08.074Z",
+      "retrievedAt": "2026-09-14T04:55:06.870Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -5660,7 +5676,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 24,
-      "retrievedAt": "2026-09-12T10:45:08.074Z",
+      "retrievedAt": "2026-09-14T04:55:06.870Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -5671,7 +5687,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-12T10:45:08.074Z",
+      "retrievedAt": "2026-09-14T04:55:06.870Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5682,7 +5698,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-12T10:45:08.074Z",
+      "retrievedAt": "2026-09-14T04:55:06.870Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5693,7 +5709,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 14,
-      "retrievedAt": "2026-09-12T10:45:08.074Z",
+      "retrievedAt": "2026-09-14T04:55:06.870Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -5704,7 +5720,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-09-12T10:45:08.074Z",
+      "retrievedAt": "2026-09-14T04:55:06.870Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5715,7 +5731,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-12T10:45:08.074Z",
+      "retrievedAt": "2026-09-14T04:55:06.870Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
