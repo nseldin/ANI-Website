@@ -5,6 +5,72 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "guideline-public-health",
+      "contentHash": "0fe016081d3af4348b240c4fd4e75814d8c2fc4856e7374c565e492588d81ba2",
+      "description": "Erratum: Vol. 75, No. SS-4",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766005&_=8F27591F6CA515EA255A3181E5191A87FE13B9754C43B1EBA31CCA93D45A9B2A",
+      "id": "medical-update:cdc-mmwr:3b08ff522b7f7af2aea34139",
+      "publishedAt": "2026-07-16T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Erratum: Vol. 75, No. SS-4",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7527a3.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "79b259f7dfe96773183e7ff82eb8079696fd3b4eb30570fbc8a320b4cd8fc246",
+      "description": "This report describes how wastewater surveillance identified one of two unrelated measles cases reported to the Wisconsin Department of Health Services in February 2026.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766003&_=6E9798205D7E173AD3FBE374E86F8DC5E05C087D029510F01BA550B879221EB5",
+      "id": "medical-update:cdc-mmwr:7ca58ac68714f56a0cf8aa26",
+      "publishedAt": "2026-07-16T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Measles virus",
+          "collection": "clinicalReferenceEntries"
+        },
+        {
+          "canonicalTitle": "Measles",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Genotype-Specific Detection of Measles Virus Using Wastewater Surveillance - Wisconsin, February 2026",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7527a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "7dfc25a364e61ef970326e29d87f956861b36a667631e19d2d1356207344e7a7",
+      "description": "Meta Description: This report describes 35 cases of disseminated gonococcal infection reported in Alaska during 2023-2024.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766004&_=CE960A77B15856453BD626B23D26B1E1620217F269F73F580E1AFF3439A4641B",
+      "id": "medical-update:cdc-mmwr:bfdf972b507e36fc4039a08e",
+      "publishedAt": "2026-07-16T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Increase in Disseminated Gonococcal Infections - Alaska, 2023-2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7527a2.htm"
+    },
+    {
       "category": "recall",
       "contentHash": "0298f96f800432db86db382667506208c587a74130ecf382ad099f31f34589df",
       "description": "Saline, Lidocaine and Bupivacaine from affected convenience kits should not be used.",
@@ -2160,9 +2226,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-14T04:55:06.870Z",
+  "generatedAt": "2026-09-14T21:48:48.549Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "drug-approval",
+      "contentHash": "2b0c522f9f1462582b7633c532a3d6ec12ca30a8c20a073607edcbab208c996c",
+      "description": "FDA Novel Drug Therapy Approvals for 2026",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/novel-drug-approvals-fda/novel-drug-approvals-2026",
+      "id": "medical-update:fda-drugs:99c1f9f4efe8e69bf181158d",
+      "publishedAt": "2026-09-14T14:15:05.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-11T15:33:30.795Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Novel Drug Approvals for 2026",
+      "url": "https://www.fda.gov/drugs/novel-drug-approvals-fda/novel-drug-approvals-2026"
+    },
     {
       "category": "recall",
       "contentHash": "2784f0b25f11f48b2d8c0952492be9fff7e8058f3c14a2ea42ad9f4ac607a8f3",
@@ -2194,22 +2276,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "title": "Whole Foods Market Issues Allergy Alert on Undeclared Egg in Cabricharme Cheese",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/whole-foods-market-issues-allergy-alert-undeclared-egg-cabricharme-cheese"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "e16caa4457822895a8ec18d2b7737ddd32108a4c513e2f9dd9c87152d92e87cf",
-      "description": "FDA Novel Drug Therapy Approvals for 2026",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/drugs/novel-drug-approvals-fda/novel-drug-approvals-2026",
-      "id": "medical-update:fda-drugs:99c1f9f4efe8e69bf181158d",
-      "publishedAt": "2026-09-11T21:40:58.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-11T15:33:30.795Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "Novel Drug Approvals for 2026",
-      "url": "https://www.fda.gov/drugs/novel-drug-approvals-fda/novel-drug-approvals-2026"
     },
     {
       "category": "drug-approval",
@@ -5565,72 +5631,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Thoracic Stent Graft Recall: Bolton Medical Removes Relay Pro System",
       "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/thoracic-stent-graft-recall-bolton-medical-removes-relay-pro-system"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "0fe016081d3af4348b240c4fd4e75814d8c2fc4856e7374c565e492588d81ba2",
-      "description": "Erratum: Vol. 75, No. SS-4",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766005&_=8F27591F6CA515EA255A3181E5191A87FE13B9754C43B1EBA31CCA93D45A9B2A",
-      "id": "medical-update:cdc-mmwr:3b08ff522b7f7af2aea34139",
-      "publishedAt": "2026-07-16T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Erratum: Vol. 75, No. SS-4",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7527a3.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "79b259f7dfe96773183e7ff82eb8079696fd3b4eb30570fbc8a320b4cd8fc246",
-      "description": "This report describes how wastewater surveillance identified one of two unrelated measles cases reported to the Wisconsin Department of Health Services in February 2026.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766003&_=6E9798205D7E173AD3FBE374E86F8DC5E05C087D029510F01BA550B879221EB5",
-      "id": "medical-update:cdc-mmwr:7ca58ac68714f56a0cf8aa26",
-      "publishedAt": "2026-07-16T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Measles virus",
-          "collection": "clinicalReferenceEntries"
-        },
-        {
-          "canonicalTitle": "Measles",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Genotype-Specific Detection of Measles Virus Using Wastewater Surveillance - Wisconsin, February 2026",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7527a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "7dfc25a364e61ef970326e29d87f956861b36a667631e19d2d1356207344e7a7",
-      "description": "Meta Description: This report describes 35 cases of disseminated gonococcal infection reported in Alaska during 2023-2024.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766004&_=CE960A77B15856453BD626B23D26B1E1620217F269F73F580E1AFF3439A4641B",
-      "id": "medical-update:cdc-mmwr:bfdf972b507e36fc4039a08e",
-      "publishedAt": "2026-07-16T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Increase in Disseminated Gonococcal Infections - Alaska, 2023-2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7527a2.htm"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -5643,7 +5643,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 31,
-      "retrievedAt": "2026-09-14T04:55:06.870Z",
+      "retrievedAt": "2026-09-14T21:48:48.549Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5654,29 +5654,29 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 35,
-      "retrievedAt": "2026-09-14T04:55:06.870Z",
+      "retrievedAt": "2026-09-14T21:48:48.549Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 6,
+      "itemCount": 4,
       "rawItemCount": 20,
-      "rejectedItemCount": 14,
-      "retainedItemCount": 42,
-      "retrievedAt": "2026-09-14T04:55:06.870Z",
+      "rejectedItemCount": 16,
+      "retainedItemCount": 44,
+      "retrievedAt": "2026-09-14T21:48:48.549Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 3,
+      "itemCount": 1,
       "rawItemCount": 20,
-      "rejectedItemCount": 17,
-      "retainedItemCount": 24,
-      "retrievedAt": "2026-09-14T04:55:06.870Z",
+      "rejectedItemCount": 19,
+      "retainedItemCount": 26,
+      "retrievedAt": "2026-09-14T21:48:48.549Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -5687,7 +5687,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-14T04:55:06.870Z",
+      "retrievedAt": "2026-09-14T21:48:48.549Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5698,7 +5698,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-14T04:55:06.870Z",
+      "retrievedAt": "2026-09-14T21:48:48.549Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5709,7 +5709,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 14,
-      "retrievedAt": "2026-09-14T04:55:06.870Z",
+      "retrievedAt": "2026-09-14T21:48:48.549Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -5720,7 +5720,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-09-14T04:55:06.870Z",
+      "retrievedAt": "2026-09-14T21:48:48.549Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5731,7 +5731,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-14T04:55:06.870Z",
+      "retrievedAt": "2026-09-14T21:48:48.549Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
