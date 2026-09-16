@@ -2258,9 +2258,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-16T04:48:33.835Z",
+  "generatedAt": "2026-09-16T16:54:08.364Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "drug-approval",
+      "contentHash": "7e086682ef3b22d50bc40b821792ab36700cfb2af10bc17f9c37ff6b92ae3be0",
+      "description": "FDA provides online resources for information on approved drugs for consumers and health care professionals--including links to Orange Book and Drugs@FDA.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/drug-approvals-and-databases/resources-information-approved-drugs",
+      "id": "medical-update:fda-drugs:e940ddc34f0f2496b88ba8f2",
+      "publishedAt": "2026-09-16T14:59:28.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-16T16:54:08.364Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Resources for Information | Approved Drugs",
+      "url": "https://www.fda.gov/drugs/drug-approvals-and-databases/resources-information-approved-drugs"
+    },
     {
       "category": "recall",
       "contentHash": "2b1f94c245262416b9a0c8cc81b20db86f1065faaff704ca63a8ea5822d7ec20",
@@ -5790,7 +5806,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 32,
-      "retrievedAt": "2026-09-16T04:48:33.835Z",
+      "retrievedAt": "2026-09-16T16:54:08.364Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5801,29 +5817,29 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 36,
-      "retrievedAt": "2026-09-16T04:48:33.835Z",
+      "retrievedAt": "2026-09-16T16:54:08.364Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 2,
+      "itemCount": 3,
       "rawItemCount": 20,
-      "rejectedItemCount": 18,
+      "rejectedItemCount": 17,
       "retainedItemCount": 47,
-      "retrievedAt": "2026-09-16T04:48:33.835Z",
+      "retrievedAt": "2026-09-16T16:54:08.364Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 8,
+      "itemCount": 5,
       "rawItemCount": 20,
-      "rejectedItemCount": 12,
-      "retainedItemCount": 22,
-      "retrievedAt": "2026-09-16T04:48:33.835Z",
+      "rejectedItemCount": 15,
+      "retainedItemCount": 25,
+      "retrievedAt": "2026-09-16T16:54:08.364Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -5834,7 +5850,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-16T04:48:33.835Z",
+      "retrievedAt": "2026-09-16T16:54:08.364Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5845,7 +5861,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-16T04:48:33.835Z",
+      "retrievedAt": "2026-09-16T16:54:08.364Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5856,7 +5872,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 15,
-      "retrievedAt": "2026-09-16T04:48:33.835Z",
+      "retrievedAt": "2026-09-16T16:54:08.364Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -5867,7 +5883,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-09-16T04:48:33.835Z",
+      "retrievedAt": "2026-09-16T16:54:08.364Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5878,7 +5894,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-16T04:48:33.835Z",
+      "retrievedAt": "2026-09-16T16:54:08.364Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
