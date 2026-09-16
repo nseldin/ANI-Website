@@ -2258,9 +2258,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-15T21:20:22.551Z",
+  "generatedAt": "2026-09-16T04:48:33.835Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "2b1f94c245262416b9a0c8cc81b20db86f1065faaff704ca63a8ea5822d7ec20",
+      "description": "WHITE PLAINS, N.Y. and LOUISVILLE, Colo., September 15, 2026 – Danone USA is issuing a voluntary recall of So Delicious Dairy Free® Salted Caramel Cluster Non-Dairy Frozen Dessert pints with best-by dates on and before April 3, 2028 due to the potential presence of foreign materials, such as small",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/so-delicious-dairy-freer-issues-voluntary-recall-salted-caramel-cluster-non-dairy-frozen-dessert",
+      "id": "medical-update:fda-recalls:aa0aadd185093620ae834f11",
+      "publishedAt": "2026-09-15T20:31:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-16T04:48:33.835Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "So Delicious Dairy Free® Issues Voluntary Recall of Salted Caramel Cluster Non-Dairy Frozen Dessert Pints Due to Potential Presence of Foreign Material",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/so-delicious-dairy-freer-issues-voluntary-recall-salted-caramel-cluster-non-dairy-frozen-dessert"
+    },
     {
       "category": "vaccine-biologic",
       "contentHash": "79ce8ca3420129af9bd15c82ee06f2456bcfb309589254a8bde36e5d7615d27c",
@@ -5764,20 +5780,20 @@
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/unique-pharmaceutical-laboratories-div-j-b-chemicals-pharmaceuticals-ltd-issues-voluntary-nationwide"
     }
   ],
-  "refreshStatus": "PARTIAL",
+  "refreshStatus": "CURRENT",
   "schemaVersion": "ani-medical-updates-runtime-v1",
   "sourceConfigSha256": "bcda90ac53015cf0b9744061bc08ad8442b6173b990e7125516874c39b76e0db",
   "sourceStatuses": [
     {
-      "error": "Partial item routing failure: 1 of 20 eligible feed items failed deterministic normalization; last-good source items were retained.",
-      "itemCount": 19,
+      "error": null,
+      "itemCount": 20,
       "rawItemCount": 20,
-      "rejectedItemCount": 1,
-      "retainedItemCount": 33,
-      "retrievedAt": "2026-09-15T21:20:22.551Z",
+      "rejectedItemCount": 0,
+      "retainedItemCount": 32,
+      "retrievedAt": "2026-09-16T04:48:33.835Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
-      "status": "stale"
+      "status": "current"
     },
     {
       "error": null,
@@ -5785,7 +5801,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 36,
-      "retrievedAt": "2026-09-15T21:20:22.551Z",
+      "retrievedAt": "2026-09-16T04:48:33.835Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -5796,7 +5812,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 47,
-      "retrievedAt": "2026-09-15T21:20:22.551Z",
+      "retrievedAt": "2026-09-16T04:48:33.835Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -5807,7 +5823,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 12,
       "retainedItemCount": 22,
-      "retrievedAt": "2026-09-15T21:20:22.551Z",
+      "retrievedAt": "2026-09-16T04:48:33.835Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -5818,7 +5834,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-15T21:20:22.551Z",
+      "retrievedAt": "2026-09-16T04:48:33.835Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5829,7 +5845,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-15T21:20:22.551Z",
+      "retrievedAt": "2026-09-16T04:48:33.835Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5840,7 +5856,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 15,
-      "retrievedAt": "2026-09-15T21:20:22.551Z",
+      "retrievedAt": "2026-09-16T04:48:33.835Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -5851,7 +5867,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-09-15T21:20:22.551Z",
+      "retrievedAt": "2026-09-16T04:48:33.835Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5862,7 +5878,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-15T21:20:22.551Z",
+      "retrievedAt": "2026-09-16T04:48:33.835Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
