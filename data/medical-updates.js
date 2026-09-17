@@ -2258,9 +2258,63 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-17T16:59:01.912Z",
+  "generatedAt": "2026-09-17T21:21:37.492Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "drug-approval",
+      "contentHash": "8da3cbea3a5bc5fc198b1084ca39af00511def9f78e080a4df89445099d60d0b",
+      "description": "The U.S. Food and Drug Administration today approved Fayuvi (rebisufligene etisparvovec-hopf), the first treatment for pediatric patients with mucopolysaccharidosis type IIIA (MPS IIIA), also known as Sanfilippo syndrome type A.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapy-pediatric-patients-sanfilippo-syndrome-type",
+      "id": "medical-update:fda-press-releases:b4f836c7eb9490b59415c3af",
+      "publishedAt": "2026-09-17T18:26:43.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-17T21:21:37.492Z",
+      "sourceCategories": [],
+      "sourceId": "fda-press-releases",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
+      "title": "FDA Approves First Gene Therapy for Pediatric Patients with Sanfilippo Syndrome Type A",
+      "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapy-pediatric-patients-sanfilippo-syndrome-type"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "07c12ddc156352af1fd837f60a5c2db6160fb0f7c5aaf082f81be236d64ed8e3",
+      "description": "This report describes higher emergency department visits for heat-related illnesses during extreme heat during June and July 2026.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766467&_=3F9AE87C66AAD0E1FDD1C931FCCB94FB3D7B759444F7235431289C886B4246CF",
+      "id": "medical-update:cdc-mmwr:55ed3daf7022c8dc863f8026",
+      "publishedAt": "2026-09-17T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-17T21:21:37.492Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Notes from the Field: Heat-Related Emergency Department Visits - June 28-July 7, 2026",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7536a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "6cdd59f745194742493f50533595ed68635ec2989745e363a966448f8e8d66c1",
+      "description": "This report describes results from opt-out syphilis screenings in Alaska correctional facilities during October 2023-September 2025.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766466&_=3341180FF6B8DD8A25A54F7EB3F75283075963BDA3E5FA63BDF102CFA6C142E4",
+      "id": "medical-update:cdc-mmwr:d13b49f94a94c6ff49eeece0",
+      "publishedAt": "2026-09-17T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-17T21:21:37.492Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Syphilis Screening in Correctional Facilities - Alaska, October 2023-September 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7536a1.htm"
+    },
     {
       "category": "drug-approval",
       "contentHash": "20a38319da2c335059de91b0e59fc8ae98f1e791429a55df0b72c02c9fe33183",
@@ -5838,7 +5892,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 32,
-      "retrievedAt": "2026-09-17T16:59:01.912Z",
+      "retrievedAt": "2026-09-17T21:21:37.492Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5849,20 +5903,9 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 36,
-      "retrievedAt": "2026-09-17T16:59:01.912Z",
+      "retrievedAt": "2026-09-17T21:21:37.492Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
-      "status": "current"
-    },
-    {
-      "error": null,
-      "itemCount": 3,
-      "rawItemCount": 20,
-      "rejectedItemCount": 17,
-      "retainedItemCount": 48,
-      "retrievedAt": "2026-09-17T16:59:01.912Z",
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
     },
     {
@@ -5870,19 +5913,30 @@
       "itemCount": 2,
       "rawItemCount": 20,
       "rejectedItemCount": 18,
-      "retainedItemCount": 29,
-      "retrievedAt": "2026-09-17T16:59:01.912Z",
+      "retainedItemCount": 49,
+      "retrievedAt": "2026-09-17T21:21:37.492Z",
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "status": "current"
+    },
+    {
+      "error": null,
+      "itemCount": 4,
+      "rawItemCount": 20,
+      "rejectedItemCount": 16,
+      "retainedItemCount": 27,
+      "retrievedAt": "2026-09-17T21:21:37.492Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 12,
+      "itemCount": 13,
       "rawItemCount": 20,
-      "rejectedItemCount": 8,
+      "rejectedItemCount": 7,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-17T16:59:01.912Z",
+      "retrievedAt": "2026-09-17T21:21:37.492Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5893,7 +5947,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-17T16:59:01.912Z",
+      "retrievedAt": "2026-09-17T21:21:37.492Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5903,8 +5957,8 @@
       "itemCount": 100,
       "rawItemCount": 100,
       "rejectedItemCount": 0,
-      "retainedItemCount": 15,
-      "retrievedAt": "2026-09-17T16:59:01.912Z",
+      "retainedItemCount": 17,
+      "retrievedAt": "2026-09-17T21:21:37.492Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -5915,7 +5969,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-09-17T16:59:01.912Z",
+      "retrievedAt": "2026-09-17T21:21:37.492Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5926,7 +5980,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-17T16:59:01.912Z",
+      "retrievedAt": "2026-09-17T21:21:37.492Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
