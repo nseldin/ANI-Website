@@ -2299,7 +2299,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-18T04:42:30.081Z",
+  "generatedAt": "2026-09-18T16:23:34.280Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -2435,6 +2435,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "title": "Electronic Submission Template for Premarket Approval Applications (PMA)",
       "url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/electronic-submission-template-premarket-approval-applications-pma"
+    },
+    {
+      "category": "recall",
+      "contentHash": "e3d74d896f31dde50782d9ae1860a9dca668f911b516487bc5fd2ac9a10c53ff",
+      "description": "Saratoga Potato Chips of Fort Wayne, IN, is recalling two Best if USED BY codes of 7.75-ounce packages of J. HIGGS Loaded Bacon and Cheddar Potato Chips because they may contain undeclared soy allergen. People who have an allergy or severe sensitivity to soy run the risk of serious or life-threateni",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/saratoga-potato-chips-issues-allergy-alert-undeclared-soy-j-higgs-loaded-bacon-and-cheddar-potato",
+      "id": "medical-update:fda-recalls:7f6e0cd35c60e7d6270f5dc6",
+      "publishedAt": "2026-09-16T15:21:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-18T16:23:34.280Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Saratoga Potato Chips Issues Allergy Alert on Undeclared Soy in J. HIGGS Loaded Bacon and Cheddar Potato Chips",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/saratoga-potato-chips-issues-allergy-alert-undeclared-soy-j-higgs-loaded-bacon-and-cheddar-potato"
     },
     {
       "category": "drug-approval",
@@ -5892,7 +5908,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 32,
-      "retrievedAt": "2026-09-18T04:42:30.081Z",
+      "retrievedAt": "2026-09-18T16:23:34.280Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5902,8 +5918,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 36,
-      "retrievedAt": "2026-09-18T04:42:30.081Z",
+      "retainedItemCount": 37,
+      "retrievedAt": "2026-09-18T16:23:34.280Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -5914,18 +5930,18 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 49,
-      "retrievedAt": "2026-09-18T04:42:30.081Z",
+      "retrievedAt": "2026-09-18T16:23:34.280Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 5,
+      "itemCount": 4,
       "rawItemCount": 20,
-      "rejectedItemCount": 15,
-      "retainedItemCount": 27,
-      "retrievedAt": "2026-09-18T04:42:30.081Z",
+      "rejectedItemCount": 16,
+      "retainedItemCount": 28,
+      "retrievedAt": "2026-09-18T16:23:34.280Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -5936,7 +5952,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 7,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-18T04:42:30.081Z",
+      "retrievedAt": "2026-09-18T16:23:34.280Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -5947,7 +5963,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-18T04:42:30.081Z",
+      "retrievedAt": "2026-09-18T16:23:34.280Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -5958,7 +5974,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 17,
-      "retrievedAt": "2026-09-18T04:42:30.081Z",
+      "retrievedAt": "2026-09-18T16:23:34.280Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -5969,7 +5985,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-09-18T04:42:30.081Z",
+      "retrievedAt": "2026-09-18T16:23:34.280Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -5980,7 +5996,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-18T04:42:30.081Z",
+      "retrievedAt": "2026-09-18T16:23:34.280Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
