@@ -2299,9 +2299,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-18T20:53:37.578Z",
+  "generatedAt": "2026-09-19T04:36:35.606Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "6d05837b9fc2e48d8123b3e1350f3df1dc07c6e0b983b06de491316b82699425",
+      "description": "GF Blends is recalling Truly AIP All Purpose Flour and Bread Mix and EAT G.A.N.G.S.T.E.R. Flat Bread Pizza Mix listed below due to potential undeclared wheat gluten. People who have celiac disease or a severe gluten intolerance run the risk of adverse health effects or allergic reactions if they con",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/gf-blends-recalls-truly-aip-all-purpose-flour-and-bread-mix-and-eat-gangster-flat-bread-pizza-mix",
+      "id": "medical-update:fda-recalls:662eec1f94dda5581027bdf0",
+      "publishedAt": "2026-09-18T21:48:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-19T04:36:35.606Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "GF Blends Recalls Truly AIP All Purpose Flour and Bread Mix, and EAT G.A.N.G.S.T.E.R. Flat Bread Pizza Mix Due to Potential Undeclared Wheat Gluten",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/gf-blends-recalls-truly-aip-all-purpose-flour-and-bread-mix-and-eat-gangster-flat-bread-pizza-mix"
+    },
     {
       "category": "drug-approval",
       "contentHash": "5dad80327dacb66c403327d12a3ae1c36a3f8d227111b9daa297201d641a5b98",
@@ -2643,6 +2659,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "title": "OTP Town Hall: Best Practices for Preparing BLA Submissions for Cell and Gene Therapy Products - 06/04/2026",
       "url": "https://www.fda.gov/vaccines-blood-biologics/office-therapeutic-products-otp-events-meetings-and-workshops/otp-town-hall-best-practices-preparing-bla-submissions-cell-and-gene-therapy-products-06042026"
+    },
+    {
+      "category": "recall",
+      "contentHash": "0d0c4654326ad53b063b6513d8bf7d3045ba0ae3d385d7d2bf82a2b0067747c1",
+      "description": "Gias Foods of New York, NY is recalling 2 Lots of bettergoods Authentic Italian Lemon Alfredo Fettuccine, because it has the potential to be contaminated with Listeria monocytogenes, an organism which can cause serious and sometimes fatal infections in young children, frail or elderly people, and ot",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/gias-foods-inc-recalls-bettergoods-authentic-italian-lemon-alfredo-fettuccine-because-possible",
+      "id": "medical-update:fda-recalls:918bc7c57b709e5e1b5c96de",
+      "publishedAt": "2026-09-15T18:52:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-19T04:36:35.606Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Gias Foods, Inc. Recalls Bettergoods Authentic Italian Lemon Alfredo Fettuccine Because of Possible Health Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/gias-foods-inc-recalls-bettergoods-authentic-italian-lemon-alfredo-fettuccine-because-possible"
     },
     {
       "category": "vaccine-biologic",
@@ -5962,7 +5994,7 @@
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/pt-organics-limited-recalls-select-pumpkin-tree-peter-rabbit-organics-banana-strawberry-fruit-puree"
     }
   ],
-  "refreshStatus": "PARTIAL",
+  "refreshStatus": "CURRENT",
   "schemaVersion": "ani-medical-updates-runtime-v1",
   "sourceConfigSha256": "bcda90ac53015cf0b9744061bc08ad8442b6173b990e7125516874c39b76e0db",
   "sourceStatuses": [
@@ -5972,7 +6004,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 32,
-      "retrievedAt": "2026-09-18T20:53:37.578Z",
+      "retrievedAt": "2026-09-19T04:36:35.606Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -5982,8 +6014,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 37,
-      "retrievedAt": "2026-09-18T20:53:37.578Z",
+      "retainedItemCount": 39,
+      "retrievedAt": "2026-09-19T04:36:35.606Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -5994,7 +6026,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 49,
-      "retrievedAt": "2026-09-18T20:53:37.578Z",
+      "retrievedAt": "2026-09-19T04:36:35.606Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6005,7 +6037,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 15,
       "retainedItemCount": 27,
-      "retrievedAt": "2026-09-18T20:53:37.578Z",
+      "retrievedAt": "2026-09-19T04:36:35.606Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6016,21 +6048,21 @@
       "rawItemCount": 20,
       "rejectedItemCount": 7,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-18T20:53:37.578Z",
+      "retrievedAt": "2026-09-19T04:36:35.606Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
     },
     {
-      "error": "This operation was aborted",
+      "error": null,
       "itemCount": 0,
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-18T16:23:34.280Z",
+      "retrievedAt": "2026-09-19T04:36:35.606Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
-      "status": "stale"
+      "status": "current"
     },
     {
       "error": null,
@@ -6038,7 +6070,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 17,
-      "retrievedAt": "2026-09-18T20:53:37.578Z",
+      "retrievedAt": "2026-09-19T04:36:35.606Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6049,7 +6081,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-09-18T20:53:37.578Z",
+      "retrievedAt": "2026-09-19T04:36:35.606Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6060,7 +6092,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-18T20:53:37.578Z",
+      "retrievedAt": "2026-09-19T04:36:35.606Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
