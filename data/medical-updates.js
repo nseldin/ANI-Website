@@ -5,6 +5,73 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "guideline-public-health",
+      "contentHash": "32c14e1485bf399627937f5b34275d0446411e861e8f9f36c95ed1d1638e9cb7",
+      "description": "This report describes a suspected exposure to Neisseria meningitidis during a university laboratory exercise.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766071&_=AD67791AD67DA9C8DD472928E52571E7447BA6B509CC60AA104A99F5B4B94D41",
+      "id": "medical-update:cdc-mmwr:37d0a75dfc0beaba29f816e4",
+      "publishedAt": "2026-07-23T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Neisseria meningitidis",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Notes from the Field: Misidentification of a Specimen as Neisseria meningitidis During a University Classroom Laboratory Exercise - Utah, 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7528a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "dd0c12553de445ac3ccb6d9ceeed2126da40d277c6444d5975edc3fdf1fc2f28",
+      "description": "This report describes progress towards worldwide rubella elimination during 2012-2024.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766070&_=A25B9A72D0B11C676AA0F212B686AD915A64C10BF434CC3B0CC656F33B88CDEB",
+      "id": "medical-update:cdc-mmwr:11e9f3dd24ebb41a2fc9b7ca",
+      "publishedAt": "2026-07-23T17:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Rubella",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Progress Toward Rubella and Congenital Rubella Syndrome Elimination - Worldwide, 2012-2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7528a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "1065eb36b05248529886c38297183237bc9f5ab34833f5b9ba92719056d397c4",
+      "description": "The Morbidity and Mortality Weekly Report (MMWR) Series is prepared by the Centers for Disease Control and Prevention (CDC).",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766072&_=F0F4097558BFC52B8895C4BD2D3C7E12CE77A29865477494D0A7B45FA225E89C",
+      "id": "medical-update:cdc-mmwr:e6095875fa32f4ab4c758bc6",
+      "publishedAt": "2026-07-23T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "QuickStats: Health Center Visit Rates, by Age and Sex - United States, 2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7528a3.htm"
+    },
+    {
       "category": "recall",
       "contentHash": "2fe2d2881781d2892e3977b4d44cabffb052c26139bbfa6aa2907fdee8564a49",
       "description": "Midwest Poultry Services, L.P. is voluntarily recalling 1,589,577 dozen white shell eggs and brown cage free shell eggs produced in Texas because they have the potential to be contaminated with Salmonella Enteritidis. Salmonella is an organism which can cause serious and sometimes fatal infections i",
@@ -2331,9 +2398,89 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-21T04:54:31.069Z",
+  "generatedAt": "2026-09-21T21:58:29.858Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "fcfd54ce82504a46c28270f234193701a53a5fb0272e1cf420b5722a2e73da37",
+      "description": "Global Mix Inc. of Middle Village, New York, is recalling niwali Tejocote Capsules (90 capsules, Herbal Supplement) and niwali Tejocote Pieces (90 Day Supply, Herbal Supplement) because FDA analysis has determined that the products appear to be Thevetia peruviana, or yellow oleander. All parts of th",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/global-mix-inc-recalls-niwali-tejocote-capsules-and-niwali-tejocote-pieces-because-possible-health",
+      "id": "medical-update:fda-recalls:176f14d1f55d0c3ef437c438",
+      "publishedAt": "2026-09-21T19:40:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-21T21:58:29.858Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Global Mix Inc. Recalls Niwali Tejocote Capsules and Niwali Tejocote Pieces Because of Possible Health Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/global-mix-inc-recalls-niwali-tejocote-capsules-and-niwali-tejocote-pieces-because-possible-health"
+    },
+    {
+      "category": "drug-approval",
+      "contentHash": "0abccfdc5d50b013bd0a1f0c976d49e4306926432cdf2a0142dd445fc73aa340",
+      "description": "CBER 2026 Orphan Approvals (new BLAs)",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/vaccines-blood-biologics/cber-2026-orphan-approvals-new-blas",
+      "id": "medical-update:fda-biologics:ca6c5c1f847953a2f5596f65",
+      "publishedAt": "2026-09-21T17:21:37.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-01T00:36:13.691Z",
+      "sourceCategories": [],
+      "sourceId": "fda-biologics",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
+      "title": "CBER 2026 Orphan Approvals (new BLAs)",
+      "url": "https://www.fda.gov/vaccines-blood-biologics/cber-2026-orphan-approvals-new-blas"
+    },
+    {
+      "category": "safety-alert",
+      "contentHash": "8cb7b3412d5ef4d3d8d2578cf00fe6312d531925e51854f66fe2a96a706dd438",
+      "description": "AVID Medical is correcting convenience kits containing recalled Huons Co. sodium chloride ampules.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-avid-medical-issues-correction-kits-containing-huons-sodium-chloride",
+      "id": "medical-update:fda-medwatch:48af53cd5a162bcfa41c6aa7",
+      "publishedAt": "2026-09-21T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-21T21:58:29.858Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Convenience Kit Correction: AVID Medical Issues Correction for Kits Containing Huons Sodium Chloride Ampules",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-avid-medical-issues-correction-kits-containing-huons-sodium-chloride"
+    },
+    {
+      "category": "recall",
+      "contentHash": "cd1e409cbc2cb224acad0a98d4f6129344b0ae0013e7274332024374f624a2ff",
+      "description": "Otsuka ICU Medical LLC is issuing a voluntary recall for one lot of 0.9% SODIUM CHLORIDE Injection, USP, 100mL single pack to the user level due to a potential mix-up. The affected lot of 0.9% SODIUM CHLORIDE Injection, USP (NDC: 0990-7984-23 Lot 1042188) may potentially contain the overwrap with la",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/otsuka-icu-medical-llc-issues-voluntary-nationwide-recall-09-sodium-chloride-injection-usp-due",
+      "id": "medical-update:fda-medwatch:742e1a502d4456b62bee4321",
+      "publishedAt": "2026-09-21T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-21T21:58:29.858Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Otsuka ICU Medical LLC Issues Voluntary Nationwide Recall of 0.9% Sodium Chloride Injection, USP Due To a Product Mix-up with 10 mEq Potassium Chloride Injection",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/otsuka-icu-medical-llc-issues-voluntary-nationwide-recall-09-sodium-chloride-injection-usp-due"
+    },
+    {
+      "category": "recall",
+      "contentHash": "4baeeed7b280fc45aea227803b3adfe0ff5b842b76d3103b18d3f23758063095",
+      "description": "ROCHESTER, MI– September 18, 2026 –Par Health is voluntarily recalling two lots of Dexmedetomidine HCl in 0.9% Sodium Chloride Injection 400 mcg/100 mL (4 mcg/mL) to the hospital level. The product is being recalled due to the presence of particulate matter identified as cellulose or stopper materia",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/par-health-issues-voluntary-nationwide-recall-two-lots-dexmedetomidine-hcl-09-sodium-chloride",
+      "id": "medical-update:fda-medwatch:018427b35ad8770469754a05",
+      "publishedAt": "2026-09-21T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-21T21:58:29.858Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Par Health Issues Voluntary Nationwide Recall of Two Lots of Dexmedetomidine HCl in 0.9% Sodium Chloride Injection Due to the Presence of Particulate Matter",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/par-health-issues-voluntary-nationwide-recall-two-lots-dexmedetomidine-hcl-09-sodium-chloride"
+    },
     {
       "category": "recall",
       "contentHash": "6d05837b9fc2e48d8123b3e1350f3df1dc07c6e0b983b06de491316b82699425",
@@ -3736,22 +3883,6 @@
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "title": "NIH researchers identify rare antibodies with potential to combat alpha-gal syndrome",
       "url": "https://www.nih.gov/news-events/news-releases/nih-researchers-identify-rare-antibodies-potential-combat-alpha-gal-syndrome"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "aea4bba23e2098c8d3ba43309cc13d07cedb05729051f9b88384cc1beb695f4b",
-      "description": "CBER 2026 Orphan Approvals (new BLAs)",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/vaccines-blood-biologics/cber-2026-orphan-approvals-new-blas",
-      "id": "medical-update:fda-biologics:ca6c5c1f847953a2f5596f65",
-      "publishedAt": "2026-08-31T18:19:43.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-09-01T00:36:13.691Z",
-      "sourceCategories": [],
-      "sourceId": "fda-biologics",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
-      "title": "CBER 2026 Orphan Approvals (new BLAs)",
-      "url": "https://www.fda.gov/vaccines-blood-biologics/cber-2026-orphan-approvals-new-blas"
     },
     {
       "category": "recall",
@@ -5925,73 +6056,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "title": "Lidl US Recalls Eridanous Shortbread Cookies with Chocolate Truffle Coating & Apricot Filling Due to Undeclared Wheat, Soy, Milk, and Eggs",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/lidl-us-recalls-eridanous-shortbread-cookies-chocolate-truffle-coating-apricot-filling-due"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "32c14e1485bf399627937f5b34275d0446411e861e8f9f36c95ed1d1638e9cb7",
-      "description": "This report describes a suspected exposure to Neisseria meningitidis during a university laboratory exercise.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766071&_=AD67791AD67DA9C8DD472928E52571E7447BA6B509CC60AA104A99F5B4B94D41",
-      "id": "medical-update:cdc-mmwr:37d0a75dfc0beaba29f816e4",
-      "publishedAt": "2026-07-23T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Neisseria meningitidis",
-          "collection": "clinicalReferenceEntries"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Notes from the Field: Misidentification of a Specimen as Neisseria meningitidis During a University Classroom Laboratory Exercise - Utah, 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7528a2.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "dd0c12553de445ac3ccb6d9ceeed2126da40d277c6444d5975edc3fdf1fc2f28",
-      "description": "This report describes progress towards worldwide rubella elimination during 2012-2024.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766070&_=A25B9A72D0B11C676AA0F212B686AD915A64C10BF434CC3B0CC656F33B88CDEB",
-      "id": "medical-update:cdc-mmwr:11e9f3dd24ebb41a2fc9b7ca",
-      "publishedAt": "2026-07-23T17:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Rubella",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Progress Toward Rubella and Congenital Rubella Syndrome Elimination - Worldwide, 2012-2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7528a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "1065eb36b05248529886c38297183237bc9f5ab34833f5b9ba92719056d397c4",
-      "description": "The Morbidity and Mortality Weekly Report (MMWR) Series is prepared by the Centers for Disease Control and Prevention (CDC).",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766072&_=F0F4097558BFC52B8895C4BD2D3C7E12CE77A29865477494D0A7B45FA225E89C",
-      "id": "medical-update:cdc-mmwr:e6095875fa32f4ab4c758bc6",
-      "publishedAt": "2026-07-23T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "QuickStats: Health Center Visit Rates, by Age and Sex - United States, 2024",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7528a3.htm"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -6000,11 +6064,11 @@
   "sourceStatuses": [
     {
       "error": null,
-      "itemCount": 20,
+      "itemCount": 19,
       "rawItemCount": 20,
-      "rejectedItemCount": 0,
-      "retainedItemCount": 32,
-      "retrievedAt": "2026-09-21T04:54:31.069Z",
+      "rejectedItemCount": 1,
+      "retainedItemCount": 36,
+      "retrievedAt": "2026-09-21T21:58:29.858Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6014,8 +6078,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 39,
-      "retrievedAt": "2026-09-21T04:54:31.069Z",
+      "retainedItemCount": 42,
+      "retrievedAt": "2026-09-21T21:58:29.858Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -6026,7 +6090,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 49,
-      "retrievedAt": "2026-09-21T04:54:31.069Z",
+      "retrievedAt": "2026-09-21T21:58:29.858Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6037,7 +6101,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 15,
       "retainedItemCount": 27,
-      "retrievedAt": "2026-09-21T04:54:31.069Z",
+      "retrievedAt": "2026-09-21T21:58:29.858Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6048,7 +6112,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 7,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-21T04:54:31.069Z",
+      "retrievedAt": "2026-09-21T21:58:29.858Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6059,7 +6123,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-21T04:54:31.069Z",
+      "retrievedAt": "2026-09-21T21:58:29.858Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6070,7 +6134,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 17,
-      "retrievedAt": "2026-09-21T04:54:31.069Z",
+      "retrievedAt": "2026-09-21T21:58:29.858Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6081,7 +6145,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-09-21T04:54:31.069Z",
+      "retrievedAt": "2026-09-21T21:58:29.858Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6092,7 +6156,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-21T04:54:31.069Z",
+      "retrievedAt": "2026-09-21T21:58:29.858Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
