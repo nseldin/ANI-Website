@@ -6,6 +6,22 @@
   "archive": [
     {
       "category": "recall",
+      "contentHash": "2fe2d2881781d2892e3977b4d44cabffb052c26139bbfa6aa2907fdee8564a49",
+      "description": "Midwest Poultry Services, L.P. is voluntarily recalling 1,589,577 dozen white shell eggs and brown cage free shell eggs produced in Texas because they have the potential to be contaminated with Salmonella Enteritidis. Salmonella is an organism which can cause serious and sometimes fatal infections i",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/midwest-poultry-services-lp-recalls-shell-eggs-due-possible-salmonella-enteritidis-contamination",
+      "id": "medical-update:fda-recalls:1c17f3e84c1d7f7de7c318c6",
+      "publishedAt": "2026-07-23T00:42:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Midwest Poultry Services. L.P. Recalls Shell Eggs Due to Possible Salmonella Enteritidis Contamination",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/midwest-poultry-services-lp-recalls-shell-eggs-due-possible-salmonella-enteritidis-contamination"
+    },
+    {
+      "category": "recall",
       "contentHash": "1c5936bec9a28aaa93599f344f82e8a986a8a7a1359d72aecb85af3569833a0b",
       "description": "July 21st, 2026, PT Organics Limited of Lake Oswego, Oregon is voluntarily recalling select Pumpkin Tree Peter Rabbit Organics Banana & Strawberry 4 oz. (113 g) pouches because of an internal packaging defect that may result in the presence of a strand of soft, food-grade plastic in the finished pro",
       "descriptionOrigin": "source-provided",
@@ -2315,7 +2331,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-20T20:48:24.488Z",
+  "generatedAt": "2026-09-21T04:54:31.069Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -5976,22 +5992,6 @@
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "title": "QuickStats: Health Center Visit Rates, by Age and Sex - United States, 2024",
       "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7528a3.htm"
-    },
-    {
-      "category": "recall",
-      "contentHash": "2fe2d2881781d2892e3977b4d44cabffb052c26139bbfa6aa2907fdee8564a49",
-      "description": "Midwest Poultry Services, L.P. is voluntarily recalling 1,589,577 dozen white shell eggs and brown cage free shell eggs produced in Texas because they have the potential to be contaminated with Salmonella Enteritidis. Salmonella is an organism which can cause serious and sometimes fatal infections i",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/midwest-poultry-services-lp-recalls-shell-eggs-due-possible-salmonella-enteritidis-contamination",
-      "id": "medical-update:fda-recalls:1c17f3e84c1d7f7de7c318c6",
-      "publishedAt": "2026-07-23T00:42:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-recalls",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
-      "title": "Midwest Poultry Services. L.P. Recalls Shell Eggs Due to Possible Salmonella Enteritidis Contamination",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/midwest-poultry-services-lp-recalls-shell-eggs-due-possible-salmonella-enteritidis-contamination"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -6004,7 +6004,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 32,
-      "retrievedAt": "2026-09-20T20:48:24.488Z",
+      "retrievedAt": "2026-09-21T04:54:31.069Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6015,7 +6015,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 39,
-      "retrievedAt": "2026-09-20T20:48:24.488Z",
+      "retrievedAt": "2026-09-21T04:54:31.069Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -6026,7 +6026,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 49,
-      "retrievedAt": "2026-09-20T20:48:24.488Z",
+      "retrievedAt": "2026-09-21T04:54:31.069Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6037,7 +6037,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 15,
       "retainedItemCount": 27,
-      "retrievedAt": "2026-09-20T20:48:24.488Z",
+      "retrievedAt": "2026-09-21T04:54:31.069Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6048,7 +6048,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 7,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-20T20:48:24.488Z",
+      "retrievedAt": "2026-09-21T04:54:31.069Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6059,7 +6059,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-20T20:48:24.488Z",
+      "retrievedAt": "2026-09-21T04:54:31.069Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6070,7 +6070,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 17,
-      "retrievedAt": "2026-09-20T20:48:24.488Z",
+      "retrievedAt": "2026-09-21T04:54:31.069Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6081,7 +6081,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-09-20T20:48:24.488Z",
+      "retrievedAt": "2026-09-21T04:54:31.069Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6092,7 +6092,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-20T20:48:24.488Z",
+      "retrievedAt": "2026-09-21T04:54:31.069Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
