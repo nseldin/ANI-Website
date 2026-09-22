@@ -2427,9 +2427,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-22T04:54:32.857Z",
+  "generatedAt": "2026-09-22T16:56:39.208Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "drug-approval",
+      "contentHash": "be6656fbe5eef952bfed91c61c10c62cf7d0a287ef3d388a068dbf9436cfcff9",
+      "description": "Explore the FDA’s Competitive Generic Therapy Approvals page, offering insights into the program designed to encourage generic drug competition. Access information about approved CGT products and find resources, including a downloadable CGT approvals spreadsheet.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/generic-drugs/competitive-generic-therapy-approvals",
+      "id": "medical-update:fda-drugs:e69026cda6636032fa8ab1a1",
+      "publishedAt": "2026-09-22T14:41:34.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-11T15:33:30.795Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Competitive Generic Therapy Approvals",
+      "url": "https://www.fda.gov/drugs/generic-drugs/competitive-generic-therapy-approvals"
+    },
     {
       "category": "recall",
       "contentHash": "fcfd54ce82504a46c28270f234193701a53a5fb0272e1cf420b5722a2e73da37",
@@ -2509,6 +2525,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Convenience Kit Correction: AVID Medical Issues Correction for Kits Containing Huons Sodium Chloride Ampules",
       "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-avid-medical-issues-correction-kits-containing-huons-sodium-chloride"
+    },
+    {
+      "category": "recall",
+      "contentHash": "4b3f45e6d90a2fdc2a912fce68bd605afd3f3709a5596015ef8171479b4c226a",
+      "description": "The cannula sets may exhibit a loose connection between the flexible tubing and the nasal cannula resulting in reduced effectiveness and decreased oxygenation.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/ventilator-recall-coopersurgical-removes-inca-infant-nasal-cpap-sets",
+      "id": "medical-update:fda-medwatch:523942b10650974a93e4af8b",
+      "publishedAt": "2026-09-21T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-22T16:56:39.208Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Ventilator Recall: CooperSurgical Removes INCA Infant Nasal CPAP Sets",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/ventilator-recall-coopersurgical-removes-inca-infant-nasal-cpap-sets"
     },
     {
       "category": "recall",
@@ -3337,22 +3369,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "title": "FreshPoint Issues Recall Due to an Improperly Declared Allergen (Egg) in Chicken Salad Wedge Sandwiches",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/freshpoint-issues-recall-due-improperly-declared-allergen-egg-chicken-salad-wedge-sandwiches"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "279d5a4021193a9b7db96252c5abd55fb311f2951f3d0771157e1c81f6d8fcac",
-      "description": "Explore the FDA’s Competitive Generic Therapy Approvals page, offering insights into the program designed to encourage generic drug competition. Access information about approved CGT products and find resources, including a downloadable CGT approvals spreadsheet.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/drugs/generic-drugs/competitive-generic-therapy-approvals",
-      "id": "medical-update:fda-drugs:e69026cda6636032fa8ab1a1",
-      "publishedAt": "2026-09-08T17:38:51.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-11T15:33:30.795Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "Competitive Generic Therapy Approvals",
-      "url": "https://www.fda.gov/drugs/generic-drugs/competitive-generic-therapy-approvals"
     },
     {
       "category": "guideline-public-health",
@@ -6061,11 +6077,11 @@
   "sourceStatuses": [
     {
       "error": null,
-      "itemCount": 19,
+      "itemCount": 20,
       "rawItemCount": 20,
-      "rejectedItemCount": 1,
+      "rejectedItemCount": 0,
       "retainedItemCount": 36,
-      "retrievedAt": "2026-09-22T04:54:32.857Z",
+      "retrievedAt": "2026-09-22T16:56:39.208Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6076,7 +6092,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 42,
-      "retrievedAt": "2026-09-22T04:54:32.857Z",
+      "retrievedAt": "2026-09-22T16:56:39.208Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -6087,18 +6103,18 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 52,
-      "retrievedAt": "2026-09-22T04:54:32.857Z",
+      "retrievedAt": "2026-09-22T16:56:39.208Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 5,
+      "itemCount": 4,
       "rawItemCount": 20,
-      "rejectedItemCount": 15,
-      "retainedItemCount": 27,
-      "retrievedAt": "2026-09-22T04:54:32.857Z",
+      "rejectedItemCount": 16,
+      "retainedItemCount": 28,
+      "retrievedAt": "2026-09-22T16:56:39.208Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6109,7 +6125,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 7,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-22T04:54:32.857Z",
+      "retrievedAt": "2026-09-22T16:56:39.208Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6120,7 +6136,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-22T04:54:32.857Z",
+      "retrievedAt": "2026-09-22T16:56:39.208Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6131,7 +6147,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 17,
-      "retrievedAt": "2026-09-22T04:54:32.857Z",
+      "retrievedAt": "2026-09-22T16:56:39.208Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6142,7 +6158,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-09-22T04:54:32.857Z",
+      "retrievedAt": "2026-09-22T16:56:39.208Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6153,7 +6169,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-22T04:54:32.857Z",
+      "retrievedAt": "2026-09-22T16:56:39.208Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
