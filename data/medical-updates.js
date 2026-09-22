@@ -2430,7 +2430,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-22T16:56:39.208Z",
+  "generatedAt": "2026-09-22T21:17:55.152Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -3097,6 +3097,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "title": "Novel Drug Approvals for 2026",
       "url": "https://www.fda.gov/drugs/novel-drug-approvals-fda/novel-drug-approvals-2026"
+    },
+    {
+      "category": "recall",
+      "contentHash": "662721658a296f29dfc1b71361aec36ae3044c5f9f6cc05e79a048c332d14cf7",
+      "description": "KEASBEY, N.J. (Sept. 14, 2026) –Wakefern Food Corp. has voluntarily recalled select containers of Wholesome Pantry Organic Unsweetened Apple Sauce after routine FDA testing identified elevated patulin levels that exceed food safety limits and do not meet Wakefern's quality standards",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/wakefern-food-corp-voluntarily-recalls-wholesome-pantry-organic-unsweetened-apple-sauce",
+      "id": "medical-update:fda-recalls:8cc9ce5a5c78d7a20e5e076e",
+      "publishedAt": "2026-09-14T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-22T21:17:55.152Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Wakefern Food Corp. Voluntarily Recalls Wholesome Pantry Organic Unsweetened Apple Sauce",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/wakefern-food-corp-voluntarily-recalls-wholesome-pantry-organic-unsweetened-apple-sauce"
     },
     {
       "category": "recall",
@@ -6084,7 +6100,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 36,
-      "retrievedAt": "2026-09-22T16:56:39.208Z",
+      "retrievedAt": "2026-09-22T21:17:55.152Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6094,8 +6110,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 42,
-      "retrievedAt": "2026-09-22T16:56:39.208Z",
+      "retainedItemCount": 43,
+      "retrievedAt": "2026-09-22T21:17:55.152Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -6106,18 +6122,18 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 52,
-      "retrievedAt": "2026-09-22T16:56:39.208Z",
+      "retrievedAt": "2026-09-22T21:17:55.152Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 4,
+      "itemCount": 3,
       "rawItemCount": 20,
-      "rejectedItemCount": 16,
-      "retainedItemCount": 28,
-      "retrievedAt": "2026-09-22T16:56:39.208Z",
+      "rejectedItemCount": 17,
+      "retainedItemCount": 29,
+      "retrievedAt": "2026-09-22T21:17:55.152Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6128,7 +6144,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 7,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-22T16:56:39.208Z",
+      "retrievedAt": "2026-09-22T21:17:55.152Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6139,7 +6155,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-22T16:56:39.208Z",
+      "retrievedAt": "2026-09-22T21:17:55.152Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6150,7 +6166,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 17,
-      "retrievedAt": "2026-09-22T16:56:39.208Z",
+      "retrievedAt": "2026-09-22T21:17:55.152Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6161,7 +6177,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-09-22T16:56:39.208Z",
+      "retrievedAt": "2026-09-22T21:17:55.152Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6172,7 +6188,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-22T16:56:39.208Z",
+      "retrievedAt": "2026-09-22T21:17:55.152Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
