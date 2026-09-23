@@ -2430,7 +2430,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-23T04:44:08.679Z",
+  "generatedAt": "2026-09-23T16:57:12.433Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -6090,7 +6090,7 @@
       "url": "https://www.cdc.gov/mmwr/volumes/75/ss/ss7505a1.htm"
     }
   ],
-  "refreshStatus": "PARTIAL",
+  "refreshStatus": "CURRENT",
   "schemaVersion": "ani-medical-updates-runtime-v1",
   "sourceConfigSha256": "bcda90ac53015cf0b9744061bc08ad8442b6173b990e7125516874c39b76e0db",
   "sourceStatuses": [
@@ -6100,7 +6100,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 36,
-      "retrievedAt": "2026-09-23T04:44:08.679Z",
+      "retrievedAt": "2026-09-23T16:57:12.433Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6111,7 +6111,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 43,
-      "retrievedAt": "2026-09-23T04:44:08.679Z",
+      "retrievedAt": "2026-09-23T16:57:12.433Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -6122,7 +6122,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 52,
-      "retrievedAt": "2026-09-23T04:44:08.679Z",
+      "retrievedAt": "2026-09-23T16:57:12.433Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6133,7 +6133,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 29,
-      "retrievedAt": "2026-09-23T04:44:08.679Z",
+      "retrievedAt": "2026-09-23T16:57:12.433Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6144,7 +6144,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 7,
       "retainedItemCount": 7,
-      "retrievedAt": "2026-09-23T04:44:08.679Z",
+      "retrievedAt": "2026-09-23T16:57:12.433Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6155,21 +6155,21 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-23T04:44:08.679Z",
+      "retrievedAt": "2026-09-23T16:57:12.433Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
     },
     {
-      "error": "Partial item routing failure: 1 of 100 eligible feed items failed deterministic normalization; last-good source items were retained.",
-      "itemCount": 99,
+      "error": null,
+      "itemCount": 100,
       "rawItemCount": 100,
-      "rejectedItemCount": 1,
-      "retainedItemCount": 18,
-      "retrievedAt": "2026-09-23T04:44:08.679Z",
+      "rejectedItemCount": 0,
+      "retainedItemCount": 17,
+      "retrievedAt": "2026-09-23T16:57:12.433Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "status": "stale"
+      "status": "current"
     },
     {
       "error": null,
@@ -6177,7 +6177,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-09-23T04:44:08.679Z",
+      "retrievedAt": "2026-09-23T16:57:12.433Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6188,7 +6188,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-23T04:44:08.679Z",
+      "retrievedAt": "2026-09-23T16:57:12.433Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
