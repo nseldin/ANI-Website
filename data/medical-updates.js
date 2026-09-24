@@ -2430,9 +2430,30 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-23T21:29:29.780Z",
+  "generatedAt": "2026-09-24T04:49:28.395Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "8158ff56e861be40c1644aa97a918316035dc359932a7205cae15ed4bd265b29",
+      "description": "Berlin Seeds, of Millersburg, OH, is recalling 950 lbs of Alfalfa Sprouting Seed because the seed has the potential to be contaminated with Shiga toxin-producing Escherichia coli (STEC) and/or Salmonella.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/berlin-seeds-recalls-alfalfa-sprouting-seed-because-possible-health-risk",
+      "id": "medical-update:fda-recalls:f3b3c2cb8bdc0dfc5c4a8a43",
+      "publishedAt": "2026-09-23T21:02:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Escherichia coli",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-09-24T04:49:28.395Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Berlin Seeds Recalls Alfalfa Sprouting Seed Because of Possible Health Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/berlin-seeds-recalls-alfalfa-sprouting-seed-because-possible-health-risk"
+    },
     {
       "category": "drug-approval",
       "contentHash": "149fe48d7157462bdc04998b8f12b311a7d6de7355e839c51d2b00c88932505e",
@@ -6164,7 +6185,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 37,
-      "retrievedAt": "2026-09-23T21:29:29.780Z",
+      "retrievedAt": "2026-09-24T04:49:28.395Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6174,8 +6195,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 43,
-      "retrievedAt": "2026-09-23T21:29:29.780Z",
+      "retainedItemCount": 44,
+      "retrievedAt": "2026-09-24T04:49:28.395Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -6186,7 +6207,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 52,
-      "retrievedAt": "2026-09-23T21:29:29.780Z",
+      "retrievedAt": "2026-09-24T04:49:28.395Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6197,7 +6218,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 30,
-      "retrievedAt": "2026-09-23T21:29:29.780Z",
+      "retrievedAt": "2026-09-24T04:49:28.395Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6208,7 +6229,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 8,
-      "retrievedAt": "2026-09-23T21:29:29.780Z",
+      "retrievedAt": "2026-09-24T04:49:28.395Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6219,7 +6240,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-23T21:29:29.780Z",
+      "retrievedAt": "2026-09-24T04:49:28.395Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6230,7 +6251,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 17,
-      "retrievedAt": "2026-09-23T21:29:29.780Z",
+      "retrievedAt": "2026-09-24T04:49:28.395Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6241,7 +6262,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 7,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-09-23T21:29:29.780Z",
+      "retrievedAt": "2026-09-24T04:49:28.395Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6252,7 +6273,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-23T21:29:29.780Z",
+      "retrievedAt": "2026-09-24T04:49:28.395Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
