@@ -2430,9 +2430,117 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-24T11:44:49.523Z",
+  "generatedAt": "2026-09-24T17:09:55.749Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "guideline-public-health",
+      "contentHash": "70c139d4d7804b325f3101eb18e60e478dd287add66e61cab5a70cc70b5dd7dd",
+      "description": "This report describes a Campylobacter jejuni outbreak among wedding attendees in Pennsylvania who drank untreated spring water.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766504&_=EE90F178064AF5B9FB76797109EAFAEC21A1019D1DFB2EDA850DED64AE7B0B75",
+      "id": "medical-update:cdc-mmwr:9f3e826ac5e0c79a196cb997",
+      "publishedAt": "2026-09-24T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-24T17:09:55.749Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Environmental Investigation of a Campylobacteriosis Outbreak Among Wedding Attendees - York County, Pennsylvania, 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7537a2.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "e06d47e89caa4bc63da2784cf834baf817b2153ac18957dca8162dbc8464cd78",
+      "description": "This report describes an unusually high number of hepatitis A cases among Florida travelers who had recently been to Cuba.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766503&_=EFC316D581403B0FDC66434E38C665F738358E0C66EF38DC605C85907A2296B8",
+      "id": "medical-update:cdc-mmwr:f92af4b40442ba3376e2d222",
+      "publishedAt": "2026-09-24T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-24T17:09:55.749Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Hepatitis A Outbreak Associated with Cuba - Florida, June 2024-February 2026",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7537a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "8a975116db2dddd5fbb4842eb1341bdcb4528c4ef919a4dfaaf0c40d441775b8",
+      "description": "This report describes the first 100 days of the 2026 Ebola outbreak in the Democratic Republic of the Congo compared to other Ebola outbreaks.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766447&_=468ABAB7D10D78A56CF9C1B5E1FB951DB6B6C1EE8B70991480CA588463198B2C",
+      "id": "medical-update:cdc-mmwr:a3d7e3a085f4961a2cb7c9ae",
+      "publishedAt": "2026-09-24T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-15T21:20:22.551Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Notes from the Field: The First 100 Days of Five Ebola Outbreaks - Democratic Republic of the Congo, Uganda, and West Africa, 2007-2026",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7537e1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "bf49008ef741321e7b94a1021430c7f65e8a193876d2543a8e811404a92eda81",
+      "description": "This report describes death rates from unintentional falls among adults aged ≥65 years.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766505&_=051C40C85FBE11F1ABC7425251BC6D60F6FE79C46384457300693603CBE28D5D",
+      "id": "medical-update:cdc-mmwr:5423024dd7453433741a0da3",
+      "publishedAt": "2026-09-24T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-24T17:09:55.749Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "QuickStats: Death Rates from Unintentional Falls Among Adults Aged ≥65 Years, by Sex and Age Group - United States, 2024",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7537a3.htm"
+    },
+    {
+      "category": "drug-approval",
+      "contentHash": "e33ed04cb856316ea0ff97e72b09c9c5c8c8c7ba8465e71d0dc087f26cc80330",
+      "description": "News about human drug-related approvals",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/news-events-human-drugs/notable-approvals-drugs",
+      "id": "medical-update:fda-drugs:a7183b849a4ca312c8d09a44",
+      "publishedAt": "2026-09-24T13:23:54.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-19T19:35:58.259Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Notable Approvals | Drugs",
+      "url": "https://www.fda.gov/drugs/news-events-human-drugs/notable-approvals-drugs"
+    },
+    {
+      "category": "drug-approval",
+      "contentHash": "eab62f4c005e78399671bbe8893789ab17c668b2d8779615cc13b280cbec2729",
+      "description": "The U.S. Food and Drug Administration has approved Onswik (insulin efsitora alfa-gobe) injection, a long-acting insulin analog, as an adjunct to diet and exercise to improve glycemic control in adults with type 2 diabetes mellitus.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/news-events-human-drugs/fda-approves-once-weekly-insulin-type-2-diabetes-mellitus",
+      "id": "medical-update:fda-drugs:991c35227994c8be452d2e37",
+      "publishedAt": "2026-09-24T13:22:55.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-24T17:09:55.749Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "FDA Approves Once-Weekly Insulin for Type 2 Diabetes Mellitus",
+      "url": "https://www.fda.gov/drugs/news-events-human-drugs/fda-approves-once-weekly-insulin-type-2-diabetes-mellitus"
+    },
     {
       "category": "recall",
       "contentHash": "8158ff56e861be40c1644aa97a918316035dc359932a7205cae15ed4bd265b29",
@@ -2693,22 +2801,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "title": "OTP Town Hall: Cell Therapy Chemistry, Manufacturing, and Controls – June 2023 - 06/08/2023",
       "url": "https://www.fda.gov/news-events/fda-meetings-conferences-and-workshops/otp-town-hall-cell-therapy-chemistry-manufacturing-and-controls-june-2023-06082023"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "2af4df8ae6555a26fab1abb51bf61ddade924a79930cd0b2d974296e3b3da2af",
-      "description": "News about human drug-related approvals",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/drugs/news-events-human-drugs/notable-approvals-drugs",
-      "id": "medical-update:fda-drugs:a7183b849a4ca312c8d09a44",
-      "publishedAt": "2026-09-18T16:07:56.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-19T19:35:58.259Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "Notable Approvals | Drugs",
-      "url": "https://www.fda.gov/drugs/news-events-human-drugs/notable-approvals-drugs"
     },
     {
       "category": "drug-approval",
@@ -3067,25 +3159,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "title": "FDA Approves Additional Information in Labeling for Kybella (Deoxycholic Acid) Injection Warning of Adverse Reactions Associated with Unapproved Use",
       "url": "https://www.fda.gov/drugs/drug-safety-communications/fda-approves-additional-information-labeling-kybella-deoxycholic-acid-injection-warning-adverse"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "28890c7351f07a2d85a29cb25c9ba75669a0776d60181ad45dc0260010553a42",
-      "description": "This report describes the first 100 days of the 2026 Ebola outbreak in the Democratic Republic of the Congo compared to other Ebola outbreaks.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766447&_=74FE873C22B17057AD5BA050FC4B767BA481A32A9E951BC5C0ECB575D745400F",
-      "id": "medical-update:cdc-mmwr:a3d7e3a085f4961a2cb7c9ae",
-      "publishedAt": "2026-09-15T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-09-15T21:20:22.551Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "EARLY RELEASE: Notes from the Field: The First 100 Days of Five Ebola Outbreaks - Democratic Republic of the Congo, Uganda, and West Africa, 2007-2026",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7537e1.htm"
     },
     {
       "category": "vaccine-biologic",
@@ -6185,7 +6258,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 37,
-      "retrievedAt": "2026-09-24T11:44:49.523Z",
+      "retrievedAt": "2026-09-24T17:09:55.749Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6196,18 +6269,18 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 44,
-      "retrievedAt": "2026-09-24T11:44:49.523Z",
+      "retrievedAt": "2026-09-24T17:09:55.749Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 4,
+      "itemCount": 5,
       "rawItemCount": 20,
-      "rejectedItemCount": 16,
+      "rejectedItemCount": 15,
       "retainedItemCount": 52,
-      "retrievedAt": "2026-09-24T11:44:49.523Z",
+      "retrievedAt": "2026-09-24T17:09:55.749Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6218,18 +6291,18 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 30,
-      "retrievedAt": "2026-09-24T11:44:49.523Z",
+      "retrievedAt": "2026-09-24T17:09:55.749Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 13,
+      "itemCount": 12,
       "rawItemCount": 20,
-      "rejectedItemCount": 7,
-      "retainedItemCount": 7,
-      "retrievedAt": "2026-09-24T11:44:49.523Z",
+      "rejectedItemCount": 8,
+      "retainedItemCount": 8,
+      "retrievedAt": "2026-09-24T17:09:55.749Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6240,7 +6313,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-24T11:44:49.523Z",
+      "retrievedAt": "2026-09-24T17:09:55.749Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6250,8 +6323,8 @@
       "itemCount": 100,
       "rawItemCount": 100,
       "rejectedItemCount": 0,
-      "retainedItemCount": 17,
-      "retrievedAt": "2026-09-24T11:44:49.523Z",
+      "retainedItemCount": 20,
+      "retrievedAt": "2026-09-24T17:09:55.749Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6262,7 +6335,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 7,
       "retainedItemCount": 1,
-      "retrievedAt": "2026-09-24T11:44:49.523Z",
+      "retrievedAt": "2026-09-24T17:09:55.749Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6273,7 +6346,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-24T11:44:49.523Z",
+      "retrievedAt": "2026-09-24T17:09:55.749Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
