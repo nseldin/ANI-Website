@@ -2430,9 +2430,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-24T21:30:27.168Z",
+  "generatedAt": "2026-09-25T04:56:41.757Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "1e909ed91a96976d76fee992541e07f5c38d724d04472d6ccf2e6c7c65411f14",
+      "description": "Deano’s Pasta of Somerville, MA is recalling approximately 20 lbs. of Pear and Pecorino Triangoli Ravioli, because it may contain undeclared Lobster. People who have an allergy or severe sensitivity to Crustacean Shellfish (Lobster) run the risk of serious or life-threatening allergic reaction if th",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/deanos-pasta-issue-allergy-alert-undeclared-lobster-pear-and-pecorino-triangoli-ravioli",
+      "id": "medical-update:fda-recalls:bf3677caa73d3633027643da",
+      "publishedAt": "2026-09-24T21:05:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-25T04:56:41.757Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Deano’s Pasta Issue Allergy Alert on Undeclared Lobster in Pear and Pecorino Triangoli Ravioli",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/deanos-pasta-issue-allergy-alert-undeclared-lobster-pear-and-pecorino-triangoli-ravioli"
+    },
     {
       "category": "recall",
       "contentHash": "5319c8634a91ad24d58e365e578cbbc048f25bc77a483c90a121e3f31ea67d2a",
@@ -3146,7 +3162,7 @@
     },
     {
       "category": "recall",
-      "contentHash": "f6816f27d81e6e43d710cdf102a34f83d82400d03c2a9d28db98be20b380c5c8",
+      "contentHash": "0d0c4654326ad53b063b6513d8bf7d3045ba0ae3d385d7d2bf82a2b0067747c1",
       "description": "Gias Foods of New York, NY is recalling 2 Lots of bettergoods Authentic Italian Lemon Alfredo Fettuccine, because it has the potential to be contaminated with Listeria monocytogenes, an organism which can cause serious and sometimes fatal infections in young children, frail or elderly people, and ot",
       "descriptionOrigin": "source-provided",
       "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/gias-foods-inc-recalls-bettergoods-authentic-italian-lemon-alfredo-fettuccine-because-possible",
@@ -3158,7 +3174,7 @@
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "title": "Gias Foods, Inc. Recalls Bettergoods Authentic Italian Lemon Alfredo Fettuccine Because of Possible Health Risk",
-      "url": "https://www.fda.gov/about-fda/page-not-found"
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/gias-foods-inc-recalls-bettergoods-authentic-italian-lemon-alfredo-fettuccine-because-possible"
     },
     {
       "category": "vaccine-biologic",
@@ -6322,7 +6338,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 39,
-      "retrievedAt": "2026-09-24T21:30:27.168Z",
+      "retrievedAt": "2026-09-25T04:56:41.757Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6332,8 +6348,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 44,
-      "retrievedAt": "2026-09-24T21:30:27.168Z",
+      "retainedItemCount": 45,
+      "retrievedAt": "2026-09-25T04:56:41.757Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -6344,7 +6360,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 15,
       "retainedItemCount": 53,
-      "retrievedAt": "2026-09-24T21:30:27.168Z",
+      "retrievedAt": "2026-09-25T04:56:41.757Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6355,7 +6371,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 18,
       "retainedItemCount": 30,
-      "retrievedAt": "2026-09-24T21:30:27.168Z",
+      "retrievedAt": "2026-09-25T04:56:41.757Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6366,7 +6382,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 8,
-      "retrievedAt": "2026-09-24T21:30:27.168Z",
+      "retrievedAt": "2026-09-25T04:56:41.757Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6377,7 +6393,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-24T21:30:27.168Z",
+      "retrievedAt": "2026-09-25T04:56:41.757Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6388,7 +6404,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 20,
-      "retrievedAt": "2026-09-24T21:30:27.168Z",
+      "retrievedAt": "2026-09-25T04:56:41.757Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6399,7 +6415,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-09-24T21:30:27.168Z",
+      "retrievedAt": "2026-09-25T04:56:41.757Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6410,7 +6426,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-24T21:30:27.168Z",
+      "retrievedAt": "2026-09-25T04:56:41.757Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
