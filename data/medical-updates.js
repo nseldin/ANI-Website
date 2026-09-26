@@ -2430,7 +2430,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-25T21:34:08.235Z",
+  "generatedAt": "2026-09-26T04:57:07.435Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -2700,6 +2700,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Heart Pump Controller Recall: Abiomed Removes Automated Impella Controllers",
       "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/heart-pump-controller-recall-abiomed-removes-automated-impella-controllers"
+    },
+    {
+      "category": "recall",
+      "contentHash": "7a733b4ca14ae60b0e81f958761454e99458ec22d360794b4e5bf05177b4b4ef",
+      "description": "For generations, families have trusted Mezzetta products on their tables. We take that trust seriously, which is why we want to share what we know about a voluntary recall involving a specific lot of Mezzetta Greek Peppers and the actions we are taking.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/g-l-mezzetta-inc-announces-recall-mezzetta-brand-golden-greek-peperoncini-medium-heat-due-presence",
+      "id": "medical-update:fda-recalls:4f001fe856b94b4b8961471f",
+      "publishedAt": "2026-09-23T22:17:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-26T04:57:07.435Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "G. L. Mezzetta Inc. Announces Recall of Mezzetta Brand Golden Greek Peperoncini (Medium Heat) Due to Presence of Pest Contaminant in the Jar",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/g-l-mezzetta-inc-announces-recall-mezzetta-brand-golden-greek-peperoncini-medium-heat-due-presence"
     },
     {
       "category": "recall",
@@ -6386,7 +6402,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 40,
-      "retrievedAt": "2026-09-25T21:34:08.235Z",
+      "retrievedAt": "2026-09-26T04:57:07.435Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6396,8 +6412,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 45,
-      "retrievedAt": "2026-09-25T21:34:08.235Z",
+      "retainedItemCount": 46,
+      "retrievedAt": "2026-09-26T04:57:07.435Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -6408,7 +6424,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 56,
-      "retrievedAt": "2026-09-25T21:34:08.235Z",
+      "retrievedAt": "2026-09-26T04:57:07.435Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6419,7 +6435,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 19,
       "retainedItemCount": 31,
-      "retrievedAt": "2026-09-25T21:34:08.235Z",
+      "retrievedAt": "2026-09-26T04:57:07.435Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6430,7 +6446,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 8,
-      "retrievedAt": "2026-09-25T21:34:08.235Z",
+      "retrievedAt": "2026-09-26T04:57:07.435Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6441,7 +6457,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-25T21:34:08.235Z",
+      "retrievedAt": "2026-09-26T04:57:07.435Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6452,7 +6468,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 20,
-      "retrievedAt": "2026-09-25T21:34:08.235Z",
+      "retrievedAt": "2026-09-26T04:57:07.435Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6463,7 +6479,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-09-25T21:34:08.235Z",
+      "retrievedAt": "2026-09-26T04:57:07.435Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6474,7 +6490,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-25T21:34:08.235Z",
+      "retrievedAt": "2026-09-26T04:57:07.435Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
