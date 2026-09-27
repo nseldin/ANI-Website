@@ -5,6 +5,43 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "recall",
+      "contentHash": "074b6775aa500b2547f2abbb0e12a4e18c6ee21c9c46c95affcfbea2396b81e6",
+      "description": "529 Commerce, LLC of Parkland, Florida is recalling 3,860 units of its 4oz and 12 oz packages of its Rooted in Rare brand Aquafaba Powder because the product may contain undeclared egg. People who have an allergy or severe sensitivity to egg run the risk of serious or life-threatening allergic reac",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/529-commerce-llc-recalls-rooted-rare-brand-aquafaba-powder-due-undeclared-eggs",
+      "id": "medical-update:fda-recalls:83e0e6175af0f9d2a233167f",
+      "publishedAt": "2026-07-29T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "529 Commerce LLC Recalls Rooted in Rare brand Aquafaba Powder due to Undeclared Eggs",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/529-commerce-llc-recalls-rooted-rare-brand-aquafaba-powder-due-undeclared-eggs"
+    },
+    {
+      "category": "recall",
+      "contentHash": "811944cbc41fe580457a8b4c4d88497b5259947a32bc64b95625504a66ab49e9",
+      "description": "July 29, 2026 ¬— Publix is recalling all lots of GreenWise Organic Whole Blueberries and Whole Mixed Berries because they may be contaminated with Escherichia coli O145:H28 (E. coli O145). E. coli O145 is a Shiga toxin-producing E. coli (STEC) that can cause illness characterized by severe stomach c",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/publix-recalls-all-lots-greenwise-organic-frozen-blueberries-and-whole-mixed-berries-due-potential-e",
+      "id": "medical-update:fda-recalls:158f5f61c9b6459263af0582",
+      "publishedAt": "2026-07-29T04:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Escherichia coli",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Publix recalls all lots of GreenWise Organic Frozen Blueberries and Whole Mixed Berries Due to potential E. coli O145 contamination",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/publix-recalls-all-lots-greenwise-organic-frozen-blueberries-and-whole-mixed-berries-due-potential-e"
+    },
+    {
       "category": "guideline-public-health",
       "contentHash": "b1c67fc2bb388d195d715288b15d81954f94a93a0dfd1cda6c352c94efa6e1c1",
       "description": "This report describes 968 potential cases of invasive mold disease across four Georgia hospitals.",
@@ -2449,7 +2486,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-26T21:09:39.334Z",
+  "generatedAt": "2026-09-27T05:17:39.420Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -6353,43 +6390,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Convenience Kit Correction: Argon Medical Issues Correction for Convenience Kits Containing Spectra Medical Device Lidocaine Ampules",
       "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-argon-medical-issues-correction-convenience-kits-containing-spectra"
-    },
-    {
-      "category": "recall",
-      "contentHash": "074b6775aa500b2547f2abbb0e12a4e18c6ee21c9c46c95affcfbea2396b81e6",
-      "description": "529 Commerce, LLC of Parkland, Florida is recalling 3,860 units of its 4oz and 12 oz packages of its Rooted in Rare brand Aquafaba Powder because the product may contain undeclared egg. People who have an allergy or severe sensitivity to egg run the risk of serious or life-threatening allergic reac",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/529-commerce-llc-recalls-rooted-rare-brand-aquafaba-powder-due-undeclared-eggs",
-      "id": "medical-update:fda-recalls:83e0e6175af0f9d2a233167f",
-      "publishedAt": "2026-07-29T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-recalls",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
-      "title": "529 Commerce LLC Recalls Rooted in Rare brand Aquafaba Powder due to Undeclared Eggs",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/529-commerce-llc-recalls-rooted-rare-brand-aquafaba-powder-due-undeclared-eggs"
-    },
-    {
-      "category": "recall",
-      "contentHash": "811944cbc41fe580457a8b4c4d88497b5259947a32bc64b95625504a66ab49e9",
-      "description": "July 29, 2026 ¬— Publix is recalling all lots of GreenWise Organic Whole Blueberries and Whole Mixed Berries because they may be contaminated with Escherichia coli O145:H28 (E. coli O145). E. coli O145 is a Shiga toxin-producing E. coli (STEC) that can cause illness characterized by severe stomach c",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/publix-recalls-all-lots-greenwise-organic-frozen-blueberries-and-whole-mixed-berries-due-potential-e",
-      "id": "medical-update:fda-recalls:158f5f61c9b6459263af0582",
-      "publishedAt": "2026-07-29T04:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Escherichia coli",
-          "collection": "clinicalReferenceEntries"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [],
-      "sourceId": "fda-recalls",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
-      "title": "Publix recalls all lots of GreenWise Organic Frozen Blueberries and Whole Mixed Berries Due to potential E. coli O145 contamination",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/publix-recalls-all-lots-greenwise-organic-frozen-blueberries-and-whole-mixed-berries-due-potential-e"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -6402,7 +6402,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 40,
-      "retrievedAt": "2026-09-26T21:09:39.334Z",
+      "retrievedAt": "2026-09-27T05:17:39.420Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6413,7 +6413,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 46,
-      "retrievedAt": "2026-09-26T21:09:39.334Z",
+      "retrievedAt": "2026-09-27T05:17:39.420Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -6424,7 +6424,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 16,
       "retainedItemCount": 56,
-      "retrievedAt": "2026-09-26T21:09:39.334Z",
+      "retrievedAt": "2026-09-27T05:17:39.420Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6435,7 +6435,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 19,
       "retainedItemCount": 31,
-      "retrievedAt": "2026-09-26T21:09:39.334Z",
+      "retrievedAt": "2026-09-27T05:17:39.420Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6446,7 +6446,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 8,
       "retainedItemCount": 8,
-      "retrievedAt": "2026-09-26T21:09:39.334Z",
+      "retrievedAt": "2026-09-27T05:17:39.420Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6457,7 +6457,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-26T21:09:39.334Z",
+      "retrievedAt": "2026-09-27T05:17:39.420Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6468,7 +6468,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 20,
-      "retrievedAt": "2026-09-26T21:09:39.334Z",
+      "retrievedAt": "2026-09-27T05:17:39.420Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6479,7 +6479,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-09-26T21:09:39.334Z",
+      "retrievedAt": "2026-09-27T05:17:39.420Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6490,7 +6490,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-26T21:09:39.334Z",
+      "retrievedAt": "2026-09-27T05:17:39.420Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
