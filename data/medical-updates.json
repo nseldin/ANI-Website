@@ -2,6 +2,22 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "recall",
+      "contentHash": "4b72a724c4e7c17d5e4d40ad7752ba4b969832d2572ab0b7c4663efc4fac79e6",
+      "description": "ARLINGTON, VA – JULY 31, 2026 – Lidl US is expanding its July 24, 2026 recall of Eridanous Shortbread Cookies to include all units with a foreign language ingredients and nutrition facts panel for the following products:",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/lidl-us-expands-recall-eridanous-shortbread-cookies-due-undeclared-wheat-soy-milk-egg-and-tree-nut",
+      "id": "medical-update:fda-recalls:e0b2a9e86c43ac6c16f00909",
+      "publishedAt": "2026-07-31T19:55:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Lidl US Expands Recall of Eridanous Shortbread Cookies Due to Undeclared Wheat, Soy, Milk, Egg and Tree Nut (Coconut) Allergens",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/lidl-us-expands-recall-eridanous-shortbread-cookies-due-undeclared-wheat-soy-milk-egg-and-tree-nut"
+    },
+    {
       "category": "safety-alert",
       "contentHash": "9683dbdec833bc8ed80c4d0d3628043c5815391b86a3dc6d313c9a62a7fe9e14",
       "description": "Failure of an electrical component in certain Astral ventilators may cause an interruption or failure in therapy which may result in serious injury or death.",
@@ -2590,9 +2606,28 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-29T12:51:30.960Z",
+  "generatedAt": "2026-09-29T22:14:35.055Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "guideline-public-health",
+      "contentHash": "4c311e6d754c104a2855e6eef3df6be7736b39fe1facae756c9756fc621ea9ba",
+      "description": "This report summarizes 2023 data from CDC's National Violent Death Reporting System on violent deaths and suicides that occurred in the U.S., District of Columbia, and Puerto Rico.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766545&_=3101FD6AB8AA5EA1DC2C52D513F783C40EF663A1C050B509D4C1B82C0A733D9F",
+      "id": "medical-update:cdc-mmwr:5beb5d4bd86c78d766ab9955",
+      "publishedAt": "2026-09-29T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-09-29T22:14:35.055Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Surveillance Summaries: Surveillance for Violent Deaths - National Violent Death Reporting System, 50 States, the District of Columbia, and Puerto Rico, 2023",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/ss/ss7507a1.htm"
+    },
     {
       "category": "drug-approval",
       "contentHash": "d16004717eeb6bdd837eaa7bda7851f1e25a1759c3c829d328081a5d463acf6d",
@@ -2640,6 +2675,27 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "title": "FDA Approves First Treatment for MCT8 Deficiency",
       "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-first-treatment-mct8-deficiency"
+    },
+    {
+      "category": "recall",
+      "contentHash": "50b3ff99e8d22062fdb72cdb61aedbcd05ed1f6941a0d27078a0c1a2afa9d56b",
+      "description": "Sierra Nevada Cheese Company of Willows, California, is voluntarily recalling all Graziers Raw Milk Cheese currently in the market because due to potential contamination with Escherichia coli O26:H11 (E. coli O26:H11).",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/sierra-nevada-cheese-company-recalls-graziers-raw-milk-cheese-because-possible-health-risk",
+      "id": "medical-update:fda-recalls:75278d863728fb663f3b76c9",
+      "publishedAt": "2026-09-28T14:26:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Escherichia coli",
+          "collection": "clinicalReferenceEntries"
+        }
+      ],
+      "retrievedAt": "2026-09-29T22:14:35.055Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Sierra Nevada Cheese Company Recalls Graziers Raw Milk Cheese Because of Possible Health Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/sierra-nevada-cheese-company-recalls-graziers-raw-milk-cheese-because-possible-health-risk"
     },
     {
       "category": "recall",
@@ -6387,22 +6443,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Convenience Kit Correction: Medical Action Industries Issues Correction for Kits Containing Recalled Namic Manifolds",
       "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-medical-action-industries-issues-correction-kits-containing-recalled"
-    },
-    {
-      "category": "recall",
-      "contentHash": "4b72a724c4e7c17d5e4d40ad7752ba4b969832d2572ab0b7c4663efc4fac79e6",
-      "description": "ARLINGTON, VA – JULY 31, 2026 – Lidl US is expanding its July 24, 2026 recall of Eridanous Shortbread Cookies to include all units with a foreign language ingredients and nutrition facts panel for the following products:",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/lidl-us-expands-recall-eridanous-shortbread-cookies-due-undeclared-wheat-soy-milk-egg-and-tree-nut",
-      "id": "medical-update:fda-recalls:e0b2a9e86c43ac6c16f00909",
-      "publishedAt": "2026-07-31T19:55:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-recalls",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
-      "title": "Lidl US Expands Recall of Eridanous Shortbread Cookies Due to Undeclared Wheat, Soy, Milk, Egg and Tree Nut (Coconut) Allergens",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/lidl-us-expands-recall-eridanous-shortbread-cookies-due-undeclared-wheat-soy-milk-egg-and-tree-nut"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -6415,7 +6455,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 40,
-      "retrievedAt": "2026-09-29T12:51:30.960Z",
+      "retrievedAt": "2026-09-29T22:14:35.055Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6425,19 +6465,19 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 46,
-      "retrievedAt": "2026-09-29T12:51:30.960Z",
+      "retainedItemCount": 47,
+      "retrievedAt": "2026-09-29T22:14:35.055Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 6,
+      "itemCount": 0,
       "rawItemCount": 20,
-      "rejectedItemCount": 14,
-      "retainedItemCount": 55,
-      "retrievedAt": "2026-09-29T12:51:30.960Z",
+      "rejectedItemCount": 20,
+      "retainedItemCount": 61,
+      "retrievedAt": "2026-09-29T22:14:35.055Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6448,7 +6488,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 19,
       "retainedItemCount": 31,
-      "retrievedAt": "2026-09-29T12:51:30.960Z",
+      "retrievedAt": "2026-09-29T22:14:35.055Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6459,7 +6499,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 9,
-      "retrievedAt": "2026-09-29T12:51:30.960Z",
+      "retrievedAt": "2026-09-29T22:14:35.055Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6470,7 +6510,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-29T12:51:30.960Z",
+      "retrievedAt": "2026-09-29T22:14:35.055Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6480,8 +6520,8 @@
       "itemCount": 100,
       "rawItemCount": 100,
       "rejectedItemCount": 0,
-      "retainedItemCount": 20,
-      "retrievedAt": "2026-09-29T12:51:30.960Z",
+      "retainedItemCount": 21,
+      "retrievedAt": "2026-09-29T22:14:35.055Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6492,7 +6532,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-09-29T12:51:30.960Z",
+      "retrievedAt": "2026-09-29T22:14:35.055Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6503,7 +6543,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-29T12:51:30.960Z",
+      "retrievedAt": "2026-09-29T22:14:35.055Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
