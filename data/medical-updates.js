@@ -2609,9 +2609,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-09-30T22:15:13.379Z",
+  "generatedAt": "2026-10-01T05:51:47.276Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "safety-alert",
+      "contentHash": "2b813c24ff7d6596f1819f88e8a1fd897b469b51796f7f278782a9e6dd71c500",
+      "description": "As of September 1, 2016, the safety labeling changes (SLC) program will be managed by the Center for Drug Evaluation and Research’s (CDER’s) Office of Communications (OCOMM).",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/drug-safety-and-availability/drug-safety-related-labeling-changes-srlc-database-overview-updates-safety-information-fda-approved",
+      "id": "medical-update:fda-drugs:3ac6086a1aa60b33f58bf671",
+      "publishedAt": "2026-10-01T04:00:32.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-10-01T05:51:47.276Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Drug Safety-related Labeling Changes (SrLC) Database Overview: Updates to Safety Information in FDA-Approved Prescription Drug Labeling",
+      "url": "https://www.fda.gov/drugs/drug-safety-and-availability/drug-safety-related-labeling-changes-srlc-database-overview-updates-safety-information-fda-approved"
+    },
     {
       "category": "drug-approval",
       "contentHash": "6a48c51b98bbaecf08f65ae34c08ec8e728c4e8210a613ec93f796d3a1a5803e",
@@ -6490,7 +6506,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 40,
-      "retrievedAt": "2026-09-30T22:15:13.379Z",
+      "retrievedAt": "2026-10-01T05:51:47.276Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6501,18 +6517,18 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 47,
-      "retrievedAt": "2026-09-30T22:15:13.379Z",
+      "retrievedAt": "2026-10-01T05:51:47.276Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 3,
+      "itemCount": 1,
       "rawItemCount": 20,
-      "rejectedItemCount": 17,
-      "retainedItemCount": 60,
-      "retrievedAt": "2026-09-30T22:15:13.379Z",
+      "rejectedItemCount": 19,
+      "retainedItemCount": 63,
+      "retrievedAt": "2026-10-01T05:51:47.276Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6523,7 +6539,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 19,
       "retainedItemCount": 31,
-      "retrievedAt": "2026-09-30T22:15:13.379Z",
+      "retrievedAt": "2026-10-01T05:51:47.276Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6534,7 +6550,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 10,
       "retainedItemCount": 10,
-      "retrievedAt": "2026-09-30T22:15:13.379Z",
+      "retrievedAt": "2026-10-01T05:51:47.276Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6545,7 +6561,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-30T22:15:13.379Z",
+      "retrievedAt": "2026-10-01T05:51:47.276Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6556,7 +6572,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 21,
-      "retrievedAt": "2026-09-30T22:15:13.379Z",
+      "retrievedAt": "2026-10-01T05:51:47.276Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6567,7 +6583,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-09-30T22:15:13.379Z",
+      "retrievedAt": "2026-10-01T05:51:47.276Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6578,7 +6594,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-09-30T22:15:13.379Z",
+      "retrievedAt": "2026-10-01T05:51:47.276Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
