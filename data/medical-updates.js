@@ -5,6 +5,79 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "safety-alert",
+      "contentHash": "fffed179d134317c9ff85028b6c7068ac64e07de42de7c0e06ce7d6a265487fb",
+      "description": "Medline is correcting affected convenience kits by removing recalled Lidocaine Hydrochloride and Bupivacaine Hydrochloride in Dextrose Injection components from affected convenience kits.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-medline-issues-correction-kits-containing-huons-lidocaine-hydrochloride",
+      "id": "medical-update:fda-medwatch:49b0970b16dc3a6eb4e01d14",
+      "publishedAt": "2026-08-03T04:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Bupivacaine",
+          "collection": "pharmDrugs"
+        },
+        {
+          "canonicalTitle": "Lidocaine",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Convenience Kit Correction: Medline Issues Correction for Kits Containing Huons Lidocaine Hydrochloride and Bupivacaine Hydrochloride in Dextrose Injection",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-medline-issues-correction-kits-containing-huons-lidocaine-hydrochloride"
+    },
+    {
+      "category": "recall",
+      "contentHash": "d6852b5b36fd6ada1a071156ba2c8d121d004787447744b195b7c11db86c9143",
+      "description": "FOR IMMEDIATE RELEASE – July 31, 2026 – Shirley, NY, American Regent, Inc. Animal Health is conducting a nationwide recall of two lots (25011 and 3369) of Adequan® Canine Injection (for dogs), 100 mg/mL 5mL multi-dose vials and two lots (24416 and 25265P) of Adequan® i.m. Injection (for horses), 500",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/american-regent-inc-animal-health-issues-nationwide-recall-two-lots-adequanr-canine-and-two-lots",
+      "id": "medical-update:fda-medwatch:adb6adc3f9d86e7fb0828f40",
+      "publishedAt": "2026-08-03T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "American Regent, Inc. Animal Health Issues Nationwide Recall of Two Lots of Adequan® Canine and Two Lots of Adequan® I.M. Due to Visible Glass Fiber Material in the Product",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/american-regent-inc-animal-health-issues-nationwide-recall-two-lots-adequanr-canine-and-two-lots"
+    },
+    {
+      "category": "recall",
+      "contentHash": "da144512ef7924fd311801db5f9443e69fd84d8b3d68d0b6680083973d419e6f",
+      "description": "FRANKLIN LAKES, N.J. (July 31, 2026) – BD (Becton, Dickinson and Company) is voluntarily recalling specific lots of BD® Intraosseous Vascular Access System Needle Sets to the user level. These products are being recalled following reports that some users experienced difficulty removing the obturato",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/bd-issues-nationwide-recall-specific-lots-bdr-intraosseous-vascular-access-system-needle-sets-due",
+      "id": "medical-update:fda-medwatch:4ef4c181282bb4117c605a5b",
+      "publishedAt": "2026-08-03T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "BD Issues Nationwide Recall for Specific Lots of BD® Intraosseous Vascular Access System Needle Sets Due to Reports of Difficulty Removing the Obturator",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/bd-issues-nationwide-recall-specific-lots-bdr-intraosseous-vascular-access-system-needle-sets-due"
+    },
+    {
+      "category": "recall",
+      "contentHash": "f0c9ccfd7e720a3bab7180a9d6fae221491fdadc47de4f6aa880ccfb82aa0fc7",
+      "description": "Particulates have the potential to be introduced into blood circulation and become lodged within blood vessels.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-medical-action-industries-issues-correction-kits-containing-recalled",
+      "id": "medical-update:fda-medwatch:ccfccfa27236cf01173445f9",
+      "publishedAt": "2026-08-03T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Convenience Kit Correction: Medical Action Industries Issues Correction for Kits Containing Recalled Namic Manifolds",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-medical-action-industries-issues-correction-kits-containing-recalled"
+    },
+    {
       "category": "recall",
       "contentHash": "4b72a724c4e7c17d5e4d40ad7752ba4b969832d2572ab0b7c4663efc4fac79e6",
       "description": "ARLINGTON, VA – JULY 31, 2026 – Lidl US is expanding its July 24, 2026 recall of Eridanous Shortbread Cookies to include all units with a foreign language ingredients and nutrition facts panel for the following products:",
@@ -2609,9 +2682,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-10-01T22:40:38.790Z",
+  "generatedAt": "2026-10-02T05:35:53.135Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "db7c68676b5193de5ae1be54807cc27514ff2bdee065d8ad576ea6f7e56230b4",
+      "description": "IMMEDIATE RELEASE - Tomball, Texas – October 1, 2026 – Greenwich Rx, a 503A compounding pharmacy, is voluntarily recalling specific lots of its compounded glutathione to the consumer level. The product is being recalled due to potential elevated endotoxin levels.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/greenwich-rx-issues-voluntary-nationwide-recall-compounded-glutathione-due-elevated-endotoxin-levels",
+      "id": "medical-update:fda-drugs:9f12b1a197c3664c299cd1e0",
+      "publishedAt": "2026-10-01T21:59:51.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-10-02T05:35:53.135Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Greenwich Rx Issues Voluntary Nationwide Recall of Compounded Glutathione Due to Elevated Endotoxin Levels",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/greenwich-rx-issues-voluntary-nationwide-recall-compounded-glutathione-due-elevated-endotoxin-levels"
+    },
     {
       "category": "drug-approval",
       "contentHash": "f5069ca16285b59c75d2bda294db57847b7e893f59af956a9a4724e1329680a7",
@@ -2681,22 +2770,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "title": "Drug Safety-related Labeling Changes (SrLC) Database Overview: Updates to Safety Information in FDA-Approved Prescription Drug Labeling",
       "url": "https://www.fda.gov/drugs/drug-safety-and-availability/drug-safety-related-labeling-changes-srlc-database-overview-updates-safety-information-fda-approved"
-    },
-    {
-      "category": "recall",
-      "contentHash": "af706a06c801c12ac94212d87a34539ec598a0d7504d3cddce2a9744b8d78139",
-      "description": "IMMEDIATE RELEASE - Tomball, Texas – October 1, 2026 – Greenwich Rx, a 503A compounding pharmacy, is voluntarily recalling specific lots of its compounded glutathione to the consumer level. The product is being recalled due to potential elevated endotoxin levels.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/greenwich-rx-issues-voluntary-nationwide-recall-compounded-glutathione-due-elevated-endotoxin-levels",
-      "id": "medical-update:fda-medwatch:e68c2726da2c594284d1caba",
-      "publishedAt": "2026-10-01T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-10-01T22:40:38.790Z",
-      "sourceCategories": [],
-      "sourceId": "fda-medwatch",
-      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
-      "title": "Greenwich Rx Issues Voluntary Nationwide Recall of Compounded Glutathione Due to Elevated Endotoxin Levels",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/greenwich-rx-issues-voluntary-nationwide-recall-compounded-glutathione-due-elevated-endotoxin-levels"
     },
     {
       "category": "recall",
@@ -3816,22 +3889,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "title": "Centric Compounding Issues Nationwide Recall of Glutathione, Myer’s Cocktail, and Tri-Immune Boost Due to Elevated Endotoxin Levels",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/centric-compounding-issues-nationwide-recall-glutathione-myers-cocktail-and-tri-immune-boost-due"
-    },
-    {
-      "category": "recall",
-      "contentHash": "0196c661355ce3b5e854a5b2b199b56df8b27aeaff6ffb98f389bd5f9e021c1b",
-      "description": "FOR IMMEDIATE RELEASE – 9/9/2026 – Houston, Texas, Centric Compounding is voluntarily recalling 6 lots of Glutathione 200mg/mL, Myer’s Cocktail, and Tri-Immune Boost injectable vials to the consumer level. The products have been found to be compounded with a Glutathione API containing elevated endot",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/centric-compounding-issues-nationwide-recall-glutathione-myers-cocktail-and-tri-immune-boost-due",
-      "id": "medical-update:fda-medwatch:765724e3a428c7481ed18421",
-      "publishedAt": "2026-09-13T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-10-01T22:40:38.790Z",
-      "sourceCategories": [],
-      "sourceId": "fda-medwatch",
-      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
-      "title": "Centric Compounding Issues Nationwide Recall of Glutathione, Myer’s Cocktail, and Tri-Immune Boost Due to Elevated Endotoxin Levels",
-      "url": "https://www.fda.gov/about-fda/page-not-found"
     },
     {
       "category": "recall",
@@ -6523,79 +6580,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "title": "Boticelli Foods Recalls Bettergoods Pistachio Nut Butter Because of Possible Health Risk",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/boticelli-foods-recalls-bettergoods-pistachio-nut-butter-because-possible-health-risk"
-    },
-    {
-      "category": "safety-alert",
-      "contentHash": "fffed179d134317c9ff85028b6c7068ac64e07de42de7c0e06ce7d6a265487fb",
-      "description": "Medline is correcting affected convenience kits by removing recalled Lidocaine Hydrochloride and Bupivacaine Hydrochloride in Dextrose Injection components from affected convenience kits.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-medline-issues-correction-kits-containing-huons-lidocaine-hydrochloride",
-      "id": "medical-update:fda-medwatch:49b0970b16dc3a6eb4e01d14",
-      "publishedAt": "2026-08-03T04:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Bupivacaine",
-          "collection": "pharmDrugs"
-        },
-        {
-          "canonicalTitle": "Lidocaine",
-          "collection": "pharmDrugs"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [],
-      "sourceId": "fda-medwatch",
-      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
-      "title": "Convenience Kit Correction: Medline Issues Correction for Kits Containing Huons Lidocaine Hydrochloride and Bupivacaine Hydrochloride in Dextrose Injection",
-      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-medline-issues-correction-kits-containing-huons-lidocaine-hydrochloride"
-    },
-    {
-      "category": "recall",
-      "contentHash": "d6852b5b36fd6ada1a071156ba2c8d121d004787447744b195b7c11db86c9143",
-      "description": "FOR IMMEDIATE RELEASE – July 31, 2026 – Shirley, NY, American Regent, Inc. Animal Health is conducting a nationwide recall of two lots (25011 and 3369) of Adequan® Canine Injection (for dogs), 100 mg/mL 5mL multi-dose vials and two lots (24416 and 25265P) of Adequan® i.m. Injection (for horses), 500",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/american-regent-inc-animal-health-issues-nationwide-recall-two-lots-adequanr-canine-and-two-lots",
-      "id": "medical-update:fda-medwatch:adb6adc3f9d86e7fb0828f40",
-      "publishedAt": "2026-08-03T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-medwatch",
-      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
-      "title": "American Regent, Inc. Animal Health Issues Nationwide Recall of Two Lots of Adequan® Canine and Two Lots of Adequan® I.M. Due to Visible Glass Fiber Material in the Product",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/american-regent-inc-animal-health-issues-nationwide-recall-two-lots-adequanr-canine-and-two-lots"
-    },
-    {
-      "category": "recall",
-      "contentHash": "da144512ef7924fd311801db5f9443e69fd84d8b3d68d0b6680083973d419e6f",
-      "description": "FRANKLIN LAKES, N.J. (July 31, 2026) – BD (Becton, Dickinson and Company) is voluntarily recalling specific lots of BD® Intraosseous Vascular Access System Needle Sets to the user level. These products are being recalled following reports that some users experienced difficulty removing the obturato",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/bd-issues-nationwide-recall-specific-lots-bdr-intraosseous-vascular-access-system-needle-sets-due",
-      "id": "medical-update:fda-medwatch:4ef4c181282bb4117c605a5b",
-      "publishedAt": "2026-08-03T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-medwatch",
-      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
-      "title": "BD Issues Nationwide Recall for Specific Lots of BD® Intraosseous Vascular Access System Needle Sets Due to Reports of Difficulty Removing the Obturator",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/bd-issues-nationwide-recall-specific-lots-bdr-intraosseous-vascular-access-system-needle-sets-due"
-    },
-    {
-      "category": "recall",
-      "contentHash": "f0c9ccfd7e720a3bab7180a9d6fae221491fdadc47de4f6aa880ccfb82aa0fc7",
-      "description": "Particulates have the potential to be introduced into blood circulation and become lodged within blood vessels.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-medical-action-industries-issues-correction-kits-containing-recalled",
-      "id": "medical-update:fda-medwatch:ccfccfa27236cf01173445f9",
-      "publishedAt": "2026-08-03T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-medwatch",
-      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
-      "title": "Convenience Kit Correction: Medical Action Industries Issues Correction for Kits Containing Recalled Namic Manifolds",
-      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/convenience-kit-correction-medical-action-industries-issues-correction-kits-containing-recalled"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -6608,7 +6592,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 41,
-      "retrievedAt": "2026-10-01T22:40:38.790Z",
+      "retrievedAt": "2026-10-02T05:35:53.135Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6618,19 +6602,19 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 47,
-      "retrievedAt": "2026-10-01T22:40:38.790Z",
+      "retainedItemCount": 48,
+      "retrievedAt": "2026-10-02T05:35:53.135Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 0,
+      "itemCount": 1,
       "rawItemCount": 20,
-      "rejectedItemCount": 20,
+      "rejectedItemCount": 19,
       "retainedItemCount": 64,
-      "retrievedAt": "2026-10-01T22:40:38.790Z",
+      "retrievedAt": "2026-10-02T05:35:53.135Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6641,7 +6625,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 20,
       "retainedItemCount": 32,
-      "retrievedAt": "2026-10-01T22:40:38.790Z",
+      "retrievedAt": "2026-10-02T05:35:53.135Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6652,7 +6636,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 10,
-      "retrievedAt": "2026-10-01T22:40:38.790Z",
+      "retrievedAt": "2026-10-02T05:35:53.135Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6663,7 +6647,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-01T22:40:38.790Z",
+      "retrievedAt": "2026-10-02T05:35:53.135Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6674,7 +6658,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 23,
-      "retrievedAt": "2026-10-01T22:40:38.790Z",
+      "retrievedAt": "2026-10-02T05:35:53.135Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6685,7 +6669,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-10-01T22:40:38.790Z",
+      "retrievedAt": "2026-10-02T05:35:53.135Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6696,7 +6680,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-01T22:40:38.790Z",
+      "retrievedAt": "2026-10-02T05:35:53.135Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
