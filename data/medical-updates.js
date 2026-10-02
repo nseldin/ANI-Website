@@ -2682,7 +2682,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-10-02T05:35:53.135Z",
+  "generatedAt": "2026-10-02T12:33:52.159Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -3889,6 +3889,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "title": "Centric Compounding Issues Nationwide Recall of Glutathione, Myer’s Cocktail, and Tri-Immune Boost Due to Elevated Endotoxin Levels",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/centric-compounding-issues-nationwide-recall-glutathione-myers-cocktail-and-tri-immune-boost-due"
+    },
+    {
+      "category": "recall",
+      "contentHash": "0196c661355ce3b5e854a5b2b199b56df8b27aeaff6ffb98f389bd5f9e021c1b",
+      "description": "FOR IMMEDIATE RELEASE – 9/9/2026 – Houston, Texas, Centric Compounding is voluntarily recalling 6 lots of Glutathione 200mg/mL, Myer’s Cocktail, and Tri-Immune Boost injectable vials to the consumer level. The products have been found to be compounded with a Glutathione API containing elevated endot",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/centric-compounding-issues-nationwide-recall-glutathione-myers-cocktail-and-tri-immune-boost-due",
+      "id": "medical-update:fda-medwatch:765724e3a428c7481ed18421",
+      "publishedAt": "2026-09-13T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-10-02T12:33:52.159Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Centric Compounding Issues Nationwide Recall of Glutathione, Myer’s Cocktail, and Tri-Immune Boost Due to Elevated Endotoxin Levels",
+      "url": "https://www.fda.gov/about-fda/page-not-found"
     },
     {
       "category": "recall",
@@ -6592,7 +6608,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 41,
-      "retrievedAt": "2026-10-02T05:35:53.135Z",
+      "retrievedAt": "2026-10-02T12:33:52.159Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6603,7 +6619,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 48,
-      "retrievedAt": "2026-10-02T05:35:53.135Z",
+      "retrievedAt": "2026-10-02T12:33:52.159Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -6614,7 +6630,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 19,
       "retainedItemCount": 64,
-      "retrievedAt": "2026-10-02T05:35:53.135Z",
+      "retrievedAt": "2026-10-02T12:33:52.159Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6625,7 +6641,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 20,
       "retainedItemCount": 32,
-      "retrievedAt": "2026-10-02T05:35:53.135Z",
+      "retrievedAt": "2026-10-02T12:33:52.159Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6636,7 +6652,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 10,
-      "retrievedAt": "2026-10-02T05:35:53.135Z",
+      "retrievedAt": "2026-10-02T12:33:52.159Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6647,7 +6663,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-02T05:35:53.135Z",
+      "retrievedAt": "2026-10-02T12:33:52.159Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6658,7 +6674,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 23,
-      "retrievedAt": "2026-10-02T05:35:53.135Z",
+      "retrievedAt": "2026-10-02T12:33:52.159Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6669,7 +6685,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-10-02T05:35:53.135Z",
+      "retrievedAt": "2026-10-02T12:33:52.159Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6680,7 +6696,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-02T05:35:53.135Z",
+      "retrievedAt": "2026-10-02T12:33:52.159Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
