@@ -2730,7 +2730,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-10-03T16:17:37.626Z",
+  "generatedAt": "2026-10-03T21:13:22.323Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -2970,6 +2970,22 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "title": "Gias Foods, Inc. Recalls Bettergoods Authentic Italian Lemon Alfredo Fettuccine Because of Possible Health Risk",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/gias-foods-inc-recalls-bettergoods-authentic-italian-lemon-alfredo-fettuccine-because-possible-0"
+    },
+    {
+      "category": "recall",
+      "contentHash": "3049806a1c85a1fd04dca7d18ad83ac7f0ae293b865f7e74cfd6376f1e81a486",
+      "description": "Cincinnati, Ohio October 1, 2026. Saint Francis Apizza LLC is issuing a voluntary recall on their frozen pizzas for misbranding due to the soy allergen not being declared on the label. The frozen pizzas were sold in ‘Pepperoni,’ ‘Plain Cheese,’ ‘Supreme,’ and ‘Mushroom and Onion’ varieties.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/saint-francis-apizza-llc-issues-voluntary-recall-its-frozen-pizzas-missing-sub-ingredients-label-soy",
+      "id": "medical-update:fda-recalls:d55c6a72549d69810cc1aab9",
+      "publishedAt": "2026-10-01T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-10-03T21:13:22.323Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Saint Francis Apizza LLC Issues a Voluntary Recall of its Frozen Pizzas for Missing Sub Ingredients on the Label for Soy Which Includes Soybean Oil and Soy Lecithin, an Allergen",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/saint-francis-apizza-llc-issues-voluntary-recall-its-frozen-pizzas-missing-sub-ingredients-label-soy"
     },
     {
       "category": "drug-approval",
@@ -6718,7 +6734,7 @@
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/blank-slate-creamery-issues-allergy-alert-undeclared-egg-vegan-non-dairy-frozen-dessert-coconut"
     }
   ],
-  "refreshStatus": "PARTIAL",
+  "refreshStatus": "CURRENT",
   "schemaVersion": "ani-medical-updates-runtime-v1",
   "sourceConfigSha256": "bcda90ac53015cf0b9744061bc08ad8442b6173b990e7125516874c39b76e0db",
   "sourceStatuses": [
@@ -6728,7 +6744,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 42,
-      "retrievedAt": "2026-10-03T16:17:37.626Z",
+      "retrievedAt": "2026-10-03T21:13:22.323Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6738,8 +6754,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 51,
-      "retrievedAt": "2026-10-03T16:17:37.626Z",
+      "retainedItemCount": 52,
+      "retrievedAt": "2026-10-03T21:13:22.323Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -6750,7 +6766,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 63,
-      "retrievedAt": "2026-10-03T16:17:37.626Z",
+      "retrievedAt": "2026-10-03T21:13:22.323Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6761,7 +6777,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 20,
       "retainedItemCount": 32,
-      "retrievedAt": "2026-10-03T16:17:37.626Z",
+      "retrievedAt": "2026-10-03T21:13:22.323Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6772,7 +6788,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 10,
-      "retrievedAt": "2026-10-03T16:17:37.626Z",
+      "retrievedAt": "2026-10-03T21:13:22.323Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6783,21 +6799,21 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-03T16:17:37.626Z",
+      "retrievedAt": "2026-10-03T21:13:22.323Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
     },
     {
-      "error": "Partial item routing failure: 1 of 100 eligible feed items failed deterministic normalization; last-good source items were retained.",
-      "itemCount": 99,
+      "error": null,
+      "itemCount": 100,
       "rawItemCount": 100,
-      "rejectedItemCount": 1,
-      "retainedItemCount": 25,
-      "retrievedAt": "2026-10-03T16:17:37.626Z",
+      "rejectedItemCount": 0,
+      "retainedItemCount": 24,
+      "retrievedAt": "2026-10-03T21:13:22.323Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "status": "stale"
+      "status": "current"
     },
     {
       "error": null,
@@ -6805,7 +6821,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-10-03T16:17:37.626Z",
+      "retrievedAt": "2026-10-03T21:13:22.323Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6816,7 +6832,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-03T16:17:37.626Z",
+      "retrievedAt": "2026-10-03T21:13:22.323Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
