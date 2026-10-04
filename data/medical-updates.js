@@ -5,6 +5,22 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "drug-approval",
+      "contentHash": "e1f1fa72073819efc332c0395b53d32fbe32c2f99ea5c8f8dfa551a4a05aa494",
+      "description": "The FDA approved Orzeyful (oveporexton) tablets for the treatment of narcolepsy type 1 in adults.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-drug-treat-full-range-narcolepsy-type-1-symptoms",
+      "id": "medical-update:fda-press-releases:8692c0175b8b291966c5361d",
+      "publishedAt": "2026-08-05T19:42:58.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-press-releases",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
+      "title": "FDA Approves First Drug to Treat the Full Range of Narcolepsy Type 1 Symptoms",
+      "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-first-drug-treat-full-range-narcolepsy-type-1-symptoms"
+    },
+    {
       "category": "recall",
       "contentHash": "1d391b41f1f989ff7b6b8b8ff3a5619b7d198968f8655919f48f2541c6aacc4e",
       "description": "August 5, 2026 — Sun Noodle of Honolulu, Hawaii is voluntarily recalling 134 packages (15.4oz) of Sura Tanmen Hot and Sour Flavor Premium Japanese Noodles & Soup Base, because the product may contain undeclared fish allergen. People who have an allergy or severe sensitivity to fish run the risk of a",
@@ -2799,7 +2815,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-10-04T12:21:38.964Z",
+  "generatedAt": "2026-10-04T21:23:30.914Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -6716,22 +6732,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "title": "Victory Medical Center Pharmacy Issues Voluntary Nationwide Recall of Certain Lots of Compounded Glutathione 200 mg/mL Multi-Dose Vials Due to Elevated Endotoxin Levels",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/victory-medical-center-pharmacy-issues-voluntary-nationwide-recall-certain-lots-compounded"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "e1f1fa72073819efc332c0395b53d32fbe32c2f99ea5c8f8dfa551a4a05aa494",
-      "description": "The FDA approved Orzeyful (oveporexton) tablets for the treatment of narcolepsy type 1 in adults.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-drug-treat-full-range-narcolepsy-type-1-symptoms",
-      "id": "medical-update:fda-press-releases:8692c0175b8b291966c5361d",
-      "publishedAt": "2026-08-05T19:42:58.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-press-releases",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
-      "title": "FDA Approves First Drug to Treat the Full Range of Narcolepsy Type 1 Symptoms",
-      "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-first-drug-treat-full-range-narcolepsy-type-1-symptoms"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -6744,7 +6744,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 42,
-      "retrievedAt": "2026-10-04T12:21:38.964Z",
+      "retrievedAt": "2026-10-04T21:23:30.914Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6755,7 +6755,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 52,
-      "retrievedAt": "2026-10-04T12:21:38.964Z",
+      "retrievedAt": "2026-10-04T21:23:30.914Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -6766,7 +6766,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 63,
-      "retrievedAt": "2026-10-04T12:21:38.964Z",
+      "retrievedAt": "2026-10-04T21:23:30.914Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6777,7 +6777,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 20,
       "retainedItemCount": 32,
-      "retrievedAt": "2026-10-04T12:21:38.964Z",
+      "retrievedAt": "2026-10-04T21:23:30.914Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6788,7 +6788,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 10,
-      "retrievedAt": "2026-10-04T12:21:38.964Z",
+      "retrievedAt": "2026-10-04T21:23:30.914Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6799,7 +6799,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-04T12:21:38.964Z",
+      "retrievedAt": "2026-10-04T21:23:30.914Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6810,7 +6810,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 24,
-      "retrievedAt": "2026-10-04T12:21:38.964Z",
+      "retrievedAt": "2026-10-04T21:23:30.914Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6821,7 +6821,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-10-04T12:21:38.964Z",
+      "retrievedAt": "2026-10-04T21:23:30.914Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6832,7 +6832,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-04T12:21:38.964Z",
+      "retrievedAt": "2026-10-04T21:23:30.914Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
