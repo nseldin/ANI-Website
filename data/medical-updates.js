@@ -5,6 +5,59 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "recall",
+      "contentHash": "e1f2ef604ab2333e1b6f226c5c19b5d968086e79d32586ea2cb0014c0abf1b2d",
+      "description": "FOR IMMEDIATE RELEASE – 8/4/2026 – LAKE ZURICH, Ill.— Fresenius Kabi, an operating company of the Fresenius Group, is voluntarily recalling one lot of Morphine Sulfate Injection USP, Simplist® 2 mg/1 mL due to a label mix-up. The MicroVault labeled as Morphine 2 mg/1 mL, may contain a Prefilled Syri",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/fresenius-kabi-issues-voluntary-nationwide-recall-one-lot-morphine-sulfate-injection-usp-simplistr",
+      "id": "medical-update:fda-medwatch:e89d4373212bcfdda0d7f99f",
+      "publishedAt": "2026-08-05T04:00:00.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Morphine",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Fresenius Kabi Issues Voluntary Nationwide Recall of One Lot of Morphine Sulfate Injection, USP in a Simplist® Prefilled Syringe Due to Labeling Mix-up",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/fresenius-kabi-issues-voluntary-nationwide-recall-one-lot-morphine-sulfate-injection-usp-simplistr"
+    },
+    {
+      "category": "medical-development",
+      "contentHash": "96a9e71a8cf1974ea8dafc5e3872088f3d23e5d490c05c7d91dd3bc2f9fed85e",
+      "description": "NIH-funded international research collaboration catalogues 25 tumor types from thousands of patient donors.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://www.nih.gov/news-events/news-releases/human-cancer-models-accelerate-research-precision-therapies",
+      "id": "medical-update:nih-news-releases:9237eacf8808ca94392aa1b7",
+      "publishedAt": "2026-08-05T00:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T16:28:05.753Z",
+      "sourceCategories": [],
+      "sourceId": "nih-news-releases",
+      "sourceName": "U.S. National Institutes of Health (NIH)",
+      "title": "Human cancer models to accelerate research and precision therapies",
+      "url": "https://www.nih.gov/news-events/news-releases/human-cancer-models-accelerate-research-precision-therapies"
+    },
+    {
+      "category": "recall",
+      "contentHash": "0f114b8550caef85be8ef5a12421f43f06030dfe2962774ebceef232b5aa1e4b",
+      "description": "Blank Slate Creamery of Ann Arbor, MI is recalling its 4.5 oz. packaged VEGAN NON-DAIRY FROZEN DESSERT COCONUT FUDGE SANDWICHES, because it may contain undeclared egg. People who have an allergy or severe sensitivity to eggs run the risk of serious or life-threatening allergic reaction if they consu",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/blank-slate-creamery-issues-allergy-alert-undeclared-egg-vegan-non-dairy-frozen-dessert-coconut",
+      "id": "medical-update:fda-recalls:c9dabdef75eae7f08473afbf",
+      "publishedAt": "2026-08-04T22:08:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Blank Slate Creamery Issues Allergy Alert on Undeclared Egg in Vegan Non-Dairy Frozen Dessert Coconut Fudge Sandwiches",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/blank-slate-creamery-issues-allergy-alert-undeclared-egg-vegan-non-dairy-frozen-dessert-coconut"
+    },
+    {
       "category": "safety-alert",
       "contentHash": "eccb82780c1c9b5f163175b1aadd819d58d1a6a948205f491e21efa8489e531c",
       "description": "BD is recalling certain BD Intraosseous Vascular Access System Needle Sets due to difficulty removing the obturator (stylet) following placement.",
@@ -2730,7 +2783,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-10-03T21:13:22.323Z",
+  "generatedAt": "2026-10-04T05:51:32.156Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -6679,59 +6732,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "title": "Sun Noodle Issues Voluntary Recall of Sura Tanmen Hot and Sour Flavor Premium Japanese Noodles & Soup Base Due to Undeclared Fish Allergen",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/sun-noodle-issues-voluntary-recall-sura-tanmen-hot-and-sour-flavor-premium-japanese-noodles-soup"
-    },
-    {
-      "category": "recall",
-      "contentHash": "e1f2ef604ab2333e1b6f226c5c19b5d968086e79d32586ea2cb0014c0abf1b2d",
-      "description": "FOR IMMEDIATE RELEASE – 8/4/2026 – LAKE ZURICH, Ill.— Fresenius Kabi, an operating company of the Fresenius Group, is voluntarily recalling one lot of Morphine Sulfate Injection USP, Simplist® 2 mg/1 mL due to a label mix-up. The MicroVault labeled as Morphine 2 mg/1 mL, may contain a Prefilled Syri",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/fresenius-kabi-issues-voluntary-nationwide-recall-one-lot-morphine-sulfate-injection-usp-simplistr",
-      "id": "medical-update:fda-medwatch:e89d4373212bcfdda0d7f99f",
-      "publishedAt": "2026-08-05T04:00:00.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Morphine",
-          "collection": "pharmDrugs"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [],
-      "sourceId": "fda-medwatch",
-      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
-      "title": "Fresenius Kabi Issues Voluntary Nationwide Recall of One Lot of Morphine Sulfate Injection, USP in a Simplist® Prefilled Syringe Due to Labeling Mix-up",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/fresenius-kabi-issues-voluntary-nationwide-recall-one-lot-morphine-sulfate-injection-usp-simplistr"
-    },
-    {
-      "category": "medical-development",
-      "contentHash": "96a9e71a8cf1974ea8dafc5e3872088f3d23e5d490c05c7d91dd3bc2f9fed85e",
-      "description": "NIH-funded international research collaboration catalogues 25 tumor types from thousands of patient donors.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://www.nih.gov/news-events/news-releases/human-cancer-models-accelerate-research-precision-therapies",
-      "id": "medical-update:nih-news-releases:9237eacf8808ca94392aa1b7",
-      "publishedAt": "2026-08-05T00:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T16:28:05.753Z",
-      "sourceCategories": [],
-      "sourceId": "nih-news-releases",
-      "sourceName": "U.S. National Institutes of Health (NIH)",
-      "title": "Human cancer models to accelerate research and precision therapies",
-      "url": "https://www.nih.gov/news-events/news-releases/human-cancer-models-accelerate-research-precision-therapies"
-    },
-    {
-      "category": "recall",
-      "contentHash": "0f114b8550caef85be8ef5a12421f43f06030dfe2962774ebceef232b5aa1e4b",
-      "description": "Blank Slate Creamery of Ann Arbor, MI is recalling its 4.5 oz. packaged VEGAN NON-DAIRY FROZEN DESSERT COCONUT FUDGE SANDWICHES, because it may contain undeclared egg. People who have an allergy or severe sensitivity to eggs run the risk of serious or life-threatening allergic reaction if they consu",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/blank-slate-creamery-issues-allergy-alert-undeclared-egg-vegan-non-dairy-frozen-dessert-coconut",
-      "id": "medical-update:fda-recalls:c9dabdef75eae7f08473afbf",
-      "publishedAt": "2026-08-04T22:08:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-recalls",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
-      "title": "Blank Slate Creamery Issues Allergy Alert on Undeclared Egg in Vegan Non-Dairy Frozen Dessert Coconut Fudge Sandwiches",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/blank-slate-creamery-issues-allergy-alert-undeclared-egg-vegan-non-dairy-frozen-dessert-coconut"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -6744,7 +6744,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 42,
-      "retrievedAt": "2026-10-03T21:13:22.323Z",
+      "retrievedAt": "2026-10-04T05:51:32.156Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6755,7 +6755,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 52,
-      "retrievedAt": "2026-10-03T21:13:22.323Z",
+      "retrievedAt": "2026-10-04T05:51:32.156Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -6766,7 +6766,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 63,
-      "retrievedAt": "2026-10-03T21:13:22.323Z",
+      "retrievedAt": "2026-10-04T05:51:32.156Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6777,7 +6777,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 20,
       "retainedItemCount": 32,
-      "retrievedAt": "2026-10-03T21:13:22.323Z",
+      "retrievedAt": "2026-10-04T05:51:32.156Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6788,7 +6788,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 10,
-      "retrievedAt": "2026-10-03T21:13:22.323Z",
+      "retrievedAt": "2026-10-04T05:51:32.156Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6799,7 +6799,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-03T21:13:22.323Z",
+      "retrievedAt": "2026-10-04T05:51:32.156Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6810,7 +6810,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 24,
-      "retrievedAt": "2026-10-03T21:13:22.323Z",
+      "retrievedAt": "2026-10-04T05:51:32.156Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6821,7 +6821,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-10-03T21:13:22.323Z",
+      "retrievedAt": "2026-10-04T05:51:32.156Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6832,7 +6832,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-03T21:13:22.323Z",
+      "retrievedAt": "2026-10-04T05:51:32.156Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
