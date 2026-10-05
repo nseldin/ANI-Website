@@ -2,6 +2,38 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "recall",
+      "contentHash": "6f47022b15dadc711fcd949f8f24ad7eff7345421a745f22b4171027b1be0fb7",
+      "description": "On July 13, 2026, Medline Industries, LP initiated a nationwide recall of Hudson RCI Neonatal/Infant Heated Wire Breathing Circuits. Medline received reports of sporadic failures involving the electrical connector of certain neonatal and infant heated wire breathing circuits. In affected circuits, t",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/medline-industries-lp-issues-nationwide-recall-hudson-rci-neonatalinfant-heated-wire-breathing",
+      "id": "medical-update:fda-medwatch:45ae1fd2fe98b71f07030144",
+      "publishedAt": "2026-08-06T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Medline Industries, LP Issues Nationwide Recall of Hudson RCI Neonatal/Infant Heated Wire Breathing Circuits",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/medline-industries-lp-issues-nationwide-recall-hudson-rci-neonatalinfant-heated-wire-breathing"
+    },
+    {
+      "category": "recall",
+      "contentHash": "e88795e466a136438b2cbe3dbd24a5b9e1b6cac38f3f75bdb084a0532b07296a",
+      "description": "FOR IMMEDIATE RELEASE – August 5, 2026 – Austin, Texas, Victory Medical Center Pharmacy is voluntarily recalling certain lots of Compounded Glutathione 200 mg/mL Multi-Dose Vials to the patient level. The product is being recalled because pharmacy testing identified elevated bacterial endotoxin leve",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/victory-medical-center-pharmacy-issues-voluntary-nationwide-recall-certain-lots-compounded",
+      "id": "medical-update:fda-recalls:5ca6f8bcaeee9bcd60480a8b",
+      "publishedAt": "2026-08-05T21:42:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Victory Medical Center Pharmacy Issues Voluntary Nationwide Recall of Certain Lots of Compounded Glutathione 200 mg/mL Multi-Dose Vials Due to Elevated Endotoxin Levels",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/victory-medical-center-pharmacy-issues-voluntary-nationwide-recall-certain-lots-compounded"
+    },
+    {
       "category": "drug-approval",
       "contentHash": "e1f1fa72073819efc332c0395b53d32fbe32c2f99ea5c8f8dfa551a4a05aa494",
       "description": "The FDA approved Orzeyful (oveporexton) tablets for the treatment of narcolepsy type 1 in adults.",
@@ -2812,7 +2844,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-10-04T21:23:30.914Z",
+  "generatedAt": "2026-10-05T05:38:33.886Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -6697,38 +6729,6 @@
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "title": "Trends in Emergency Department Visits Involving Cannabis Hyperemesis Syndrome Identified Using a New Diagnosis Code - United States, January 2023-May 2026",
       "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7530a2.htm"
-    },
-    {
-      "category": "recall",
-      "contentHash": "6f47022b15dadc711fcd949f8f24ad7eff7345421a745f22b4171027b1be0fb7",
-      "description": "On July 13, 2026, Medline Industries, LP initiated a nationwide recall of Hudson RCI Neonatal/Infant Heated Wire Breathing Circuits. Medline received reports of sporadic failures involving the electrical connector of certain neonatal and infant heated wire breathing circuits. In affected circuits, t",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/medline-industries-lp-issues-nationwide-recall-hudson-rci-neonatalinfant-heated-wire-breathing",
-      "id": "medical-update:fda-medwatch:45ae1fd2fe98b71f07030144",
-      "publishedAt": "2026-08-06T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-medwatch",
-      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
-      "title": "Medline Industries, LP Issues Nationwide Recall of Hudson RCI Neonatal/Infant Heated Wire Breathing Circuits",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/medline-industries-lp-issues-nationwide-recall-hudson-rci-neonatalinfant-heated-wire-breathing"
-    },
-    {
-      "category": "recall",
-      "contentHash": "e88795e466a136438b2cbe3dbd24a5b9e1b6cac38f3f75bdb084a0532b07296a",
-      "description": "FOR IMMEDIATE RELEASE – August 5, 2026 – Austin, Texas, Victory Medical Center Pharmacy is voluntarily recalling certain lots of Compounded Glutathione 200 mg/mL Multi-Dose Vials to the patient level. The product is being recalled because pharmacy testing identified elevated bacterial endotoxin leve",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/victory-medical-center-pharmacy-issues-voluntary-nationwide-recall-certain-lots-compounded",
-      "id": "medical-update:fda-recalls:5ca6f8bcaeee9bcd60480a8b",
-      "publishedAt": "2026-08-05T21:42:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-recalls",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
-      "title": "Victory Medical Center Pharmacy Issues Voluntary Nationwide Recall of Certain Lots of Compounded Glutathione 200 mg/mL Multi-Dose Vials Due to Elevated Endotoxin Levels",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/victory-medical-center-pharmacy-issues-voluntary-nationwide-recall-certain-lots-compounded"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -6741,7 +6741,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 42,
-      "retrievedAt": "2026-10-04T21:23:30.914Z",
+      "retrievedAt": "2026-10-05T05:38:33.886Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6752,7 +6752,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 52,
-      "retrievedAt": "2026-10-04T21:23:30.914Z",
+      "retrievedAt": "2026-10-05T05:38:33.886Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -6763,7 +6763,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 17,
       "retainedItemCount": 63,
-      "retrievedAt": "2026-10-04T21:23:30.914Z",
+      "retrievedAt": "2026-10-05T05:38:33.886Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6774,7 +6774,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 20,
       "retainedItemCount": 32,
-      "retrievedAt": "2026-10-04T21:23:30.914Z",
+      "retrievedAt": "2026-10-05T05:38:33.886Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6785,7 +6785,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 9,
       "retainedItemCount": 10,
-      "retrievedAt": "2026-10-04T21:23:30.914Z",
+      "retrievedAt": "2026-10-05T05:38:33.886Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6796,7 +6796,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-04T21:23:30.914Z",
+      "retrievedAt": "2026-10-05T05:38:33.886Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6807,7 +6807,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 24,
-      "retrievedAt": "2026-10-04T21:23:30.914Z",
+      "retrievedAt": "2026-10-05T05:38:33.886Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6818,7 +6818,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-10-04T21:23:30.914Z",
+      "retrievedAt": "2026-10-05T05:38:33.886Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6829,7 +6829,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-04T21:23:30.914Z",
+      "retrievedAt": "2026-10-05T05:38:33.886Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
