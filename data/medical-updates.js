@@ -5,6 +5,106 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "drug-approval",
+      "contentHash": "90f8a18f814b54b87009732d9d618e5869cba2f0403acb0c00f7eda67be3ea24",
+      "description": "The U.S. Food and Drug Administration today granted accelerated approval to Tudriqev (vusolimogene oderparepvec-wtpg), a genetically modified oncolytic viral therapy for the treatment of advanced, refractory melanoma.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/news-events/press-announcements/fda-approves-new-engineered-viral-immunotherapy-patients-treatment-resistant-advanced-melanoma",
+      "id": "medical-update:fda-biologics:cdadd31ecf41276d35e81bf7",
+      "publishedAt": "2026-08-06T19:56:59.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Melanoma",
+          "collection": "pathologyDiseases"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [],
+      "sourceId": "fda-biologics",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
+      "title": "FDA Approves New Engineered Viral Immunotherapy for Patients with Treatment-Resistant Advanced Melanoma",
+      "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-new-engineered-viral-immunotherapy-patients-treatment-resistant-advanced-melanoma"
+    },
+    {
+      "category": "drug-approval",
+      "contentHash": "fb50662e03f62d9ab84db131ce9be7309666cd6c89de05d8c7d2710e8353ebdd",
+      "description": "On August 6, 2026, the Food and Drug Administration granted accelerated approval to vusolimogene oderparepvec-wtpg (Tudriqev, Replimune, Inc.), a genetically modified oncolytic viral therapy, in combination with nivolumab for the treatment of adult patients with unresectable advanced cutaneous melan",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-vusolimogene-oderparepvec-wtpg-combination-nivolumab-melanoma",
+      "id": "medical-update:fda-drugs:9b278b967269800d8ce815ec",
+      "publishedAt": "2026-08-06T19:54:33.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Melanoma",
+          "collection": "pathologyDiseases"
+        },
+        {
+          "canonicalTitle": "Nivolumab",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "FDA grants accelerated approval to vusolimogene oderparepvec-wtpg in combination with nivolumab for melanoma",
+      "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-vusolimogene-oderparepvec-wtpg-combination-nivolumab-melanoma"
+    },
+    {
+      "category": "vaccine-biologic",
+      "contentHash": "0cf71350cb18a48778122daaeaeafb2c55ccadb834f836d839181dd540f1eb05",
+      "description": "The FDA’s Center for Biologics Evaluation and Research (CBER) Office of Therapeutic Products (OTP) is hosting its next virtual town hall on Tuesday, June 4, 2024, to answer stakeholder questions regarding the chemistry, manufacturing, and controls (CMC) information submitted with biologics license applications (BLAs) for gene therapy products. Expe",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/news-events/otp-town-hall-cmc-readiness-gene-therapy-blas-06042024",
+      "id": "medical-update:fda-biologics:32607a058fc8dc821bf5ede6",
+      "publishedAt": "2026-08-06T18:35:51.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-biologics",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
+      "title": "OTP Town Hall: CMC Readiness for Gene Therapy BLAs - 06/04/2024",
+      "url": "https://www.fda.gov/news-events/otp-town-hall-cmc-readiness-gene-therapy-blas-06042024"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "edf9bb9b179b98ac342bf36d812572c5d565ba6bfd68cf6f14bbb4ca0ba6a253",
+      "description": "This report describes four poisoning deaths at an unlicensed ceremonial papermaking workshop in China.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766161&_=1155DFBEB6BB245EF131A12F316327E75695B95F286B0F04E1683F14B8E2D8B9",
+      "id": "medical-update:cdc-mmwr:964decea01c5915d39bcc681",
+      "publishedAt": "2026-08-06T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Poisoning Deaths in a Workshop for Ceremonial Papermaking - China, May 2025",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7530a1.htm"
+    },
+    {
+      "category": "guideline-public-health",
+      "contentHash": "9075a8ddc5099eca4e14062c38d4e228c05c3ee3aa0bc0c94da56f4de6352738",
+      "description": "This report describes emergency department visits involving cannabis hyperemesis syndrome (CHS) after implementing a CHS diagnosis code.",
+      "descriptionOrigin": "source-provided",
+      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766162&_=24C30D2CDBC38D41F2080551C2C4C80528F1F4DAB93ED9082E3E7DFE7A1AE954",
+      "id": "medical-update:cdc-mmwr:84cc57bf6694e3208892e9ec",
+      "publishedAt": "2026-08-06T17:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [
+        "MMWR",
+        "Morbidity & Mortality Weekly Report"
+      ],
+      "sourceId": "cdc-mmwr",
+      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
+      "title": "Trends in Emergency Department Visits Involving Cannabis Hyperemesis Syndrome Identified Using a New Diagnosis Code - United States, January 2023-May 2026",
+      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7530a2.htm"
+    },
+    {
       "category": "recall",
       "contentHash": "6f47022b15dadc711fcd949f8f24ad7eff7345421a745f22b4171027b1be0fb7",
       "description": "On July 13, 2026, Medline Industries, LP initiated a nationwide recall of Hudson RCI Neonatal/Infant Heated Wire Breathing Circuits. Medline received reports of sporadic failures involving the electrical connector of certain neonatal and infant heated wire breathing circuits. In affected circuits, t",
@@ -2847,9 +2947,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-10-05T14:36:10.876Z",
+  "generatedAt": "2026-10-06T00:02:39.560Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "drug-approval",
+      "contentHash": "9f7c501b0f67a33187e0ff4da1416a77ac6a0ce482d1da8e39ad7ea77004a67b",
+      "description": "Each year, FDA’s Center for Drug Evaluation and Research (CDER) approves a wide range of new drug products. FDA provides the scientific and regulatory advice needed to bring safe, effective, high-quality generic alternatives to market, which in turn creates more affordable treatment options for pati",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/drug-and-biologic-approval-and-ind-activity-reports/first-generic-drug-approvals",
+      "id": "medical-update:fda-drugs:5624baf0e551cb10a0f324f5",
+      "publishedAt": "2026-10-05T13:42:58.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "First Generic Drug Approvals",
+      "url": "https://www.fda.gov/drugs/drug-and-biologic-approval-and-ind-activity-reports/first-generic-drug-approvals"
+    },
     {
       "category": "drug-approval",
       "contentHash": "066b9b89a7fb81c23880b2ce5cd83c17419955dde3c8c9612735dae649e1560f",
@@ -2881,6 +2997,38 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "title": "Ongoing | Cancer Accelerated Approvals",
       "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/ongoing-cancer-accelerated-approvals"
+    },
+    {
+      "category": "safety-alert",
+      "contentHash": "b2a8c8676ea1fc269a53f0d7a246fd83b2ec7f35ff13aada4f2e72a8509a81e2",
+      "description": "Black specks and particulate reported in drip chambers of certain ICU Medical IV tubing sets does not affect device safety, performance, or intended use.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/iv-tubing-set-correction-icu-medical-updates-use-instructions-iv-tubing-sets",
+      "id": "medical-update:fda-medwatch:d8a8506d50e704d57b0a6fe4",
+      "publishedAt": "2026-10-05T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-10-06T00:02:39.560Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "IV Tubing Set Correction: ICU Medical Updates Use Instructions for IV Tubing Sets",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/iv-tubing-set-correction-icu-medical-updates-use-instructions-iv-tubing-sets"
+    },
+    {
+      "category": "recall",
+      "contentHash": "920d9edb724b99cce0ce1bdae659f86423bbf77f035fd088e574147685cb52d6",
+      "description": "BD Alaris Pump Infusion Sets are being removed and discontinued; Alaris Pump Module model 8100 has updated performance data",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/infusion-set-recall-bd-and-carefusion-303-inc-remove-bd-alaris-pump-infusion-sets",
+      "id": "medical-update:fda-medwatch:be57f1137f4b33d36dedb3df",
+      "publishedAt": "2026-10-05T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-10-06T00:02:39.560Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Infusion Set Recall: BD and CareFusion 303, Inc. Remove BD Alaris Pump Infusion Sets",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/infusion-set-recall-bd-and-carefusion-303-inc-remove-bd-alaris-pump-infusion-sets"
     },
     {
       "category": "recall",
@@ -2985,6 +3133,22 @@
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "title": "EARLY RELEASE: Notes from the Field: Molecular Detections of Cladophialophora bantiana at a Clinical Reference Laboratory - United States, 2009-2026",
       "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7540e1.htm"
+    },
+    {
+      "category": "recall",
+      "contentHash": "1a060af0ede34f90303d21387c6587546d93693c76f26fcb2f220f2c9dcf94d0",
+      "description": "THOMASVILLE, GA., October 2, 2026 – Flowers Foods, Inc. (NYSE: FLO) is recalling Nature’s Own® Hawaiian Bread, 20 oz. and 40 oz. bags, due to undeclared milk. People who have an allergy or severe sensitivity to milk may run the risk of an allergic reaction if they consume this product.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/flowers-foods-issues-recall-natures-own-hawaiian-bread-due-undeclared-milk",
+      "id": "medical-update:fda-recalls:919d665056408f07e842ac42",
+      "publishedAt": "2026-10-02T16:31:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-10-06T00:02:39.560Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Flowers Foods Issues Recall of Nature’s Own Hawaiian Bread Due to Undeclared Milk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/flowers-foods-issues-recall-natures-own-hawaiian-bread-due-undeclared-milk"
     },
     {
       "category": "recall",
@@ -4941,22 +5105,6 @@
       "url": "https://www.nih.gov/news-events/news-releases/glp-1-treatment-late-life-extends-lifespan-animal-model"
     },
     {
-      "category": "drug-approval",
-      "contentHash": "26d3f7cdc9fd519676a9415e8831b0624c70637738e4924af4b1d7a2d7335ac3",
-      "description": "Each year, FDA’s Center for Drug Evaluation and Research (CDER) approves a wide range of new drug products. FDA provides the scientific and regulatory advice needed to bring safe, effective, high-quality generic alternatives to market, which in turn creates more affordable treatment options for pati",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/drugs/drug-and-biologic-approval-and-ind-activity-reports/first-generic-drug-approvals",
-      "id": "medical-update:fda-drugs:5624baf0e551cb10a0f324f5",
-      "publishedAt": "2026-09-01T14:42:44.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "First Generic Drug Approvals",
-      "url": "https://www.fda.gov/drugs/drug-and-biologic-approval-and-ind-activity-reports/first-generic-drug-approvals"
-    },
-    {
       "category": "safety-alert",
       "contentHash": "d3658c57e51d8a858aef82b2b8a9ebd9d35784b8cbb075f59e6e1e0ae35b1cc5",
       "description": "The Food and Drug Administration has approved revisions to the labeling for ferric carboxymaltose injection (currently marketed as Injectafer) that adds a boxed warning, the agency’s most prominent safety warning.",
@@ -6632,106 +6780,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "title": "FDA Issues Emergency Use Authorization for Drug to Prevent New World Screwworm in Multiple Species, Including Sheep, Cattle, Goats, and Swine",
       "url": "https://www.fda.gov/news-events/press-announcements/fda-issues-emergency-use-authorization-drug-prevent-new-world-screwworm-multiple-species-including"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "90f8a18f814b54b87009732d9d618e5869cba2f0403acb0c00f7eda67be3ea24",
-      "description": "The U.S. Food and Drug Administration today granted accelerated approval to Tudriqev (vusolimogene oderparepvec-wtpg), a genetically modified oncolytic viral therapy for the treatment of advanced, refractory melanoma.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/news-events/press-announcements/fda-approves-new-engineered-viral-immunotherapy-patients-treatment-resistant-advanced-melanoma",
-      "id": "medical-update:fda-biologics:cdadd31ecf41276d35e81bf7",
-      "publishedAt": "2026-08-06T19:56:59.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Melanoma",
-          "collection": "pathologyDiseases"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [],
-      "sourceId": "fda-biologics",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
-      "title": "FDA Approves New Engineered Viral Immunotherapy for Patients with Treatment-Resistant Advanced Melanoma",
-      "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-new-engineered-viral-immunotherapy-patients-treatment-resistant-advanced-melanoma"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "fb50662e03f62d9ab84db131ce9be7309666cd6c89de05d8c7d2710e8353ebdd",
-      "description": "On August 6, 2026, the Food and Drug Administration granted accelerated approval to vusolimogene oderparepvec-wtpg (Tudriqev, Replimune, Inc.), a genetically modified oncolytic viral therapy, in combination with nivolumab for the treatment of adult patients with unresectable advanced cutaneous melan",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-vusolimogene-oderparepvec-wtpg-combination-nivolumab-melanoma",
-      "id": "medical-update:fda-drugs:9b278b967269800d8ce815ec",
-      "publishedAt": "2026-08-06T19:54:33.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Melanoma",
-          "collection": "pathologyDiseases"
-        },
-        {
-          "canonicalTitle": "Nivolumab",
-          "collection": "pharmDrugs"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "FDA grants accelerated approval to vusolimogene oderparepvec-wtpg in combination with nivolumab for melanoma",
-      "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-vusolimogene-oderparepvec-wtpg-combination-nivolumab-melanoma"
-    },
-    {
-      "category": "vaccine-biologic",
-      "contentHash": "0cf71350cb18a48778122daaeaeafb2c55ccadb834f836d839181dd540f1eb05",
-      "description": "The FDA’s Center for Biologics Evaluation and Research (CBER) Office of Therapeutic Products (OTP) is hosting its next virtual town hall on Tuesday, June 4, 2024, to answer stakeholder questions regarding the chemistry, manufacturing, and controls (CMC) information submitted with biologics license applications (BLAs) for gene therapy products. Expe",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/news-events/otp-town-hall-cmc-readiness-gene-therapy-blas-06042024",
-      "id": "medical-update:fda-biologics:32607a058fc8dc821bf5ede6",
-      "publishedAt": "2026-08-06T18:35:51.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-biologics",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
-      "title": "OTP Town Hall: CMC Readiness for Gene Therapy BLAs - 06/04/2024",
-      "url": "https://www.fda.gov/news-events/otp-town-hall-cmc-readiness-gene-therapy-blas-06042024"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "edf9bb9b179b98ac342bf36d812572c5d565ba6bfd68cf6f14bbb4ca0ba6a253",
-      "description": "This report describes four poisoning deaths at an unlicensed ceremonial papermaking workshop in China.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766161&_=1155DFBEB6BB245EF131A12F316327E75695B95F286B0F04E1683F14B8E2D8B9",
-      "id": "medical-update:cdc-mmwr:964decea01c5915d39bcc681",
-      "publishedAt": "2026-08-06T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Poisoning Deaths in a Workshop for Ceremonial Papermaking - China, May 2025",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7530a1.htm"
-    },
-    {
-      "category": "guideline-public-health",
-      "contentHash": "9075a8ddc5099eca4e14062c38d4e228c05c3ee3aa0bc0c94da56f4de6352738",
-      "description": "This report describes emergency department visits involving cannabis hyperemesis syndrome (CHS) after implementing a CHS diagnosis code.",
-      "descriptionOrigin": "source-provided",
-      "guid": "https://tools.cdc.gov/api/embed/downloader/download.asp?m=342778&c=766162&_=24C30D2CDBC38D41F2080551C2C4C80528F1F4DAB93ED9082E3E7DFE7A1AE954",
-      "id": "medical-update:cdc-mmwr:84cc57bf6694e3208892e9ec",
-      "publishedAt": "2026-08-06T17:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [
-        "MMWR",
-        "Morbidity & Mortality Weekly Report"
-      ],
-      "sourceId": "cdc-mmwr",
-      "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
-      "title": "Trends in Emergency Department Visits Involving Cannabis Hyperemesis Syndrome Identified Using a New Diagnosis Code - United States, January 2023-May 2026",
-      "url": "https://www.cdc.gov/mmwr/volumes/75/wr/mm7530a2.htm"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -6743,8 +6791,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 42,
-      "retrievedAt": "2026-10-05T14:36:10.876Z",
+      "retainedItemCount": 43,
+      "retrievedAt": "2026-10-06T00:02:39.560Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6754,19 +6802,19 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 52,
-      "retrievedAt": "2026-10-05T14:36:10.876Z",
+      "retainedItemCount": 53,
+      "retrievedAt": "2026-10-06T00:02:39.560Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 5,
+      "itemCount": 3,
       "rawItemCount": 20,
-      "rejectedItemCount": 15,
-      "retainedItemCount": 61,
-      "retrievedAt": "2026-10-05T14:36:10.876Z",
+      "rejectedItemCount": 17,
+      "retainedItemCount": 63,
+      "retrievedAt": "2026-10-06T00:02:39.560Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6777,7 +6825,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 20,
       "retainedItemCount": 32,
-      "retrievedAt": "2026-10-05T14:36:10.876Z",
+      "retrievedAt": "2026-10-06T00:02:39.560Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6788,7 +6836,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 10,
       "retainedItemCount": 10,
-      "retrievedAt": "2026-10-05T14:36:10.876Z",
+      "retrievedAt": "2026-10-06T00:02:39.560Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6799,7 +6847,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-05T14:36:10.876Z",
+      "retrievedAt": "2026-10-06T00:02:39.560Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6810,7 +6858,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 24,
-      "retrievedAt": "2026-10-05T14:36:10.876Z",
+      "retrievedAt": "2026-10-06T00:02:39.560Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6821,7 +6869,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-10-05T14:36:10.876Z",
+      "retrievedAt": "2026-10-06T00:02:39.560Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6832,7 +6880,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-05T14:36:10.876Z",
+      "retrievedAt": "2026-10-06T00:02:39.560Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
