@@ -5,6 +5,43 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "recall",
+      "contentHash": "714193891e3ba4ea33692c5d07133642d94030e8848865b4e3764ad3fd1a6b58",
+      "description": "July 24, 2026 – DEERFIELD, Ill., Baxter International Inc. (NYSE:BAX) is voluntarily recalling Lot LD175708, Exp 14-Feb 2027 of Cefazolin in Dextrose Injection due to a report of particulate matter found in the solution identified as cardboard.Risk Statement: The use of the defective product has a",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/baxter-issues-voluntary-nationwide-recall-cefazolin-dextrose-injection-usp-2g-100ml20mg-ml-single",
+      "id": "medical-update:fda-drugs:01d32e43a7e2fc60865065cf",
+      "publishedAt": "2026-08-08T00:55:36.000Z",
+      "relatedCards": [
+        {
+          "canonicalTitle": "Cefazolin",
+          "collection": "pharmDrugs"
+        }
+      ],
+      "retrievedAt": "2026-08-09T16:24:04.648Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Baxter Issues Voluntary Nationwide Recall of Cefazolin in Dextrose Injection, USP, 2G / 100ml(20mg /ml) Single-Dose Infusion Bag in 100ml Due to Particulate Matter Found in Solution",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/baxter-issues-voluntary-nationwide-recall-cefazolin-dextrose-injection-usp-2g-100ml20mg-ml-single"
+    },
+    {
+      "category": "recall",
+      "contentHash": "45927b5ab6081b303e30b56c12412d264c077af939788d926d4c8637b5835de3",
+      "description": "Lexunder Inc., doing business as Food To Live of Brooklyn, NY, is recalling Food to Live brand green powder products because they have the potential to be contaminated with Salmonella, an organism which can cause serious and sometimes fatal infections in young children, frail or elderly people, and",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/lexunder-inc-recalls-food-live-brand-green-powder-products-because-possible-health-risk",
+      "id": "medical-update:fda-recalls:dc095e96b99a395138ec1e2e",
+      "publishedAt": "2026-08-07T23:01:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-09T01:46:23.049Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Lexunder Inc Recalls Food to Live Brand Green Powder Products Because of Possible Health Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/lexunder-inc-recalls-food-live-brand-green-powder-products-because-possible-health-risk"
+    },
+    {
       "category": "drug-approval",
       "contentHash": "ea0e79d66fb71c258f3f4a47c5704b382d9eb5213746b53db29df5af4ae76c25",
       "description": "FDA today issued an Emergency Use Authorization (EUA) for CLiK Extra (dicyclanil topical suspension) wound spray for application on or around wounds for the prevention of New World screwworm (NWS) infestations (myiasis).",
@@ -2963,9 +3000,57 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-10-06T18:21:09.577Z",
+  "generatedAt": "2026-10-07T05:57:54.250Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "9170061e2e47b71dfac7127dbe5ab5fbd8eeba53de0629347c9422e067b8b6bd",
+      "description": "IMMEDIATE RELEASE - Tomball, Texas – October 1, 2026 – Greenwich Rx, a 503A compounding pharmacy, is voluntarily recalling specific lots of its compounded glutathione to the consumer level. The product is being recalled due to potential elevated endotoxin levels.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/greenwich-rx-issues-voluntary-nationwide-recall-compounded-glutathione-due-elevated-endotoxin-levels",
+      "id": "medical-update:fda-drugs:9f12b1a197c3664c299cd1e0",
+      "publishedAt": "2026-10-06T22:58:16.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-10-02T05:35:53.135Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Greenwich Rx Issues Voluntary Nationwide Recall of Compounded Glutathione Due to Elevated Endotoxin Levels",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/greenwich-rx-issues-voluntary-nationwide-recall-compounded-glutathione-due-elevated-endotoxin-levels"
+    },
+    {
+      "category": "drug-approval",
+      "contentHash": "758a793ba201f7f2e9c81e95d1a037480b9f56fb84318a7427a5dbd2f597a5e2",
+      "description": "Explore the FDA’s Competitive Generic Therapy Approvals page, offering insights into the program designed to encourage generic drug competition. Access information about approved CGT products and find resources, including a downloadable CGT approvals spreadsheet.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/drugs/generic-drugs/competitive-generic-therapy-approvals",
+      "id": "medical-update:fda-drugs:e69026cda6636032fa8ab1a1",
+      "publishedAt": "2026-10-06T19:03:43.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-11T15:33:30.795Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Competitive Generic Therapy Approvals",
+      "url": "https://www.fda.gov/drugs/generic-drugs/competitive-generic-therapy-approvals"
+    },
+    {
+      "category": "safety-alert",
+      "contentHash": "9e31a2a12e079ce4acfee6a2f513ae1cd87d77ab4bbe84fb65d2df71700cdd1a",
+      "description": "WALTHAM, Mass., October 5, 2026 – Nova Biomedical initiated a global Medical Device Correction on July 24, 2026, for the StatStrip® Glucose Hospital Meter System due to a software issue that may cause a glucose result to be associated with the wrong patient. When a patient ID barcode is scanned, pri",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/nova-biomedicalr-announces-global-medical-device-correction-statstripr-glucose-hospital-meter",
+      "id": "medical-update:fda-medwatch:e6184c0276bbb2f70bd1a263",
+      "publishedAt": "2026-10-06T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-10-07T05:57:54.250Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Nova Biomedical® Announces Global Medical Device Correction for StatStrip® Glucose Hospital Meter",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/nova-biomedicalr-announces-global-medical-device-correction-statstripr-glucose-hospital-meter"
+    },
     {
       "category": "drug-approval",
       "contentHash": "9f7c501b0f67a33187e0ff4da1416a77ac6a0ce482d1da8e39ad7ea77004a67b",
@@ -3181,22 +3266,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Breathing Circuit Recall: Draeger Removes VentStar Resus Neo Hoses",
       "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/breathing-circuit-recall-draeger-removes-ventstar-resus-neo-hoses"
-    },
-    {
-      "category": "recall",
-      "contentHash": "db7c68676b5193de5ae1be54807cc27514ff2bdee065d8ad576ea6f7e56230b4",
-      "description": "IMMEDIATE RELEASE - Tomball, Texas – October 1, 2026 – Greenwich Rx, a 503A compounding pharmacy, is voluntarily recalling specific lots of its compounded glutathione to the consumer level. The product is being recalled due to potential elevated endotoxin levels.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/greenwich-rx-issues-voluntary-nationwide-recall-compounded-glutathione-due-elevated-endotoxin-levels",
-      "id": "medical-update:fda-drugs:9f12b1a197c3664c299cd1e0",
-      "publishedAt": "2026-10-01T21:59:51.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-10-02T05:35:53.135Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "Greenwich Rx Issues Voluntary Nationwide Recall of Compounded Glutathione Due to Elevated Endotoxin Levels",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/greenwich-rx-issues-voluntary-nationwide-recall-compounded-glutathione-due-elevated-endotoxin-levels"
     },
     {
       "category": "recall",
@@ -3772,22 +3841,6 @@
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "title": "Modified HIV drug reverses vision loss and paralysis in multiple sclerosis model",
       "url": "https://www.nih.gov/news-events/news-releases/modified-hiv-drug-reverses-vision-loss-paralysis-multiple-sclerosis-model"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "be6656fbe5eef952bfed91c61c10c62cf7d0a287ef3d388a068dbf9436cfcff9",
-      "description": "Explore the FDA’s Competitive Generic Therapy Approvals page, offering insights into the program designed to encourage generic drug competition. Access information about approved CGT products and find resources, including a downloadable CGT approvals spreadsheet.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/drugs/generic-drugs/competitive-generic-therapy-approvals",
-      "id": "medical-update:fda-drugs:e69026cda6636032fa8ab1a1",
-      "publishedAt": "2026-09-22T14:41:34.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-11T15:33:30.795Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "Competitive Generic Therapy Approvals",
-      "url": "https://www.fda.gov/drugs/generic-drugs/competitive-generic-therapy-approvals"
     },
     {
       "category": "recall",
@@ -6743,43 +6796,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "title": "NatureBest Precut & Produce LLC Voluntarily Recalls Products Containing Jalapenos Due to Potential Salmonella Contamination",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/naturebest-precut-produce-llc-voluntarily-recalls-products-containing-jalapenos-due-potential"
-    },
-    {
-      "category": "recall",
-      "contentHash": "714193891e3ba4ea33692c5d07133642d94030e8848865b4e3764ad3fd1a6b58",
-      "description": "July 24, 2026 – DEERFIELD, Ill., Baxter International Inc. (NYSE:BAX) is voluntarily recalling Lot LD175708, Exp 14-Feb 2027 of Cefazolin in Dextrose Injection due to a report of particulate matter found in the solution identified as cardboard.Risk Statement: The use of the defective product has a",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/baxter-issues-voluntary-nationwide-recall-cefazolin-dextrose-injection-usp-2g-100ml20mg-ml-single",
-      "id": "medical-update:fda-drugs:01d32e43a7e2fc60865065cf",
-      "publishedAt": "2026-08-08T00:55:36.000Z",
-      "relatedCards": [
-        {
-          "canonicalTitle": "Cefazolin",
-          "collection": "pharmDrugs"
-        }
-      ],
-      "retrievedAt": "2026-08-09T16:24:04.648Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "Baxter Issues Voluntary Nationwide Recall of Cefazolin in Dextrose Injection, USP, 2G / 100ml(20mg /ml) Single-Dose Infusion Bag in 100ml Due to Particulate Matter Found in Solution",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/baxter-issues-voluntary-nationwide-recall-cefazolin-dextrose-injection-usp-2g-100ml20mg-ml-single"
-    },
-    {
-      "category": "recall",
-      "contentHash": "45927b5ab6081b303e30b56c12412d264c077af939788d926d4c8637b5835de3",
-      "description": "Lexunder Inc., doing business as Food To Live of Brooklyn, NY, is recalling Food to Live brand green powder products because they have the potential to be contaminated with Salmonella, an organism which can cause serious and sometimes fatal infections in young children, frail or elderly people, and",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/lexunder-inc-recalls-food-live-brand-green-powder-products-because-possible-health-risk",
-      "id": "medical-update:fda-recalls:dc095e96b99a395138ec1e2e",
-      "publishedAt": "2026-08-07T23:01:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-09T01:46:23.049Z",
-      "sourceCategories": [],
-      "sourceId": "fda-recalls",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
-      "title": "Lexunder Inc Recalls Food to Live Brand Green Powder Products Because of Possible Health Risk",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/lexunder-inc-recalls-food-live-brand-green-powder-products-because-possible-health-risk"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -6791,8 +6807,8 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 43,
-      "retrievedAt": "2026-10-06T18:21:09.577Z",
+      "retainedItemCount": 44,
+      "retrievedAt": "2026-10-07T05:57:54.250Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6802,19 +6818,19 @@
       "itemCount": 20,
       "rawItemCount": 20,
       "rejectedItemCount": 0,
-      "retainedItemCount": 53,
-      "retrievedAt": "2026-10-06T18:21:09.577Z",
+      "retainedItemCount": 54,
+      "retrievedAt": "2026-10-07T05:57:54.250Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 0,
+      "itemCount": 2,
       "rawItemCount": 20,
-      "rejectedItemCount": 20,
-      "retainedItemCount": 66,
-      "retrievedAt": "2026-10-06T18:21:09.577Z",
+      "rejectedItemCount": 18,
+      "retainedItemCount": 64,
+      "retrievedAt": "2026-10-07T05:57:54.250Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6825,7 +6841,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 20,
       "retainedItemCount": 32,
-      "retrievedAt": "2026-10-06T18:21:09.577Z",
+      "retrievedAt": "2026-10-07T05:57:54.250Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6836,7 +6852,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 10,
       "retainedItemCount": 10,
-      "retrievedAt": "2026-10-06T18:21:09.577Z",
+      "retrievedAt": "2026-10-07T05:57:54.250Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6847,7 +6863,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-06T18:21:09.577Z",
+      "retrievedAt": "2026-10-07T05:57:54.250Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6858,7 +6874,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 24,
-      "retrievedAt": "2026-10-06T18:21:09.577Z",
+      "retrievedAt": "2026-10-07T05:57:54.250Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6869,7 +6885,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-10-06T18:21:09.577Z",
+      "retrievedAt": "2026-10-07T05:57:54.250Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6880,7 +6896,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-06T18:21:09.577Z",
+      "retrievedAt": "2026-10-07T05:57:54.250Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
