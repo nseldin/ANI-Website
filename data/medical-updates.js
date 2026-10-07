@@ -3000,9 +3000,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-10-07T05:57:54.250Z",
+  "generatedAt": "2026-10-07T13:21:43.627Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "drug-approval",
+      "contentHash": "d3f768c55b1f952d3d238ee99eca77bfb02112f6b331c6c3a31f28aa7f797a39",
+      "description": "This page describes recent rare disease drug approvals that received a CDER or FDA communication. This is not an exhaustive list of all rare disease drug approvals.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/about-fda/accelerating-rare-disease-cures-arc-program/rare-disease-drug-approvals",
+      "id": "medical-update:fda-drugs:8169638d4fa47bcfbbad0213",
+      "publishedAt": "2026-10-07T13:04:36.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-24T19:48:14.134Z",
+      "sourceCategories": [],
+      "sourceId": "fda-drugs",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
+      "title": "Rare Disease Drug Approvals",
+      "url": "https://www.fda.gov/about-fda/accelerating-rare-disease-cures-arc-program/rare-disease-drug-approvals"
+    },
     {
       "category": "recall",
       "contentHash": "9170061e2e47b71dfac7127dbe5ab5fbd8eeba53de0629347c9422e067b8b6bd",
@@ -3467,22 +3483,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "title": "Novel Drug Approvals for 2026",
       "url": "https://www.fda.gov/drugs/novel-drug-approvals-fda/novel-drug-approvals-2026"
-    },
-    {
-      "category": "drug-approval",
-      "contentHash": "54ec172354676676b5236e7970430d7c96ecfa5a57d17000af2141e5f36cf53a",
-      "description": "This page describes recent rare disease drug approvals that received a CDER or FDA communication. This is not an exhaustive list of all rare disease drug approvals.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/about-fda/accelerating-rare-disease-cures-arc-program/rare-disease-drug-approvals",
-      "id": "medical-update:fda-drugs:8169638d4fa47bcfbbad0213",
-      "publishedAt": "2026-09-28T22:36:35.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-24T19:48:14.134Z",
-      "sourceCategories": [],
-      "sourceId": "fda-drugs",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
-      "title": "Rare Disease Drug Approvals",
-      "url": "https://www.fda.gov/about-fda/accelerating-rare-disease-cures-arc-program/rare-disease-drug-approvals"
     },
     {
       "category": "drug-approval",
@@ -6808,7 +6808,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 44,
-      "retrievedAt": "2026-10-07T05:57:54.250Z",
+      "retrievedAt": "2026-10-07T13:21:43.627Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6819,18 +6819,18 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 54,
-      "retrievedAt": "2026-10-07T05:57:54.250Z",
+      "retrievedAt": "2026-10-07T13:21:43.627Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
     },
     {
       "error": null,
-      "itemCount": 2,
+      "itemCount": 3,
       "rawItemCount": 20,
-      "rejectedItemCount": 18,
-      "retainedItemCount": 64,
-      "retrievedAt": "2026-10-07T05:57:54.250Z",
+      "rejectedItemCount": 17,
+      "retainedItemCount": 63,
+      "retrievedAt": "2026-10-07T13:21:43.627Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6841,7 +6841,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 20,
       "retainedItemCount": 32,
-      "retrievedAt": "2026-10-07T05:57:54.250Z",
+      "retrievedAt": "2026-10-07T13:21:43.627Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6852,7 +6852,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 10,
       "retainedItemCount": 10,
-      "retrievedAt": "2026-10-07T05:57:54.250Z",
+      "retrievedAt": "2026-10-07T13:21:43.627Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6863,7 +6863,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-07T05:57:54.250Z",
+      "retrievedAt": "2026-10-07T13:21:43.627Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6874,7 +6874,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 24,
-      "retrievedAt": "2026-10-07T05:57:54.250Z",
+      "retrievedAt": "2026-10-07T13:21:43.627Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6885,7 +6885,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 2,
-      "retrievedAt": "2026-10-07T05:57:54.250Z",
+      "retrievedAt": "2026-10-07T13:21:43.627Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6896,7 +6896,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-07T05:57:54.250Z",
+      "retrievedAt": "2026-10-07T13:21:43.627Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
