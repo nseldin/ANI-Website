@@ -6,6 +6,22 @@
   "archive": [
     {
       "category": "recall",
+      "contentHash": "cdecd0a5268838af9cb6e26d35872ebb729acbabc9a46a00e71001513de8d9bd",
+      "description": "Salinas, Calif., August 9, 2026 – Upon notification that Coast Citrus Distributors is voluntarily recalling fresh jalapeños due to potential Salmonella contamination, Taylor Fresh Foods is recalling finished products containing jalapeños subject to this recall.Salmonella, an organism which can cause",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/taylor-fresh-foods-recalls-products-made-jalapeno-peppers-because-possible-health-risk",
+      "id": "medical-update:fda-recalls:c702952e07a5ceb878169ade",
+      "publishedAt": "2026-08-09T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-10T15:34:06.868Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Taylor Fresh Foods Recalls Products Made with Jalapeno Peppers Because of Possible Health Risk",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/taylor-fresh-foods-recalls-products-made-jalapeno-peppers-because-possible-health-risk"
+    },
+    {
+      "category": "recall",
       "contentHash": "64d08a66f6c699fdc2c82d909d7eb5f50c44375c436ff0bf6ee955c078103fd3",
       "description": "NatureBest Precut & Produce LLC, with facilities located in Missouri City, TX and Houston, TX is voluntarily recalling products containing jalapeño peppers supplied by Coast Citrus Distributors due to the potential for contamination with Salmonella. Salmonella is an organism which can cause serious",
       "descriptionOrigin": "source-provided",
@@ -3016,7 +3032,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-10-07T23:04:35.935Z",
+  "generatedAt": "2026-10-08T06:02:20.096Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -6860,22 +6876,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Catheter Introducer Correction: Abiomed and Oscor Issue Correction for Catheter Introducer",
       "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/catheter-introducer-correction-abiomed-and-oscor-issue-correction-catheter-introducer"
-    },
-    {
-      "category": "recall",
-      "contentHash": "cdecd0a5268838af9cb6e26d35872ebb729acbabc9a46a00e71001513de8d9bd",
-      "description": "Salinas, Calif., August 9, 2026 – Upon notification that Coast Citrus Distributors is voluntarily recalling fresh jalapeños due to potential Salmonella contamination, Taylor Fresh Foods is recalling finished products containing jalapeños subject to this recall.Salmonella, an organism which can cause",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/taylor-fresh-foods-recalls-products-made-jalapeno-peppers-because-possible-health-risk",
-      "id": "medical-update:fda-recalls:c702952e07a5ceb878169ade",
-      "publishedAt": "2026-08-09T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-10T15:34:06.868Z",
-      "sourceCategories": [],
-      "sourceId": "fda-recalls",
-      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
-      "title": "Taylor Fresh Foods Recalls Products Made with Jalapeno Peppers Because of Possible Health Risk",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/taylor-fresh-foods-recalls-products-made-jalapeno-peppers-because-possible-health-risk"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -6888,7 +6888,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 44,
-      "retrievedAt": "2026-10-07T23:04:35.935Z",
+      "retrievedAt": "2026-10-08T06:02:20.096Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6899,7 +6899,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 56,
-      "retrievedAt": "2026-10-07T23:04:35.935Z",
+      "retrievedAt": "2026-10-08T06:02:20.096Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -6910,7 +6910,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 15,
       "retainedItemCount": 62,
-      "retrievedAt": "2026-10-07T23:04:35.935Z",
+      "retrievedAt": "2026-10-08T06:02:20.096Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -6921,7 +6921,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 20,
       "retainedItemCount": 32,
-      "retrievedAt": "2026-10-07T23:04:35.935Z",
+      "retrievedAt": "2026-10-08T06:02:20.096Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -6932,7 +6932,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 10,
       "retainedItemCount": 10,
-      "retrievedAt": "2026-10-07T23:04:35.935Z",
+      "retrievedAt": "2026-10-08T06:02:20.096Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -6943,7 +6943,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-07T23:04:35.935Z",
+      "retrievedAt": "2026-10-08T06:02:20.096Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -6954,7 +6954,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 24,
-      "retrievedAt": "2026-10-07T23:04:35.935Z",
+      "retrievedAt": "2026-10-08T06:02:20.096Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -6965,7 +6965,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 3,
-      "retrievedAt": "2026-10-07T23:04:35.935Z",
+      "retrievedAt": "2026-10-08T06:02:20.096Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -6976,7 +6976,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-07T23:04:35.935Z",
+      "retrievedAt": "2026-10-08T06:02:20.096Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
