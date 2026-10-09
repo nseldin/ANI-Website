@@ -5,6 +5,22 @@
   "aiCalls": 0,
   "archive": [
     {
+      "category": "safety-alert",
+      "contentHash": "27f83dbf5e0328591034b51e88c0ffcd11e352cdda1a5356a178918b2e017d99",
+      "description": "Abiomed and Oscor have identified a potential for introducer sheath leakage in 14Fr and 23Fr Introducers that may increase the risk of access-site bleeding.",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/catheter-introducer-correction-abiomed-and-oscor-issue-correction-catheter-introducer",
+      "id": "medical-update:fda-medwatch:cf6a235cafb5a9e4e891b283",
+      "publishedAt": "2026-08-10T04:00:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-08-10T20:25:20.774Z",
+      "sourceCategories": [],
+      "sourceId": "fda-medwatch",
+      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
+      "title": "Catheter Introducer Correction: Abiomed and Oscor Issue Correction for Catheter Introducer",
+      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/catheter-introducer-correction-abiomed-and-oscor-issue-correction-catheter-introducer"
+    },
+    {
       "category": "recall",
       "contentHash": "cdecd0a5268838af9cb6e26d35872ebb729acbabc9a46a00e71001513de8d9bd",
       "description": "Salinas, Calif., August 9, 2026 – Upon notification that Coast Citrus Distributors is voluntarily recalling fresh jalapeños due to potential Salmonella contamination, Taylor Fresh Foods is recalling finished products containing jalapeños subject to this recall.Salmonella, an organism which can cause",
@@ -3032,7 +3048,7 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-10-08T23:20:22.434Z",
+  "generatedAt": "2026-10-09T06:07:17.368Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
     {
@@ -6946,22 +6962,6 @@
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "title": "Breathing Circuit Set Recall: Hamilton Medical Removes Breathing Circuit Set",
       "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/breathing-circuit-set-recall-hamilton-medical-removes-breathing-circuit-set"
-    },
-    {
-      "category": "safety-alert",
-      "contentHash": "27f83dbf5e0328591034b51e88c0ffcd11e352cdda1a5356a178918b2e017d99",
-      "description": "Abiomed and Oscor have identified a potential for introducer sheath leakage in 14Fr and 23Fr Introducers that may increase the risk of access-site bleeding.",
-      "descriptionOrigin": "source-provided",
-      "guid": "http://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/catheter-introducer-correction-abiomed-and-oscor-issue-correction-catheter-introducer",
-      "id": "medical-update:fda-medwatch:cf6a235cafb5a9e4e891b283",
-      "publishedAt": "2026-08-10T04:00:00.000Z",
-      "relatedCards": [],
-      "retrievedAt": "2026-08-10T20:25:20.774Z",
-      "sourceCategories": [],
-      "sourceId": "fda-medwatch",
-      "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
-      "title": "Catheter Introducer Correction: Abiomed and Oscor Issue Correction for Catheter Introducer",
-      "url": "https://www.fda.gov/medical-devices/medical-device-recalls-and-early-alerts/catheter-introducer-correction-abiomed-and-oscor-issue-correction-catheter-introducer"
     }
   ],
   "refreshStatus": "CURRENT",
@@ -6974,7 +6974,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 44,
-      "retrievedAt": "2026-10-08T23:20:22.434Z",
+      "retrievedAt": "2026-10-09T06:07:17.368Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6985,7 +6985,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 56,
-      "retrievedAt": "2026-10-08T23:20:22.434Z",
+      "retrievedAt": "2026-10-09T06:07:17.368Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -6996,7 +6996,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 11,
       "retainedItemCount": 61,
-      "retrievedAt": "2026-10-08T23:20:22.434Z",
+      "retrievedAt": "2026-10-09T06:07:17.368Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -7007,7 +7007,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 20,
       "retainedItemCount": 32,
-      "retrievedAt": "2026-10-08T23:20:22.434Z",
+      "retrievedAt": "2026-10-09T06:07:17.368Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -7018,7 +7018,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 10,
       "retainedItemCount": 10,
-      "retrievedAt": "2026-10-08T23:20:22.434Z",
+      "retrievedAt": "2026-10-09T06:07:17.368Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -7029,7 +7029,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-08T23:20:22.434Z",
+      "retrievedAt": "2026-10-09T06:07:17.368Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -7040,7 +7040,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 26,
-      "retrievedAt": "2026-10-08T23:20:22.434Z",
+      "retrievedAt": "2026-10-09T06:07:17.368Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -7051,7 +7051,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 3,
-      "retrievedAt": "2026-10-08T23:20:22.434Z",
+      "retrievedAt": "2026-10-09T06:07:17.368Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -7062,7 +7062,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-08T23:20:22.434Z",
+      "retrievedAt": "2026-10-09T06:07:17.368Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
