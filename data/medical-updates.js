@@ -3048,9 +3048,25 @@
   "archiveRetentionDays": 3650,
   "currentWindowDays": 60,
   "datasetVersion": "ani-medical-updates-2026-08-10.2",
-  "generatedAt": "2026-10-09T06:07:17.368Z",
+  "generatedAt": "2026-10-09T13:15:37.498Z",
   "generatorVersion": "ani-medical-updates-generator-2026-08-10.2",
   "items": [
+    {
+      "category": "recall",
+      "contentHash": "b51d94a48713f8cca497f2b4c2a73abb54b2d25b8787eaff68a00a32867483eb",
+      "description": "October 8, 2026, Gardeners Basics of Spanish Fork, Utah, is recalling one-pound bags of broccoli sprouting seeds because they may be contaminated with Salmonella, an organism which can cause serious and sometimes fatal infections in young children, frail or elderly people, and others with weakened i",
+      "descriptionOrigin": "source-provided",
+      "guid": "http://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/gardeners-basics-recalls-waltham-29-broccoli-sprouting-seeds-due-possible-salmonella-contamination",
+      "id": "medical-update:fda-recalls:18c004ed24e5c0130573118c",
+      "publishedAt": "2026-10-08T23:51:00.000Z",
+      "relatedCards": [],
+      "retrievedAt": "2026-10-09T13:15:37.498Z",
+      "sourceCategories": [],
+      "sourceId": "fda-recalls",
+      "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
+      "title": "Gardeners Basics Recalls Waltham 29 Broccoli Sprouting Seeds Due to Possible Salmonella Contamination",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/gardeners-basics-recalls-waltham-29-broccoli-sprouting-seeds-due-possible-salmonella-contamination"
+    },
     {
       "category": "drug-approval",
       "contentHash": "beb43da506303d610eb4f4a6dacf3b93bfd63eac950e11eb9466f82387e7c56c",
@@ -6974,7 +6990,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 44,
-      "retrievedAt": "2026-10-09T06:07:17.368Z",
+      "retrievedAt": "2026-10-09T13:15:37.498Z",
       "sourceId": "fda-medwatch",
       "sourceName": "U.S. Food and Drug Administration (FDA) MedWatch",
       "status": "current"
@@ -6985,7 +7001,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 0,
       "retainedItemCount": 56,
-      "retrievedAt": "2026-10-09T06:07:17.368Z",
+      "retrievedAt": "2026-10-09T13:15:37.498Z",
       "sourceId": "fda-recalls",
       "sourceName": "U.S. Food and Drug Administration (FDA) Recalls",
       "status": "current"
@@ -6996,7 +7012,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 11,
       "retainedItemCount": 61,
-      "retrievedAt": "2026-10-09T06:07:17.368Z",
+      "retrievedAt": "2026-10-09T13:15:37.498Z",
       "sourceId": "fda-drugs",
       "sourceName": "U.S. Food and Drug Administration (FDA) Drugs",
       "status": "current"
@@ -7007,7 +7023,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 20,
       "retainedItemCount": 32,
-      "retrievedAt": "2026-10-09T06:07:17.368Z",
+      "retrievedAt": "2026-10-09T13:15:37.498Z",
       "sourceId": "fda-biologics",
       "sourceName": "U.S. Food and Drug Administration (FDA) Biologics",
       "status": "current"
@@ -7018,7 +7034,7 @@
       "rawItemCount": 20,
       "rejectedItemCount": 10,
       "retainedItemCount": 10,
-      "retrievedAt": "2026-10-09T06:07:17.368Z",
+      "retrievedAt": "2026-10-09T13:15:37.498Z",
       "sourceId": "fda-press-releases",
       "sourceName": "U.S. Food and Drug Administration (FDA) Press Releases",
       "status": "current"
@@ -7029,7 +7045,7 @@
       "rawItemCount": 0,
       "rejectedItemCount": 0,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-09T06:07:17.368Z",
+      "retrievedAt": "2026-10-09T13:15:37.498Z",
       "sourceId": "cdc-han",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) Health Alert Network",
       "status": "current"
@@ -7040,7 +7056,7 @@
       "rawItemCount": 100,
       "rejectedItemCount": 0,
       "retainedItemCount": 26,
-      "retrievedAt": "2026-10-09T06:07:17.368Z",
+      "retrievedAt": "2026-10-09T13:15:37.498Z",
       "sourceId": "cdc-mmwr",
       "sourceName": "U.S. Centers for Disease Control and Prevention (CDC) MMWR",
       "status": "current"
@@ -7051,7 +7067,7 @@
       "rawItemCount": 10,
       "rejectedItemCount": 8,
       "retainedItemCount": 3,
-      "retrievedAt": "2026-10-09T06:07:17.368Z",
+      "retrievedAt": "2026-10-09T13:15:37.498Z",
       "sourceId": "nih-news-releases",
       "sourceName": "U.S. National Institutes of Health (NIH)",
       "status": "current"
@@ -7062,7 +7078,7 @@
       "rawItemCount": 25,
       "rejectedItemCount": 24,
       "retainedItemCount": 0,
-      "retrievedAt": "2026-10-09T06:07:17.368Z",
+      "retrievedAt": "2026-10-09T13:15:37.498Z",
       "sourceId": "who-news",
       "sourceName": "World Health Organization (WHO)",
       "status": "current"
